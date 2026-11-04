@@ -1,0 +1,22 @@
+PAPER UPDATE — 4 November 2026
+
+The current paper is the 78-page author-review revision. This note supersedes
+EDITORIAL.txt for the current paper; that file records the earlier review.
+
+The paper and its matching LaTeX source have been replaced together.
+Updates include the abstract, target notation G_b^{(n)}, examples and
+historical attribution, and Section 2.4 on Nullstellensatz completeness and
+degree upper bounds. The discussion distinguishes universe size from the
+number of variables and qualifies the applicability of Razborov's modified
+pigeonhole lower bound when input degree grows rather than remaining fixed.
+The supporting-material reference [30] deliberately cites the immutable
+072d949368e3ad7f44fc3b34b80d8f43fa92dcd1 supporting snapshot.
+
+The producing research chat compiled the latest source twice and checked
+citations and affected page layouts. This upload verifies file integrity
+and matches the supplied source archive. No new full mathematical audit or
+Lean build/replay is claimed. Tutorial and Lean files are unchanged.
+The tutorial's paper page references and target notation may reflect the
+earlier manuscript; consult the revised paper for current notation/pages.
+
+No release or DOI is created by this update.

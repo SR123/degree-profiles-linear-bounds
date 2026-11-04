@@ -4,13 +4,13 @@
 
 Søren Riis, *Degree profiles of uniform polynomial consequences: Linear lower bounds for Nullstellensatz and Polynomial Calculus*.
 
-- [Paper](paper/paper.pdf) — the 77-page manuscript with the author's requested editorial revision.
+- [Paper](paper/paper.pdf) — the 78-page manuscript with the author's requested editorial revision.
 - [Tutorial](tutorial/tutorial.pdf) — the revised 193-page companion, *Understanding the linear degree gap*.
 - [Lean formalisation and reproduction instructions](lean/README.md) — the preserved formal source packet, with its own scope and evidence records.
 - [Tutorial review and verification scope](verification/REVIEW.txt).
 - [Reference and connection checks](verification/REFERENCES.txt).
 
-The later paper revision is described in [the editorial refresh note](verification/EDITORIAL.txt). Its theorem statements, proof bodies, section numbers and formal scope are unchanged. The new introduction clarifies uniformity, permanent parameters and the logical compiler; the abstract separates the earlier classification from the current contribution.
+The latest paper revision is described in [the revision note](verification/PAPER-UPDATE.txt). It updates the abstract, notation, examples, historical attribution, and the discussion of Nullstellensatz completeness and degree upper bounds. The tutorial and Lean packet are retained unchanged; their recorded verification scope remains as documented.
 
 ## Citation
 

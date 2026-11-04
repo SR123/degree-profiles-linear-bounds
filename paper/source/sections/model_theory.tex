@@ -125,11 +125,11 @@ also contains every requested target even when its degree exceeds $d$.
 
 \begin{definition}[A degree-bounded target witness]
 \label{def:consistency-witness}
-For a requested target $G_{b,n}$, a degree-$d$ witness is a $K$-linear
+For a requested target $G_b^{(n)}$, a degree-$d$ witness is a $K$-linear
 functional
 \[
  \lambda:P_{\le\max\{d,D_G\}}(n)\longrightarrow K,\qquad
- \lambda(G_{b,n})=1,\qquad\lambda(W_d(n))=0.
+ \lambda(G_b^{(n)})=1,\qquad\lambda(W_d(n))=0.
 \]
 For an all-target request, a witness consists of an index $b$ and such
 a functional. For a single fixed orbit, one may use any available
@@ -144,7 +144,7 @@ derivation of degree at most $d$ in the chosen system. For an all-target
 request it exists exactly when $h(n)>d$.
 \end{proposition}
 \begin{proof}
-If $G_{b,n}\in W_d(n)$, a functional annihilating $W_d(n)$ cannot
+If $G_b^{(n)}\in W_d(n)$, a functional annihilating $W_d(n)$ cannot
 take value one on it. Conversely its class in the finite-dimensional
 quotient $P_{\le\max\{d,D_G\}}(n)/W_d(n)$ is nonzero whenever
 it is not in $W_d(n)$. Extend that class to a basis, assign it value
@@ -155,8 +155,8 @@ ambient space also covers this degree-floor obstruction. Failure of
 all-target derivability is failure for at least one target.
 \end{proof}
 
-A $K$-valued solution $a$ of $\Gamma_n$ which violates $G_{b,n}=0$ gives a
-witness by $\lambda(f)=f(a)/G_{b,n}(a)$. For target one this is ordinary
+A $K$-valued solution $a$ of $\Gamma_n$ which violates $G_b^{(n)}=0$ gives a
+witness by $\lambda(f)=f(a)/G_b^{(n)}(a)$. For target one this is ordinary
 evaluation, with its multiplicative property. A general witness need
 not be multiplicative, positive or normalised on one. It records a
 linear separation from all permitted bounded-degree consequences,

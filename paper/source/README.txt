@@ -2,7 +2,7 @@ Author-review editorial revision, 4 November 2026.
 
 Compile the standalone main.tex with pdflatex/latexmk. Organised sources
 are in sections/; after editing run python3 build_paper.py, then compile main.tex.
-The exported paper has 77 pages. The abstract credits the LICS 2008/2009
+The exported paper has 78 pages. The abstract credits the LICS 2008/2009
 classification before the current linear bounds and uniform-target extension.
 New introductory examples explain global sums, tuple-indexed variables, orbit
 generators, permanently named parameters, zero-arity types and the first-order
@@ -18,4 +18,21 @@ The separate finite_certificate.tex is retained as supplied and is not
 part of build_paper.py's assembly order.
 
 No publication or submission has occurred. Licence choices remain unchanged.
-PDF SHA256: 6b986896daefd8cd4f328a3ae69391a4e9b3ed63b9750451a750ce397c244c14
+PDF SHA256: 697ca04c2b07a34f7e26a17d35e858725b1243eb6df75f6b8287ef35f6cc8894
+
+Section 2.4 fixed-degree qualification, 4 November 2026: the Boolean upper
+bound d_PC <= d_NS <= v+D is retained. Razborov's Omega(v) PC lower bound
+for modified pigeonhole encodings is cited only for comparison, allowing
+logarithmic input degree. The paragraph explicitly says this does not
+establish sharpness in our uniform class, which fixes D independently of n.
+Only the literature paragraph changed in this revision. Theorems and proofs
+are unchanged. The packet matches the current 78-page paper.
+
+Proof-source archive links, 4 November 2026: the final verification
+paragraph now cites the supporting-materials bibliography entry [30].
+That entry links to a fixed GitHub repository archive, its archived paper
+PDF, and the Lean sources and verification records, all at commit
+072d949368e3ad7f44fc3b34b80d8f43fa92dcd1. The local ZIP filename was
+removed from the paragraph. The acknowledgements are unchanged.
+The paper remains 78 pages; the PDF hyperlink destinations were checked.
+This task updates local paper artifacts; it does not upload a GitHub revision.

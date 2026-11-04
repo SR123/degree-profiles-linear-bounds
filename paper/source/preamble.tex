@@ -34,42 +34,30 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-Riis's LICS~2008 paper and expanded 2009 preprint established a four-way
-algebraic proof-complexity classification for uniform polynomial
-refutations in positive characteristic~\cite{Riis,RiisLong}. Its four
-cases are mutually exclusive and exhaustive: $\mathrm T_1$ has eventually
-bounded degree; $\mathrm T_2$ has no recurring finite degree;
-$\mathrm T_3$ has finitely many recurring finite degrees without eventual
-boundedness, with constant degrees on some residue classes and growing
-degree on the others; and $\mathrm T_4$ has infinitely many recurring
-finite degrees. The aim was to obtain polynomial-versus-exponential
-complexity distinctions within this classification. The earlier degree
-lower bounds were $\Omega(\log n)$ for Nullstellensatz and
-$\Omega(\log\log n)$ for Polynomial Calculus; a conjectured improvement
-was $\Omega(n^\varepsilon)$ for some fixed $\varepsilon>0$, at least for
-Nullstellensatz and possibly for Polynomial Calculus.
+This paper proves optimal linear degree lower bounds for Nullstellensatz
+and Polynomial Calculus, yielding a four-way polynomial-versus-exponential
+proof-size classification for uniform polynomial consequences over fields
+of positive characteristic. The size bounds use full, explicit
+coefficient lists, including zeros.
 
-This paper proves optimal linear degree lower bounds $\Omega(n)$ for
-both systems and extends the theorem to uniform polynomial targets over
-any field of fixed positive characteristic. The constant target $1$
-gives the refutation case; the theorem applies more generally to uniform
-polynomial targets. The lower bounds hold at all sufficiently large
-sizes in $\mathrm T_2$, on the hard residue classes in $\mathrm T_3$,
-and at arbitrarily large sizes with finite degree in $\mathrm T_4$.
-The last case also has a finite liminf: one finite degree recurs
-arbitrarily late, while recurring finite degrees are unbounded.
-For finite derivations represented by full, explicit coefficient lists,
-including zeros, this gives polynomial upper bounds in $\mathrm T_1$,
-exponential lower bounds in $\mathrm T_2$, the corresponding periodic
-mixture in $\mathrm T_3$, and polynomial subsequences with finite
-exponential peaks in $\mathrm T_4$.
-Degree-preserving lifting with linear onset and period bounds proves the
-quantitative result; a separate uniform comparison gives NS and PC the
-same type. A common $p$-adic hardness spectrum organises the eventual
-bounded-degree residue classes and describes the four cases
-topologically. Distinguishing any two types
-is undecidable already for refutations. The central linear-bound,
-classification, comparison and undecidability theorems are formalised
-in Lean.
+Apart from a fixed finite initial range, exactly one of four cases
+occurs: $\mathrm T_1$, bounded degree; $\mathrm T_2$, degree at least
+linear in the universe size $n$; $\mathrm T_3$, constant degree on some
+residue classes and at least linear degree on the others; or
+$\mathrm T_4$, infinitely many recurring finite degrees, with
+bounded-degree subsequences and finite $\Omega(n)$ peaks at arbitrarily
+large sizes. Thus the size patterns are polynomial bounds, exponential
+lower bounds, a periodic mixture, or polynomial subsequences with finite
+exponential peaks, respectively. Underivable targets have degree
+$\infty$, and both proof systems assign the same type.
+
+The result strengthens my 2008--2009 refutation classification and extends
+it to uniform consequences. The proof uses degree-preserving lifting
+with onset and period bounds linear in the degree. A common $p$-adic
+hardness spectrum describes the four types topologically. Distinguishing
+any two types is undecidable already for refutations. The linear degree bounds, four-way classification and pairwise
+undecidability results have been formalised and verified in Lean. The Lean
+formalisation, verification records and an accompanying tutorial are
+available in the supporting materials~\cite{RiisSupporting}.
 \end{abstract}
 \medskip

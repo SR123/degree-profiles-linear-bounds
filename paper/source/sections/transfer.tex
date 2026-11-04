@@ -247,13 +247,13 @@ $\delta=0$ for an empty request. At a rank where
 all target degrees are at most $d$, define
 \[
  J_N:K[\mathcal B_N]\longrightarrow W_N,\qquad
-                [b]\longmapsto G_{b,N}.
+                [b]\longmapsto G_b^{(N)}.
 \]
 Its entry in row $\mu$, column $b$ is precisely $\gamma(b,\mu)$.
 Equivariance and rank independence are the hypotheses of the natural
 matrix identification in Theorem~\ref{thm:deletion}. Consequently
 $\Del(J_N)$ is the actual smaller target map $J_n$.
-This statement concerns the prescribed full polynomials $G_{b,n}$;
+This statement concerns the prescribed full polynomials $G_b^{(n)}$;
 we do not replace a target by its degree-$d$ truncation.
 
 Let $H_N$ be either $I_d(N)$ or $C_d(N)$. Every target belongs to
@@ -290,9 +290,9 @@ Take $N=n+q$, $q=p^a>R(d)$ and retained rank
 $n\ge\max\{n_*,2R(d)-1\}$. Exact deletion transports $H_N$, $J_N$
 and their sum and quotient. The detection lemma yields
 \[
- \bigl(\forall b\in\mathcal B_N,\ G_{b,N}\in H_N\bigr)
+ \bigl(\forall b\in\mathcal B_N,\ G_b^{(N)}\in H_N\bigr)
  \quad\Longleftrightarrow\quad
- \bigl(\forall b\in\mathcal B_n,\ G_{b,n}\in H_n\bigr).
+ \bigl(\forall b\in\mathcal B_n,\ G_b^{(n)}\in H_n\bigr).
 \]
 Field descent holds for each actual target separately, so the equivalence
 holds over the original field. Repeated steps connect any eligible
@@ -307,10 +307,10 @@ nonzero constant. If a target has positive stable degree, degree-zero
 all-target membership fails. These are fixed predicates beyond $n_*$
 and give the separate zero-level assertion.
 
-For a fully invariant target use $j_N:K\to W_N$, $j_N(1)=G_N$,
+For a fully invariant target use $j_N:K\to W_N$, $j_N(1)=G^{(N)}$,
 in place of $J_N$. Lemma~\ref{lem:constant} reflects membership without
 the tensor pairing. The budget reduces to $kd+s$, with stable onset
-$\max\{n_0,1,kD_G\}$. Taking $G_N=1$ gives the sharper refutation
+$\max\{n_0,1,kD_G\}$. Taking $G^{(N)}=1$ gives the sharper refutation
 special case. No target has been added to the axiom system.
 \end{proof}
 
@@ -444,11 +444,11 @@ This proves both the forward lifting implication and
 \eqref{eq:newiff}. The image of the lift need not be all of $C_d(N)$:
 the larger universe has many additional consequences. Every smaller consequence has this projector lift. In the transfer range, for $n\ge n_*$ and a fully
 invariant target $G$ whose stabilised degree is at most $d$, naturality of its map from $K$ gives
-$\Lift(G_n)=G_N$: the target map commutes with the common projector,
+$\Lift(G^{(n)})=G^{(N)}$: the target map commutes with the common projector,
 which acts as the identity on $K$. More concretely, invariance gives
-$zG_N=0$ and $eG_N=G_N$, while stable coefficients give
-$\rho G_N=G_n$. The retained-vector identification and the argument
-in Proposition~\ref{lift-prop:lift} therefore yield $e\iota(G_n)=G_N$. Hence invariant targets, including
+$zG^{(N)}=0$ and $eG^{(N)}=G^{(N)}$, while stable coefficients give
+$\rho G^{(N)}=G^{(n)}$. The retained-vector identification and the argument
+in Proposition~\ref{lift-prop:lift} therefore yield $e\iota(G^{(n)})=G^{(N)}$. Hence invariant targets, including
 $1$, are exactly preserved. For indexed targets this equality need
 not hold. The image-subquotient argument above proves transfer of
 prescribed indexed targets without assuming it.
@@ -502,9 +502,9 @@ lifts every degree-one consequence. Plain inclusion would leave $x_a$,
 which is not a consequence of the larger system: the assignment
 $(x_a,x_b,x_c)=(1,1,0)$ satisfies its sum but not $x_a=0$.
 
-Here the invariant target $G_m=\sum_{i<m}x_i$ is transported to
+Here the invariant target $G^{(m)}=\sum_{i<m}x_i$ is transported to
 the prescribed larger target. In contrast, the indexed expression
-$G_{a,m}=x_a$ has projector lift $x_a+x_b+x_c$, not $x_a$. The map
+$G_a^{(m)}=x_a$ has projector lift $x_a+x_b+x_c$, not $x_a$. The map
 is linear but is not a ring homomorphism and does not preserve every
 indexed expression literally. This calculation illustrates the distinction but lies outside the
 indexed transfer range: for $k=d=t=1$ and $s=0$, that theorem uses
