@@ -1,15 +1,6 @@
-Søren Riis
-Degree profiles of uniform polynomial consequences:
-Linear lower bounds for Nullstellensatz and Polynomial Calculus
-Author-review draft, 4 November 2026.
+Søren Riis. Degree profiles of uniform polynomial consequences: Linear lower bounds for Nullstellensatz and Polynomial Calculus. Version 1.0.0. Zenodo, 2026.
+DOI: https://doi.org/10.5281/zenodo.23965838
 
-Accompanying tutorial:
-Understanding the linear degree gap:
-Uniform polynomial consequences and the lifting principle
-Review edition, 4 November 2026.
-Mathematical direction, supervision and editing by Søren Riis.
-AI-assisted authorship and verification scope are described in the documents.
+This archive includes the paper, the tutorial Understanding the linear degree gap: Uniform polynomial consequences and the lifting principle, Lean formalisation, verification records and reproduction instructions.
 
-This snapshot has no DOI and makes no journal-publication claim.
-Use the title and author above when citing the paper; add the actual
-repository URL and version/commit identifier once uploaded.
+Licence: CC BY 4.0. This is a preprint and supporting-material archive, not a journal-publication claim.

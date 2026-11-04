@@ -1,0 +1,6 @@
+Version 1.0.0, 5 November 2026
+DOI: 10.5281/zenodo.23965838
+
+The paper bibliography entry RiisSupporting now cites this complete archive. Its abstract cites that entry for the tutorial, Lean formalisation and verification records. No mathematical statement or Lean proof source was changed for this archival step.
+
+The tutorial is the 193-page terminology and topology revision of 5 November 2026. Existing verification scopes remain as documented. This DOI preparation does not constitute a fresh Lean kernel replay.

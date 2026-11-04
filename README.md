@@ -1,6 +1,6 @@
 # Degree profiles of uniform polynomial consequences
 
-**Author-review draft — tutorial updated 5 November 2026.**
+**Version 1.0.0 — preprint and supporting materials, 5 November 2026.**
 
 Søren Riis, *Degree profiles of uniform polynomial consequences: Linear lower bounds for Nullstellensatz and Polynomial Calculus*.
 
@@ -14,9 +14,9 @@ The latest paper revision is described in [the revision note](verification/PAPER
 
 ## Citation
 
-Søren Riis. *Degree profiles of uniform polynomial consequences: Linear lower bounds for Nullstellensatz and Polynomial Calculus*. Author-review draft, 4 November 2026.
+Søren Riis. *Degree profiles of uniform polynomial consequences: Linear lower bounds for Nullstellensatz and Polynomial Calculus*. Version 1.0.0. Zenodo, 2026. https://doi.org/10.5281/zenodo.23965838.
 
-This snapshot has no DOI. Bibliographic details are also provided in [CITATION.txt](CITATION.txt).
+Archive DOI: [10.5281/zenodo.23965838](https://doi.org/10.5281/zenodo.23965838). This version archives the paper, tutorial, Lean sources and supporting verification materials together. Bibliographic details are also provided in [CITATION.txt](CITATION.txt).
 
 ## Suggested reading
 
@@ -60,4 +60,4 @@ python3 verify_files.py
 
 To repeat the finite illustration checks, use Python 3 on each `check_*.py` file in `tutorial/checks`. They write their corresponding JSON results beside the scripts. These finite checks illustrate calculations; they do not prove the general asymptotic claims. For actual Lean reconstruction, follow [lean/README.md](lean/README.md), including its pinned dependencies and distinction between builds, historical evidence, and fresh checker replay.
 
-No release or DOI has been created. No new redistribution licence has been selected by this preparation step; the preserved Lean packet records the outstanding policy choices in [lean/RELEASE_POLICY.md](lean/RELEASE_POLICY.md). Author review remains outstanding.
+The archive is distributed under CC BY 4.0; see [LICENSE](LICENSE). Upstream dependency licences remain unchanged. This is a preprint archive, not a claim of journal publication. GitHub development commits do not automatically update the archived DOI version.

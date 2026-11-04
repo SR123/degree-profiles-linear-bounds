@@ -1,6 +1,6 @@
 Tutorial terminology review — 5 November 2026
 
-Compared with the current 78-page paper. Revised tutorial: 194 pages.
+Compared with the current 78-page paper. Revised tutorial: 193 pages.
 
 Changes: degree bounds instead of scales; G_b^{(n)} target notation; universe size distinguished from degree, support and matrix rank; Boolean equations terminology; aggregate profile terminology; clearer uniform-system examples; Boolean completeness degree accounting v+D with variable count v distinguished from universe size n. Corrected two section references.
 
