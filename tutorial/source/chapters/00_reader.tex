@@ -16,14 +16,14 @@ work with the displayed maps.
 
 The central problem is
 \[
-                    \Gamma_n\vdash G_n,
+                    \Gamma_n\vdash G^{(n)},
 \]
 where both the axioms and the polynomial expression to be derived come
 from fixed rules as the universe size $n$ changes. A target with a
 bounded-support index can be included as well. Deriving $1$ is the
 important refutation special case, but it is not the only case.
 Here $\Gamma_n$ is the set of input polynomials, each interpreted as
-an equation equal to zero; $G_n$ is the target polynomial, whose equation
+an equation equal to zero; $G^{(n)}$ is the target polynomial, whose equation
 we want to derive. The symbol $\vdash$ means that an algebraic proof
 exists. The two proof systems and their degree conventions are defined
 in Chapter~\ref{tx:ch:consequences}.
@@ -31,19 +31,21 @@ in Chapter~\ref{tx:ch:consequences}.
 \section*{The question which organises the whole proof}
 Suppose a uniform system at size $n$ has a proof with degree at most
 $d$. Can that degree budget also work at $n+q$, for a suitable
-prime-power block $q$? For an invariant uniform target $G_n$, the
+prime-power block $q$? For an invariant uniform target $G^{(n)}$, the
 picture is
 \[
- \Gamma_n\vdash_{\le d}G_n
+ \Gamma_n\vdash_{\le d}G^{(n)}
  \quad\Longrightarrow\quad
- \Gamma_{n+q}\vdash_{\le d}G_{n+q}
+ \Gamma_{n+q}\vdash_{\le d}G^{(n+q)}
  \quad\Longrightarrow\quad
- \Gamma_{n+2q}\vdash_{\le d}G_{n+2q}\quad\Longrightarrow\cdots.
+ \Gamma_{n+2q}\vdash_{\le d}G^{(n+2q)}\quad\Longrightarrow\cdots.
 \]
 Here the proof system is fixed as either NS or ordinary PC. The
 axioms and target follow their prescribed uniform rules at each size;
 the larger proof may have a different list of lines. The resource
-preserved by lifting is the degree of the whole proof.
+preserved by lifting is the degree bound for the whole proof. A
+\emph{degree budget} means an upper bound on the degrees allowed in
+the proof; it is not a bound on its length or on the universe size.
 In this picture, \emph{invariant} means that every permutation of the
 universe labels fixes the target polynomial. A target with distinguished
 indices has a different invariance condition, defined in
@@ -94,7 +96,7 @@ Fix one degree $d$ and one eligible starting size $n$. Lifting gives
 proofs with that same budget at $n+q,n+2q,\ldots$. The absolute budget
 stays $d$. Once that starting proof has been selected, $d$ is a
 \emph{constant} for the whole progression, even if it was originally
-described as, say, a small multiple of $\log n$. At the later ranks
+described as, say, a small multiple of $\log n$. At the later universe sizes
 we keep its numerical value; we do not recompute the logarithm.
 Its ratio to universe size tends to zero:
 \[
@@ -117,26 +119,28 @@ peaks. These are different uses of the same transfer theorem.
 The earlier refutation classification gives logarithmic NS and
 double-logarithmic PC lower bounds~\cite{Riis,RiisLong}. The underlying
 transfer estimates summarised in the LICS paper have exponential and
-double-exponential starting ranks as functions of the fixed degree.
+double-exponential starting universe sizes as functions of the fixed degree.
 These are historical refutation estimates, obtained there from
 substantial earlier work; they are not elementary lemmas reconstructed
 in this book.
 
-The constructions developed here make the starting rank much smaller:
+The constructions developed here make the starting universe size much smaller:
 \begin{center}
 \begin{tabular}{@{}>{\raggedright\arraybackslash}p{.43\linewidth}>{\raggedright\arraybackslash}p{.25\linewidth}>{\raggedright\arraybackslash}p{.22\linewidth}@{}}
 \toprule
-Lifting stage & Starting rank for degree $d$ & Lower-bound scale\\
+Lifting stage & Sufficient starting size & Degree lower bound\\
 \midrule
-Earlier NS refutation result & at most $2^{cd}$ & $\log n$\\
-Earlier PC refutation result & at most $2^{2^{cd}}$ & $\log\log n$\\
-Characteristic-two construction with fresh labels & $O(d^2)$ & $\sqrt n$\\
-One retained pool, every positive characteristic & $O(d)$ & $n$\\
+Earlier NS refutation result & at most $2^{cd}$ & $\Omega(\log n)$\\
+Earlier PC refutation result & at most $2^{2^{cd}}$ & $\Omega(\log\log n)$\\
+Characteristic-two construction with fresh labels & $O(d^2)$ & $\Omega(\sqrt n)$\\
+One retained pool, every positive characteristic & $O(d)$ & $\Omega(n)$\\
 \bottomrule
 \end{tabular}
 \end{center}
+These are degree lower bounds on the hard sizes specified by the
+classification, not universal degree upper bounds.
 The constants depend on the fixed family and field. A small degree
-means small enough to meet the relevant starting-rank inequality.
+means small enough to meet the relevant starting-size inequality.
 Chapter~\ref{tx:chap:lift} gives an elementary counting explanation
 for the prime-power steps. Chapter~\ref{tx:ch:quadratic} supplies the
 first fully worked lifting construction. The central
@@ -263,8 +267,11 @@ we develop it through kernels and images of the displayed linear maps.
 Cutland~\cite{Cutland}, especially the chapters on computable functions,
 universal programs, undecidability and reducibility, gives background
 for the counter-program reductions. The references in
-Sections~\ref{tx:sec:stability-context} and~\ref{tx:sec:model-theory}
-locate the representation-stability and Euler-structure connections.
+Section~\ref{tx:sec:stability-context} locates the representation-stability
+connection. Chapter~\ref{tx:sec:model-theory} explains the paper's
+Section~11 topological classification, including a worked residue-tree
+example. Section~\ref{tx:sec:euler-background} gives optional historical
+background on Euler structures, not a criterion characterising T1--T4.
 These are reading routes for the terminology. The common witness,
 its natural map compatibility, the rook correction and the ordinary-PC
 extension invariant are established explicitly in this book.
@@ -347,7 +354,8 @@ $p$ & Fixed prime characteristic of the coefficient field\\
 $n$ & Retained, smaller universe size\\
 $q=p^a$ & Size of the added/deleted block; $a$ is an exponent\\
 $N=n+q$ & Larger universe size\\
-$d$ & Degree budget for the whole proof\\
+$d$ & Degree bound for the whole proof\\
+$G_b^{(n)},G^{(n)}$ & Indexed target and fully invariant target at size $n$\\
 $D_G$ & Fixed upper bound on the target polynomial degree\\
 $k,s,t$ & Supports of a variable, axiom index, target index\\
 $r=R(d)$ & One support budget once $d$ has been fixed\\
@@ -364,7 +372,9 @@ in $p^a$, and the variable support $k$ is neither of them. The number
 of polynomial variables can be of order $n^k$ and is not itself $n$.
 
 \section*{Reading alongside the current paper}
-This edition follows the paper revised on 4 November 2026. The paper
+This edition aligns terminology and target notation with the
+78-page paper revised on 4 November 2026
+(\href{https://github.com/SR123/degree-profiles-linear-bounds/blob/9e7cea1064f28f7e2ffd5eab44d52bfa854c5baa/paper/paper.pdf}{fixed GitHub version}). The paper
 is the concise statement of the research; this book supplies the slower
 route through its arguments. In particular $N(d)$ now denotes the
 same periodicity onset in both texts. Ordinary $N=n+q$ still denotes

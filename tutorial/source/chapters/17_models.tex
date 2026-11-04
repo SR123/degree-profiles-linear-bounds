@@ -1,9 +1,16 @@
-\chapter{The hardness spectrum, algebraic witnesses and models}
+\chapter{The topological classification and algebraic witnesses}
 \label{tx:sec:model-theory}
-We first explain the topological classification in the current paper,
-then distinguish algebraic witnesses from actual models.
+This chapter expands Section~11 of the paper. The main description of
+T1--T4 is the topological classification in
+Section~\ref{tx:sec:topological-spectrum}: empty, full, nonempty proper
+clopen, or closed but not open hardness spectrum. Its proof uses eventual
+prime-power periodicity and compactness, and applies to all the uniform
+requests covered by the theorem.
+We then distinguish algebraic witnesses from actual models. The final
+Euler-structure discussion is optional historical background; it is
+not needed for this classification and supplies no converse criterion.
 A uniform target invites a semantic question: does every solution of
-$\Gamma_n$ satisfy $G_n=0$? Our theorem classifies syntactic algebraic
+$\Gamma_n$ satisfy $G^{(n)}=0$? Our theorem classifies syntactic algebraic
 derivation, not that semantic question. The two are related through
 linear witnesses, but the relation is not an identification of the four
 types with four classes of ordinary models.
@@ -208,16 +215,16 @@ The \emph{dual} of a vector space is its space of linear functionals.
 A functional \emph{annihilates} a subspace when it is zero on every
 vector of that subspace. Thus the two conditions below say that the
 functional ignores all proved consequences but detects the chosen
-target. The normalisation on that target fixes the scale of the
+target. The condition on the target fixes the scalar normalisation of the
 functional; it does not make the functional multiplicative.
 
 \begin{definition}[A degree-bounded target witness]
 \label{tx:def:consistency-witness}
-For a requested target $G_{b,n}$, a degree-$d$ witness is a $K$-linear
+For a requested target $G_b^{(n)}$, a degree-$d$ witness is a $K$-linear
 functional
 \[
  \lambda:P_{\le\max\{d,D_G\}}(n)\longrightarrow K,\qquad
- \lambda(G_{b,n})=1,\qquad\lambda(W_d(n))=0.
+ \lambda(G_b^{(n)})=1,\qquad\lambda(W_d(n))=0.
 \]
 For an all-target request, a witness consists of an index $b$ and such
 a functional. For a single fixed orbit, one may use any available
@@ -232,7 +239,7 @@ derivation of degree at most $d$ in the chosen system. For an all-target
 request it exists exactly when $h(n)>d$.
 \end{proposition}
 \begin{proof}
-If $G_{b,n}\in W_d(n)$, a functional annihilating $W_d(n)$ cannot
+If $G_b^{(n)}\in W_d(n)$, a functional annihilating $W_d(n)$ cannot
 take value one on it. Conversely its class in the finite-dimensional
 quotient $P_{\le\max\{d,D_G\}}(n)/W_d(n)$ is nonzero whenever
 it is not in $W_d(n)$. Extend that class to a basis, assign it value
@@ -243,8 +250,8 @@ ambient space also covers this degree-floor obstruction. Failure of
 all-target derivability is failure for at least one target.
 \end{proof}
 
-A $K$-valued solution $a$ of $\Gamma_n$ which violates $G_{b,n}=0$ gives a
-witness by $\lambda(f)=f(a)/G_{b,n}(a)$. For target one this is ordinary
+A $K$-valued solution $a$ of $\Gamma_n$ which violates $G_b^{(n)}=0$ gives a
+witness by $\lambda(f)=f(a)/G_b^{(n)}(a)$. For target one this is ordinary
 evaluation, with its multiplicative property. A general witness need
 not be multiplicative, positive or normalised on one. It records a
 linear separation from all permitted bounded-degree consequences,
@@ -283,7 +290,7 @@ Let $h(n)$ be a fixed-orbit or all-target degree profile in the chosen
 system. By Proposition~\ref{tx:prop:dual-witness}, a degree-$d$ witness
 exists precisely when $h(n)>d$.
 Recall that $E(h)$ consists of the finite values occurring at arbitrarily
-large ranks. The four alternatives classify eventual boundedness and
+large universe sizes. The four alternatives classify eventual boundedness and
 whether $E(h)$ is empty, finite nonempty or infinite; they do not classify
 the sets of roots of $\Gamma_n$.
 
@@ -342,71 +349,47 @@ nonconstant consequence can retain these algebraic distinctions. The
 classification is a property of uniform algebraic reasoning about the
 chosen equations and targets, rather than a satisfiability classification.
 
-\section{The connection with Euler structures}
-A first-order structure consists of a domain and interpretations of
-its relation and function symbols. A set is \emph{definable} when a
-formula in that structure describes it; here the language and allowed
-parameters are those required by the cited criterion. For example,
-a unary relation defines a subset of the domain, and a function graph
-defines a subset of its square. A definable map has a definable graph;
-its fibre over $y$ is the set of inputs mapped to $y$. The index-sort
-hypotheses below require the sets indexing the relevant variables and
-sums to be available in that definable setting as well.
+\section{Optional background: the Euler criterion}
+\label{tx:sec:euler-background}
+This section explains the separate sufficient criterion recalled at the
+end of Section~11 of the paper. It is not another description of the
+four types. Readers interested in the topological classification can
+skip it without losing any step of the argument.
 
-Kraj\'i\v cek's Euler structures \cite{KrajEuler} equip definable sets
-with a characteristic $\chi$, normalised on points and compatible with
-unions, products and definable bijections. The strong version also
-respects definable maps with fibres of constant characteristic.
-Here $M$ denotes the underlying first-order structure, and $\chi(M)$
-the Euler characteristic assigned to its domain as a definable set.
-This is a counting rule, not the field characteristic $p$. On a finite
-set of three points, additivity and point normalisation give $\chi=3$
-in its coefficient ring. For finite sets, the fibre rule is the familiar
-identity $|X|=c|Y|$ when a map $X\to Y$ has exactly $c$ points in each
-fibre. An Euler structure asks for the corresponding rules on the
-permitted definable sets, which can be infinite.
-We recall an external criterion with
-its definability hypotheses; it is not an additional hypothesis of our
-finite-dimensional transfer theorem.
-For the degree criterion the coefficient ring is
-$\mathbb Z/p^\nu\mathbb Z$, with $\nu$ depending on the fixed proof
-degree and indexing bounds. Its reduction modulo $p$ defines summation
-of finite-valued definable functions:
+Kraj\'i\v cek's Euler structures~\cite{KrajEuler} equip the permitted
+parameter-definable sets with a strong counting characteristic $\chi$.
+It assigns one to a point, is additive on disjoint unions,
+multiplicative on products and invariant under definable bijections.
+It also satisfies the fibre rule $\chi(X)=r\chi(Y)$ for a definable
+map $X\to Y$ whose fibres all have characteristic $r$. On finite sets
+this extends ordinary counting; the permitted definable sets may be
+infinite. The characteristic on definable sets is distinct from the
+field characteristic $p$.
+
+For the degree criterion the values lie in $\mathbb Z/p^\nu\mathbb Z$,
+with precision $\nu$ depending on the degree budget and indexing bounds.
+Reduction modulo $p$ interprets a definable $\mathbb F_p$-valued sum as
 \[
  \sum_{x\in X}^{\chi}a(x)
        =\sum_{c\in\mathbb F_p}c\,\overline\chi(a^{-1}(c)).
 \]
-Under the required definability and index-sort hypotheses, a definable
-solution of the axioms violating a uniform target $g=0$ excludes
-bounded-degree NS and PC derivations of that target at sufficiently
-large sizes $n\equiv\chi(M)\pmod{p^\nu}$
-\cite[Theorem 6.1]{KrajEuler}. Taking $g=1$ gives its refutation case.
-Thus uniform target membership already belongs to this historical
-framework. A merely $\mathbb F_p$-valued characteristic need not
-supply the required higher residue, and a weak Euler characteristic
-omits the fibre rule. Kraj\'i\v cek and Scanlon \cite{KrajScanlon}
-develop the associated Grothendieck-ring viewpoint.
+Under the full definability and index-sort hypotheses of
+\cite[Theorem~6.1]{KrajEuler}, including the characteristic on the
+required index sorts, a definable solution violating the target $g=0$
+excludes derivations within the specified degree budget at sufficiently
+large sizes in the residue class $\chi(M)\bmod p^\nu$.
+The refutation case is $g=1$. A merely mod-$p$ counting rule or an
+arbitrary infinite model does not supply these hypotheses. The
+Grothendieck-ring viewpoint~\cite{KrajScanlon} organises the additive
+and multiplicative identities; the strong fibre rule remains additional
+structure.
 
-The terminology records these counting identities algebraically.
-The \emph{Grothendieck ring} has symbols $[X]$ for definable sets,
-identifies definably bijective sets, imposes
-$[X]=[Y]+[X\setminus Y]$ for definable $Y\subseteq X$, and uses
-$[X][Z]=[X\times Z]$ for multiplication. Passing to the ring allows
-formal differences of these symbols. An additive, multiplicative
-characteristic assigns values to them while respecting those relations.
-The strong fibre rule is an additional requirement, not something
-supplied by the ring terminology alone.
-
-This criterion supplies semantic obstructions rather than an
-identification of T1--T4 with four model classes. Our classification
-instead follows from exact finite-dimensional target and consequence
-transport, with explicit linear onset. No Euler structure is an
-assumption of the template theorem. An infinite model alone does not
-supply the summation operation needed for totality equations, and a
-linear separating witness need not extend to a multiplicative
-interpretation in an Euler structure. Boolean axioms ensure truth-value
-semantics of the first-order compiler; bounded supports and stable
-coefficient maps provide the hypotheses of the algebraic transfer.
+This is a \emph{sufficient obstruction} to bounded-degree derivations
+when the required structure exists. We do not prove that every hard
+uniform family admits such a structure, nor identify T1--T4 with four
+classes of Euler structures. A general converse remains a separate
+question. The hardness-spectrum classification above needs no Euler
+structure, no Boolean encoding and no model-existence assumption.
 
 \section{What the model-theoretic language does not replace}
 The finite-dimensional target theorem requires neither an infinite model

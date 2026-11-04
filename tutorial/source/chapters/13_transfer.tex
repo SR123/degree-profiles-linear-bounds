@@ -1,20 +1,20 @@
 \chapter{Lifting the actual axioms, proof rules and targets}
 \label{tx:chap:assemble-transfer}
 All the finite-algebra obligations have now been supplied. We return
-to the original question $\Gamma_n\vdash G_{b,n}$: can every requested
+to the original question $\Gamma_n\vdash G_b^{(n)}$: can every requested
 target be derived from the given axioms within degree $d$? We verify each part of the contract
 in Chapter~\ref{tx:chap:contract}. The point of doing the assembly slowly
 is to make clear that a prescribed target, rather than an arbitrary
 lifted vector, is transported.
 
 \section{The theorem we can now state without hidden assumptions}
-Let $\Gamma_n$ be a fixed uniform axiom template and let $G_{b,n}$ be
+Let $\Gamma_n$ be a fixed uniform axiom template and let $G_b^{(n)}$ be
 a fixed uniform target family. Put
 \[
  R(d)=2kd+s+t,\qquad n_*=\max\{n_0,1,kD_G+t\}.
 \]
 Here $k,s,t$ bound the label supports of a variable, an axiom index and
-a target index; $D_G$ bounds target degree. The rank $n_0$ is the axiom
+a target index; $D_G$ bounds target degree. The universe size $n_0$ is the axiom
 stability threshold. These are fixed data; only $d$ is a proposed proof degree.
 
 \begin{theorem}[Actual target transfer]\label{tx:thm:transfer}
@@ -22,11 +22,11 @@ Over any field of fixed prime characteristic $p$, suppose
 \[
  q=p^a>R(d),\qquad n\ge\max\{n_*,2R(d)-1\},\qquad N=n+q.
 \]
-For either NS or ordinary PC, every prescribed rank-$N$ target has a
-derivation of degree at most $d$ if and only if every prescribed rank-$n$
+For either NS or ordinary PC, every prescribed size-$N$ target has a
+derivation of degree at most $d$ if and only if every prescribed size-$n$
 target does. The assertion holds for every $d\ge0$, with the separate
 zero-degree interpretation given below. It also holds for any
-representative of one fixed global target orbit at each eligible rank.
+representative of one fixed global target orbit at each eligible universe size.
 For a fully invariant target use the sharper budget $kd+s$ and start
 $\max\{n_0,1,kD_G\}$.
 \end{theorem}
@@ -53,13 +53,13 @@ any target. This separates the proof-system calculation from the
 question of whether a particular uniform expression belongs to it.
 The operation $\Del(M)=\ker z_M/(\ker z_M\cap\im z_M)$ deletes the
 block through the label action; the common projector represents its
-classes, and $\Lift=e\iota$ lifts smaller-rank vectors. Exactness means
+classes, and $\Lift=e\iota$ lifts smaller-universe vectors. Exactness means
 that kernels, images and quotients are preserved by this operation.
 
 Concretely, a deletion class is represented by a vector $v$ with
 $z_Mv=0$. Two such vectors represent the same class if their difference
 lies in $\ker z_M\cap\im z_M$. The projector provides representatives
-which can be compared with smaller-rank vectors. We use the actual
+which can be compared with smaller-universe vectors. We use the actual
 inclusions and maps between these classes, not just equal dimensions
 of the resulting spaces (Chapter~\ref{tx:chap:deletion}).
 
@@ -71,8 +71,8 @@ For NS the certificate map has source basis the pairs $(\mu,a)$ with
 Its source has support at most $kd+s$, and $W_N$ has support at most
 $kd$. The matrix entry at a target monomial $\nu$ is zero unless
 $\mu\mid\nu$, and otherwise is $c(a,\nu/\mu)$. These are the actual
-rank-independent invariant entries of the certificate map. The
-stability threshold $n_0$ makes each axiom degree independent of rank.
+size-independent invariant entries of the certificate map. The
+stability threshold $n_0$ makes each axiom degree independent of universe size.
 Exactness and matrix naturality therefore identify the embedded image
 $\Del(I_d(N))$ with $I_d(n)$.
 
@@ -95,7 +95,7 @@ of their coefficient map. The recurrence is
 \]
 Every stage is a submodule of $W_N$, and every multiplication domain
 is a submodule of the fixed support-bounded space $X_N\otimes L_N$.
-Suppose stage $j$ has been identified at both ranks. Put
+Suppose stage $j$ has been identified at both universe sizes. Put
 $U_N=V_j(N)\cap L_N$ and $U_n=V_j(n)\cap L_n$.
 The intersection is the kernel of $(v,l)\mapsto v-l$ on
 $V_j(N)\oplus L_N$, so exactness identifies $\Del(U_N)$ with
@@ -206,19 +206,19 @@ polynomial one.
 \section{The actual uniform target map}\label{tx:sec:target-transfer}
 For indexed targets, let $\mathcal B$ be the fixed index basis and
 let $\gamma(b,\mu)$ be its stable coefficient rule. Write $\delta$ for the largest stabilised target degree, taking
-$\delta=0$ for an empty request. At a rank where
+$\delta=0$ for an empty request. At a universe size where
 all target degrees are at most $d$, define
 \[
  J_N:K[\mathcal B_N]\longrightarrow W_N,\qquad
-                [b]\longmapsto G_{b,N}.
+                [b]\longmapsto G_b^{(N)}.
 \]
 Here $J_N$ is a linear target map. It is distinct from the group-algebra
 annihilator ideal $J_r(N)$ used to construct the common projector.
 Its entry in row $\mu$, column $b$ is precisely $\gamma(b,\mu)$.
-Equivariance and rank independence are the hypotheses of the natural
+Equivariance and independence of universe size are the hypotheses of the natural
 matrix identification in Theorem~\ref{tx:thm:deletion}. Consequently
 $\Del(J_N)$ is the actual smaller target map $J_n$.
-This statement concerns the prescribed full polynomials $G_{b,n}$;
+This statement concerns the prescribed full polynomials $G_b^{(n)}$;
 we do not replace a target by its degree-$d$ truncation.
 
 Let $H_N$ be either $I_d(N)$ or $C_d(N)$. Every target belongs to
@@ -250,20 +250,20 @@ First extend scalars to an algebraic closure, as permitted by
 Lemma~\ref{tx:lem:field}. The degree of every indexed target stabilises
 beyond $n_*=\max\{n_0,1,kD_G+t\}$. If $d$ is smaller than the
 largest stable target degree, the all-target predicate is false at both
-ranks. Otherwise the full map $J$ just described applies.
-Take $N=n+q$, $q=p^a>R(d)$ and retained rank
+universe sizes. Otherwise the full map $J$ just described applies.
+Take $N=n+q$, $q=p^a>R(d)$ and retained universe size
 $n\ge\max\{n_*,2R(d)-1\}$. Exact deletion transports $H_N$, $J_N$
 and their sum and quotient. The detection lemma yields
 \[
- \bigl(\forall b\in\mathcal B_N,\ G_{b,N}\in H_N\bigr)
+ \bigl(\forall b\in\mathcal B_N,\ G_b^{(N)}\in H_N\bigr)
  \quad\Longleftrightarrow\quad
- \bigl(\forall b\in\mathcal B_n,\ G_{b,n}\in H_n\bigr).
+ \bigl(\forall b\in\mathcal B_n,\ G_b^{(n)}\in H_n\bigr).
 \]
 Field descent holds for each actual target separately, so the equivalence
 holds over the original field. Repeated steps connect any eligible
-ranks in a common residue class and prove the stated periodicity.
+universe sizes in a common residue class and prove the stated periodicity.
 For one fixed global target orbit, replace $\mathcal B$ by that orbit;
-at eligible ranks, equivariance makes every representative equivalent.
+at eligible universe sizes, equivariance makes every representative equivalent.
 
 At degree zero the stabilised targets are either all zero, or are
 scalars with at least one nonzero value. In the latter case every target
@@ -272,10 +272,10 @@ nonzero constant. If a target has positive stable degree, degree-zero
 all-target membership fails. These are fixed predicates beyond $n_*$
 and give the separate zero-level assertion.
 
-For a fully invariant target use $j_N:K\to W_N$, $j_N(1)=G_N$,
+For a fully invariant target use $j_N:K\to W_N$, $j_N(1)=G^{(N)}$,
 in place of $J_N$. Lemma~\ref{tx:lem:constant} reflects membership without
 the tensor pairing. The budget reduces to $kd+s$, with stable onset
-$\max\{n_0,1,kD_G\}$. Taking $G_N=1$ gives the sharper refutation
+$\max\{n_0,1,kD_G\}$. Taking $G^{(N)}=1$ gives the sharper refutation
 special case. No target has been added to the axiom system.
 \end{proof}
 

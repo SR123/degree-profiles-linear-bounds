@@ -1,6 +1,6 @@
 # Degree profiles of uniform polynomial consequences
 
-**Author-review draft — 4 November 2026.**
+**Author-review draft — tutorial updated 5 November 2026.**
 
 Søren Riis, *Degree profiles of uniform polynomial consequences: Linear lower bounds for Nullstellensatz and Polynomial Calculus*.
 
@@ -10,7 +10,7 @@ Søren Riis, *Degree profiles of uniform polynomial consequences: Linear lower b
 - [Tutorial review and verification scope](verification/REVIEW.txt).
 - [Reference and connection checks](verification/REFERENCES.txt).
 
-The latest paper revision is described in [the revision note](verification/PAPER-UPDATE.txt). It updates the abstract, notation, examples, historical attribution, and the discussion of Nullstellensatz completeness and degree upper bounds. The tutorial and Lean packet are retained unchanged; their recorded verification scope remains as documented.
+The latest paper revision is described in [the revision note](verification/PAPER-UPDATE.txt). It updates the abstract, notation, examples, historical attribution, and the discussion of Nullstellensatz completeness and degree upper bounds. The tutorial has now been aligned with this paper: see [the tutorial revision note](verification/TUTORIAL-UPDATE.txt). Target notation and degree terminology are consistent, Chapter 18 develops Section 11’s topological classification, and Euler structures are optional background rather than a characterisation of the four types. The Lean packet is unchanged.
 
 ## Citation
 
@@ -22,9 +22,9 @@ This snapshot has no DOI. Bibliographic details are also provided in [CITATION.t
 
 Start with “Reading alongside the current paper” in the tutorial's front matter (PDF pages 9–10). The table points from questions about the paper to the relevant tutorial chapters.
 
-Chapter 18, especially §18.1 (PDF pages 164–166), explains the four types through a residue tree and the hardness spectrum. It includes a binary example, explains compactness, and separates the qualitative topological description from the quantitative estimates responsible for linear lower bounds. The spectrum is a reformulation of residue-class information already implicit in Riis's 2009 report; it is not claimed as a new classification.
+Chapter 18, especially §18.1 (PDF pages 165–167), explains the four types through a residue tree and the hardness spectrum. It includes a binary example, explains compactness, and separates the qualitative topological description from the quantitative estimates responsible for linear lower bounds. The spectrum is a reformulation of residue-class information already implicit in Riis's 2009 report; it is not claimed as a new classification.
 
-Section 20.7 (PDF pages 190–191) explains links to proof complexity, modular representation stability, exactness, rook operators, designs, and p-adic topology. It distinguishes proof ingredients from background analogies. The Euler-model criterion is not asserted to have a general converse.
+Section 20.7 explains links to proof complexity, modular representation stability, exactness, rook operators, designs, and p-adic topology. It distinguishes proof ingredients from background analogies. The Euler-model criterion is not asserted to have a general converse.
 
 ## What has and has not been verified
 

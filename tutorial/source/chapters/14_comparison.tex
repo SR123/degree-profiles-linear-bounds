@@ -14,7 +14,7 @@ the ordinary-PC consequence closure inside $P_{n,\le d}$.
 Suppose you already know that NS degree is large. It is tempting to use
 $h_{\PC}\le h_{\NS}$ as a PC lower bound. The inequality points in the
 wrong direction. Even an upper comparison $h_{\NS}\le F(h_{\PC})$
-need not preserve a linear scale if $F$ is large. Our linear PC bound
+need not preserve a linear degree lower bound if $F$ is large. Our linear PC bound
 therefore came from its own closure transport, not from inverting $F$.
 
 The purpose of comparison is instead to say that bounded PC degree can
@@ -57,8 +57,8 @@ ascending chain. For example, $A_0\subsetneq A_1=A_2\subsetneq A_3$ has two stri
 inclusions. Invariance means that relabelling sends each subspace to
 itself. Exact deletion transports the inclusions, and the
 detector keeps a strict inclusion strict by preserving its nonzero
-quotient. This is why a dimension bound at small rank can control
-chains at every rank.
+quotient. This is why a dimension bound at small universe size can control
+chains at every universe size.
 
 \begin{lemma}[Uniform chain bound]\label{tx:lem:chains}
 For any bounded basis system $\mathcal U$, strict $S_n$-invariant
@@ -73,13 +73,13 @@ $A\subsetneq B$ implies
 $\mathcal D(A)\subsetneq\mathcal D(B)$: the whole strict chain becomes
 a strict chain of the same length in $K[\mathcal U_n]$.
 
-Repeatedly subtract $q$ while the rank exceeds $M=4r+q$. Every retained
-rank in such a step exceeds $4r$, so all steps are eligible. The final
+Repeatedly subtract $q$ while the universe size exceeds $M=4r+q$. Every retained
+universe size in such a step exceeds $4r$, so all steps are eligible. The final
 chain has at most $\dim K[\mathcal U_M]$ strict inclusions, because a
-smaller-rank basis injects into the rank-$M$ basis. The same bound covers
-the initial ranks at most $M$. Each step may choose its own generic
+smaller-universe basis injects into the size-$M$ basis. The same bound covers
+the initial universe sizes at most $M$. Each step may choose its own generic
 coefficients: the detector applies to arbitrary invariant subspaces,
-without a naturality assumption on the chain across ranks. Finally,
+without a naturality assumption on the chain across universe sizes. Finally,
 scalar extension preserves strict inclusions, giving the result over
 the original coefficient field.
 \end{proof}

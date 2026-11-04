@@ -19,9 +19,11 @@ Sections~\ref{tx:sec:target-request}--\ref{tx:sec:target-budgets}, then
 return to the structural results later.
 
 \section{Labels, support, and relabelling}
-We also call the universe size $n$ the \emph{rank} of the labelled
-family. It counts available labels. The dimension of a polynomial
-space at that rank is a separate number, usually much larger.
+The universe size $n$ counts the elements of the finite universe.
+A label is simply a name for one such element. The paper sometimes
+calls $n$ the rank of the labelled family; here we normally say
+universe size. Neither meaning should be confused with polynomial
+degree, the dimension of a polynomial space, or the rank of a matrix.
 
 Write $[n]=\{0,\ldots,n-1\}$. Think of its members as names rather
 than numerical values. A variable $x_{ij}$ is indexed by the ordered
@@ -41,7 +43,7 @@ one fixed integer $b$, independent of $n$ and of the object, and each
 object $v$ is assigned a set $\supp(v)\subseteq\NN$ with
 $|\supp(v)|\le b$. Supports are equivariant:
 $\supp(\pi v)=\pi(\supp(v))$. Every permutation fixing
-$\supp(v)$ pointwise fixes $v$. At rank $n$, we keep precisely the
+$\supp(v)$ pointwise fixes $v$. At universe size $n$, we keep precisely the
 objects whose supports lie in $[n]$; we require that this set be finite.
 We call $b$ a support bound for the system.
 \end{definition}
@@ -50,9 +52,9 @@ Examples include ordered pairs, tuples with specified equality patterns,
 and finitely many tagged sorts of such tuples. There may also be objects
 with empty support: a distinguished variable $y$ fixed by every label
 permutation is an example. A support bound is a bound on the labels
-needed by one object, not on the number of objects present at rank $n$.
-The important requirement is the \emph{same bound at every rank}.
-Finiteness at one rank would not provide that: a bound of $n$ would
+needed by one object, not on the number of objects present at universe size $n$.
+The important requirement is the \emph{same bound at every universe size}.
+Finiteness at one universe size would not provide that: a bound of $n$ would
 grow with the universe and would not be a bounded-support system in
 this sense.
 
@@ -82,11 +84,11 @@ A uniform template consists of a variable basis $\mathcal V$ with
 support bound $k\ge1$, an axiom-index basis $\mathcal A$ with support
 bound $s$, and coefficients $c(a,\mu)\in K$. Here $a$ is an axiom
 index and $\mu$ is a monomial in the labelled variables. The rule is
-independent of rank and invariant under simultaneous relabelling:
+independent of universe size and invariant under simultaneous relabelling:
 \[
                  c(\pi a,\pi\mu)=c(a,\mu).
 \]
-For a fixed $D$, it vanishes whenever $\deg\mu>D$. At rank $n$ the
+For a fixed $D$, it vanishes whenever $\deg\mu>D$. At universe size $n$ the
 inputs are
 \begin{equation}\label{tx:eq:template-instance}
  \Gamma_n=\{f_{a,n}:a\in\mathcal A_n\},\qquad
@@ -95,9 +97,13 @@ inputs are
 Fix $n_0\ge\max\{1,kD+s\}$ as part of the template data.
 \end{definition}
 
-Because there are finitely many variables at each rank and the degree
+Because there are finitely many variables at each universe size and the degree
 is bounded, each displayed sum is finite. The same coefficients are
 used when the universe grows; there are simply more monomials available.
+The system consists of all equations indexed by $\mathcal A_n$, not
+one equation: a fixed list of patterns can generate many equations.
+For example, the $n$ row equations $\sum_{j<n}x_{ij}-1=0$ together
+with $x_{ij}^2-x_{ij}=0$ for every pair give $n+n^2$ indexed equations.
 For the row sum, the coefficient of $x_{ij}$ is one when its row index
 is $i$, the constant coefficient is minus one, and other coefficients
 are zero. None of these rules asks how large $n$ is.
@@ -120,22 +126,22 @@ orbit has one fixed polynomial degree. This matters when deciding which
 multiplier--axiom products are legal at a proposed proof degree.
 
 \begin{example}[Symmetric but not uniform]\label{tx:eg:not-uniform}
-Choose an arbitrary set $A$ of positive integers. At rank $n\in A$
-let the inputs be $\{1\}$, and at other ranks let there be no inputs.
+Choose an arbitrary set $A$ of positive integers. At universe size $n\in A$
+let the inputs be $\{1\}$, and at other universe sizes let there be no inputs.
 Each instance is invariant under every label permutation. Yet the
 refutation degree is zero on $A$ and infinite elsewhere. Arbitrary
 choices of $A$ cannot satisfy the periodic conclusions of this book.
-They are excluded because the axiom rule changes with rank.
+They are excluded because the axiom rule changes with universe size.
 \end{example}
 
 \section{Supported expressions are orbit-sum expressions}\label{tx:sec:supported-expressions}
 The row sum suggests a converse question. Suppose we are given a
 polynomial and know that every permutation outside a short list of
 labels fixes it. Can we describe the polynomial by a uniform rule?
-At one rank the answer is yes. To represent a whole family by one
-rule, we also need compatibility as rank changes.
+At one universe size the answer is yes. To represent a whole family by one
+rule, we also need compatibility as universe size changes.
 
-Here is the support notion for a whole expression. At rank $n$, a set
+Here is the support notion for a whole expression. At universe size $n$, a set
 $S\subseteq[n]$ \emph{supports a polynomial $F$} if every permutation
 of $[n]$ fixing $S$ pointwise fixes $F$. The permutation may move every
 other label. This is different from collecting every label mentioned
@@ -175,7 +181,7 @@ For $n\ge2$ there are three monomial orbits: the constant monomial, $x_i$, and a
 other variables. At $n=1$ the last orbit is absent, so its coefficient
 cannot yet be recovered from the polynomial. At $n\ge2$ all three
 orbits are present. Keeping $a,b,c$ fixed gives a uniform expression
-at every larger rank.
+at every larger universe size.
 \end{example}
 
 \subsection{From one supported expression to one uniform template}
@@ -183,15 +189,15 @@ Return to a variable basis of support at most $k$. Each monomial of
 degree at most $D$ uses at most $r=kD$ labels. Let $s=|S|$ and choose
 an ordering $a_0$ of $S$. Relative to those $s$ distinguished labels,
 every global monomial orbit can be represented using at most $s+r$
-labels in total. Hence all its orbit types are visible at any rank
+labels in total. Hence all its orbit types are visible at any universe size
 $n\ge s+r$ containing $S$.
 
 \begin{proposition}[Uniform extension of one supported polynomial]\label{tx:prop:supported-extension}
 Suppose $n\ge s+kD$ and $F\in P_{n,\le D}$ is supported by an
 $s$-element set $S$. Using ordered distinct $s$-tuples as indices, there
-is a unique rank-independent, simultaneously relabelling-invariant
+is a unique size-independent, simultaneously relabelling-invariant
 coefficient rule of degree at most $D$ whose polynomial at index
-$a_0$ and rank $n$ is $F$. It gives a uniform axiom or target orbit
+$a_0$ and universe size $n$ is $F$. It gives a uniform axiom or target orbit
 with index-support bound $s$ and no increase in polynomial degree.
 \end{proposition}
 \begin{proof}
@@ -200,7 +206,7 @@ and a monomial of degree at most $D$. First relabel $a$ to $a_0$.
 The remaining monomial labels can then be moved into $[n]$ by a
 permutation fixing $S$, because there are at most $kD$ of them and
 $n-s\ge kD$. Thus every global orbit of pairs has a representative
-$(a_0,\mu_0)$ at the chosen rank.
+$(a_0,\mu_0)$ at the chosen universe size.
 
 Assign to that orbit the coefficient of $\mu_0$ in $F$. This value
 does not depend on the representative. Indeed, a global relabelling
@@ -213,15 +219,15 @@ Proposition~\ref{tx:prop:orbit-sum}.
 The assigned value defines $c(a,\mu)$ on all pairs, with zero
 coefficients above degree $D$. Being constant on simultaneous pair
 orbits makes it relabelling invariant. Summing its coefficients over
-rank-$m$ monomials gives the required polynomial for every index
-available at rank $m$. At the original rank and index, every coefficient
+size-$m$ monomials gives the required polynomial for every index
+available at universe size $m$. At the original universe size and index, every coefficient
 agrees with $F$. All pair orbits already occurred there, so the
 coefficient rule is unique.
 \end{proof}
 
-Thus one supported polynomial at a sufficiently large rank determines
+Thus one supported polynomial at a sufficiently large universe size determines
 its uniform continuation. This does not say that a separately chosen
-polynomial at every rank necessarily follows that continuation.
+polynomial at every universe size necessarily follows that continuation.
 
 \subsection{The additional condition for a whole family}
 For $m\le n$, let $\rho_{n,m}$ retain the coefficients of monomials
@@ -236,8 +242,8 @@ steps. A stable uniform family satisfies
 \begin{proposition}[Characterisation of a stable coefficient rule]\label{tx:prop:coherent-family}
 Fix bounded variable and index bases and a degree bound $D$. A family
 $F_{a,n}\in P_{n,\le D}$, defined for every $n\ge1$ and every index
-$a$ available at that rank, comes from one uniform coefficient rule if
-and only if it is equivariant under permutations at each rank and
+$a$ available at that universe size, comes from one uniform coefficient rule if
+and only if it is equivariant under permutations at each universe size and
 satisfies \eqref{tx:eq:coefficient-coherence}.
 \end{proposition}
 \begin{proof}
@@ -245,18 +251,18 @@ A uniform rule gives equivariance by simultaneous relabelling of
 indices and monomials. Restriction preserves exactly its coefficients
 on the retained monomials, proving coherence.
 
-Conversely, for a global pair $(a,\mu)$ choose a rank containing all
+Conversely, for a global pair $(a,\mu)$ choose a universe $[n]$ containing all
 its labels and define its coefficient to be the coefficient of $\mu$
-in $F_{a,n}$. Coherence makes this independent of the chosen rank.
+in $F_{a,n}$. Coherence makes this independent of the chosen universe size.
 To compare it with the coefficient of $(\pi a,\pi\mu)$, choose a
-larger rank containing the labels of both pairs. The action of $\pi$
+larger universe containing the labels of both pairs. The action of $\pi$
 on the finite support of the pair extends to a permutation of that
-rank. Equivariance there gives equality of the two coefficients.
+universe. Equivariance there gives equality of the two coefficients.
 The resulting rule has all the required properties, and reproduces
 the family coefficient by coefficient.
 \end{proof}
 
-For example, $F_n=a_n\sum_{i<n}x_i$ is invariant at every rank for
+For example, $F_n=a_n\sum_{i<n}x_i$ is invariant at every universe size for
 \emph{any} sequence of scalars $a_n$. If the scalars change, the
 coefficient of a retained variable changes, and coherence fails.
 Small support and bounded degree control the form of an expression;
@@ -370,8 +376,8 @@ $\sum_{i\in S}x_i$ over four-element subsets $S\subseteq[n]$.
 For every $n\ge5$, their span is exactly the span of the differences
 $x_i-x_j$. Thus we can replace all the four-label equations by the
 two-label equations $x_i-x_j=0$, preserving every NS and PC consequence
-degree. Both descriptions have fixed coefficient rules across ranks.
-The starting-rank condition matters: at $n=4$ there is only one
+degree. Both descriptions have fixed coefficient rules across universe sizes.
+The starting-size condition matters: at $n=4$ there is only one
 four-element subset, so its single sum does not span all differences.
 
 At $n=12$, an individual four-label sum has smallest support four,
@@ -397,7 +403,7 @@ NS degree and its least ordinary-PC degree separately, including zero
 and infinity. This is an optional normal form, not an assertion about
 arbitrary submodules without a bound on the starting supports, and not
 an executable compression algorithm. No equivalence at the exceptional
-small ranks is claimed.
+small universe sizes is claimed.
 
 The monomial bound $kD$ alone does not establish that compression;
 the companion proof supplies an additional structural argument.
@@ -409,17 +415,20 @@ already been compressed to $kD$ or $2kD$.
 \begin{definition}[Uniform target request]\label{tx:def:target}
 A uniform target family for a fixed axiom template has a target-index
 basis $\mathcal B$ with support bound $t$, a fixed degree bound $D_G$,
-and coefficients $\gamma(b,\mu)\in K$. They are independent of rank,
+and coefficients $\gamma(b,\mu)\in K$. They are independent of universe size,
 invariant under simultaneous relabelling of $b$ and $\mu$, and zero
-above degree $D_G$. The rank-$n$ target indexed by $b\in\mathcal B_n$ is
+above degree $D_G$. The target at universe size $n$, indexed by $b\in\mathcal B_n$, is
 \[
-                  G_{b,n}=\sum_{\mu\text{ supported in }[n]}
+                  G_b^{(n)}=\sum_{\mu\text{ supported in }[n]}
                                      \gamma(b,\mu)\mu.
 \]
-For $S=\NS$ or $\PC$, define the all-target profile
+For $S=\NS$ or $\PC$, define the aggregate profile
 \begin{equation}\label{tx:eq:target-profile}
- h_S(n)=\max_{b\in\mathcal B_n}h_S(\Gamma_n\vdash G_{b,n}).
+ h_S(n)=\max_{b\in\mathcal B_n}h_S(\Gamma_n\vdash G_b^{(n)}).
 \end{equation}
+Here the superscript $(n)$ records the universe size, not a power;
+the subscript $b$ is the target index, with support of size at most $t$.
+For a fully invariant target we omit $b$ and write $G^{(n)}$.
 The empty maximum is zero. If any requested target is underivable,
 the maximum is infinity.
 \end{definition}
@@ -433,20 +442,20 @@ Nor are the targets inserted into the axiom system.
 There are three scopes which we will keep distinct.
 \begin{enumerate}
 \item A fully invariant target has a single index of empty support.
-Its polynomial $G_n$ is fixed by every permutation of $[n]$. For
-example, $G_n=\sum_{i<n}x_i$ is invariant and has degree one, although
+Its polynomial $G^{(n)}$ is fixed by every permutation of $[n]$. For
+example, $G^{(n)}=\sum_{i<n}x_i$ is invariant and has degree one, although
 it mentions all labels.
-\item A fixed target orbit can contain many indices at a rank. For
-$G_{i,n}=x_i$, the indices $i$ form one orbit. Any one representative
+\item A fixed target orbit can contain many indices at a universe size. For
+$G_i^{(n)}=x_i$, the indices $i$ form one orbit. Any one representative
 has the same least degree as every other representative, since
 relabelling transports proofs.
 \item An all-target request may contain several orbits. Its profile
 is the maximum of their individual profiles.
 \end{enumerate}
 
-Every global index orbit has a representative at rank $n\ge t$.
+Every global index orbit has a representative at universe size $n\ge t$.
 Indeed, move its support into $[t]$. There are only finitely many global
-orbits because $\mathcal B_t$ is finite. Within one orbit, two rank-$n$
+orbits because $\mathcal B_t$ is finite. Within one orbit, two size-$n$
 indices can be related by a permutation of $[n]$: first use the given
 relabelling on their supports and then extend that finite bijection.
 Thus choosing a representative which varies with $n$ is harmless
@@ -459,8 +468,8 @@ at most $kD_G+t$ labels. We therefore use
 \begin{equation}\label{tx:eq:stable-rank}
                           n_*=\max\{n_0,1,kD_G+t\}.
 \end{equation}
-Beyond this rank, every target orbit has a fixed degree. Their largest
-degree is a floor for both all-target profiles. A proof budget below
+Beyond this universe size, every target orbit has a fixed degree. Their largest
+degree is a floor for both aggregate profiles. A proof budget below
 that floor fails; we do not replace the target by its lower-degree
 part in order to make it fit.
 
@@ -487,7 +496,7 @@ A universal clause is a disjunction of literals required to hold for
 every assignment of its logical variables to universe labels. A
 \emph{literal} is an atom or its negation. A \emph{grounding} replaces
 all those logical variables by particular labels; one clause pattern
-therefore produces many polynomial equations at rank $n$.
+therefore produces many polynomial equations at universe size $n$.
 For example, grounding $R(u)\vee\neg R(v)$ at $u=i,v=j$ gives the
 clause whose polynomial translation appears below.
 
@@ -567,7 +576,7 @@ in Example~\ref{tx:eg:row-support} has an index of support one.
 \begin{exercise}\label{tx:ex:orbit-switch}
 Take no axioms, a single variable $x$ of empty support, and two target
 indices of empty support requesting $0$ and $x$. Determine the two
-fixed-orbit profiles and the all-target profile. What happens if one
+fixed-orbit profiles and the aggregate profile. What happens if one
 chooses the first target at sizes in an arbitrary set and the second
 elsewhere?
 \end{exercise}
@@ -576,8 +585,8 @@ elsewhere?
 \begin{exercise}\label{tx:ex:stable-floor}
 Take variables $x_i$, no axioms, and targets $x_i-x_j$ indexed by
 ordered distinct pairs. Use $k=1,s=0,t=2,D_G=1,n_0=1$ to compute $n_*$.
-At which positive ranks does this request actually contain a target?
-Why is the stated stable rank allowed to be larger than necessary?
+At which positive universe sizes does this request actually contain a target?
+Why is the stated stability threshold allowed to be larger than necessary?
 \end{exercise}
 \noindent{\small\hyperref[tx:ans:stable-floor]{Model answer (p.~\pageref*{tx:ans:stable-floor}).}}\par\medskip
 

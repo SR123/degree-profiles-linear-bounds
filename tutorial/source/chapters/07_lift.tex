@@ -77,8 +77,8 @@ cancellation. The full lift must preserve that subspace calculation.
 The lemma explains the choice of step; the common projector below
 provides the extra structure needed for proofs.
 
-\section{Low degree, a large starting rank, and repeated lifting}
-Write $N(d)$ for a sufficient starting rank for degree-$d$ transfer.
+\section{Low degree, a large starting universe size, and repeated lifting}
+Write $N(d)$ for a sufficient starting universe size for degree-$d$ transfer.
 If $n\ge N(d)$, one proof with that budget gives proofs at every
 size $n+\ell q$, $\ell\ge0$, with one fixed degree bound $d$.
 This is already enough to contradict a separate proof that the
@@ -90,7 +90,7 @@ estimates $A_{\NS}(d)\le2^{cd}$ and
 $A_{\PC}(d)\le2^{2^{cd}}$, extracted there from earlier work of
 Kraj\'i\v cek. A degree bounded by a sufficiently small multiple of
 $\log n$ or $\log\log n$, respectively, therefore lies in that
-historical transfer range. Inverting the starting-rank estimates gives
+historical transfer range. Inverting the starting-size estimates gives
 the earlier logarithmic and double-logarithmic gaps.
 These estimates concern the historical first-order refutation setting;
 we do not use them as inputs to the general target theorem here.
@@ -98,8 +98,8 @@ we do not use them as inputs to the general target theorem here.
 A small budget is easier to fit inside a given universe, but does not
 by itself supply a simple construction of the lift. The first complete
 construction in this book is the characteristic-two argument of
-Chapter~\ref{tx:ch:quadratic}. Its starting rank is quadratic in $d$.
-The later constructions improve this to a linear starting rank and
+Chapter~\ref{tx:ch:quadratic}. Its starting universe size is quadratic in $d$.
+The later constructions improve this to a linear starting universe size and
 cover every positive characteristic. Each stage answers the same
 question: how many retained labels are sufficient to transport the
 entire degree-$d$ proof calculation?
@@ -123,7 +123,7 @@ change.
 
 \subsection{A numerical trace of the retained-label test}
 Take characteristic two, variable support $k=2$, axiom-index support
-$s=1$, input-degree bound $D=1$, input stability rank $n_0=3$,
+$s=1$, input-degree bound $D=1$, input stability threshold $n_0=3$,
 target-degree bound $D_G=2$,
 and proposed proof degree $d=2$. Compare a fully invariant target with
 an indexed request whose target-index support is $t=1$.
@@ -132,7 +132,7 @@ gives the following sufficient ranges:
 \begin{center}
 \begin{tabular}{@{}lccc@{}}
 \toprule
-Request & Budget $r$ & Least $2$-power $q>r$ & Retained rank $n$\\
+Request & Budget $r$ & Least $2$-power $q>r$ & Retained universe size $n$\\
 \midrule
 Invariant & $kd+s=5$ & $8$ & $n\ge\max\{3,1,4,9\}=9$\\
 Indexed & $2kd+s+t=10$ & $16$ & $n\ge\max\{3,1,5,19\}=19$\\
@@ -144,7 +144,7 @@ sizes $17,25,\ldots$. For the indexed request, the corresponding
 progression starts at $19$ and runs through $35,51,\ldots$.
 These are implications from an existing proof, not assertions that
 either example request has such a proof. At each step, $n$ is the
-\emph{smaller} rank and $N=n+q$ the larger one. A starting rank below
+\emph{smaller} universe size and $N=n+q$ the larger one. A starting universe size below
 the stated range supplies no conclusion from this test.
 
 The count $2r-1$ is one retained pool sufficient for every tuple
@@ -184,7 +184,7 @@ $H_n=P_{n,\le d-1}$ and $X_n=K[\mathcal V_n]$.
 Let $V_j(n)$ be the closure stages from \eqref{tx:eq:closure} and write
 $C_d(n)$ for their stable union. A proof ending in a polynomial $f$ says exactly that
 $f\in C_d(n)$. For the uniform-consequence theorem we must additionally
-compare the prescribed targets at different ranks.
+compare the prescribed targets at different universe sizes.
 
 Choose a support budget $r\ge kd+s$ and add a block of $q=p^a>r$ labels and write $N=n+q$.
 The required properties of the linear operator are:
@@ -382,11 +382,11 @@ This proves both the forward lifting implication and
 \eqref{tx:eq:newiff}. The image of the lift need not be all of $C_d(N)$:
 the larger universe has many additional consequences. Every smaller consequence has this projector lift. For $n\ge n_*$ and a fully invariant target whose stabilised degree
 is at most $d$, naturality of its map from $K$ gives
-$\Lift(G_n)=G_N$: the target map commutes with the common projector,
+$\Lift(G^{(n)})=G^{(N)}$: the target map commutes with the common projector,
 which acts as the identity on $K$. More concretely, invariance gives
-$zG_N=0$ and $eG_N=G_N$, while stable coefficients give
-$\rho G_N=G_n$. The retained-vector identification and the argument
-in Proposition~\ref{tx:lift-prop:lift} therefore yield $e\iota(G_n)=G_N$. Hence invariant targets, including
+$zG^{(N)}=0$ and $eG^{(N)}=G^{(N)}$, while stable coefficients give
+$\rho G^{(N)}=G^{(n)}$. The retained-vector identification and the argument
+in Proposition~\ref{tx:lift-prop:lift} therefore yield $e\iota(G^{(n)})=G^{(N)}$. Hence invariant targets, including
 $1$, are exactly preserved. For indexed targets this equality need
 not hold. The image-subquotient argument in
 Chapter~\ref{tx:chap:assemble-transfer} proves transfer of
@@ -493,7 +493,7 @@ whose product is $(x_0-x_2)^2$. This is a different polynomial, also in
 characteristic two: the joint result still has the terms involving
 $x_1$. The common permutation in each summand is therefore essential.
 
-This calculation illustrates the inference mechanism at one rank.
+This calculation illustrates the inference mechanism at one universe size.
 The element $T$ is not a deletion projector and does not fix $1$.
 For the actual larger-universe lift, replace $T$ by the common $e$
 and use \eqref{tx:eq:joint-lift}. The grouped $g_y$ are then certified
@@ -532,7 +532,7 @@ $(x_a,x_b,x_c)=(1,1,0)$ satisfies its sum but not $x_a=0$.
 
 Here the invariant target $G_\ell=\sum_{i<\ell}x_i$ is transported to
 the prescribed larger target. In contrast, the indexed expression
-$G_{a,\ell}=x_a$ has projector lift $x_a+x_b+x_c$, not $x_a$. The map
+$G_a^{(\ell)}=x_a$ has projector lift $x_a+x_b+x_c$, not $x_a$. The map
 is linear but is not a ring homomorphism and does not preserve every
 indexed expression literally. This calculation illustrates the distinction but lies outside the
 indexed transfer range: for $k=d=t=1$ and $s=0$, where $t=1$ bounds
@@ -541,7 +541,7 @@ $R(d)=3$, whereas here $q=2$ and $n=1$. It is therefore no
 counterexample to indexed periodicity.
 
 The failure of a literal indexed lift requirement also has a general
-explanation. At an admissible rank, naturality for the invariant target
+explanation. At an admissible universe size, naturality for the invariant target
 $\sum_{i<n}x_i$ gives
 $\Lift(\sum_{i<n}x_i)=\sum_{i<N}x_i$. If every retained indexed
 target $x_i$ had lift exactly $x_i$, linearity would instead give
@@ -614,7 +614,7 @@ invariance, as above.
 For any smaller consequence $f$, the projector lift gives a larger
 consequence $\mathsf L(f)$ of no greater degree. For a full stable
 invariant target fitting the budget, this vector is exactly the
-prescribed larger target $G_N$. For general indexed targets, literal
+prescribed larger target $G^{(N)}$. For general indexed targets, literal
 pointwise equality is not available: the actual target-map image and
 the quotient $(C_d(N)+\im J_N)/C_d(N)$ supply the transfer instead.
 For NS, use the analogous quotient by $I_d(N)$. These quotients test

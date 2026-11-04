@@ -27,7 +27,7 @@ Exercise & Topic & Answer page\\
 
 \ref{tx:ex:orbit-switch} & \hyperref[tx:ans:orbit-switch]{Fixed requests and arbitrary orbit switching} & \pageref{tx:ans:orbit-switch}\\
 
-\ref{tx:ex:stable-floor} & \hyperref[tx:ans:stable-floor]{The safe target-stability rank} & \pageref{tx:ans:stable-floor}\\
+\ref{tx:ex:stable-floor} & \hyperref[tx:ans:stable-floor]{The target stability threshold} & \pageref{tx:ans:stable-floor}\\
 
 \ref{tx:ex:closure-zero} & \hyperref[tx:ans:closure-zero]{Exactly which constants are derivable at degree zero} & \pageref{tx:ans:closure-zero}\\
 
@@ -237,7 +237,7 @@ Its individual monomials and its axiom index are different basis objects.
 
 \begin{quote}\small\textbf{Question.} Take no axioms, a single variable $x$ of empty support, and two target
 indices of empty support requesting $0$ and $x$. Determine the two
-fixed-orbit profiles and the all-target profile. What happens if one
+fixed-orbit profiles and the aggregate profile. What happens if one
 chooses the first target at sizes in an arbitrary set and the second
 elsewhere?
 \end{quote}
@@ -245,7 +245,7 @@ elsewhere?
 \paragraph{Model answer.}
 Let \(h_0\) be the profile for the fixed target \(0\), \(h_x\) that
 for the fixed target \(x\), and \(h_{\mathrm{all}}\) the profile for
-the two-target request. At every rank,
+the two-target request. At every universe size,
 \[
             h_0(n)=0,\qquad h_x(n)=\infty,\qquad
             h_{\mathrm{all}}(n)=\max\{0,\infty\}=\infty.
@@ -255,15 +255,15 @@ or zero line proves \(0\), whereas empty input cannot derive any
 nonzero polynomial.
 \end{samepage}
 
-If the selected target is \(0\) at ranks in \(A\) and \(x\) elsewhere,
+If the selected target is \(0\) at universe sizes in \(A\) and \(x\) elsewhere,
 the selected profile becomes
 \[
  h_A(n)=
  \begin{cases}0,&n\in A,\\ \infty,&n\notin A.\end{cases}
 \]
-Thus its degree-zero threshold can encode an arbitrary set of ranks.
+Thus its degree-zero threshold can encode an arbitrary set of universe sizes.
 The two available target sorts have stable coefficient rules, but
-this rank-dependent selection is neither one fixed global orbit nor
+this size-dependent selection is neither one fixed global orbit nor
 the fixed all-target request. It therefore falls outside the theorem's
 request convention. In particular, arbitrary orbit switching cannot
 be used to infer another case of the four-profile classification.
@@ -278,8 +278,8 @@ be used to infer another case of the four-profile classification.
 
 \begin{quote}\small\textbf{Question.} Take variables $x_i$, no axioms, and targets $x_i-x_j$ indexed by
 ordered distinct pairs. Use $k=1,s=0,t=2,D_G=1,n_0=1$ to compute $n_*$.
-At which positive ranks does this request actually contain a target?
-Why is the stated stable rank allowed to be larger than necessary?
+At which positive universe sizes does this request actually contain a target?
+Why is the stated stability threshold allowed to be larger than necessary?
 \end{quote}
 
 \paragraph{Model answer.}
@@ -288,9 +288,9 @@ The prescribed parameters give
           n_*=\max\{n_0,1,kD_G+t\}
               =\max\{1,1,1+2\}=3.
 \]
-At rank \(1\) there is no ordered pair of distinct labels, so the
+At universe size \(1\) there is no ordered pair of distinct labels, so the
 request is empty and its degree is zero in both systems.
-At every rank \(n\ge2\), such pairs exist and every target
+At every universe size \(n\ge2\), such pairs exist and every target
 \(x_i-x_j\) is a nonzero degree-one polynomial, including in
 characteristic two. There are no axioms from which to derive it.
 Consequently
@@ -299,8 +299,8 @@ Consequently
 \]
 \end{samepage}
 
-The actual nonempty request and its degree floor stabilise at rank
-two. The theorem's rank three is a sufficient uniform bound obtained
+The actual nonempty request and its degree floor stabilise at universe size
+two. The theorem's universe size three is a sufficient uniform bound obtained
 by adding a monomial-support bound and an index-support bound.
 Here those supports overlap, so the general bound is conservative.
 A safe theorem onset need not be the smallest onset for each example.
@@ -502,7 +502,7 @@ For nonnegative integer thresholds \(d\), all cases are
 \]
 Each set is closed under \(n\mapsto n+1\), proving forward
 persistence of every threshold. A predicate can become true at the
-next rank while still having this property.
+next universe size while still having this property.
 \end{samepage}
 
 At threshold one the reverse implication fails:
@@ -510,7 +510,7 @@ At threshold one the reverse implication fails:
                  g(2)=1\le1,\qquad g(1)=2>1.
 \]
 The starting exact value \(2\) occurs only once, whereas value \(1\)
-occurs at every later rank. Forward persistence preserves the upper
+occurs at every later universe size. Forward persistence preserves the upper
 bound \(g(n)\le2\) but does not exclude a drop to a smaller minimum.
 To preserve the exact value two, one would also need reverse
 comparison at threshold one. This is why the recurrence argument
@@ -531,7 +531,7 @@ lower bound holds at all sizes.
 
 \paragraph{Model answer.}
 Every value of \(h(n)=p^{v_p(n)}\) is a power \(p^a\), with \(a\ge0\).
-For each fixed \(a\), the ranks
+For each fixed \(a\), the universe sizes
 \[
                      n_j=p^a(1+pj),\qquad j=0,1,2,\ldots
 \]
@@ -543,7 +543,7 @@ are exactly
 \]
 \end{samepage}
 
-Every value is at least one. At the unbounded sequence of ranks
+Every value is at least one. At the unbounded sequence of universe sizes
 \(n=1+pj\) the value is one, giving
 \[
                             \liminf_{n\to\infty}h(n)=1.
@@ -555,8 +555,8 @@ For finite linear peaks take \(n_a=p^a\). Then
 Each peak is finite and lies exactly on the line \(h=n\).
 
 There is no eventual all-size lower bound \(h(n)\ge cn\) with \(c>0\).
-Given \(c\) and any proposed starting rank, choose \(n=1+pj\) above
-that rank and above \(1/c\). Then \(h(n)=1<cn\).
+Given \(c\) and any proposed starting universe size, choose \(n=1+pj\) above
+that universe size and above \(1/c\). Then \(h(n)=1<cn\).
 This exercise concerns the displayed abstract sequence. It does not
 assert that the normalised weak-bijection system has these exact
 degrees or that its rectangle lower bound applies at \(n=p^a\).
@@ -574,10 +574,10 @@ the degree-zero predicate is used.
 \end{quote}
 
 \paragraph{Model answer.}
-If \(E(h)=\{0\}\), zero recurs at arbitrarily large ranks, in
+If \(E(h)=\{0\}\), zero recurs at arbitrarily large universe sizes, in
 particular at some \(n\ge n_*\). The degree-zero threshold is
-constant beyond \(n_*\). Since it is true at that rank, it must
-be true at every rank \(m\ge n_*\):
+constant beyond \(n_*\). Since it is true at that universe size, it must
+be true at every universe size \(m\ge n_*\):
 \[
                               h(m)\le0.
 \]
@@ -587,10 +587,10 @@ unboundedness required in T3.
 \end{samepage}
 
 The essential use of zero-degree stability is the implication
-that truth at one eligible rank gives truth at every eligible rank.
+that truth at one eligible universe size gives truth at every eligible universe size.
 Mere periodicity with a larger period would not suffice. For example,
-the arbitrary sequence which is zero at even ranks and equals \(n\)
-at odd ranks is unbounded and has only zero as an infinitely recurring
+the arbitrary sequence which is zero at even universe sizes and equals \(n\)
+at odd universe sizes is unbounded and has only zero as an infinitely recurring
 finite value. Its zero predicate is not eventually constant, so it
 is excluded by the theorem's zero-degree input.
 
@@ -617,7 +617,7 @@ individual variable. Which statements have finite proof degrees?
 \paragraph{Model answer.}
 In characteristic three, set
 \[
- \Gamma_n=\{x_i-1:i<n\},\qquad G_n=\sum_{i<n}x_i.
+ \Gamma_n=\{x_i-1:i<n\},\qquad G^{(n)}=\sum_{i<n}x_i.
 \]
 Write \(h_{\mathrm{sum}}\) for the invariant target profile and
 \(h_{\mathrm{ind}}\) for the request for every target \(x_i\).
@@ -631,22 +631,22 @@ The table applies to both NS and ordinary PC:
 \]
 \end{samepage}
 
-Summing the inputs gives \(G_n-n\). At \(n=3,6\), the scalar \(n\)
+Summing the inputs gives \(G^{(n)}-n\). At \(n=3,6\), the scalar \(n\)
 is zero in the field, so
 \[
-                            G_n=\sum_{i<n}(x_i-1).
+                            G^{(n)}=\sum_{i<n}(x_i-1).
 \]
 This is an NS certificate of degree one and gives a PC proof of
 the same degree. The target is a nonzero linear polynomial, so its
 degree floor proves that the minimum is exactly one.
 
-For the other four ranks, the assignment \(x_i=1\) satisfies all
-inputs but has \(G_n=n\ne0\) in the field. Soundness excludes any
+For the other four universe sizes, the assignment \(x_i=1\) satisfies all
+inputs but has \(G^{(n)}=n\ne0\) in the field. Soundness excludes any
 derivation. The same assignment has \(x_i=1\ne0\) for every
-individual target at every positive rank, excluding the indexed
+individual target at every positive universe size, excluding the indexed
 request in all six cases.
 The finite proofs in this table are precisely those for the sum at
-ranks three and six. A sum being derivable does not make its summands derivable.
+universe sizes three and six. A sum being derivable does not make its summands derivable.
 
 
 \noindent{\small\hyperref[tx:ex:sum-versus-individual]{Return to Exercise~\ref*{tx:ex:sum-versus-individual}.}}\par
@@ -811,8 +811,9 @@ the equations.
 \begin{description}[style=nextline,leftmargin=1em,labelindent=0pt,labelwidth=0pt]
 \item[$\Gamma_n$] The input polynomials at universe size $n$, all
 interpreted as equations equal to zero.
-\item[$G_{b,n}$] The requested target polynomial with target index $b$.
-The target is not an additional axiom.
+\item[$G_b^{(n)}$] The requested target polynomial at universe size $n$,
+with target index $b$. The superscript is not exponentiation. A fully
+invariant target is written $G^{(n)}$. The target is not an additional axiom.
 \item[$h_S(n)$] The maximum of the least degrees for the requested
 targets; infinity means at least one target is underivable. An empty
 request has profile zero.
@@ -858,7 +859,7 @@ The scalar grade $e\in\mathbb F_p$ in the layer splitting is also
 distinct from the projector $e$.
 \item[$\Del,\Lift$] Deletion is the quotient
 $\ker z/(\ker z\cap\im z)$. The lift $\Lift=e\iota$ first includes
-a smaller-rank polynomial and then applies the common projector.
+a smaller-universe polynomial and then applies the common projector.
 \item[$V',\mathcal Z_b,T_b$] In $V=P_b(N)$, marginal maps $\partial_i$
 sum over one tuple position. The incoming space is
 $V'=\sum_i\im\partial_i^{\mathsf T}$, the zero-marginal space is
@@ -868,16 +869,16 @@ is $T_b=V/V'$.
 all tuple spaces of length at most $r$, and the modules killed by that
 ideal. The latter class is also called $\mathcal M_r$; it is distinct
 from the PC consequence space $C_d$.
-\item[$J_N$] The actual target map $[b]\mapsto G_{b,N}$, distinct from
+\item[$J_N$] The actual target map $[b]\mapsto G_b^{(N)}$, distinct from
 the annihilator ideal $J_r(N)$.
 \item[$p,q,Q(d)$] The prime characteristic, an admissible block size
 $p^a>R(d)$, and, for $d\ge1$, the chosen least such power for the
 periodicity bound. The separate zero-degree convention is $Q(0)=1$.
 The actual period may be smaller than $Q(d)$.
-\item[$n_0,n_*,N(d)$] The axiom stability threshold, the stable rank
+\item[$n_0,n_*,N(d)$] The axiom stability threshold, the stability threshold
 including the target-degree floor, and the periodicity onset.
 For $d\ge1$, $N(d)=\max\{n_*,2R(d)+1\}$; separately, $N(0)=n_*$.
-\item[$E(h)$] The finite degrees recurring at arbitrarily large ranks.
+\item[$E(h)$] The finite degrees recurring at arbitrarily large universe sizes.
 \item[$A_d(h),\mathcal E_d(h),\mathcal H_p(h)$] The eventually easy
 residues, their clopen union in $\mathbb Z_p$, and the closed complement
 of all such easy regions. These are not the matching-design space
@@ -932,7 +933,7 @@ The characteristic-zero uniform permutation-module work of Riis and
 Sitharam~\cite{RiisSitharamModules}, the FI-module framework of Church,
 Ellenberg and Farb~\cite{CEF}, and Harman's modular periodicity
 \cite{Harman} place fixed-support families in a broader setting.
-Chapter~\ref{tx:sec:stability-context} explains the actual comparisons,
+Section~\ref{tx:sec:stability-context} explains the actual comparisons,
 including why the uniform sum $\sum_{i<n}x_i$ does not behave as an
 FI-submodule under naive inclusion. Hone and coauthors~\cite{HKPSYZ}
 provide an explicit categorical-functor perspective. Compatibility with

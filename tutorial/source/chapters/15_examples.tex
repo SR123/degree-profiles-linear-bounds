@@ -18,7 +18,7 @@ least degree of a refutation, whose target is $1$.
 Fix characteristic $p$ and, for $n\ge1$, take
 \[
                   \Gamma_n=\{x_i-1:i<n\},\qquad
-                  G_n=\sum_{i<n}x_i.
+                  G^{(n)}=\sum_{i<n}x_i.
 \]
 The axioms have the solution $x_i=1$ for every $i$, so they are
 consistent at every size. Both the axioms and the invariant target
@@ -30,21 +30,21 @@ For both NS and PC, the target profile is exactly
  h_S(n)=\begin{cases}1,&p\mid n,\\\infty,&p\nmid n.\end{cases}
 \]
 In particular, it is T3. With the same axioms but the indexed request
-$G_{i,n}=x_i$ for every $i<n$, the profile is constantly infinity and
+$G_i^{(n)}=x_i$ for every $i<n$, the profile is constantly infinity and
 has type T2.
 \end{proposition}
 \begin{proof}
-Summing the axioms gives $G_n-n$. If $p\mid n$, this is $G_n$, so it
+Summing the axioms gives $G^{(n)}-n$. If $p\mid n$, this is $G^{(n)}$, so it
 has an NS certificate, and hence a PC proof, of degree one. The target
 is nonzero of degree one, proving equality. If $p\nmid n$, the root
-with all coordinates one evaluates $G_n$ to the nonzero field element
+with all coordinates one evaluates $G^{(n)}$ to the nonzero field element
 $n$. Soundness excludes any derivation. The same root evaluates each
 indexed target $x_i$ to one, proving the final assertion.
 \end{proof}
 
 This example also distinguishes an invariant sum from its individual
 summands. The statement that the sum is a consequence does not say
-that each summand is a consequence. The all-target profile is a maximum
+that each summand is a consequence. The aggregate profile is a maximum
 of separate proof degrees, not the degree of a proof of their sum.
 
 The easy residue class here is zero modulo $p$; its degree is exactly
@@ -60,7 +60,7 @@ We first give an exact construction, then apply it to a uniform family
 whose hard values are finite.
 
 A simple invariant target illustrates the distinction between finite
-hardness and failure of derivability. For $G_n=\sum_{i<n}x_i$, the input
+hardness and failure of derivability. For $G^{(n)}=\sum_{i<n}x_i$, the input
 $\{1\}$ gives degree exactly one in both systems for $n\ge1$. With no
 inputs the same target is underivable and has degree $\infty$. Both
 fit the uniform definition, but neither supplies a finite hard example.
@@ -143,8 +143,8 @@ we do not add $y^2-y=0$. For a uniform template, give the new variable
 empty support and keep all old axiom indices and coefficients. Set
 all coefficients of axiom monomials involving $y$ to zero. The result
 is again a uniform template with the same bounds $k,s,D,n_0$, and
-$G_n=y$ is a fully invariant target of degree one at every rank.
-Thus \eqref{tx:eq:fresh-identities} holds rank by rank.
+$G^{(n)}=y$ is a fully invariant target of degree one at every universe size.
+Thus \eqref{tx:eq:fresh-identities} holds at every universe size.
 
 This operation preserves each of the four types, separately for NS
 and PC. The NS recurring finite degrees are shifted by one. For PC,
@@ -164,7 +164,7 @@ Let $K$ have prime characteristic $p$, and let $\widehat B_n$ be the
 normalised weak-bijection system defined in
 \eqref{tx:eq:bhat-witness}, with all of its function and coverage witnesses
 retained. Adjoin a fresh variable $y$ as above, and request the target
-$G_n=y$. Both target-degree profiles are of type T4.
+$G^{(n)}=y$. Both target-degree profiles are of type T4.
 
 More precisely, write $n=p^a u$, where $p\nmid u$, and put $q=p^a$.
 Whenever $n\ge2q$,
@@ -209,7 +209,7 @@ a different setting; no growing lower bound is asserted for it.
 \section{The refutation special case: four first-order examples}
 \label{tx:sec:examples}
 
-We now take the constant target $G_n=1$. This is the refutation special
+We now take the constant target $G^{(n)}=1$. This is the refutation special
 case of the uniform-consequence theorem; the sharper invariant-target
 budget applies. Write $\psi_1,\psi_2,\psi_3,\psi_4$ for the four sentences described in order below.
 The four cases all occur among fixed first-order sentences with no finite
@@ -258,7 +258,7 @@ not increase ordinary-PC or NS degree. Thus $d\geq q$, while maximality of
 $q$ gives $n<3pq\leq3pd$. This proves T2 without an external pigeonhole
 lower-bound theorem.
 
-\paragraph{The injection certificate and the linear scale.}
+\paragraph{The injection certificate and its linear degree bound.}
 The paper's matching upper bound is useful to inspect directly. Put
 \[
  R_i=\sum_{j=1}^n x_{ij},\qquad C=\sum_{j=1}^n c_j,
@@ -293,7 +293,7 @@ The PC inequality uses the degree-preserving simulation of an NS
 certificate by repeated variable multiplication. No Boolean reduction
 is used. With the preceding $n<3pd$ lower bound for $n\ge3$, both
 degrees are $\Theta(n)$ for each fixed positive characteristic.
-This family proves sharpness of the general linear scale; it does
+This family proves sharpness of the general linear degree lower bound; it does
 not supply an upper bound for every uniform family. This certificate
 and the sharpness deduction are written mathematics, as in the paper;
 no additional Lean endpoint is claimed for them.
@@ -399,7 +399,7 @@ of this column, then
 \[
  Tx-x=(x^2-x)+\sum_{y\ne x}yx
 \]
-lies in the degree-two span, by Booleanity and column collisions.
+lies in the degree-two span, by the Boolean equations and column-collision equations.
 Adding this for $a_{ij}$ and $b_{ij}$ gives $Tu_i-u_i$ in that span.
 Finally
 \[

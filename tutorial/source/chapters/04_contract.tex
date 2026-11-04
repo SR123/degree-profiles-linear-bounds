@@ -24,7 +24,7 @@ lifting theorem will say that, for
 \]
 a prescribed target request has proofs of degree at most $d$ at size
 $n$ exactly when it does at size $n+q$.
-Here $n_*$ is a fixed starting rank after which the template and target
+Here $n_*$ is a fixed starting universe size after which the template and target
 data are stable; its precise value is given in
 Chapter~\ref{tx:ch:profiles}. The number $p$ is the characteristic,
 and $q$ is the size of the added block, not necessarily the size of
@@ -43,7 +43,7 @@ eligible starting size, so its occurrence forces
                     n<\max\{n_*,2r-1\}.
 \]
 Since $r$ is affine in $d$, this is a linear lower bound on $d$ once
-$n$ is beyond the fixed starting rank. In T4 a value does recur; the
+$n$ is beyond the fixed starting universe size. In T4 a value does recur; the
 two-way comparison and a bound on $q$ instead move an occurrence to
 a representative of size $O(d)$, creating a finite linear peak.
 The remaining mathematical task is to prove the displayed lifting
@@ -155,7 +155,7 @@ says that inclusion is injective, its image is the kernel of the
 quotient map, and the quotient map is surjective.
 
 Later we will construct an operation $\Del$ taking suitable spaces and
-maps at rank $N=n+q$ to spaces and maps at rank $n$.
+maps at universe size $N=n+q$ to spaces and maps at universe size $n$.
 To say that this operation is \emph{exact} means that it preserves
 these image--kernel relationships, with their actual inclusions.
 It must carry an injection to an injection, and an onto map to an
@@ -210,7 +210,7 @@ one register for each possible variable multiplication.
 We now put names on the ingredients of one ordinary PC step.
 \emph{Nothing in this section changes the universe size.}
 In particular, the map $m_n$ below is ordinary polynomial
-multiplication at one fixed rank; it is not the lifting operator.
+multiplication at one fixed universe size; it is not the lifting operator.
 We first understand this familiar operation, then ask how to transport it.
 The letter $z$ in the worked polynomial example below is just a
 polynomial variable. In Chapter~\ref{tx:chap:deletion}, $z$ will instead
@@ -434,7 +434,7 @@ in Chapter~\ref{tx:chap:deletion}.
 
 Finally, the requested targets have a separate column map
 \[
-       J_n:K[\mathcal B_n]\to P_d(n),\qquad[b]\mapsto G_{b,n}.
+       J_n:K[\mathcal B_n]\to P_d(n),\qquad[b]\mapsto G_b^{(n)}.
 \]
 We use this map into $P_d(n)$ only when every full target degree
 is at most $d$. A budget below a stabilised target degree cannot
@@ -446,8 +446,8 @@ Adding its columns to $\alpha_n$ would change the problem.
 $P_d$ contains possible proof lines; $V_j$ contains the lines already
 reachable at stage $j$; $L_d$ is the degree test; $X$ labels the permitted
 variables. The map $m_n$ assembles ordinary variable multiples.
-Only after understanding these fixed-rank ingredients do we ask for
-an operation relating them at two different ranks.
+Only after understanding these fixed-universe ingredients do we ask for
+an operation relating them at two different universe sizes.
 \end{checkpoint}
 
 \section{Building a consequence space by linear operations}\label{tx:sec:grammar}
@@ -508,7 +508,7 @@ Suppose the current embedded space $V_j(n)\subseteq P_d(n)$ is known.
 \item Apply the sum map from $V_j(n)\oplus M_j(n)$ to $P_d(n)$.
       Its image is the next space $V_{j+1}(n)$.
 \end{enumerate}
-All these operations are finite linear algebra at one rank.
+All these operations are finite linear algebra at one universe size.
 Finding kernels or images is Gaussian elimination; making the
 variable-labelled copies is just organising coordinates.
 Each vector thereby obtained has a legal proof, by the constructive
@@ -542,7 +542,7 @@ transported either all at once or step by step.
 The operation used here is linear on the allowed maps and must
 also preserve the finite direct sums needed in the recipe.
 
-An identification between transported and smaller-rank spaces must
+An identification between transported and smaller-universe spaces must
 also respect their connecting maps. For fixed-data maps $f_N$ and
 $f_n$, write these identifications as $\eta_A$ and $\eta_B$. The
 required square is
@@ -560,8 +560,8 @@ naturality used here; it is not a claim that auxiliary witness
 coefficients have a unique choice.
 
 We have \emph{not} constructed this operation yet.
-Write $\Del$ for the operation we want, from a larger rank
-$N=n+q$ to the retained rank $n$. We must first identify the transported
+Write $\Del$ for the operation we want, from a larger universe size
+$N=n+q$ to the retained universe size $n$. We must first identify the transported
 fixed data with the data at $n$, so that the transported multiplication
 map really is $m_n$, rather than some unrelated matrix of the same size.
 We must then show that it preserves the kernels, images and sums
@@ -584,12 +584,12 @@ three things which will make this reasoning valid; its existence
 is the subject of the later construction.
 
 \begin{definition}[Transport contract for a polynomial diagram]\label{tx:def:polynomial-diagram}
-At a fixed degree $d\ge1$, a transport from rank $N$ to rank $n$
+At a fixed degree $d\ge1$, a transport from universe size $N$ to universe size $n$
 has three obligations.
 \begin{enumerate}
 \item \textbf{Identify the data.} Identify the transported ambient,
-lower-degree and basis spaces with their smaller-rank counterparts,
-carrying $\alpha,\ell,m,\phi,J$ to the actual smaller-rank maps.
+lower-degree and basis spaces with their smaller-universe counterparts,
+carrying $\alpha,\ell,m,\phi,J$ to the actual smaller-universe maps.
 For multiplication, the identification
 $\Del(X(N)\otimes Y)\simeq X(n)\otimes\Del(Y)$ must respect the
 inclusions of the subspaces $Y\subseteq L_d(N)$ used in the recurrence.
@@ -613,8 +613,8 @@ compatible with the actual subspace inclusions, not an independently
 chosen isomorphism for each space.
 
 \begin{lemma}[Transporting a closure recurrence]\label{tx:lem:closure-transport}
-Suppose an operation $\Del$ takes the larger-rank ambient, lower-degree,
-variable and usable-axiom spaces and maps to their actual smaller-rank
+Suppose an operation $\Del$ takes the larger-universe ambient, lower-degree,
+variable and usable-axiom spaces and maps to their actual smaller-universe
 counterparts. Suppose it preserves kernels and images on all the spaces
 used by the recurrence, and has the natural permutation-first-factor
 identification
@@ -803,12 +803,12 @@ premise of the final theorem.
 
 \section{The easier invariant target}
 The simplest important request is refutation: derive the polynomial
-$1$. More generally, let $G_N$ be fixed by every label permutation.
+$1$. More generally, let $G^{(N)}$ be fixed by every label permutation.
 The input space of its target map has only one coordinate, recording
 the scalar coefficient with which that target is requested.
-For a fully invariant polynomial $G_N$, the source is just $K$:
+For a fully invariant polynomial $G^{(N)}$, the source is just $K$:
 \[
-                   j_N:K\to P_d(N),\qquad a\mapsto aG_N.
+                   j_N:K\to P_d(N),\qquad a\mapsto aG^{(N)}.
 \]
 Its image in $P_d(N)/H_N$ is zero or a copy of the simple trivial
 module. The deletion of Chapter~\ref{tx:chap:deletion} fixes the trivial
@@ -819,8 +819,8 @@ one is only one example of an invariant target.
 
 Here is the argument without the module terminology. A map from a
 one-dimensional space has either zero image or a one-dimensional
-image. If the missing class $[G_N]$ is nonzero, its line has trivial
-label action because $G_N$ was invariant. Deletion preserves the
+image. If the missing class $[G^{(N)}]$ is nonzero, its line has trivial
+label action because $G^{(N)}$ was invariant. Deletion preserves the
 image map and keeps that trivial line nonzero. It therefore cannot
 hide this particular obstruction. An indexed request can instead
 have a higher-dimensional missing space, so the doubled-support
@@ -859,7 +859,7 @@ labels grow. Here the complexity parameter is proof degree $d$, and
 one monomial uses at most $kd$ labels. The ambient spaces grow, but
 the allowed equality patterns among the labels in a basis object
 come from a finite list. Representation stability studies how such
-families of symmetric-group representations are related across ranks.
+families of symmetric-group representations are related across universe sizes.
 Three references help locate our argument within that setting.
 The terminology in this section concerns the surrounding literature.
 A \emph{categorical equivalence} matches objects and their allowed
@@ -901,7 +901,7 @@ Harman~\cite[Theorem 2.5 and Corollary 2.11]{Harman} constructs
 periodic equivalences for bounded-weight permutation-module categories
 and extends them to the relevant abelian categories. The stable range
 is linear: his permutation result compares $n,m>2r$. In positive
-characteristic, the suitable residue of the rank matters, rather than
+characteristic, the suitable residue of the universe size matters, rather than
 one characteristic-zero eventual-stability statement.
 The structural principle of linear-range modular periodicity therefore
 predates this proof-complexity application.
@@ -911,7 +911,7 @@ tensor products and duality on the abelian envelope. Compatibility with
 these operations is therefore also an antecedent. Here we construct
 the actual polynomial diagrams independently and prove that their
 closure operations and prescribed-target obstructions survive deletion,
-with the support and rank bounds needed for the degree application.
+with the support bounds and universe-size conditions needed for the degree application.
 The bounded parameter in this comparison controls the small
 non-growing part of a permutation-module index. In the tuple
 models used here, the corresponding concrete parameter is the

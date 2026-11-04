@@ -211,18 +211,40 @@ For the proof systems defined here, algebraic derivability is ideal
 membership. The example shows that semantic implication alone does not
 guarantee it.
 
-For Boolean systems we can prove a converse for refutation. Here a
+Hilbert's Nullstellensatz describes the general connection precisely
+\cite{LangAlgebra}. If $I=\langle\Gamma\rangle$, a polynomial $G$
+vanishes on all common roots in an algebraic closure $\overline K$
+exactly when $G\in\sqrt I$, the radical of $I$: some power $G^r$
+with $r\ge1$ belongs to $I$. A proof of the target $G$ itself requires
+$G\in I$. For refutation these distinctions coincide: there is no
+common root over $\overline K$ if and only if $1\in I$.
+The resulting ideal-membership certificate can be taken over $K$,
+by the coefficient-field argument in Chapter~\ref{tx:ch:closure}.
+Absence of roots in $K$ alone is insufficient: $x^2+1$ has no root
+in $\mathbb F_3$ but has roots over its algebraic closure.
+
+With all equations $x_v^2-x_v=0$ included, every root is Boolean.
+The quotient by these equations is the algebra of functions on the
+finite Boolean cube, a product of copies of $K$. Every ideal in that
+quotient is radical. Thus a polynomial target vanishes on all roots
+of a Boolean system exactly when it has an NS derivation.
+
+The following standard Boolean completeness construction also keeps
+track of the degree~\cite{NSFoundations}. Here a
 \emph{Boolean assignment} assigns each variable either zero or one, and
 an \emph{inconsistent Boolean system} means that no such assignment
-satisfies all its equations. We now prove completeness: an inconsistent
-Boolean system with the Boolean axioms explicitly present has an
-algebraic refutation. The argument constructs the certificate directly.
+satisfies all its equations. The construction below explains the degree bound in Section 2.4
+of the paper, using ordinary polynomial products throughout.
 
 \begin{proposition}[Completeness for Boolean refutation]\label{tx:prop:boolean-completeness}
 Let $\Gamma$ be a finite set of polynomials in finitely many variables,
 over any field $K$, containing $x_v^2-x_v$ for every variable $x_v$.
 If no Boolean assignment satisfies $\Gamma$, there is an NS identity
-deriving $1$ from $\Gamma$, and hence a PC refutation.
+deriving $1$ from $\Gamma$, and hence a PC refutation. If there are
+$v=|V|$ variables and all inputs have degree at most $D\ge2$, then
+\[
+                  d_{\PC}(\Gamma)\le d_{\NS}(\Gamma)\le v+D.
+\]
 \end{proposition}
 \begin{proof}
 The Boolean axiom gives $x_v(x_v-1)=0$ at every solution. Since a field
@@ -267,17 +289,25 @@ Therefore rearranging the definition of $H$ gives the actual identity
                             +\sum_v b_v(x)(x_v^2-x_v).
 \]
 Every polynomial on the right which is used as an input belongs to
-$\Gamma$. This is an NS refutation. The simulation proved earlier
-converts it into a PC refutation.
+$\Gamma$. Each indicator has degree at most $v$, so each product
+$\delta_a f_a$ has degree at most $v+D$. The power reductions never
+increase degree: each recorded Boolean-equation multiple has degree
+at most that of the term being reduced. Thus every product in the
+final identity has degree at most $v+D$. The degree-preserving
+simulation proved earlier gives the PC bound as well.
 \end{proof}
 
-Completeness here means that absence of a satisfying assignment
-guarantees existence of a refutation. The construction uses an
-exhaustive list of assignments and power reductions, so it gives an
-ordinary proof with finitely many terms or lines. It does not promise
-that the proof is short or has low degree. The degree lower bounds
-later in the book concern how much degree may be unavoidable despite
-this existence result.
+This is an upper bound in the number $v$ of polynomial variables,
+not the universe size $n$. A uniform family with variable support at
+most $k$ can have $v=O(n^k)$, even though its input-degree bound $D$
+is fixed independently of $n$. The Boolean argument therefore does
+not give a universal linear bound in $n$, and it does not apply to
+arbitrary non-Boolean systems. The injection example in
+Section~\ref{tx:sec:examples} has a separate certificate of degree
+at most $n+1$. Its matching linear lower bound establishes sharpness
+of the general lower bound, not a universal upper bound.
+The interpolation construction may use exponentially many assignments;
+a degree bound is not a bound on the number of terms or proof lines.
 
 \section{The next question: can a proof survive a change of universe?}
 The definitions so far concern one fixed polynomial system. In the

@@ -1,0 +1,11 @@
+Tutorial terminology review — 5 November 2026
+
+Compared with the current 78-page paper. Revised tutorial: 194 pages.
+
+Changes: degree bounds instead of scales; G_b^{(n)} target notation; universe size distinguished from degree, support and matrix rank; Boolean equations terminology; aggregate profile terminology; clearer uniform-system examples; Boolean completeness degree accounting v+D with variable count v distinguished from universe size n. Corrected two section references.
+
+Checks: successful LaTeX build without warnings, undefined references or overfull boxes; all five supplied finite-example checks passed; all pages visually reviewed in contact sheets with selected detailed inspection. Original equations and labels checked against frozen sources modulo target notation. No new Lean proof replay or comprehensive mathematical re-audit was performed.
+
+Original sources and PDF preserved in frozen-reference. GitHub has not been updated.
+
+Topological follow-up: compared paper Section 11 with tutorial Chapter 18. Verified inclusion of the hardness spectrum, four shapes, compactness argument, NS/PC spectrum agreement and scope for all uniform requests. Retained worked binary example and distinction between qualitative topology and quantitative bounds. Shortened Euler discussion to optional sufficient-criterion background with no converse asserted. Updated reading guide. Recompiled without warnings and visually checked revised chapter. Previous PDF preserved in audit/before-topology-revision. GitHub unchanged.

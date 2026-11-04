@@ -19,7 +19,7 @@ Keep the progression picture in view. Given a degree-$d$ proof at
 one size eligible for this construction, we obtain a degree-$d$ proof
 at every later size separated by the same block $q$. Thus $d$ is constant along
 that progression. The quadratic cost below governs which starting
-proofs are eligible; its inverse is the square-root lower-bound scale.
+proofs are eligible; its inverse is the square-root degree lower bound.
 
 The induction maintains one group-algebra element, not a list of
 independently chosen inverses. At the start of stage $b$, this element
@@ -236,7 +236,7 @@ $r=2kd+s+t$ to include the target map and the doubled-support detector.
 Every construction needed for this theorem has now been supplied. In particular, the proof is not an inference from witnesses found for small tuple lengths.
 
 
-\begin{remark}[The square-root scale]
+\begin{remark}[The square-root degree bound]
 For either prescribed-target budget, the construction gives an onset
 $O(d^2)$ for degree-$d$ transfer.
 Inverting that onset gives an $\Omega(\sqrt n)$ lower bound when no
@@ -302,12 +302,12 @@ all-target request. It is infinity if any requested target is
 underivable; an empty request has value zero. A finite value recurs if that exact value is
 attained at infinitely many universe sizes. The block construction
 will force recurrence whenever such a value occurs beyond its
-eligible starting rank.
+eligible starting universe size.
 
 Let $r(d)=\alpha d+\beta$, where
 $(\alpha,\beta)=(k,s)$ for an invariant target or
 $(\alpha,\beta)=(2k,s+t)$ for an indexed request. The fixed starting
-rank $n_*$ includes degree stabilisation of the targets. A convenient
+universe size $n_*$ includes degree stabilisation of the targets. A convenient
 safe onset for this preliminary construction is
 \[
  N_{\rm quad}(d)=
@@ -350,8 +350,7 @@ in
        N_{\rm quad}(e)\le n<N_{\rm quad}(e)+Q(e).
 \]
 Both the onset and the period are bounded by a constant times
-$(e+1)^2$, so these representatives are finite square-root-scale
-peaks, $e\ge c\sqrt n-O(1)$, for a fixed $c>0$. They are not an
+$(e+1)^2$, so these representatives are finite degree peaks with a square-root lower bound, $e\ge c\sqrt n-O(1)$, for a fixed $c>0$. They are not an
 all-size lower bound; low recurring values remain at arbitrarily
 large sizes.
 

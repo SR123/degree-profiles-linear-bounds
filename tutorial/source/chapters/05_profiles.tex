@@ -7,10 +7,10 @@ where the linear lower bounds enter.
 
 Fix a field of prime characteristic $p$, a uniform axiom template, and
 a uniform target request. Let $h(n)$ be either its NS or ordinary-PC
-profile. It may be an all-target profile or the profile of one fixed
+profile. It may be an aggregate profile or the profile of one fixed
 target orbit. Recall the fixed bounds: $k$, $s$ and $t$ bound the
 variable-label, axiom-index and target-index supports, respectively;
-$D_G$ bounds target degree, and $n_0$ is the template's starting rank.
+$D_G$ bounds target degree, and $n_0$ is the template's starting universe size.
 For general indexed targets put
 \[
  \kappa=2k,\qquad \sigma=s+t,\qquad R(d)=\kappa d+\sigma,
@@ -21,9 +21,9 @@ $\kappa=k$, $\sigma=s$, and $n_*=\max\{n_0,1,kD_G\}$. These are
 fixed constants of the problem, while $d$ is a proposed proof degree.
 
 \section{What lifting does, and what it does not do}
-The transfer contract of Theorem~\ref{tx:thm:transfer} compares ranks
-which differ by a $p$-power block $q>R(d)$. Once the retained rank is
-large enough relative to $R(d)$ and the stable starting rank, it gives
+The transfer contract of Theorem~\ref{tx:thm:transfer} compares universe sizes
+which differ by a $p$-power block $q>R(d)$. Once the retained universe size is
+large enough relative to $R(d)$ and the stability threshold, it gives
 \[
                          h(n)\le d\quad\Longleftrightarrow\quad
                          h(n+q)\le d.
@@ -41,7 +41,7 @@ degree at most $d$ at
 \]
 Their absolute degree bound remains $d$. The ratio $d/(n+\ell q)$
 tends to zero, but that is not a statement that their absolute degrees
-fall. Nor does this progression cover all sufficiently large ranks.
+fall. Nor does this progression cover all sufficiently large universe sizes.
 One cannot conclude that the entire profile is eventually bounded.
 
 Forward lifting also need not preserve the exact minimum degree.
@@ -53,11 +53,11 @@ recur, by the pigeonhole principle. The stronger conclusion that a
 particular value repeats, and the exact periodic statements below,
 come from two-way transfer at all the relevant thresholds.
 
-\section{A period and a starting rank for each threshold}
+\section{A period and a starting universe size for each threshold}
 A \emph{threshold predicate} answers a yes-or-no question at each
 size: does the request have degree at most $d$? Its eventual
-periodicity means that this answer repeats after the starting rank.
-The period and the starting rank may both depend on $d$.
+periodicity means that this answer repeats after the starting universe size.
+The period and the starting universe size may both depend on $d$.
 There need not be one period which works for the unbounded profile
 as a whole.
 Truncating $h$ at $d+1$ retains the exact values $0,\ldots,d$ and
@@ -74,7 +74,7 @@ $N=n+q$. Define
  Q(d)=\min\{p^a:p^a>\kappa d+\sigma\}\quad(d\ge1).
  \end{gathered}
 \end{equation}
-The conservative onset makes the retained-rank condition of the
+The conservative onset makes the retained-universe condition of the
 transfer theorem automatic. The degree-zero predicate is handled
 separately: beyond $n_*$ the constant-target and constant-axiom data
 are stable, so that predicate is constant. In particular its period
@@ -92,15 +92,15 @@ The convention is $\min\{\infty,d+1\}=d+1$. For $d\ge1$,
 \end{proposition}
 \begin{proof}
 Repeated one-block transfer gives equivalence of the threshold
-$h\le d$ at ranks in the same residue class, since every intermediate
-rank remains beyond the onset. The smaller thresholds $e\le d$
+$h\le d$ at universe sizes in the same residue class, since every intermediate
+universe size remains beyond the onset. The smaller thresholds $e\le d$
 can also be compared there: $N(e)\le N(d)$, and $Q(e)$ divides $Q(d)$
 because both are powers of $p$ and the budgets are nondecreasing.
 The zero threshold is constant in this range.
 
 If $h(n)=e\le d$, threshold $e$ holds at $m$, while threshold $e-1$
 fails there when $e>0$. Hence $h(m)=e$; for $e=0$ the first condition
-alone suffices. If $h(n)>d$, threshold $d$ fails at both ranks. This
+alone suffices. If $h(n)>d$, threshold $d$ fails at both universe sizes. This
 proves the truncated equality.
 
 Write $Q(d)=p^a$. Since $R(d)\ge1$, the preceding power exists and
@@ -133,7 +133,7 @@ Let
 
 \begin{lemma}[An occurrence beyond its onset recurs]\label{tx:lem:recurrence}
 The set $E(h)$ consists exactly of the finite values assumed at
-arbitrarily large ranks. If $h(n)=d$ and $n\ge N(d)$, then
+arbitrarily large universe sizes. If $h(n)=d$ and $n\ge N(d)$, then
 \[
                           h(n+\ell Q(d))=d\qquad(\ell\ge0).
 \]
@@ -143,12 +143,12 @@ A nonrecurring finite value can occur only before its own onset.
 Apply truncated periodicity at threshold $d$ to the displayed
 progression. A truncated value equal to $d$ represents the exact value
 $d$, not a value above the cutoff. Conversely, any value appearing at
-arbitrarily large ranks appears beyond the fixed integer $N(d)$.
+arbitrarily large universe sizes appears beyond the fixed integer $N(d)$.
 \end{proof}
 
 The lemma is the central restriction on possible profiles. An arbitrary
 integer sequence might take the value 100 for the last time at an
-astronomically large rank. Here, if 100 will not recur, its final
+astronomically large universe size. Here, if 100 will not recur, its final
 appearance must precede the prescribed linear onset $N(100)$.
 Inverting that restriction gives a linear degree lower bound.
 
@@ -194,7 +194,7 @@ For each fixed uniform request, and separately for NS and ordinary PC,
 exactly one of the following holds.
 \begin{enumerate}[label=\textup{T\arabic*.}]
 \item The profile is bounded by a finite constant at every sufficiently
-large rank.
+large universe size.
 \item There is no recurring finite value. For every $n\ge n_*$,
 \begin{equation}\label{tx:eq:linear-bound}
                                   h(n)>\beta(n).
@@ -204,7 +204,7 @@ lower bound.
 \item The set $E(h)$ is finite and nonempty, but the profile is not
 eventually bounded. Put $D=\max E(h)$. A nonempty proper set
 $U\subseteq\{0,\ldots,Q(D)-1\}$ has the following properties from
-rank $N(D)$ onward. On every class $c\in U$, the profile has one
+universe size $N(D)$ onward. On every class $c\in U$, the profile has one
 constant finite value $v_c\le D$. Off $U$, inequality
 \eqref{tx:eq:linear-bound} holds.
 \item The set $E(h)$ is infinite. For every prescribed bound $B$, there
@@ -216,7 +216,7 @@ are integers $n,d\ge B$, with $d\in E(h)$ and $h(n)=d<\infty$, such that
 Moreover $\liminf_{n\to\infty}h(n)=\min E(h)<\infty$.
 \end{enumerate}
 In T1 and T3 the liminf also equals the least recurring finite value;
-in T2 it is infinity. Initial ranks below the specified onsets remain
+in T2 it is infinity. Initial universe sizes below the specified onsets remain
 unconstrained.
 \end{theorem}
 \begin{proof}
@@ -270,7 +270,7 @@ and $h(n)$ tends to infinity in the extended order.
 Notice the two different numerical inputs. The linear onset $N(d)$
 bounds the last occurrence of a nonrecurring small degree; this yields
 the T2 and hard-residue T3 bounds. The upper bound on $Q(d)$ additionally
-puts a recurring large degree at a rank proportional to that degree;
+puts a recurring large degree at a universe size proportional to that degree;
 this yields the \emph{finite} T4 peaks. Infinitely many infinite values
 would not by themselves prove the latter assertion.
 
@@ -308,17 +308,17 @@ allowed. T2 can include infinite values, including the constant-infinity
 profile. T3 is linear only on its hard residues. T4 has a finite liminf,
 but that number is not an eventual value: infinitely many other finite
 levels recur as well. None of these descriptions removes finite initial
-exceptions. A sharp statement about every small rank must be proved
+exceptions. A sharp statement about every small universe size must be proved
 separately.
 
 \begin{proposition}[T4 admits no fixed easy/hard periodic partition]\label{tx:prop:no-periodic-split}
 In T4 there do not exist a period $q_0$, a set $U$ of its residues, a
-finite bound $B$, and $c>0$ such that, at every sufficiently large rank,
+finite bound $B$, and $c>0$ such that, at every sufficiently large universe size,
 $h(n)\le B$ on $U$ and $h(n)\ge cn$ off $U$.
 \end{proposition}
 \begin{proof}
 Choose a recurring finite value $e>B$. At sufficiently late occurrences
-of $e$, the rank cannot be on an easy class. But once $n>e/c$, it cannot
+of $e$, the universe size cannot be on an easy class. But once $n>e/c$, it cannot
 be on a hard class either. This contradicts recurrence.
 \end{proof}
 
@@ -384,7 +384,7 @@ bound on the other part.
 If every variable has empty support, there are only finitely many
 variables and relabelling fixes them. Each axiom or target index orbit
 gives a fixed polynomial, and all finitely many orbits appear
-simultaneously beyond a fixed rank. The systems and requests then
+simultaneously beyond a fixed universe size. The systems and requests then
 stabilise. Their degree is a finite constant, or infinity, producing
 T1 or the infinite-size case of T2. This handles the degenerate case
 without assuming a growing number of variables.

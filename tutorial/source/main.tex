@@ -38,7 +38,7 @@
 \normalsize Making machine-generated proofs readable}
 \author{\normalsize Mathematical direction, supervision and editing by\\[4pt]
 \large S\o ren Riis}
-\date{Review edition aligned with the paper of 4 November 2026}
+\date{Terminology revision, 5 November 2026}
 \begin{document}
 \frontmatter
 \hypersetup{pageanchor=false}
@@ -84,19 +84,19 @@ classification, or \emph{quadrichotomy}, of uniform algebraic
 refutation complexity: $\mathrm T_1,\ldots,\mathrm T_4$, with
 periodicity, NS--PC type agreement and undecidability for every
 nontrivial union of types, including the no-finite-model promise.
-The logarithmic and double-logarithmic scales used
+The logarithmic NS and double-logarithmic PC degree lower bounds used
 Kraj\'i\v cek's Theorem~3.5~\cite{Krajicek}, based on Ajtai's
 symmetric-system work~\cite{Ajtai}.
 My joint journal papers with Meera Sitharam develop uniform
 translations~\cite{RiisSitharamTautologies} and uniformly generated
 permutation submodules over fields of characteristic
-zero~\cite{RiisSitharamModules}. A separate 1997 announcement proposed
-a nonconstant-to-linear degree gap. Its inducing-down argument has
-an unresolved gap, as I recorded in the 2009 report
+zero~\cite{RiisSitharamModules}. In a separate 1997 preprint with Meera Sitharam, we announced
+a nonconstant-to-linear degree gap. I acknowledged an unresolved
+gap in its inducing-down proof in the 2009 report
 \cite[p.~50, footnote~3; p.~53, reference~33]{RiisLong}; this concerns
 the proof and does not refute the asserted theorem. My later
 unpublished notes pursued stronger bounds and suggested lifting
-separating vectors between ranks, with important steps incomplete.
+separating vectors between universe sizes, with important steps incomplete.
 The aim here was to obtain complete proofs of linear degree bounds in
 the universe size, in every fixed positive characteristic, and to treat
 uniform polynomial consequences as well as refutations.
@@ -210,14 +210,14 @@ work with the displayed maps.
 
 The central problem is
 \[
-                    \Gamma_n\vdash G_n,
+                    \Gamma_n\vdash G^{(n)},
 \]
 where both the axioms and the polynomial expression to be derived come
 from fixed rules as the universe size $n$ changes. A target with a
 bounded-support index can be included as well. Deriving $1$ is the
 important refutation special case, but it is not the only case.
 Here $\Gamma_n$ is the set of input polynomials, each interpreted as
-an equation equal to zero; $G_n$ is the target polynomial, whose equation
+an equation equal to zero; $G^{(n)}$ is the target polynomial, whose equation
 we want to derive. The symbol $\vdash$ means that an algebraic proof
 exists. The two proof systems and their degree conventions are defined
 in Chapter~\ref{tx:ch:consequences}.
@@ -225,19 +225,21 @@ in Chapter~\ref{tx:ch:consequences}.
 \section*{The question which organises the whole proof}
 Suppose a uniform system at size $n$ has a proof with degree at most
 $d$. Can that degree budget also work at $n+q$, for a suitable
-prime-power block $q$? For an invariant uniform target $G_n$, the
+prime-power block $q$? For an invariant uniform target $G^{(n)}$, the
 picture is
 \[
- \Gamma_n\vdash_{\le d}G_n
+ \Gamma_n\vdash_{\le d}G^{(n)}
  \quad\Longrightarrow\quad
- \Gamma_{n+q}\vdash_{\le d}G_{n+q}
+ \Gamma_{n+q}\vdash_{\le d}G^{(n+q)}
  \quad\Longrightarrow\quad
- \Gamma_{n+2q}\vdash_{\le d}G_{n+2q}\quad\Longrightarrow\cdots.
+ \Gamma_{n+2q}\vdash_{\le d}G^{(n+2q)}\quad\Longrightarrow\cdots.
 \]
 Here the proof system is fixed as either NS or ordinary PC. The
 axioms and target follow their prescribed uniform rules at each size;
 the larger proof may have a different list of lines. The resource
-preserved by lifting is the degree of the whole proof.
+preserved by lifting is the degree bound for the whole proof. A
+\emph{degree budget} means an upper bound on the degrees allowed in
+the proof; it is not a bound on its length or on the universe size.
 In this picture, \emph{invariant} means that every permutation of the
 universe labels fixes the target polynomial. A target with distinguished
 indices has a different invariance condition, defined in
@@ -288,7 +290,7 @@ Fix one degree $d$ and one eligible starting size $n$. Lifting gives
 proofs with that same budget at $n+q,n+2q,\ldots$. The absolute budget
 stays $d$. Once that starting proof has been selected, $d$ is a
 \emph{constant} for the whole progression, even if it was originally
-described as, say, a small multiple of $\log n$. At the later ranks
+described as, say, a small multiple of $\log n$. At the later universe sizes
 we keep its numerical value; we do not recompute the logarithm.
 Its ratio to universe size tends to zero:
 \[
@@ -311,26 +313,28 @@ peaks. These are different uses of the same transfer theorem.
 The earlier refutation classification gives logarithmic NS and
 double-logarithmic PC lower bounds~\cite{Riis,RiisLong}. The underlying
 transfer estimates summarised in the LICS paper have exponential and
-double-exponential starting ranks as functions of the fixed degree.
+double-exponential starting universe sizes as functions of the fixed degree.
 These are historical refutation estimates, obtained there from
 substantial earlier work; they are not elementary lemmas reconstructed
 in this book.
 
-The constructions developed here make the starting rank much smaller:
+The constructions developed here make the starting universe size much smaller:
 \begin{center}
 \begin{tabular}{@{}>{\raggedright\arraybackslash}p{.43\linewidth}>{\raggedright\arraybackslash}p{.25\linewidth}>{\raggedright\arraybackslash}p{.22\linewidth}@{}}
 \toprule
-Lifting stage & Starting rank for degree $d$ & Lower-bound scale\\
+Lifting stage & Sufficient starting size & Degree lower bound\\
 \midrule
-Earlier NS refutation result & at most $2^{cd}$ & $\log n$\\
-Earlier PC refutation result & at most $2^{2^{cd}}$ & $\log\log n$\\
-Characteristic-two construction with fresh labels & $O(d^2)$ & $\sqrt n$\\
-One retained pool, every positive characteristic & $O(d)$ & $n$\\
+Earlier NS refutation result & at most $2^{cd}$ & $\Omega(\log n)$\\
+Earlier PC refutation result & at most $2^{2^{cd}}$ & $\Omega(\log\log n)$\\
+Characteristic-two construction with fresh labels & $O(d^2)$ & $\Omega(\sqrt n)$\\
+One retained pool, every positive characteristic & $O(d)$ & $\Omega(n)$\\
 \bottomrule
 \end{tabular}
 \end{center}
+These are degree lower bounds on the hard sizes specified by the
+classification, not universal degree upper bounds.
 The constants depend on the fixed family and field. A small degree
-means small enough to meet the relevant starting-rank inequality.
+means small enough to meet the relevant starting-size inequality.
 Chapter~\ref{tx:chap:lift} gives an elementary counting explanation
 for the prime-power steps. Chapter~\ref{tx:ch:quadratic} supplies the
 first fully worked lifting construction. The central
@@ -457,8 +461,11 @@ we develop it through kernels and images of the displayed linear maps.
 Cutland~\cite{Cutland}, especially the chapters on computable functions,
 universal programs, undecidability and reducibility, gives background
 for the counter-program reductions. The references in
-Sections~\ref{tx:sec:stability-context} and~\ref{tx:sec:model-theory}
-locate the representation-stability and Euler-structure connections.
+Section~\ref{tx:sec:stability-context} locates the representation-stability
+connection. Chapter~\ref{tx:sec:model-theory} explains the paper's
+Section~11 topological classification, including a worked residue-tree
+example. Section~\ref{tx:sec:euler-background} gives optional historical
+background on Euler structures, not a criterion characterising T1--T4.
 These are reading routes for the terminology. The common witness,
 its natural map compatibility, the rook correction and the ordinary-PC
 extension invariant are established explicitly in this book.
@@ -541,7 +548,8 @@ $p$ & Fixed prime characteristic of the coefficient field\\
 $n$ & Retained, smaller universe size\\
 $q=p^a$ & Size of the added/deleted block; $a$ is an exponent\\
 $N=n+q$ & Larger universe size\\
-$d$ & Degree budget for the whole proof\\
+$d$ & Degree bound for the whole proof\\
+$G_b^{(n)},G^{(n)}$ & Indexed target and fully invariant target at size $n$\\
 $D_G$ & Fixed upper bound on the target polynomial degree\\
 $k,s,t$ & Supports of a variable, axiom index, target index\\
 $r=R(d)$ & One support budget once $d$ has been fixed\\
@@ -558,7 +566,9 @@ in $p^a$, and the variable support $k$ is neither of them. The number
 of polynomial variables can be of order $n^k$ and is not itself $n$.
 
 \section*{Reading alongside the current paper}
-This edition follows the paper revised on 4 November 2026. The paper
+This edition aligns terminology and target notation with the
+78-page paper revised on 4 November 2026
+(\href{https://github.com/SR123/degree-profiles-linear-bounds/blob/9e7cea1064f28f7e2ffd5eab44d52bfa854c5baa/paper/paper.pdf}{fixed GitHub version}). The paper
 is the concise statement of the research; this book supplies the slower
 route through its arguments. In particular $N(d)$ now denotes the
 same periodicity onset in both texts. Ordinary $N=n+q$ still denotes
@@ -805,18 +815,40 @@ For the proof systems defined here, algebraic derivability is ideal
 membership. The example shows that semantic implication alone does not
 guarantee it.
 
-For Boolean systems we can prove a converse for refutation. Here a
+Hilbert's Nullstellensatz describes the general connection precisely
+\cite{LangAlgebra}. If $I=\langle\Gamma\rangle$, a polynomial $G$
+vanishes on all common roots in an algebraic closure $\overline K$
+exactly when $G\in\sqrt I$, the radical of $I$: some power $G^r$
+with $r\ge1$ belongs to $I$. A proof of the target $G$ itself requires
+$G\in I$. For refutation these distinctions coincide: there is no
+common root over $\overline K$ if and only if $1\in I$.
+The resulting ideal-membership certificate can be taken over $K$,
+by the coefficient-field argument in Chapter~\ref{tx:ch:closure}.
+Absence of roots in $K$ alone is insufficient: $x^2+1$ has no root
+in $\mathbb F_3$ but has roots over its algebraic closure.
+
+With all equations $x_v^2-x_v=0$ included, every root is Boolean.
+The quotient by these equations is the algebra of functions on the
+finite Boolean cube, a product of copies of $K$. Every ideal in that
+quotient is radical. Thus a polynomial target vanishes on all roots
+of a Boolean system exactly when it has an NS derivation.
+
+The following standard Boolean completeness construction also keeps
+track of the degree~\cite{NSFoundations}. Here a
 \emph{Boolean assignment} assigns each variable either zero or one, and
 an \emph{inconsistent Boolean system} means that no such assignment
-satisfies all its equations. We now prove completeness: an inconsistent
-Boolean system with the Boolean axioms explicitly present has an
-algebraic refutation. The argument constructs the certificate directly.
+satisfies all its equations. The construction below explains the degree bound in Section 2.4
+of the paper, using ordinary polynomial products throughout.
 
 \begin{proposition}[Completeness for Boolean refutation]\label{tx:prop:boolean-completeness}
 Let $\Gamma$ be a finite set of polynomials in finitely many variables,
 over any field $K$, containing $x_v^2-x_v$ for every variable $x_v$.
 If no Boolean assignment satisfies $\Gamma$, there is an NS identity
-deriving $1$ from $\Gamma$, and hence a PC refutation.
+deriving $1$ from $\Gamma$, and hence a PC refutation. If there are
+$v=|V|$ variables and all inputs have degree at most $D\ge2$, then
+\[
+                  d_{\PC}(\Gamma)\le d_{\NS}(\Gamma)\le v+D.
+\]
 \end{proposition}
 \begin{proof}
 The Boolean axiom gives $x_v(x_v-1)=0$ at every solution. Since a field
@@ -861,17 +893,25 @@ Therefore rearranging the definition of $H$ gives the actual identity
                             +\sum_v b_v(x)(x_v^2-x_v).
 \]
 Every polynomial on the right which is used as an input belongs to
-$\Gamma$. This is an NS refutation. The simulation proved earlier
-converts it into a PC refutation.
+$\Gamma$. Each indicator has degree at most $v$, so each product
+$\delta_a f_a$ has degree at most $v+D$. The power reductions never
+increase degree: each recorded Boolean-equation multiple has degree
+at most that of the term being reduced. Thus every product in the
+final identity has degree at most $v+D$. The degree-preserving
+simulation proved earlier gives the PC bound as well.
 \end{proof}
 
-Completeness here means that absence of a satisfying assignment
-guarantees existence of a refutation. The construction uses an
-exhaustive list of assignments and power reductions, so it gives an
-ordinary proof with finitely many terms or lines. It does not promise
-that the proof is short or has low degree. The degree lower bounds
-later in the book concern how much degree may be unavoidable despite
-this existence result.
+This is an upper bound in the number $v$ of polynomial variables,
+not the universe size $n$. A uniform family with variable support at
+most $k$ can have $v=O(n^k)$, even though its input-degree bound $D$
+is fixed independently of $n$. The Boolean argument therefore does
+not give a universal linear bound in $n$, and it does not apply to
+arbitrary non-Boolean systems. The injection example in
+Section~\ref{tx:sec:examples} has a separate certificate of degree
+at most $n+1$. Its matching linear lower bound establishes sharpness
+of the general lower bound, not a universal upper bound.
+The interpolation construction may use exponentially many assignments;
+a degree bound is not a bound on the number of terms or proof lines.
 
 \section{The next question: can a proof survive a change of universe?}
 The definitions so far concern one fixed polynomial system. In the
@@ -932,9 +972,11 @@ Sections~\ref{tx:sec:target-request}--\ref{tx:sec:target-budgets}, then
 return to the structural results later.
 
 \section{Labels, support, and relabelling}
-We also call the universe size $n$ the \emph{rank} of the labelled
-family. It counts available labels. The dimension of a polynomial
-space at that rank is a separate number, usually much larger.
+The universe size $n$ counts the elements of the finite universe.
+A label is simply a name for one such element. The paper sometimes
+calls $n$ the rank of the labelled family; here we normally say
+universe size. Neither meaning should be confused with polynomial
+degree, the dimension of a polynomial space, or the rank of a matrix.
 
 Write $[n]=\{0,\ldots,n-1\}$. Think of its members as names rather
 than numerical values. A variable $x_{ij}$ is indexed by the ordered
@@ -954,7 +996,7 @@ one fixed integer $b$, independent of $n$ and of the object, and each
 object $v$ is assigned a set $\supp(v)\subseteq\NN$ with
 $|\supp(v)|\le b$. Supports are equivariant:
 $\supp(\pi v)=\pi(\supp(v))$. Every permutation fixing
-$\supp(v)$ pointwise fixes $v$. At rank $n$, we keep precisely the
+$\supp(v)$ pointwise fixes $v$. At universe size $n$, we keep precisely the
 objects whose supports lie in $[n]$; we require that this set be finite.
 We call $b$ a support bound for the system.
 \end{definition}
@@ -963,9 +1005,9 @@ Examples include ordered pairs, tuples with specified equality patterns,
 and finitely many tagged sorts of such tuples. There may also be objects
 with empty support: a distinguished variable $y$ fixed by every label
 permutation is an example. A support bound is a bound on the labels
-needed by one object, not on the number of objects present at rank $n$.
-The important requirement is the \emph{same bound at every rank}.
-Finiteness at one rank would not provide that: a bound of $n$ would
+needed by one object, not on the number of objects present at universe size $n$.
+The important requirement is the \emph{same bound at every universe size}.
+Finiteness at one universe size would not provide that: a bound of $n$ would
 grow with the universe and would not be a bounded-support system in
 this sense.
 
@@ -995,11 +1037,11 @@ A uniform template consists of a variable basis $\mathcal V$ with
 support bound $k\ge1$, an axiom-index basis $\mathcal A$ with support
 bound $s$, and coefficients $c(a,\mu)\in K$. Here $a$ is an axiom
 index and $\mu$ is a monomial in the labelled variables. The rule is
-independent of rank and invariant under simultaneous relabelling:
+independent of universe size and invariant under simultaneous relabelling:
 \[
                  c(\pi a,\pi\mu)=c(a,\mu).
 \]
-For a fixed $D$, it vanishes whenever $\deg\mu>D$. At rank $n$ the
+For a fixed $D$, it vanishes whenever $\deg\mu>D$. At universe size $n$ the
 inputs are
 \begin{equation}\label{tx:eq:template-instance}
  \Gamma_n=\{f_{a,n}:a\in\mathcal A_n\},\qquad
@@ -1008,9 +1050,13 @@ inputs are
 Fix $n_0\ge\max\{1,kD+s\}$ as part of the template data.
 \end{definition}
 
-Because there are finitely many variables at each rank and the degree
+Because there are finitely many variables at each universe size and the degree
 is bounded, each displayed sum is finite. The same coefficients are
 used when the universe grows; there are simply more monomials available.
+The system consists of all equations indexed by $\mathcal A_n$, not
+one equation: a fixed list of patterns can generate many equations.
+For example, the $n$ row equations $\sum_{j<n}x_{ij}-1=0$ together
+with $x_{ij}^2-x_{ij}=0$ for every pair give $n+n^2$ indexed equations.
 For the row sum, the coefficient of $x_{ij}$ is one when its row index
 is $i$, the constant coefficient is minus one, and other coefficients
 are zero. None of these rules asks how large $n$ is.
@@ -1033,22 +1079,22 @@ orbit has one fixed polynomial degree. This matters when deciding which
 multiplier--axiom products are legal at a proposed proof degree.
 
 \begin{example}[Symmetric but not uniform]\label{tx:eg:not-uniform}
-Choose an arbitrary set $A$ of positive integers. At rank $n\in A$
-let the inputs be $\{1\}$, and at other ranks let there be no inputs.
+Choose an arbitrary set $A$ of positive integers. At universe size $n\in A$
+let the inputs be $\{1\}$, and at other universe sizes let there be no inputs.
 Each instance is invariant under every label permutation. Yet the
 refutation degree is zero on $A$ and infinite elsewhere. Arbitrary
 choices of $A$ cannot satisfy the periodic conclusions of this book.
-They are excluded because the axiom rule changes with rank.
+They are excluded because the axiom rule changes with universe size.
 \end{example}
 
 \section{Supported expressions are orbit-sum expressions}\label{tx:sec:supported-expressions}
 The row sum suggests a converse question. Suppose we are given a
 polynomial and know that every permutation outside a short list of
 labels fixes it. Can we describe the polynomial by a uniform rule?
-At one rank the answer is yes. To represent a whole family by one
-rule, we also need compatibility as rank changes.
+At one universe size the answer is yes. To represent a whole family by one
+rule, we also need compatibility as universe size changes.
 
-Here is the support notion for a whole expression. At rank $n$, a set
+Here is the support notion for a whole expression. At universe size $n$, a set
 $S\subseteq[n]$ \emph{supports a polynomial $F$} if every permutation
 of $[n]$ fixing $S$ pointwise fixes $F$. The permutation may move every
 other label. This is different from collecting every label mentioned
@@ -1088,7 +1134,7 @@ For $n\ge2$ there are three monomial orbits: the constant monomial, $x_i$, and a
 other variables. At $n=1$ the last orbit is absent, so its coefficient
 cannot yet be recovered from the polynomial. At $n\ge2$ all three
 orbits are present. Keeping $a,b,c$ fixed gives a uniform expression
-at every larger rank.
+at every larger universe size.
 \end{example}
 
 \subsection{From one supported expression to one uniform template}
@@ -1096,15 +1142,15 @@ Return to a variable basis of support at most $k$. Each monomial of
 degree at most $D$ uses at most $r=kD$ labels. Let $s=|S|$ and choose
 an ordering $a_0$ of $S$. Relative to those $s$ distinguished labels,
 every global monomial orbit can be represented using at most $s+r$
-labels in total. Hence all its orbit types are visible at any rank
+labels in total. Hence all its orbit types are visible at any universe size
 $n\ge s+r$ containing $S$.
 
 \begin{proposition}[Uniform extension of one supported polynomial]\label{tx:prop:supported-extension}
 Suppose $n\ge s+kD$ and $F\in P_{n,\le D}$ is supported by an
 $s$-element set $S$. Using ordered distinct $s$-tuples as indices, there
-is a unique rank-independent, simultaneously relabelling-invariant
+is a unique size-independent, simultaneously relabelling-invariant
 coefficient rule of degree at most $D$ whose polynomial at index
-$a_0$ and rank $n$ is $F$. It gives a uniform axiom or target orbit
+$a_0$ and universe size $n$ is $F$. It gives a uniform axiom or target orbit
 with index-support bound $s$ and no increase in polynomial degree.
 \end{proposition}
 \begin{proof}
@@ -1113,7 +1159,7 @@ and a monomial of degree at most $D$. First relabel $a$ to $a_0$.
 The remaining monomial labels can then be moved into $[n]$ by a
 permutation fixing $S$, because there are at most $kD$ of them and
 $n-s\ge kD$. Thus every global orbit of pairs has a representative
-$(a_0,\mu_0)$ at the chosen rank.
+$(a_0,\mu_0)$ at the chosen universe size.
 
 Assign to that orbit the coefficient of $\mu_0$ in $F$. This value
 does not depend on the representative. Indeed, a global relabelling
@@ -1126,15 +1172,15 @@ Proposition~\ref{tx:prop:orbit-sum}.
 The assigned value defines $c(a,\mu)$ on all pairs, with zero
 coefficients above degree $D$. Being constant on simultaneous pair
 orbits makes it relabelling invariant. Summing its coefficients over
-rank-$m$ monomials gives the required polynomial for every index
-available at rank $m$. At the original rank and index, every coefficient
+size-$m$ monomials gives the required polynomial for every index
+available at universe size $m$. At the original universe size and index, every coefficient
 agrees with $F$. All pair orbits already occurred there, so the
 coefficient rule is unique.
 \end{proof}
 
-Thus one supported polynomial at a sufficiently large rank determines
+Thus one supported polynomial at a sufficiently large universe size determines
 its uniform continuation. This does not say that a separately chosen
-polynomial at every rank necessarily follows that continuation.
+polynomial at every universe size necessarily follows that continuation.
 
 \subsection{The additional condition for a whole family}
 For $m\le n$, let $\rho_{n,m}$ retain the coefficients of monomials
@@ -1149,8 +1195,8 @@ steps. A stable uniform family satisfies
 \begin{proposition}[Characterisation of a stable coefficient rule]\label{tx:prop:coherent-family}
 Fix bounded variable and index bases and a degree bound $D$. A family
 $F_{a,n}\in P_{n,\le D}$, defined for every $n\ge1$ and every index
-$a$ available at that rank, comes from one uniform coefficient rule if
-and only if it is equivariant under permutations at each rank and
+$a$ available at that universe size, comes from one uniform coefficient rule if
+and only if it is equivariant under permutations at each universe size and
 satisfies \eqref{tx:eq:coefficient-coherence}.
 \end{proposition}
 \begin{proof}
@@ -1158,18 +1204,18 @@ A uniform rule gives equivariance by simultaneous relabelling of
 indices and monomials. Restriction preserves exactly its coefficients
 on the retained monomials, proving coherence.
 
-Conversely, for a global pair $(a,\mu)$ choose a rank containing all
+Conversely, for a global pair $(a,\mu)$ choose a universe $[n]$ containing all
 its labels and define its coefficient to be the coefficient of $\mu$
-in $F_{a,n}$. Coherence makes this independent of the chosen rank.
+in $F_{a,n}$. Coherence makes this independent of the chosen universe size.
 To compare it with the coefficient of $(\pi a,\pi\mu)$, choose a
-larger rank containing the labels of both pairs. The action of $\pi$
+larger universe containing the labels of both pairs. The action of $\pi$
 on the finite support of the pair extends to a permutation of that
-rank. Equivariance there gives equality of the two coefficients.
+universe. Equivariance there gives equality of the two coefficients.
 The resulting rule has all the required properties, and reproduces
 the family coefficient by coefficient.
 \end{proof}
 
-For example, $F_n=a_n\sum_{i<n}x_i$ is invariant at every rank for
+For example, $F_n=a_n\sum_{i<n}x_i$ is invariant at every universe size for
 \emph{any} sequence of scalars $a_n$. If the scalars change, the
 coefficient of a retained variable changes, and coherence fails.
 Small support and bounded degree control the form of an expression;
@@ -1283,8 +1329,8 @@ $\sum_{i\in S}x_i$ over four-element subsets $S\subseteq[n]$.
 For every $n\ge5$, their span is exactly the span of the differences
 $x_i-x_j$. Thus we can replace all the four-label equations by the
 two-label equations $x_i-x_j=0$, preserving every NS and PC consequence
-degree. Both descriptions have fixed coefficient rules across ranks.
-The starting-rank condition matters: at $n=4$ there is only one
+degree. Both descriptions have fixed coefficient rules across universe sizes.
+The starting-size condition matters: at $n=4$ there is only one
 four-element subset, so its single sum does not span all differences.
 
 At $n=12$, an individual four-label sum has smallest support four,
@@ -1310,7 +1356,7 @@ NS degree and its least ordinary-PC degree separately, including zero
 and infinity. This is an optional normal form, not an assertion about
 arbitrary submodules without a bound on the starting supports, and not
 an executable compression algorithm. No equivalence at the exceptional
-small ranks is claimed.
+small universe sizes is claimed.
 
 The monomial bound $kD$ alone does not establish that compression;
 the companion proof supplies an additional structural argument.
@@ -1322,17 +1368,20 @@ already been compressed to $kD$ or $2kD$.
 \begin{definition}[Uniform target request]\label{tx:def:target}
 A uniform target family for a fixed axiom template has a target-index
 basis $\mathcal B$ with support bound $t$, a fixed degree bound $D_G$,
-and coefficients $\gamma(b,\mu)\in K$. They are independent of rank,
+and coefficients $\gamma(b,\mu)\in K$. They are independent of universe size,
 invariant under simultaneous relabelling of $b$ and $\mu$, and zero
-above degree $D_G$. The rank-$n$ target indexed by $b\in\mathcal B_n$ is
+above degree $D_G$. The target at universe size $n$, indexed by $b\in\mathcal B_n$, is
 \[
-                  G_{b,n}=\sum_{\mu\text{ supported in }[n]}
+                  G_b^{(n)}=\sum_{\mu\text{ supported in }[n]}
                                      \gamma(b,\mu)\mu.
 \]
-For $S=\NS$ or $\PC$, define the all-target profile
+For $S=\NS$ or $\PC$, define the aggregate profile
 \begin{equation}\label{tx:eq:target-profile}
- h_S(n)=\max_{b\in\mathcal B_n}h_S(\Gamma_n\vdash G_{b,n}).
+ h_S(n)=\max_{b\in\mathcal B_n}h_S(\Gamma_n\vdash G_b^{(n)}).
 \end{equation}
+Here the superscript $(n)$ records the universe size, not a power;
+the subscript $b$ is the target index, with support of size at most $t$.
+For a fully invariant target we omit $b$ and write $G^{(n)}$.
 The empty maximum is zero. If any requested target is underivable,
 the maximum is infinity.
 \end{definition}
@@ -1346,20 +1395,20 @@ Nor are the targets inserted into the axiom system.
 There are three scopes which we will keep distinct.
 \begin{enumerate}
 \item A fully invariant target has a single index of empty support.
-Its polynomial $G_n$ is fixed by every permutation of $[n]$. For
-example, $G_n=\sum_{i<n}x_i$ is invariant and has degree one, although
+Its polynomial $G^{(n)}$ is fixed by every permutation of $[n]$. For
+example, $G^{(n)}=\sum_{i<n}x_i$ is invariant and has degree one, although
 it mentions all labels.
-\item A fixed target orbit can contain many indices at a rank. For
-$G_{i,n}=x_i$, the indices $i$ form one orbit. Any one representative
+\item A fixed target orbit can contain many indices at a universe size. For
+$G_i^{(n)}=x_i$, the indices $i$ form one orbit. Any one representative
 has the same least degree as every other representative, since
 relabelling transports proofs.
 \item An all-target request may contain several orbits. Its profile
 is the maximum of their individual profiles.
 \end{enumerate}
 
-Every global index orbit has a representative at rank $n\ge t$.
+Every global index orbit has a representative at universe size $n\ge t$.
 Indeed, move its support into $[t]$. There are only finitely many global
-orbits because $\mathcal B_t$ is finite. Within one orbit, two rank-$n$
+orbits because $\mathcal B_t$ is finite. Within one orbit, two size-$n$
 indices can be related by a permutation of $[n]$: first use the given
 relabelling on their supports and then extend that finite bijection.
 Thus choosing a representative which varies with $n$ is harmless
@@ -1372,8 +1421,8 @@ at most $kD_G+t$ labels. We therefore use
 \begin{equation}\label{tx:eq:stable-rank}
                           n_*=\max\{n_0,1,kD_G+t\}.
 \end{equation}
-Beyond this rank, every target orbit has a fixed degree. Their largest
-degree is a floor for both all-target profiles. A proof budget below
+Beyond this universe size, every target orbit has a fixed degree. Their largest
+degree is a floor for both aggregate profiles. A proof budget below
 that floor fails; we do not replace the target by its lower-degree
 part in order to make it fit.
 
@@ -1400,7 +1449,7 @@ A universal clause is a disjunction of literals required to hold for
 every assignment of its logical variables to universe labels. A
 \emph{literal} is an atom or its negation. A \emph{grounding} replaces
 all those logical variables by particular labels; one clause pattern
-therefore produces many polynomial equations at rank $n$.
+therefore produces many polynomial equations at universe size $n$.
 For example, grounding $R(u)\vee\neg R(v)$ at $u=i,v=j$ gives the
 clause whose polynomial translation appears below.
 
@@ -1480,7 +1529,7 @@ in Example~\ref{tx:eg:row-support} has an index of support one.
 \begin{exercise}\label{tx:ex:orbit-switch}
 Take no axioms, a single variable $x$ of empty support, and two target
 indices of empty support requesting $0$ and $x$. Determine the two
-fixed-orbit profiles and the all-target profile. What happens if one
+fixed-orbit profiles and the aggregate profile. What happens if one
 chooses the first target at sizes in an arbitrary set and the second
 elsewhere?
 \end{exercise}
@@ -1489,8 +1538,8 @@ elsewhere?
 \begin{exercise}\label{tx:ex:stable-floor}
 Take variables $x_i$, no axioms, and targets $x_i-x_j$ indexed by
 ordered distinct pairs. Use $k=1,s=0,t=2,D_G=1,n_0=1$ to compute $n_*$.
-At which positive ranks does this request actually contain a target?
-Why is the stated stable rank allowed to be larger than necessary?
+At which positive universe sizes does this request actually contain a target?
+Why is the stated stability threshold allowed to be larger than necessary?
 \end{exercise}
 \noindent{\small\hyperref[tx:ans:stable-floor]{Model answer (p.~\pageref*{tx:ans:stable-floor}).}}\par\medskip
 
@@ -2330,7 +2379,7 @@ of degree at most $d$ at
 \[
                             n,n+q,n+2q,\ldots.
 \]
-Every step remains eligible: the retained rank grows, while $d,r,q$
+Every step remains eligible: the retained universe size grows, while $d,r,q$
 stay fixed. This contradicts the fact that the minimum degree tends
 to infinity. The contradiction works separately for NS and PC.
 
@@ -2351,7 +2400,7 @@ the complete degree-$d$ consequence space.
 The application has now isolated the jobs of the algebraic construction.
 The common projector will be a linear projection obtained from one
 shared combination of label permutations. Write $\Lift$ for the
-resulting linear map from smaller-rank polynomials to larger-rank ones.
+resulting linear map from smaller-universe polynomials to larger-universe ones.
 The variable basis has two-label support; monomials of degree at most
 $d$ use at most $2d$ labels. The usable-axiom source and the NS
 multiplier--axiom source are covered by $r=2d+3$. Every closure stage
@@ -2409,7 +2458,7 @@ lifting theorem will say that, for
 \]
 a prescribed target request has proofs of degree at most $d$ at size
 $n$ exactly when it does at size $n+q$.
-Here $n_*$ is a fixed starting rank after which the template and target
+Here $n_*$ is a fixed starting universe size after which the template and target
 data are stable; its precise value is given in
 Chapter~\ref{tx:ch:profiles}. The number $p$ is the characteristic,
 and $q$ is the size of the added block, not necessarily the size of
@@ -2428,7 +2477,7 @@ eligible starting size, so its occurrence forces
                     n<\max\{n_*,2r-1\}.
 \]
 Since $r$ is affine in $d$, this is a linear lower bound on $d$ once
-$n$ is beyond the fixed starting rank. In T4 a value does recur; the
+$n$ is beyond the fixed starting universe size. In T4 a value does recur; the
 two-way comparison and a bound on $q$ instead move an occurrence to
 a representative of size $O(d)$, creating a finite linear peak.
 The remaining mathematical task is to prove the displayed lifting
@@ -2540,7 +2589,7 @@ says that inclusion is injective, its image is the kernel of the
 quotient map, and the quotient map is surjective.
 
 Later we will construct an operation $\Del$ taking suitable spaces and
-maps at rank $N=n+q$ to spaces and maps at rank $n$.
+maps at universe size $N=n+q$ to spaces and maps at universe size $n$.
 To say that this operation is \emph{exact} means that it preserves
 these image--kernel relationships, with their actual inclusions.
 It must carry an injection to an injection, and an onto map to an
@@ -2595,7 +2644,7 @@ one register for each possible variable multiplication.
 We now put names on the ingredients of one ordinary PC step.
 \emph{Nothing in this section changes the universe size.}
 In particular, the map $m_n$ below is ordinary polynomial
-multiplication at one fixed rank; it is not the lifting operator.
+multiplication at one fixed universe size; it is not the lifting operator.
 We first understand this familiar operation, then ask how to transport it.
 The letter $z$ in the worked polynomial example below is just a
 polynomial variable. In Chapter~\ref{tx:chap:deletion}, $z$ will instead
@@ -2819,7 +2868,7 @@ in Chapter~\ref{tx:chap:deletion}.
 
 Finally, the requested targets have a separate column map
 \[
-       J_n:K[\mathcal B_n]\to P_d(n),\qquad[b]\mapsto G_{b,n}.
+       J_n:K[\mathcal B_n]\to P_d(n),\qquad[b]\mapsto G_b^{(n)}.
 \]
 We use this map into $P_d(n)$ only when every full target degree
 is at most $d$. A budget below a stabilised target degree cannot
@@ -2831,8 +2880,8 @@ Adding its columns to $\alpha_n$ would change the problem.
 $P_d$ contains possible proof lines; $V_j$ contains the lines already
 reachable at stage $j$; $L_d$ is the degree test; $X$ labels the permitted
 variables. The map $m_n$ assembles ordinary variable multiples.
-Only after understanding these fixed-rank ingredients do we ask for
-an operation relating them at two different ranks.
+Only after understanding these fixed-universe ingredients do we ask for
+an operation relating them at two different universe sizes.
 \end{checkpoint}
 
 \section{Building a consequence space by linear operations}\label{tx:sec:grammar}
@@ -2893,7 +2942,7 @@ Suppose the current embedded space $V_j(n)\subseteq P_d(n)$ is known.
 \item Apply the sum map from $V_j(n)\oplus M_j(n)$ to $P_d(n)$.
       Its image is the next space $V_{j+1}(n)$.
 \end{enumerate}
-All these operations are finite linear algebra at one rank.
+All these operations are finite linear algebra at one universe size.
 Finding kernels or images is Gaussian elimination; making the
 variable-labelled copies is just organising coordinates.
 Each vector thereby obtained has a legal proof, by the constructive
@@ -2927,7 +2976,7 @@ transported either all at once or step by step.
 The operation used here is linear on the allowed maps and must
 also preserve the finite direct sums needed in the recipe.
 
-An identification between transported and smaller-rank spaces must
+An identification between transported and smaller-universe spaces must
 also respect their connecting maps. For fixed-data maps $f_N$ and
 $f_n$, write these identifications as $\eta_A$ and $\eta_B$. The
 required square is
@@ -2945,8 +2994,8 @@ naturality used here; it is not a claim that auxiliary witness
 coefficients have a unique choice.
 
 We have \emph{not} constructed this operation yet.
-Write $\Del$ for the operation we want, from a larger rank
-$N=n+q$ to the retained rank $n$. We must first identify the transported
+Write $\Del$ for the operation we want, from a larger universe size
+$N=n+q$ to the retained universe size $n$. We must first identify the transported
 fixed data with the data at $n$, so that the transported multiplication
 map really is $m_n$, rather than some unrelated matrix of the same size.
 We must then show that it preserves the kernels, images and sums
@@ -2969,12 +3018,12 @@ three things which will make this reasoning valid; its existence
 is the subject of the later construction.
 
 \begin{definition}[Transport contract for a polynomial diagram]\label{tx:def:polynomial-diagram}
-At a fixed degree $d\ge1$, a transport from rank $N$ to rank $n$
+At a fixed degree $d\ge1$, a transport from universe size $N$ to universe size $n$
 has three obligations.
 \begin{enumerate}
 \item \textbf{Identify the data.} Identify the transported ambient,
-lower-degree and basis spaces with their smaller-rank counterparts,
-carrying $\alpha,\ell,m,\phi,J$ to the actual smaller-rank maps.
+lower-degree and basis spaces with their smaller-universe counterparts,
+carrying $\alpha,\ell,m,\phi,J$ to the actual smaller-universe maps.
 For multiplication, the identification
 $\Del(X(N)\otimes Y)\simeq X(n)\otimes\Del(Y)$ must respect the
 inclusions of the subspaces $Y\subseteq L_d(N)$ used in the recurrence.
@@ -2998,8 +3047,8 @@ compatible with the actual subspace inclusions, not an independently
 chosen isomorphism for each space.
 
 \begin{lemma}[Transporting a closure recurrence]\label{tx:lem:closure-transport}
-Suppose an operation $\Del$ takes the larger-rank ambient, lower-degree,
-variable and usable-axiom spaces and maps to their actual smaller-rank
+Suppose an operation $\Del$ takes the larger-universe ambient, lower-degree,
+variable and usable-axiom spaces and maps to their actual smaller-universe
 counterparts. Suppose it preserves kernels and images on all the spaces
 used by the recurrence, and has the natural permutation-first-factor
 identification
@@ -3188,12 +3237,12 @@ premise of the final theorem.
 
 \section{The easier invariant target}
 The simplest important request is refutation: derive the polynomial
-$1$. More generally, let $G_N$ be fixed by every label permutation.
+$1$. More generally, let $G^{(N)}$ be fixed by every label permutation.
 The input space of its target map has only one coordinate, recording
 the scalar coefficient with which that target is requested.
-For a fully invariant polynomial $G_N$, the source is just $K$:
+For a fully invariant polynomial $G^{(N)}$, the source is just $K$:
 \[
-                   j_N:K\to P_d(N),\qquad a\mapsto aG_N.
+                   j_N:K\to P_d(N),\qquad a\mapsto aG^{(N)}.
 \]
 Its image in $P_d(N)/H_N$ is zero or a copy of the simple trivial
 module. The deletion of Chapter~\ref{tx:chap:deletion} fixes the trivial
@@ -3204,8 +3253,8 @@ one is only one example of an invariant target.
 
 Here is the argument without the module terminology. A map from a
 one-dimensional space has either zero image or a one-dimensional
-image. If the missing class $[G_N]$ is nonzero, its line has trivial
-label action because $G_N$ was invariant. Deletion preserves the
+image. If the missing class $[G^{(N)}]$ is nonzero, its line has trivial
+label action because $G^{(N)}$ was invariant. Deletion preserves the
 image map and keeps that trivial line nonzero. It therefore cannot
 hide this particular obstruction. An indexed request can instead
 have a higher-dimensional missing space, so the doubled-support
@@ -3244,7 +3293,7 @@ labels grow. Here the complexity parameter is proof degree $d$, and
 one monomial uses at most $kd$ labels. The ambient spaces grow, but
 the allowed equality patterns among the labels in a basis object
 come from a finite list. Representation stability studies how such
-families of symmetric-group representations are related across ranks.
+families of symmetric-group representations are related across universe sizes.
 Three references help locate our argument within that setting.
 The terminology in this section concerns the surrounding literature.
 A \emph{categorical equivalence} matches objects and their allowed
@@ -3286,7 +3335,7 @@ Harman~\cite[Theorem 2.5 and Corollary 2.11]{Harman} constructs
 periodic equivalences for bounded-weight permutation-module categories
 and extends them to the relevant abelian categories. The stable range
 is linear: his permutation result compares $n,m>2r$. In positive
-characteristic, the suitable residue of the rank matters, rather than
+characteristic, the suitable residue of the universe size matters, rather than
 one characteristic-zero eventual-stability statement.
 The structural principle of linear-range modular periodicity therefore
 predates this proof-complexity application.
@@ -3296,7 +3345,7 @@ tensor products and duality on the abelian envelope. Compatibility with
 these operations is therefore also an antecedent. Here we construct
 the actual polynomial diagrams independently and prove that their
 closure operations and prescribed-target obstructions survive deletion,
-with the support and rank bounds needed for the degree application.
+with the support bounds and universe-size conditions needed for the degree application.
 The bounded parameter in this comparison controls the small
 non-growing part of a permutation-module index. In the tuple
 models used here, the corresponding concrete parameter is the
@@ -3387,10 +3436,10 @@ where the linear lower bounds enter.
 
 Fix a field of prime characteristic $p$, a uniform axiom template, and
 a uniform target request. Let $h(n)$ be either its NS or ordinary-PC
-profile. It may be an all-target profile or the profile of one fixed
+profile. It may be an aggregate profile or the profile of one fixed
 target orbit. Recall the fixed bounds: $k$, $s$ and $t$ bound the
 variable-label, axiom-index and target-index supports, respectively;
-$D_G$ bounds target degree, and $n_0$ is the template's starting rank.
+$D_G$ bounds target degree, and $n_0$ is the template's starting universe size.
 For general indexed targets put
 \[
  \kappa=2k,\qquad \sigma=s+t,\qquad R(d)=\kappa d+\sigma,
@@ -3401,9 +3450,9 @@ $\kappa=k$, $\sigma=s$, and $n_*=\max\{n_0,1,kD_G\}$. These are
 fixed constants of the problem, while $d$ is a proposed proof degree.
 
 \section{What lifting does, and what it does not do}
-The transfer contract of Theorem~\ref{tx:thm:transfer} compares ranks
-which differ by a $p$-power block $q>R(d)$. Once the retained rank is
-large enough relative to $R(d)$ and the stable starting rank, it gives
+The transfer contract of Theorem~\ref{tx:thm:transfer} compares universe sizes
+which differ by a $p$-power block $q>R(d)$. Once the retained universe size is
+large enough relative to $R(d)$ and the stability threshold, it gives
 \[
                          h(n)\le d\quad\Longleftrightarrow\quad
                          h(n+q)\le d.
@@ -3421,7 +3470,7 @@ degree at most $d$ at
 \]
 Their absolute degree bound remains $d$. The ratio $d/(n+\ell q)$
 tends to zero, but that is not a statement that their absolute degrees
-fall. Nor does this progression cover all sufficiently large ranks.
+fall. Nor does this progression cover all sufficiently large universe sizes.
 One cannot conclude that the entire profile is eventually bounded.
 
 Forward lifting also need not preserve the exact minimum degree.
@@ -3433,11 +3482,11 @@ recur, by the pigeonhole principle. The stronger conclusion that a
 particular value repeats, and the exact periodic statements below,
 come from two-way transfer at all the relevant thresholds.
 
-\section{A period and a starting rank for each threshold}
+\section{A period and a starting universe size for each threshold}
 A \emph{threshold predicate} answers a yes-or-no question at each
 size: does the request have degree at most $d$? Its eventual
-periodicity means that this answer repeats after the starting rank.
-The period and the starting rank may both depend on $d$.
+periodicity means that this answer repeats after the starting universe size.
+The period and the starting universe size may both depend on $d$.
 There need not be one period which works for the unbounded profile
 as a whole.
 Truncating $h$ at $d+1$ retains the exact values $0,\ldots,d$ and
@@ -3454,7 +3503,7 @@ $N=n+q$. Define
  Q(d)=\min\{p^a:p^a>\kappa d+\sigma\}\quad(d\ge1).
  \end{gathered}
 \end{equation}
-The conservative onset makes the retained-rank condition of the
+The conservative onset makes the retained-universe condition of the
 transfer theorem automatic. The degree-zero predicate is handled
 separately: beyond $n_*$ the constant-target and constant-axiom data
 are stable, so that predicate is constant. In particular its period
@@ -3472,15 +3521,15 @@ The convention is $\min\{\infty,d+1\}=d+1$. For $d\ge1$,
 \end{proposition}
 \begin{proof}
 Repeated one-block transfer gives equivalence of the threshold
-$h\le d$ at ranks in the same residue class, since every intermediate
-rank remains beyond the onset. The smaller thresholds $e\le d$
+$h\le d$ at universe sizes in the same residue class, since every intermediate
+universe size remains beyond the onset. The smaller thresholds $e\le d$
 can also be compared there: $N(e)\le N(d)$, and $Q(e)$ divides $Q(d)$
 because both are powers of $p$ and the budgets are nondecreasing.
 The zero threshold is constant in this range.
 
 If $h(n)=e\le d$, threshold $e$ holds at $m$, while threshold $e-1$
 fails there when $e>0$. Hence $h(m)=e$; for $e=0$ the first condition
-alone suffices. If $h(n)>d$, threshold $d$ fails at both ranks. This
+alone suffices. If $h(n)>d$, threshold $d$ fails at both universe sizes. This
 proves the truncated equality.
 
 Write $Q(d)=p^a$. Since $R(d)\ge1$, the preceding power exists and
@@ -3513,7 +3562,7 @@ Let
 
 \begin{lemma}[An occurrence beyond its onset recurs]\label{tx:lem:recurrence}
 The set $E(h)$ consists exactly of the finite values assumed at
-arbitrarily large ranks. If $h(n)=d$ and $n\ge N(d)$, then
+arbitrarily large universe sizes. If $h(n)=d$ and $n\ge N(d)$, then
 \[
                           h(n+\ell Q(d))=d\qquad(\ell\ge0).
 \]
@@ -3523,12 +3572,12 @@ A nonrecurring finite value can occur only before its own onset.
 Apply truncated periodicity at threshold $d$ to the displayed
 progression. A truncated value equal to $d$ represents the exact value
 $d$, not a value above the cutoff. Conversely, any value appearing at
-arbitrarily large ranks appears beyond the fixed integer $N(d)$.
+arbitrarily large universe sizes appears beyond the fixed integer $N(d)$.
 \end{proof}
 
 The lemma is the central restriction on possible profiles. An arbitrary
 integer sequence might take the value 100 for the last time at an
-astronomically large rank. Here, if 100 will not recur, its final
+astronomically large universe size. Here, if 100 will not recur, its final
 appearance must precede the prescribed linear onset $N(100)$.
 Inverting that restriction gives a linear degree lower bound.
 
@@ -3574,7 +3623,7 @@ For each fixed uniform request, and separately for NS and ordinary PC,
 exactly one of the following holds.
 \begin{enumerate}[label=\textup{T\arabic*.}]
 \item The profile is bounded by a finite constant at every sufficiently
-large rank.
+large universe size.
 \item There is no recurring finite value. For every $n\ge n_*$,
 \begin{equation}\label{tx:eq:linear-bound}
                                   h(n)>\beta(n).
@@ -3584,7 +3633,7 @@ lower bound.
 \item The set $E(h)$ is finite and nonempty, but the profile is not
 eventually bounded. Put $D=\max E(h)$. A nonempty proper set
 $U\subseteq\{0,\ldots,Q(D)-1\}$ has the following properties from
-rank $N(D)$ onward. On every class $c\in U$, the profile has one
+universe size $N(D)$ onward. On every class $c\in U$, the profile has one
 constant finite value $v_c\le D$. Off $U$, inequality
 \eqref{tx:eq:linear-bound} holds.
 \item The set $E(h)$ is infinite. For every prescribed bound $B$, there
@@ -3596,7 +3645,7 @@ are integers $n,d\ge B$, with $d\in E(h)$ and $h(n)=d<\infty$, such that
 Moreover $\liminf_{n\to\infty}h(n)=\min E(h)<\infty$.
 \end{enumerate}
 In T1 and T3 the liminf also equals the least recurring finite value;
-in T2 it is infinity. Initial ranks below the specified onsets remain
+in T2 it is infinity. Initial universe sizes below the specified onsets remain
 unconstrained.
 \end{theorem}
 \begin{proof}
@@ -3650,7 +3699,7 @@ and $h(n)$ tends to infinity in the extended order.
 Notice the two different numerical inputs. The linear onset $N(d)$
 bounds the last occurrence of a nonrecurring small degree; this yields
 the T2 and hard-residue T3 bounds. The upper bound on $Q(d)$ additionally
-puts a recurring large degree at a rank proportional to that degree;
+puts a recurring large degree at a universe size proportional to that degree;
 this yields the \emph{finite} T4 peaks. Infinitely many infinite values
 would not by themselves prove the latter assertion.
 
@@ -3688,17 +3737,17 @@ allowed. T2 can include infinite values, including the constant-infinity
 profile. T3 is linear only on its hard residues. T4 has a finite liminf,
 but that number is not an eventual value: infinitely many other finite
 levels recur as well. None of these descriptions removes finite initial
-exceptions. A sharp statement about every small rank must be proved
+exceptions. A sharp statement about every small universe size must be proved
 separately.
 
 \begin{proposition}[T4 admits no fixed easy/hard periodic partition]\label{tx:prop:no-periodic-split}
 In T4 there do not exist a period $q_0$, a set $U$ of its residues, a
-finite bound $B$, and $c>0$ such that, at every sufficiently large rank,
+finite bound $B$, and $c>0$ such that, at every sufficiently large universe size,
 $h(n)\le B$ on $U$ and $h(n)\ge cn$ off $U$.
 \end{proposition}
 \begin{proof}
 Choose a recurring finite value $e>B$. At sufficiently late occurrences
-of $e$, the rank cannot be on an easy class. But once $n>e/c$, it cannot
+of $e$, the universe size cannot be on an easy class. But once $n>e/c$, it cannot
 be on a hard class either. This contradicts recurrence.
 \end{proof}
 
@@ -3764,7 +3813,7 @@ bound on the other part.
 If every variable has empty support, there are only finitely many
 variables and relabelling fixes them. Each axiom or target index orbit
 gives a fixed polynomial, and all finitely many orbits appear
-simultaneously beyond a fixed rank. The systems and requests then
+simultaneously beyond a fixed universe size. The systems and requests then
 stabilise. Their degree is a finite constant, or infinity, producing
 T1 or the infinite-size case of T2. This handles the degenerate case
 without assuming a growing number of variables.
@@ -4164,7 +4213,7 @@ and ``trivial module'' are read clause by clause immediately below.
 
 \begin{theorem}[The exact deletion input]\label{tx:thm:deletion}
 Work first over an algebraically closed field of characteristic $p$.
-For $q=p^a>r$ and retained rank $n\ge\max\{0,2r-1\}$, the block
+For $q=p^a>r$ and retained universe size $n\ge\max\{0,2r-1\}$, the block
 coefficients can be chosen so that $\Del$ is exact on $\mathcal C_r(n+q)$.
 It fixes the trivial module. For every support-$u$ permutation basis with
 $u<q$ there are natural identifications
@@ -4174,7 +4223,7 @@ $u<q$ there are natural identifications
                   K[\mathcal U_n]\otimes\Del(Y),\label{tx:eq:tensordelete}
 \end{align}
 with a permutation module as the first tensor factor. Stable invariant
-coefficient matrices are carried to their actual retained-rank matrices.
+coefficient matrices are carried to their actual retained-universe matrices.
 \end{theorem}
 
 This finite-algebra theorem is proved by the chapters on
@@ -4354,7 +4403,7 @@ $T\hookrightarrow Ke_1\oplus Ke_2$ is the zero map on a nonzero space.
 An injection was not preserved.
 
 Here there are no retained labels: $n=0$, $q=2$ and the single-label
-basis has support budget $r=1$. The retained-rank hypothesis would
+basis has support budget $r=1$. The retained-universe hypothesis would
 require $n\ge1$. The example therefore explains the need for a
 range restriction rather than contradicting Theorem~\ref{tx:thm:deletion}.
 The vector $e_1+e_2$ represents a nonzero quotient class when
@@ -4376,7 +4425,7 @@ Exactness preserves the kernels, images, intersections and sums of the
 closure calculation. The doubled-support pairing supplies the remaining
 target-vanishing reflection for general indexed targets.
 The roles should remain distinct. Exactness carries a consequence
-space and its actual inclusion to the smaller rank. The target-map
+space and its actual inclusion to the smaller universe. The target-map
 compatibility then identifies the deleted request. To reflect
 underivability, we still need to know that a nonzero target class
 in the relevant quotient cannot disappear. That last step is the
@@ -4465,8 +4514,8 @@ cancellation. The full lift must preserve that subspace calculation.
 The lemma explains the choice of step; the common projector below
 provides the extra structure needed for proofs.
 
-\section{Low degree, a large starting rank, and repeated lifting}
-Write $N(d)$ for a sufficient starting rank for degree-$d$ transfer.
+\section{Low degree, a large starting universe size, and repeated lifting}
+Write $N(d)$ for a sufficient starting universe size for degree-$d$ transfer.
 If $n\ge N(d)$, one proof with that budget gives proofs at every
 size $n+\ell q$, $\ell\ge0$, with one fixed degree bound $d$.
 This is already enough to contradict a separate proof that the
@@ -4478,7 +4527,7 @@ estimates $A_{\NS}(d)\le2^{cd}$ and
 $A_{\PC}(d)\le2^{2^{cd}}$, extracted there from earlier work of
 Kraj\'i\v cek. A degree bounded by a sufficiently small multiple of
 $\log n$ or $\log\log n$, respectively, therefore lies in that
-historical transfer range. Inverting the starting-rank estimates gives
+historical transfer range. Inverting the starting-size estimates gives
 the earlier logarithmic and double-logarithmic gaps.
 These estimates concern the historical first-order refutation setting;
 we do not use them as inputs to the general target theorem here.
@@ -4486,8 +4535,8 @@ we do not use them as inputs to the general target theorem here.
 A small budget is easier to fit inside a given universe, but does not
 by itself supply a simple construction of the lift. The first complete
 construction in this book is the characteristic-two argument of
-Chapter~\ref{tx:ch:quadratic}. Its starting rank is quadratic in $d$.
-The later constructions improve this to a linear starting rank and
+Chapter~\ref{tx:ch:quadratic}. Its starting universe size is quadratic in $d$.
+The later constructions improve this to a linear starting universe size and
 cover every positive characteristic. Each stage answers the same
 question: how many retained labels are sufficient to transport the
 entire degree-$d$ proof calculation?
@@ -4511,7 +4560,7 @@ change.
 
 \subsection{A numerical trace of the retained-label test}
 Take characteristic two, variable support $k=2$, axiom-index support
-$s=1$, input-degree bound $D=1$, input stability rank $n_0=3$,
+$s=1$, input-degree bound $D=1$, input stability threshold $n_0=3$,
 target-degree bound $D_G=2$,
 and proposed proof degree $d=2$. Compare a fully invariant target with
 an indexed request whose target-index support is $t=1$.
@@ -4520,7 +4569,7 @@ gives the following sufficient ranges:
 \begin{center}
 \begin{tabular}{@{}lccc@{}}
 \toprule
-Request & Budget $r$ & Least $2$-power $q>r$ & Retained rank $n$\\
+Request & Budget $r$ & Least $2$-power $q>r$ & Retained universe size $n$\\
 \midrule
 Invariant & $kd+s=5$ & $8$ & $n\ge\max\{3,1,4,9\}=9$\\
 Indexed & $2kd+s+t=10$ & $16$ & $n\ge\max\{3,1,5,19\}=19$\\
@@ -4532,7 +4581,7 @@ sizes $17,25,\ldots$. For the indexed request, the corresponding
 progression starts at $19$ and runs through $35,51,\ldots$.
 These are implications from an existing proof, not assertions that
 either example request has such a proof. At each step, $n$ is the
-\emph{smaller} rank and $N=n+q$ the larger one. A starting rank below
+\emph{smaller} universe size and $N=n+q$ the larger one. A starting universe size below
 the stated range supplies no conclusion from this test.
 
 The count $2r-1$ is one retained pool sufficient for every tuple
@@ -4572,7 +4621,7 @@ $H_n=P_{n,\le d-1}$ and $X_n=K[\mathcal V_n]$.
 Let $V_j(n)$ be the closure stages from \eqref{tx:eq:closure} and write
 $C_d(n)$ for their stable union. A proof ending in a polynomial $f$ says exactly that
 $f\in C_d(n)$. For the uniform-consequence theorem we must additionally
-compare the prescribed targets at different ranks.
+compare the prescribed targets at different universe sizes.
 
 Choose a support budget $r\ge kd+s$ and add a block of $q=p^a>r$ labels and write $N=n+q$.
 The required properties of the linear operator are:
@@ -4770,11 +4819,11 @@ This proves both the forward lifting implication and
 \eqref{tx:eq:newiff}. The image of the lift need not be all of $C_d(N)$:
 the larger universe has many additional consequences. Every smaller consequence has this projector lift. For $n\ge n_*$ and a fully invariant target whose stabilised degree
 is at most $d$, naturality of its map from $K$ gives
-$\Lift(G_n)=G_N$: the target map commutes with the common projector,
+$\Lift(G^{(n)})=G^{(N)}$: the target map commutes with the common projector,
 which acts as the identity on $K$. More concretely, invariance gives
-$zG_N=0$ and $eG_N=G_N$, while stable coefficients give
-$\rho G_N=G_n$. The retained-vector identification and the argument
-in Proposition~\ref{tx:lift-prop:lift} therefore yield $e\iota(G_n)=G_N$. Hence invariant targets, including
+$zG^{(N)}=0$ and $eG^{(N)}=G^{(N)}$, while stable coefficients give
+$\rho G^{(N)}=G^{(n)}$. The retained-vector identification and the argument
+in Proposition~\ref{tx:lift-prop:lift} therefore yield $e\iota(G^{(n)})=G^{(N)}$. Hence invariant targets, including
 $1$, are exactly preserved. For indexed targets this equality need
 not hold. The image-subquotient argument in
 Chapter~\ref{tx:chap:assemble-transfer} proves transfer of
@@ -4881,7 +4930,7 @@ whose product is $(x_0-x_2)^2$. This is a different polynomial, also in
 characteristic two: the joint result still has the terms involving
 $x_1$. The common permutation in each summand is therefore essential.
 
-This calculation illustrates the inference mechanism at one rank.
+This calculation illustrates the inference mechanism at one universe size.
 The element $T$ is not a deletion projector and does not fix $1$.
 For the actual larger-universe lift, replace $T$ by the common $e$
 and use \eqref{tx:eq:joint-lift}. The grouped $g_y$ are then certified
@@ -4920,7 +4969,7 @@ $(x_a,x_b,x_c)=(1,1,0)$ satisfies its sum but not $x_a=0$.
 
 Here the invariant target $G_\ell=\sum_{i<\ell}x_i$ is transported to
 the prescribed larger target. In contrast, the indexed expression
-$G_{a,\ell}=x_a$ has projector lift $x_a+x_b+x_c$, not $x_a$. The map
+$G_a^{(\ell)}=x_a$ has projector lift $x_a+x_b+x_c$, not $x_a$. The map
 is linear but is not a ring homomorphism and does not preserve every
 indexed expression literally. This calculation illustrates the distinction but lies outside the
 indexed transfer range: for $k=d=t=1$ and $s=0$, where $t=1$ bounds
@@ -4929,7 +4978,7 @@ $R(d)=3$, whereas here $q=2$ and $n=1$. It is therefore no
 counterexample to indexed periodicity.
 
 The failure of a literal indexed lift requirement also has a general
-explanation. At an admissible rank, naturality for the invariant target
+explanation. At an admissible universe size, naturality for the invariant target
 $\sum_{i<n}x_i$ gives
 $\Lift(\sum_{i<n}x_i)=\sum_{i<N}x_i$. If every retained indexed
 target $x_i$ had lift exactly $x_i$, linearity would instead give
@@ -5002,7 +5051,7 @@ invariance, as above.
 For any smaller consequence $f$, the projector lift gives a larger
 consequence $\mathsf L(f)$ of no greater degree. For a full stable
 invariant target fitting the budget, this vector is exactly the
-prescribed larger target $G_N$. For general indexed targets, literal
+prescribed larger target $G^{(N)}$. For general indexed targets, literal
 pointwise equality is not available: the actual target-map image and
 the quotient $(C_d(N)+\im J_N)/C_d(N)$ supply the transfer instead.
 For NS, use the analogous quotient by $I_d(N)$. These quotients test
@@ -5191,7 +5240,7 @@ Split the basis into fixed and moved objects. The preceding calculation kills th
 \end{align}
 The second identification sends $e_u\otimes[y]$ to $[e_u\otimes y]$ for retained $u$. It is natural in $Y$: applying a map to $y$ before or after taking its class gives the same result. For a product of two permutation bases, it simply keeps pairs of retained objects. There is no choice of unrelated isomorphisms here.
 
-Suppose a matrix from one permutation basis to another has stable relabelling-invariant coefficients. On a retained input vector, its image is killed by $z$. Its retained component has exactly the smaller-rank coefficients; its moved component is in $\ker z=\im z$ on the moved summand, so vanishes in the quotient. Thus the \emph{actual matrix}, not merely its rank, is transported correctly.
+Suppose a matrix from one permutation basis to another has stable relabelling-invariant coefficients. On a retained input vector, its image is killed by $z$. Its retained component has exactly the smaller-universe coefficients; its moved component is in $\ker z=\im z$ on the moved summand, so vanishes in the quotient. Thus the \emph{actual matrix}, not merely its rank, is transported correctly.
 
 \subsection{What naturality says about actual matrix entries}
 Let $F_N:K[\mathcal U_N]\to K[\mathcal V_N]$ be an equivariant
@@ -5372,7 +5421,7 @@ Keep the progression picture in view. Given a degree-$d$ proof at
 one size eligible for this construction, we obtain a degree-$d$ proof
 at every later size separated by the same block $q$. Thus $d$ is constant along
 that progression. The quadratic cost below governs which starting
-proofs are eligible; its inverse is the square-root lower-bound scale.
+proofs are eligible; its inverse is the square-root degree lower bound.
 
 The induction maintains one group-algebra element, not a list of
 independently chosen inverses. At the start of stage $b$, this element
@@ -5589,7 +5638,7 @@ $r=2kd+s+t$ to include the target map and the doubled-support detector.
 Every construction needed for this theorem has now been supplied. In particular, the proof is not an inference from witnesses found for small tuple lengths.
 
 
-\begin{remark}[The square-root scale]
+\begin{remark}[The square-root degree bound]
 For either prescribed-target budget, the construction gives an onset
 $O(d^2)$ for degree-$d$ transfer.
 Inverting that onset gives an $\Omega(\sqrt n)$ lower bound when no
@@ -5655,12 +5704,12 @@ all-target request. It is infinity if any requested target is
 underivable; an empty request has value zero. A finite value recurs if that exact value is
 attained at infinitely many universe sizes. The block construction
 will force recurrence whenever such a value occurs beyond its
-eligible starting rank.
+eligible starting universe size.
 
 Let $r(d)=\alpha d+\beta$, where
 $(\alpha,\beta)=(k,s)$ for an invariant target or
 $(\alpha,\beta)=(2k,s+t)$ for an indexed request. The fixed starting
-rank $n_*$ includes degree stabilisation of the targets. A convenient
+universe size $n_*$ includes degree stabilisation of the targets. A convenient
 safe onset for this preliminary construction is
 \[
  N_{\rm quad}(d)=
@@ -5703,8 +5752,7 @@ in
        N_{\rm quad}(e)\le n<N_{\rm quad}(e)+Q(e).
 \]
 Both the onset and the period are bounded by a constant times
-$(e+1)^2$, so these representatives are finite square-root-scale
-peaks, $e\ge c\sqrt n-O(1)$, for a fixed $c>0$. They are not an
+$(e+1)^2$, so these representatives are finite degree peaks with a square-root lower bound, $e\ge c\sqrt n-O(1)$, for a fixed $c>0$. They are not an
 all-size lower bound; low recurring values remain at arbitrarily
 large sizes.
 
@@ -5739,14 +5787,14 @@ whose image has zero marginals and which kills the incoming shorter
 layers. The next chapter proves that every operator with exactly
 this shape is the action of a group-algebra element annihilating the
 shorter tuple modules. It uses no additional labels. Combining the
-two contracts yields one common witness at retained rank $2r-1$.
+two contracts yields one common witness at retained universe size $2r-1$.
 
 This is the improvement which changes the degree gap. With fresh labels,
 the retained-label cost was a sum over all tuple lengths. Reusing one
 pool makes it a maximum. A proof with degree $d$ can therefore be lifted
 once the universe is only linearly large in $d$. If that degree cannot
 recur on an infinite progression, every occurrence must have been
-before this linear starting rank.
+before this linear starting universe size.
 
 Semisimplicity would supply invariant complements to every invariant
 subspace (Section~\ref{tx:sec:action-primer}); here we construct the
@@ -6007,7 +6055,7 @@ positions, modulo everything already allowed at $\ell-1$. A quotient
 layer is not yet a chosen subspace of the larger space. The section
 below will choose representatives, and the subsequent operator argument
 will make that choice compatible with $z$. Here $G_\ell$ names a
-space of tuple components, not a target polynomial $G_n$.
+space of tuple components, not a target polynomial $G^{(n)}$.
 
 In the displayed tensor product, the first factor records which block
 labels occupy the positions in $D$, while the second carries the
@@ -7472,7 +7520,7 @@ maps. These arguments prove every assertion of Theorem~\ref{tx:thm:deletion}.
 
 \section*{Returning to the prescribed-target theorem}
 The construction has proved the common top-power witness on every
-tuple length up to an abstract budget $r$, at retained rank
+tuple length up to an abstract budget $r$, at retained universe size
 $n\ge\max\{0,2r-1\}$ and block size $q=p^a>r$. The tuple purity
 calculation and the explicit projector prove exact deletion on the
 full support class. The moved-orbit commutator proves natural basis
@@ -7510,20 +7558,20 @@ engine is now complete in every prime characteristic.
 \chapter{Lifting the actual axioms, proof rules and targets}
 \label{tx:chap:assemble-transfer}
 All the finite-algebra obligations have now been supplied. We return
-to the original question $\Gamma_n\vdash G_{b,n}$: can every requested
+to the original question $\Gamma_n\vdash G_b^{(n)}$: can every requested
 target be derived from the given axioms within degree $d$? We verify each part of the contract
 in Chapter~\ref{tx:chap:contract}. The point of doing the assembly slowly
 is to make clear that a prescribed target, rather than an arbitrary
 lifted vector, is transported.
 
 \section{The theorem we can now state without hidden assumptions}
-Let $\Gamma_n$ be a fixed uniform axiom template and let $G_{b,n}$ be
+Let $\Gamma_n$ be a fixed uniform axiom template and let $G_b^{(n)}$ be
 a fixed uniform target family. Put
 \[
  R(d)=2kd+s+t,\qquad n_*=\max\{n_0,1,kD_G+t\}.
 \]
 Here $k,s,t$ bound the label supports of a variable, an axiom index and
-a target index; $D_G$ bounds target degree. The rank $n_0$ is the axiom
+a target index; $D_G$ bounds target degree. The universe size $n_0$ is the axiom
 stability threshold. These are fixed data; only $d$ is a proposed proof degree.
 
 \begin{theorem}[Actual target transfer]\label{tx:thm:transfer}
@@ -7531,11 +7579,11 @@ Over any field of fixed prime characteristic $p$, suppose
 \[
  q=p^a>R(d),\qquad n\ge\max\{n_*,2R(d)-1\},\qquad N=n+q.
 \]
-For either NS or ordinary PC, every prescribed rank-$N$ target has a
-derivation of degree at most $d$ if and only if every prescribed rank-$n$
+For either NS or ordinary PC, every prescribed size-$N$ target has a
+derivation of degree at most $d$ if and only if every prescribed size-$n$
 target does. The assertion holds for every $d\ge0$, with the separate
 zero-degree interpretation given below. It also holds for any
-representative of one fixed global target orbit at each eligible rank.
+representative of one fixed global target orbit at each eligible universe size.
 For a fully invariant target use the sharper budget $kd+s$ and start
 $\max\{n_0,1,kD_G\}$.
 \end{theorem}
@@ -7562,13 +7610,13 @@ any target. This separates the proof-system calculation from the
 question of whether a particular uniform expression belongs to it.
 The operation $\Del(M)=\ker z_M/(\ker z_M\cap\im z_M)$ deletes the
 block through the label action; the common projector represents its
-classes, and $\Lift=e\iota$ lifts smaller-rank vectors. Exactness means
+classes, and $\Lift=e\iota$ lifts smaller-universe vectors. Exactness means
 that kernels, images and quotients are preserved by this operation.
 
 Concretely, a deletion class is represented by a vector $v$ with
 $z_Mv=0$. Two such vectors represent the same class if their difference
 lies in $\ker z_M\cap\im z_M$. The projector provides representatives
-which can be compared with smaller-rank vectors. We use the actual
+which can be compared with smaller-universe vectors. We use the actual
 inclusions and maps between these classes, not just equal dimensions
 of the resulting spaces (Chapter~\ref{tx:chap:deletion}).
 
@@ -7580,8 +7628,8 @@ For NS the certificate map has source basis the pairs $(\mu,a)$ with
 Its source has support at most $kd+s$, and $W_N$ has support at most
 $kd$. The matrix entry at a target monomial $\nu$ is zero unless
 $\mu\mid\nu$, and otherwise is $c(a,\nu/\mu)$. These are the actual
-rank-independent invariant entries of the certificate map. The
-stability threshold $n_0$ makes each axiom degree independent of rank.
+size-independent invariant entries of the certificate map. The
+stability threshold $n_0$ makes each axiom degree independent of universe size.
 Exactness and matrix naturality therefore identify the embedded image
 $\Del(I_d(N))$ with $I_d(n)$.
 
@@ -7604,7 +7652,7 @@ of their coefficient map. The recurrence is
 \]
 Every stage is a submodule of $W_N$, and every multiplication domain
 is a submodule of the fixed support-bounded space $X_N\otimes L_N$.
-Suppose stage $j$ has been identified at both ranks. Put
+Suppose stage $j$ has been identified at both universe sizes. Put
 $U_N=V_j(N)\cap L_N$ and $U_n=V_j(n)\cap L_n$.
 The intersection is the kernel of $(v,l)\mapsto v-l$ on
 $V_j(N)\oplus L_N$, so exactness identifies $\Del(U_N)$ with
@@ -7715,19 +7763,19 @@ polynomial one.
 \section{The actual uniform target map}\label{tx:sec:target-transfer}
 For indexed targets, let $\mathcal B$ be the fixed index basis and
 let $\gamma(b,\mu)$ be its stable coefficient rule. Write $\delta$ for the largest stabilised target degree, taking
-$\delta=0$ for an empty request. At a rank where
+$\delta=0$ for an empty request. At a universe size where
 all target degrees are at most $d$, define
 \[
  J_N:K[\mathcal B_N]\longrightarrow W_N,\qquad
-                [b]\longmapsto G_{b,N}.
+                [b]\longmapsto G_b^{(N)}.
 \]
 Here $J_N$ is a linear target map. It is distinct from the group-algebra
 annihilator ideal $J_r(N)$ used to construct the common projector.
 Its entry in row $\mu$, column $b$ is precisely $\gamma(b,\mu)$.
-Equivariance and rank independence are the hypotheses of the natural
+Equivariance and independence of universe size are the hypotheses of the natural
 matrix identification in Theorem~\ref{tx:thm:deletion}. Consequently
 $\Del(J_N)$ is the actual smaller target map $J_n$.
-This statement concerns the prescribed full polynomials $G_{b,n}$;
+This statement concerns the prescribed full polynomials $G_b^{(n)}$;
 we do not replace a target by its degree-$d$ truncation.
 
 Let $H_N$ be either $I_d(N)$ or $C_d(N)$. Every target belongs to
@@ -7759,20 +7807,20 @@ First extend scalars to an algebraic closure, as permitted by
 Lemma~\ref{tx:lem:field}. The degree of every indexed target stabilises
 beyond $n_*=\max\{n_0,1,kD_G+t\}$. If $d$ is smaller than the
 largest stable target degree, the all-target predicate is false at both
-ranks. Otherwise the full map $J$ just described applies.
-Take $N=n+q$, $q=p^a>R(d)$ and retained rank
+universe sizes. Otherwise the full map $J$ just described applies.
+Take $N=n+q$, $q=p^a>R(d)$ and retained universe size
 $n\ge\max\{n_*,2R(d)-1\}$. Exact deletion transports $H_N$, $J_N$
 and their sum and quotient. The detection lemma yields
 \[
- \bigl(\forall b\in\mathcal B_N,\ G_{b,N}\in H_N\bigr)
+ \bigl(\forall b\in\mathcal B_N,\ G_b^{(N)}\in H_N\bigr)
  \quad\Longleftrightarrow\quad
- \bigl(\forall b\in\mathcal B_n,\ G_{b,n}\in H_n\bigr).
+ \bigl(\forall b\in\mathcal B_n,\ G_b^{(n)}\in H_n\bigr).
 \]
 Field descent holds for each actual target separately, so the equivalence
 holds over the original field. Repeated steps connect any eligible
-ranks in a common residue class and prove the stated periodicity.
+universe sizes in a common residue class and prove the stated periodicity.
 For one fixed global target orbit, replace $\mathcal B$ by that orbit;
-at eligible ranks, equivariance makes every representative equivalent.
+at eligible universe sizes, equivariance makes every representative equivalent.
 
 At degree zero the stabilised targets are either all zero, or are
 scalars with at least one nonzero value. In the latter case every target
@@ -7781,10 +7829,10 @@ nonzero constant. If a target has positive stable degree, degree-zero
 all-target membership fails. These are fixed predicates beyond $n_*$
 and give the separate zero-level assertion.
 
-For a fully invariant target use $j_N:K\to W_N$, $j_N(1)=G_N$,
+For a fully invariant target use $j_N:K\to W_N$, $j_N(1)=G^{(N)}$,
 in place of $J_N$. Lemma~\ref{tx:lem:constant} reflects membership without
 the tensor pairing. The budget reduces to $kd+s$, with stable onset
-$\max\{n_0,1,kD_G\}$. Taking $G_N=1$ gives the sharper refutation
+$\max\{n_0,1,kD_G\}$. Taking $G^{(N)}=1$ gives the sharper refutation
 special case. No target has been added to the axiom system.
 \end{proof}
 
@@ -7836,7 +7884,7 @@ the ordinary-PC consequence closure inside $P_{n,\le d}$.
 Suppose you already know that NS degree is large. It is tempting to use
 $h_{\PC}\le h_{\NS}$ as a PC lower bound. The inequality points in the
 wrong direction. Even an upper comparison $h_{\NS}\le F(h_{\PC})$
-need not preserve a linear scale if $F$ is large. Our linear PC bound
+need not preserve a linear degree lower bound if $F$ is large. Our linear PC bound
 therefore came from its own closure transport, not from inverting $F$.
 
 The purpose of comparison is instead to say that bounded PC degree can
@@ -7879,8 +7927,8 @@ ascending chain. For example, $A_0\subsetneq A_1=A_2\subsetneq A_3$ has two stri
 inclusions. Invariance means that relabelling sends each subspace to
 itself. Exact deletion transports the inclusions, and the
 detector keeps a strict inclusion strict by preserving its nonzero
-quotient. This is why a dimension bound at small rank can control
-chains at every rank.
+quotient. This is why a dimension bound at small universe size can control
+chains at every universe size.
 
 \begin{lemma}[Uniform chain bound]\label{tx:lem:chains}
 For any bounded basis system $\mathcal U$, strict $S_n$-invariant
@@ -7895,13 +7943,13 @@ $A\subsetneq B$ implies
 $\mathcal D(A)\subsetneq\mathcal D(B)$: the whole strict chain becomes
 a strict chain of the same length in $K[\mathcal U_n]$.
 
-Repeatedly subtract $q$ while the rank exceeds $M=4r+q$. Every retained
-rank in such a step exceeds $4r$, so all steps are eligible. The final
+Repeatedly subtract $q$ while the universe size exceeds $M=4r+q$. Every retained
+universe size in such a step exceeds $4r$, so all steps are eligible. The final
 chain has at most $\dim K[\mathcal U_M]$ strict inclusions, because a
-smaller-rank basis injects into the rank-$M$ basis. The same bound covers
-the initial ranks at most $M$. Each step may choose its own generic
+smaller-universe basis injects into the size-$M$ basis. The same bound covers
+the initial universe sizes at most $M$. Each step may choose its own generic
 coefficients: the detector applies to arbitrary invariant subspaces,
-without a naturality assumption on the chain across ranks. Finally,
+without a naturality assumption on the chain across universe sizes. Finally,
 scalar extension preserves strict inclusions, giving the result over
 the original coefficient field.
 \end{proof}
@@ -8048,7 +8096,7 @@ least degree of a refutation, whose target is $1$.
 Fix characteristic $p$ and, for $n\ge1$, take
 \[
                   \Gamma_n=\{x_i-1:i<n\},\qquad
-                  G_n=\sum_{i<n}x_i.
+                  G^{(n)}=\sum_{i<n}x_i.
 \]
 The axioms have the solution $x_i=1$ for every $i$, so they are
 consistent at every size. Both the axioms and the invariant target
@@ -8060,21 +8108,21 @@ For both NS and PC, the target profile is exactly
  h_S(n)=\begin{cases}1,&p\mid n,\\\infty,&p\nmid n.\end{cases}
 \]
 In particular, it is T3. With the same axioms but the indexed request
-$G_{i,n}=x_i$ for every $i<n$, the profile is constantly infinity and
+$G_i^{(n)}=x_i$ for every $i<n$, the profile is constantly infinity and
 has type T2.
 \end{proposition}
 \begin{proof}
-Summing the axioms gives $G_n-n$. If $p\mid n$, this is $G_n$, so it
+Summing the axioms gives $G^{(n)}-n$. If $p\mid n$, this is $G^{(n)}$, so it
 has an NS certificate, and hence a PC proof, of degree one. The target
 is nonzero of degree one, proving equality. If $p\nmid n$, the root
-with all coordinates one evaluates $G_n$ to the nonzero field element
+with all coordinates one evaluates $G^{(n)}$ to the nonzero field element
 $n$. Soundness excludes any derivation. The same root evaluates each
 indexed target $x_i$ to one, proving the final assertion.
 \end{proof}
 
 This example also distinguishes an invariant sum from its individual
 summands. The statement that the sum is a consequence does not say
-that each summand is a consequence. The all-target profile is a maximum
+that each summand is a consequence. The aggregate profile is a maximum
 of separate proof degrees, not the degree of a proof of their sum.
 
 The easy residue class here is zero modulo $p$; its degree is exactly
@@ -8090,7 +8138,7 @@ We first give an exact construction, then apply it to a uniform family
 whose hard values are finite.
 
 A simple invariant target illustrates the distinction between finite
-hardness and failure of derivability. For $G_n=\sum_{i<n}x_i$, the input
+hardness and failure of derivability. For $G^{(n)}=\sum_{i<n}x_i$, the input
 $\{1\}$ gives degree exactly one in both systems for $n\ge1$. With no
 inputs the same target is underivable and has degree $\infty$. Both
 fit the uniform definition, but neither supplies a finite hard example.
@@ -8173,8 +8221,8 @@ we do not add $y^2-y=0$. For a uniform template, give the new variable
 empty support and keep all old axiom indices and coefficients. Set
 all coefficients of axiom monomials involving $y$ to zero. The result
 is again a uniform template with the same bounds $k,s,D,n_0$, and
-$G_n=y$ is a fully invariant target of degree one at every rank.
-Thus \eqref{tx:eq:fresh-identities} holds rank by rank.
+$G^{(n)}=y$ is a fully invariant target of degree one at every universe size.
+Thus \eqref{tx:eq:fresh-identities} holds at every universe size.
 
 This operation preserves each of the four types, separately for NS
 and PC. The NS recurring finite degrees are shifted by one. For PC,
@@ -8194,7 +8242,7 @@ Let $K$ have prime characteristic $p$, and let $\widehat B_n$ be the
 normalised weak-bijection system defined in
 \eqref{tx:eq:bhat-witness}, with all of its function and coverage witnesses
 retained. Adjoin a fresh variable $y$ as above, and request the target
-$G_n=y$. Both target-degree profiles are of type T4.
+$G^{(n)}=y$. Both target-degree profiles are of type T4.
 
 More precisely, write $n=p^a u$, where $p\nmid u$, and put $q=p^a$.
 Whenever $n\ge2q$,
@@ -8239,7 +8287,7 @@ a different setting; no growing lower bound is asserted for it.
 \section{The refutation special case: four first-order examples}
 \label{tx:sec:examples}
 
-We now take the constant target $G_n=1$. This is the refutation special
+We now take the constant target $G^{(n)}=1$. This is the refutation special
 case of the uniform-consequence theorem; the sharper invariant-target
 budget applies. Write $\psi_1,\psi_2,\psi_3,\psi_4$ for the four sentences described in order below.
 The four cases all occur among fixed first-order sentences with no finite
@@ -8288,7 +8336,7 @@ not increase ordinary-PC or NS degree. Thus $d\geq q$, while maximality of
 $q$ gives $n<3pq\leq3pd$. This proves T2 without an external pigeonhole
 lower-bound theorem.
 
-\paragraph{The injection certificate and the linear scale.}
+\paragraph{The injection certificate and its linear degree bound.}
 The paper's matching upper bound is useful to inspect directly. Put
 \[
  R_i=\sum_{j=1}^n x_{ij},\qquad C=\sum_{j=1}^n c_j,
@@ -8323,7 +8371,7 @@ The PC inequality uses the degree-preserving simulation of an NS
 certificate by repeated variable multiplication. No Boolean reduction
 is used. With the preceding $n<3pd$ lower bound for $n\ge3$, both
 degrees are $\Theta(n)$ for each fixed positive characteristic.
-This family proves sharpness of the general linear scale; it does
+This family proves sharpness of the general linear degree lower bound; it does
 not supply an upper bound for every uniform family. This certificate
 and the sharpness deduction are written mathematics, as in the paper;
 no additional Lean endpoint is claimed for them.
@@ -8429,7 +8477,7 @@ of this column, then
 \[
  Tx-x=(x^2-x)+\sum_{y\ne x}yx
 \]
-lies in the degree-two span, by Booleanity and column collisions.
+lies in the degree-two span, by the Boolean equations and column-collision equations.
 Adding this for $a_{ij}$ and $b_{ij}$ gives $Tu_i-u_i$ in that span.
 Finally
 \[
@@ -8740,8 +8788,8 @@ edges.  Their total weight is strictly smaller than $w(e)$.  Cancelling
 the common edges of $A$ and $J$ shows $W(P_0\cup J)<W(P)$.
 The identical argument applies to a column step, since $i+j$ is
 unchanged by transposition.  Every child therefore has strictly smaller
-nonnegative integer rank $\rho$.  The tree is finitely branching, and
-every path has length at most its initial rank.  Hence the complete
+nonnegative integer universe size $\rho$.  The tree is finitely branching, and
+every path has length at most its initial universe size.  Hence the complete
 signed reduction tree is finite.
 
 For terminal $T$, let $C_{N,M}(P,T)\in\mathbb Z$ be the sum, over paths
@@ -8872,7 +8920,7 @@ for every $P\ne T$ with $\rho(P)\leq\rho(T)$.
 Now suppose a finite linear combination of terminal matching indicators
 vanishes at every permutation of $[N]$, with coefficients in any
 commutative ring $R$.  Among its nonzero coefficients choose a terminal
-$T$ of greatest rank $\rho$.  Apply the integer signed moment $M_T$ to
+$T$ of greatest universe size $\rho$.  Apply the integer signed moment $M_T$ to
 this relation, then map the integers to $R$.  All other nonzero terms
 vanish by triangularity; the result is the coefficient of $T$ multiplied
 by $1$ or $-1$.  This contradicts its being nonzero.  The terminal
@@ -9121,12 +9169,19 @@ the ordinary-PC proof in every case.  The NS conclusion follows from
 the degree-preserving simulation of a total-product NS certificate by
 ordinary PC.
 
-\chapter{The hardness spectrum, algebraic witnesses and models}
+\chapter{The topological classification and algebraic witnesses}
 \label{tx:sec:model-theory}
-We first explain the topological classification in the current paper,
-then distinguish algebraic witnesses from actual models.
+This chapter expands Section~11 of the paper. The main description of
+T1--T4 is the topological classification in
+Section~\ref{tx:sec:topological-spectrum}: empty, full, nonempty proper
+clopen, or closed but not open hardness spectrum. Its proof uses eventual
+prime-power periodicity and compactness, and applies to all the uniform
+requests covered by the theorem.
+We then distinguish algebraic witnesses from actual models. The final
+Euler-structure discussion is optional historical background; it is
+not needed for this classification and supplies no converse criterion.
 A uniform target invites a semantic question: does every solution of
-$\Gamma_n$ satisfy $G_n=0$? Our theorem classifies syntactic algebraic
+$\Gamma_n$ satisfy $G^{(n)}=0$? Our theorem classifies syntactic algebraic
 derivation, not that semantic question. The two are related through
 linear witnesses, but the relation is not an identification of the four
 types with four classes of ordinary models.
@@ -9331,16 +9386,16 @@ The \emph{dual} of a vector space is its space of linear functionals.
 A functional \emph{annihilates} a subspace when it is zero on every
 vector of that subspace. Thus the two conditions below say that the
 functional ignores all proved consequences but detects the chosen
-target. The normalisation on that target fixes the scale of the
+target. The condition on the target fixes the scalar normalisation of the
 functional; it does not make the functional multiplicative.
 
 \begin{definition}[A degree-bounded target witness]
 \label{tx:def:consistency-witness}
-For a requested target $G_{b,n}$, a degree-$d$ witness is a $K$-linear
+For a requested target $G_b^{(n)}$, a degree-$d$ witness is a $K$-linear
 functional
 \[
  \lambda:P_{\le\max\{d,D_G\}}(n)\longrightarrow K,\qquad
- \lambda(G_{b,n})=1,\qquad\lambda(W_d(n))=0.
+ \lambda(G_b^{(n)})=1,\qquad\lambda(W_d(n))=0.
 \]
 For an all-target request, a witness consists of an index $b$ and such
 a functional. For a single fixed orbit, one may use any available
@@ -9355,7 +9410,7 @@ derivation of degree at most $d$ in the chosen system. For an all-target
 request it exists exactly when $h(n)>d$.
 \end{proposition}
 \begin{proof}
-If $G_{b,n}\in W_d(n)$, a functional annihilating $W_d(n)$ cannot
+If $G_b^{(n)}\in W_d(n)$, a functional annihilating $W_d(n)$ cannot
 take value one on it. Conversely its class in the finite-dimensional
 quotient $P_{\le\max\{d,D_G\}}(n)/W_d(n)$ is nonzero whenever
 it is not in $W_d(n)$. Extend that class to a basis, assign it value
@@ -9366,8 +9421,8 @@ ambient space also covers this degree-floor obstruction. Failure of
 all-target derivability is failure for at least one target.
 \end{proof}
 
-A $K$-valued solution $a$ of $\Gamma_n$ which violates $G_{b,n}=0$ gives a
-witness by $\lambda(f)=f(a)/G_{b,n}(a)$. For target one this is ordinary
+A $K$-valued solution $a$ of $\Gamma_n$ which violates $G_b^{(n)}=0$ gives a
+witness by $\lambda(f)=f(a)/G_b^{(n)}(a)$. For target one this is ordinary
 evaluation, with its multiplicative property. A general witness need
 not be multiplicative, positive or normalised on one. It records a
 linear separation from all permitted bounded-degree consequences,
@@ -9406,7 +9461,7 @@ Let $h(n)$ be a fixed-orbit or all-target degree profile in the chosen
 system. By Proposition~\ref{tx:prop:dual-witness}, a degree-$d$ witness
 exists precisely when $h(n)>d$.
 Recall that $E(h)$ consists of the finite values occurring at arbitrarily
-large ranks. The four alternatives classify eventual boundedness and
+large universe sizes. The four alternatives classify eventual boundedness and
 whether $E(h)$ is empty, finite nonempty or infinite; they do not classify
 the sets of roots of $\Gamma_n$.
 
@@ -9465,71 +9520,47 @@ nonconstant consequence can retain these algebraic distinctions. The
 classification is a property of uniform algebraic reasoning about the
 chosen equations and targets, rather than a satisfiability classification.
 
-\section{The connection with Euler structures}
-A first-order structure consists of a domain and interpretations of
-its relation and function symbols. A set is \emph{definable} when a
-formula in that structure describes it; here the language and allowed
-parameters are those required by the cited criterion. For example,
-a unary relation defines a subset of the domain, and a function graph
-defines a subset of its square. A definable map has a definable graph;
-its fibre over $y$ is the set of inputs mapped to $y$. The index-sort
-hypotheses below require the sets indexing the relevant variables and
-sums to be available in that definable setting as well.
+\section{Optional background: the Euler criterion}
+\label{tx:sec:euler-background}
+This section explains the separate sufficient criterion recalled at the
+end of Section~11 of the paper. It is not another description of the
+four types. Readers interested in the topological classification can
+skip it without losing any step of the argument.
 
-Kraj\'i\v cek's Euler structures \cite{KrajEuler} equip definable sets
-with a characteristic $\chi$, normalised on points and compatible with
-unions, products and definable bijections. The strong version also
-respects definable maps with fibres of constant characteristic.
-Here $M$ denotes the underlying first-order structure, and $\chi(M)$
-the Euler characteristic assigned to its domain as a definable set.
-This is a counting rule, not the field characteristic $p$. On a finite
-set of three points, additivity and point normalisation give $\chi=3$
-in its coefficient ring. For finite sets, the fibre rule is the familiar
-identity $|X|=c|Y|$ when a map $X\to Y$ has exactly $c$ points in each
-fibre. An Euler structure asks for the corresponding rules on the
-permitted definable sets, which can be infinite.
-We recall an external criterion with
-its definability hypotheses; it is not an additional hypothesis of our
-finite-dimensional transfer theorem.
-For the degree criterion the coefficient ring is
-$\mathbb Z/p^\nu\mathbb Z$, with $\nu$ depending on the fixed proof
-degree and indexing bounds. Its reduction modulo $p$ defines summation
-of finite-valued definable functions:
+Kraj\'i\v cek's Euler structures~\cite{KrajEuler} equip the permitted
+parameter-definable sets with a strong counting characteristic $\chi$.
+It assigns one to a point, is additive on disjoint unions,
+multiplicative on products and invariant under definable bijections.
+It also satisfies the fibre rule $\chi(X)=r\chi(Y)$ for a definable
+map $X\to Y$ whose fibres all have characteristic $r$. On finite sets
+this extends ordinary counting; the permitted definable sets may be
+infinite. The characteristic on definable sets is distinct from the
+field characteristic $p$.
+
+For the degree criterion the values lie in $\mathbb Z/p^\nu\mathbb Z$,
+with precision $\nu$ depending on the degree budget and indexing bounds.
+Reduction modulo $p$ interprets a definable $\mathbb F_p$-valued sum as
 \[
  \sum_{x\in X}^{\chi}a(x)
        =\sum_{c\in\mathbb F_p}c\,\overline\chi(a^{-1}(c)).
 \]
-Under the required definability and index-sort hypotheses, a definable
-solution of the axioms violating a uniform target $g=0$ excludes
-bounded-degree NS and PC derivations of that target at sufficiently
-large sizes $n\equiv\chi(M)\pmod{p^\nu}$
-\cite[Theorem 6.1]{KrajEuler}. Taking $g=1$ gives its refutation case.
-Thus uniform target membership already belongs to this historical
-framework. A merely $\mathbb F_p$-valued characteristic need not
-supply the required higher residue, and a weak Euler characteristic
-omits the fibre rule. Kraj\'i\v cek and Scanlon \cite{KrajScanlon}
-develop the associated Grothendieck-ring viewpoint.
+Under the full definability and index-sort hypotheses of
+\cite[Theorem~6.1]{KrajEuler}, including the characteristic on the
+required index sorts, a definable solution violating the target $g=0$
+excludes derivations within the specified degree budget at sufficiently
+large sizes in the residue class $\chi(M)\bmod p^\nu$.
+The refutation case is $g=1$. A merely mod-$p$ counting rule or an
+arbitrary infinite model does not supply these hypotheses. The
+Grothendieck-ring viewpoint~\cite{KrajScanlon} organises the additive
+and multiplicative identities; the strong fibre rule remains additional
+structure.
 
-The terminology records these counting identities algebraically.
-The \emph{Grothendieck ring} has symbols $[X]$ for definable sets,
-identifies definably bijective sets, imposes
-$[X]=[Y]+[X\setminus Y]$ for definable $Y\subseteq X$, and uses
-$[X][Z]=[X\times Z]$ for multiplication. Passing to the ring allows
-formal differences of these symbols. An additive, multiplicative
-characteristic assigns values to them while respecting those relations.
-The strong fibre rule is an additional requirement, not something
-supplied by the ring terminology alone.
-
-This criterion supplies semantic obstructions rather than an
-identification of T1--T4 with four model classes. Our classification
-instead follows from exact finite-dimensional target and consequence
-transport, with explicit linear onset. No Euler structure is an
-assumption of the template theorem. An infinite model alone does not
-supply the summation operation needed for totality equations, and a
-linear separating witness need not extend to a multiplicative
-interpretation in an Euler structure. Boolean axioms ensure truth-value
-semantics of the first-order compiler; bounded supports and stable
-coefficient maps provide the hypotheses of the algebraic transfer.
+This is a \emph{sufficient obstruction} to bounded-degree derivations
+when the required structure exists. We do not prove that every hard
+uniform family admits such a structure, nor identify T1--T4 with four
+classes of Euler structures. A general converse remains a separate
+question. The hardness-spectrum classification above needs no Euler
+structure, no Boolean encoding and no model-existence assumption.
 
 \section{What the model-theoretic language does not replace}
 The finite-dimensional target theorem requires neither an infinite model
@@ -9545,7 +9576,7 @@ or that it has a derivation within one particular degree budget. These
 are three different questions. The book's profile concerns the last.
 
 \chapter{No algorithm can distinguish the types}\label{tx:sec:undecidability}
-Already in the special case of the fixed target $G_n=1$, the
+Already in the special case of the fixed target $G^{(n)}=1$, the
 classification cannot be turned into an algorithm
 which determines the case from a sentence. This remains true under the
 promise that every finite instance is inconsistent. Throughout this section,
@@ -9965,7 +9996,7 @@ Exercise & Topic & Answer page\\
 
 \ref{tx:ex:orbit-switch} & \hyperref[tx:ans:orbit-switch]{Fixed requests and arbitrary orbit switching} & \pageref{tx:ans:orbit-switch}\\
 
-\ref{tx:ex:stable-floor} & \hyperref[tx:ans:stable-floor]{The safe target-stability rank} & \pageref{tx:ans:stable-floor}\\
+\ref{tx:ex:stable-floor} & \hyperref[tx:ans:stable-floor]{The target stability threshold} & \pageref{tx:ans:stable-floor}\\
 
 \ref{tx:ex:closure-zero} & \hyperref[tx:ans:closure-zero]{Exactly which constants are derivable at degree zero} & \pageref{tx:ans:closure-zero}\\
 
@@ -10175,7 +10206,7 @@ Its individual monomials and its axiom index are different basis objects.
 
 \begin{quote}\small\textbf{Question.} Take no axioms, a single variable $x$ of empty support, and two target
 indices of empty support requesting $0$ and $x$. Determine the two
-fixed-orbit profiles and the all-target profile. What happens if one
+fixed-orbit profiles and the aggregate profile. What happens if one
 chooses the first target at sizes in an arbitrary set and the second
 elsewhere?
 \end{quote}
@@ -10183,7 +10214,7 @@ elsewhere?
 \paragraph{Model answer.}
 Let \(h_0\) be the profile for the fixed target \(0\), \(h_x\) that
 for the fixed target \(x\), and \(h_{\mathrm{all}}\) the profile for
-the two-target request. At every rank,
+the two-target request. At every universe size,
 \[
             h_0(n)=0,\qquad h_x(n)=\infty,\qquad
             h_{\mathrm{all}}(n)=\max\{0,\infty\}=\infty.
@@ -10193,15 +10224,15 @@ or zero line proves \(0\), whereas empty input cannot derive any
 nonzero polynomial.
 \end{samepage}
 
-If the selected target is \(0\) at ranks in \(A\) and \(x\) elsewhere,
+If the selected target is \(0\) at universe sizes in \(A\) and \(x\) elsewhere,
 the selected profile becomes
 \[
  h_A(n)=
  \begin{cases}0,&n\in A,\\ \infty,&n\notin A.\end{cases}
 \]
-Thus its degree-zero threshold can encode an arbitrary set of ranks.
+Thus its degree-zero threshold can encode an arbitrary set of universe sizes.
 The two available target sorts have stable coefficient rules, but
-this rank-dependent selection is neither one fixed global orbit nor
+this size-dependent selection is neither one fixed global orbit nor
 the fixed all-target request. It therefore falls outside the theorem's
 request convention. In particular, arbitrary orbit switching cannot
 be used to infer another case of the four-profile classification.
@@ -10216,8 +10247,8 @@ be used to infer another case of the four-profile classification.
 
 \begin{quote}\small\textbf{Question.} Take variables $x_i$, no axioms, and targets $x_i-x_j$ indexed by
 ordered distinct pairs. Use $k=1,s=0,t=2,D_G=1,n_0=1$ to compute $n_*$.
-At which positive ranks does this request actually contain a target?
-Why is the stated stable rank allowed to be larger than necessary?
+At which positive universe sizes does this request actually contain a target?
+Why is the stated stability threshold allowed to be larger than necessary?
 \end{quote}
 
 \paragraph{Model answer.}
@@ -10226,9 +10257,9 @@ The prescribed parameters give
           n_*=\max\{n_0,1,kD_G+t\}
               =\max\{1,1,1+2\}=3.
 \]
-At rank \(1\) there is no ordered pair of distinct labels, so the
+At universe size \(1\) there is no ordered pair of distinct labels, so the
 request is empty and its degree is zero in both systems.
-At every rank \(n\ge2\), such pairs exist and every target
+At every universe size \(n\ge2\), such pairs exist and every target
 \(x_i-x_j\) is a nonzero degree-one polynomial, including in
 characteristic two. There are no axioms from which to derive it.
 Consequently
@@ -10237,8 +10268,8 @@ Consequently
 \]
 \end{samepage}
 
-The actual nonempty request and its degree floor stabilise at rank
-two. The theorem's rank three is a sufficient uniform bound obtained
+The actual nonempty request and its degree floor stabilise at universe size
+two. The theorem's universe size three is a sufficient uniform bound obtained
 by adding a monomial-support bound and an index-support bound.
 Here those supports overlap, so the general bound is conservative.
 A safe theorem onset need not be the smallest onset for each example.
@@ -10440,7 +10471,7 @@ For nonnegative integer thresholds \(d\), all cases are
 \]
 Each set is closed under \(n\mapsto n+1\), proving forward
 persistence of every threshold. A predicate can become true at the
-next rank while still having this property.
+next universe size while still having this property.
 \end{samepage}
 
 At threshold one the reverse implication fails:
@@ -10448,7 +10479,7 @@ At threshold one the reverse implication fails:
                  g(2)=1\le1,\qquad g(1)=2>1.
 \]
 The starting exact value \(2\) occurs only once, whereas value \(1\)
-occurs at every later rank. Forward persistence preserves the upper
+occurs at every later universe size. Forward persistence preserves the upper
 bound \(g(n)\le2\) but does not exclude a drop to a smaller minimum.
 To preserve the exact value two, one would also need reverse
 comparison at threshold one. This is why the recurrence argument
@@ -10469,7 +10500,7 @@ lower bound holds at all sizes.
 
 \paragraph{Model answer.}
 Every value of \(h(n)=p^{v_p(n)}\) is a power \(p^a\), with \(a\ge0\).
-For each fixed \(a\), the ranks
+For each fixed \(a\), the universe sizes
 \[
                      n_j=p^a(1+pj),\qquad j=0,1,2,\ldots
 \]
@@ -10481,7 +10512,7 @@ are exactly
 \]
 \end{samepage}
 
-Every value is at least one. At the unbounded sequence of ranks
+Every value is at least one. At the unbounded sequence of universe sizes
 \(n=1+pj\) the value is one, giving
 \[
                             \liminf_{n\to\infty}h(n)=1.
@@ -10493,8 +10524,8 @@ For finite linear peaks take \(n_a=p^a\). Then
 Each peak is finite and lies exactly on the line \(h=n\).
 
 There is no eventual all-size lower bound \(h(n)\ge cn\) with \(c>0\).
-Given \(c\) and any proposed starting rank, choose \(n=1+pj\) above
-that rank and above \(1/c\). Then \(h(n)=1<cn\).
+Given \(c\) and any proposed starting universe size, choose \(n=1+pj\) above
+that universe size and above \(1/c\). Then \(h(n)=1<cn\).
 This exercise concerns the displayed abstract sequence. It does not
 assert that the normalised weak-bijection system has these exact
 degrees or that its rectangle lower bound applies at \(n=p^a\).
@@ -10512,10 +10543,10 @@ the degree-zero predicate is used.
 \end{quote}
 
 \paragraph{Model answer.}
-If \(E(h)=\{0\}\), zero recurs at arbitrarily large ranks, in
+If \(E(h)=\{0\}\), zero recurs at arbitrarily large universe sizes, in
 particular at some \(n\ge n_*\). The degree-zero threshold is
-constant beyond \(n_*\). Since it is true at that rank, it must
-be true at every rank \(m\ge n_*\):
+constant beyond \(n_*\). Since it is true at that universe size, it must
+be true at every universe size \(m\ge n_*\):
 \[
                               h(m)\le0.
 \]
@@ -10525,10 +10556,10 @@ unboundedness required in T3.
 \end{samepage}
 
 The essential use of zero-degree stability is the implication
-that truth at one eligible rank gives truth at every eligible rank.
+that truth at one eligible universe size gives truth at every eligible universe size.
 Mere periodicity with a larger period would not suffice. For example,
-the arbitrary sequence which is zero at even ranks and equals \(n\)
-at odd ranks is unbounded and has only zero as an infinitely recurring
+the arbitrary sequence which is zero at even universe sizes and equals \(n\)
+at odd universe sizes is unbounded and has only zero as an infinitely recurring
 finite value. Its zero predicate is not eventually constant, so it
 is excluded by the theorem's zero-degree input.
 
@@ -10555,7 +10586,7 @@ individual variable. Which statements have finite proof degrees?
 \paragraph{Model answer.}
 In characteristic three, set
 \[
- \Gamma_n=\{x_i-1:i<n\},\qquad G_n=\sum_{i<n}x_i.
+ \Gamma_n=\{x_i-1:i<n\},\qquad G^{(n)}=\sum_{i<n}x_i.
 \]
 Write \(h_{\mathrm{sum}}\) for the invariant target profile and
 \(h_{\mathrm{ind}}\) for the request for every target \(x_i\).
@@ -10569,22 +10600,22 @@ The table applies to both NS and ordinary PC:
 \]
 \end{samepage}
 
-Summing the inputs gives \(G_n-n\). At \(n=3,6\), the scalar \(n\)
+Summing the inputs gives \(G^{(n)}-n\). At \(n=3,6\), the scalar \(n\)
 is zero in the field, so
 \[
-                            G_n=\sum_{i<n}(x_i-1).
+                            G^{(n)}=\sum_{i<n}(x_i-1).
 \]
 This is an NS certificate of degree one and gives a PC proof of
 the same degree. The target is a nonzero linear polynomial, so its
 degree floor proves that the minimum is exactly one.
 
-For the other four ranks, the assignment \(x_i=1\) satisfies all
-inputs but has \(G_n=n\ne0\) in the field. Soundness excludes any
+For the other four universe sizes, the assignment \(x_i=1\) satisfies all
+inputs but has \(G^{(n)}=n\ne0\) in the field. Soundness excludes any
 derivation. The same assignment has \(x_i=1\ne0\) for every
-individual target at every positive rank, excluding the indexed
+individual target at every positive universe size, excluding the indexed
 request in all six cases.
 The finite proofs in this table are precisely those for the sum at
-ranks three and six. A sum being derivable does not make its summands derivable.
+universe sizes three and six. A sum being derivable does not make its summands derivable.
 
 
 \noindent{\small\hyperref[tx:ex:sum-versus-individual]{Return to Exercise~\ref*{tx:ex:sum-versus-individual}.}}\par
@@ -10749,8 +10780,9 @@ the equations.
 \begin{description}[style=nextline,leftmargin=1em,labelindent=0pt,labelwidth=0pt]
 \item[$\Gamma_n$] The input polynomials at universe size $n$, all
 interpreted as equations equal to zero.
-\item[$G_{b,n}$] The requested target polynomial with target index $b$.
-The target is not an additional axiom.
+\item[$G_b^{(n)}$] The requested target polynomial at universe size $n$,
+with target index $b$. The superscript is not exponentiation. A fully
+invariant target is written $G^{(n)}$. The target is not an additional axiom.
 \item[$h_S(n)$] The maximum of the least degrees for the requested
 targets; infinity means at least one target is underivable. An empty
 request has profile zero.
@@ -10796,7 +10828,7 @@ The scalar grade $e\in\mathbb F_p$ in the layer splitting is also
 distinct from the projector $e$.
 \item[$\Del,\Lift$] Deletion is the quotient
 $\ker z/(\ker z\cap\im z)$. The lift $\Lift=e\iota$ first includes
-a smaller-rank polynomial and then applies the common projector.
+a smaller-universe polynomial and then applies the common projector.
 \item[$V',\mathcal Z_b,T_b$] In $V=P_b(N)$, marginal maps $\partial_i$
 sum over one tuple position. The incoming space is
 $V'=\sum_i\im\partial_i^{\mathsf T}$, the zero-marginal space is
@@ -10806,16 +10838,16 @@ is $T_b=V/V'$.
 all tuple spaces of length at most $r$, and the modules killed by that
 ideal. The latter class is also called $\mathcal M_r$; it is distinct
 from the PC consequence space $C_d$.
-\item[$J_N$] The actual target map $[b]\mapsto G_{b,N}$, distinct from
+\item[$J_N$] The actual target map $[b]\mapsto G_b^{(N)}$, distinct from
 the annihilator ideal $J_r(N)$.
 \item[$p,q,Q(d)$] The prime characteristic, an admissible block size
 $p^a>R(d)$, and, for $d\ge1$, the chosen least such power for the
 periodicity bound. The separate zero-degree convention is $Q(0)=1$.
 The actual period may be smaller than $Q(d)$.
-\item[$n_0,n_*,N(d)$] The axiom stability threshold, the stable rank
+\item[$n_0,n_*,N(d)$] The axiom stability threshold, the stability threshold
 including the target-degree floor, and the periodicity onset.
 For $d\ge1$, $N(d)=\max\{n_*,2R(d)+1\}$; separately, $N(0)=n_*$.
-\item[$E(h)$] The finite degrees recurring at arbitrarily large ranks.
+\item[$E(h)$] The finite degrees recurring at arbitrarily large universe sizes.
 \item[$A_d(h),\mathcal E_d(h),\mathcal H_p(h)$] The eventually easy
 residues, their clopen union in $\mathbb Z_p$, and the closed complement
 of all such easy regions. These are not the matching-design space
@@ -10870,7 +10902,7 @@ The characteristic-zero uniform permutation-module work of Riis and
 Sitharam~\cite{RiisSitharamModules}, the FI-module framework of Church,
 Ellenberg and Farb~\cite{CEF}, and Harman's modular periodicity
 \cite{Harman} place fixed-support families in a broader setting.
-Chapter~\ref{tx:sec:stability-context} explains the actual comparisons,
+Section~\ref{tx:sec:stability-context} explains the actual comparisons,
 including why the uniform sum $\sum_{i<n}x_i$ does not behave as an
 FI-submodule under naive inclusion. Hone and coauthors~\cite{HKPSYZ}
 provide an explicit categorical-functor perspective. Compatibility with
