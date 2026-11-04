@@ -1,0 +1,994 @@
+\chapter{The lifting problem: transport a closure and its target}
+\label{tx:chap:contract}
+The syntax of an NS or PC proof has now been replaced by a finite
+membership calculation. We can therefore ask a more general linear
+question before constructing any operator: which parts of that calculation
+must survive a change of universe?
+
+We separate three tasks: identify the actual polynomial maps, preserve
+the subspace calculation, and detect whether a target remains outside
+the consequence space. The finite constructions later in the book
+will fulfil this single transport contract.
+
+\section{From one eligible proof to an infinite progression}
+It helps to see the whole argument before its linear-algebra interfaces.
+Recall that $k$ bounds the labels needed by one variable, $s$ bounds
+the labels in one axiom index, and $t$ bounds those in one target index.
+We work over a fixed field of positive characteristic $p$.
+Fix one proof degree $d\ge1$, and choose a support budget $r$ covering
+the degree-$d$ data. A fully invariant target uses $r=kd+s$; the
+general indexed-target calculation uses $r=2kd+s+t$. The completed
+lifting theorem will say that, for
+\[
+ q=p^a>r,\qquad n\ge\max\{n_*,2r-1\},
+\]
+a prescribed target request has proofs of degree at most $d$ at size
+$n$ exactly when it does at size $n+q$.
+Here $n_*$ is a fixed starting rank after which the template and target
+data are stable; its precise value is given in
+Chapter~\ref{tx:ch:profiles}. The number $p$ is the characteristic,
+and $q$ is the size of the added block, not necessarily the size of
+the coefficient field.
+
+The first implication can be repeated with the same $d,r,q$, because
+every larger starting size still satisfies the displayed inequality.
+Thus one proof gives a constant degree bound on an infinite
+progression. The reverse implication, applied also at lower degree
+thresholds, identifies exact recurring minimum degrees. This is the
+bridge to the four profiles.
+
+Now suppose a finite value $d$ cannot recur. It cannot occur at an
+eligible starting size, so its occurrence forces
+\[
+                    n<\max\{n_*,2r-1\}.
+\]
+Since $r$ is affine in $d$, this is a linear lower bound on $d$ once
+$n$ is beyond the fixed starting rank. In T4 a value does recur; the
+two-way comparison and a bound on $q$ instead move an occurrence to
+a representative of size $O(d)$, creating a finite linear peak.
+The remaining mathematical task is to prove the displayed lifting
+statement with its linear retained-label budget. The definitions below
+split that task into explicit obligations.
+
+\section{Label actions in linear-algebra language}\label{tx:sec:action-primer}
+We need some language from linear algebra and representation theory.
+It is useful language, but none of the words in this section should
+stand for an unexplained theorem. We introduce them through the
+polynomial spaces already familiar from Chapter~\ref{tx:ch:closure}.
+
+\subsection{A vector space together with relabelling}
+Consider the degree-one space
+\[
+                  M=Kx_1\oplus Kx_2\oplus Kx_3.
+\]
+The permutation $(1\ 2)$ exchanges $x_1$ and $x_2$ and fixes $x_3$.
+It therefore sends
+$a x_1+b x_2+c x_3$ to $b x_1+a x_2+c x_3$.
+This is an invertible linear map on coefficient vectors. Other
+permutations give other linear maps, and doing two relabellings in
+succession has the same effect as their composite.
+
+In general, a \emph{representation} of $S_n$ is a vector space $M$
+equipped with these compatible linear actions of the label
+permutations. A \emph{module} is another name for such a space here;
+later the same action is extended to linear combinations of permutations.
+The vectors remain ordinary coefficient vectors; the representation
+records how relabelling acts on them.
+
+For a finite labelled set $\mathcal U_n$, the notation $K[\mathcal U_n]$
+means the vector space with one independent basis vector $[u]$ for
+each $u\in\mathcal U_n$. Its vectors are
+$\sum_{u\in\mathcal U_n}a_u[u]$. If permutations relabel the objects
+$u$, they permute these basis vectors. This is a \emph{permutation
+module}. Monomials of degree at most $d$ give precisely such a basis
+for our polynomial ambient space.
+
+An \emph{invariant subspace}, also called a \emph{submodule}, is a
+subspace carried to itself by every label permutation. In the displayed
+example, $K(x_1+x_2+x_3)$ is invariant, whereas $Kx_1$ is not.
+The consequence spaces are invariant because relabelling an entire
+legal proof gives another legal proof from the uniform axioms.
+An individual proof line need not be invariant.
+
+\subsection{Maps that respect the relabelling}
+A linear map $f:M\to M'$ is \emph{equivariant} when
+\[
+                         f(\pi v)=\pi f(v)
+\]
+for every label permutation $\pi$. The equation says that it makes
+no difference whether we relabel first or apply the map first.
+For example, sending an axiom index $[a]$ to its polynomial $f_{a,n}$
+is equivariant by uniformity. Ordinary variable multiplication is
+equivariant when the \emph{same} permutation acts on the variable
+and the polynomial being multiplied.
+
+Equivariant maps encode rules that are compatible with renaming labels.
+Their symmetry lets one common expression in permutations interact
+with all the maps at once. Chapter~\ref{tx:chap:deletion} gives the
+elementary calculation behind this compatibility.
+
+\subsection{Kernel, image and quotient: three different questions}
+For a linear map $f:A\to B$, its \emph{kernel} is
+$\ker f=\{a:f(a)=0\}$; its \emph{image} is
+$\im f=\{f(a):a\in A\}$. They record respectively what the map kills
+and what the map can produce. If $f$ is equivariant, both are invariant
+subspaces. Indeed, $f(a)=0$ implies $f(\pi a)=\pi f(a)=0$, and
+$\pi f(a)=f(\pi a)$ is again an image vector.
+
+For a subspace $H\subseteq W$, the quotient $W/H$ identifies two
+vectors whose difference belongs to $H$. The quotient map is
+\[
+                  \rho_H:W\to W/H,\qquad g\mapsto[g]=g+H.
+\]
+Its kernel is exactly $H$. Thus
+\[
+                         [g]=0\text{ in }W/H
+                              \quad\Longleftrightarrow\quad g\in H.
+\]
+This will express the question of whether a target is derivable.
+The zero \emph{class} does not mean that the original polynomial is
+zero: a nonzero derived polynomial has zero class modulo the
+consequence space.
+
+For example, let $W=Kx\oplus Ky$ and $H=K(x+y)$. Then
+$[x+y]=0$, while $[x]\ne0$ and $[y]\ne0$, with $[x]=-[y]$.
+To see that $[x]\ne0$, an identity $x=a(x+y)$ would force both
+$a=1$ and $a=0$ by comparing the two coefficients.
+This calculation works in characteristic two as well.
+If $H$ is invariant, relabelling the representatives defines an action
+on the quotient: $\pi[g]=[\pi g]$.
+A \emph{subquotient} of $W$ is a quotient $U/H$ with
+$H\subseteq U\subseteq W$ invariant. It records the directions in
+$U$ that are still missing from $H$.
+
+\subsection{What the word exact will mean}
+Suppose $A\xrightarrow{f}B\xrightarrow{g}C$ are linear maps.
+The sequence is \emph{exact at $B$} if $\im f=\ker g$:
+the vectors arriving from $A$ are exactly those killed by the map to
+$C$. This is a statement about two specified subspaces of $B$.
+For instance,
+\[
+        0\longrightarrow H\longrightarrow W
+                      \xrightarrow{\rho_H}W/H\longrightarrow0
+\]
+says that inclusion is injective, its image is the kernel of the
+quotient map, and the quotient map is surjective.
+
+Later we will construct an operation $\Del$ taking suitable spaces and
+maps at rank $N=n+q$ to spaces and maps at rank $n$.
+To say that this operation is \emph{exact} means that it preserves
+these image--kernel relationships, with their actual inclusions.
+It must carry an injection to an injection, and an onto map to an
+onto map, on the specified class. It must also identify the transported
+kernel and image \emph{inside the transported ambient space}.
+Matching their dimensions would not do this.
+
+The one-dimensional space $K$, with every permutation acting trivially,
+is called the \emph{trivial module}. It is \emph{simple}: it has no
+proper nonzero subspace. We will use this particular observation for
+invariant targets, rather than assume a general structure theorem
+about representations.
+
+\subsection{Background for the transport construction}
+There are four layers of background here. The first is ordinary
+linear algebra: spans, linear maps, kernels and quotient spaces.
+The second is representation theory: we keep track of relabelling
+while doing that linear algebra. Since the coefficient field has
+positive characteristic, this is \emph{modular} representation theory.
+One familiar shortcut is unavailable: averaging over all permutations
+would divide by $n!$, which is zero in the field once $n\ge p$.
+The later construction supplies a different operator rather than
+using this averaging argument.
+
+A representation is \emph{semisimple} if it is a direct sum of simple
+representations. Here \emph{simple} means that there is no proper
+nonzero invariant subspace. In positive characteristic, an invariant subspace
+need not have an invariant complementary subspace. For example, the
+swap of two coordinates over a characteristic-two field fixes
+$K(x_1+x_2)$. Any invariant complementary line would be an eigenline
+for the swap, but its only eigenvalue is one and its fixed space is
+precisely that same line. Thus no invariant complement exists.
+This elementary example explains why a decomposition into invariant
+pieces cannot simply be assumed in the later construction.
+
+The third layer is the language of categories and functors: a way to
+say that one operation changes many spaces and their connecting
+maps consistently. We spell out that requirement in
+Section~\ref{tx:sec:grammar}. The fourth is the language of exactness,
+usually taught in homological algebra. Here we use just its
+linear-algebra content: preserving kernels, images and quotient
+relations. No knowledge of chain complexes or homology groups is
+needed. For optional background on this terminology, see
+\cite{StacksExact}; the required calculation is developed in this book.
+
+The tensor product introduced next belongs to ordinary multilinear
+algebra. In our application it has a particularly concrete meaning:
+one register for each possible variable multiplication.
+
+\section{The data at one universe size}
+\label{tx:sec:multiplication-registers}
+We now put names on the ingredients of one ordinary PC step.
+\emph{Nothing in this section changes the universe size.}
+In particular, the map $m_n$ below is ordinary polynomial
+multiplication at one fixed rank; it is not the lifting operator.
+We first understand this familiar operation, then ask how to transport it.
+The letter $z$ in the worked polynomial example below is just a
+polynomial variable. In Chapter~\ref{tx:chap:deletion}, $z$ will instead
+denote a linear operator made from block permutations; that operator
+will be defined there.
+
+\subsection{Three spaces with three different jobs}
+Fix a universe size $n$ and a proof-degree budget $d\ge1$.
+The variable names are the members $v$ of the finite set
+$\mathcal V_n$; write $x_v$ for the corresponding polynomial variable.
+There may be many more variables than universe labels.
+For example, variables $x_{ij}$ give $n^2$ names.
+The two numbers must not be identified.
+
+The spaces we shall use are
+\[
+ \begin{array}{ll}
+ P_d(n)=P_{n,\le d}
+   &\text{all polynomials allowed as proof lines},\\
+ L_d(n)=P_{n,\le d-1}
+   &\text{all polynomials small enough to multiply once},\\
+ X(n)=K[\mathcal V_n]
+   &\text{one independent basis vector $[v]$ per variable name}.
+ \end{array}
+\]
+$P_d(n)$ contains both derivable and underivable polynomials.
+$L_d(n)$ also contains both kinds; it imposes only a degree restriction.
+If $V_j(n)$ is the space reached after $j$ closure stages, the part
+we may actually multiply is $V_j(n)\cap L_d(n)$.
+The space $X(n)$ records which variable we use. We do \emph{not}
+require that variable itself to have a proof.
+
+For an explicit coordinate picture, take variables $x,y,z$ and $d=2$.
+Then
+\[
+ \begin{split}
+ P_2(n)&=\Span\{1,x,y,z,x^2,xy,xz,y^2,yz,z^2\},\\
+ L_2(n)&=\Span\{1,x,y,z\},\\
+ X(n)&=\Span\{[x],[y],[z]\}.
+ \end{split}
+\]
+Here the brackets indicate variable-name basis vectors, not quotient
+classes. This is a fixed-instance illustration; it does not specify
+a uniform axiom family or compute a lower bound.
+
+\subsection{Multiplication by one specified variable}
+For each variable $x_v$, consider the map
+\[
+     M_v:L_d(n)\to P_d(n),\qquad M_v(f)=x_vf.
+\]
+It is linear: $x_v(af+bg)=a\,x_vf+b\,x_vg$.
+It stays inside $P_d(n)$ because $\deg f\le d-1$.
+For $d=2$, multiplication by $z$ sends the coefficient vector
+$a+bx+cy+ez$ to $az+bxz+cyz+ez^2$.
+This is an ordinary matrix calculation.
+
+Now we want one map that packages \emph{all} the maps $M_v$.
+Its input should allow a separate polynomial $f_v$ for each variable:
+one slot for what is multiplied by $x$, one for what is multiplied by
+$y$, and so on. On these slots the output should be
+$\sum_v x_vf_v$. A direct sum of one copy of $L_d(n)$ for each
+variable does exactly this.
+
+\subsection{Variable-labelled copies and tensor products}\label{tx:sec:tensor-registers}
+The space of variable-labelled inputs is $X(n)\otimes L_d(n)$.
+Give it one basis vector
+$[v]\otimes\mu$ for each pair consisting of a variable name $v$
+and a monomial $\mu$ of degree at most $d-1$.
+Extend by linear combinations. Grouping these basis vectors by $v$
+identifies the space with those variable-labelled copies of $L_d(n)$:
+\[
+       X(n)\otimes L_d(n)\ \simeq\
+                     \bigoplus_{v\in\mathcal V_n}L_d(n).
+\]
+Every vector has a unique expression $\sum_v[v]\otimes f_v$.
+The notation $[v]\otimes f$ means: put the polynomial $f$ in the
+slot labelled by $v$, with zero in every other slot.
+
+For the three-variable example this space has dimension $3\cdot4=12$.
+It remembers inputs such as $[x]\otimes y$ and $[y]\otimes x$
+as distinct vectors, even though their products are the same
+polynomial $xy$. It also allows sums such as
+$[x]\otimes f+[z]\otimes g$, with two different multiplication requests.
+
+The tensor symbol is different from an ordinary Cartesian product.
+Polynomial multiplication on pairs
+$(a,f)\in X(n)\times L_d(n)$, after identifying $a$ with its
+linear polynomial, is \emph{bilinear}: it is linear in either
+argument when the other is fixed. It is not a linear map on the
+vector space of pairs. For example,
+\[
+ ( [x],0)+(0,y)=([x],y),
+\]
+whereas multiplication is zero on the two summands and is $xy$
+on their sum. The tensor product makes all these bilinear requests
+into one \emph{linear} map. In a basis it is just a matrix on the
+pair coordinates described above.
+
+In particular,
+$([x]+[y])\otimes f=[x]\otimes f+[y]\otimes f$ and
+$[x]\otimes(f+g)=[x]\otimes f+[x]\otimes g$.
+These rules distribute sums in either input; the monomial-pair
+description already implements them.
+The variable-labelled-copy interpretation uses the specified basis
+of $X(n)$. It is not a claim that a general tensor product comes
+with a preferred decomposition into copies.
+
+The same coordinate construction applies to arbitrary finite-dimensional
+spaces $A$ and $B$. After choosing bases $a_i$ and $b_j$, their tensor
+product has basis $a_i\otimes b_j$. A bilinear map $\beta:A\times B\to C$
+extends to a linear map on these coordinates by sending
+$a_i\otimes b_j$ to $\beta(a_i,b_j)$. For linear maps
+$f:A\to A'$ and $g:B\to B'$, the tensor map is defined by
+$(f\otimes g)(a\otimes b)=f(a)\otimes g(b)$ and extended linearly.
+Changing either basis changes the coordinates by this same rule;
+the construction does not depend on which bases were chosen.
+If labels act on both spaces, their \emph{diagonal action} is
+$\pi(a\otimes b)=(\pi a)\otimes(\pi b)$. Each summand uses the same
+permutation in both positions. This is the tensor action used when
+multiplication and later detection pairings are transported.
+
+\subsection{The single multiplication map}
+Combining the variable multiplications gives the linear map
+\[
+ \boxed{\quad
+ m_n:X(n)\otimes L_d(n)\longrightarrow P_d(n),\qquad
+ m_n\!\left(\sum_v[v]\otimes f_v\right)=\sum_v x_vf_v.
+ \quad}
+\]
+The subscript $n$ only tells us at which universe size the variables
+and polynomials are being used. On a basis pair it sends
+$[v]\otimes\mu$ to $x_v\mu$.
+This determines the whole map by linearity.
+Some later formulas write $x_v$ itself for the basis vector of $X(n)$;
+at its output, $x_v$ always means the actual polynomial variable.
+
+This map need not be injective. For instance,
+$[x]\otimes y-[y]\otimes x$ is a nonzero input vector with output zero.
+Different multiplication requests can produce the same polynomial;
+their difference belongs to the kernel.
+The map is not being asked to recover the request from its output.
+We use its \emph{image} to collect the polynomials obtained by legal
+multiplications.
+
+\subsection{A complete closure step with cancellation}
+Return to the three axioms
+\[
+ f_1=xy+x,\qquad f_2=xy+1,\qquad f_3=xz
+                         \quad\text{over }\mathbb F_2,
+\]
+and keep the degree budget $d=2$. We first take all their linear
+combinations, $V_0=\Span\{f_1,f_2,f_3\}$. Comparing the coefficients
+of $xy$ and $xz$, as in Chapter~\ref{tx:ch:closure}, gives
+\[
+                         V_0\cap L_2=\Span\{x+1\}.
+\]
+Both $f_1$ and $f_2$ were quadratic. Their sum $x+1$ is linear
+and is now eligible for multiplication.
+The input $[z]\otimes(x+1)$ lies in
+$X\otimes(V_0\cap L_2)$, and
+\[
+                 m_n([z]\otimes(x+1))=xz+z.
+\]
+Adjoining the old vector $f_3=xz$ gives the target $z$.
+The corresponding PC lines are completely explicit:
+\[
+ \begin{array}{c|l|l}
+ \text{line}&\text{polynomial}&\text{reason}\\ \hline
+ 1&xy+x&\text{input }f_1\\
+ 2&xy+1&\text{input }f_2\\
+ 3&xz&\text{input }f_3\\
+ 4&x+1&\text{add lines 1 and 2}\\
+ 5&xz+z&\text{multiply line 4 by }z\\
+ 6&z&\text{add lines 5 and 3}.
+ \end{array}
+\]
+Every line has degree at most two. Multiplying line 1 or line 2
+directly by $z$ would instead give a cubic and exceed the budget.
+This is why the operation must first identify the low-degree
+\emph{combinations}, rather than select low-degree inputs.
+
+For a general current stage the same calculation reads
+\[
+ \underbrace{V_{j+1}(n)}_{\text{next stage}}
+ =\underbrace{V_j(n)}_{\text{old consequences}}
+  +\underbrace{m_n\bigl(X(n)\otimes
+                   (V_j(n)\cap L_d(n))\bigr)}_{\text{allowed new multiples}}.
+\]
+The plus sign is a sum of subspaces: take all sums of one vector
+from each displayed space. The image term is itself a subspace
+because $m_n$ is linear.
+
+\subsection{The input, inclusion and target maps}
+There are two other PC maps besides multiplication.
+Let $\mathcal A_{n,\le d}$ be the axiom indices whose polynomials
+fit the degree budget. A vector in $K[\mathcal A_{n,\le d}]$
+stores one coefficient for each such index. The map
+\[
+        \alpha_n:K[\mathcal A_{n,\le d}]\to P_d(n),
+                  \qquad [a]\mapsto f_{a,n}
+\]
+forms the resulting linear combination of usable axioms.
+Thus $V_0(n)=\im\alpha_n$. Distinct input columns may be dependent;
+the image, not the number of columns, is the initial consequence space.
+The map
+$\ell_n:L_d(n)\hookrightarrow P_d(n)$ is simply inclusion:
+the same polynomial is now regarded as a possible degree-$d$ line.
+Remembering this inclusion is necessary when forming an intersection.
+
+For NS, instead put one coordinate on each permitted pair $(\mu,a)$,
+where $\mu$ is a monomial and
+$\deg\mu+\deg f_{a,n}\le d$. Calling this set $\mathcal C_d(n)$,
+the certificate map is
+\[
+ \phi_n:K[\mathcal C_d(n)]\to P_d(n),\qquad[\mu,a]\mapsto\mu f_{a,n}.
+\]
+Its image $I_d(n)$ is one span, with no PC iteration.
+The set $\mathcal C_d(n)$ here consists of certificate \emph{indices};
+it is not the representation class $\mathcal C_r(N)$ introduced
+in Chapter~\ref{tx:chap:deletion}.
+
+Finally, the requested targets have a separate column map
+\[
+       J_n:K[\mathcal B_n]\to P_d(n),\qquad[b]\mapsto G_{b,n}.
+\]
+We use this map into $P_d(n)$ only when every full target degree
+is at most $d$. A budget below a stabilised target degree cannot
+derive that target; we do not truncate the target to make it fit.
+The map records what we ask to derive, not extra input axioms.
+Adding its columns to $\alpha_n$ would change the problem.
+
+\begin{checkpoint}
+$P_d$ contains possible proof lines; $V_j$ contains the lines already
+reachable at stage $j$; $L_d$ is the degree test; $X$ labels the permitted
+variables. The map $m_n$ assembles ordinary variable multiples.
+Only after understanding these fixed-rank ingredients do we ask for
+an operation relating them at two different ranks.
+\end{checkpoint}
+
+\section{Building a consequence space by linear operations}\label{tx:sec:grammar}
+We build each next consequence space by four familiar tasks:
+find an intersection, make variable-labelled copies, apply the
+multiplication matrix, and add the old space. We now spell out that
+recipe and why kernels and images describe it.
+
+\subsection{A direct sum stores two vectors; a sum combines them}
+If $U,V$ are subspaces of the same ambient $P$, then $U\oplus V$
+is the space of \emph{pairs} $(u,v)$. In contrast, $U+V\subseteq P$
+is the space of outputs $u+v$. The linear map
+\[
+              \sigma:U\oplus V\to P,\qquad (u,v)\mapsto u+v
+\]
+has image $U+V$.
+These spaces need not have the same dimension.
+For $U=V=Kx$, the input has two independent coordinates,
+while every output is a multiple of $x$. The pair $(x,-x)$
+belongs to the kernel. The direct sum remembers the two requests;
+the sum forgets how an output was divided between them.
+
+\subsection{An intersection is found by solving a difference equation}
+Keep the same ambient space $P$ and define
+\[
+              \delta:U\oplus V\to P,\qquad(u,v)\mapsto u-v.
+\]
+A pair belongs to its kernel exactly when $u=v$. The common vector
+then belongs to both $U$ and $V$. Thus the map
+\[
+                  U\cap V\longrightarrow\ker\delta,
+                              \qquad h\mapsto(h,h)
+\]
+is an isomorphism, with inverse $(u,u)\mapsto u$.
+Strictly, the kernel is a space of pairs, whereas the intersection
+is a subspace of $P$. The inverse just given, followed by inclusion
+in $P$, specifies how to identify them.
+This small distinction matters when the whole calculation is transported.
+
+In the cancellation example, $U=V_0$ and $V=L_2$.
+A kernel vector records a linear combination of the three axioms
+which equals a degree-one polynomial. Solving the difference equation
+gives the common line $K(x+1)$. It finds a cancelled combination,
+not merely a subset of the original input columns.
+
+\subsection{Read the closure recurrence as a four-step algorithm}
+Suppose the current embedded space $V_j(n)\subseteq P_d(n)$ is known.
+\begin{enumerate}
+\item Find $U_j(n)=V_j(n)\cap L_d(n)$ by the difference-map kernel
+      above. These are the already derived polynomials eligible
+      for one further multiplication.
+\item Make one copy of $U_j(n)$ for each variable name.
+      This is $X(n)\otimes U_j(n)$, sitting in
+      $X(n)\otimes L_d(n)$ by the actual inclusion $U_j(n)\subseteq L_d(n)$.
+\item Apply the restriction of $m_n$ to that input space, and take
+      its image. Call the image $M_j(n)$. It consists of all sums
+      $\sum_v x_vf_v$ with $f_v\in U_j(n)$.
+\item Apply the sum map from $V_j(n)\oplus M_j(n)$ to $P_d(n)$.
+      Its image is the next space $V_{j+1}(n)$.
+\end{enumerate}
+All these operations are finite linear algebra at one rank.
+Finding kernels or images is Gaussian elimination; making the
+variable-labelled copies is just organising coordinates.
+Each vector thereby obtained has a legal proof, by the constructive
+argument in Proposition~\ref{tx:prop:closure}.
+
+An unchanged dimension would not tell us that the right space had
+been obtained. For example, $Kx$ and $Ky$ are isomorphic
+one-dimensional subspaces of $Kx\oplus Ky$, but only the first
+contains the target $x$. We must keep the embeddings and the
+specified maps, not just abstract isomorphism types.
+
+\subsection{Diagram and functor: the language behind the recipe}
+A \emph{diagram} in this book is a collection of specified vector
+spaces and linear maps between them. Calling the data of Section 5.3
+the \emph{degree-$d$ polynomial diagram} simply says that we remember
+the ambient, low-degree, variable, input and target spaces together
+with their maps. The inclusions are part of the data.
+
+The vocabulary comes from category theory. A \emph{category} organises
+objects and the maps allowed between them, with identity maps and
+composition. Here the objects are spaces with label actions and the
+allowed maps are equivariant linear maps. A \emph{functor} coherently
+assigns a new object to each object and a new map to each allowed
+map: it preserves identities and composition. Thus, for maps
+$A\xrightarrow{f}B\xrightarrow{g}C$,
+\[
+                \Del(gf)=\Del(g)\Del(f).
+\]
+This equation ensures that a composite calculation can be
+transported either all at once or step by step.
+The operation used here is linear on the allowed maps and must
+also preserve the finite direct sums needed in the recipe.
+
+An identification between transported and smaller-rank spaces must
+also respect their connecting maps. For fixed-data maps $f_N$ and
+$f_n$, write these identifications as $\eta_A$ and $\eta_B$. The
+required square is
+\[
+\begin{CD}
+\Del(A_N) @>{\Del(f_N)}>> \Del(B_N)\\
+@V{\eta_A}VV @VV{\eta_B}V\\
+A_n @>{f_n}>> B_n .
+\end{CD}
+\]
+It \emph{commutes} when the two paths have the same value:
+$\eta_B\Del(f_N)=f_n\eta_A$. A \emph{natural} identification satisfies
+this compatibility for the allowed maps. This is the content of
+naturality used here; it is not a claim that auxiliary witness
+coefficients have a unique choice.
+
+We have \emph{not} constructed this operation yet.
+Write $\Del$ for the operation we want, from a larger rank
+$N=n+q$ to the retained rank $n$. We must first identify the transported
+fixed data with the data at $n$, so that the transported multiplication
+map really is $m_n$, rather than some unrelated matrix of the same size.
+We must then show that it preserves the kernels, images and sums
+used by the four-step recipe.
+
+If those statements hold, the induction is straightforward.
+Transport the initial image $\im\alpha_N$ to $\im\alpha_n$.
+If the current space has been transported, preserve the difference-map
+kernel, the variable-labelled copies with their inclusion, the
+multiplication image, and finally the sum image.
+The next stage is therefore transported too.
+At a stage past both stabilisation points, this gives transport of
+the entire degree-$d$ consequence space.
+No individual proof length has to be bounded or followed through the
+change of universe.
+
+This is why exactness is useful here. It is the preservation of a
+concrete linear-algebra recipe. The formal contract below records the
+three things which will make this reasoning valid; its existence
+is the subject of the later construction.
+
+\begin{definition}[Transport contract for a polynomial diagram]\label{tx:def:polynomial-diagram}
+At a fixed degree $d\ge1$, a transport from rank $N$ to rank $n$
+has three obligations.
+\begin{enumerate}
+\item \textbf{Identify the data.} Identify the transported ambient,
+lower-degree and basis spaces with their smaller-rank counterparts,
+carrying $\alpha,\ell,m,\phi,J$ to the actual smaller-rank maps.
+For multiplication, the identification
+$\Del(X(N)\otimes Y)\simeq X(n)\otimes\Del(Y)$ must respect the
+inclusions of the subspaces $Y\subseteq L_d(N)$ used in the recurrence.
+\item \textbf{Preserve the calculation.} Preserve kernels, images,
+finite direct sums and their defining maps throughout the closure and
+target calculation. This transports intersections, sums and every
+closure stage as embedded subspaces.
+\item \textbf{Reflect target vanishing.} For $H_N=I_d(N)$ or $C_d(N)$,
+put $Y_N=(H_N+\im J_N)/H_N$. Require
+$\Del(Y_N)=0\Longrightarrow Y_N=0$. This last condition says that
+transport cannot hide a requested target outside the consequence space.
+\end{enumerate}
+\end{definition}
+
+The next two lemmas separate the work: the first two obligations
+transport the closure, while the third turns that transport into a
+two-way target-membership test.
+Throughout this discussion, transport includes the coherent maps and
+finite direct sums just described. The tensor identification is
+compatible with the actual subspace inclusions, not an independently
+chosen isomorphism for each space.
+
+\begin{lemma}[Transporting a closure recurrence]\label{tx:lem:closure-transport}
+Suppose an operation $\Del$ takes the larger-rank ambient, lower-degree,
+variable and usable-axiom spaces and maps to their actual smaller-rank
+counterparts. Suppose it preserves kernels and images on all the spaces
+used by the recurrence, and has the natural permutation-first-factor
+identification
+\[
+ \Del(X(N)\otimes Y)\simeq X(n)\otimes\Del(Y).
+\]
+Then, as embedded subspaces of the identified smaller ambient space,
+\[
+                         \Del(V_j(N))=V_j(n)
+                         \quad\text{for every }j.
+\]
+It also transports the stable PC closure. Transport of the certificate
+map gives $\Del(I_d(N))=I_d(n)$.
+\end{lemma}
+\begin{proof}
+The initial equality is preservation of the actual axiom-map image.
+Given the equality at stage $j$, express the intersection as the kernel
+of $(v,l)\mapsto v-l$. Preserve that kernel and its inclusion. Apply
+the natural tensor identification and the actual multiplication map.
+Preserve its image and then its sum with the old stage. This gives the
+next equality. Both finite-dimensional chains eventually stabilise;
+choose a stage past both stabilisation points to obtain the closure
+statement. NS is the single certificate-map image calculation.
+\end{proof}
+
+\begin{checkpoint}
+The content is compatibility of the diagrams, not equality of dimensions.
+An isomorphism chosen separately for every space need not carry the
+intersection, multiplication map or target vector to the right one.
+\end{checkpoint}
+
+\section{Preserving consequences and detecting missing targets}\label{tx:sec:target-reflection}
+We now reach a separate question. Suppose the calculation of the
+consequence space has been transported correctly. Does that already
+tell us, in both directions, whether the prescribed target is derivable?
+The answer depends on whether transport can erase the obstruction
+to deriving it. We start with the ordinary quotient test.
+
+\subsection{A target leaves a remainder modulo the consequences}
+Let $H_N$ be $I_d(N)$ for NS or $C_d(N)$ for PC, inside
+$W_N=P_d(N)$. For a single target $g$, its class $[g]\in W_N/H_N$
+is zero exactly when $g$ has a proof within the degree budget.
+Think of the quotient as recording only directions not yet proved.
+
+For several targets the composite map
+\[
+ K[\mathcal B_N]\xrightarrow{J_N}W_N
+                         \xrightarrow{\rho_{H_N}}W_N/H_N
+\]
+sends each target index to that target's unproved class.
+Every target is derived exactly when this map is zero.
+Its image is naturally the space
+\[
+                       Y_N=(H_N+\im J_N)/H_N.
+\]
+To check the formula, map $H_N+\im J_N$ into $W_N/H_N$.
+Its kernel is $H_N$, and its image is the target classes just described.
+Thus $Y_N$ is a space of missing target directions, not a new
+polynomial or a new axiom.
+As before, the full target degrees must fit $d$ before we use
+$J_N$ into $P_d(N)$; there is no degree truncation.
+
+For the small example $W=Kx\oplus Ky$, $H=K(x+y)$, a request for
+$x+y$ has zero obstruction. A request for both $x$ and $y$ has
+obstruction $W/H\ne0$. Knowing that their sum is a consequence
+does not derive the two summands individually.
+
+\subsection{What exact transport establishes, and what is still missing}
+If all the actual maps are identified correctly, exactness takes the
+target image and its quotient to the corresponding calculation at $n$:
+\[
+                             \Del(Y_N)\simeq Y_n.
+\]
+If $Y_N=0$, then $Y_n=0$. A derived request therefore remains derived
+after this downward transport.
+But from $Y_n=0$ we know only $\Del(Y_N)=0$.
+To conclude $Y_N=0$ we need to know that this operation cannot
+send a \emph{nonzero} missing-target space to zero.
+That additional implication is called \emph{reflection of vanishing}.
+In ordinary language: a missing consequence must still be detectable
+after transport.
+
+There is no conflict with exactness. Even if an injection is
+transported to an injection, both its transported source and its
+transported destination might be zero.
+The map $0\to0$ is injective and surjective.
+Preserving relations among surviving spaces does not by itself
+require every original space to survive.
+
+\subsection{An exact operation which really loses an obstruction}
+Here is a concrete illustration. Work with pairs of vector spaces
+$(A,B)$, with maps given by pairs of linear maps
+$(f_A,f_B)$. Maps act separately on the two components and are not
+allowed to mix them. Define $F(A,B)=A$: retain the first component
+and forget the second.
+
+Kernels, images, quotients and direct sums are computed componentwise.
+For example, $\ker(f_A,f_B)=(\ker f_A,\ker f_B)$, and forgetting the
+second component leaves $\ker f_A$. The same check works for images.
+Consequently $F$ is an exact operation on these paired spaces.
+This is not a claim that ordinary projection preserves every
+intersection of arbitrary subspaces of $K^2$; our objects and allowed
+maps are the componentwise ones just specified.
+
+Now take
+\[
+ W=(K,K),\qquad H=(K,0),\qquad Q=(0,K),\qquad
+                         J:Q\hookrightarrow W.
+\]
+The target map includes the second component. Its missing direction
+has obstruction
+$Y=(H+\im J)/H=(0,K)\ne0$.
+After transport,
+\[
+             F(W)=K,\qquad F(H)=K,\qquad F(Q)=0,\qquad F(Y)=0.
+\]
+All the image--kernel calculations have been preserved, but the
+target obstruction was forgotten.
+This example explains the logical issue only; it is not the
+polynomial deletion construction or a counterexample to our final
+theorem. The additional survival lemma is precisely what prevents
+this phenomenon on the relevant polynomial subquotients.
+
+\subsection{How the actual proof will keep missing directions visible}
+If a polynomial $g$ is outside $H$, elementary linear algebra supplies
+a functional $\lambda$ with $\lambda(H)=0$ and $\lambda(g)=1$:
+extend a basis of $H$ by $g$ and prescribe these values.
+For $H=K(x+y)$, $g=x$, the example is
+$\lambda(ax+by)=a-b$.
+Such a functional certifies nonmembership without requiring an
+invariant representative of a proof.
+
+The permutation basis of the polynomial space has a dot product,
+so a functional can be represented by a coefficient vector.
+All functionals annihilating $H$ form $H^\perp$.
+Concretely, this pairing is
+$\langle a,b\rangle=\sum_\mu a_\mu b_\mu$ on monomial coordinates.
+It is nondegenerate because each coordinate can be tested separately.
+There is no positivity requirement over the coefficient field.
+In characteristic two, for example, $(1,1)$ pairs to zero with itself
+while pairing nontrivially with $(1,0)$.
+Accordingly $H^\perp$ means the \emph{annihilator} of $H$ under this
+pairing, not a chosen complementary subspace.
+Permutations preserve the pairing because they permute its coordinates
+simultaneously. The induced action on a functional is
+$(\pi\lambda)(v)=\lambda(\pi^{-1}v)$; this is the usual dual action.
+Pairing them with the missing classes gives a map onto $K$ whenever
+the obstruction is nonzero. The pairing is compatible with
+relabelings as a whole; an individually chosen separating functional
+need not be invariant.
+
+The formal argument in Chapter~\ref{tx:chap:assemble-transfer} uses
+exactness and a tensor compatibility to show that, if deletion erased
+the obstruction, it would erase the source of this onto pairing.
+It would then produce a map from zero onto the surviving line
+$\Del(K)\simeq K$, which is impossible.
+This is the reason for a doubled ambient support budget.
+One monomial coordinate uses at most $kd$ labels; a pair of such
+coordinates uses at most $2kd$. We are bounding the coordinates
+of the pairing's ambient basis, not the union of labels in an
+arbitrary polynomial or functional.
+
+We have described the idea here, not assumed the survival theorem.
+The next lemma records the implication once survival is proved.
+
+\begin{lemma}[The target-reflection contract]\label{tx:lem:target-contract}
+In addition to the closure transport, suppose the actual target map is
+transported and every nonzero subquotient of $P_d(N)$ survives deletion.
+Then
+\[
+        \im J_N\subseteq H_N\quad\Longleftrightarrow\quad
+        \im J_n\subseteq H_n.
+\]
+\end{lemma}
+\begin{proof}
+The two membership conditions are $Y_N=0$ and $Y_n=0$.
+Exactness identifies $\Del(Y_N)$ with $Y_n$. Since $Y_N$ is a
+subquotient of the ambient polynomial space, survival of nonzero
+subquotients reflects its vanishing. This proves both directions.
+\end{proof}
+
+The survival lemma will come from a nondegenerate permutation-basis
+pairing, with doubled support. It is proved in
+Chapter~\ref{tx:chap:assemble-transfer}; it is not an extra unproved
+premise of the final theorem.
+
+\section{The easier invariant target}
+The simplest important request is refutation: derive the polynomial
+$1$. More generally, let $G_N$ be fixed by every label permutation.
+The input space of its target map has only one coordinate, recording
+the scalar coefficient with which that target is requested.
+For a fully invariant polynomial $G_N$, the source is just $K$:
+\[
+                   j_N:K\to P_d(N),\qquad a\mapsto aG_N.
+\]
+Its image in $P_d(N)/H_N$ is zero or a copy of the simple trivial
+module. The deletion of Chapter~\ref{tx:chap:deletion} fixes the trivial
+module $K$, so exactness already reflects
+whether this composite is zero. This explains why the invariant-target
+budget is smaller than the general indexed-target budget. The constant
+one is only one example of an invariant target.
+
+Here is the argument without the module terminology. A map from a
+one-dimensional space has either zero image or a one-dimensional
+image. If the missing class $[G_N]$ is nonzero, its line has trivial
+label action because $G_N$ was invariant. Deletion preserves the
+image map and keeps that trivial line nonzero. It therefore cannot
+hide this particular obstruction. An indexed request can instead
+have a higher-dimensional missing space, so the doubled-support
+pairing argument is needed there.
+
+\section{The budget table}
+The fixed variable support is at most $k$, axiom-index support at most
+$s$, and target-index support at most $t$. The spaces have the following
+safe bounds.
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+Basis or ambient space & Support bound\\
+\midrule
+Degree-$d$ monomials & $kd$\\
+Multiplier--axiom pairs & $kd+s$\\
+Variable with degree-$d-1$ monomial & $k+k(d-1)=kd$\\
+Target index & $t$\\
+Two degree-$d$ monomial coordinates & $2kd$\\
+\bottomrule
+\end{tabular}
+\end{center}
+One affine choice covering the whole diagram and the survival argument is
+\[
+                           R(d)=2kd+s+t.
+\]
+For an invariant target the pairing is unnecessary, so use $R(d)=kd+s$.
+Nothing in the PC recurrence increases the bound because its intermediate
+spaces are subspaces of those fixed ambient spaces. In particular, the
+support budget does not grow with proof length.
+
+\section{The connection with representation stability}\label{tx:sec:stability-context}
+The contract belongs to a familiar mathematical pattern: hold the
+complexity of a labelled object fixed and let the number of available
+labels grow. Here the complexity parameter is proof degree $d$, and
+one monomial uses at most $kd$ labels. The ambient spaces grow, but
+the allowed equality patterns among the labels in a basis object
+come from a finite list. Representation stability studies how such
+families of symmetric-group representations are related across ranks.
+Three references help locate our argument within that setting.
+The terminology in this section concerns the surrounding literature.
+A \emph{categorical equivalence} matches objects and their allowed
+maps, with an inverse up to compatible isomorphisms. An
+\emph{abelian category} is a setting in which kernels, images and
+quotients have the formal properties familiar from modules.
+Spaces with equivariant linear maps are an example. Our construction
+below will establish the needed maps directly.
+
+\subsection{Church--Ellenberg--Farb: the broad fixed-degree picture}
+An FI-module is a functor from finite sets and injections to vector
+spaces: every injection has an assigned linear map, and compositions
+are respected. Church--Ellenberg--Farb~\cite{CEF} turn representation
+stability into a finite-generation condition. Their characteristic-zero
+results give eventual character polynomials and polynomial dimensions;
+fixed-degree configuration-space cohomology is one motivating example.
+This provides a useful comparison with fixing polynomial degree here.
+A character is the trace of a permutation acting on a representation.
+On a permutation basis it counts fixed basis objects. For example,
+the single-label space has character equal to the number of fixed
+labels; the space on ordered pairs of distinct labels has character
+$a(a-1)$ when a
+permutation fixes $a$ labels. A \emph{character polynomial} describes
+such traces using counts of cycles of specified lengths.
+The cited cohomology examples are background applications of that
+framework, not prerequisites for this book's proof.
+
+Our consequence spaces need not form an FI-submodule under ordinary
+inclusion. For example, the uniform axiom $f_n=\sum_{i<n}x_i$ has
+degree-one consequence space $Kf_n$. Under $[n]\hookrightarrow[n+1]$,
+ordinary inclusion takes it to $K\sum_{i<n}x_i$, which is not contained
+in $Kf_{n+1}$. The new coefficient of $x_n$ proves the failure directly.
+Thus fixed-degree FI intuition does not supply the consequence-transfer
+theorem automatically. We have to construct the maps which preserve
+the actual uniform equations.
+
+\subsection{Harman: the close modular-periodicity antecedent}
+Harman~\cite[Theorem 2.5 and Corollary 2.11]{Harman} constructs
+periodic equivalences for bounded-weight permutation-module categories
+and extends them to the relevant abelian categories. The stable range
+is linear: his permutation result compares $n,m>2r$. In positive
+characteristic, the suitable residue of the rank matters, rather than
+one characteristic-zero eventual-stability statement.
+The structural principle of linear-range modular periodicity therefore
+predates this proof-complexity application.
+His Proposition~2.7 includes compatibility with natural operations on
+permutation modules; Proposition~2.12 includes induction, restriction,
+tensor products and duality on the abelian envelope. Compatibility with
+these operations is therefore also an antecedent. Here we construct
+the actual polynomial diagrams independently and prove that their
+closure operations and prescribed-target obstructions survive deletion,
+with the support and rank bounds needed for the degree application.
+The bounded parameter in this comparison controls the small
+non-growing part of a permutation-module index. In the tuple
+models used here, the corresponding concrete parameter is the
+number of labelled positions $b\le r$.
+
+Keep the period convention precise. This book uses a prime power
+\emph{strictly greater} than the support budget. Harman's printed
+$p^{\lceil\log_p r\rceil}$ needs care when $r$ is itself a power of
+$p$; the strict choice avoids that boundary. For example,
+$\binom52=0$ and $\binom72=1$ modulo two, although $5$ and $7$ agree
+modulo two. Counts of degree $r$ can detect a digit beyond that
+non-strict modulus. The present argument proves its strict-period
+statement directly.
+
+\subsection{Hone and coauthors: an explicit functor viewpoint}
+Hone, Klein, Pauwels, Sherman, Yacobi and Zhang~\cite{HKPSYZ}
+construct explicit periodic functors through semisimplification,
+motivated by the Duflo--Serganova functor in Lie superalgebra theory.
+Their symmetric-group result in Theorem 8.5.3 gives a closely related
+categorical setting. It helps explain why an operation which removes
+a prime-power block can have more structure than a numerical
+coincidence of dimensions. Its hypotheses and restricted categories
+matter; this is not global exactness on all representations.
+In that literature, \emph{semisimplification} quotients a category by
+maps invisible to trace tests: $f:A\to B$ is negligible when
+$\operatorname{tr}(gf)=0$ for every allowed $g:B\to A$.
+This is an operation on maps, not merely replacing each representation
+by a list of its simple factors.
+The Duflo--Serganova analogy starts with a parity-changing square-zero
+operator on a graded representation and takes its kernel modulo image.
+For the present proof the concrete quotient below is sufficient;
+none of the superalgebra machinery is assumed.
+
+The concrete operation here is
+$\Del(M)=\ker z_M/(\ker z_M\cap\im z_M)$. Here $z_M$ is a linear
+operator on a representation $M$, formed from permutations of the
+added block; Chapter~\ref{tx:chap:deletion} gives its definition.
+Its powers mean repeated composition of that operator. In characteristic two,
+$z^2=0$ makes this look like the homology of a square-zero operator.
+Homology generally fails to preserve injections, and the two-point
+example in Chapter~\ref{tx:chap:deletion} shows that failure directly.
+For a square-zero map $d:M\to M$, the relation $d^2=0$ implies
+$\im d\subseteq\ker d$. In homological language, kernel vectors are
+\emph{cycles}, image vectors are \emph{boundaries}, and
+$\ker d/\im d$ is the \emph{homology}: the cycles remaining after
+boundaries are identified with zero.
+This vocabulary describes a quotient of two concrete subspaces.
+Our characteristic-two deletion has this form. In odd characteristic,
+$z^p=0$ need not give $\im z\subseteq\ker z$, so the intersection
+in the displayed quotient remains essential.
+Our common group-algebra projector proves exactness on the required
+bounded-support class, with the actual coefficient maps. In odd
+characteristic the quotient is defined exactly as displayed, not
+silently replaced by $\ker z/\im z^{p-1}$.
+
+The proof which follows is self-contained: it constructs the witness,
+proves exactness and transports the whole NS or ordinary-PC diagram.
+The references explain the mathematical setting and the antecedents;
+they are not unproved inputs to the argument. The application requires
+prescribed-target reflection, the separate degree-zero case and the
+onset/period estimates used in Chapter~\ref{tx:ch:profiles}. No claim
+that modular periodicity itself originates here is needed.
+
+\section{How the rest of the proof fulfils the contract}
+We add $q=p^a>R(d)$ labels and retain at least $2R(d)-1$.
+The prime-power block defines a nilpotent operator $z$. On permutation
+bases a quotient of its kernel deletes exactly the block labels, but
+that quotient is not automatically exact on subspaces. One common
+group-algebra construction produces an idempotent $e$ which models the quotient
+on every needed space at once: $e^2=e$, so $e$ acts as a projection.
+That common expression supplies exactness
+and map compatibility. The only hard quantitative question is how many
+retained labels are needed to build it.
+
+In characteristic two, the preliminary construction uses $1+2+\cdots+r$ labels for a support
+budget $r$. The improved construction reuses one pool and requires only
+$\max_{b\le r}(2b-1)$. Once these bounds are proved, this chapter's
+contract becomes the actual transfer theorem rather than a conditional
+plan. The next chapter first shows exactly how that theorem yields the
+four types, so we know why the improvement from a sum to a maximum matters.

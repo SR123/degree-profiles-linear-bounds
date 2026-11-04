@@ -1,0 +1,172 @@
+ClaudeComparison.comparison : ∀ (p : ℕ) [Fact (Nat.Prime p)] {R : Type} [inst : Field R] [CharP R p]
+  (T : DegreeProfilesReview.Uniform.Template R),
+  ∃ F,
+    Monotone F ∧
+      ∀ (n t : ℕ), DegreeProfilesReview.PC.Refutes (T.inst n) t → DegreeProfilesReview.NS.NSRefutes (T.inst n) (F t)
+ClaudeComparison.chainBound : ∀ (p : ℕ) [Fact (Nat.Prime p)] {R : Type} [inst : Field R] [CharP R p]
+  (T : DegreeProfilesReview.Uniform.Template R), ClaudeC017.ChainBound R T.Var
+ClaudeComparison.upperComparison : ∀ (p : ℕ) [Fact (Nat.Prime p)] {R : Type} [inst : Field R] [CharP R p]
+  (T : DegreeProfilesReview.Uniform.Template R),
+  ∃ F, Monotone F ∧ DegreeProfilesReview.Profiles.UpperComparison F T.pcProfile T.nsProfile
+ClaudeComparison.types_agree : ∀ (p : ℕ) [Fact (Nat.Prime p)] {R : Type} [inst : Field R] [CharP R p]
+  (T : DegreeProfilesReview.Uniform.Template R),
+  have N := ClaudeWitnessTransfer.wOnset T.k T.s T.n0 ClaudeC017.triW;
+  (DegreeProfilesReview.Profiles.IsT1 T.pcProfile ↔ DegreeProfilesReview.Profiles.IsT1 T.nsProfile) ∧
+    (DegreeProfilesReview.Profiles.IsT2 T.pcProfile N ↔ DegreeProfilesReview.Profiles.IsT2 T.nsProfile N) ∧
+      (DegreeProfilesReview.Profiles.IsT3 T.pcProfile N ↔ DegreeProfilesReview.Profiles.IsT3 T.nsProfile N) ∧
+        (DegreeProfilesReview.Profiles.IsT4 T.pcProfile N ↔ DegreeProfilesReview.Profiles.IsT4 T.nsProfile N)
+ClaudeComparison.common_type : ∀ (p : ℕ) [Fact (Nat.Prime p)] {R : Type} [inst : Field R] [CharP R p]
+  (T : DegreeProfilesReview.Uniform.Template R),
+  have N := ClaudeWitnessTransfer.wOnset T.k T.s T.n0 ClaudeC017.triW;
+  DegreeProfilesReview.Profiles.IsT1 T.pcProfile ∧ DegreeProfilesReview.Profiles.IsT1 T.nsProfile ∨
+    DegreeProfilesReview.Profiles.IsT2 T.pcProfile N ∧ DegreeProfilesReview.Profiles.IsT2 T.nsProfile N ∨
+      DegreeProfilesReview.Profiles.IsT3 T.pcProfile N ∧ DegreeProfilesReview.Profiles.IsT3 T.nsProfile N ∨
+        DegreeProfilesReview.Profiles.IsT4 T.pcProfile N ∧ DegreeProfilesReview.Profiles.IsT4 T.nsProfile N
+ClaudeComparison.types_agree_linear : ∀ (p : ℕ) [Fact (Nat.Prime p)] {R : Type} [inst : Field R] [CharP R p]
+  (T : DegreeProfilesReview.Uniform.Template R),
+  have N := DegreeProfilesReview.Profiles.onset T.k T.s T.n0;
+  (DegreeProfilesReview.Profiles.IsT1 T.pcProfile ↔ DegreeProfilesReview.Profiles.IsT1 T.nsProfile) ∧
+    (DegreeProfilesReview.Profiles.IsT2 T.pcProfile N ↔ DegreeProfilesReview.Profiles.IsT2 T.nsProfile N) ∧
+      (DegreeProfilesReview.Profiles.IsT3 T.pcProfile N ↔ DegreeProfilesReview.Profiles.IsT3 T.nsProfile N) ∧
+        (DegreeProfilesReview.Profiles.IsT4 T.pcProfile N ↔ DegreeProfilesReview.Profiles.IsT4 T.nsProfile N)
+ClaudeComparison.common_type_linear : ∀ (p : ℕ) [Fact (Nat.Prime p)] {R : Type} [inst : Field R] [CharP R p]
+  (T : DegreeProfilesReview.Uniform.Template R),
+  have N := DegreeProfilesReview.Profiles.onset T.k T.s T.n0;
+  DegreeProfilesReview.Profiles.IsT1 T.pcProfile ∧ DegreeProfilesReview.Profiles.IsT1 T.nsProfile ∨
+    DegreeProfilesReview.Profiles.IsT2 T.pcProfile N ∧ DegreeProfilesReview.Profiles.IsT2 T.nsProfile N ∨
+      DegreeProfilesReview.Profiles.IsT3 T.pcProfile N ∧ DegreeProfilesReview.Profiles.IsT3 T.nsProfile N ∨
+        DegreeProfilesReview.Profiles.IsT4 T.pcProfile N ∧ DegreeProfilesReview.Profiles.IsT4 T.nsProfile N
+@ClaudeComparison.detect : ∀ {p : ℕ} [inst : Fact (Nat.Prime p)] {K : Type} [inst_1 : Field K] [inst_2 : CharP K p]
+  {a n : ℕ} {c : Fin a → K} {s : ℕ} {w : MonoidAlgebra K ↥(DegreeProfilesReview.SymRep.Sfin (n + p ^ a))},
+  DegreeProfilesReview.Shifted.Generic p c →
+    s < p ^ a →
+      ClaudeCP.IsTopWitness p s a n c w →
+        ∀ {𝒰 : DegreeProfilesReview.Uniform.BasisSystem} {r : ℕ},
+          𝒰.Bounded r →
+            r + r ≤ s →
+              ∀ {S S' : Submodule K (𝒰.Rk (n + p ^ a) →₀ K)},
+                ClaudeComparison.IsInv (DegreeProfilesReview.SymRep.permRep K 𝒰 (n + p ^ a)).ρ S →
+                  ClaudeComparison.IsInv (DegreeProfilesReview.SymRep.permRep K 𝒰 (n + p ^ a)).ρ S' →
+                    (∀ x ∈ S', (ClaudeCP.topProj c w (DegreeProfilesReview.SymRep.permRep K 𝒰 (n + p ^ a))) x ∈ S) →
+                      S' ≤ S
+@ClaudeComparison.delImg_strict : ∀ {p : ℕ} [inst : Fact (Nat.Prime p)] {K : Type} [inst_1 : Field K]
+  [inst_2 : CharP K p] {a n : ℕ} {c : Fin a → K} {𝒰 : DegreeProfilesReview.Uniform.BasisSystem} {r : ℕ}
+  (hc : DegreeProfilesReview.Shifted.Generic p c) (hrq : r < p ^ a) (hU : 𝒰.Bounded r) {s : ℕ},
+  s < p ^ a →
+    ∀ {w : MonoidAlgebra K ↥(DegreeProfilesReview.SymRep.Sfin (n + p ^ a))},
+      ClaudeCP.IsTopWitness p s a n c w →
+        r + r ≤ s →
+          ∀ {S S' : Submodule K (𝒰.Rk (n + p ^ a) →₀ K)}
+            (hS : ClaudeComparison.IsInv (DegreeProfilesReview.SymRep.permRep K 𝒰 (n + p ^ a)).ρ S)
+            (hS' : ClaudeComparison.IsInv (DegreeProfilesReview.SymRep.permRep K 𝒰 (n + p ^ a)).ρ S'),
+            S < S' → ClaudeComparison.delImg hc hrq hU S hS < ClaudeComparison.delImg hc hrq hU S' hS'
+@ClaudeComparison.chain_step : ∀ {p : ℕ} [inst : Fact (Nat.Prime p)] {K : Type} [inst_1 : Field K] [inst_2 : CharP K p]
+  {a n : ℕ} {c : Fin a → K} {𝒰 : DegreeProfilesReview.Uniform.BasisSystem} {r : ℕ},
+  DegreeProfilesReview.Shifted.Generic p c →
+    r < p ^ a →
+      𝒰.Bounded r →
+        ∀ {s : ℕ},
+          s < p ^ a →
+            ∀ {w : MonoidAlgebra K ↥(DegreeProfilesReview.SymRep.Sfin (n + p ^ a))},
+              ClaudeCP.IsTopWitness p s a n c w →
+                r + r ≤ s →
+                  ∀ {L : ℕ} (W : Fin L → Submodule K (𝒰.Rk (n + p ^ a) →₀ K)),
+                    (∀ (i : Fin L),
+                        ClaudeComparison.IsInv (DegreeProfilesReview.SymRep.permRep K 𝒰 (n + p ^ a)).ρ (W i)) →
+                      StrictMono W →
+                        ∃ W',
+                          (∀ (i : Fin L), ClaudeComparison.IsInv (DegreeProfilesReview.SymRep.permRep K 𝒰 n).ρ (W' i)) ∧
+                            StrictMono W'
+ClaudeComparison.chainBoundPerm : ∀ (p : ℕ) [Fact (Nat.Prime p)] (K : Type) [inst : Field K] [IsAlgClosed K] [CharP K p]
+  (𝒰 : DegreeProfilesReview.Uniform.BasisSystem) {r : ℕ},
+  𝒰.Bounded r →
+    ∃ L,
+      ∀ (N : ℕ) (W : Fin (L + 2) → Submodule K (𝒰.Rk N →₀ K)),
+        (∀ (i : Fin (L + 2)), ClaudeComparison.IsInv (DegreeProfilesReview.SymRep.permRep K 𝒰 N).ρ (W i)) →
+          ¬StrictMono W
+@ClaudeComparison.extS_strict : ∀ {R K : Type} [inst : Field R] [inst_1 : Field K] [inst_2 : Algebra R K] {X : Type}
+  {W W' : Submodule R (X →₀ R)}, W < W' → ClaudeComparison.extS W < ClaudeComparison.extS W'
+@ClaudeComparison.cf_rename : ∀ {R : Type} [inst : Field R] {𝒰 : DegreeProfilesReview.Uniform.BasisSystem} {t n : ℕ}
+  (g : ↥(DegreeProfilesReview.SymRep.Sfin n)) (f : MvPolynomial (𝒰.Rk n) R),
+  (ClaudeComparison.cf 𝒰 t n) ((MvPolynomial.rename fun v => g • v) f) =
+    ((Representation.ofMulAction R (↥(DegreeProfilesReview.SymRep.Sfin n)) ((𝒰.mon t).Rk n)) g)
+      ((ClaudeComparison.cf 𝒰 t n) f)
+@ClaudeComparison.cf_injOn : ∀ {R : Type} [inst : Field R] {𝒰 : DegreeProfilesReview.Uniform.BasisSystem} {t n : ℕ}
+  {f : MvPolynomial (𝒰.Rk n) R},
+  f ∈ MvPolynomial.restrictTotalDegree (𝒰.Rk n) R t → (ClaudeComparison.cf 𝒰 t n) f = 0 → f = 0
+ClaudeComparison.chainBound_of_bounded : ∀ (p : ℕ) [Fact (Nat.Prime p)] {R : Type} [inst : Field R] [CharP R p]
+  (𝒰 : DegreeProfilesReview.Uniform.BasisSystem) {k : ℕ}, 𝒰.Bounded k → ClaudeC017.ChainBound R 𝒰
+def ClaudeC017.ChainBound : (R : Type) → [Field R] → DegreeProfilesReview.Uniform.BasisSystem → Prop :=
+fun R [Field R] 𝒰 =>
+  ∀ (t : ℕ),
+    ∃ L,
+      ∀ (n : ℕ) (W : Fin (L + 2) → Submodule R (MvPolynomial (𝒰.Rk n) R)),
+        (∀ (i : Fin (L + 2)), W i ≤ MvPolynomial.restrictTotalDegree (𝒰.Rk n) R t) →
+          (∀ (i : Fin (L + 2)) (g : ↥(DegreeProfilesReview.SymRep.Sfin n)),
+              ∀ f ∈ W i, (MvPolynomial.rename fun v => g • v) f ∈ W i) →
+            ¬StrictMono W
+def DegreeProfilesReview.PC.Refutes.{u_1, u_2} : {σ : Type u_1} →
+  {K : Type u_2} → [inst : Field K] → Set (MvPolynomial σ K) → ℕ → Prop :=
+fun {σ} {K} [Field K] Γ d => DegreeProfilesReview.PC.Derives Γ d 1
+def DegreeProfilesReview.PC.Derives.{u_1, u_2} : {σ : Type u_1} →
+  {K : Type u_2} → [inst : Field K] → Set (MvPolynomial σ K) → ℕ → MvPolynomial σ K → Prop :=
+fun {σ} {K} [Field K] Γ d f => ∃ l, DegreeProfilesReview.PC.IsProof Γ l ∧ DegreeProfilesReview.PC.DegBounded d l ∧ f ∈ l
+def DegreeProfilesReview.NS.NSRefutes.{u_1, u_2} : {σ : Type u_1} →
+  {K : Type u_2} → [inst : Field K] → Set (MvPolynomial σ K) → ℕ → Prop :=
+fun {σ} {K} [Field K] Γ d => ∃ s a, (∀ f ∈ s, f ∈ Γ) ∧ (∀ f ∈ s, (a f * f).totalDegree ≤ d) ∧ ∑ f ∈ s, a f * f = 1
+def DegreeProfilesReview.Profiles.UpperComparison : (ℕ → ℕ) → (ℕ → ℕ∞) → (ℕ → ℕ∞) → Prop :=
+fun F g h => ∀ (n x : ℕ), g n = ↑x → h n ≤ ↑(F x)
+def ClaudeComparison.IsInv : {K G : Type} →
+  [inst : Field K] →
+    [inst_1 : Group G] →
+      {V : Type} → [inst_2 : AddCommGroup V] → [inst_3 : Module K V] → Representation K G V → Submodule K V → Prop :=
+fun {K G} [Field K] [Group G] {V} [AddCommGroup V] [Module K V] ρ S => ∀ (g : G), S ≤ Submodule.comap (ρ g) S
+def ClaudeComparison.delImg : {p : ℕ} →
+  [inst : Fact (Nat.Prime p)] →
+    {K : Type} →
+      [inst_1 : Field K] →
+        [inst_2 : CharP K p] →
+          {a n : ℕ} →
+            {c : Fin a → K} →
+              {𝒰 : DegreeProfilesReview.Uniform.BasisSystem} →
+                {r : ℕ} →
+                  DegreeProfilesReview.Shifted.Generic p c →
+                    r < p ^ a →
+                      𝒰.Bounded r →
+                        (S : Submodule K (𝒰.Rk (n + p ^ a) →₀ K)) →
+                          ClaudeComparison.IsInv (DegreeProfilesReview.SymRep.permRep K 𝒰 (n + p ^ a)).ρ S →
+                            Submodule K (𝒰.Rk n →₀ K) :=
+fun {p} [Fact (Nat.Prime p)] {K} [Field K] [CharP K p] {a n} {c} {𝒰} {r} hc hrq hU S hS =>
+  LinearMap.range
+    (ModuleCat.Hom.hom
+      (CategoryTheory.CategoryStruct.comp
+          ((DegreeProfilesReview.ShiftedM5.Ψhat p a n c).map
+            ((DegreeProfilesReview.SymRep.permRep K 𝒰 (n + p ^ a)).subtype S hS))
+          (DegreeProfilesReview.ShiftedM5.δ' hc hrq hU).hom).hom)
+def ClaudeComparison.extS : {R K : Type} →
+  [inst : Field R] → [inst_1 : Field K] → [Algebra R K] → {X : Type} → Submodule R (X →₀ R) → Submodule K (X →₀ K) :=
+fun {R K} [Field R] [Field K] [Algebra R K] {X} W => Submodule.span K (ClaudeComparison.ext '' ↑W)
+def ClaudeComparison.cf : {R : Type} →
+  [inst : Field R] →
+    (𝒰 : DegreeProfilesReview.Uniform.BasisSystem) → (t n : ℕ) → MvPolynomial (𝒰.Rk n) R →ₗ[R] (𝒰.mon t).Rk n →₀ R :=
+fun {R} [Field R] 𝒰 t n =>
+  { toFun := fun f => Finsupp.equivFunOnFinite.symm fun m => MvPolynomial.coeff (↑m) f, map_add' := ⋯, map_smul' := ⋯ }
+'ClaudeComparison.comparison' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ClaudeComparison.chainBound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ClaudeComparison.upperComparison' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ClaudeComparison.types_agree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ClaudeComparison.common_type' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ClaudeComparison.types_agree_linear' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ClaudeComparison.common_type_linear' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ClaudeComparison.detect' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ClaudeComparison.topProj_unit_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ClaudeComparison.pairHom' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ClaudeComparison.exists_perp_of_notMem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ClaudeComparison.delImg_strict' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ClaudeComparison.chain_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ClaudeComparison.chainBoundPerm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ClaudeComparison.extS_strict' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ClaudeComparison.extS_isInv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ClaudeComparison.cf_rename' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ClaudeComparison.cf_injOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'ClaudeComparison.chainBound_of_bounded' depends on axioms: [propext, Classical.choice, Quot.sound]

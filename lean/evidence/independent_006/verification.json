@@ -1,0 +1,245 @@
+{
+  "independent_build_complete": true,
+  "modules": [
+    "UCIndexedTarget",
+    "UCIndexedTransfer",
+    "UCIndexedAudit"
+  ],
+  "axiom_outputs": 21,
+  "axioms_standard_only": true,
+  "axioms": [
+    [
+      "UniformConsequence.Indexed.indexed_transfer",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "UniformConsequence.Indexed.indexed_transfer_written_range",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "UniformConsequence.Indexed.indexed_transfer_derivations",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "UniformConsequence.Indexed.orbit_rep_transfer",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "UniformConsequence.Indexed.ITarget.all_step_of_witness",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "UniformConsequence.Indexed.detects_canonical",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "UniformConsequence.Indexed.constMem_iff_of_detects",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "UniformConsequence.Indexed.image_membership_iff_of_detects",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "UniformConsequence.Indexed.ITarget.J_realise_single",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "UniformConsequence.Indexed.ITarget.J_transport",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "UniformConsequence.Indexed.ITarget.pc_all_stage_iff",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "UniformConsequence.Indexed.ITarget.ns_all_iff",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "UniformConsequence.Indexed.ITarget.not_all_of_lt",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "UniformConsequence.Indexed.ITarget.allPC_zero_iff",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "UniformConsequence.Indexed.ITarget.allNS_zero_iff",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "UniformConsequence.Indexed.ITarget.rep_iff_orbit_pc",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "UniformConsequence.Indexed.ITarget.rep_iff_orbit_ns",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "UniformConsequence.Indexed.orbit_transitive",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "UniformConsequence.Indexed.rename_mem_Vinf",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "UniformConsequence.Indexed.inflate_inst",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "UniformConsequence.Indexed.ITarget.catDatumJ_c",
+      "propext, Classical.choice, Quot.sound"
+    ]
+  ],
+  "dependency_checks": 14,
+  "dependencies": [
+    [
+      "UniformConsequence.Indexed.indexed_transfer",
+      "LinearFinal.topWitnessHypothesis_linear",
+      "true"
+    ],
+    [
+      "UniformConsequence.Indexed.indexed_transfer",
+      "RForce.forceExists",
+      "true"
+    ],
+    [
+      "UniformConsequence.Indexed.indexed_transfer",
+      "SelfContainedCycle004.canonicalM5w",
+      "true"
+    ],
+    [
+      "UniformConsequence.Indexed.indexed_transfer",
+      "DegreeProfilesReview.Deletion.M5w.δ_mat",
+      "true"
+    ],
+    [
+      "UniformConsequence.Indexed.indexed_transfer",
+      "ClaudeComparison.detect",
+      "true"
+    ],
+    [
+      "UniformConsequence.Indexed.indexed_transfer",
+      "ClaudeCP.top_preserves_finiteLimits",
+      "true"
+    ],
+    [
+      "UniformConsequence.Indexed.indexed_transfer",
+      "DegreeProfilesReview.FieldDescent.pc_derives_map_iff",
+      "true"
+    ],
+    [
+      "UniformConsequence.Indexed.indexed_transfer",
+      "ExactnessHandoff.const_mem_iff_of_simple",
+      "false"
+    ],
+    [
+      "UniformConsequence.Indexed.indexed_transfer",
+      "ExactnessHandoff.image_membership_iff_of_simple",
+      "false"
+    ],
+    [
+      "UniformConsequence.Indexed.indexed_transfer",
+      "sorryAx",
+      "false"
+    ],
+    [
+      "UniformConsequence.Indexed.orbit_rep_transfer",
+      "sorryAx",
+      "false"
+    ],
+    [
+      "UniformConsequence.Indexed.indexed_transfer",
+      "DegreeProfilesReview.Uniform.DeletionHypothesis",
+      "false"
+    ],
+    [
+      "UniformConsequence.Indexed.indexed_transfer",
+      "DegreeProfilesReview.Uniform.DeletionHypothesisW",
+      "false"
+    ],
+    [
+      "UniformConsequence.Indexed.indexed_transfer",
+      "ForceInterface.ForceExists",
+      "true"
+    ]
+  ],
+  "all_dependency_expectations_passed": true,
+  "full_endpoint_types_inspected": true,
+  "project_original_files_identical_except_isolated_lakefile": 188,
+  "snapshot_files": 13,
+  "snapshot_modules_identical_to_built_sources": true,
+  "live_m1_lean_sources_still_match_snapshot": true,
+  "return_001_sources_identical": true,
+  "pinned_dependencies": {
+    "mathlib": {
+      "commit": "2df2f0150c275ad53cb3c90f7c98ec15a56a1a67",
+      "tracked_sources_clean": true
+    },
+    "plausible": {
+      "commit": "160af9e8e7d4ae448f3c92edcc5b6a8522453f11",
+      "tracked_sources_clean": true
+    },
+    "LeanSearchClient": {
+      "commit": "3591c3f664ac3719c4c86e4483e21e228707bfa2",
+      "tracked_sources_clean": true
+    },
+    "importGraph": {
+      "commit": "e9f31324f15ead11048b1443e62c5deaddd055d2",
+      "tracked_sources_clean": true
+    },
+    "proofwidgets": {
+      "commit": "b4fb2aa5290ebf61bc5f80a5375ba642f0a49192",
+      "tracked_sources_clean": true
+    },
+    "aesop": {
+      "commit": "2f6d238744c4cb07fdc91240feaf5d4221a27931",
+      "tracked_sources_clean": true
+    },
+    "Qq": {
+      "commit": "9312503909aa8e8bb392530145cc1677a6298574",
+      "tracked_sources_clean": true
+    },
+    "batteries": {
+      "commit": "24241822ef9d3e7f6a3bcc53ad136e12663db8f3",
+      "tracked_sources_clean": true
+    },
+    "Cli": {
+      "commit": "933fce7e893f65969714c60cdb4bd8376786044e",
+      "tracked_sources_clean": true
+    }
+  },
+  "archive_preservation": {
+    "checked": 235,
+    "mismatches": [],
+    "passed": true
+  },
+  "return_001_preservation": {
+    "checked": 15,
+    "mismatches": [],
+    "passed": true
+  },
+  "snapshot_return_002_m1_preservation": {
+    "checked": 12,
+    "mismatches": [],
+    "passed": true
+  },
+  "protected_inputs": {
+    "checked": 6,
+    "mismatches": [],
+    "passed": true
+  },
+  "producer_project_oleans_reused": false,
+  "full_fresh_import_closure_replay_claimed": false,
+  "indexed_profiles_or_fresh_variable_identities_claimed": false,
+  "scope": {
+    "characteristic": "positive prime p, arbitrary coefficient field",
+    "budget": "2*k*d+s+t",
+    "q": "p^a > 2*k*d+s+t",
+    "retained_rank": "n >= max(T.n0, 1, k*DG+t, 2*(2*k*d+s+t)-1)",
+    "predicates": "Every index in fixed B; or representatives of one fixed global orbit",
+    "sharp_maximum_budget_certified": false
+  }
+}

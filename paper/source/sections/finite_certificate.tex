@@ -1,0 +1,133 @@
+\subsection{Finite local contradictions and their certificates}
+\label{app:finite-certificate}
+The halting switch uses a fixed finite computation prefix even though
+function totality is expressed by sums with $n$ summands. The following
+elementary certificate construction separates these two sizes.
+
+\begin{lemma}[Finite-term certificate]\label{lem:finite-certificate}
+Let $n\ge1$ and let a finite acyclic list of $m$ function evaluations be given, with every
+argument supplied by an earlier node. Fix $b$ distinct labels. Suppose that
+every assignment of labels to the nodes, and every Boolean assignment to
+the relation atoms on the named and fixed labels, either has inconsistent
+function values or falsifies a clause instance whose variables lie among the named and fixed
+labels and all of whose function evaluations occur in the list. If clauses have length at most $L$, the
+graph-and-sum translation has an NS refutation of degree at most
+\[
+                 m+\sum_R(m+b)^{\operatorname{arity}(R)}+L.
+\]
+The hypothesis and conclusion concern sizes for which the $b$ distinct
+labels exist.
+\end{lemma}
+\begin{proof}
+For a labelling $\alpha$ of the nodes, let $q_\alpha$ be the product of the
+$m$ graph variables asserting those function evaluations. Expanding the
+totality sum for each node, in the order of the acyclic list, gives
+\[
+                         \sum_\alpha q_\alpha-1
+\]
+in the degree-$m$ NS span. This is a telescoping identity: at step $j$, the
+product for the first $j-1$ evaluations multiplies the totality equation
+for evaluation $j$. Summing over the possible earlier values gives the
+next partial sum. Repeated graph variables cause no problem.
+
+If $\alpha$ gives different values to the same function on the same input,
+$q_\alpha$ contains a functionality collision and already belongs to the
+span within degree $m$. Otherwise, list the distinct relation variables
+on the at most $m+b$ named labels. Write this actual set as
+$Y_\alpha=\{y_1,\ldots,y_{a_\alpha}\}$, where
+$a_\alpha\leq a_{\mathrm{rel}}=\sum_R(m+b)^{\operatorname{arity}(R)}$.
+Expand over these distinct variables:
+\[
+             1=\prod_{i=1}^{a_\alpha}(y_i+(1-y_i))
+              =\sum_\beta u_\beta.
+\]
+Each $u_\beta$ is the Boolean assignment monomial for one partial relational
+structure. By hypothesis that structure falsifies an available clause.
+Its clause polynomial is a product of at most $L$ falsity indicators.
+Write $P=q_\alpha u_\beta$ and the clause polynomial as
+$F_1\cdots F_\ell$, where each $F_j$ is the falsity indicator of a
+literal false in the chosen partial structure. For each literal,
+$P(1-F_j)$ has an explicit expression in the structural NS span:
+\begin{itemize}
+\item For a positive relation literal, $F_j=1-x$ and $u_\beta=(1-x)u'$.
+Thus $P(1-F_j)=q_\alpha u'x(1-x)=-q_\alpha u'(x^2-x)$.
+For a negative relation literal, $F_j=x$ and $u_\beta=xu'$; the same
+identity with $x(1-x)$ applies.
+\item For a negative graph literal false in the partial structure,
+its graph variable $x$ is one of the chosen evaluations, so
+$q_\alpha=xq'$. Its falsity indicator is $F_j=x$ and
+$P(1-F_j)=-q'u_\beta(x^2-x)$.
+\item For a positive graph literal false there, the chosen evaluation
+has a different output variable $x'$ on the same function input.
+Here $q_\alpha=x'q'$, $F_j=1-x$, and
+$P(1-F_j)=q'u_\beta x'x$, an explicit functionality-axiom multiple.
+\item A false equality or disequality has the constant falsity
+indicator $F_j=1$, so $P(1-F_j)=0$.
+\end{itemize}
+These are all cases of the normalized literals. Each identity has
+product degree at most $m+a_{\mathrm{rel}}+1$.
+The exact telescoping identity
+\[
+ P(1-F_1\cdots F_\ell)
+   =\sum_{j=1}^{\ell}P(1-F_j)\prod_{i<j}F_i
+\]
+therefore puts its left side in the NS span within degree
+$m+a_{\mathrm{rel}}+\ell$. Since $PF_1\cdots F_\ell$ is a
+multiple of the falsified clause axiom, $P$ is in that same span.
+Sum first over $\beta$, then over $\alpha$, and use the totality identity
+to obtain one.
+\end{proof}
+
+
+A \emph{partial structure} for $\theta_M$ has a domain of labels, all relations defined on it, and
+function values defined only on some arguments. It is \emph{locally consistent} if every clause
+instance whose variables take values in the domain, and whose function atoms are all defined,
+has a true literal.
+
+\begin{lemma}[Local switch]\label{lem:local-switch}
+Let the run of $M$ first reach a halting state at time $T$, and let $M$ have $\kappa$ counters.
+Suppose a locally consistent partial structure defines $o$, $e$, $a_{j+1}=S(a_j)$ for $j<T$
+\textup{(}with $a_0=o$\textup{)}, $C_r(a_j)$ and $S(C_r(a_j))$ for $j\le T$, $r<\kappa$, and that all these
+elements lie in its domain. Then its domain has at most $T$ distinct elements.
+\end{lemma}
+\begin{proof}
+Suppose it contains $T+1$ distinct elements. If $a_j=e$ for some $j<T$, take $j$ least. Every
+domain element $x$ satisfies $x=a_0$ or $a_0<x$ (least element), and, if $a_i<x$ with $i<j$, then
+$x=a_{i+1}$ or $a_{i+1}<x$ (no element strictly between $a_i$ and $S(a_i)$, and linearity). As
+$a_j=e$ is greatest, the domain is $\{a_0,\ldots,a_j\}$, too small. So $a_j\ne e$ for $j<T$, and
+the order clauses make $a_0<a_1<\cdots<a_T$. For the counter induction, the initial clauses give the initial
+state and $C_r(a_0)=a_0$ for every counter. A counter value at time $j$
+is at most $j$, so the notation $a_v$ uses only this named prefix.
+Suppose its states and counters agree through time $j<T$.
+An increment of value $v$ gives $S(a_v)=a_{v+1}$; because $v\le j<T$,
+this successor is among the defined evaluations and its guard is valid.
+The zero branch of a decrement is selected exactly when $v=0$.
+On a positive decrement, the transition specifies a value $y<a_v$
+with $S(y)=a_v$. The immediate-predecessor property forces
+$y=a_{v-1}$: if $y<a_{v-1}$ then $a_{v-1}$ lies strictly between
+$y$ and $S(y)$, and if $a_{v-1}<y<a_v$ then $y$ lies strictly
+between $a_{v-1}$ and $S(a_{v-1})$. Both alternatives contradict
+immediacy. Unchanged counters retain their named values. State
+uniqueness and the chosen transition identify the next state.
+Every clause used has its variables in the domain and its function
+atoms in the specified finite evaluation list. This proves the
+induction through time $T$. At $j=T$ the state is halting, which a clause forbids.
+\end{proof}
+
+\begin{corollary}\label{cor:switch-degree}
+In that case, for every $n\ge T+1$ the translation of $\theta_M$ at size $n$ has an NS refutation
+of degree
+\[
+ C_M=m+\sum_R(m+T+1)^{\operatorname{arity}(R)}+\max_{C}|C|,\qquad m=T+2+2\kappa(T+1).
+\]
+\end{corollary}
+\begin{proof}
+Apply Lemma~\ref{lem:finite-certificate} to the $m$ evaluations $o$, $e$, $a_1,\ldots,a_T$,
+$C_r(a_j)$, $S(C_r(a_j))$ ($j\le T$, $r<\kappa$), each argument supplied by an earlier node, with
+$b=T+1$ fixed labels. A consistent labelling and a Boolean assignment give a partial structure of
+the kind in Lemma~\ref{lem:local-switch}, whose domain contains the $T+1$ fixed labels; so it is not
+locally consistent, which is the hypothesis of Lemma~\ref{lem:finite-certificate}.
+\end{proof}
+
+Here $\kappa$ is one more than the largest counter index occurring in $M$ (so $\kappa\ge1$), and $T$ must be
+the first halting time. Sizes $n\le T$ are genuine exceptions: $\theta_M$ can have models there.

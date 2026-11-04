@@ -1,0 +1,596 @@
+\chapter{Towards linear lifting: reuse one pool of labels}\label{tx:sec:linear-construction}
+\label{tx:ch:linear-layers}
+\section*{The property we need}
+Keep the characteristic-two block from the previous chapters:
+$N=n+q$, with $n$ retained labels, $q=2^a>r$ block labels and
+the square-zero operator $z$. We seek one $w$ with $zwz=z$ on
+all ordered-tuple spaces of lengths at most $r$. The final retained
+label requirement will be $n\ge2r-1$; the block and the budget $r$
+stay fixed while the tuple length $b$ increases.
+
+The quadratic construction repaired an arbitrary position-compatible
+operator on the whole old $b$-tuple space. That is more freedom than
+we need. The old witness error already annihilates every direction
+coming from shorter tuples and has zero marginal in every output
+position. We will use that shape to construct a correction on the
+same retained label pool.
+
+There are two separate contracts. The present chapter constructs a
+position-compatible operator $\varphi$ with $z\varphi z=-\varepsilon$,
+whose image has zero marginals and which kills the incoming shorter
+layers. The next chapter proves that every operator with exactly
+this shape is the action of a group-algebra element annihilating the
+shorter tuple modules. It uses no additional labels. Combining the
+two contracts yields one common witness at retained rank $2r-1$.
+
+This is the improvement which changes the degree gap. With fresh labels,
+the retained-label cost was a sum over all tuple lengths. Reusing one
+pool makes it a maximum. A proof with degree $d$ can therefore be lifted
+once the universe is only linearly large in $d$. If that degree cannot
+recur on an infinite progression, every occurrence must have been
+before this linear starting rank.
+
+Semisimplicity would supply invariant complements to every invariant
+subspace (Section~\ref{tx:sec:action-primer}); here we construct the
+particular compatible complements needed by the lift.
+The construction builds sections using label-avoiding decompositions,
+then makes those sections commute with the block operator. In
+positive characteristic, a request for an equivariant section cannot
+be justified by averaging. Every such section below is explicit.
+
+A complement to a subspace $U\subseteq V$ is a subspace $C$ with
+$V=U\oplus C$. A basis extension always supplies a vector-space
+complement, but it need not respect a permutation action or the
+operator $z$. A compatible complement therefore needs a construction.
+For a surjection $f:E\to Q$, a \emph{section} is a linear map
+$\sigma:Q\to E$ with $f\sigma=I$: it chooses a preimage of each
+vector, consistently with linear combinations. Such a section gives
+$E=\ker f\oplus\im\sigma$. Requiring it to commute with an action
+is an additional condition, not a consequence of this decomposition.
+
+\section{The zero-marginal layer}\label{tx:sec:layers}
+We still work in characteristic two. Fix a tuple length $b\ge1$, distinct from the proof-degree budget $d$. Let $V=P_b(N)$. For each position $i$ there is a deletion map
+\[\partial_i:P_b(N)\longrightarrow P_{[b]\setminus\{i\}}(N)
+\]
+which forgets the entry in position $i$. On a vector of coefficients it sums over that entry, so we call it a marginal. The target is a copy of $P_{b-1}(N)$ with the surviving positions named. Give tuple spaces the dot product making their bases orthonormal, and put
+\begin{equation}\label{tx:eq:anatomy}
+V'=\sum_i\im\partial_i^{\mathsf T},\qquad
+\mathcal Z_b(N)=\bigcap_i\ker\partial_i=(V')^\perp,\qquad T_b(N)=V/V'.
+\end{equation}
+Here $\mathcal Z_b$ is the zero-marginal space, and $T_b$ is the top quotient. This notation distinguishes the tuple zero-marginal space from the
+polynomial consequence space $C_d(n)$. All statements below use the
+displayed definitions.
+
+These are marginal sums, rather than projections onto some of the
+original coordinates. At length two, for example,
+\[
+ \partial_1\Bigl(\sum_{i\ne j}a_{ij}e_{ij}\Bigr)
+                  =\sum_j\Bigl(\sum_{i\ne j}a_{ij}\Bigr)e_j.
+\]
+All entries with the same surviving label contribute to one output
+coefficient. A zero marginal says that these contributions cancel.
+
+The dot product here is the bilinear coefficient pairing
+$\langle v,w\rangle=\sum_t v_t w_t$, without conjugating coefficients.
+It is nondegenerate because the tuple basis is orthonormal. It is not
+a positive inner product: over $\mathbb F_2$, the nonzero vector
+$e_1+e_2$ pairs to zero with itself. Thus $(V')^\perp$ is the space
+of vectors pairing to zero with every vector in $V'$, and need not
+be a complementary subspace to $V'$. The transpose is characterised
+by $\langle Tv,w\rangle=\langle v,T^{\mathsf T}w\rangle$.
+
+The name \emph{top quotient} records what remains after quotienting
+by the incoming directions from shorter tuple spaces. It does not
+assert that this quotient is semisimple.
+
+The transpose map has a direct combinatorial meaning. For a
+$(b-1)$-tuple $u$ with position $i$ missing,
+\[
+ \partial_i^{\mathsf T}e_u
+       =\sum_{x\notin\im u} e_{u[i\mapsto x]}.
+\]
+It inserts each admissible label once. There is no factor $1/N$ and
+no division by the number of available labels. This is the incoming
+subspace $V'$, and it is a sum of images, not an arbitrarily selected
+copy of $P_{b-1}$.
+
+The incoming space $V'$ contains directions lifted from shorter tuples. The zero-marginal space contains directions invisible after deleting any one position. The quotient $T_b$ forgets the incoming directions. Label permutations commute with all marginal maps, and position permutations permute the marginal maps. Thus these spaces carry the two appropriate actions.
+
+\begin{example}[Lengths one and two]
+For $b=1$, $\partial$ sums coordinates, $V'$ is the constant line and $\mathcal Z_1(N)$ is the zero-sum space. For $b=2$, a coefficient vector is an off-diagonal array $f(i,j)$, $i\ne j$. Its marginals are its row and column sums. Thus $\mathcal Z_2(N)$ consists of off-diagonal arrays with every row and column sum zero. On three labels it is spanned by
+\[e_{12}+e_{23}+e_{31}-e_{21}-e_{32}-e_{13}.
+\]
+In characteristic two the six coefficients are all one, but every line still sums to zero because it contains two ones.
+\end{example}
+
+\subsection{The old error already has a special shape}
+The annihilator ideal $J_{b-1}(N)$ consists of combinations of label
+permutations that act as zero on every tuple space of length below $b$.
+Suppose $w_0$ is a witness on all lengths below $b$, and set
+\[\varepsilon=zw_0z-z\quad\text{on }V.\]
+This is the action of an element of $J_{b-1}(N)$. For any $x\in J_{b-1}(N)$,
+\[\partial_i x=x\partial_i=0,\qquad x\partial_i^{\mathsf T}=\partial_i^{\mathsf T}x=0.
+\]
+In these equations the same group-algebra element $x$ acts on both
+tuple spaces. The marginal and its transpose commute with label
+permutations, while $x$ acts as zero on the shorter $(b-1)$-tuple
+space by the definition of $J_{b-1}(N)$.
+Therefore $x$ maps $V$ into $\mathcal Z_b(N)$ and kills $V'$. In particular $\varepsilon$ factors through
+\[V\longrightarrow T_b(N)\longrightarrow \mathcal Z_b(N)\longrightarrow V.
+\]
+To \emph{factor through} the quotient means that
+$\bar\varepsilon([v])=\varepsilon v$ is well defined: replacing $v$
+by $v+v'$ with $v'\in V'$ does not change the answer. Its values
+belong to $\mathcal Z_b$, and the final arrow is that space's actual
+inclusion into $V$. This turns the error into a map from the quotient
+by incoming shorter-tuple directions to the zero-marginal output space.
+It also commutes with position permutations. This is much more special than an arbitrary operator on $V$. The improved route exploits exactly this special form.
+
+There are two tasks. First, construct a position-compatible correction of this shape with $z\varphi z=-\varepsilon$. Second, realise that correction by an element of the actual label group algebra which kills all shorter tuples. The first task needs retained labels; the second will be solved by a rook-placement theorem without adding labels.
+
+\subsection{A length-three zero-marginal vector}
+For three positions and four labels, write
+$\epsilon_{ijkl}$ for the sign of the permutation $(i,j,k,l)$
+of $(1,2,3,4)$, and let $l$ be the unique missing label. Then
+\[
+           Y=\sum_{i,j,k\text{ distinct in }[4]}
+                        \epsilon_{ijkl}e_{ijk}
+\]
+has all three marginals zero. Fix, for example, the second and third
+entries $2,3$. The only contributions are $e_{123}$ and $e_{423}$,
+with opposite coefficients, so their sum under deletion of the first
+position is zero. The same argument for any surviving ordered pair
+uses the transposition between the missing label and the deleted
+entry. It changes the sign and pairs the two terms. In characteristic
+two the signs become equal, and the two coefficients still sum to
+zero. Thus the zero-marginal condition is concrete at lengths one,
+two and three; it is not a name for an unspecified representation.
+
+The linear witness proof does not require this particular vector to
+span $\mathcal Z_3$. It illustrates the cancellations which the
+partition and cone maps must respect for \emph{every} vector in
+that space.
+
+\section{Partitioning a zero-marginal vector so that one label is avoided}\label{tx:sec:partition}
+For a finite position set $S$ and label set $L$, let $P_S(L)=K[\Inj(S,L)]$ and $\mathcal Z_S(L)=\bigcap_{i\in S}\ker\partial_i$. If $L'\subseteq L$, regard $\mathcal Z_S(L')$ as the vectors of $\mathcal Z_S(L)$ supported on tuples using only $L'$. Write $\mathcal Z_c$ when there are $c$ positions.
+
+Suppose a block label $\beta$ occupies a new position and $y\in \mathcal Z_c(L)$ occupies the other positions. The vector $e_\beta\otimes y$ has zero marginals in those other positions, but its new-position marginal is $y$. We want a retained correction with the same marginal. If
+\[y=\sum_{x\in L}\pi_x(y),\qquad \pi_x(y)\in \mathcal Z_c(L\setminus\{x\}),
+\]
+then
+\begin{equation}\label{tx:eq:standin}
+e_\beta\otimes y-\sum_{x\in L}e_x\otimes\pi_x(y)
+\end{equation}
+has every marginal zero. Avoiding $x$ is essential: it makes each displayed tuple injective. The maps must also commute with permutations of the old positions, so they can be used consistently in all layers.
+Here $e_\beta\otimes y$ means inserting $\beta$ into the designated
+new position of every tuple in $y$; the other positions retain their
+names. It is tuple-coordinate notation, not multiplication of
+polynomials.
+
+\begin{example}[One old position]
+Take $L=\{1,2,3\}$ and $y=a e_1+b e_2-(a+b)e_3$. Define
+\[\pi_1(y)=b(e_2-e_3),\quad \pi_2(y)=a(e_1-e_3),\quad\pi_3(y)=0.
+\]
+Each summand avoids its subscript and has coordinate sum zero; their sum is $y$. For $y=e_1-e_2$, formula \eqref{tx:eq:standin} is the six-term vector
+\[e_{\beta1}-e_{\beta2}+e_{12}-e_{13}-e_{21}+e_{23}.
+\]
+Check its two marginals by grouping terms with the same surviving label. With only labels $1,2$, every $\mathcal Z_1(L\setminus\{x\})$ is zero, while $e_1-e_2\ne0$. The third label is what permits the construction.
+\end{example}
+
+The phrase \emph{partition of unity} below refers to the identity
+$\sum_x\pi_x=I$ between linear maps. Each map distributes part of
+the input into a space avoiding its label. The outputs may overlap;
+the maps are not required to be positive or idempotent projections.
+Their equivariance concerns permutations of the tuple positions.
+They can choose distinguished labels and need not commute with all
+permutations of the label set.
+
+\begin{lemma}[Partition of unity]\label{tx:lem:unity}
+If $|L|\ge2c+1$, there are position-equivariant linear maps
+\[\pi_x:\mathcal Z_c(L)\longrightarrow \mathcal Z_c(L\setminus\{x\}),\qquad
+\sum_{x\in L}\pi_x=I.
+\]
+This statement and its proof work over any field.
+\end{lemma}
+\begin{proof}
+We induct on $c$. At $c=0$ the space is $K$ on the empty tuple; choose one label $x$, make $\pi_x=I$ and all others zero.
+
+Let $c\ge1$. Choose $\xi\in L$ and put $L'=L\setminus\{\xi\}$. For $y\in \mathcal Z_c(L)$ and position $i$, let $y^{(i)}$ be the coefficients of those tuples in which $\xi$ appears in position $i$, with that position then removed. This lies in $\mathcal Z_{[c]\setminus\{i\}}(L')$. To see this, fix $\xi$ in position $i$ and sum another position: it is a marginal of $y$, hence zero. There cannot be a second occurrence of $\xi$ in an injective tuple.
+
+By induction, partition $y^{(i)}$ on $L'$ as $\sum_{x\in L'}\pi'_x(y^{(i)})$, each term avoiding $x$. For a vector $v\in \mathcal Z_{[c]\setminus\{i\}}(L'\setminus\{x\})$, partition once more on $L'\setminus\{x\}$:
+\[v=\sum_{x'\in L'\setminus\{x\}}\pi''_{x'}(v).
+\]
+Both applications are justified: $|L'|\ge2c$ and $|L'\setminus\{x\}|\ge2c-1=2(c-1)+1$.
+
+Construct $F_{i,x}(v)$ by inserting $\xi$ into position $i$ of $v$, then subtracting the sum obtained by inserting $x'$ into position $i$ of $\pi''_{x'}(v)$. Every term avoids $x$. All tuples are injective because the lower-dimensional vector avoids the inserted label. A marginal in a position other than $i$ vanishes term by term. The marginal in position $i$ is $v-\sum_{x'}\pi''_{x'}v=0$. Thus
+\[F_{i,x}(v)\in \mathcal Z_c(L\setminus\{x\}).
+\]
+Its $\xi$-part in position $i$ is $v$, and its $\xi$-parts in other positions are zero.
+
+For $x\in L'$ set
+\[\pi_x(y)=\sum_{i=1}^cF_{i,x}\bigl(\pi'_x(y^{(i)})\bigr),\qquad
+\pi_\xi(y)=y-\sum_{x\in L'}\pi_x(y).
+\]
+The $\xi$-part of the last expression in every position is $y^{(i)}-\sum_x\pi'_x(y^{(i)})=0$. It therefore uses no label $\xi$, and belongs to $\mathcal Z_c(L')$. The sum identity is built into the definition.
+
+For equivariance, use the same inductively constructed maps on every position set of size $c-1$, transported along a bijection. The transport is independent of the chosen bijection because the inductive maps commute with position permutations. Permuting the $c$ positions simply permutes the terms indexed by $i$ in the displayed sum. No averaging over a symmetric group is used.
+\end{proof}
+
+The count $2c+1$ is now visible in an actual induction: reducing one position removes two labels, the label $\xi$ being cleared and the label $x$ being avoided. This is a sufficient bound proved by the construction, not an appeal to a dimension formula.
+
+\subsection{Why the two recursive partitions have different jobs}
+In the proof just given, the first partition decomposes the slice
+where the distinguished label occurs in position $i$. It chooses
+which label $x$ the completed vector will avoid. The second partition
+then chooses a label $x'$ to insert in the correction replacing the
+distinguished label. Avoiding $x'$ is necessary for injectivity;
+avoiding $x$ is necessary for the final destination of $\pi_x$.
+One partition cannot simply be reused as the other, since the two
+labels are excluded for different reasons.
+
+The residual component $\pi_\xi(y)$ is not justified only by the sum
+identity. Its slice containing $\xi$ must vanish at every position.
+The inserted terms were designed so their $\xi$-slice at position $i$
+is exactly the first partition of $y^{(i)}$, and their $\xi$-slices at
+all other positions are zero. This proves that the residual really
+avoids $\xi$. Subtracting zero-marginal vectors then keeps all its
+marginals zero. These two checks establish the stated codomain of
+$\pi_\xi$, as well as the identity $\sum_x\pi_x=I$.
+
+The distinguished label called $\xi$ in that induction is local
+bookkeeping; it is unrelated to the proof-degree budget. All the
+requirements in the induction count retained labels. To avoid any
+confusion, the subsequent applications describe this chosen label
+as the distinguished label rather than as a degree parameter.
+
+\section{Adding positions coherently}\label{tx:sec:cone}
+Writing $\partial_J$ means forgetting every position in $J$, by
+successive marginal maps. Their order does not matter: they are sums
+over distinct coordinates. Inserting an extra label and then forgetting
+it resembles the elementary combinatorial operation of adding a vertex
+to a configuration, often called coning. Here the inserted label must
+be avoided by the old tuple, so the partition just proved supplies a
+linear sum of admissible insertions. The construction is a section of
+a specified marginal map; it does not assume a topological contraction
+theorem.
+
+Let $R_0$ and $J$ be disjoint position sets of sizes $c$ and $\ell$. Here $\ell$ counts positions being added; the target-index support parameter $t$ is not involved in this layer construction. We want to add the positions in $J$ while keeping the marginals in $R_0$ zero. If $|L|\ge2c+\ell$, the map deleting all positions in $J$ has a position-$R_0$-equivariant section
+\begin{equation}\label{tx:eq:cone}
+\mathcal Z_{R_0}(L)\longrightarrow
+\{\Phi\in P_{R_0\cup J}(L):\partial_i\Phi=0\ (i\in R_0)\}.
+\end{equation}
+Being a section means that deleting all the new positions $J$
+after this insertion returns the original vector. The equivariance
+required here concerns the old positions $R_0$, not arbitrary
+permutations of the label set.
+Here is the construction. Suppose some positions $J'\subsetneq J$ have already been added. Split the vector according to their injective labelling $\gamma$. On that component the remaining zero-marginal vector uses the label set $L\setminus\im\gamma$. Its size is at least
+\[2c+\ell-|J'|\ge2c+1.
+\]
+Partition that vector by Lemma~\ref{tx:lem:unity}. For a new position $j$, insert label $x$ in the summand $\pi_x$. Summing the new position returns the original vector, and the old zero marginals stay zero. Repeat until all $\ell$ positions have been added. Every step is linear and commutes with the $R_0$ position action, proving \eqref{tx:eq:cone}.
+
+\subsection{Sorting a zero-marginal vector by its block positions}
+Split the universe as retained labels $[n]$ and block labels $B$. Every vector $f\in P_b(n+q)$ has components $f_D$, for subsets $D\subseteq[b]$, consisting of tuples whose block positions are exactly $D$:
+\[f_D\in K[\Inj(D,B)]\otimes P_{[b]\setminus D}(n).
+\]
+Write $\epsilon_i$ for summing a block entry and $\partial_i^{\rm ret}$ for summing a retained entry. The condition of zero marginal in position $i\notin D$ is
+\begin{equation}\label{tx:eq:cycleeq}
+\partial_i^{\rm ret}f_D+\epsilon_i f_{D\cup\{i\}}=0.
+\end{equation}
+It simply separates the possible value of the deleted entry into a retained label or a block label.
+
+Let $\mathcal Z^{\le \ell}$ be the zero-marginal vectors with no components using more than $\ell$ block positions. The first space is $\mathcal Z^{\le0}=\mathcal Z_b(n)$. The top components of a vector in $\mathcal Z^{\le \ell}$ have zero retained marginals by \eqref{tx:eq:cycleeq}. We obtain a map onto the prospective layer
+\[G_\ell=\bigoplus_{|D|=\ell}K[\Inj(D,B)]\otimes \mathcal Z_{[b]\setminus D}(n).
+\]
+Its kernel is $\mathcal Z^{\le \ell-1}$. We next prove surjectivity with a position-compatible section, so this is an actual quotient description rather than a count of dimensions.
+
+A \emph{filtration} is simply this increasing sequence of subspaces.
+Its layer at $\ell$ records what appears after allowing $\ell$ block
+positions, modulo everything already allowed at $\ell-1$. A quotient
+layer is not yet a chosen subspace of the larger space. The section
+below will choose representatives, and the subsequent operator argument
+will make that choice compatible with $z$. Here $G_\ell$ names a
+space of tuple components, not a target polynomial $G_n$.
+
+In the displayed tensor product, the first factor records which block
+labels occupy the positions in $D$, while the second carries the
+retained-tuple coefficients. An elementary tensor $e_\beta\otimes y$
+places the retained vector $y$ at the block pattern $\beta$. General
+vectors are sums of these tensors. The direct sum keeps different
+sets $D$ of block positions in separate components.
+
+\subsection{An explicit lift of one top component}
+Take $J=[\ell]$, an injective block tuple $\beta:J\to B$, and $y\in \mathcal Z_{R_0}(n)$ with $R_0=[b]\setminus J$. If
+\[n\ge2(b-\ell)+\ell=2b-\ell,
+\]
+the section \eqref{tx:eq:cone} gives $\Phi$ on the $b$ retained positions such that $\partial_J\Phi=y$ and $\partial_i\Phi=0$ for $i\in R_0$. For $J'\subseteq J$, set
+\[\phi_{J'}=(-1)^{|J'|}\partial_{J\setminus J'}\Phi.
+\]
+For $D\subseteq J$ define
+\[f_D=e_{\beta|D}\otimes\phi_{J\setminus D},
+\]
+and put the other components zero. At $D=J$ this is $e_\beta\otimes y$, the required top component. For $i\in R_0$, the retained marginal vanishes. For $i\in J\setminus D$,
+\[\partial_i\phi_{J\setminus D}=-\phi_{J\setminus(D\cup\{i\})},
+\]
+which cancels the block marginal of the adjacent component in \eqref{tx:eq:cycleeq}. Thus the whole lift belongs to $\mathcal Z^{\le \ell}$.
+
+To lift all components equivariantly, choose an ordering of each $\ell$-element subset of block labels. Use it in the representative positions $[\ell]$. Its stabiliser among position permutations consists exactly of permutations of the remaining $b-\ell$ positions. The constructed lift commutes with this stabiliser, by the cone construction. Transport it along position permutations to every other placement of the same ordered block labels. If two permutations give the same placement, their difference is in the stabiliser, so the transported lift is the same. Extend linearly over all block subsets and retained vectors. This supplies the promised $S_b$-equivariant section without division by any group order.
+
+For $1\le \ell\le b$, the largest requirement $2b-\ell$ occurs at $\ell=1$. Therefore the single hypothesis
+\begin{equation}\label{tx:eq:linearlabel}n\ge2b-1\end{equation}
+supplies all these sections.
+
+\subsection{Two worked lifts at tuple length three}
+The signs in the lift formula can be checked without abstract
+notation. First take one block position, a block label $\beta$, and
+\[
+ y=e_{12}+e_{23}+e_{31}-e_{21}-e_{32}-e_{13}
+\]
+on the other two positions. The vector $y$ uses only retained labels
+$1,2,3$, so the particular vector
+\[
+                    e_\beta\otimes y-e_4\otimes y
+\]
+is injective and has every marginal zero. The first marginal is
+$y-y=0$; the two other marginals are zero because those of $y$ are
+zero. This is a single-vector instance of the one-block-position
+construction. Constructing a linear map for \emph{all} $y$ is the
+harder task solved by the partition of unity, and it is what needs
+$n\ge5$ at $b=3$.
+
+For two block positions let the retained position be first and use
+$y=e_1-e_2$. With retained labels $1,2,3,4$, the cone can use
+\[
+                         \Phi=e_{134}-e_{234}.
+\]
+It has zero first marginal, and deleting the last two positions
+returns $y$. For distinct block labels $\beta,\gamma$, the signed
+lift is
+\begin{align*}
+ f={}&e_{1\beta\gamma}-e_{2\beta\gamma}
+       -e_{13\gamma}+e_{23\gamma}
+       -e_{1\beta4}+e_{2\beta4}
+       +e_{134}-e_{234}.
+\end{align*}
+Deleting position one cancels each adjacent pair. Deleting position
+two cancels the terms with $\beta$ against those with $3$, and
+those with both retained values against the remaining terms.
+Deleting position three gives the analogous cancellations between
+$\gamma$ and $4$. Its top component is exactly
+$e_{\beta\gamma}\otimes(e_1-e_2)$. The count for this layer is
+$2b-\ell=4$; the one-block layer is the more expensive layer, requiring
+five retained labels. This is why a maximum over the layers, rather
+than a sum, controls the completed construction.
+
+\section{Making the splitting compatible with the block operator}\label{tx:sec:blocksplitting}
+The sections just constructed commute with position permutations, but need not commute with $z$. We now fix that, without adding labels.
+
+The grading used here sorts basis patterns into two classes. It is not
+polynomial degree. Its diagonal operator $D$ reads the chosen orbit
+coordinate, whereas $z$ moves patterns by translations. Their
+\emph{commutator} $[D,z]=Dz-zD$ measures the difference between doing
+these two operations in opposite orders. The following calculation
+will turn that difference into an invertible operator $W$.
+
+A block pattern is an injective partial tuple $\beta$ with a specified nonempty position domain of size $\ell$, and values in $B$. Its image is a nonempty subset of $B$ of size $\ell<q$. Such a subset cannot be fixed by all block translations: a nonempty translation-invariant subset of the regular block is the whole block. Choose the orbit coordinate $\pi$ from Section~\ref{tx:sec:block2} on these \emph{image subsets}, and define
+\[
+                 D e_\beta=\pi(\operatorname{im}\beta)e_\beta.
+\]
+Let $E$ be the vector space on all the current block patterns, and let $E_0,E_1$ be the spans of the patterns with coordinate $0,1$, respectively. Thus $E=E_0\oplus E_1$ before any use of $z$. They are stable under position permutations and split by the position domain, since neither operation changes the image subset. On each subset orbit, let $\lambda:A\to\Ftwo$ be the nonzero linear functional vanishing on its stabiliser used to define $\pi$. The previous calculation gives
+\[
+ [D,z]=W=\sum_i c_i\lambda(\varepsilon_i)S_i,
+ \qquad W^2=\Bigl(\sum_i c_i\lambda(\varepsilon_i)\Bigr)^2I.
+\]
+The scalar is nonzero by independence of the block coefficients, so $W$ is invertible on the whole pattern space.
+
+For either $e=0,1$, suppose $v_0+zv_1=0$ with $v_0,v_1\in E_e$. Apply $D-eI$. The first term vanishes and the second gives $Wv_1$, so $v_1=0$, and then $v_0=0$. Thus the map $(v_0,v_1)\mapsto v_0+zv_1$ from $E_e\oplus E_e$ is injective, giving $2\dim E_e\le\dim E$. Since $E=E_0\oplus E_1$, both inequalities must be equalities. In particular
+\[E=E_0\oplus zE_0.
+\]
+Tensor each domain component with its retained zero-marginal factor. Because $z$ fixes retained labels, the layer has the analogous decomposition
+\[G_\ell=Q_\ell\oplus zQ_\ell
+\]
+with $Q_\ell$ position-stable and $z:Q_\ell\to zQ_\ell$ injective.
+
+\subsection{Turning a section into a commuting section}
+A section of $f:E\to Q$ may choose good representatives but fail to
+respect $z$. The two-level decomposition supplies a way to repair it:
+choose the representative of $q_0\in Q_0$, and require the
+representative of $zq_0$ to be its image under $z$. Injectivity of
+$z$ on $Q_0$ makes the two inputs uniquely identifiable. The next
+lemma checks that this prescription is linear and compatible with
+positions as well. Once a section $\tau$ is available, the splitting
+is explicit:
+\[
+             v=\bigl(v-\tau f(v)\bigr)+\tau f(v),
+       \qquad v-\tau f(v)\in\ker f.
+\]
+When $f$ and $\tau$ commute with $z$, both subspaces are stable under $z$.
+
+\begin{lemma}[A section commuting with a square-zero operator]\label{tx:lem:commuting-section}
+Let $E,Q$ carry square-zero operators $z$ commuting with position permutations, and let $f:E\to Q$ be a surjection commuting with both actions. Suppose $Q_0$ is position-stable,
+\[
+                Q=Q_0\oplus zQ_0,
+                \qquad z:Q_0\longrightarrow zQ_0\text{ is injective}.
+\]
+If $\sigma$ is a position-equivariant section of $f$, then a section commuting with both actions is given by
+\[\tau(q_0+zq_1)=\sigma(q_0)+z\sigma(q_1).
+\]
+\end{lemma}
+\begin{proof}
+The direct sum and injectivity make both $q_0,q_1$ unique. We have $f\tau=I$. Moreover
+\[z\tau(q_0+zq_1)=z\sigma(q_0)=\tau(zq_0),
+\]
+using $z^2=0$. Stability of $Q_0$ and commutation of $z,\sigma$ with positions show that $\tau$ also commutes with positions.
+\end{proof}
+The construction lifts the first member of each pair $q_0,zq_0$ freely and obtains the second by applying $z$. Apply the lemma to each quotient
+$\mathcal Z^{\le \ell}\to G_\ell$. Its kernel is
+$\mathcal Z^{\le \ell-1}$, and the commuting section makes the next
+space the direct sum of that kernel and the image of the section.
+That image is $\tau(Q_\ell)\oplus z\tau(Q_\ell)$, since the quotient map
+is injective on the section image. Inducting on $\ell$ gives the direct
+sum of the retained layer and these two-level summands. Let $C$ be
+the direct sum of all $\tau(Q_\ell)$ for $\ell\ge1$. Every summand is
+position-stable and the map $z:C\to zC$ is injective. This proves
+the splitting of the filtration as actual subspaces, not merely
+an equality of their dimensions. We have proved
+\begin{equation}\label{tx:eq:socsplit2}
+\mathcal Z_b(n+q)=\mathcal Z_b(n)\oplus C\oplus zC,
+\end{equation}
+where $C$ is position-stable, $z:C\to zC$ is an isomorphism, and $z$ kills the retained summand. This is a concrete direct-sum decomposition, valid under $b<q$ and $n\ge2b-1$.
+
+\subsection{The four consequences used for correction}
+Write $V=P_b(N)$. The next four properties are precisely the interface used in the
+correction. They do not assert that every invariant subspace of $V$
+is free for $z$.
+Recall $V'=\sum_i\im\partial_i^{\mathsf T}$,
+$\mathcal Z_b=(V')^\perp$ and $T_b=V/V'$. Their dual pairing is
+$\langle[v],\zeta\rangle=\langle v,\zeta\rangle$ for
+$\zeta\in\mathcal Z_b$. It is independent of the representative
+$v$ because every vector in $V'$ is orthogonal to $\mathcal Z_b$.
+This is the pairing used in the transpose argument below.
+It is a perfect pairing: it identifies $T_b$ with the space of
+linear functionals on $\mathcal Z_b$. Nondegeneracy follows from
+$((V')^\perp)^\perp=V'$ in the finite-dimensional tuple pairing.
+The notation $z^{-1}(U)$ in the proof means the \emph{inverse image}
+$\{v:zv\in U\}$, not an inverse for the nilpotent operator.
+For subspaces $U_1,U_2$ of the tuple ambient, the orthogonal-complement
+calculations use the elementary rules
+\[
+ (U_1+U_2)^\perp=U_1^\perp\cap U_2^\perp,\qquad
+ (U_1\cap U_2)^\perp=U_1^\perp+U_2^\perp,\qquad
+ (zU_1)^\perp=(z^{\mathsf T})^{-1}(U_1^\perp).
+\]
+The last identity is exactly the transpose pairing formula. These
+rules apply over our field without positivity or semisimplicity.
+
+\begin{lemma}[The layer correction interface]\label{tx:lem:layer-interface}
+Under $b<q$ and $n\ge2b-1$, the following hold.
+\begin{enumerate}
+\item $zV\cap \mathcal Z_b(N)\subseteq z\mathcal Z_b(N)$.
+\item $zV\cap V'\subseteq zV'$.
+\item There is a position-equivariant $w_C$ on $\mathcal Z_b(N)$ with $zw_Cz=z$ there.
+\item There is a position-equivariant $w_T$ on $T_b(N)$ with $zw_Tz=z$ there.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+For the third assertion, let $w_C$ send $zc$ back to $c$ and kill $C$ and the retained summand. For the first, the kernel of $z$ in \eqref{tx:eq:socsplit2} is $\mathcal Z_b(n)\oplus zC$. An element of $zV\cap \mathcal Z_b(N)$ is therefore $s+zc$. But $zV$ consists of vectors on tuples meeting the block; so does $zc$. The remaining $s$ is supported entirely on retained tuples, forcing $s=0$.
+
+For the other two assertions use transpose. In characteristic two each $\sigma_i$ is an involution, so $z^{\mathsf T}=z$. The pairing identifies $T_b(N)$ with $\mathcal Z_b(N)^*$, giving $w_T$ by duality. To see the second inclusion explicitly, take orthogonal complements. The first inclusion implies
+\[z^{-1}(\mathcal Z_b)=\ker z+\mathcal Z_b.
+\]
+Indeed, if $zv\in \mathcal Z_b$, it equals $zc$ for some $c\in \mathcal Z_b$, so $v-c\in\ker z$. But
+\[(zV')^\perp=z^{-1}(\mathcal Z_b),\qquad
+(zV\cap V')^\perp=\ker z+\mathcal Z_b.
+\]
+The complements agree, hence so do the spaces. This proves the required inclusion, with no appeal to semisimplicity.
+\end{proof}
+
+\section{Correcting the error on one layer}\label{tx:sec:layerstep}
+The correction has a reusable algebraic form. Write $\pi:V\to T_b$ for the quotient and $\iota_{\mathcal Z}:\mathcal Z_b\to V$ for inclusion. Since both spaces are stable under labels, $z$ induces operators $z_T,z_{\mathcal Z}$ satisfying
+\[
+       \pi z=z_T\pi,\qquad z\iota_{\mathcal Z}=\iota_{\mathcal Z}z_{\mathcal Z}.
+\]
+The distinction between these three domains keeps the construction independent of any choice of representatives.
+The maps $w_C$ and $w_T$ below are auxiliary inverses on these two
+spaces, not yet a common group-algebra witness. They construct one
+correction matrix; realisation by permutations is the separate task
+of the next chapter.
+
+The auxiliary maps reverse only the relevant arrows in nilpotent
+chains. On a pair $c\mapsto zc\mapsto0$, for example, $w_C$ sends
+$zc$ back to $c$; it is not an inverse of $z$ on the whole space.
+The correction will control its output with $w_C$ on $\mathcal Z_b$
+and its input with $w_T$ on $T_b$. Composition is read from right
+to left through these two different spaces. The two inverse
+conditions in the next lemma are what make the defect cancel;
+we do not invert the residual $\bar\varepsilon$.
+
+\begin{lemma}[The two-sided correction contract]\label{tx:lem:two-sided-correction}
+Let $1\le b\le N$, and suppose $w_0\in K[S_N]$ satisfies $zw_0z=z$ on every tuple length below $b$. On $V=P_b(N)$ write its residual as
+\[
+ \varepsilon=zw_0z-z=\iota_{\mathcal Z}\bar\varepsilon\pi,
+ \qquad \bar\varepsilon:T_b\longrightarrow\mathcal Z_b.
+\]
+Suppose position-equivariant maps $w_C:\mathcal Z_b\to\mathcal Z_b$ and $w_T:T_b\to T_b$ satisfy the two inverse conditions
+\begin{equation}\label{tx:eq:two-sided-inverses}
+ z_{\mathcal Z}w_C\bar\varepsilon=\bar\varepsilon,
+ \qquad \bar\varepsilon w_Tz_T=\bar\varepsilon.
+\end{equation}
+Then the position-equivariant correction
+\[
+ \bar\varphi=-w_C\bar\varepsilon w_T:T_b\to\mathcal Z_b,
+ \qquad \varphi=\iota_{\mathcal Z}\bar\varphi\pi:V\to V
+\]
+has image in $\mathcal Z_b$, kills $V'$, and satisfies $z\varphi z=-\varepsilon$. If an element $j\in J_{b-1}(N)$ realises $\varphi$, then $w_0+j$ is a witness on every length at most $b$.
+\end{lemma}
+\begin{proof}
+The factorisation through quotient and inclusion gives the two shape conditions. The residual $\bar\varepsilon$ commutes with positions because the label group-algebra action does, and hence so does $\varphi$. The inverse conditions give the fully typed calculation
+\[
+ z\varphi z
+ =-\iota_{\mathcal Z}z_{\mathcal Z}w_C\bar\varepsilon w_Tz_T\pi
+ =-\iota_{\mathcal Z}\bar\varepsilon\pi
+ =-\varepsilon.
+\]
+Thus $z(w_0+j)z-z=\varepsilon+zjz=0$ on $V$. On each shorter tuple module $j$ is zero, so its addition preserves the old witness identity.
+\end{proof}
+
+\subsection{Verifying the two inverse conditions}
+Return to the residual constructed at the start of the chapter. It kills $V'$ and has image in $\mathcal Z_b$, so its factorisation through $\bar\varepsilon$ is available. Its image also lies in $zV$. The first assertion of Lemma~\ref{tx:lem:layer-interface} therefore gives $\im\varepsilon\subseteq z\mathcal Z_b$, and the third gives
+\[
+                       z_{\mathcal Z}w_C\bar\varepsilon=\bar\varepsilon.
+\]
+Here we use the surjectivity of $\pi$ and injectivity of
+$\iota_{\mathcal Z}$ to express the identity on the indicated domains.
+This is the first condition of \eqref{tx:eq:two-sided-inverses}.
+
+For the other side, if $zv\in V'$, the second interface assertion gives $zv=zv'$ for some $v'\in V'$. Since $\varepsilon=(zw_0-I)z$,
+\[
+       \varepsilon v=(zw_0-I)zv'=\varepsilon v'=0.
+\]
+Now $z_Tw_Tz_T=z_T$ by the fourth assertion. For any representative $v_T\in V$ of $w_Tz_T\pi(v)$, it follows that $z(v_T-v)\in V'$. The implication just proved gives $\varepsilon v_T=\varepsilon v$, or
+\[
+               \bar\varepsilon w_Tz_T\pi=\bar\varepsilon\pi.
+\]
+Surjectivity of $\pi$ gives the second inverse condition. This calculation needs no section $T_b\to V$: the value of $\varepsilon$ is independent of representatives because it kills $V'$.
+
+The contract now supplies the correction. Theorem~\ref{tx:thm:realization}, proved in the next chapter, realises its shape by an actual $j\in J_{b-1}(N)$ using the existing labels. This is the step that replaces the fresh-label compression of the quadratic construction.
+
+\begin{theorem}[The characteristic-two linear witness]\label{tx:thm:witness2}
+Let $q=2^a>r$, and let $n\ge\max\{0,2r-1\}$. With the independent
+block coefficients specified in Chapter~\ref{tx:ch:square-zero}, one
+common element $w\in K[S_{n+q}]$ satisfies $zwz=z$ on every
+$P_b(n+q)$, $0\le b\le r$. Deletion is therefore exact on
+$\mathcal C_r(n+q)$, with the natural basis and tensor maps proved
+there.
+\end{theorem}
+\begin{proof}
+At length zero take $w_0=0$. Suppose one element $w_{b-1}$ works
+on lengths $0,\ldots,b-1$. Its residual on length $b$ has the
+shape proved at the beginning of this chapter. The layer interface
+verifies the two inverse conditions, and Lemma~\ref{tx:lem:two-sided-correction}
+constructs $\varphi$ with $z\varphi z=-\varepsilon$. Theorem~\ref{tx:thm:realization}, whose
+complete proof is in the next chapter, realises it by
+$j\in J_{b-1}(n+q)$. Set $w_b=w_{b-1}+j$. Then
+\[
+ z w_b z-z=\varepsilon+zjz=0
+\]
+on length $b$. On every shorter length $j$ is zero, so the old
+witness identity is unchanged. Every step uses only the same labels;
+$n\ge2r-1$ implies $n\ge2b-1$ for all $b\le r$. Induction gives
+$w=w_r$. The common-projector proof of Chapter~\ref{tx:ch:square-zero} gives
+exactness, while its orbit calculation gives the natural maps.
+\end{proof}
+
+\section*{Why the cost is a maximum}
+The filtration sections at length $b$ require $2b-\ell$ retained labels
+for its layer with $\ell$ block positions. All such layers use the same
+retained set, so their total requirement is $2b-1$. The group-algebra
+realisation then uses that same board without adding labels. At the
+next tuple length, the new residual is again special and the same
+pool can be used. The final requirement is therefore
+\[
+                 \max_{1\le b\le r}(2b-1)=2r-1,
+\]
+not $\sum_b b$. The entire improvement is a change in how labels
+are allocated to correction maps. It changes the onset for a fixed
+degree budget from quadratic to linear. The later consequence
+classification inverts that onset to obtain the degree lower bound.

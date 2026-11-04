@@ -1,0 +1,7 @@
+command: lake env lean4checker --fresh UAudit   (cwd <RECORDED_PRODUCER_HOME>/undec/fresh/lean, after the fresh build)
+binary: <RECORDED_PRODUCER_HOME>/lean/lean4checker/.lake/build/bin/lean4checker (built for Lean 4.26.0)
+--fresh replays the entire environment of UAudit (Lean core, Mathlib, all imported project modules and the 28 new modules) from scratch
+lean4checker prints nothing on success
+started: Sun Sep 27 04:32:38 UTC 2026
+exit status: 0
+finished: Sun Sep 27 05:28:05 UTC 2026

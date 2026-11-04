@@ -1,0 +1,329 @@
+\chapter{Nilpotent blocks and a common projector}\label{tx:sec:block-algebra}
+\label{tx:ch:square-zero}
+\section*{The property we need}
+The lifting contract asks for one operation which works on an entire
+proof diagram. It must transport the input-axiom map, the maps used for
+multiplication, the inclusions of consequence spaces and the actual
+target map. The first problem is to find an operation which has the
+right effect on bases. The second, more difficult problem is to make
+that operation exact on all the subspaces arising from a proof.
+
+This chapter separates those problems. In characteristic two, a
+square-zero operator gives a very concrete quotient: vectors killed
+by the operator, modulo vectors in its image. On a permutation basis,
+this quotient deletes the block labels. That calculation supplies
+actual basis and tensor maps. It does \emph{not} prove exactness.
+For exactness we will derive a projector from one group-algebra
+witness, common to every tuple length up to the chosen support budget.
+The next three chapters construct that witness rather than leaving
+its existence as a hypothesis.
+
+Keep the five roles separate:
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+$n$ & number of retained universe labels,\\
+$q=2^a$ & number of block labels to be deleted,\\
+$N=n+q$ & size of the larger universe,\\
+$r$ & support budget for all spaces in the proof diagram,\\
+$b\le r$ & current tuple length in the witness construction.
+\end{tabular}
+\end{center}
+Neither $b$ nor $r$ is the maximum degree of a polynomial proof.
+For an application to degree-$d$ consequences, that degree determines
+$r$: $r=kd+s$ for invariant targets and $r=2kd+s+t$ for the general
+indexed request. We first solve the finite algebra problem with $r$
+as an independent integer.
+
+The construction proves Exact Deletion
+(Theorem~\ref{tx:thm:deletion}) independently of the equations and targets.
+We begin with the square-zero operator in characteristic two,
+then build a witness with a quadratic retained-label cost, replace that
+cost by the linear threshold, and finally handle odd characteristic.
+
+\section{A block of labels and a square-zero operator}\label{tx:sec:block2}
+For this part $\operatorname{char}K=2$. Choose $q=2^a>r$ and split the labels into retained labels $R=[n]$ and a block $B$ with $q$ labels. Identify $B$ with the vector space $A=\Ftwo^a$. Translation by the $i$th unit vector gives a permutation $\sigma_i$ of $B$, extended by the identity on $R$. These permutations commute and square to the identity.
+
+Extend the coefficient field if necessary so that it contains $a$
+elements linearly independent over $\Ftwo$. In this finite-algebra
+construction, $K$ denotes that working field; Lemma~\ref{tx:lem:field}
+later returns degree-bounded derivability to the original field.
+Choose $c_1,\ldots,c_a$ linearly independent over $\Ftwo$ in $K$, and put
+\begin{equation}\label{tx:eq:z2}z=\sum_{i=1}^ac_i(\sigma_i-1).\end{equation}
+This notation means an operator on every vector space on which label permutations act. Products of operators mean composition, so $z^2=0$ means that applying $z$ twice sends every vector to zero; it does not mean that $z$ itself is zero. Since the summands commute, cross terms cancel in characteristic two, and
+\[z^2=\sum_i c_i^2(\sigma_i-1)^2=0.\]
+A linear operator is called \emph{nilpotent} when some positive
+power is zero. Here that power is already two, so every vector
+in $\im z$ lies in $\ker z$. The nonzero two-point example below
+shows that nilpotence need not make the operator itself zero.
+For $q=2$, $z$ can be the swap of the two block labels plus the identity. For $q=4$, work over $\mathbb F_4=\Ftwo[\omega]/(\omega^2+\omega+1)$ and use $(c_1,c_2)=(1,\omega)$.
+
+The independence is essential. On a two-point orbit where $\sigma_1$ and $\sigma_2$ induce the same swap, choosing $c_1=c_2=1$ makes $z=0$. The orbit is moved, yet would survive deletion. Independent coefficients ensure that every nonzero binary combination of the $c_i$ remains nonzero.
+
+For a space $M$ with label action define
+\begin{equation}\label{tx:eq:D2}\D(M)=\ker z/\im z.\end{equation}
+This quotient is legal because $z^2=0$ implies $\im z\subseteq\ker z$. Two vectors killed by $z$ represent the same class if their difference is $zw$ for some $w$. A map commuting with label permutations commutes with $z$ and induces a map between these quotients. Permutations of the retained labels commute with $z$, so they still act on the quotient.
+
+\subsection{Two actions which must not be confused}
+The coordinates of a tuple have \emph{positions}, whereas its entries
+are \emph{universe labels}. For example, the tuple $(a,b)$ has two
+positions and uses two labels. A label permutation $g$ sends it to
+$(g(a),g(b))$. A position swap sends it to $(b,a)$. These actions
+commute, but they play different roles. Group-algebra elements in
+$K[S_N]$ combine label permutations. The auxiliary inverses used later
+must commute with position permutations so that their matrix entries
+can be expressed as functions of an unordered matching between input
+and output labels.
+
+For a concrete check, take labels $1,2,3$ and the tuple $(1,3)$.
+The label swap $(12)$ sends it to $(2,3)$; the position swap sends
+it to $(3,1)$. Doing both, in either order, gives $(3,2)$. It is
+this commuting pair of actions which allows the same correction to
+be discussed both as an operator on ordered tuples and as a function
+on rook placements.
+
+The block subgroup $A$ acts on labels, never on tuple positions. The
+operator $z$ therefore commutes with every position permutation.
+An auxiliary operator chosen by the underlying \emph{set} of labels,
+instead of by a preferred ordering of a tuple, has the same property.
+That observation will matter when constructing an inverse without
+averaging over $S_b$.
+
+The usual averaging recipe would replace an operator $h$ by
+$(b!)^{-1}\sum_{\tau\in S_b}\tau h\tau^{-1}$, thereby forcing
+it to commute with positions. In characteristic two, $b!$ is zero
+in the field when $b\ge2$, so this recipe is unavailable. Instead
+we construct $h$ from the unordered label set of a tuple. That
+choice is already unchanged by every reordering of its positions.
+
+\subsection{The two-point orbit calculation}
+For the illustrative two-label choice $z=\sigma-I$, on basis vectors $e_\beta,e_\gamma$ swapped by $\sigma$,
+\[ze_\beta=ze_\gamma=e_\beta+e_\gamma.\]
+The kernel and image are both the one-dimensional span of $e_\beta+e_\gamma$, so the quotient is zero. On a fixed basis vector $e_i$, $z=0$, and its line survives. This is the prototype of deletion: moved directions disappear, fixed directions remain.
+
+\paragraph*{A useful failure to commute.}
+On this two-point orbit let $S$ be the swap and let $D$ multiply
+the first basis vector by $0$ and the second by $1$. Their matrices
+are
+\[
+ S=\begin{pmatrix}0&1\\1&0\end{pmatrix},\qquad
+ D=\begin{pmatrix}0&0\\0&1\end{pmatrix},\qquad DS-SD=S
+ \quad(\operatorname{char}K=2).
+\]
+The difference $DS-SD$ is called a \emph{commutator}; it measures
+the failure of the two operators to commute. Here that difference
+is invertible. The next calculation constructs the same useful
+failure to commute on every moved orbit, and uses it to write any
+kernel vector as an image vector.
+
+\subsection{The calculation for every moved orbit}
+An $A$-set is a set of basis objects on which the translations in
+$A=\mathbb F_2^a$ act. The orbit of $x_0$ consists of all $v x_0$,
+$v\in A$; its stabiliser $H$ consists of translations fixing $x_0$.
+Since the orbit is moved, $H$ is a proper subspace. A basis of $H$
+can be extended to a basis of $A$, so a nonzero linear functional
+$\ell$ can be chosen to vanish on $H$. It assigns a binary coordinate
+to the orbit, independent of the translation used to reach an object.
+The coordinate-reading operator $D$ below is diagonal, just as in
+the two-point illustration.
+
+Let $X$ be a finite $A$-set with no point fixed by all of $A$. On each orbit choose $x_0$. Its stabiliser $H$ is a proper binary subspace. Choose a nonzero linear functional $\ell:A\to\Ftwo$ vanishing on $H$. The function
+\[\pi(vx_0)=\ell(v)\]
+is well defined: two choices of $v$ differ by an element of $H$. Let $D$ multiply $e_x$ by $\pi(x)$, and put $e_i=\ell(\varepsilon_i)$. These are constants on that orbit. If $S_i$ denotes the action of $\sigma_i$, direct evaluation at a basis vector gives
+\[DS_i-S_iD=e_iS_i,\qquad Dz-zD=W:=\sum_i c_ie_iS_i.\]
+Moreover $Wz=zW$ and
+\[W^2=\Bigl(\sum_i c_ie_i\Bigr)^2I=\alpha^2I,\qquad\alpha\ne0.\]
+In particular $W^{-1}=\alpha^{-2}W$. Thus the inverse used here
+is explicit; no choice of a complement or inverse matrix is hidden
+in the notation. The coordinate vector $\varepsilon_i$ is the
+$i$th unit vector in $A$, and $e_i=\ell(\varepsilon_i)$ is a
+scalar, distinct from a basis vector $e_x$.
+Thus $\Theta=W^{-1}D$ satisfies $\Theta z-z\Theta=I$. For $zm=0$ this gives $m=-z\Theta m$, hence $\ker z\subseteq\im z$. The reverse inclusion was automatic, so the quotient vanishes.
+
+The calculation has three ingredients, each serving a different
+purpose. The orbit coordinate $\pi$ produces a diagonal operator whose
+commutator with translation is computable. Independence of the $c_i$
+makes the commutator invertible. The commutator identity then turns a
+kernel vector into an image vector. We do not choose a complement of
+$\ker z$ by hand and hope it will respect later maps.
+
+For a two-point orbit of $A=\mathbb F_2^2$ with stabiliser
+$H=\{(0,0),(1,1)\}$, both coordinate translations induce the same
+swap $S$. Choose $\ell(v_1,v_2)=v_1+v_2$. With
+$(c_1,c_2)=(1,\omega)$, the operator is
+$z=(1+\omega)(S-I)$, and $\alpha=1+\omega\ne0$.
+Thus the one-dimensional kernel is exactly the image. If both
+coefficients had instead been $1$, $z$ would be zero on this moved
+orbit. This explicit orbit is why using one coefficient for every
+translation is not a harmless simplification.
+
+This calculation also works on $K[X]\otimes Y$ for \emph{any} space $Y$ carrying the label action. Let $D$ inspect only the $X$ coordinate and let $S_i$ act on both factors. We still have $S_i^2=I$ and the same commutator calculation. This stronger statement will justify multiplication, whose domain contains a variable factor tensored with a consequence subspace.
+
+\section{Natural deletion on permutation bases}
+Let $\mathcal U$ be a basis system whose objects have support less than $q$. An object fixed by all of $A$ cannot have support meeting $B$. Otherwise invariance of its support under the regular action would force its support to contain all $q$ block labels. Thus its fixed objects are precisely $\mathcal U_n$.
+
+Split the basis into fixed and moved objects. The preceding calculation kills the moved summand and fixes the retained one. Hence
+\begin{align}
+\D(K[\mathcal U_{n+q}])&\cong K[\mathcal U_n],\label{tx:eq:basis}\\
+\D(K[\mathcal U_{n+q}]\otimes Y)&\cong K[\mathcal U_n]\otimes\D(Y).\label{tx:eq:tensor}
+\end{align}
+The second identification sends $e_u\otimes[y]$ to $[e_u\otimes y]$ for retained $u$. It is natural in $Y$: applying a map to $y$ before or after taking its class gives the same result. For a product of two permutation bases, it simply keeps pairs of retained objects. There is no choice of unrelated isomorphisms here.
+
+Suppose a matrix from one permutation basis to another has stable relabelling-invariant coefficients. On a retained input vector, its image is killed by $z$. Its retained component has exactly the smaller-rank coefficients; its moved component is in $\ker z=\im z$ on the moved summand, so vanishes in the quotient. Thus the \emph{actual matrix}, not merely its rank, is transported correctly.
+
+\subsection{What naturality says about actual matrix entries}
+Let $F_N:K[\mathcal U_N]\to K[\mathcal V_N]$ be an equivariant
+coefficient map. On a retained basis vector $e_u$, its image is
+\[
+                       F_N(e_u)=\sum_v a_N(v,u)e_v.
+\]
+It is killed by $z$ because $e_u$ is killed by $z$ and $F_Nz=zF_N$.
+Split this image into its retained and moved parts. Both parts are
+killed separately because $z$ preserves those two summands. The moved
+part is in $\im z$ by the orbit calculation, and so contributes zero
+to the quotient. The remaining coefficients are $a_N(v,u)$ for
+retained $u,v$. A stable coefficient rule identifies each of these
+with $a_n(v,u)$. The smaller matrix is therefore obtained entry by
+entry; we have not merely proved equality of two ranks or dimensions.
+
+For a tensor map, apply the same argument to the permutation first
+factor. A retained basis vector in that factor is fixed by the block,
+so the quotient sees precisely the class of the second factor. A moved
+first-factor orbit has zero quotient even when the block acts
+nontrivially on the second factor. This is why the strengthened orbit
+calculation, with a diagonal action on $K[X]\otimes Y$, was needed.
+The tensor rule subsequently applies to a variable factor tensored
+with a consequence subspace.
+
+\subsection{A small failure of exactness}
+Take the two-point permutation space $E=Ke_\beta\oplus Ke_\gamma$ and its invariant line $T=K(e_\beta+e_\gamma)$. Inclusion $T\hookrightarrow E$ is injective. But $\D(T)=T$ whereas $\D(E)=0$. Deletion takes an injection to the zero map on a nonzero space. Therefore the basis calculation alone does not prove that deletion preserves kernels, images or intersections.
+
+This failure is precisely why a proof cannot stop at ``the monomials delete correctly.'' We must show that, with enough retained labels, every subspace produced by the PC calculation lies in a class where the quotient operation is exact.
+
+\section{A common group-algebra witness}\label{tx:sec:common}
+The group algebra $K[S_N]$ consists of finite formal sums $\sum_ga_gg$ of label permutations. It acts on every space with an $S_N$ action by the corresponding linear combination of operators. Its multiplication is composition. This provides a common language for certificates valid on many spaces at once.
+
+For $b\ge0$ let
+\[P_b(N)=K[\Inj([b],[N])],\]
+the space on ordered injective $b$-tuples. In these construction chapters $P_b(N)$ denotes this tuple space, not the polynomial ambient space $P_{N,\le d}$ from the consequence calculation. The integer $b$ counts tuple positions, whereas $d$ bounds polynomial degree. Label permutations act on entries; a second group $S_b$ permutes tuple positions. These actions commute. Define
+\[J_r(N)=\{a\in K[S_N]:aP_b(N)=0\text{ for every }b\le r\}.\]
+It is a two-sided ideal. Write $\mathcal C_r(N)$ for the finite-dimensional spaces with label action annihilated by this ideal: every element of $J_r(N)$ acts as zero on each such space. This is the same annihilator class called $\mathcal M_r$ in Chapter~\ref{tx:chap:lift}. Subspaces invariant under labels, quotients and finite direct sums remain in this class.
+
+Every bounded-support permutation basis of support at most $r$ belongs to the class. For an orbit of an object, order its support of size $b\le r$. Sending an injective tuple to the corresponding relabelling of that object gives a surjective equivariant map from $P_b(N)$ onto the orbit space. The support condition makes this well defined. Elements of $J_r$ kill that quotient as well.
+
+The required witness is a \emph{partial inverse}, not an inverse of
+the nilpotent operator $z$. If $zwz=z$ and $v=zt$ is an image
+vector, then $z(wv)=zwzt=zt=v$: applying $w$ supplies a preimage
+under $z$. The witness condition below requires this one expression
+to work on all tuple lengths simultaneously. Its error need only
+lie in $J_r$, since such an error acts as zero on the entire class.
+
+\begin{definition}
+A support-$r$ witness is one element $w\in K[S_N]$ satisfying
+\begin{equation}\label{tx:eq:witness2}zwz-z\in J_r(N).
+\end{equation}
+\end{definition}
+Such a $w$ gives $zwz=z$ on \emph{every} object of $\mathcal C_r(N)$. Choosing a separate matrix inverse on each space would not give this compatibility. A module map here is a linear map commuting with all label permutations. It therefore satisfies $f(wv)=w f(v)$ for a common group-algebra element, which is exactly what is needed.
+
+\subsection{The projector calculation, without an exactness assumption}
+A projector is an operator $e$ with $e^2=e$. It fixes every vector
+in its image $eM$ and sends every vector in $\ker e$ to zero;
+it need not be a coordinate projection.
+We seek one which selects representatives
+of the quotient $\ker z/\im z$ in a way compatible with every
+equivariant map. The factors in the formula below act from right
+to left. They are not assumed to commute.
+
+Suppose $z^2=0$ and $zwz=z$. Set
+\[e=(I-zw)(I-wz).\]
+Then
+\[ze=z(I-wz)=z-zwz=0,\qquad ez=(I-zw)z=0.\]
+If $zv=0$, then $ev=v-zwv$. Also
+\[(zw)e=(zw-zwzw)(I-wz)=0,\]
+since $zwzw=zw$. Applying the formula on $\ker z$ to $ev$ gives $e^2v=ev$. Thus $e$ is a projector.
+
+The map $[v]\mapsto ev$ is an isomorphism $\ker z/\im z\to eM$: it is well defined because $ez=0$, its image lies in $\ker z$, and $ev-v=-zwv$ is in $\im z$ when $zv=0$. Its inverse sends a vector of $eM$ to its quotient class.
+
+Now let $0\to U\to V\to W\to0$ be an exact sequence in $\mathcal C_r(N)$. All maps commute with the same $e$. Restricting to $eU,eV,eW$ preserves injectivity. A vector of $eW$ has a lift $v\in V$; $ev$ is a lift in $eV$, proving surjectivity. A vector $ev$ mapping to zero lies in $U$ and equals its own projection, so lies in $eU$. This proves exactness explicitly. By the natural isomorphism, $\D$ is exact.
+
+The projector need not commute with permutations of the retained labels. We use its image as a vector-space model to prove exactness, and keep the original quotient for the residual label action. Nothing here asserts an unwarranted equivariant direct-sum decomposition for that residual group.
+
+\begin{example}[One retained label]
+Let the retained label be $a$ and the two block labels be $b,c$. Put $z=I+(bc)$ and $w=(ab)$. On $P_1(3)$,
+\[zwz(e_b)=zw(e_b+e_c)=z(e_a+e_c)=e_b+e_c=ze_b,\]
+and similarly for $e_c$; both sides vanish on $e_a$. The projector is the all-ones $3\times3$ matrix. Its image is the constant line, naturally representing the retained one-dimensional quotient. With no retained label, every element of $K[S_2]$ satisfies $zwz=0$, so there is no such witness. The spare label makes a real difference.
+\end{example}
+
+
+\section{Reading the projector as an exactness certificate}
+In a short exact sequence the first map $i$ is injective, the last
+map $f$ is onto, and $\ker f=\im i$. Thus $U$ is a specified
+subspace of $V$, and $W$ records the quotient by it. A
+\emph{diagram chase} checks these assertions after transport by
+following an individual vector and its preimages through the maps.
+Here the common projector makes those vector checks possible.
+
+The exactness proof is worth restating as a diagram chase, because
+it is the point at which a basis calculation becomes a tool for
+ordinary PC. Suppose
+\[
+ 0\longrightarrow U\xrightarrow{i}V\xrightarrow{f}W\longrightarrow0
+\]
+is exact and all three spaces are in the common annihilator class.
+The equations $ei=ie$ and $ef=fe$ hold because $i,f$ commute with
+every label permutation and hence with their common linear combination
+$e$. A separate projector selected independently on each space would
+not justify these equations.
+
+If $u\in eU$ maps to zero, its original image is zero and injectivity
+of $i$ gives $u=0$. If $w\in eW$, take any lift $v\in V$ with
+$f(v)=w$. Then $f(ev)=e f(v)=ew=w$. Finally, if $v\in eV$ maps
+to zero, exactness of the original sequence gives $v=i(u)$ for some
+$u\in U$. Applying $e$ gives $v=ev=i(eu)$. These are respectively
+injectivity, surjectivity and equality of image with kernel for the
+projected sequence. The natural quotient-to-projector isomorphism
+transfers all three conclusions to deletion.
+
+This argument proves more than the existence of some complement to
+$\im z$. It proves that every actual map in the consequence diagram
+uses compatible complements. Intersections, sums and restricted
+multiplication images can therefore be transported. The joint tensor
+operation in \eqref{tx:eq:joint-lift} uses the same group-algebra
+expression on both factors together; it is not the tensor product
+of two independently selected projectors.
+
+\subsection{The three-label matrix in full}
+With retained label $a$ and block labels $b,c$, use the ordered basis
+$(e_a,e_b,e_c)$. Then
+\[
+ z=\begin{pmatrix}0&0&0\\0&1&1\\0&1&1\end{pmatrix},\qquad
+ w=\begin{pmatrix}0&1&0\\1&0&0\\0&0&1\end{pmatrix}.
+\]
+Matrix multiplication gives $zwz=z$ and
+\[
+ e=(I-zw)(I-wz)=
+       \begin{pmatrix}1&1&1\\1&1&1\\1&1&1\end{pmatrix}.
+\]
+Its square is itself: every entry of the square is $1+1+1=1$ in
+characteristic two. The quotient can be represented by the retained
+coordinate, while the projector realises that coordinate as
+$e_a+e_b+e_c$. Thus the lift of a retained vector can involve all
+labels. This is already the mechanism that turns a smaller totality
+sum into its larger counterpart.
+
+The example also shows why deletion is not substitution of zero for
+block variables. The projector lift of $e_a$ is a sum of three basis
+vectors. Its block terms are required to preserve the relations of
+the larger system. A support budget does not assert that lifted proof
+lines mention only retained labels; it limits the labels in each
+\emph{basis object} used by the transport construction.
+
+\section*{What has been proved, and what remains}
+We have proved natural deletion of permutation bases and its
+permutation-first-factor tensor rule. We have also proved that the
+single identity $zwz=z$ on all tuple lengths up to $r$ gives a common
+projector and therefore exact deletion on the full annihilator class.
+The identity has not been assumed as an external theorem: its
+construction is the subject of the next chapters. The preliminary
+construction spends fresh labels at each length; the improved
+construction realises a smaller, specially shaped error on one reused
+pool.

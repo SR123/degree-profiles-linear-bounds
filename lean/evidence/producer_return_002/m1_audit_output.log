@@ -1,0 +1,397 @@
+Output of: lake env lean UCIndexedAudit.lean  (Mon Oct  5 18:33:57 UTC 2026)
+structure UniformConsequence.Indexed.ITarget {K : Type} [Field K] (T : DegreeProfilesReview.Uniform.Template K) : Type 1
+number of parameters: 3
+fields:
+  UniformConsequence.Indexed.ITarget.B : DegreeProfilesReview.Uniform.BasisSystem
+  UniformConsequence.Indexed.ITarget.t : ℕ
+  UniformConsequence.Indexed.ITarget.hB : self.B.Bounded self.t
+  UniformConsequence.Indexed.ITarget.DG : ℕ
+  UniformConsequence.Indexed.ITarget.γ : self.B.Obj → (T.Var.Obj →₀ ℕ) → K
+  UniformConsequence.Indexed.ITarget.γ_inv : ∀ (g : Equiv.Perm ℕ) (b : self.B.Obj) (m : T.Var.Obj →₀ ℕ),
+      self.γ (g • b) (T.Var.monSMul g m) = self.γ b m
+  UniformConsequence.Indexed.ITarget.γ_deg : ∀ (b : self.B.Obj) (m : T.Var.Obj →₀ ℕ),
+      self.γ b m ≠ 0 → DegreeProfilesReview.Uniform.BasisSystem.mdeg m ≤ self.DG
+constructor:
+  UniformConsequence.Indexed.ITarget.mk {K : Type} [Field K] {T : DegreeProfilesReview.Uniform.Template K}
+    (B : DegreeProfilesReview.Uniform.BasisSystem) (t : ℕ) (hB : B.Bounded t) (DG : ℕ)
+    (γ : B.Obj → (T.Var.Obj →₀ ℕ) → K)
+    (γ_inv : ∀ (g : Equiv.Perm ℕ) (b : B.Obj) (m : T.Var.Obj →₀ ℕ), γ (g • b) (T.Var.monSMul g m) = γ b m)
+    (γ_deg : ∀ (b : B.Obj) (m : T.Var.Obj →₀ ℕ), γ b m ≠ 0 → DegreeProfilesReview.Uniform.BasisSystem.mdeg m ≤ DG) :
+    ITarget T
+@[reducible] def UniformConsequence.Indexed.inflate : {K : Type} →
+  [inst : Field K] → DegreeProfilesReview.Uniform.Template K → ℕ → DegreeProfilesReview.Uniform.Template K :=
+fun {K} [Field K] T t =>
+  { Var := T.Var, Ax := T.Ax, k := 2 * T.k, s := T.s + t, D := T.D, n0 := max T.n0 (2 * T.k * T.D + (T.s + t)), hk := ⋯,
+    hn0 := ⋯, hn0' := ⋯, var_bounded := ⋯, ax_bounded := ⋯, coeff := T.coeff, coeff_inv := ⋯, coeff_deg := ⋯ }
+def UniformConsequence.Indexed.ITarget.aux : {K : Type} →
+  [inst : Field K] →
+    {T : DegreeProfilesReview.Uniform.Template K} → ITarget T → DegreeProfilesReview.Uniform.Template K :=
+fun {K} [Field K] {T} G =>
+  { Var := T.Var, Ax := G.B, k := T.k, s := G.t, D := G.DG, n0 := max 1 (T.k * G.DG + G.t), hk := ⋯, hn0 := ⋯,
+    hn0' := ⋯, var_bounded := ⋯, ax_bounded := ⋯, coeff := G.γ, coeff_inv := ⋯, coeff_deg := ⋯ }
+def UniformConsequence.Indexed.ITarget.poly : {K : Type} →
+  [inst : Field K] →
+    {T : DegreeProfilesReview.Uniform.Template K} →
+      (G : ITarget T) → (n : ℕ) → G.B.Rk n → MvPolynomial (T.Var.Rk n) K :=
+fun {K} [Field K] {T} G n b => G.aux.poly n b
+def UniformConsequence.Indexed.ITarget.deg : {K : Type} →
+  [inst : Field K] → {T : DegreeProfilesReview.Uniform.Template K} → (G : ITarget T) → G.B.Obj → ℕ :=
+fun {K} [Field K] {T} G b => G.aux.axDeg b
+def UniformConsequence.Indexed.ITarget.maxDeg : {K : Type} →
+  [inst : Field K] → {T : DegreeProfilesReview.Uniform.Template K} → ITarget T → ℕ :=
+fun {K} [Field K] {T} G => Nat.find ⋯
+def UniformConsequence.Indexed.ITarget.AllPC : {K : Type} →
+  [inst : Field K] → {T : DegreeProfilesReview.Uniform.Template K} → ITarget T → ℕ → ℕ → Prop :=
+fun {K} [inst : Field K] {T} G n d => ∀ (b : G.B.Rk n), G.poly n b ∈ DegreeProfilesReview.PC.Vinf (T.inst n) d
+def UniformConsequence.Indexed.ITarget.AllNS : {K : Type} →
+  [inst : Field K] → {T : DegreeProfilesReview.Uniform.Template K} → ITarget T → ℕ → ℕ → Prop :=
+fun {K} [inst : Field K] {T} G n d => ∀ (b : G.B.Rk n), G.poly n b ∈ DegreeProfilesReview.NS.NSspan (T.inst n) d
+def UniformConsequence.Indexed.ITarget.ZeroDerivable : {K : Type} →
+  [inst : Field K] → {T : DegreeProfilesReview.Uniform.Template K} → ITarget T → Prop :=
+fun {K} [Field K] {T} G => G.maxDeg = 0 ∧ ∀ (o : G.B.Obj), G.γ o 0 = 0 ∨ T.HasConstAxiom
+def UniformConsequence.Indexed.ITarget.InOrbit : {K : Type} →
+  [inst : Field K] →
+    {T : DegreeProfilesReview.Uniform.Template K} → (G : ITarget T) → G.B.Obj → {n : ℕ} → G.B.Rk n → Prop :=
+fun {K} [Field K] {T} G o {n} b => ∃ g, G.B.up n b = g • o
+def UniformConsequence.Indexed.ITarget.orbit : {K : Type} →
+  [inst : Field K] → {T : DegreeProfilesReview.Uniform.Template K} → (G : ITarget T) → G.B.Obj → ITarget T :=
+fun {K} [Field K] {T} G o =>
+  { B := G.B.sub (fun u => ∃ g, u = g • o) ⋯, t := G.t, hB := ⋯, DG := G.DG, γ := fun u m => G.γ (↑u) m, γ_inv := ⋯,
+    γ_deg := ⋯ }
+@[reducible] def UniformConsequence.Indexed.ITarget.supp : {K : Type} →
+  [inst : Field K] → {T : DegreeProfilesReview.Uniform.Template K} → ITarget T → ℕ → ℕ :=
+fun {K} [Field K] {T} G d => (inflate T G.t).k * d + (inflate T G.t).s
+def UniformConsequence.Indexed.ITarget.concDatumJ : {K : Type} →
+  [inst : Field K] →
+    {T : DegreeProfilesReview.Uniform.Template K} →
+      ITarget T → {d : ℕ} → 1 ≤ d → ℕ → DegreeProfilesReview.Transport.PCDatum (ModuleCat K) :=
+fun {K} [Field K] {T} G {d} hd n =>
+  let __src := (inflate T G.t).concDatum hd n;
+  { W := __src.W, L := __src.L, M := __src.M, U := ModuleCat.of K ((G.aux.axSys d).Rk n →₀ K), V₀ := __src.V₀,
+    ℓ := __src.ℓ, μ := __src.μ, v₀ := __src.v₀, c := ModuleCat.ofHom (G.aux.axMap d n),
+    T := @DegreeProfilesReview.Transport.PCDatum.T (ModuleCat K) (ModuleCat.moduleCategory K) __src }
+def UniformConsequence.Indexed.ITarget.catDatumJ.{v₂, v₃, u₂, u₃} : {K : Type} →
+  [inst : Field K] →
+    {T : DegreeProfilesReview.Uniform.Template K} →
+      (G : ITarget T) →
+        {d : ℕ} →
+          1 ≤ d →
+            {n : ℕ} →
+              {B : Type u₂} →
+                [inst_1 : CategoryTheory.Category.{v₂, u₂} B] →
+                  [inst_2 : CategoryTheory.Abelian B] →
+                    DegreeProfilesReview.Deletion.M4 K (G.supp d) n B → DegreeProfilesReview.Transport.PCDatum B :=
+fun {K} [Field K] {T} G {d} hd {n} {B} [inst_1 : CategoryTheory.Category.{v₂, u₂} B] [CategoryTheory.Abelian B] P =>
+  let __src := (inflate T G.t).catDatum hd P;
+  { W := __src.W, L := __src.L, M := __src.M, U := P.perm (G.aux.axSys d) ⋯, V₀ := __src.V₀, ℓ := __src.ℓ, μ := __src.μ,
+    v₀ := __src.v₀, c := P.mat ⋯ ⋯ (G.aux.axM d), T := @DegreeProfilesReview.Transport.PCDatum.T B inst_1 __src }
+def UniformConsequence.Indexed.ITarget.ωCompatJ.{v₂, v₃, u₂, u₃} : {K : Type} →
+  [inst : Field K] →
+    {T : DegreeProfilesReview.Uniform.Template K} →
+      (G : ITarget T) →
+        {d : ℕ} →
+          (hd : 1 ≤ d) →
+            {n : ℕ} →
+              {B : Type u₂} →
+                [inst_1 : CategoryTheory.Category.{v₂, u₂} B] →
+                  [inst_2 : CategoryTheory.Abelian B] →
+                    (P : DegreeProfilesReview.Deletion.M4 K (G.supp d) n B) →
+                      DegreeProfilesReview.Transport.PCCompat P.ω (G.catDatumJ hd P) (G.concDatumJ hd n) :=
+fun {K} [Field K] {T} G {d} hd {n} {B} [CategoryTheory.Category.{v₂, u₂} B] [CategoryTheory.Abelian B] P =>
+  let __src := (inflate T G.t).ωCompat hd P;
+  { αW := __src.αW, αL := __src.αL, αM := __src.αM,
+    αU := P.basis (G.aux.axSys d) ⋯ ≪≫ (LinearEquiv.refl K ((G.aux.axSys d).Rk n →₀ K)).toModuleIso, αV₀ := __src.αV₀,
+    hℓ := ⋯, hμ := ⋯, hv₀ := ⋯, hc := ⋯, hT := ⋯ }
+def UniformConsequence.Indexed.ITarget.ΦCompatJW.{v₂, v₃, v₄, u₂, u₃, u₄} : {K : Type} →
+  [inst : Field K] →
+    {T : DegreeProfilesReview.Uniform.Template K} →
+      (G : ITarget T) →
+        {d : ℕ} →
+          (hd : 1 ≤ d) →
+            {N n : ℕ} →
+              {BN : Type u₂} →
+                [inst_1 : CategoryTheory.Category.{v₂, u₂} BN] →
+                  [inst_2 : CategoryTheory.Abelian BN] →
+                    {Bn : Type u₂} →
+                      [inst_3 : CategoryTheory.Category.{v₂, u₂} Bn] →
+                        [inst_4 : CategoryTheory.Abelian Bn] →
+                          {PN : DegreeProfilesReview.Deletion.M4 K (G.supp d) N BN} →
+                            {Pn : DegreeProfilesReview.Deletion.M4 K (G.supp d) n Bn} →
+                              {Φ : CategoryTheory.Functor BN Bn} →
+                                DegreeProfilesReview.Deletion.M5w PN Pn Φ →
+                                  DegreeProfilesReview.Transport.PCCompat Φ (G.catDatumJ hd PN) (G.catDatumJ hd Pn) :=
+fun {K} [Field K] {T} G {d} hd {N n} {BN} [CategoryTheory.Category.{v₂, u₂} BN] [CategoryTheory.Abelian BN] {Bn}
+    [CategoryTheory.Category.{v₂, u₂} Bn] [CategoryTheory.Abelian Bn] {PN} {Pn} {Φ} m5 =>
+  let __src := (inflate T G.t).ΦCompatW hd m5;
+  { αW := __src.αW, αL := __src.αL, αM := __src.αM, αU := m5.δ (G.aux.axSys d) ⋯, αV₀ := __src.αV₀, hℓ := ⋯, hμ := ⋯,
+    hv₀ := ⋯, hc := ⋯, hT := ⋯ }
+def UniformConsequence.Indexed.DetectsSubquotients.{v, v', u, u'} : {C : Type u} →
+  [inst : CategoryTheory.Category.{v, u} C] →
+    {D : Type u'} → [inst_1 : CategoryTheory.Category.{v', u'} D] → CategoryTheory.Functor C D → C → Prop :=
+fun {C} [CategoryTheory.Category.{v, u} C] {D} [CategoryTheory.Category.{v', u'} D] F W =>
+  ∀ ⦃Q Y : C⦄ (π : W ⟶ Q) (m : Y ⟶ Q),
+    CategoryTheory.Epi π →
+      CategoryTheory.Mono m → CategoryTheory.Limits.IsZero (F.obj Y) → CategoryTheory.Limits.IsZero Y
+def DegreeProfilesReview.Uniform.Template.axM : {K : Type} →
+  [inst : Field K] →
+    (T : DegreeProfilesReview.Uniform.Template K) →
+      (d : ℕ) → DegreeProfilesReview.Uniform.InvMatrix K (T.axSys d) (T.Var.mon d) :=
+fun {K} [Field K] T d => { entry := fun y i => T.coeff ↑i ↑y, inv := ⋯ }
+def DegreeProfilesReview.Uniform.Template.axSys : {K : Type} →
+  [inst : Field K] → DegreeProfilesReview.Uniform.Template K → ℕ → DegreeProfilesReview.Uniform.BasisSystem :=
+fun {K} [Field K] T d => T.Ax.sub (fun i => T.axDeg i ≤ d) ⋯
+def DegreeProfilesReview.Uniform.Template.axMap : {K : Type} →
+  [inst : Field K] →
+    (T : DegreeProfilesReview.Uniform.Template K) →
+      (d t : ℕ) → ((T.axSys d).Rk t →₀ K) →ₗ[K] ↥(DegreeProfilesReview.Concrete.Pd (T.Var.Rk t) K d) :=
+fun {K} [Field K] T d t => Finsupp.linearCombination K fun i => ⟨T.poly t ↑i, ⋯⟩
+def DegreeProfilesReview.PC.Vinf.{u_1, u_2} : {σ : Type u_1} →
+  {K : Type u_2} → [inst : Field K] → Set (MvPolynomial σ K) → ℕ → Submodule K (MvPolynomial σ K) :=
+fun {σ} {K} [Field K] Γ d => ⨆ j, DegreeProfilesReview.PC.V Γ d j
+def DegreeProfilesReview.NS.NSspan.{u_1, u_2} : {σ : Type u_1} →
+  {K : Type u_2} → [inst : Field K] → Set (MvPolynomial σ K) → ℕ → Submodule K (MvPolynomial σ K) :=
+fun {σ} {K} [Field K] Γ d =>
+  Submodule.span K
+    {g | ∃ m, ∃ f ∈ Γ, DegreeProfilesReview.NS.mdeg m + f.totalDegree ≤ d ∧ g = (MvPolynomial.monomial m) 1 * f}
+def ClaudeCP.IsTopWitness : {K : Type} →
+  [inst : Field K] →
+    (p : ℕ) →
+      [Fact (Nat.Prime p)] →
+        ℕ → (a n : ℕ) → (Fin a → K) → MonoidAlgebra K ↥(DegreeProfilesReview.SymRep.Sfin (n + p ^ a)) → Prop :=
+fun {K} [Field K] p [Fact (Nat.Prime p)] r a n c w =>
+  ClaudeCP.zEltP p a n c ^ (p - 1) * w * ClaudeCP.zEltP p a n c ^ (p - 1) - ClaudeCP.zEltP p a n c ^ (p - 1) ∈
+    SelfContainedCycle003.TupleRelations K r (n + p ^ a)
+indexed_transfer : ∀ (p : ℕ) [Fact (Nat.Prime p)] {R : Type} [inst : Field R] [CharP R p]
+  {T : DegreeProfilesReview.Uniform.Template R} (G : ITarget T) {d a n : ℕ},
+  T.n0 ≤ n →
+    G.aux.n0 ≤ n →
+      2 * G.supp d - 1 ≤ n →
+        G.supp d < p ^ a → (G.AllPC (n + p ^ a) d ↔ G.AllPC n d) ∧ (G.AllNS (n + p ^ a) d ↔ G.AllNS n d)
+indexed_transfer_written_range : ∀ (p : ℕ) [Fact (Nat.Prime p)] {R : Type} [inst : Field R] [CharP R p]
+  {T : DegreeProfilesReview.Uniform.Template R} (G : ITarget T) {d a n : ℕ},
+  T.n0 ≤ n →
+    G.aux.n0 ≤ n →
+      2 * (2 * T.k * d + T.s + G.t) < n →
+        2 * T.k * d + T.s + G.t < p ^ a → (G.AllPC (n + p ^ a) d ↔ G.AllPC n d) ∧ (G.AllNS (n + p ^ a) d ↔ G.AllNS n d)
+indexed_transfer_derivations : ∀ (p : ℕ) [Fact (Nat.Prime p)] {R : Type} [inst : Field R] [CharP R p]
+  {T : DegreeProfilesReview.Uniform.Template R} (G : ITarget T) {d a n : ℕ},
+  T.n0 ≤ n →
+    G.aux.n0 ≤ n →
+      2 * G.supp d - 1 ≤ n →
+        G.supp d < p ^ a →
+          ((∀ (b : G.B.Rk (n + p ^ a)), DegreeProfilesReview.PC.Derives (T.inst (n + p ^ a)) d (G.poly (n + p ^ a) b)) ↔
+              ∀ (b : G.B.Rk n), DegreeProfilesReview.PC.Derives (T.inst n) d (G.poly n b)) ∧
+            ((∀ (b : G.B.Rk (n + p ^ a)), NSDerives (T.inst (n + p ^ a)) d (G.poly (n + p ^ a) b)) ↔
+              ∀ (b : G.B.Rk n), NSDerives (T.inst n) d (G.poly n b))
+orbit_rep_transfer : ∀ (p : ℕ) [Fact (Nat.Prime p)] {R : Type} [inst : Field R] [CharP R p]
+  {T : DegreeProfilesReview.Uniform.Template R} (G : ITarget T) (o : G.B.Obj) {d a n : ℕ},
+  T.n0 ≤ n →
+    G.aux.n0 ≤ n →
+      2 * G.supp d - 1 ≤ n →
+        G.supp d < p ^ a →
+          ∀ {bN : G.B.Rk (n + p ^ a)},
+            G.InOrbit o bN →
+              ∀ {bn : G.B.Rk n},
+                G.InOrbit o bn →
+                  (G.poly (n + p ^ a) bN ∈ DegreeProfilesReview.PC.Vinf (T.inst (n + p ^ a)) d ↔
+                      G.poly n bn ∈ DegreeProfilesReview.PC.Vinf (T.inst n) d) ∧
+                    (G.poly (n + p ^ a) bN ∈ DegreeProfilesReview.NS.NSspan (T.inst (n + p ^ a)) d ↔
+                      G.poly n bn ∈ DegreeProfilesReview.NS.NSspan (T.inst n) d)
+@all_step_of_witness : ∀ {K : Type} [inst : Field K] {T : DegreeProfilesReview.Uniform.Template K} (G : ITarget T)
+  {d : ℕ},
+  1 ≤ d →
+    ∀ {p : ℕ} [inst_1 : Fact (Nat.Prime p)] [inst_2 : CharP K p] {a n : ℕ},
+      T.n0 ≤ n →
+        G.supp d < p ^ a →
+          ∀ {c : Fin a → K},
+            DegreeProfilesReview.Shifted.Generic p c →
+              ∀ {w : MonoidAlgebra K ↥(DegreeProfilesReview.SymRep.Sfin (n + p ^ a))},
+                ClaudeCP.IsTopWitness p (G.supp d) a n c w →
+                  ((∀ (i : (G.aux.axSys d).Rk (n + p ^ a)),
+                        G.poly (n + p ^ a) ↑i ∈ DegreeProfilesReview.PC.Vinf (T.inst (n + p ^ a)) d) ↔
+                      ∀ (i : (G.aux.axSys d).Rk n), G.poly n ↑i ∈ DegreeProfilesReview.PC.Vinf (T.inst n) d) ∧
+                    ((∀ (i : (G.aux.axSys d).Rk (n + p ^ a)),
+                        G.poly (n + p ^ a) ↑i ∈ DegreeProfilesReview.NS.NSspan (T.inst (n + p ^ a)) d) ↔
+                      ∀ (i : (G.aux.axSys d).Rk n), G.poly n ↑i ∈ DegreeProfilesReview.NS.NSspan (T.inst n) d)
+@all_pc_step_of_detects : ∀ {K : Type} [inst : Field K] {T : DegreeProfilesReview.Uniform.Template K} (G : ITarget T)
+  {d : ℕ},
+  1 ≤ d →
+    ∀ {N n : ℕ} {BN Bn : Type 1} [inst_1 : CategoryTheory.Category.{0, 1} BN] [inst_2 : CategoryTheory.Abelian BN]
+      [inst_3 : CategoryTheory.Category.{0, 1} Bn] [inst_4 : CategoryTheory.Abelian Bn]
+      {PN : DegreeProfilesReview.Deletion.M4 K (G.supp d) N BN}
+      {Pn : DegreeProfilesReview.Deletion.M4 K (G.supp d) n Bn} {F : CategoryTheory.Functor BN Bn}
+      [F.PreservesZeroMorphisms] [CategoryTheory.Limits.PreservesFiniteLimits F]
+      [CategoryTheory.Limits.PreservesFiniteColimits F],
+      T.n0 ≤ N →
+        T.n0 ≤ n →
+          ∀ (m5 : DegreeProfilesReview.Deletion.M5w PN Pn F),
+            DetectsSubquotients F (PN.perm (T.Var.mon d) ⋯) →
+              ((∀ (i : (G.aux.axSys d).Rk N), G.poly N ↑i ∈ DegreeProfilesReview.PC.Vinf (T.inst N) d) ↔
+                ∀ (i : (G.aux.axSys d).Rk n), G.poly n ↑i ∈ DegreeProfilesReview.PC.Vinf (T.inst n) d)
+@all_ns_step_of_detects : ∀ {K : Type} [inst : Field K] {T : DegreeProfilesReview.Uniform.Template K} (G : ITarget T)
+  {d N n : ℕ} {BN Bn : Type 1} [inst_1 : CategoryTheory.Category.{0, 1} BN] [inst_2 : CategoryTheory.Abelian BN]
+  [inst_3 : CategoryTheory.Category.{0, 1} Bn] [inst_4 : CategoryTheory.Abelian Bn]
+  {PN : DegreeProfilesReview.Deletion.M4 K (G.supp d) N BN} {Pn : DegreeProfilesReview.Deletion.M4 K (G.supp d) n Bn}
+  {F : CategoryTheory.Functor BN Bn} [F.PreservesZeroMorphisms] [CategoryTheory.Limits.PreservesFiniteLimits F]
+  [CategoryTheory.Limits.PreservesFiniteColimits F],
+  T.n0 ≤ N →
+    T.n0 ≤ n →
+      ∀ (m5 : DegreeProfilesReview.Deletion.M5w PN Pn F),
+        DetectsSubquotients F (PN.perm (T.Var.mon d) ⋯) →
+          ((∀ (i : (G.aux.axSys d).Rk N), G.poly N ↑i ∈ DegreeProfilesReview.NS.NSspan (T.inst N) d) ↔
+            ∀ (i : (G.aux.axSys d).Rk n), G.poly n ↑i ∈ DegreeProfilesReview.NS.NSspan (T.inst n) d)
+@detects_canonical : ∀ {K : Type} [inst : Field K] {p : ℕ} [inst_1 : Fact (Nat.Prime p)] [inst_2 : CharP K p] {a n : ℕ}
+  {c : Fin a → K},
+  DegreeProfilesReview.Shifted.Generic p c →
+    ∀ {R : ℕ},
+      R < p ^ a →
+        ∀ {w : MonoidAlgebra K ↥(DegreeProfilesReview.SymRep.Sfin (n + p ^ a))},
+          ClaudeCP.IsTopWitness p R a n c w →
+            ∀ {𝒰 : DegreeProfilesReview.Uniform.BasisSystem} {r : ℕ},
+              𝒰.Bounded r →
+                r + r ≤ R →
+                  ∀ (hUR : 𝒰.Bounded R),
+                    DetectsSubquotients (SelfContainedCycle004.canonicalΨ p a n R c)
+                      ((SelfContainedCycle003.canonicalSchurClass K R (n + p ^ a)).toM4.perm 𝒰 hUR)
+@constMem_iff_of_detects : ∀ {C : Type u_3} [inst : CategoryTheory.Category.{u_1, u_3} C]
+  [inst_1 : CategoryTheory.Abelian C] {D : Type u_4} [inst_2 : CategoryTheory.Category.{u_2, u_4} D]
+  [inst_3 : CategoryTheory.Abelian D] (F : CategoryTheory.Functor C D) [F.PreservesZeroMorphisms]
+  [CategoryTheory.Limits.PreservesFiniteLimits F] [CategoryTheory.Limits.PreservesFiniteColimits F]
+  {P : DegreeProfilesReview.Transport.PCDatum C} {Q : DegreeProfilesReview.Transport.PCDatum D},
+  DetectsSubquotients F P.W → ∀ (h : DegreeProfilesReview.Transport.PCCompat F P Q) (j : ℕ), P.ConstMem j ↔ Q.ConstMem j
+@image_membership_iff_of_detects : ∀ {C : Type u_3} [inst : CategoryTheory.Category.{u_1, u_3} C]
+  [inst_1 : CategoryTheory.Abelian C] {D : Type u_4} [inst_2 : CategoryTheory.Category.{u_2, u_4} D]
+  [inst_3 : CategoryTheory.Abelian D] (F : CategoryTheory.Functor C D) [F.PreservesZeroMorphisms]
+  [CategoryTheory.Limits.PreservesFiniteLimits F] [CategoryTheory.Limits.PreservesFiniteColimits F] {U V S : C},
+  DetectsSubquotients F V →
+    ∀ (A : U ⟶ V) (j : S ⟶ V) {U' V' S' : D} (A' : U' ⟶ V') (j' : S' ⟶ V') (αU : F.obj U ≅ U') (αV : F.obj V ≅ V')
+      (αS : F.obj S ≅ S'),
+      CategoryTheory.CategoryStruct.comp (F.map A) αV.hom = CategoryTheory.CategoryStruct.comp αU.hom A' →
+        CategoryTheory.CategoryStruct.comp (F.map j) αV.hom = CategoryTheory.CategoryStruct.comp αS.hom j' →
+          (CategoryTheory.CategoryStruct.comp j (CategoryTheory.Limits.cokernel.π A) = 0 ↔
+            CategoryTheory.CategoryStruct.comp j' (CategoryTheory.Limits.cokernel.π A') = 0)
+@map_eq_zero_iff_of_detects : ∀ {C : Type u_3} [inst : CategoryTheory.Category.{u_1, u_3} C]
+  [inst_1 : CategoryTheory.Abelian C] {D : Type u_4} [inst_2 : CategoryTheory.Category.{u_2, u_4} D]
+  [inst_3 : CategoryTheory.Abelian D] (F : CategoryTheory.Functor C D) [F.PreservesZeroMorphisms]
+  [F.PreservesMonomorphisms] [F.PreservesEpimorphisms] {W : C},
+  DetectsSubquotients F W → ∀ {Q X : C} (π : W ⟶ Q) [CategoryTheory.Epi π] (g : X ⟶ Q), F.map g = 0 ↔ g = 0
+@J_entry : ∀ {K : Type} [inst : Field K] {T : DegreeProfilesReview.Uniform.Template K} (G : ITarget T) {d : ℕ}
+  (y : (T.Var.mon d).Obj) (i : (G.aux.axSys d).Obj), (G.aux.axM d).entry y i = G.γ ↑i ↑y
+@J_realise : ∀ {K : Type} [inst : Field K] {T : DegreeProfilesReview.Uniform.Template K} (G : ITarget T) {d : ℕ}
+  (n : ℕ), ↑(DegreeProfilesReview.Uniform.monBasis (T.Var.Rk n) K d) ∘ₗ (G.aux.axM d).realise n = G.aux.axMap d n
+@J_realise_single : ∀ {K : Type} [inst : Field K] {T : DegreeProfilesReview.Uniform.Template K} (G : ITarget T) {d : ℕ}
+  (n : ℕ) (i : (G.aux.axSys d).Rk n),
+  ↑((DegreeProfilesReview.Uniform.monBasis (T.Var.Rk n) K d) (((G.aux.axM d).realise n) (Finsupp.single i 1))) =
+    G.poly n ↑i
+@J_transport : ∀ {K : Type} [inst : Field K] {T : DegreeProfilesReview.Uniform.Template K} (G : ITarget T) {d N n : ℕ}
+  {BN : Type u_4} [inst_1 : CategoryTheory.Category.{u_1, u_4} BN] [inst_2 : CategoryTheory.Abelian BN] {Bn : Type u_4}
+  [inst_3 : CategoryTheory.Category.{u_1, u_4} Bn] [inst_4 : CategoryTheory.Abelian Bn]
+  {PN : DegreeProfilesReview.Deletion.M4 K (G.supp d) N BN} {Pn : DegreeProfilesReview.Deletion.M4 K (G.supp d) n Bn}
+  {Φ : CategoryTheory.Functor BN Bn} (m5 : DegreeProfilesReview.Deletion.M5w PN Pn Φ),
+  CategoryTheory.CategoryStruct.comp (Φ.map (PN.mat ⋯ ⋯ (G.aux.axM d))) (m5.δ (T.Var.mon d) ⋯).hom =
+    CategoryTheory.CategoryStruct.comp (m5.δ (G.aux.axSys d) ⋯).hom (Pn.mat ⋯ ⋯ (G.aux.axM d))
+@pc_all_stage_iff : ∀ {K : Type} [inst : Field K] {T : DegreeProfilesReview.Uniform.Template K} (G : ITarget T) {d : ℕ}
+  (hd : 1 ≤ d) {n : ℕ} {B : Type u_3} [inst_1 : CategoryTheory.Category.{u_1, u_3} B]
+  [inst_2 : CategoryTheory.Abelian B] (P : DegreeProfilesReview.Deletion.M4 K (G.supp d) n B),
+  T.n0 ≤ n →
+    ∀ (j : ℕ),
+      (G.catDatumJ hd P).ConstMem j ↔
+        ∀ (i : (G.aux.axSys d).Rk n), G.poly n ↑i ∈ DegreeProfilesReview.PC.V (T.inst n) d j
+@ns_all_iff : ∀ {K : Type} [inst : Field K] {T : DegreeProfilesReview.Uniform.Template K} (G : ITarget T) {d n : ℕ}
+  {B : Type u_3} [inst_1 : CategoryTheory.Category.{u_1, u_3} B] [inst_2 : CategoryTheory.Abelian B]
+  (P : DegreeProfilesReview.Deletion.M4 K (G.supp d) n B),
+  T.n0 ≤ n →
+    (CategoryTheory.CategoryStruct.comp (P.mat ⋯ ⋯ (G.aux.axM d))
+          (CategoryTheory.Limits.cokernel.π (P.mat ⋯ ⋯ ((inflate T G.t).certM d))) =
+        0 ↔
+      ∀ (i : (G.aux.axSys d).Rk n), G.poly n ↑i ∈ DegreeProfilesReview.NS.NSspan (T.inst n) d)
+@concMem_iff : ∀ {K : Type} [inst : Field K] {T : DegreeProfilesReview.Uniform.Template K} (G : ITarget T) {d : ℕ}
+  (hd : 1 ≤ d) {n : ℕ},
+  T.n0 ≤ n →
+    ∀ (j : ℕ),
+      (G.concDatumJ hd n).ConstMem j ↔
+        ∀ (i : (G.aux.axSys d).Rk n), G.poly n ↑i ∈ DegreeProfilesReview.PC.V (T.inst n) d j
+@totalDegree_poly : ∀ {K : Type} [inst : Field K] {T : DegreeProfilesReview.Uniform.Template K} (G : ITarget T) {n : ℕ},
+  G.aux.n0 ≤ n → ∀ (b : G.B.Rk n), (G.poly n b).totalDegree = G.deg (G.B.up n b)
+@not_all_of_lt : ∀ {K : Type} [inst : Field K] {T : DegreeProfilesReview.Uniform.Template K} (G : ITarget T) {n d : ℕ},
+  G.aux.n0 ≤ n → d < G.maxDeg → ¬G.AllPC n d ∧ ¬G.AllNS n d
+@allPC_zero_iff : ∀ {K : Type} [inst : Field K] {T : DegreeProfilesReview.Uniform.Template K} (G : ITarget T) {n : ℕ},
+  T.n0 ≤ n → G.aux.n0 ≤ n → (G.AllPC n 0 ↔ G.ZeroDerivable)
+@allNS_zero_iff : ∀ {K : Type} [inst : Field K] {T : DegreeProfilesReview.Uniform.Template K} (G : ITarget T) {n : ℕ},
+  T.n0 ≤ n → G.aux.n0 ≤ n → (G.AllNS n 0 ↔ G.ZeroDerivable)
+@allPC_map_iff : ∀ {K : Type} [inst : Field K] {T : DegreeProfilesReview.Uniform.Template K} (G : ITarget T) (L : Type)
+  [inst_1 : Field L] [inst_2 : Algebra K L] (n d : ℕ),
+  (∀ (b : G.B.Rk n),
+      (G.map (algebraMap K L)).poly n b ∈ DegreeProfilesReview.PC.Vinf ((T.map (algebraMap K L)).inst n) d) ↔
+    G.AllPC n d
+@allNS_map_iff : ∀ {K : Type} [inst : Field K] {T : DegreeProfilesReview.Uniform.Template K} (G : ITarget T) (L : Type)
+  [inst_1 : Field L] [inst_2 : Algebra K L] (n d : ℕ),
+  (∀ (b : G.B.Rk n),
+      (G.map (algebraMap K L)).poly n b ∈ DegreeProfilesReview.NS.NSspan ((T.map (algebraMap K L)).inst n) d) ↔
+    G.AllNS n d
+@rep_iff_orbit_pc : ∀ {K : Type} [inst : Field K] {T : DegreeProfilesReview.Uniform.Template K} (G : ITarget T)
+  (o : G.B.Obj) {n d : ℕ} {b0 : G.B.Rk n},
+  G.InOrbit o b0 → (G.poly n b0 ∈ DegreeProfilesReview.PC.Vinf (T.inst n) d ↔ (G.orbit o).AllPC n d)
+@rep_iff_orbit_ns : ∀ {K : Type} [inst : Field K] {T : DegreeProfilesReview.Uniform.Template K} (G : ITarget T)
+  (o : G.B.Obj) {n d : ℕ} {b0 : G.B.Rk n},
+  G.InOrbit o b0 → (G.poly n b0 ∈ DegreeProfilesReview.NS.NSspan (T.inst n) d ↔ (G.orbit o).AllNS n d)
+@allPC_iff_forall_orbit : ∀ {K : Type} [inst : Field K] {T : DegreeProfilesReview.Uniform.Template K} (G : ITarget T)
+  (n d : ℕ), G.AllPC n d ↔ ∀ (o : G.B.Obj), (G.orbit o).AllPC n d
+@allNS_iff_forall_orbit : ∀ {K : Type} [inst : Field K] {T : DegreeProfilesReview.Uniform.Template K} (G : ITarget T)
+  (n d : ℕ), G.AllNS n d ↔ ∀ (o : G.B.Obj), (G.orbit o).AllNS n d
+orbit_transitive : ∀ (𝒰 : DegreeProfilesReview.Uniform.BasisSystem) {n : ℕ} {b b' : 𝒰.Rk n} {o : 𝒰.Obj}
+  {g g' : Equiv.Perm ℕ}, 𝒰.up n b = g • o → 𝒰.up n b' = g' • o → ∃ σ, σ • b = b'
+@rename_mem_Vinf : ∀ {K : Type} [inst : Field K] (T : DegreeProfilesReview.Uniform.Template K) {n : ℕ}
+  (g : ↥(DegreeProfilesReview.SymRep.Sfin n)) {d : ℕ} {f : MvPolynomial (T.Var.Rk n) K},
+  f ∈ DegreeProfilesReview.PC.Vinf (T.inst n) d →
+    (MvPolynomial.rename fun v => g • v) f ∈ DegreeProfilesReview.PC.Vinf (T.inst n) d
+@inflate_inst : ∀ {K : Type} [inst : Field K] (T : DegreeProfilesReview.Uniform.Template K) (t n : ℕ),
+  (inflate T t).inst n = T.inst n
+@inflate_axMap : ∀ {K : Type} [inst : Field K] (T : DegreeProfilesReview.Uniform.Template K) (t d n : ℕ),
+  (inflate T t).axMap d n = T.axMap d n
+@inflate_certMap : ∀ {K : Type} [inst : Field K] (T : DegreeProfilesReview.Uniform.Template K) (t d n : ℕ),
+  (inflate T t).certMap d n = T.certMap d n
+@supp_eq : ∀ {K : Type} [inst : Field K] {T : DegreeProfilesReview.Uniform.Template K} (G : ITarget T) (d : ℕ),
+  G.supp d = 2 * T.k * d + T.s + G.t
+'UniformConsequence.Indexed.indexed_transfer' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformConsequence.Indexed.indexed_transfer_written_range' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformConsequence.Indexed.indexed_transfer_derivations' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformConsequence.Indexed.orbit_rep_transfer' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformConsequence.Indexed.ITarget.all_step_of_witness' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformConsequence.Indexed.detects_canonical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformConsequence.Indexed.constMem_iff_of_detects' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformConsequence.Indexed.image_membership_iff_of_detects' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformConsequence.Indexed.ITarget.J_realise_single' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformConsequence.Indexed.ITarget.J_transport' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformConsequence.Indexed.ITarget.pc_all_stage_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformConsequence.Indexed.ITarget.ns_all_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformConsequence.Indexed.ITarget.not_all_of_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformConsequence.Indexed.ITarget.allPC_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformConsequence.Indexed.ITarget.allNS_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformConsequence.Indexed.ITarget.rep_iff_orbit_pc' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformConsequence.Indexed.ITarget.rep_iff_orbit_ns' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformConsequence.Indexed.orbit_transitive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformConsequence.Indexed.rename_mem_Vinf' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformConsequence.Indexed.inflate_inst' depends on axioms: [propext, Classical.choice, Quot.sound]
+UniformConsequence.Indexed.indexed_transfer uses LinearFinal.topWitnessHypothesis_linear: true   (closure size 35110)
+UniformConsequence.Indexed.indexed_transfer uses RForce.forceExists: true   (closure size 35110)
+UniformConsequence.Indexed.indexed_transfer uses SelfContainedCycle004.canonicalM5w: true   (closure size 35110)
+UniformConsequence.Indexed.indexed_transfer uses DegreeProfilesReview.Deletion.M5w.δ_mat: true   (closure size 35110)
+UniformConsequence.Indexed.indexed_transfer uses ClaudeComparison.detect: true   (closure size 35110)
+UniformConsequence.Indexed.indexed_transfer uses ClaudeCP.top_preserves_finiteLimits: true   (closure size 35110)
+UniformConsequence.Indexed.indexed_transfer uses DegreeProfilesReview.FieldDescent.pc_derives_map_iff: true   (closure size 35110)
+UniformConsequence.Indexed.indexed_transfer uses ExactnessHandoff.const_mem_iff_of_simple: false   (closure size 35110)
+UniformConsequence.Indexed.indexed_transfer uses ExactnessHandoff.image_membership_iff_of_simple: false   (closure size 35110)
+UniformConsequence.Indexed.indexed_transfer uses sorryAx: false   (closure size 35110)
+UniformConsequence.Indexed.orbit_rep_transfer uses sorryAx: false   (closure size 35148)
+UniformConsequence.Indexed.indexed_transfer uses DegreeProfilesReview.Uniform.DeletionHypothesis: false   (closure size 35110)
+UniformConsequence.Indexed.indexed_transfer uses DegreeProfilesReview.Uniform.DeletionHypothesisW: false   (closure size 35110)
+UniformConsequence.Indexed.indexed_transfer uses ForceInterface.ForceExists: true   (closure size 35110)
+@catDatumJ_c : ∀ {K : Type} [inst : Field K] {T : DegreeProfilesReview.Uniform.Template K} (G : ITarget T) {d : ℕ}
+  (hd : 1 ≤ d) {n : ℕ} {B : Type u_3} [inst_1 : CategoryTheory.Category.{u_1, u_3} B]
+  [inst_2 : CategoryTheory.Abelian B] (P : DegreeProfilesReview.Deletion.M4 K (G.supp d) n B),
+  (G.catDatumJ hd P).c = P.mat ⋯ ⋯ (G.aux.axM d)
+@concDatumJ_c : ∀ {K : Type} [inst : Field K] {T : DegreeProfilesReview.Uniform.Template K} (G : ITarget T) {d : ℕ}
+  (hd : 1 ≤ d) (n : ℕ), (G.concDatumJ hd n).c = ModuleCat.ofHom (G.aux.axMap d n)
+'UniformConsequence.Indexed.ITarget.catDatumJ_c' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit status: 0

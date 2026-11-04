@@ -1,0 +1,127 @@
+\section{A preliminary construction with fresh labels}\label{sec:quadratic-route}
+The first construction exhibits all the algebraic steps with a
+generous label budget. In characteristic two, it repairs the common
+identity $zwz=z$ at tuple length $b$ by allocating $b$ new retained
+labels. The cumulative cost is quadratic in $r$; the next section
+improves this cost by using the residual's special shape on one pool.
+
+\subsection{Fresh-label construction}\label{sec:quadratic}
+We now prove that a support-$r$ witness exists in characteristic two when
+\[n\ge T(r):=1+2+\cdots+r=\frac{r(r+1)}2,\qquad r<q.\]
+This proof is independent of the rook theorem used later. Its ingredients are finite algebra, a position-compatible auxiliary inverse, and an explicit way to simulate that inverse using fresh labels.
+
+Choose the generic coefficients in a finite field $F$ of characteristic two, large enough to contain $a$ independent elements. We may work inside the algebraic closure of the original field; the degree question descends by Lemma~\ref{lem:field}. The finiteness of $F$ will be used only to normalise an element of the finite unital group algebra on the current label set.
+If that label set is $\Omega$, the algebra $F[S_\Omega]$ has
+$|F|^{|S_\Omega|}$ elements, one coefficient in $F$ for each
+permutation. This finite construction field imposes no finiteness
+restriction on the original coefficient field.
+
+\subsubsection{Normalisation of the residual}
+Suppose $w_0$ works on shorter tuples but not yet on length $b$. Put $y=z-zw_0z$. An auxiliary linear map $h$ may satisfy $zhz=z$ on the larger tuple space. It is tempting to conclude $yhy=y$. In general the expansion contains an extra term $zw_0zw_0z$, and this need not collapse. Before correcting the error we arrange the additional identity $w_0zw_0=w_0$ in the actual group algebra. This normalisation was a genuine mathematical step in the earlier construction.
+
+Here normalisation replaces a ring element to impose an additional
+algebraic identity. A ring representation interprets ring elements as operators,
+respecting addition, multiplication and the identity. Thus a relation
+proved in the group algebra holds simultaneously in all its
+representations. This is why the next lemma preserves every previously
+successful tuple length at once.
+
+\begin{lemma}[Normalisation in a finite ring]\label{lem:normal}
+Let $a,z$ belong to a finite ring. There is an element $b$ in the same ring with $bzb=b$, such that every ring representation in which $zaz=z$ also satisfies $zbz=z$.
+\end{lemma}
+\begin{proof}
+Put $x=az$. The sequence of powers of $x$ eventually repeats, so $x^{i+t}=x^i$ for some $i\ge0,t>0$. Multiplication by further powers gives $x^{m+t}=x^m$ for $m\ge i$. Choose $k\ge i$ with $k+1$ divisible by $t$. Then $2k+1$ differs from $k$ by a multiple of $t$, and $x^{2k+1}=x^k$.
+
+Set $b=x^ka$. Direct multiplication gives
+\[bzb=x^k(az)x^ka=x^{2k+1}a=x^ka=b.\]
+In a representation where $zaz=z$, induction gives $z(az)^m=z$ for every $m\ge0$. Hence $zbz=z(az)^{k+1}=z$. One exponent chosen in the original finite ring works simultaneously in all such representations.
+\end{proof}
+The notation $b$ in this lemma is an element, not a tuple length; in the construction below we denote this normalised element by $b_0$.
+
+\begin{lemma}[Normalised residual]\label{lem:residual}
+If $b_0zb_0=b_0$ and $zhz=z$, then, for $y=z-zb_0z$,
+\[yhy=y.\]
+\end{lemma}
+\begin{proof}
+Expand without commuting any factors:
+\begin{align*}
+yhy&=zhz-zhzb_0z-zb_0zhz+zb_0zhzb_0z\\
+&=z-2zb_0z+zb_0zb_0z\\
+&=z-zb_0z=y.
+\end{align*}
+The last equality uses the normalisation. This identity works in any ring; characteristic two is not needed for this particular calculation.
+\end{proof}
+
+\subsubsection{An auxiliary inverse compatible with tuple positions}
+Position permutations reorder the entries of a tuple; label
+permutations rename those entries. These actions commute. In this
+step we require compatibility with positions, since the subsequent
+simulation must work on all orderings of each underlying label set.
+
+Let $\Omega$ consist of the block $B$ and the retained labels already allocated. On $Q=P_b(\Omega)$, partition the tuples according to the $A$-orbit of their \emph{underlying label set}. A set meeting $B$ has proper stabiliser because it has size $b<q$. Choose the functional $\ell$ and coordinate $\pi$ as in Section~\ref{sec:block2}, now on these sets. Let $D$ read $\pi$ from the underlying set, and use the same $W$ and nonzero $\alpha$ as before, defined separately on each orbit. Then on each moved orbit,
+\[Dz-zD=W,\quad Wz=zW,\quad W^2=\alpha^2I,\quad z^2=0.\]
+Multiplying the commutator by $z$ shows $zDz=zW$. Thus
+\[h=\alpha^{-2}WD\quad\text{satisfies}\quad zhz=z.\]
+On tuples wholly outside $B$, put $h=0$, since $z=0$ there. Because $D$ depends on the underlying set and translations act on labels, $h$ commutes with every permutation of tuple positions. We have not claimed that $h$ is a group-algebra element. It is just an explicitly constructed linear operator.
+
+\subsubsection{Fresh labels simulate any position-compatible operator}
+Adjoin $b$ new labels $\kappa_1,\ldots,\kappa_b$ to $\Omega$. Let $i:P_b(\Omega)\to P_b(\Omega\cup C)$ include the old tuples and let $p$ discard every tuple using a fresh label. We prove that any operator $h$ commuting with position permutations has the form
+\begin{equation}\label{eq:compression}h=pci\end{equation}
+for some $c\in F[S_{\Omega\cup C}]$.
+
+The inclusion and projection satisfy $pi=I$. The expression $pci$
+is the old-to-old part of the larger operator $c$: it makes no claim
+about inputs or outputs containing fresh labels. The residual
+localisation in the induction below is what makes this part sufficient.
+
+Fix a $b$-element set $U=\{u_1,\ldots,u_b\}\subseteq\Omega$, with one chosen ordering. Form
+\[E_U=\prod_{j=1}^b\bigl(1-(u_j\ \kappa_j)\bigr).\]
+The transpositions are disjoint. On an old tuple missing some $u_j$, the corresponding factor kills the tuple, and the other factors cannot introduce $u_j$. On a tuple using all the $u_j$, the identity term leaves the tuple old, while every nonidentity term introduces a fresh label. Therefore $pE_Ui$ is precisely the projector onto the orderings of $U$.
+
+For an ordered output tuple $v$, choose a permutation $g\in S_\Omega$ taking $(u_1,\ldots,u_b)$ to $v$. Extend $g$ by fixing fresh labels. Then $pgE_Ui$ takes that input ordering to $v$, takes its position permutations to the corresponding permutations of $v$, and kills all other underlying sets. The orderings of each $U$ form a free orbit for $S_b$. Consequently an operator commuting with $S_b$ is completely determined by its value on one ordering for each $U$. Expanding those values as linear combinations of output tuples and using the operators $pgE_Ui$ proves \eqref{eq:compression}. There is no division by $b!$.
+
+A free position orbit means that no nonidentity position permutation
+fixes an injective tuple. Its $b!$ orderings are distinct basis vectors.
+Consequently position compatibility determines the remaining values
+from one ordering without averaging over $S_b$.
+
+\begin{example}[Two registers]
+For $U=\{u_1,u_2\}$,
+\[E_U=1-(u_1\kappa_1)-(u_2\kappa_2)+(u_1\kappa_1)(u_2\kappa_2).
+\]
+On $(u_1,u_2)$, projection $p$ kills the last three terms. On $(u_1,v)$ with $v\ne u_2$, the identity contribution is cancelled by the second swap factor, which fixes that tuple. The detector recognises the set $U$, while leaving the two possible orderings available for a position-compatible output rule.
+\end{example}
+
+\subsubsection{The induction, including localisation of the error}
+For support zero take $w_0=0$: $z$ is zero on constants. Suppose a witness exists on the block and $T(b-1)$ retained labels, collectively $\Omega$. Normalise it in the finite ring $F[S_\Omega]$ to $b_0$. It still works on all tuple lengths below $b$ and satisfies $b_0zb_0=b_0$ in the ring itself. Set $y=z-zb_0z$.
+
+Adjoin $b$ fresh labels. Decompose $P_b(\Omega\cup C)$ according to the positions occupied by fresh labels and their actual values. The group $S_\Omega$ fixes each fresh label, so every summand with at least one fresh label is a copy of $P_j(\Omega)$ for $j<b$. On it $y=0$ by the old witness relation. The summand with no fresh labels is $Q=P_b(\Omega)$. Thus, as actual maps,
+\[y=i y_Q p.\]
+This localisation is what allows a compressed inverse to suffice. Construct the auxiliary $h$ on $Q$ above. Lemma~\ref{lem:residual} gives $y_Qhy_Q=y_Q$. Choose $c$ with $pci=h$. Then
+\[ycy=i y_Q(pci)y_Qp=i y_Qp=y.\]
+Define the new group-algebra element
+\[w_b=b_0+(1-b_0z)c(1-zb_0).\]
+Since $z(1-b_0z)=(1-zb_0)z=y$,
+\[zw_bz=zb_0z+ycy=zb_0z+y=z\]
+on length $b$. On every shorter tuple space the same fresh-label decomposition makes $y=0$, so the relation remains valid there too. The new cost is exactly $b$ retained labels, giving
+\[T(b)=T(b-1)+b.\]
+If still more retained labels are present, extend the constructed permutations by fixing them. Decomposing according to those outside labels reduces every tuple of length at most $b$ to a shorter tuple on the constructed labels. Thus the same witness works for all $n\ge T(b)$.
+
+\begin{theorem}[Quadratic retained-label budget]
+For every $r<q=2^a$ and $n\ge r(r+1)/2$, there is a common witness $w$ with $zwz=z$ on all tuple modules of length at most $r$. Therefore deletion is exact on the support-$r$ class. It transports the
+entire degree-$d$ PC consequence space with $r=kd+s$, beyond the fixed
+template threshold. For prescribed indexed targets use the budget
+$r=2kd+s+t$ to include the target map and the doubled-support detector.
+\end{theorem}
+Every construction needed for this theorem has now been supplied. In particular, the proof is not an inference from witnesses found for small tuple lengths.
+
+
+\begin{remark}[The square-root degree lower bound]
+For either prescribed-target budget, the construction gives an onset
+$O(d^2)$ for degree-$d$ transfer.
+Inverting that onset gives an $\Omega(\sqrt n)$ lower bound when no
+finite degree recurs, and on the hard residues of the periodic case.
+The loss is precisely the cumulative allocation $T(r)=r(r+1)/2$.
+The following construction replaces this sum by the maximum $2r-1$,
+using one retained pool at every layer.
+\end{remark}

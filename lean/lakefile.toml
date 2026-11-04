@@ -1,0 +1,495 @@
+name = "DegreeProfilesReview"
+version = "0.1.0"
+defaultTargets = ["UAudit", "PaperAudit"]
+
+[leanOptions]
+autoImplicit = false
+relaxedAutoImplicit = false
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4"
+rev = "v4.26.0"
+
+[[lean_lib]]
+name = "ActualTokens"
+
+[[lean_lib]]
+name = "AffinePeaks"
+
+[[lean_lib]]
+name = "AffineTransport"
+
+[[lean_lib]]
+name = "BBridge"
+
+[[lean_lib]]
+name = "BCor6"
+
+[[lean_lib]]
+name = "BFinal"
+
+[[lean_lib]]
+name = "BLabel"
+
+[[lean_lib]]
+name = "BLayer"
+
+[[lean_lib]]
+name = "BLemmaD"
+
+[[lean_lib]]
+name = "BLemmaL"
+
+[[lean_lib]]
+name = "BProp4"
+
+[[lean_lib]]
+name = "BProp6"
+
+[[lean_lib]]
+name = "BProp6Red"
+
+[[lean_lib]]
+name = "BRealise"
+
+[[lean_lib]]
+name = "BThm5"
+
+[[lean_lib]]
+name = "BThm7"
+
+[[lean_lib]]
+name = "BTransC"
+
+[[lean_lib]]
+name = "BTranspose"
+
+[[lean_lib]]
+name = "BitPairMatrix"
+
+[[lean_lib]]
+name = "BlockMinimum"
+
+[[lean_lib]]
+name = "BlockPermutations"
+
+[[lean_lib]]
+name = "BranchDecrease"
+
+[[lean_lib]]
+name = "C017Auxiliary"
+
+[[lean_lib]]
+name = "C017Compression"
+
+[[lean_lib]]
+name = "C017Final"
+
+[[lean_lib]]
+name = "C017Induction"
+
+[[lean_lib]]
+name = "C017Localize"
+
+[[lean_lib]]
+name = "C017Rates"
+
+[[lean_lib]]
+name = "C017TypeAgreement"
+
+[[lean_lib]]
+name = "CanonicalClass"
+
+[[lean_lib]]
+name = "ChainChoice"
+
+[[lean_lib]]
+name = "CharacteristicTransfer"
+
+[[lean_lib]]
+name = "ClaudeWitnessTransfer"
+
+[[lean_lib]]
+name = "CompChain"
+
+[[lean_lib]]
+name = "CompDetect"
+
+[[lean_lib]]
+name = "CompFinal"
+
+[[lean_lib]]
+name = "CompLinear"
+
+[[lean_lib]]
+name = "CompPoly"
+
+[[lean_lib]]
+name = "ComponentCompletion"
+
+[[lean_lib]]
+name = "DCPBridge"
+
+[[lean_lib]]
+name = "DCPCanon"
+
+[[lean_lib]]
+name = "DCPFinal"
+
+[[lean_lib]]
+name = "DCPFinal2"
+
+[[lean_lib]]
+name = "DCPHalf2"
+
+[[lean_lib]]
+name = "DCPInterface"
+
+[[lean_lib]]
+name = "DCPRook"
+
+[[lean_lib]]
+name = "DegreeProfilesReview"
+
+[[lean_lib]]
+name = "DesignRewrite"
+
+[[lean_lib]]
+name = "DesignShift"
+
+[[lean_lib]]
+name = "DiagonalMoment"
+
+[[lean_lib]]
+name = "EmbeddingCompression"
+
+[[lean_lib]]
+name = "ExactBlockMoments"
+
+[[lean_lib]]
+name = "FilteredPC"
+
+[[lean_lib]]
+name = "FinalLinear"
+
+[[lean_lib]]
+name = "FiniteGroupAlgebra"
+
+[[lean_lib]]
+name = "ForceInterface"
+
+[[lean_lib]]
+name = "GuardUpper"
+
+[[lean_lib]]
+name = "HomologyProjection"
+
+[[lean_lib]]
+name = "ImageCompression"
+
+[[lean_lib]]
+name = "InnerInverseProjection"
+
+[[lean_lib]]
+name = "IntegralIndependence"
+
+[[lean_lib]]
+name = "LeafPaths"
+
+[[lean_lib]]
+name = "LevelAnchors"
+
+[[lean_lib]]
+name = "LinearFinal"
+
+[[lean_lib]]
+name = "LinearInterface"
+
+[[lean_lib]]
+name = "MarkedBinomial"
+
+[[lean_lib]]
+name = "MarkedLeaf"
+
+[[lean_lib]]
+name = "MinimalTransfer"
+
+[[lean_lib]]
+name = "PAuxiliary"
+
+[[lean_lib]]
+name = "PFinal"
+
+[[lean_lib]]
+name = "PInduction"
+
+[[lean_lib]]
+name = "PTransfer"
+
+[[lean_lib]]
+name = "PathCompression"
+
+[[lean_lib]]
+name = "PermutationEvaluation"
+
+[[lean_lib]]
+name = "PigeonholePadding"
+
+[[lean_lib]]
+name = "PigeonholeRestriction"
+
+[[lean_lib]]
+name = "PolynomialDesign"
+
+[[lean_lib]]
+name = "PolynomialInnerInverse"
+
+[[lean_lib]]
+name = "PrefixChains"
+
+[[lean_lib]]
+name = "ProjectorExactness"
+
+[[lean_lib]]
+name = "RForce"
+
+[[lean_lib]]
+name = "RForceBase"
+
+[[lean_lib]]
+name = "RForceGP"
+
+[[lean_lib]]
+name = "RankThreeActualRelation"
+
+[[lean_lib]]
+name = "RankThreeCoordinateIdentities"
+
+[[lean_lib]]
+name = "RankThreeInverseData"
+
+[[lean_lib]]
+name = "RankThreeMatrixInverse"
+
+[[lean_lib]]
+name = "RankThreeNonvacuity"
+
+[[lean_lib]]
+name = "RankThreePrototypeAction"
+
+[[lean_lib]]
+name = "RankThreeRowCertificate"
+
+[[lean_lib]]
+name = "RankThreeRowData"
+
+[[lean_lib]]
+name = "RankThreeTransport"
+
+[[lean_lib]]
+name = "RankTwoActionRelation"
+
+[[lean_lib]]
+name = "RankTwoCertificate"
+
+[[lean_lib]]
+name = "RankTwoIdentity"
+
+[[lean_lib]]
+name = "RankTwoParameters"
+
+[[lean_lib]]
+name = "RankTwoRelabel"
+
+[[lean_lib]]
+name = "RawTripleAction"
+
+[[lean_lib]]
+name = "RawTripleEncoding"
+
+[[lean_lib]]
+name = "RectangularDesign"
+
+[[lean_lib]]
+name = "RectangularPC"
+
+[[lean_lib]]
+name = "ReflexiveAdjustment"
+
+[[lean_lib]]
+name = "ResidualSplitting"
+
+[[lean_lib]]
+name = "RestrictionRelations"
+
+[[lean_lib]]
+name = "ShiftedAdditive"
+
+[[lean_lib]]
+name = "ShiftedPreservation"
+
+[[lean_lib]]
+name = "ShiftedProjection"
+
+[[lean_lib]]
+name = "SignedBranches"
+
+[[lean_lib]]
+name = "SignedExpansion"
+
+[[lean_lib]]
+name = "SignedNormalizer"
+
+[[lean_lib]]
+name = "SparseRectangular"
+
+[[lean_lib]]
+name = "SupportEmbedding"
+
+[[lean_lib]]
+name = "TemplateExactTransfer"
+
+[[lean_lib]]
+name = "TerminalReduction"
+
+[[lean_lib]]
+name = "TokenPaths"
+
+[[lean_lib]]
+name = "TopPowerExactness"
+
+[[lean_lib]]
+name = "TopPowerProjection"
+
+[[lean_lib]]
+name = "TopTupleTest"
+
+[[lean_lib]]
+name = "TriangularMatching"
+
+[[lean_lib]]
+name = "UAudit"
+
+[[lean_lib]]
+name = "UCompile"
+
+[[lean_lib]]
+name = "UComputable"
+
+[[lean_lib]]
+name = "UConj"
+
+[[lean_lib]]
+name = "UCounter"
+
+[[lean_lib]]
+name = "UCounting"
+
+[[lean_lib]]
+name = "UDeps"
+
+[[lean_lib]]
+name = "UFOCompile"
+
+[[lean_lib]]
+name = "UFORoots"
+
+[[lean_lib]]
+name = "UFOSyntax"
+
+[[lean_lib]]
+name = "UHalt"
+
+[[lean_lib]]
+name = "UHerbrand"
+
+[[lean_lib]]
+name = "UJoin"
+
+[[lean_lib]]
+name = "UJoinComputable"
+
+[[lean_lib]]
+name = "UJoinDeg"
+
+[[lean_lib]]
+name = "UMachine"
+
+[[lean_lib]]
+name = "UNSTools"
+
+[[lean_lib]]
+name = "UPCDirect"
+
+[[lean_lib]]
+name = "UPairs"
+
+[[lean_lib]]
+name = "UProfiles"
+
+[[lean_lib]]
+name = "USwitch"
+
+[[lean_lib]]
+name = "UTypes"
+
+[[lean_lib]]
+name = "UUndecidable"
+
+[[lean_lib]]
+name = "UUniversal"
+
+[[lean_lib]]
+name = "UWitB"
+
+[[lean_lib]]
+name = "UWitCommon"
+
+[[lean_lib]]
+name = "UWitCycles"
+
+[[lean_lib]]
+name = "UWitEta"
+
+[[lean_lib]]
+name = "PShape"
+
+[[lean_lib]]
+name = "PDigits"
+
+[[lean_lib]]
+name = "PaperAudit"
+
+[[lean_lib]]
+name = "UCTarget"
+
+[[lean_lib]]
+name = "UCTransfer"
+
+[[lean_lib]]
+name = "UCClassification"
+
+[[lean_lib]]
+name = "UCExample"
+
+[[lean_lib]]
+name = "UCAudit"
+
+[[lean_lib]]
+name = "UCIndexedTarget"
+
+[[lean_lib]]
+name = "UCIndexedTransfer"
+
+[[lean_lib]]
+name = "UCIndexedAudit"
+
+[[lean_lib]]
+name = "UCIndexedClassification"
+
+[[lean_lib]]
+name = "UCFreshVariable"
+
+[[lean_lib]]
+name = "UCReturn002Audit"

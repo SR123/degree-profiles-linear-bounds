@@ -1,0 +1,26 @@
+[
+  {
+    "chain": "linear",
+    "source": "comparison_lean_2026-09-26/logs/linearfinal_lean4checker_fresh_completed.log",
+    "sha256": "9d97a92ec5d9d7ddd9a50390e38f54db6dfb87a5d6ea640ae793c20772f75b5f",
+    "reported_success": true,
+    "provenance": "Returned Claude log; inspected, not a new Codex kernel replay",
+    "text": "Sat Sep 26 20:10:21 UTC 2026\nEXIT 0\nSat Sep 26 21:08:03 UTC 2026\n"
+  },
+  {
+    "chain": "comparison",
+    "source": "comparison_lean_2026-09-26/logs/lean4checker_fresh.log",
+    "sha256": "48d457f149b29e053e7f3254638f6b128f430d334e25acdb2b95d53d51c08d11",
+    "reported_success": true,
+    "provenance": "Returned Claude log; inspected, not a new Codex kernel replay",
+    "text": "Added 27 Sep 2026, as announced in README.txt. The first run (started 26 Sep 2026 22:34 UTC)\nwas terminated before completion. This is a complete rerun on the same fresh-build workspace\n(the sources of this folder's lean/, built by the run recorded in build.log).\nlean4checker prints nothing on success.\n\ncommand: lake env lean4checker --fresh CompAudit   (cwd <RECORDED_PRODUCER_HOME>/comparison/fresh/lean)\nbinary: <RECORDED_PRODUCER_HOME>/lean/lean4checker/.lake/build/bin/lean4checker (built for Lean 4.26.0)\n--fresh replays the entire environment of CompAudit, including Lean core and Mathlib, from scratch\nstarted: Sun Sep 27 03:32:09 UTC 2026\nexit status: 0\nfinished: Sun Sep 27 04:26:29 UTC 2026\n"
+  },
+  {
+    "chain": "undecidability",
+    "source": "undecidability_lean_2026-09-26/logs/lean4checker_fresh.log",
+    "sha256": "7a2dddae839ffa7b1448047ed632ffe21845c9dd7271b84c652c4c0e63334bac",
+    "reported_success": true,
+    "provenance": "Returned Claude log; inspected, not a new Codex kernel replay",
+    "text": "command: lake env lean4checker --fresh UAudit   (cwd <RECORDED_PRODUCER_HOME>/undec/fresh/lean, after the fresh build)\nbinary: <RECORDED_PRODUCER_HOME>/lean/lean4checker/.lake/build/bin/lean4checker (built for Lean 4.26.0)\n--fresh replays the entire environment of UAudit (Lean core, Mathlib, all imported project modules and the 28 new modules) from scratch\nlean4checker prints nothing on success\nstarted: Sun Sep 27 04:32:38 UTC 2026\nexit status: 0\nfinished: Sun Sep 27 05:28:05 UTC 2026\n"
+  }
+]

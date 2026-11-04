@@ -1,0 +1,790 @@
+{
+  "all_passed": true,
+  "arithmetic": "Exact Python integers; no numerical approximation or dependencies.",
+  "clearability_definition": "Recursively remove a position a when its gap from the nearest currently occupied position to its left (or 0) is at most 2^(D-|S|), and the remaining subset is clearable; the empty subset is clearable.",
+  "order_substitution": {
+    "Boolean": {
+      "Boolean_assignments_per_case": 8,
+      "all_explicit_integer_reduction_identities_match": true,
+      "all_multilinear_remainders_zero": true,
+      "allowed_certificate_degree": 4,
+      "cases": 9,
+      "maximum_Boolean_certificate_degree": 4,
+      "maximum_substituted_polynomial_degree": 4
+    },
+    "asymmetry": {
+      "Boolean_assignments_per_case": 8,
+      "all_explicit_integer_reduction_identities_match": true,
+      "all_multilinear_remainders_zero": true,
+      "allowed_certificate_degree": 4,
+      "cases": 9,
+      "maximum_Boolean_certificate_degree": 4,
+      "maximum_substituted_polynomial_degree": 4
+    },
+    "irreflexivity": {
+      "Boolean_assignments_per_case": 8,
+      "all_explicit_integer_reduction_identities_match": true,
+      "all_multilinear_remainders_zero": true,
+      "allowed_certificate_degree": 2,
+      "cases": 3,
+      "maximum_Boolean_certificate_degree": 0,
+      "maximum_substituted_polynomial_degree": 0
+    },
+    "passed": true,
+    "relative_triple_patterns": [
+      "111",
+      "112",
+      "121",
+      "122",
+      "123",
+      "132",
+      "211",
+      "212",
+      "213",
+      "221",
+      "231",
+      "312",
+      "321"
+    ],
+    "totality": {
+      "Boolean_assignments_per_case": 8,
+      "all_explicit_integer_reduction_identities_match": true,
+      "all_multilinear_remainders_zero": true,
+      "allowed_certificate_degree": 2,
+      "cases": 6,
+      "maximum_Boolean_certificate_degree": 0,
+      "maximum_substituted_polynomial_degree": 0
+    },
+    "transitivity": {
+      "Boolean_assignments_per_case": 8,
+      "all_explicit_integer_reduction_identities_match": true,
+      "all_multilinear_remainders_zero": true,
+      "allowed_certificate_degree": 6,
+      "cases": 27,
+      "maximum_Boolean_certificate_degree": 6,
+      "maximum_substituted_polynomial_degree": 6
+    }
+  },
+  "ordinary_pc_induction": {
+    "all_references_and_rules_checked": true,
+    "degree_budget": 2,
+    "final_polynomial": "1",
+    "lines": [
+      {
+        "degree": 1,
+        "integer_terms": [
+          {
+            "coefficient": -1,
+            "exponents": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "coefficient": 1,
+            "exponents": [
+              1,
+              0,
+              0
+            ]
+          }
+        ],
+        "line": 0,
+        "name": "start",
+        "polynomial": "x1 -1",
+        "rule": "axiom"
+      },
+      {
+        "degree": 2,
+        "integer_terms": [
+          {
+            "coefficient": 1,
+            "exponents": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "coefficient": -1,
+            "exponents": [
+              1,
+              1,
+              0
+            ]
+          }
+        ],
+        "line": 1,
+        "name": "edge_1",
+        "polynomial": "-x1*x2 +x1",
+        "rule": "axiom"
+      },
+      {
+        "degree": 2,
+        "integer_terms": [
+          {
+            "coefficient": -1,
+            "exponents": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "coefficient": 1,
+            "exponents": [
+              1,
+              1,
+              0
+            ]
+          }
+        ],
+        "line": 2,
+        "polynomial": "x1*x2 -x2",
+        "rule": "multiply_variable",
+        "source": 0,
+        "variable": 2
+      },
+      {
+        "coefficients": [
+          1,
+          1
+        ],
+        "degree": 1,
+        "integer_terms": [
+          {
+            "coefficient": -1,
+            "exponents": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "coefficient": 1,
+            "exponents": [
+              1,
+              0,
+              0
+            ]
+          }
+        ],
+        "line": 3,
+        "polynomial": "x1 -x2",
+        "rule": "linear_combination",
+        "sources": [
+          1,
+          2
+        ]
+      },
+      {
+        "coefficients": [
+          1,
+          -1
+        ],
+        "degree": 1,
+        "integer_terms": [
+          {
+            "coefficient": 1,
+            "exponents": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "coefficient": -1,
+            "exponents": [
+              0,
+              1,
+              0
+            ]
+          }
+        ],
+        "line": 4,
+        "polynomial": "-x2 +1",
+        "rule": "linear_combination",
+        "sources": [
+          3,
+          0
+        ]
+      },
+      {
+        "coefficients": [
+          -1,
+          0
+        ],
+        "degree": 1,
+        "integer_terms": [
+          {
+            "coefficient": -1,
+            "exponents": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "coefficient": 1,
+            "exponents": [
+              0,
+              1,
+              0
+            ]
+          }
+        ],
+        "line": 5,
+        "polynomial": "x2 -1",
+        "rule": "linear_combination",
+        "sources": [
+          4,
+          4
+        ]
+      },
+      {
+        "degree": 2,
+        "integer_terms": [
+          {
+            "coefficient": 1,
+            "exponents": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "coefficient": -1,
+            "exponents": [
+              0,
+              1,
+              1
+            ]
+          }
+        ],
+        "line": 6,
+        "name": "edge_2",
+        "polynomial": "-x2*x3 +x2",
+        "rule": "axiom"
+      },
+      {
+        "degree": 2,
+        "integer_terms": [
+          {
+            "coefficient": -1,
+            "exponents": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "coefficient": 1,
+            "exponents": [
+              0,
+              1,
+              1
+            ]
+          }
+        ],
+        "line": 7,
+        "polynomial": "x2*x3 -x3",
+        "rule": "multiply_variable",
+        "source": 5,
+        "variable": 3
+      },
+      {
+        "coefficients": [
+          1,
+          1
+        ],
+        "degree": 1,
+        "integer_terms": [
+          {
+            "coefficient": -1,
+            "exponents": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "coefficient": 1,
+            "exponents": [
+              0,
+              1,
+              0
+            ]
+          }
+        ],
+        "line": 8,
+        "polynomial": "x2 -x3",
+        "rule": "linear_combination",
+        "sources": [
+          6,
+          7
+        ]
+      },
+      {
+        "coefficients": [
+          1,
+          -1
+        ],
+        "degree": 1,
+        "integer_terms": [
+          {
+            "coefficient": 1,
+            "exponents": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "coefficient": -1,
+            "exponents": [
+              0,
+              0,
+              1
+            ]
+          }
+        ],
+        "line": 9,
+        "polynomial": "-x3 +1",
+        "rule": "linear_combination",
+        "sources": [
+          8,
+          5
+        ]
+      },
+      {
+        "coefficients": [
+          -1,
+          0
+        ],
+        "degree": 1,
+        "integer_terms": [
+          {
+            "coefficient": -1,
+            "exponents": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "coefficient": 1,
+            "exponents": [
+              0,
+              0,
+              1
+            ]
+          }
+        ],
+        "line": 10,
+        "polynomial": "x3 -1",
+        "rule": "linear_combination",
+        "sources": [
+          9,
+          9
+        ]
+      },
+      {
+        "degree": 1,
+        "integer_terms": [
+          {
+            "coefficient": 1,
+            "exponents": [
+              0,
+              0,
+              1
+            ]
+          }
+        ],
+        "line": 11,
+        "name": "end",
+        "polynomial": "x3",
+        "rule": "axiom"
+      },
+      {
+        "coefficients": [
+          1,
+          -1
+        ],
+        "degree": 0,
+        "integer_terms": [
+          {
+            "coefficient": 1,
+            "exponents": [
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "line": 12,
+        "polynomial": "1",
+        "rule": "linear_combination",
+        "sources": [
+          11,
+          10
+        ]
+      }
+    ],
+    "number_of_lines": 13,
+    "passed": true,
+    "rank": 3
+  },
+  "pebble_checks": [
+    {
+      "all_subsets_checked": 4,
+      "capacity": 1,
+      "clearability_toggle_mismatches": 0,
+      "clearable_subsets": 2,
+      "legal_path_to_maximum": [
+        [],
+        [
+          1
+        ]
+      ],
+      "maximum_reachable_position": 1,
+      "passed": true,
+      "path_length": 3,
+      "proposed_bound": 1,
+      "reachability_clearability_mismatches": 0,
+      "reachable_subsets": 2,
+      "subsets_with_a_position_at_least_2_pow_capacity": 2,
+      "such_subsets_reachable": 0,
+      "undirected_legal_toggle_edges": 1
+    },
+    {
+      "all_subsets_checked": 16,
+      "capacity": 2,
+      "clearability_toggle_mismatches": 0,
+      "clearable_subsets": 5,
+      "legal_path_to_maximum": [
+        [],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "maximum_reachable_position": 3,
+      "passed": true,
+      "path_length": 5,
+      "proposed_bound": 3,
+      "reachability_clearability_mismatches": 0,
+      "reachable_subsets": 5,
+      "subsets_with_a_position_at_least_2_pow_capacity": 9,
+      "such_subsets_reachable": 0,
+      "undirected_legal_toggle_edges": 9
+    },
+    {
+      "all_subsets_checked": 130,
+      "capacity": 3,
+      "clearability_toggle_mismatches": 0,
+      "clearable_subsets": 26,
+      "legal_path_to_maximum": [
+        [],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          3,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          4
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          4,
+          5,
+          6
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          4,
+          6,
+          7
+        ]
+      ],
+      "maximum_reachable_position": 7,
+      "passed": true,
+      "path_length": 9,
+      "proposed_bound": 7,
+      "reachability_clearability_mismatches": 0,
+      "reachable_subsets": 26,
+      "subsets_with_a_position_at_least_2_pow_capacity": 66,
+      "such_subsets_reachable": 0,
+      "undirected_legal_toggle_edges": 101
+    },
+    {
+      "all_subsets_checked": 3214,
+      "capacity": 4,
+      "clearability_toggle_mismatches": 0,
+      "clearable_subsets": 373,
+      "legal_path_to_maximum": [
+        [],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          1,
+          2,
+          3,
+          4
+        ],
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          4
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          4,
+          5,
+          6
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          4,
+          6,
+          7
+        ],
+        [
+          4,
+          6,
+          7,
+          8
+        ],
+        [
+          4,
+          6,
+          8
+        ],
+        [
+          4,
+          5,
+          6,
+          8
+        ],
+        [
+          4,
+          5,
+          8
+        ],
+        [
+          1,
+          4,
+          5,
+          8
+        ],
+        [
+          1,
+          4,
+          8
+        ],
+        [
+          1,
+          2,
+          4,
+          8
+        ],
+        [
+          2,
+          4,
+          8
+        ],
+        [
+          2,
+          3,
+          4,
+          8
+        ],
+        [
+          2,
+          3,
+          8
+        ],
+        [
+          1,
+          2,
+          3,
+          8
+        ],
+        [
+          1,
+          2,
+          8
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          8
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          8,
+          9,
+          10
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          8,
+          10,
+          11
+        ],
+        [
+          8,
+          10,
+          11,
+          12
+        ],
+        [
+          8,
+          10,
+          12
+        ],
+        [
+          8,
+          9,
+          10,
+          12
+        ],
+        [
+          8,
+          9,
+          12
+        ],
+        [
+          8,
+          12
+        ],
+        [
+          8,
+          12,
+          13
+        ],
+        [
+          8,
+          12,
+          13,
+          14
+        ],
+        [
+          8,
+          12,
+          14
+        ],
+        [
+          8,
+          12,
+          14,
+          15
+        ]
+      ],
+      "maximum_reachable_position": 15,
+      "passed": true,
+      "path_length": 17,
+      "proposed_bound": 15,
+      "reachability_clearability_mismatches": 0,
+      "reachable_subsets": 373,
+      "subsets_with_a_position_at_least_2_pow_capacity": 1273,
+      "such_subsets_reachable": 0,
+      "undirected_legal_toggle_edges": 2633
+    }
+  ],
+  "predecessor_and_guards": {
+    "Boolean_cases": 9,
+    "cyclic_predecessor": {
+      "1": 3,
+      "2": 1,
+      "3": 2
+    },
+    "diagonal_cases": 3,
+    "functionality_cases": 18,
+    "guard_cases": 9,
+    "internal_guards_match_induction_axioms_as_integer_polynomials": true,
+    "passed": true,
+    "rank": 3,
+    "totality_rows": 3,
+    "wrap_NS_certificate_degree": 2,
+    "wrap_identity": "1-L31 = (1-x1)+x1*x3 = -(x1-1)+x1*x3"
+  },
+  "schema_version": 1,
+  "scope": "Finite illustrations only. No general-proof certification, transfer-theorem verification, or Lean claim.",
+  "script": "check_running_order.py",
+  "script_sha256": "6e4a0e120268138481d89275703fd9ec0fa819f18b8be0a2d54b10ebe07239be"
+}

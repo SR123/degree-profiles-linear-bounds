@@ -1,0 +1,82 @@
+Independent review of Claude's four release-audit attachments
+13 October 2026
+
+Outcome
+=======
+The returned audit strengthens the evidence for the core linear-degree theorem, uniform NS–ordinary-PC comparison and classification/undecidability endpoints within their stated scopes. No new mathematical blocker was found in this review. The sensible next phase is historical attribution, exposition and reproducible release preparation, rather than reopening the proved critical path. This is not a blanket assertion that every sentence, teaching deduction, size corollary or website interaction is machine certified.
+
+All four attachments were collected from the author's authorised existing Claude conversation, preserved unchanged and reviewed together with the current source and prior independent audits. Three read-only independent reviews addressed formal evidence, history and release/reader evidence. No paper, tutorial, reader or Lean source was edited. No new Lean execution was performed by this reviewer. Research and supervision automations remain paused.
+
+Preserved return
+================
+Directory: 06_Lean_Review/Uniform_Consequences/Claude_Release_Audit_2026-10-13/Return_001/
+
+Release_Audit_Report_2026-10-13.md
+  SHA256 be3432d1e8bf5f122c79874f72d8a717a790fd4fd833e5117c6b0639ccf75079
+statement_to_evidence_table.tsv
+  SHA256 efa1a37cfb801dccb045680aa051885a4fdeb7f3fc91fe08f5f2264e2d1b0498
+lean_audit_outputs.zip
+  SHA256 4212c03a1b97de37c78e92ee4847df34ddf4c14bd202386c7fe33a2b0c2fb796
+browser_results.json
+  SHA256 2535ee24d606310ad0d9c9c21dafa6179175f220dc07425366d78339d8f3d586
+
+collection_manifest.json records source locations, sizes and equality with the first downloaded copies. The ZIP was inspected as data; its contents were not executed.
+
+Mathematical and formal evidence
+===============================
+1. The five principal audit outputs contain 160 standard-foundation-only axiom reports. The separate scope adapter contributes four further standard-only reports. Sixteen sorryAx dependency checks are false. Returned exact types retain the actual polynomial-map, fixed-template, field/characteristic, support/degree and finite-exception conditions.
+2. The returned build tail records 3,557 completed jobs and exit 0. Sources and pinned dependency information agree with the existing package. Source/dependency checks distinguish proved properties of the construction from hypothetical input assumptions; no hidden final classification or transfer premise was identified.
+3. The direct PC path uses indexed_transfer and does not use uniform_inclusion. The newer endpoint avoids the earlier conditional deletion hypotheses. This matters: a clean build of the abandoned conditional wrapper would not establish the intended theorem.
+4. Fresh kernel replay records identify UCIndexedClassification and UCFreshVariable import closures, each with exit 0. They strengthen prior verification evidence but are Claude-supplied execution records, not an independent rerun in this review. The UCTargetScope/UCScopeAudit adapters are separately compiled, outside those two fresh closures. Do not describe all 199 package modules as freshly replayed.
+5. The ZIP contains full audit/type outputs, a build tail and two timing/exit records; the 28 non-fresh checker logs are empty. Quiet successful logs are not intrinsically defective, but a public reproducibility packet should also preserve the exact commands, pins, inputs and execution provenance.
+6. The manuscript has 53 numbered statement environments. The TSV's 45 statement rows expand through grouped entries to cover all 53; its remaining rows address additional deductions and conventions. Written-only material remains written-only, including the recent injection n+1 certificate, optimality deductions and size presentation.
+7. The linear lower conclusion retains T2 finite-value, T3 hard-residue, T4 finite-peak and finite-liminf qualifications, plus stable bounded-degree/support and positive-characteristic scope. Nothing in these returns justifies removing those qualifications or asserting universal all-size T4 hardness or a universal O(n) upper bound.
+
+Confirmed actions before public release
+======================================
+A. Historical credit and references
+
+- Add Riis–Sitharam TR97-048 to the account of the earlier linear-gap announcement, with the unresolved inducing-down argument explicitly distinguished from a proved antecedent. TR09-014 p. 50 footnote 3 and p. 53 reference 33 provide the author's own qualification. An unresolved proof is not a refutation of its asserted theorem.
+- Credit the NS and PC originators directly. Retain Buss–Pitassi for the induction example; it should not stand in for both proof systems' foundations. Make the relevant Krajíček/Ajtai, Buss-design and Beame–Riis antecedents clear at the places where they matter.
+- The original no-finite-model promise is already stated in LICS 2008 Theorem 1, alongside undecidability for every nonempty proper union of types. It must not be credited as a newly invented AI promise.
+- Inspection of LICS Lemma 8 (p. 282) and the longer report's Lemma 8 (p. 49) confirms a T1-versus-tau switch. These suffice for the every-union result and directly separate T1 from each other type. The inspected old construction does not supply the three pairs wholly inside {T2,T3,T4}; the current controlled-join reduction supplies them. This is a refinement of the published formulation and inspected construction, not an exhaustive historical-priority judgment.
+  Suggested phrasing: 'We give explicit reductions separating any two types under the no-finite-model promise already stated in LICS 2008, refining its every-union formulation.'
+- Harman's prior results already include tensor, induction, restriction and duality compatibility (Propositions 2.7 and 2.12). Do not claim compatibility itself as a new contribution. Explain instead the independent actual polynomial-diagram construction, closure preservation, target detection and quantitative application. Preserve the precise strict-period convention and existing careful comparison.
+
+Primary sources inspected:
+  01_Sources/LICS_2008/Riis_LICS_2008_Proceedings.pdf
+  01_Sources/SuperPapers2020/Pp_03(Nullstellensatz)/old_latex_version/OldPostedVersion/TR09-014.pdf
+  02_Literature/Primary/Krajicek_1999_author_preprint_converted.pdf
+  02_Literature/Primary/Harman_1509_06414v3.pdf
+  https://eccc.weizmann.ac.il/report/1997/048/
+  https://arxiv.org/abs/1509.06414
+
+B. Reproducible public packet
+
+Prepare a curated Lean source package with pinned Lean/mathlib/Lake information, the precise source/type/axiom/closure checks, command transcripts, status distinctions and a stable public link. Existing site pages contain some execution commands, but they do not yet constitute the complete public package. Curate the manuscript ZIPs: remove unrelated internal audits, private absolute paths, unused editing files and stale documentation from the publication packets while preserving the archival originals. Select licence and source-link metadata before publication. Venue-specific requirements require a final check against the chosen journal; this audit does not constitute submission approval.
+
+C. Tutorial and human-readable proof
+
+The exported 177-page textbook PDF, its source ZIP and the reader snapshot are mutually coherent. The live source is newer and contains desired preface/credit/guide/reference and UK spelling updates. This is a controlled edition split, not corrupted source-to-PDF identity. Produce and review a final coherent edition only during the subsequent revision task.
+
+Add worked traces at the difficult transitions: retained-label range, strengthened rook forcing, duality and odd-characteristic repair. Introduce or recall symbols locally, especially in Chapters 8 and 11–13. Repair the accidental \S in the matching chapter. Add the injection n+1 certificate as a useful explanation of sharpness; its absence is not a gap in the existing lower-bound proof. Reading orders serve different purposes and need clear labels, not a claim that the mathematics has contradictory routes.
+
+D. Interactive release
+
+Correct stale 12 October/unpublished metadata and the internal build note; synchronise after manuscript edits. Repair the two page-range starts reported for proof-7-2-5 and p-8-3-6 after checking actual PDF text. The reader and current paper presently have exact paired source/PDF identities; preserve those strict gates. The raw JSON supports substantial browser testing but not a complete accessibility certification.
+
+Corrections and limitations of Claude's audit
+============================================
+1. AI disclosure: the paper already explicitly credits Astra and Claude for sustained proof search, formalisation, verification support and exposition, and records human direction and responsibility. Claude's summary reduces this to exposition and thereby overstates the deficiency. Different paper/book disclosure lengths are not themselves an inconsistency.
+2. Harman: tensor/natural-operation compatibility already appears in the earlier paper; see A above. This correction affects attribution, not the validity of the independent construction.
+3. Period: audit report line 572 says 'period < pR'. The general bound is Q <= pR, with equality possible when R is a prime power. The actual manuscript already has the correct inequality; do not introduce the audit's mistake into it.
+4. TSV: its Boolean-completeness row assigns paper pp. 15–16, but the relevant paper text is on pp. 10–11. The mathematical correspondence is unaffected, but the location should be corrected.
+5. Package inventory: the paper ZIP has 24 audit entries, rather than the audit's reported 26. The underlying public-packet hygiene concern is valid.
+6. Commands: some Lean commands already appear on the site. The missing item is complete pinned reproducibility, not total absence of commands.
+7. Browser JSON: the recorded deep-link anchor top is -2337 and does not establish correct positioning below the header. Reduced-motion and scroll-restoration checks are not recorded. There are no contrast, zoom or screen-reader results. A 27-character selection with one panel is not by itself proof that selection opened no panel. Static identity/link validation is separate from sampled interactive browser coverage. Retain these distinctions in any readiness claim.
+8. The alleged three conflicting textbook routes are purpose-specific reading orders; no logical contradiction was established. Hardest-step pedagogy remains a real concern.
+9. No mathematical blocker found is an evidence-based audit conclusion, not a guarantee of absolute correctness or universal novelty. Neither returned clean builds nor formalisation labels certify all presentation and derived-size claims.
+
+Prioritised next step
+=====================
+Make one coordinated release revision: historical credit and comparison wording first; final coherent tutorial and the few notation/page repairs second; curated formal/public packets and synchronised reader third. Preserve every previous edition. Retest only checks affected by the revision, and maintain exact formal-versus-written labels. There is no present evidence requiring a restart of the main linear-bound proof search. This review implements no publication, manuscript revision or new formal endpoint.

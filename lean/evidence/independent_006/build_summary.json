@@ -1,0 +1,18 @@
+{
+  "exit_code": 0,
+  "seconds": 69.9,
+  "workspace": "<RECORDED_INDEPENDENT_SCRATCH>/lean",
+  "targets": [
+    "UCIndexedTarget",
+    "UCIndexedTransfer",
+    "UCIndexedAudit"
+  ],
+  "present_oleans": {
+    "UCIndexedTarget": true,
+    "UCIndexedTransfer": true,
+    "UCIndexedAudit": true
+  },
+  "producer_project_oleans_reused": false,
+  "complete": true,
+  "metadata_correction": "Target list corrected after execution; no build rerun. Exit code and elapsed time unchanged."
+}

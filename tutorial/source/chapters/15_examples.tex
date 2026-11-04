@@ -1,0 +1,489 @@
+\chapter{Examples with prescribed targets}\label{tx:ch:examples}
+The classification allows both finite proof degrees and infinity. An
+example should make clear which kind of hardness it illustrates. We
+already have a finite T2 family from a Boolean first-order sentence:
+the descending-predecessor example of
+Chapter~\ref{tx:ch:running-order}, with its full lifting proof. Here we
+begin with a consistent family whose target is derivable on one residue
+class and underivable on the others. We then obtain finite hard proofs
+of a nonconstant target. Finally we describe the four first-order
+refutation families used by the undecidability argument.
+Recall the test in Theorem~\ref{tx:thm:classification}: T1 is eventually
+bounded; T2 has no recurring finite degree; T3 is not eventually bounded and has a finite
+nonempty set of recurring finite degrees; T4 has infinitely many. For a request,
+$h_S$ is its least-degree profile; $d_S(\Gamma)$ denotes the special
+least degree of a refutation, whose target is $1$.
+
+\section{A consistent family with an exact residue split}
+Fix characteristic $p$ and, for $n\ge1$, take
+\[
+                  \Gamma_n=\{x_i-1:i<n\},\qquad
+                  G_n=\sum_{i<n}x_i.
+\]
+The axioms have the solution $x_i=1$ for every $i$, so they are
+consistent at every size. Both the axioms and the invariant target
+have stable coefficient descriptions.
+
+\begin{proposition}\label{tx:prop:consistent-T3}
+For both NS and PC, the target profile is exactly
+\[
+ h_S(n)=\begin{cases}1,&p\mid n,\\\infty,&p\nmid n.\end{cases}
+\]
+In particular, it is T3. With the same axioms but the indexed request
+$G_{i,n}=x_i$ for every $i<n$, the profile is constantly infinity and
+has type T2.
+\end{proposition}
+\begin{proof}
+Summing the axioms gives $G_n-n$. If $p\mid n$, this is $G_n$, so it
+has an NS certificate, and hence a PC proof, of degree one. The target
+is nonzero of degree one, proving equality. If $p\nmid n$, the root
+with all coordinates one evaluates $G_n$ to the nonzero field element
+$n$. Soundness excludes any derivation. The same root evaluates each
+indexed target $x_i$ to one, proving the final assertion.
+\end{proof}
+
+This example also distinguishes an invariant sum from its individual
+summands. The statement that the sum is a consequence does not say
+that each summand is a consequence. The all-target profile is a maximum
+of separate proof degrees, not the degree of a proof of their sum.
+
+The easy residue class here is zero modulo $p$; its degree is exactly
+one. The other classes have infinite degrees. This is a genuine
+consistent-axiom example of the classification, but it does not yet
+provide finite proofs requiring degree $\Omega(n)$. The next
+construction addresses that different question.
+
+\section{A fresh variable as a nonconstant target}\label{tx:sec:target-examples}
+The degree of a target need not reflect the degree needed to derive it.
+A polynomial of degree one may require arbitrarily high proof degree.
+We first give an exact construction, then apply it to a uniform family
+whose hard values are finite.
+
+A simple invariant target illustrates the distinction between finite
+hardness and failure of derivability. For $G_n=\sum_{i<n}x_i$, the input
+$\{1\}$ gives degree exactly one in both systems for $n\ge1$. With no
+inputs the same target is underivable and has degree $\infty$. Both
+fit the uniform definition, but neither supplies a finite hard example.
+The next construction does.
+
+Here \emph{fresh} means a new indeterminate in the polynomial ring,
+independent of every old variable and absent from every old axiom.
+Any coefficient polynomial has a unique expansion
+$a(x,y)=\sum_j a_j(x)y^j$; the notation $[y^1]a$ selects $a_1(x)$.
+This linear operation is different from substituting a value for $y$.
+The proof uses substitution for PC and coefficient extraction for NS,
+because they control the two degree conventions differently.
+
+\begin{proposition}[Adjoining a fresh target]\label{tx:prop:fresh-target}
+Let $K$ be any field, let $\Gamma\subseteq K[x_v:v\in V]$ be any axiom
+set, and adjoin a fresh variable $y$. Each certificate uses only
+finitely many axioms. Let $\Gamma^\uparrow$ be the same axioms viewed
+in $K[x_v:v\in V,y]$, with no additional axiom involving $y$. Then
+\begin{equation}\label{tx:eq:fresh-identities}
+ \begin{aligned}
+ h_{\PC}(\Gamma^\uparrow\vdash y)
+       &=\max\{1,d_{\PC}(\Gamma)\},\\
+ h_{\NS}(\Gamma^\uparrow\vdash y)
+       &=d_{\NS}(\Gamma)+1.
+ \end{aligned}
+\end{equation}
+These equalities include degree zero and infinity, with
+$\infty+1=\infty$.
+\end{proposition}
+\begin{proof}
+For PC, embed a refutation of $\Gamma$ in the larger ring and multiply
+its last line $1$ by $y$. If the refutation had degree $d$, the resulting
+proof of $y$ has degree $\max\{1,d\}$: only the new last line is added,
+and its degree is one.
+
+Conversely, substitute $y=1$ in every line of a PC proof of $y$.
+The old axioms are unchanged and linear combinations commute with the
+substitution. Multiplication by an old variable remains a multiplication
+step; multiplication by $y$ becomes a repeated line, which the linear
+combination rule admits. No degree increases, and the last line becomes
+$1$. Every proof of $y$ also has degree at least one. These two lower
+bounds prove the first equality, including the case when no refutation
+exists.
+
+For NS, multiplying the coefficients of an identity
+$1=\sum_fa_ff$ by $y$ gives an identity for $y$ with degree one larger.
+For the reverse inequality, suppose
+\[
+                    y=\sum_f a_f(x,y)f(x)
+\]
+has total-product degree at most $e$. Take the coefficient of $y^1$.
+Since every $f$ is independent of $y$, this gives the exact identity
+\[
+                    1=\sum_f [y^1]a_f(x,y)\,f(x).
+\]
+Every nonzero product on the right has degree at most $e-1$: it is the
+coefficient of $y^1$ in a product of total degree at most $e$. Zero
+products may be discarded. Hence $d_{\NS}(\Gamma)\le e-1$.
+In particular a finite proof of $y$ exists exactly when a finite
+refutation exists. If the original refutation degree is zero, both
+new degrees are one, as asserted.
+\end{proof}
+
+\begin{example}[Why the two exact identities differ]
+Take $\Gamma=\{x,1-x\}$. Both refutation degrees are one. PC derives
+$1=x+(1-x)$ and then multiplies that last constant by $y$; every line
+still has degree at most one. An NS identity for the fresh target is
+\[
+                             y=yx+y(1-x).
+\]
+Its products have degree two. No degree-one NS identity can produce
+$y$, since its multipliers of these degree-one axioms would have to
+be constants. Thus the new PC degree is one and the NS degree is two.
+PC can finish the refutation before multiplying its last line; an NS
+identity carries the extra variable in its coefficient polynomials.
+\end{example}
+
+The absence of a $y$-axiom is part of the construction; in particular,
+we do not add $y^2-y=0$. For a uniform template, give the new variable
+empty support and keep all old axiom indices and coefficients. Set
+all coefficients of axiom monomials involving $y$ to zero. The result
+is again a uniform template with the same bounds $k,s,D,n_0$, and
+$G_n=y$ is a fully invariant target of degree one at every rank.
+Thus \eqref{tx:eq:fresh-identities} holds rank by rank.
+
+This operation preserves each of the four types, separately for NS
+and PC. The NS recurring finite degrees are shifted by one. For PC,
+the map $d\mapsto\max\{1,d\}$ merges only degrees zero and one;
+all larger finite degrees and infinity are unchanged. Eventual
+boundedness, absence or unboundedness of recurring finite levels, and
+the mixed periodic case are consequently preserved.
+
+The notation $v_p(n)$ is the exponent of $p$ in the factorisation of
+$n$: writing $n=p^a u$ with $p\nmid u$ gives $v_p(n)=a$.
+For instance, $v_3(12)=1$ and its associated power is $q=3$.
+A window such as $[q,q+4]$ bounds a finite proof degree; the condition
+$n\ge2q$ must still be checked before using its lower endpoint.
+
+\begin{corollary}[A finite hard nonconstant consequence family]\label{tx:cor:fresh-peaks}
+Let $K$ have prime characteristic $p$, and let $\widehat B_n$ be the
+normalised weak-bijection system defined in
+\eqref{tx:eq:bhat-witness}, with all of its function and coverage witnesses
+retained. Adjoin a fresh variable $y$ as above, and request the target
+$G_n=y$. Both target-degree profiles are of type T4.
+
+More precisely, write $n=p^a u$, where $p\nmid u$, and put $q=p^a$.
+Whenever $n\ge2q$,
+\[
+ \begin{gathered}
+ q\le h_{\PC}(n)\le q+4,\qquad
+ q+1\le h_{\NS}(n)\le q+5,\\
+                         h_{\PC}(n)\le h_{\NS}(n).
+ \end{gathered}
+\]
+In particular, at every size $n_a=(p+1)p^a$,
+\begin{equation}\label{tx:eq:fresh-peaks}
+ \frac{n_a}{p+1}\le h_{\PC}(n_a)\le h_{\NS}(n_a)
+                              \le\frac{n_a}{p+1}+5<\infty.
+\end{equation}
+\end{corollary}
+\begin{proof}
+The refutation bounds \eqref{tx:eq:bhat-window}, proved below together with the rectangular obstruction in the next
+chapter, give
+$q\le d_{\PC}(\widehat B_n)\le d_{\NS}(\widehat B_n)\le q+4$.
+Apply \eqref{tx:eq:fresh-identities}; since $q\ge1$, the maximum in the
+PC identity changes nothing here. At $n_a=(p+1)p^a$ we have
+$v_p(n_a)=a$ and $n_a\ge2p^a$, yielding \eqref{tx:eq:fresh-peaks}.
+
+For each fixed $a$, infinitely many sizes
+$n=p^a(p(j+1)+1)$ have the same valuation and satisfy the displayed
+bounds. Some finite degree in each of the bounded windows must
+therefore recur infinitely often. The windows tend to infinity with
+$a$, proving T4 in each system. On the other hand, the old upper
+bound gives $h_{\PC}(n)\le5$ and $h_{\NS}(n)\le6$ whenever
+$p\nmid n$. The linear peaks thus coexist with infinitely many easy
+sizes, rather than giving an eventual linear lower bound at all sizes.
+\end{proof}
+
+This example has finite hard proofs of a nonconstant target, but its
+axioms are inconsistent: the difficulty is inherited from refuting
+$\widehat B_n$. It does not establish a family of satisfiable axioms
+with the same hard consequence profile. The small consistent example
+in Chapter~\ref{tx:ch:consequences} illustrates ordinary-PC consequences in
+a different setting; no growing lower bound is asserted for it.
+
+\section{The refutation special case: four first-order examples}
+\label{tx:sec:examples}
+
+We now take the constant target $G_n=1$. This is the refutation special
+case of the uniform-consequence theorem; the sharper invariant-target
+budget applies. Write $\psi_1,\psi_2,\psi_3,\psi_4$ for the four sentences described in order below.
+The four cases all occur among fixed first-order sentences with no finite
+nonempty models. We give examples over a field of fixed prime characteristic
+$p$. Each sentence is translated by the graph-and-sum convention: relation
+and function-graph variables are Boolean, and every function has a totality
+sum and pairwise functionality equations, as in
+Chapter~\ref{tx:sec:systems}. These are ordinary polynomial inputs,
+including the Boolean equations. The parameter $n\geq1$ is the
+universe size. For the matrix notation in this section, we relabel the
+universe as $\{1,\ldots,n\}$; this changes no equation or degree.
+
+\paragraph{T1: a local contradiction.}
+The sentence $\forall x\,(R(x)\wedge\neg R(x))$ contributes $r_i$ and
+$1-r_i$. Their sum refutes the system in degree one, independently of $n$.
+The contradiction is already visible at one element.
+
+\paragraph{T2: an injection that misses a point.}
+Let $\eta$ say that a unary function $g$ is injective and that a constant
+$c$ is outside its image. Write $x_{ij}$ for $g(i)=j$ and $c_j$ for $c=j$.
+In addition to the Boolean equations, its system $\Gamma_n^\eta$ consists of
+\begin{equation}\label{tx:eq:G-witness}
+\begin{gathered}
+ \sum_jx_{ij}-1=0,\qquad
+ x_{ij}x_{ik}=0\ (j\ne k),\qquad
+ x_{ij}x_{hj}=0\ (i\ne h),\\
+ \sum_jc_j-1=0,\qquad
+ c_jc_k=0\ (j\ne k),\qquad x_{ij}c_j=0.
+\end{gathered}
+\end{equation}
+A solution would inject $n$ elements into the $n-1$ elements other than $c$,
+so every instance is unsatisfiable. For either proof system, every
+degree-$d$ refutation satisfies
+\[
+ n<3pd\qquad(n\geq3).
+\]
+Here is how the internal matching bound gives this estimate. Choose the
+largest $p$-power $q\leq n/3$ and put $r=n-q$. Set $c_n=1$, all other
+$c_j=0$, and restrict the image of $g$ to $[r]$. After transposition, every
+remaining axiom is an axiom of the bijection system $B_{r,n}$.
+Here $B_{r,m}$ is the Boolean $r$-by-$m$ matrix system with every row and
+column sum equal to one and both row and column collisions equal to zero.
+If $d<q$, then $2d\leq r$ and $q\mid n-r$, contradicting the rectangle
+obstruction of Lemma~\ref{tx:lem:rectangle-obstruction}. The substitutions do
+not increase ordinary-PC or NS degree. Thus $d\geq q$, while maximality of
+$q$ gives $n<3pq\leq3pd$. This proves T2 without an external pigeonhole
+lower-bound theorem.
+
+\paragraph{The injection certificate and the linear scale.}
+The paper's matching upper bound is useful to inspect directly. Put
+\[
+ R_i=\sum_{j=1}^n x_{ij},\qquad C=\sum_{j=1}^n c_j,
+                    \qquad P=\prod_{i=1}^n R_i.
+\]
+Every monomial in $CP$ has the form $c_j\prod_i x_{i,\lambda(i)}$.
+If $\lambda$ is not injective, two factors give a column-collision
+axiom. If it is injective, it is a permutation of $[n]$, and its
+unique row $i$ with $\lambda(i)=j$ gives the omission axiom
+$c_jx_{ij}$. In either case the monomial is an axiom multiple of
+degree $n+1$. Summing these identities expresses $CP$ in the raw NS
+span at that degree.
+
+The second certificate is the exact telescoping identity
+\[
+ CP-1=(C-1)+C\sum_{i=1}^n(R_i-1)\prod_{h<i}R_h.
+\]
+Its summands use only constant and row totality axioms, with each
+complete product of degree at most $n+1$. Subtracting this certificate
+from the one for $CP$ derives $1$ at degree at most $n+1$.
+For a two-element universe the telescoping list is
+$(C-1)+C(R_1-1)+CR_1(R_2-1)$, with degrees $1,2,3$.
+A term $c_1x_{11}x_{21}$ in $CP$ is a column-collision multiple;
+$c_1x_{11}x_{22}$ is an omission-axiom multiple. These are the two
+possibilities in the general expansion.
+
+Thus, over any field and for every $n\ge1$,
+\[
+ d_{\PC}(\Gamma_n^\eta)\le d_{\NS}(\Gamma_n^\eta)\le n+1.
+\]
+The PC inequality uses the degree-preserving simulation of an NS
+certificate by repeated variable multiplication. No Boolean reduction
+is used. With the preceding $n<3pd$ lower bound for $n\ge3$, both
+degrees are $\Theta(n)$ for each fixed positive characteristic.
+This family proves sharpness of the general linear scale; it does
+not supply an upper bound for every uniform family. This certificate
+and the sharpness deduction are written mathematics, as in the paper;
+no additional Lean endpoint is claimed for them.
+
+\paragraph{T3: hardness on one residue class.}
+Let $\chi_p$ assert
+\[
+ \forall x\qquad f^p(x)=x\quad\hbox{and}\quad f(x)\ne x.
+\]
+Its finite models are disjoint unions of directed $p$-cycles. In particular,
+it has a $0/1$ graph assignment exactly when $p\mid n$. An explicit
+normalisation uses the function equations for $f$, the equations $f_{ii}=0$,
+and
+\begin{equation}\label{tx:eq:cycle-path}
+ f_{i_0i_1}f_{i_1i_2}\cdots f_{i_{p-1}i_p}=0
+ \qquad(i_p\ne i_0).
+\end{equation}
+If $p\nmid n$, summing all length-$p$ walks gives an NS refutation of degree
+at most $p$. Indeed, totality derives the sum of their monomials minus $n$
+within degree $p$. Nonclosed walks vanish by \eqref{tx:eq:cycle-path}.
+A closed walk with a repeated vertex either contains a functionality
+collision or follows a shorter deterministic cycle; since $p$ is prime,
+the latter is a forbidden fixed point. Each remaining cycle contributes its
+monomial $p$ times, according to its starting vertex, and hence contributes
+zero. The resulting nonzero scalar $n$ yields the refutation.
+
+Now take $\psi_3=\eta\wedge\chi_p$ in disjoint nonlogical symbols.
+For $p\mid n$, substitute a $p$-cycle assignment into the second block.
+This preserves proof degree and shows that the conjunction has exactly the
+degree of $\eta$, separately for NS and PC. For $p\nmid n$, the second
+block refutes in degree at most $p$. Consequently this all-size
+unsatisfiable family is bounded off the multiples of $p$ and has linear
+degree on the multiples: it has type T3. No exact degree is needed on the
+bounded residue classes.
+
+\paragraph{T4: the valuation of the universe size controls the difficulty.}
+The weak-bijection example is more revealing. Let unary functions $f,g$
+be injective with disjoint images, and require their images together to
+cover the universe. Use a unary witness $h$ for coverage:
+\[
+ \forall z\qquad f(h(z))=z\ \vee\ g(h(z))=z.
+\]
+Let $a_{ij},b_{ij},w_{ji}$ represent $f(i)=j$, $g(i)=j$, and $h(j)=i$.
+The combined $2n$-by-$n$ matrix $(a;b)$ has row sums equal to one and both
+row and column collisions equal to zero. The witness block consists of
+\begin{equation}\label{tx:eq:bhat-witness}
+ \sum_iw_{ji}-1=0,\qquad
+ w_{ji}w_{ji'}=0\ (i\ne i'),\qquad
+ w_{ji}(1-a_{ij})(1-b_{ij})=0,
+\end{equation}
+together with the Boolean equations. Call this complete system
+$\widehat B_n$. Its witnesses are retained: it is not identified with the
+simpler matrix system $B_{n,2n}$.
+
+Put $q=p^{v_p(n)}$. The proved bounds give
+\begin{equation}\label{tx:eq:bhat-window}
+ q\leq d_{\mathrm{PC}}(\widehat B_n)
+ \leq d_{\mathrm{NS}}(\widehat B_n)\leq q+4
+ \qquad\hbox{whenever } n\geq2q.
+\end{equation}
+The upper bound holds at every positive size, without the displayed size
+condition. We give both degree-preserving reduction and certificate
+explicitly.
+
+A substitution is used here as a map of proofs, not merely as a map
+of solutions. An affine substitution replaces a variable by a linear
+polynomial plus a constant, so it does not increase polynomial degree.
+One must also check that every substituted input is derivable from the
+new inputs within the permitted degree. The following identities supply
+that check for the coverage and Boolean witness equations.
+
+For the lower bound transpose the combined matrix and substitute
+$w_{ji}=a_{ij}+b_{ij}$ into every witness variable. Its totality becomes
+the corresponding totality of $B_{n,2n}$. The identities
+\begin{align*}
+(a+b)^2-(a+b)&=(a^2-a)+(b^2-b)+2ab,\\
+(a+b)(1-a)(1-b)&=-(1-b)(a^2-a)-(1-a)(b^2-b)
+\end{align*}
+put the substituted Boolean and coverage equations in the raw NS spans
+at degrees two and three respectively. A substituted witness collision
+expands into four column collisions of the raw combined matrix.
+Thus every substituted input has a derivation within its own degree.
+Substitution is affine: a multiplication by an old variable becomes a
+sum of permitted multiplications by new variables, with the preceding
+line still of degree at most $d-1$. A degree-$d$ ordinary-PC refutation
+would therefore refute $B_{n,2n}$ within the same degree. The rectangle
+obstruction excludes this when $2d\le n$ and $d<q$, yielding the lower
+bound in \eqref{tx:eq:bhat-window}.
+
+For the upper bound fix a column $j$ and abbreviate
+\[
+ u_i=a_{ij}+b_{ij},\qquad T=\sum_i u_i,\qquad
+ Z=\sum_i w_{ji}u_i.
+\]
+The coverage axiom and disjointness collision give the exact identity
+\[
+ Z-1=(\sum_iw_{ji}-1)
+ -\sum_iw_{ji}(1-a_{ij})(1-b_{ij})
+ +\sum_iw_{ji}a_{ij}b_{ij}.
+\]
+Consequently $Z-1$ lies in the degree-three NS span. If $x$ is one entry
+of this column, then
+\[
+ Tx-x=(x^2-x)+\sum_{y\ne x}yx
+\]
+lies in the degree-two span, by Booleanity and column collisions.
+Adding this for $a_{ij}$ and $b_{ij}$ gives $Tu_i-u_i$ in that span.
+Finally
+\[
+ T-1=\sum_iw_{ji}(Tu_i-u_i)-(T-1)(Z-1)
+\]
+puts the missing column totality in the degree-four span. This retains
+the coverage witnesses throughout the derivation.
+
+For completeness, consider any matrix with row sums $R_i$ and column
+sums $C_j$, with their differences from one in the NS span at degree
+$e$, and with both collision families in degree two. For a fixed
+$k$-element row set $S$, telescoping the product of its row sums gives
+$\prod_{i\in S}R_i-1$ in degree at most $e+k$. Summing over $S$ gives
+\[
+ \sum_{|S|=k}\prod_{i\in S}R_i-\binom{\#\mathrm{rows}}k
+\]
+in that same span. Expand the products as partial functions from $k$
+rows to columns. A noninjective partial function contains a column
+collision, so its monomial is already in the degree-$k$ span.
+The remaining monomials are exactly those of $k$-edge matchings.
+The column calculation gives the same matching sum, since inversion
+pairs partial injections with identical monomials. Subtracting derives
+\[
+ \binom{\#\mathrm{rows}}k-\binom{\#\mathrm{columns}}k
+\]
+within degree $e+k$. Applied to the $2n$-by-$n$ matrix with $e=4$, this
+is the desired counting certificate.
+
+Write $n=qu$ with $q=p^{v_p(n)}$ and $p\nmid u$. In characteristic
+$p$, $(1+t)^n=(1+t^q)^u$. The coefficient of $t^q$ is therefore $u$;
+for $(1+t)^{2n}$ it is $2u$. Thus
+$\binom{2n}q-\binom nq=u\ne0$ in $K$. Rescaling the counting
+certificate gives an NS refutation of degree at most $q+4$.
+
+For each fixed $a$, the sizes $n=p^a(p(k+1)+1)$, $k\geq0$, have
+$v_p(n)=a$ and satisfy \eqref{tx:eq:bhat-window}. Hence some finite degree in
+$[p^a,p^a+4]$ recurs infinitely often. These windows are unbounded as $a$
+varies, proving T4 for both proof systems. On the other hand, $p\nmid n$
+implies degree at most five. There are explicit simultaneous linear peaks:
+at $n_a=(p+1)p^a$,
+\[
+ \frac{n_a}{p+1}\leq d_{\mathrm{PC}}(\widehat B_{n_a})
+ \leq d_{\mathrm{NS}}(\widehat B_{n_a})
+ \leq\frac{n_a}{p+1}+4.
+\]
+For example, in characteristic two every odd $n$ has degree at most
+five, whereas at $n=3\cdot2^a$ both degrees lie between $2^a$ and
+$2^a+4$. The peaks are linear in their universe size even though the
+profile returns to bounded values infinitely often.
+Thus linear peaks coexist with infinitely many easy sizes. This is the
+reason the T4 conclusion concerns peaks rather than an eventual linear
+lower bound at every size.
+
+\section{Exercises}
+\begin{exercise}\label{tx:ex:sum-versus-individual}
+For the consistent family of Proposition~\ref{tx:prop:consistent-T3},
+compute the two profiles at sizes $1,2,3,4,5,6$ in characteristic three.
+Compare the invariant sum request with the indexed request for every
+individual variable. Which statements have finite proof degrees?
+\end{exercise}
+\noindent{\small\hyperref[tx:ans:sum-versus-individual]{Model answer (p.~\pageref*{tx:ans:sum-versus-individual}).}}\par\medskip
+
+\begin{exercise}\label{tx:ex:fresh-small}
+For $\Gamma=\{x,1-x\}$ over an arbitrary field, write a degree-one PC
+proof of the fresh target $y$ and prove that its least NS degree is two.
+Do not insert an axiom involving $y$.
+\end{exercise}
+\noindent{\small\hyperref[tx:ans:fresh-small]{Model answer (p.~\pageref*{tx:ans:fresh-small}).}}\par\medskip
+
+\begin{exercise}\label{tx:ex:fresh-window}
+In characteristic three, apply the fresh-$y$ bounds to the normalised
+weak-bijection family at $n=6$ and $n=36$. What can the stated bounds
+say at $n=9$? Distinguish the lower-bound size condition from the
+all-size upper certificate.
+\end{exercise}
+\noindent{\small\hyperref[tx:ans:fresh-window]{Model answer (p.~\pageref*{tx:ans:fresh-window}).}}\par\medskip
+
+\begin{exercise}\label{tx:ex:fresh-soundness}
+Suppose $\Gamma$ has a root over some extension field of $K$. Explain
+why the fresh target $y$ is underivable from $\Gamma^\uparrow$.
+If one instead adds $y^2-y$ as an axiom, identify the extra term which
+appears when extracting the coefficient of $y^1$ from an NS identity.
+Why does the original coefficient-extraction proof no longer apply
+unchanged?
+\end{exercise}
+\noindent{\small\hyperref[tx:ans:fresh-soundness]{Model answer (p.~\pageref*{tx:ans:fresh-soundness}).}}\par\medskip
+

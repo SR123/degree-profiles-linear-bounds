@@ -1,0 +1,307 @@
+\chapter{All proofs inside one finite-dimensional space}\label{tx:ch:closure}\label{tx:sec:pc-space}
+A proof can be arbitrarily long even when its degree is fixed. To study
+all such proofs, we need not enumerate their possible lengths. There
+are only finitely many monomials of degree at most $d$ in a fixed finite
+set of variables. Every line of a degree-$d$ proof is a vector in the
+space on those monomials. The proof rules describe which vectors can
+be reached.
+
+This chapter identifies the reachable space exactly. The distinction
+between NS and PC becomes the distinction between one linear span and
+an iterated closure. In particular, the closure must recognise a
+low-degree vector created by cancellation among higher-degree vectors.
+
+\section{Coordinates for bounded-degree polynomials}
+Let $\mathcal X$ be the finite set of variable names and put
+$v=|\mathcal X|$. Work over the fixed field $K$. The space $P_{\le d}$
+consists of polynomials in $x_u$, $u\in\mathcal X$, of total degree at
+most $d$. Its monomial basis has size
+\[
+                     \dim P_{\le d}=\binom{v+d}{d}.
+\]
+Indeed, a monomial has exponents $a_1,\ldots,a_v$ with
+$\sum a_i\le d$. Add the slack coordinate
+$a_{v+1}=d-\sum a_i$. This gives $v+1$ nonnegative integers summing
+to $d$. Placing $v$ separators among $d+v$ positions counts those
+choices by $\binom{v+d}{v}=\binom{v+d}{d}$.
+
+For two variables and $d=2$, one possible ordering is
+$1,x,y,x^2,xy,y^2$. A polynomial is its vector of coefficients in this
+basis. Addition and scalar multiplication are the usual vector-space
+operations; polynomial multiplication is a different operation which
+may leave this space.
+
+Fix a finite system $\Gamma$. We omit its zero inputs when forming
+spanning sets, since zero contributes no new vector. For NS set
+\begin{equation}\label{tx:eq:NSspan}
+ I_d=\Span_K\{\mu f:f\in\Gamma,\ \mu\text{ a monomial},\quad
+                              \deg\mu+\deg f\le d\}.
+\end{equation}
+There are only finitely many permitted pairs $(\mu,f)$. If desired,
+put one column $\mu f$ in a matrix for each such pair. Deriving a target
+by NS in degree $d$ will mean that its coefficient vector belongs to
+the column span of this matrix.
+
+\section{The closure for ordinary PC}
+For $d\ge1$ define
+\begin{equation}\label{tx:eq:closure}
+ \begin{split}
+ V_0&=\Span_K\{f\in\Gamma:\deg f\le d\},\\
+ V_{j+1}&=V_j+\sum_{u\in\mathcal X}x_u(V_j\cap P_{\le d-1}),\\
+ C_d&=V_\infty:=\bigcup_{j\ge0}V_j.
+ \end{split}
+\end{equation}
+For $d=0$, define $C_0=V_0$ without a multiplication term.
+The notation $x_uU$ means the image of a subspace $U$ under the linear
+map $f\mapsto x_uf$. The sum of subspaces consists of finite sums of
+vectors from them.
+
+The intersection in this formula is crucial. It asks which vectors
+already derivable in degree $d$ happen to have actual degree at most
+$d-1$. It does not merely select input axioms of degree at most $d-1$,
+nor basis vectors that were short when first listed. A linear combination
+may cancel its highest terms and enter the intersection.
+
+\begin{example}[The first closure step sees cancellation]
+Return to $f_1=xy+x$, $f_2=xy+1$, $f_3=xz$ over $\mathbb F_2$, with
+$d=2$. A combination
+\[
+                   af_1+bf_2+cf_3
+                  =(a+b)xy+cxz+ax+b
+\]
+is linear precisely when $a=b$ and $c=0$. Thus
+\[
+                     V_0\cap P_{\le1}=\Span\{x+1\}.
+\]
+The vector $z(x+1)$ lies in the new multiplication space, and adding
+$f_3$ produces $z\in V_1$. The degree-two NS space, in contrast, is
+just the span of the three quadratic inputs and contains no $z$ term.
+\end{example}
+
+\begin{proposition}[Exact description of consequences]\label{tx:prop:closure}
+For every polynomial $G$ and every $d\ge0$,
+\[
+ \begin{aligned}
+ h_{\NS}(\Gamma\vdash G)\le d&\iff G\in I_d,\\
+ h_{\PC}(\Gamma\vdash G)\le d&\iff G\in C_d.
+ \end{aligned}
+\]
+The chain $V_j$ stabilises after finitely many strict increases, and
+$I_d\subseteq C_d\subseteq P_{\le d}$.
+\end{proposition}
+\begin{proof}
+Expand every coefficient $a_f$ in an NS identity into monomials.
+Every resulting product belongs to the spanning set in
+\eqref{tx:eq:NSspan}. Conversely, group a linear combination of such
+products by input $f$; the resulting multiplier has degree at most
+$d-\deg f$. This proves the NS equivalence, including the empty
+identity for $G=0$.
+
+For PC, first prove by induction on a derivation that every line is in
+$C_d$. Usable input axioms belong to $V_0$. Two vectors in stages $V_i$
+and $V_j$ both belong to $V_{\max(i,j)}$, which is closed under linear
+combinations. If a nonzero line $f$ is multiplied by a variable while
+staying within degree $d$, then $\deg f\le d-1$. If $f\in V_j$, its
+multiple belongs to $V_{j+1}$ by definition. Multiples of zero are zero.
+
+For the converse, induct on the closure stage. Every vector of $V_0$
+is a finite linear combination of usable axioms, hence has a legal
+proof. A vector of $V_{j+1}$ is a finite sum of an old vector and
+terms $x_vf_v$ with $f_v\in V_j\cap P_{\le d-1}$. Concatenate proofs
+of the finitely many $f_v$, append the permitted multiplications, and
+add to obtain the desired vector as the last line. Every partial sum
+still has degree at most $d$.
+
+The chain is increasing inside $P_{\le d}$. A strict increase raises
+its dimension, so there are at most $\dim P_{\le d}$ such increases.
+If $V_{j+1}=V_j$, the recurrence gives equality at every later stage.
+Thus one stage equals the whole union. Finally each NS generator
+$\mu f$ has a PC derivation within the same bound by successive
+variable multiplication, giving $I_d\subseteq C_d$.
+\end{proof}
+
+The proposition includes two different finiteness statements. Every
+particular vector in the closure has a finite proof, by the constructive
+induction. The space containing \emph{all} degree-$d$ proofs is also
+reached after finitely many stages. Neither statement assumes in advance
+an upper bound on the length of proofs presented to us.
+
+\section{The linear maps behind the recurrence}
+The closure formula can be expressed entirely through fixed ambient
+spaces and linear maps. This is the form needed for transferring it
+between universe sizes.
+
+The immediate idea is elementary. To describe all permitted variable
+multiplications, keep a separate low-degree input polynomial $f_v$
+for each variable $x_v$, and send this list to $\sum_v x_vf_v$.
+This is a linear map on lists. Later, in
+Section~\ref{tx:sec:multiplication-registers}, we call the space of
+these lists $X(n)\otimes L_d(n)$ and the map $m_n$.
+The tensor notation packages the separate registers; it does not
+introduce a new PC inference rule. All these operations occur at
+one fixed universe size. Lifting to another size is a separate task.
+
+The first map sends an axiom index to its coefficient vector. Restrict
+to axioms of degree at most $d$; its image is $V_0$. The NS map instead
+sends a permitted pair $(\mu,a)$ to $\mu f_a$; its image is $I_d$.
+Both use the actual input coefficients.
+
+Let $X$ be the vector space with one basis element for each polynomial
+variable, and put $L=P_{\le d-1}$. Multiplication is represented by a
+single linear map
+\[
+              m:X\otimes L\longrightarrow P_{\le d},
+                         \qquad x_v\otimes f\longmapsto x_vf.
+\]
+Here the tensor product can be understood concretely: its basis is
+made of pairs $(x_v,\mu)$ with $\deg\mu\le d-1$, and the map sends
+such a pair to the monomial $x_v\mu$. Bilinearity is built into the
+vector space on these pairs.
+
+For any current stage $V_j$, its low-degree part is the intersection
+$V_j\cap L$. It can be described as the kernel of
+\[
+                  V_j\oplus L\longrightarrow P_{\le d},
+                              \qquad(f,g)\longmapsto f-g,
+\]
+identified with either equal coordinate. Multiplication then gives an
+image, and adjoining old vectors gives a sum:
+\[
+ V_{j+1}=V_j+\im\bigl(m|_{X\otimes(V_j\cap L)}\bigr).
+\]
+Thus the construction uses a small vocabulary: coefficient maps,
+kernels, intersections, images, sums, and a finite iteration. A
+transport operation preserving this vocabulary, and agreeing with the
+actual maps, transports the closure. Merely matching dimensions would
+not identify which target vectors lie in it.
+
+\section{Changing the coefficient field}
+Extending scalars enlarges the allowed coefficients while keeping the
+same coordinate equations. If $U\subseteq K^M$ has basis
+$u_1,\ldots,u_a$ and $K\subseteq E$, its scalar extension is
+$U_E=\Span_E\{u_1,\ldots,u_a\}\subseteq E^M$.
+It is also written $E\otimes_K U$. The subscript $K$ records which
+scalars may be moved between the two tensor factors.
+For example, the kernel of $(a,b)\mapsto a+b$ is $K(1,-1)$ over
+$K$ and $E(1,-1)$ over $E$. The same basis and relation remain,
+although there are more choices of scalar multiples.
+The next lemma applies this coordinate principle to every stage
+of the proof calculation.
+
+\begin{lemma}[Field extension preserves minimum degree]\label{tx:lem:field}
+If $K\subseteq E$ are fields and $\Gamma,G$ have coefficients in $K$,
+then the least NS and ordinary-PC degrees of $\Gamma\vdash G$ are the
+same over $K$ and over $E$.
+\end{lemma}
+\begin{proof}
+At a fixed degree, NS membership is solvability of a finite linear
+system with coefficients in $K$. Row reduction over $K$ already
+determines whether it is consistent; extending scalars does not change
+that answer. Equivalently, a matrix and its augmented matrix have the
+same ranks over the two fields.
+
+For PC, extending scalars commutes with sums and images of finite
+matrices, and also with their kernels: row reduction describes these
+spaces over $K$ and gives bases after extension. Intersections are
+kernels of the difference map just displayed. Induction on
+\eqref{tx:eq:closure} therefore identifies each extended stage with the
+stage computed over $E$. Once both chains have stabilised, membership
+of the original vector $G$ is unchanged. This proves equivalence at
+every integer degree, including degree zero, and hence equality of
+the minimum degrees, including infinity.
+\end{proof}
+
+This lemma will let us use convenient auxiliary coefficients in the
+finite-dimensional construction. It does not change the target to an
+arbitrary polynomial over the larger field. The target whose membership
+is tested remains the original $K$-coefficient vector.
+
+\section{When degree gives a proof-size bound}
+This section is a separate application of the consequence-space view.
+It explains the size interpretation under full coefficient lists; the
+construction of the lifting operator and the degree lower bounds do
+not depend on this encoding. A reader following the degree proof can
+continue to Chapter~\ref{tx:chap:contract} and return here for the size
+consequences.
+
+Degree alone is not a count of the nonzero monomials in a proof. We use
+one particular, deliberately explicit representation in which a degree
+bound has a direct size interpretation.
+
+\begin{definition}[Full coefficient-list size]\label{tx:def:dense-size}
+In an ambient ring with $v$ variables, store a nonzero polynomial of
+degree $e$ by the full list of coefficients of all monomials of degree
+at most $e$, including zeros. The number of entries is
+$B_v(e)=\binom{v+e}{e}$. Store zero by one entry. PC size is the sum of
+these lengths over all lines, including the final target. NS size is
+the sum over its nonzero multipliers; the inputs and target are supplied
+separately. The empty NS certificate for zero has size zero.
+\end{definition}
+
+Write $S_{\NS}$ and $S_{\PC}$ for the least coefficient-list sizes of
+proofs of the fixed target $G$ from $\Gamma$. These are minimum sizes
+over all proofs in the specified system; they are infinity when no
+proof exists.
+
+\begin{lemma}[Degree versus coefficient lists]\label{tx:lem:dense-size}
+With $v$ variables and input degree at most $D$, a degree-$d$ NS proof
+has a representative certificate of size at most $B_v(d)^2$. A
+ degree-$d$ PC proof has a representative proof of size $O(B_v(d)^3)$.
+Conversely, if the least degrees are finite, minimum sizes satisfy
+\[
+ S_{\PC}\ge B_v(h_{\PC}),\qquad
+ S_{\NS}\ge B_v(\max\{0,h_{\NS}-D\})\quad(G\ne0).
+\]
+Furthermore $B_v(d)\ge2^{\min(v,d)}$.
+\end{lemma}
+\begin{proof}
+Put $M=B_v(d)$. A vector in $I_d$ is a linear combination of at most
+$M$ generator columns. Grouping by input gives at most $M$ nonzero
+multipliers, each representable by at most $M$ entries.
+
+For PC retain a basis of usable axioms. If its span $W$ is not closed
+under the permitted multiplications, choose
+$f\in W\cap P_{\le d-1}$ with $x_vf\notin W$. Derive $f$ as a
+combination of the at most $M$ retained basis vectors, append $x_vf$,
+and enlarge the basis. Each enlargement raises dimension, so there are
+at most $M$ enlargements. At the end, the closed space contains every
+degree-$d$ consequence. Append a combination giving the desired target.
+This uses $O(M^2)$ lines, each with at most $M$ entries.
+
+Any PC proof has a line of degree at least the least possible proof
+degree. An NS certificate for a nonzero target has a nonzero product
+of degree at least its least degree; its multiplier has degree at least
+$h_{\NS}-D$. These give the lower bounds. Finally the table contains
+all squarefree monomials in any $\min(v,d)$ variables, of which there
+are $2^{\min(v,d)}$.
+\end{proof}
+
+All variables of the ambient ring count, including those absent from
+nonzero terms. Over a fixed finite field, coefficient entries have
+bounded bit length. The results do not automatically become lower
+bounds for sparse representations, where zero coefficients are omitted.
+This distinction will remain explicit in the size classification.
+
+\section{Exercises}
+\begin{exercise}\label{tx:ex:closure-zero}
+Describe $I_0$ and $C_0$ for an arbitrary system. Prove directly that a
+nonzero constant target has a degree-zero proof exactly when an input
+is a nonzero constant.
+\end{exercise}
+\noindent{\small\hyperref[tx:ans:closure-zero]{Model answer (p.~\pageref*{tx:ans:closure-zero}).}}\par\medskip
+
+\begin{exercise}\label{tx:ex:closure-witness}
+With input $\Gamma=\{x^2\}$, show that every vector in every closure
+$C_d$ has zero coefficient of $x$. Deduce that $x$ is underivable,
+although it vanishes at every field-valued solution of $\Gamma$.
+\end{exercise}
+\noindent{\small\hyperref[tx:ans:closure-witness]{Model answer (p.~\pageref*{tx:ans:closure-witness}).}}\par\medskip
+
+\begin{exercise}\label{tx:ex:dense-count}
+List the monomials counted by $B_2(2)$, and compare the full coefficient
+list of $x^2$ with its sparse representation. For $v\ge d$, identify
+explicitly the $2^d$ entries used in the final lower bound of
+Lemma~\ref{tx:lem:dense-size}.
+\end{exercise}
+\noindent{\small\hyperref[tx:ans:dense-count]{Model answer (p.~\pageref*{tx:ans:dense-count}).}}\par\medskip
+

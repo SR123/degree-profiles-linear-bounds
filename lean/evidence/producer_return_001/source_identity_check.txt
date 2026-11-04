@@ -1,0 +1,15 @@
+Source identity check (workspace against the preserved lean-source)
+run: 2026-10-05T13:55:49+00:00
+reference: 04_Manuscript/Linear_Bounds_2026-09-27/audit/lean-source/SHA256SUMS.txt, entries under lean/
+workspace: pinned copy of the built tree; lakefile.toml compared through its untouched copy lakefile.toml.orig
+reference entries: 189
+matching: 189
+mismatched: 0 []
+missing: 0 []
+workspace Lean/toolchain/manifest files not in the reference: 5
+   UCAudit.lean
+   UCClassification.lean
+   UCExample.lean
+   UCTarget.lean
+   UCTransfer.lean
+modified lakefile.toml sha256: 6c2cff8b70d61bc74e0f0f1a3672163f72e5dd5bb8126b0eacf096e21c142616 (differs from the reference only by the five appended [[lean_lib]] stanzas; see lakefile.delta.diff)

@@ -1,0 +1,150 @@
+\section{An independent uniform NS--PC comparison}\label{sec:comparison}
+The linear PC lower bounds were proved by transporting the PC closure
+itself. We now establish a different result: every bounded-degree PC
+consequence has an NS identity of degree bounded independently of
+universe size. The comparison applies to arbitrary polynomials, not
+only invariant targets or refutations. Its qualitative consequence is
+that NS and PC assign every fixed uniform request the same type.
+
+The NS-span plateau argument already occurs in Kraj\'i\v cek's
+uniform comparison~\cite[Theorem~5.5]{Krajicek}. We give an independent
+proof of its required chain bound and carry the comparison through for
+the actual consequence spaces. A uniform bound on strict
+invariant-subspace chains forces the intersections of two successive
+NS certificate spaces with the fixed degree-$d$ polynomial ambient
+to agree. Their common
+space is then closed under every permitted PC operation. The plateau
+may depend on $n$, but the bound on its NS certificate degree does not.
+
+At a degree cutoff, $I_e(n)$ is the linear space of polynomials with
+degree-at-most-$e$ NS certificates. It is not an ideal closed under
+arbitrary multiplication.
+A \emph{strict subspace chain} is a sequence in which each inclusion
+is proper. Its bound counts proper increases; consecutive equal
+spaces form a plateau. The proof uses deletion to preserve those
+increases, then uses a plateau to absorb variable multiplication.
+No decomposition into simple representations is required.
+
+\begin{lemma}[Uniform chain bound]\label{lem:chains}
+For any bounded basis system $\mathcal U$, strict $S_n$-invariant
+subspace chains in $K[\mathcal U_n]$ have a length bound independent of $n$.
+\end{lemma}
+\begin{proof}
+Let $r$ bound the basis support. Over an algebraic closure, choose a
+fixed $q=p^a>2r$. At $N=n+q$ with $n\ge4r+1$, deletion is exact at the
+doubled budget $2r$. Lemma~\ref{lem:detect} shows that each nonzero
+subquotient $B/A$ of $K[\mathcal U_N]$ survives. Thus
+$A\subsetneq B$ implies
+$\mathcal D(A)\subsetneq\mathcal D(B)$: the whole strict chain becomes
+a strict chain of the same length in $K[\mathcal U_n]$.
+
+Repeatedly subtract $q$ while the rank exceeds $M=4r+q$. Every retained
+rank in such a step exceeds $4r$, so all steps are eligible. The final
+chain has at most $\dim K[\mathcal U_M]$ strict inclusions, because a
+smaller-rank basis injects into the rank-$M$ basis. The same bound covers
+the initial ranks at most $M$. Each step may choose its own generic
+coefficients: the detector applies to arbitrary invariant subspaces,
+without a naturality assumption on the chain across ranks. Finally,
+scalar extension preserves strict inclusions, giving the result over
+the original coefficient field.
+\end{proof}
+
+Only a finite exactness threshold at each fixed support is needed for
+this argument. In characteristic two, the earlier quadratic construction also suffices. The
+bound may be large; its role is uniformity in $n$, not a sharp comparison
+of the two minimum degrees.
+
+\begin{theorem}[Uniform comparison for all consequences]\label{thm:comparison}
+For every uniform axiom template over a field of prime characteristic
+$p$, there is a nondecreasing $F:\NN\to\NN$, independent of $n$ and of
+the target, with $F(d)\ge d$ and
+\begin{equation}\label{eq:whole-comparison}
+                              C_d(n)\subseteq I_{F(d)}(n)
+                       \qquad(n,d\ge0).
+\end{equation}
+Consequently, every polynomial with an ordinary-PC derivation of degree
+at most $d$ from $\Gamma_n$ has a total-product NS identity of degree at
+most $F(d)$ from the same axioms. For the aggregate profiles of any
+stable uniform target family, and for the profiles of any one fixed
+target orbit,
+\begin{equation}\label{eq:target-comparison}
+                      h_{\PC}(n)\le h_{\NS}(n)\le F(h_{\PC}(n)),
+                      \qquad F(\infty)=\infty.
+\end{equation}
+Their NS and PC types in Theorem~\ref{thm:classification} therefore agree.
+\end{theorem}
+\begin{proof}
+Fix $d$. Monomials of degree at most $d$ form a permutation basis of
+support at most $kd$. Let $L_d$ bound strict invariant-subspace chains in
+$P_{n,\le d}$, uniformly in $n$, by Lemma~\ref{lem:chains}.
+Consider the invariant spaces
+\[
+              W_j=I_{d+j}(n)\cap P_{n,\le d},
+                    \qquad 0\le j\le L_d+1.
+\]
+They form an ascending chain. Some $W_j=W_{j+1}$ with $j\le L_d$,
+otherwise there would be more than $L_d$ strict inclusions.
+
+This plateau contains every axiom usable within degree $d$ and is closed
+under linear combinations. If $f\in W_j$ and $\deg f\le d-1$, then
+multiplication of an NS identity for $f$ by a variable gives
+$x_vf\in I_{d+j+1}(n)$. Its degree is at most $d$, hence
+$x_vf\in W_{j+1}=W_j$. For $d=0$ there is no permitted multiplication
+of a nonzero line; the zero line already lies in $W_j$.
+Induction on \emph{any} degree-$d$ PC derivation now places every one of
+its lines in $W_j$. In particular,
+\[
+                          C_d(n)\subseteq I_{d+L_d}(n).
+\]
+This induction retains cancellations: a lower-degree linear combination
+can be multiplied because it lies in the plateau, even if its separate
+summands have degree $d$.
+
+Choose
+\[
+                          F(d)=d+\sum_{u=0}^d L_u.
+\]
+It is nondecreasing, satisfies $F(d)\ge d$, and gives
+\eqref{eq:whole-comparison}. No symmetry of a target was used.
+Conversely, expansion of NS identities into monomial--axiom products
+gives a same-degree PC derivation, so the first inequality in
+\eqref{eq:target-comparison} holds. If the aggregate PC degree is finite,
+every requested target belongs to $C_d(n)$ at that budget; the inclusion
+puts every target in $I_{F(d)}(n)$. Empty requests have degree zero.
+Infinite PC degree forces infinite NS degree by the first inequality.
+These observations prove the complete extended-order comparison.
+
+For type agreement write $g=h_{\PC}$ and $h=h_{\NS}$.
+The inequalities $g\le h\le F(g)$ transfer eventual boundedness in both
+directions. If $g$ takes one finite value $d$ infinitely often, then on
+those sizes $h$ lies in the finite interval $[d,F(d)]$; some finite value
+of $h$ recurs. A recurring finite value of $h$ likewise forces a recurring
+finite value of $g$. Thus the recurring sets are empty together.
+If recurring values of $g$ are unbounded, the same finite-interval
+argument yields unbounded recurring values of $h$. Conversely, choose a
+recurring value of $h$ exceeding $F(B)$. On its infinite level set,
+$g>B$ and $g\le h$, so some finite value above $B$ recurs for $g$.
+Thus infinitude of the recurring sets agrees as well. Boundedness,
+emptiness and infinitude determine exactly the four alternatives.
+\end{proof}
+
+\begin{corollary}[Common finite peaks]\label{cor:common-peaks}
+If a fixed uniform request has common type T4, there is a nondecreasing
+$F$ such that, beyond every bound $B$, some size $n\ge B$ has
+\[
+ h_{\PC}(n)=d\ge B,\qquad d\in\rec(h_{\PC}),\qquad
+ d\le h_{\NS}(n)\le F(d)<\infty,
+\]
+with $n\le(p+2)(\kappa d+\sigma)$. Both degrees satisfy the rational
+linear lower bound in \eqref{eq:peaks} at these same sizes.
+\end{corollary}
+\begin{proof}
+Take the finite PC peaks from Theorem~\ref{thm:classification}.
+The pointwise lower comparison gives the NS lower bound, and the uniform
+upper comparison gives its finiteness at those sizes.
+\end{proof}
+
+The comparison does not identify exact degrees, easy-class values or
+recurring degree sets. Its potentially large function $F$ cannot be
+inverted to obtain a linear PC lower bound from a linear NS lower bound.
+That quantitative result came directly from the PC transfer theorem.

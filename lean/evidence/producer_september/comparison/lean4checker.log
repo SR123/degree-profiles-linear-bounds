@@ -1,0 +1,14 @@
+lean4checker (non-fresh) on the six new modules; run Sat Sep 26 22:33:56 UTC 2026
+binary: <RECORDED_PRODUCER_HOME>/lean/lean4checker (built for Lean 4.26.0)
+== lake env lean4checker CompDetect
+exit status: 0
+== lake env lean4checker CompChain
+exit status: 0
+== lake env lean4checker CompPoly
+exit status: 0
+== lake env lean4checker CompFinal
+exit status: 0
+== lake env lean4checker CompLinear
+exit status: 0
+== lake env lean4checker CompAudit
+exit status: 0

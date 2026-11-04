@@ -1,0 +1,11 @@
+Added 27 Sep 2026, as announced in README.txt. The first run (started 26 Sep 2026 22:34 UTC)
+was terminated before completion. This is a complete rerun on the same fresh-build workspace
+(the sources of this folder's lean/, built by the run recorded in build.log).
+lean4checker prints nothing on success.
+
+command: lake env lean4checker --fresh CompAudit   (cwd <RECORDED_PRODUCER_HOME>/comparison/fresh/lean)
+binary: <RECORDED_PRODUCER_HOME>/lean/lean4checker/.lake/build/bin/lean4checker (built for Lean 4.26.0)
+--fresh replays the entire environment of CompAudit, including Lean core and Mathlib, from scratch
+started: Sun Sep 27 03:32:09 UTC 2026
+exit status: 0
+finished: Sun Sep 27 04:26:29 UTC 2026

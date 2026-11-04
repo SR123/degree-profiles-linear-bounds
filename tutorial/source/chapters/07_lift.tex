@@ -1,0 +1,632 @@
+\chapter{How to lift a proof without increasing its degree}
+\label{tx:chap:lift}
+The deletion operation goes from a larger universe to a smaller one.
+The lifting operation goes in the other direction: take a low-degree
+argument, enlarge the universe by a suitable block, and construct
+a larger-universe consequence. These are related viewpoints.
+Deletion is an operation on entire invariant spaces and their maps.
+The lift is an ordinary linear map on polynomial vectors.
+
+We first specify and verify the lift from the identities of a common
+projector. The following technical chapters construct that projector.
+Thus the present chapter gives the formula and its mathematical role,
+while the later construction proves that an operator with the required
+identities exists.
+
+\section{An elementary reason for prime-power steps}
+Before the operator construction, consider the simplest counting
+phenomenon behind it. Adding an arbitrary number of labels changes
+counting expressions. Adding a sufficiently large prime-power block
+leaves small binomial counts unchanged in the field.
+
+The basic tool is the \emph{Frobenius map}, $u\mapsto u^p$, in a
+commutative ring of characteristic $p$.
+Since the intermediate binomial coefficients $\binom pi$ vanish,
+$(u+v)^p=u^p+v^p$; multiplication is preserved as well.
+Repeating this identity gives the analogous formula for $q=p^a$.
+It applies in the polynomial ring $K[T]$ used below, and to the
+commuting block-translation operators used later.
+Commutation is part of the latter application; no such formula is
+being asserted for arbitrary noncommuting matrices.
+Integer counts are read in $K$ through the map $m\mapsto m\,1_K$.
+
+\begin{lemma}[Counts below a prime-power block]\label{tx:lem:prime-counts}
+Let $K$ have characteristic $p$, let $q=p^a$, and let $n\ge0$.
+For every $0\le j<q$, the integer binomial coefficients have the same
+image in $K$:
+\[
+                         \binom{n+q}{j}=\binom nj.
+\]
+\end{lemma}
+\begin{proof}
+In $K[T]$, repeated application of the characteristic-$p$ binomial
+identity gives $(1+T)^q=1+T^q$. Consequently
+\[
+                  (1+T)^{n+q}=(1+T)^n(1+T^q).
+\]
+Multiplication by $T^q$ contributes no coefficient in degrees below
+$q$. Comparing the coefficient of $T^j$ proves the assertion.
+\end{proof}
+
+For example, in characteristic two, adding four labels preserves
+$\binom nj$ for $j=0,1,2,3$. At $n=7$ and $n+4=11$ all four values
+are one in the field. Degree four can see the change:
+$\binom74=35$ is odd, whereas $\binom{11}4=330$ is even.
+This explains why the inequality between block size and complexity
+budget is strict.
+
+The count has a polynomial interpretation. For unary variables put
+\[
+ E_{j,n}=\sum_{1\le i_1<\cdots<i_j\le n}
+                           x_{i_1}\cdots x_{i_j}.
+\]
+Use $E_{0,n}=1$ and $E_{j,n}=0$ for $j>n$.
+Its value at the all-one assignment is $\binom nj$.
+More strongly, setting the $q$ added variables to one gives, for $j<q$,
+\[
+ E_{j,n+q}(x_1,\ldots,x_n,1,\ldots,1)
+   =\sum_{h=0}^j\binom qh E_{j-h,n}=E_{j,n}.
+\]
+The intermediate coefficients $\binom qh$, $0<h<q$, vanish in $K$.
+
+This is a complete elementary calculation, but not a lifting theorem
+for arbitrary axioms. Setting new variables to one need not preserve
+their equations. Even stable coefficient counts do not yet preserve
+the intersections which allow PC to multiply a polynomial after
+cancellation. The full lift must preserve that subspace calculation.
+The lemma explains the choice of step; the common projector below
+provides the extra structure needed for proofs.
+
+\section{Low degree, a large starting rank, and repeated lifting}
+Write $N(d)$ for a sufficient starting rank for degree-$d$ transfer.
+If $n\ge N(d)$, one proof with that budget gives proofs at every
+size $n+\ell q$, $\ell\ge0$, with one fixed degree bound $d$.
+This is already enough to contradict a separate proof that the
+minimum degree tends to infinity along that progression. It is the
+argument used in Chapter~\ref{tx:ch:running-order}.
+
+The earlier LICS refutation result~\cite[p.~276]{Riis} summarised
+estimates $A_{\NS}(d)\le2^{cd}$ and
+$A_{\PC}(d)\le2^{2^{cd}}$, extracted there from earlier work of
+Kraj\'i\v cek. A degree bounded by a sufficiently small multiple of
+$\log n$ or $\log\log n$, respectively, therefore lies in that
+historical transfer range. Inverting the starting-rank estimates gives
+the earlier logarithmic and double-logarithmic gaps.
+These estimates concern the historical first-order refutation setting;
+we do not use them as inputs to the general target theorem here.
+
+A small budget is easier to fit inside a given universe, but does not
+by itself supply a simple construction of the lift. The first complete
+construction in this book is the characteristic-two argument of
+Chapter~\ref{tx:ch:quadratic}. Its starting rank is quadratic in $d$.
+The later constructions improve this to a linear starting rank and
+cover every positive characteristic. Each stage answers the same
+question: how many retained labels are sufficient to transport the
+entire degree-$d$ proof calculation?
+
+\section{What we are allowed to keep fixed}
+We now specify the operator which makes those repeated lifts possible.
+
+Recall the three support bounds: one variable uses at most $k$ labels,
+one axiom index at most $s$, and one target index at most $t$.
+A degree-$d$ monomial therefore uses at most $kd$ labels. The number
+$r$ below covers all coordinates of the required diagram, rather than
+just one monomial; this is why indexed-target detection has a larger
+budget than closure transport alone.
+
+Fix a proof degree $d$ and a support budget $r$. The consequence-space
+calculation needs $r\ge kd+s$. To combine it with general indexed target
+reflection we will use $r=2kd+s+t$. Fix $q=p^a>r$, retain enough labels
+for exactness, and set $N=n+q$. Every later iteration may use the same
+$d,r,q$. Only the universe size and the particular witness coefficients
+change.
+
+\subsection{A numerical trace of the retained-label test}
+Take characteristic two, variable support $k=2$, axiom-index support
+$s=1$, input-degree bound $D=1$, input stability rank $n_0=3$,
+target-degree bound $D_G=2$,
+and proposed proof degree $d=2$. Compare a fully invariant target with
+an indexed request whose target-index support is $t=1$.
+The final transfer theorem in Chapter~\ref{tx:chap:assemble-transfer}
+gives the following sufficient ranges:
+\begin{center}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Request & Budget $r$ & Least $2$-power $q>r$ & Retained rank $n$\\
+\midrule
+Invariant & $kd+s=5$ & $8$ & $n\ge\max\{3,1,4,9\}=9$\\
+Indexed & $2kd+s+t=10$ & $16$ & $n\ge\max\{3,1,5,19\}=19$\\
+\bottomrule
+\end{tabular}
+\end{center}
+For the invariant request, a degree-two proof at size $9$ lifts to
+sizes $17,25,\ldots$. For the indexed request, the corresponding
+progression starts at $19$ and runs through $35,51,\ldots$.
+These are implications from an existing proof, not assertions that
+either example request has such a proof. At each step, $n$ is the
+\emph{smaller} rank and $N=n+q$ the larger one. A starting rank below
+the stated range supplies no conclusion from this test.
+
+The count $2r-1$ is one retained pool sufficient for every tuple
+length $b\le r$: the individual requirements $2b-1$ are bounded by
+$2r-1$. They are not added together as the witness is repaired.
+The block size $q$ is additional to that pool. If $r\ge1$, the least
+$p$-power strictly above $r$ satisfies $r<q\le pr$; at a $p$-power
+budget the upper equality can occur. Once $d$ is fixed, all three
+numbers $r,q,2r-1$ stay fixed through the progression.
+
+The lift should not be thought of as replacing every variable by a new
+polynomial and then substituting into every product. Its coefficients
+are shared across all relevant spaces through a single group-algebra
+expression. This gives linear and diagrammatic compatibility, not a
+multiplicative substitution law.
+
+\section{The proof can be reconstructed from the closure}
+We spell out reconstruction for PC, whose consequence space is the
+iterated closure $C_d$. For NS the same construction transports the
+single certificate-map image $I_d$ described in
+Chapter~\ref{tx:sec:pc-space}.
+Suppose an original PC proof produces $f$. The exact consequence-space
+characterisation says $f\in C_d(n)$. If a linear lift sends that vector
+into $C_d(N)$, there is a legal PC proof at degree $d$ in the larger
+universe. One obtains it by storing derivations for bases of closure
+stages, expressing the required lifted vectors in those bases, and
+concatenating the permitted inference steps.
+
+This reconstruction is finite, but no efficient algorithm or bound on
+proof length is asserted. Degree and length are different resources.
+The closure lets us explain why a proof exists without forcing every
+larger proof to have the same list of intermediate lines as the original.
+
+\section{A lifting operator for bounded-degree consequences}
+Fix a proposed proof degree $d\ge1$. Degree zero uses the separate constant-space calculation from Chapter~\ref{tx:sec:pc-space}. Write $W_n=P_{n,\le d}$,
+$H_n=P_{n,\le d-1}$ and $X_n=K[\mathcal V_n]$.
+Let $V_j(n)$ be the closure stages from \eqref{tx:eq:closure} and write
+$C_d(n)$ for their stable union. A proof ending in a polynomial $f$ says exactly that
+$f\in C_d(n)$. For the uniform-consequence theorem we must additionally
+compare the prescribed targets at different ranks.
+
+Choose a support budget $r\ge kd+s$ and add a block of $q=p^a>r$ labels and write $N=n+q$.
+The required properties of the linear operator are:
+\begin{equation}\label{tx:eq:newcontract}
+ \mathsf L:W_n\longrightarrow W_N,\qquad
+ \deg\mathsf L(f)\le\deg f,\qquad \mathsf L(1)=1,\qquad
+ \mathsf L(V_j(n))\subseteq V_j(N)\quad\hbox{for every }j.
+\end{equation}
+The degree assertion for zero is interpreted using its harmless zero
+image. This contract carries every degree-$d$ consequence to its specified
+projector lift and, since $\mathsf L(1)=1$, carries a refutation
+upwards. A legal proof is recovered from the larger closure. Iteration reaches $n+\ell q$ for every $\ell\ge0$.
+The maps at different steps need not have the same coefficients.
+
+For refutations, full periodicity needs a little more than the forward
+contract. It needs
+\begin{equation}\label{tx:eq:newiff}
+ 1\in C_d(n)\quad\Longleftrightarrow\quad1\in C_d(n+q),
+\end{equation}
+and it needs this at each lower degree budget too. The exact deletion
+construction will supply both directions. A forward lift by itself
+would not justify all the arguments below about exact recurring values and representatives of T4 peaks. General targets require the same two-way conclusion for their actual coefficient map, obtained by the image-subquotient detection argument in Chapter~\ref{tx:chap:assemble-transfer}.
+
+Let $\iota:W_n\to W_N$ include each retained monomial, and let
+$\rho:W_N\to W_n$ discard all other monomials. We also seek
+$\rho\mathsf L=\mathrm{id}$. Plain inclusion has this property, but
+usually does not carry smaller axioms to consequences of larger axioms.
+The sum-axiom example below will show the failure
+explicitly. The remedy is to compose inclusion with a common projector.
+
+A map $\mathsf L$ with $\rho\mathsf L=\mathrm{id}$ is a
+\emph{section}, or right inverse, of $\rho$. It chooses one larger
+representative for each smaller vector, and is injective because
+$\mathsf L(f)=0$ implies $f=\rho\mathsf L(f)=0$.
+The lifting problem asks for a section which also respects the
+consequence spaces. The term will recur later for sections of
+coordinate-deletion maps.
+
+The following verification uses Theorem~\ref{tx:thm:deletion} and the common projector constructed in Chapters~\ref{tx:sec:block-algebra}--\ref{tx:sec:odd}. It describes the actual operator and its compatibility with the PC inference rules.
+
+\section{The lift from a common projector}\label{tx:lift-sec:formula}
+We now give the map, leaving the construction of its certificate to the
+next sections. Temporarily allow a coefficient extension $E/K$ and use
+the same notation for the extended polynomial spaces. Section~\ref{tx:lift-sec:descent}
+returns the lifting statement to $K$.
+
+Identify the added block $B$ with $A=\Fp^a$, acting on it by translations
+and fixing $[n]$. Let $\sigma_1,\ldots,\sigma_a$ be the coordinate
+translations. Choose $c_1,\ldots,c_a\in E$ linearly independent over
+$\Fp$ and set
+\[
+ z=\sum_{i=1}^a c_i(\sigma_i-1)\in E[S_N],\qquad z^p=0.
+\]
+The group algebra $E[S_N]$ consists of linear combinations of label
+permutations; it acts on polynomials by the corresponding linear
+combinations of variable renamings. The permutations commute on the
+block, and $\sigma_i^p=1$, which proves $z^p=0$.
+
+The finite algebraic target is one element $w\in E[S_N]$ for which
+\begin{equation}\label{tx:lift-eq:witness}
+ u w u=u\quad\text{on every }P_b(N)=E[\Inj([b],[N])],\quad b\le r,
+ \qquad u=z^{p-1}.
+\end{equation}
+Thus the same expression must work on every tuple length up to the
+support budget. The identity makes $w$ a partial inverse for the
+top power $u=z^{p-1}$ on these spaces; it does not invert the nilpotent
+operator $z$. Here $P_b(N)$ is a tuple permutation space; the
+polynomial ambient space remains $W_N=P_{N,\le d}$.
+For $y=uv$ in $\im u$, the witness identity says $uwy=uwuv=uv=y$.
+Thus $wy$ is one preimage of $y$ under $u$; the word \emph{partial}
+specifies that this inversion is required on $\im u$ only.
+The top power sends vectors to the bottom of length-$p$ nilpotent
+chains. Its common witness will let the construction remove those
+chains while retaining the length-one directions.
+
+For characteristic two put
+\[
+                         e=(1-zw)(1-wz).
+\]
+For general $p$, put $m=p-1$ and
+\begin{equation}\label{tx:eq:projector}
+ S_0=1,\qquad S_{j+1}=(1-z^jwz^{m-j})S_j\ (0\le j<m),
+ \qquad e=(1-z^mw)S_m.
+\end{equation}
+The two formulas agree at $p=2$. For odd characteristic, the witness
+identity is used together with a property of these particular tuple
+spaces: their nilpotent chains have length one or $p$. The projector
+lemma in Chapter~\ref{tx:ch:prime} proves the formula under that
+property; nilpotence $z^p=0$ alone is not sufficient. Once these inputs
+are established, the formulas are explicit finite algebra expressions.
+The lifting operator is
+\begin{equation}\label{tx:lift-eq:actual-lift}
+ \boxed{\quad\Lift_{n,N,d}(f)=e\,\iota(f).\quad}
+\end{equation}
+Equivalently, writing $e=\sum_{g\in S_N}a_g g$,
+\[
+                    \Lift(f)=\sum_{g\in S_N}a_g\,g\bigl(\iota(f)\bigr).
+\]
+This explains why degree does not increase: inclusion and every
+renaming preserve degree. The difficult point is to choose the
+\emph{common} coefficients $a_g$ so that all consequence spaces are
+preserved. An arbitrary sum of renamings does not have that property.
+
+\subsection{The two facts that make the formula work}
+Let $J_r$ be the ideal of group-algebra elements acting as zero on all
+$P_b(N)$ for $b\le r$, and let $\mathcal M_r$ consist of the finite
+dimensional representations annihilated by $J_r$. This class contains
+all the bounded-support permutation spaces needed by PC, and their
+invariant subspaces and quotients. It is the class $\mathcal C_r(N)$
+of Chapter~\ref{tx:chap:deletion}, now over the auxiliary field $E$.
+Define
+\[
+               \Del(M)=\ker z_M/(\ker z_M\cap\im z_M).
+\]
+The construction establishes two facts.
+\begin{enumerate}
+\item On permutation bases, $\Del$ retains exactly the objects supported
+on $[n]$. On polynomial spaces its identification is induced by $\rho$:
+\[
+ \ker z_{W_N}/(\ker z_{W_N}\cap\im z_{W_N})\simeq W_n.
+\]
+Stable axiom matrices and the actual multiplication maps are transported
+to their smaller-universe counterparts. With a permutation space as
+first tensor factor, the identification is natural on the other factor.
+\item The common $e$ is an idempotent with $ze=ez=0$ on
+$\mathcal M_r$, and for $v\in\ker z$,
+\begin{equation}\label{tx:lift-eq:onker}
+                             ev=v-z^{p-1}wv.
+\end{equation}
+It identifies $\Del(M)$ naturally, as a vector space, with $eM$.
+Consequently $\Del$ preserves kernels, images and exact sequences in
+this class.
+\end{enumerate}
+These facts are proved in
+Chapters~\ref{tx:ch:square-zero}--\ref{tx:ch:prime} from the common
+witness and the block action. They are stronger than a count of dimensions. They refer to
+the actual maps used in the consequence calculation.
+The idempotent property means $e^2=e$: applying the common projection
+twice has the same effect as applying it once.
+
+\section{Compatibility with the entire PC closure}\label{tx:lift-sec:verify}
+Apply the two facts just stated to the recurrence
+\eqref{tx:eq:closure}. The usable axioms form the image of a stable
+coefficient matrix, so deletion takes $V_0(N)$ to $V_0(n)$. Suppose
+it has already taken $V_j(N)$, with its inclusion in $W_N$, to $V_j(n)$.
+The intersection $V_j(N)\cap H_N$ is the kernel of
+\[
+              V_j(N)\oplus H_N\longrightarrow W_N,
+              \qquad (f,h)\longmapsto f-h.
+\]
+Exactness preserves it. The tensor identification and the actual
+multiplication map then preserve the multiplication image, and exactness
+preserves its sum with $V_j(N)$. Induction gives
+\begin{equation}\label{tx:lift-eq:stage-transport}
+       \rho\bigl(V_j(N)\cap\ker z_{W_N}\bigr)=V_j(n)
+                         \qquad\text{for every }j.
+\end{equation}
+The tensor domain is a subspace of $X_N\otimes H_N$, whose support bound
+is $kd$. No closure of $\mathcal M_r$ under arbitrary tensor products
+is assumed.
+
+\begin{proposition}[The lifting formula preserves and reflects consequences]\label{tx:lift-prop:lift}
+Assume the two facts in Section~\ref{tx:lift-sec:formula}. Then
+$\Lift=e\iota$ preserves degree, $\rho\Lift=\mathrm{id}$,
+$\Lift(1)=1$, and
+\[
+                  \Lift(f)\in V_j(N)\quad\Longleftrightarrow\quad
+                  f\in V_j(n).
+\]
+The same equivalence holds for the stable spaces $C_d$.
+\end{proposition}
+\begin{proof}
+Every retained monomial is fixed by the block action, so $z\iota(f)=0$.
+Equation~\eqref{tx:lift-eq:onker} gives
+\[
+                  \Lift(f)=\iota(f)-z^{p-1}w\iota(f).
+\]
+The image of $z$ has no retained component: $z$ kills retained basis
+vectors and preserves the span of moved ones. Hence $\rho\Lift(f)=f$.
+On constants, every permutation acts trivially, so the correction term
+vanishes and $\Lift(1)=1$.
+
+If $f\in V_j(n)$, equation~\eqref{tx:lift-eq:stage-transport} supplies
+$v\in V_j(N)\cap\ker z$ with $\rho v=f$. The permutation-space
+identification says that $v-\iota(f)\in\ker z\cap\im z$. Since
+$e\im z=0$, we have $\Lift(f)=ev$. The space $V_j(N)$ is invariant
+under all label permutations, hence under $e$, and $ev\in V_j(N)$.
+Conversely, $\Lift(f)\in V_j(N)$ is killed by $z$, so
+\eqref{tx:lift-eq:stage-transport} and $\rho\Lift(f)=f$ give $f\in V_j(n)$.
+Degree preservation follows from the renaming formula. Pass to the
+unions for the stable statement.
+\end{proof}
+
+This proves both the forward lifting implication and
+\eqref{tx:eq:newiff}. The image of the lift need not be all of $C_d(N)$:
+the larger universe has many additional consequences. Every smaller consequence has this projector lift. For $n\ge n_*$ and a fully invariant target whose stabilised degree
+is at most $d$, naturality of its map from $K$ gives
+$\Lift(G_n)=G_N$: the target map commutes with the common projector,
+which acts as the identity on $K$. More concretely, invariance gives
+$zG_N=0$ and $eG_N=G_N$, while stable coefficients give
+$\rho G_N=G_n$. The retained-vector identification and the argument
+in Proposition~\ref{tx:lift-prop:lift} therefore yield $e\iota(G_n)=G_N$. Hence invariant targets, including
+$1$, are exactly preserved. For indexed targets this equality need
+not hold. The image-subquotient argument in
+Chapter~\ref{tx:chap:assemble-transfer} proves transfer of
+prescribed indexed targets without assuming it.
+
+\subsection{Axioms and joint tensor multiplication}
+For an axiom index $a$ supported in $[n]$, let $F_n$ and $F_N$ be the
+usable-axiom coefficient maps. Write $\iota_A$ for inclusion of retained
+axiom indices and $e_A$ for the action of the same group-algebra element
+on their source space. Naturality gives
+\begin{equation}\label{tx:lift-eq:axiomlift}
+             \Lift(f_{a,n})=F_N(e_A\iota_A(a)).
+\end{equation}
+The right side is a linear combination of actual usable axioms of
+$\Gamma_N$. This is the precise sense in which axioms lift.
+
+For the order example, a retained predecessor row has axiom
+$\sum_{j<n}F_{ij}-1$. Plain inclusion omits the new summands with
+$j$ in the added block, so it is not the larger row axiom.
+Equation~\eqref{tx:lift-eq:axiomlift} repairs precisely this mismatch:
+the lifted smaller row is a linear combination of the actual larger
+axioms. The order, Boolean, functionality and predecessor-guard
+equations are handled by the same usable-axiom map. We need no
+injectivity of the predecessor function. The common projector fixes
+the last line $1$, and joint tensor compatibility handles every
+multiplication step, including one made possible by cancellation.
+
+Now suppose $f\in V_j(n)\cap H_n$, so the smaller proof may derive
+$x_vf$. Apply the same $e$ to the \emph{joint} tensor input and expand
+by its variable coordinate:
+\begin{equation}\label{tx:eq:joint-lift}
+ e_{X_N\otimes H_N}\bigl(\iota(x_v)\otimes\iota(f)\bigr)
+                  =\sum_{y\in\mathcal V_N}x_y\otimes g_y.
+\end{equation}
+Exactness and the natural tensor identification show that this vector
+lies in $X_N\otimes(V_j(N)\cap H_N)$. Thus each $g_y$ belongs to
+$V_j(N)$ and has degree at most $d-1$. Multiplication commutes with
+the common group-algebra action, so
+\begin{equation}\label{tx:lift-eq:liftmul}
+                         \Lift(x_vf)=\sum_y x_yg_y.
+\end{equation}
+Each term is a permitted multiplication of a derivable polynomial.
+
+There is even an explicit expression for these coefficients:
+\[
+            g_y=\sum_{g\in S_N:\,g(v)=y}a_g\,g\bigl(\iota(f)\bigr).
+\]
+Individual summands need not be known consequences; their grouped sum
+$g_y$ is a consequence by the tensor argument. One must not replace the
+joint operator in \eqref{tx:eq:joint-lift} by $e_X\otimes e_H$. That would
+discard the correlations supplied by the common permutation $g$.
+
+To produce a literal proof sequence, compute bases of the closure
+stages while storing derivations for those bases. Express each $g_y$ in
+the appropriate basis by linear algebra, append the multiplication
+steps in \eqref{tx:lift-eq:liftmul}, and add. This is a finite procedure, with
+no efficiency or proof-length claim. It explains exactly how
+consequence-space lifting supplies a legal PC derivation.
+
+\subsection{A multiplication step with all its proof lines}
+The distinction between a joint action and two independent actions is
+visible in a very small calculation. Work over any field, with three
+labels $0,1,2$, variables $x_0,x_1,x_2$, and the uniform axioms
+$\Gamma_3=\{x_0,x_1,x_2\}$. These mean $x_i=0$. Set
+$d=2$, $X=\Span\{x_0,x_1,x_2\}$ and $H=P_{3,\le1}$.
+Take $f=x_0+x_1$, let $\tau=(0\ 2)$ rename the labels, and put
+$T=1-\tau$ in the group algebra. Applying $T$ to the joint input gives
+\begin{align*}
+ T_{X\otimes H}(x_0\otimes f)
+ &=x_0\otimes(x_0+x_1)-x_2\otimes(x_2+x_1)\\
+ &=x_0\otimes g_0+x_2\otimes g_2,
+ \qquad g_0=x_0+x_1,\quad g_2=-x_2-x_1.
+\end{align*}
+Both grouped coefficients are derivable linear combinations of the
+axioms. Multiplying the two tensor coordinates produces a literal
+degree-two PC derivation:
+\begin{center}
+\begin{tabular}{@{}cll@{}}
+\toprule
+Line & Polynomial & Reason\\
+\midrule
+1 & $x_0$ & axiom\\
+2 & $x_1$ & axiom\\
+3 & $x_2$ & axiom\\
+4 & $x_0+x_1$ & lines 1 and 2\\
+5 & $-x_2-x_1$ & lines 3 and 2\\
+6 & $x_0^2+x_0x_1$ & multiply line 4 by $x_0$\\
+7 & $-x_2^2-x_2x_1$ & multiply line 5 by $x_2$\\
+8 & $x_0^2+x_0x_1-x_2^2-x_2x_1$ & add lines 6 and 7\\
+\bottomrule
+\end{tabular}
+\end{center}
+Lines 4 and 5 have degree one, so their multiplication is legal within
+the degree-two budget. The last line is $T(x_0f)$. There has been no
+reduction modulo Boolean equations and no multiplication by a
+polynomial of degree greater than one.
+
+By contrast, acting independently on the two factors gives
+\[
+ (T_X\otimes T_H)(x_0\otimes f)
+       =(x_0-x_2)\otimes(x_0-x_2),
+\]
+whose product is $(x_0-x_2)^2$. This is a different polynomial, also in
+characteristic two: the joint result still has the terms involving
+$x_1$. The common permutation in each summand is therefore essential.
+
+This calculation illustrates the inference mechanism at one rank.
+The element $T$ is not a deletion projector and does not fix $1$.
+For the actual larger-universe lift, replace $T$ by the common $e$
+and use \eqref{tx:eq:joint-lift}. The grouped $g_y$ are then certified
+consequences by exactness and the tensor identification, rather than
+by the two-line calculation above. Once that certificate is available,
+the final multiplication and addition steps are exactly the same.
+
+
+\section{A one-label lifting example}\label{tx:lift-sec:small}
+Work in characteristic two. Retain the label $a$ and add $b,c$.
+Let $z=1+(bc)$ and $w=(ab)$ act on the linear variables
+$x_a,x_b,x_c$. On their three-dimensional span,
+\[
+ z=\begin{pmatrix}0&0&0\\0&1&1\\0&1&1\end{pmatrix},\qquad
+ w=\begin{pmatrix}0&1&0\\1&0&0\\0&0&1\end{pmatrix}.
+\]
+Direct multiplication gives $zwz=z$ and
+\[
+                       e=(1-zw)(1-wz)
+                         =\begin{pmatrix}1&1&1\\1&1&1\\1&1&1\end{pmatrix}.
+\]
+Consequently
+\begin{equation}\label{tx:lift-eq:smalllift}
+                  \Lift(\alpha+\beta x_a)
+                      =\alpha+\beta(x_a+x_b+x_c).
+\end{equation}
+Its retained coordinate is the original polynomial, and $\Lift(1)=1$.
+
+Take the uniform degree-one axiom $\sum_{i<\ell}x_i=0$ at every size $\ell$.
+The all-zero assignment satisfies this system at every size.
+At size one the axiom is $x_a$; at size three it is $x_a+x_b+x_c$.
+Formula~\eqref{tx:lift-eq:smalllift} sends the former exactly to the latter and
+lifts every degree-one consequence. Plain inclusion would leave $x_a$,
+which is not a consequence of the larger system: the assignment
+$(x_a,x_b,x_c)=(1,1,0)$ satisfies its sum but not $x_a=0$.
+
+Here the invariant target $G_\ell=\sum_{i<\ell}x_i$ is transported to
+the prescribed larger target. In contrast, the indexed expression
+$G_{a,\ell}=x_a$ has projector lift $x_a+x_b+x_c$, not $x_a$. The map
+is linear but is not a ring homomorphism and does not preserve every
+indexed expression literally. This calculation illustrates the distinction but lies outside the
+indexed transfer range: for $k=d=t=1$ and $s=0$, where $t=1$ bounds
+the support of the target index, that theorem uses
+$R(d)=3$, whereas here $q=2$ and $n=1$. It is therefore no
+counterexample to indexed periodicity.
+
+The failure of a literal indexed lift requirement also has a general
+explanation. At an admissible rank, naturality for the invariant target
+$\sum_{i<n}x_i$ gives
+$\Lift(\sum_{i<n}x_i)=\sum_{i<N}x_i$. If every retained indexed
+target $x_i$ had lift exactly $x_i$, linearity would instead give
+$\sum_{i<n}x_i$, a different polynomial. Thus at least one indexed
+target must change under the projector lift. This is why the proof
+uses actual target-map images and nonzero-subquotient detection.
+For the displayed invariant example,
+$r=1$ and $q=2>r$, so a two-label block suffices. Larger
+support budgets require larger blocks. The sufficient witness threshold
+$n\ge2r-1$ is attained in this example; the general template theorem
+uses a slightly more conservative onset.
+
+\section{Descent to the coefficient field}\label{tx:lift-sec:descent}
+Here \emph{descent} means returning a consequence established with
+auxiliary coefficients to the original coefficient field.
+The auxiliary choices have to meet the conditions of the block and
+common-witness constructions; they are not probabilistic assumptions.
+Their existence is supplied by those constructions.
+
+The generic block coefficients may require an extension field. This
+does not change the derivation degree of any target with coefficients in $K$: at fixed degree, scalar extension
+commutes with the finite-dimensional spans, intersections and images
+in \eqref{tx:eq:closure}. In particular,
+\[
+                       V_j(n;E)=E\otimes_K V_j(n;K),
+\]
+with the analogous equality for $C_d$. Membership of every $K$-coefficient target is therefore unchanged,
+so each target-membership equivalence proved over $E$ holds over $K$.
+
+There is also a concrete $K$-linear lifting map satisfying the forward
+requirements \eqref{tx:eq:newcontract}. All coefficients used in the
+construction lie in a finite extension $E/K$ inside the algebraic
+closure. Choose a $K$-linear functional $\lambda:E\to K$ with
+$\lambda(1)=1$, for example the coefficient of $1$ in a vector-space
+basis containing $1$. Apply it coefficientwise to polynomials and put
+\begin{equation}\label{tx:lift-eq:fieldlift}
+                 \widehat\Lift(f)=\lambda_*\bigl(\Lift_E(f)\bigr)
+                      \qquad(f\in W_n(K)).
+\end{equation}
+The finite-extension assertion uses only finitely many coefficients
+of the block operator and group-algebra witness. Each is algebraic
+over $K$ when chosen in its algebraic closure; adjoining this finite
+list gives a finite-dimensional extension.
+
+The functional $\lambda$ is a linear projection, not a field map.
+For example, over $\mathbb F_2\subseteq\mathbb F_4$ with
+$\omega^2+\omega+1=0$, take $\lambda(a+b\omega)=a$.
+Then $\lambda(\omega)=0$, but $\lambda(\omega^2)=1$.
+This explains why descent works through linear consequence spaces:
+it is not substitution by a multiplicative map of coefficients.
+
+This map preserves degree, satisfies $\rho\widehat\Lift=\mathrm{id}$
+and fixes $1$. If $f\in V_j(n;K)$, then $\Lift_E(f)$ is an
+$E$-linear combination of a $K$-basis of $V_j(N;K)$. Applying
+$\lambda_*$ leaves a $K$-linear combination of that same basis.
+Thus $\widehat\Lift(f)\in V_j(N;K)$, as required.
+
+This is descent of consequence-space membership, not coefficientwise
+projection of an arbitrary proof with extension-field scalars. Such a
+projection need not preserve each scalar inference. A proof over $K$
+is recovered from the $K$-closure bases. We use only the forward lifting
+properties for $\widehat\Lift$; the stronger reflection of individual
+consequences in Proposition~\ref{tx:lift-prop:lift} refers to the projector lift
+over $E$. The two-way prescribed-target statement over $K$ follows separately
+from target-map transport, nonzero-subquotient detection and field
+invariance, as above.
+
+
+\section{A summary of the map's three different uses}
+For any smaller consequence $f$, the projector lift gives a larger
+consequence $\mathsf L(f)$ of no greater degree. For a full stable
+invariant target fitting the budget, this vector is exactly the
+prescribed larger target $G_N$. For general indexed targets, literal
+pointwise equality is not available: the actual target-map image and
+the quotient $(C_d(N)+\im J_N)/C_d(N)$ supply the transfer instead.
+For NS, use the analogous quotient by $I_d(N)$. These quotients test
+whether a target lies outside the relevant consequence space.
+
+These uses share one construction but have different logical inputs.
+Keeping them separate is the simplest way to avoid proving only a
+statement about an unspecified lifted vector while claiming a theorem
+about the specified target.
+
+\begin{checkpoint}
+A single common projector makes the entire closure calculation compatible.
+It does not replace ordinary-PC multiplication by a new proof rule.
+The larger consequence remains derivable by the original legal rules.
+\end{checkpoint}

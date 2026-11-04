@@ -1,0 +1,455 @@
+\section{Uniform systems and degree}\label{sec:systems}
+Fix a field $K$ of prime characteristic $p$. We study the degree needed
+to derive a specified polynomial from a system of equations. Refutation
+is the special case in which the specified polynomial is $1$. All rings
+are ordinary commutative polynomial rings; Boolean equations, when
+present, are axioms rather than a quotient convention.
+
+\subsection{Consequences and their degree}
+Let $\Gamma\subseteq K[x_v:v\in V]$ be a finite system and let $G$ be a
+polynomial in the same ring. We write $\Gamma\vdash_S G$, for
+$S\in\{\NS,\PC\}$, for an algebraic derivation of $G$ from $\Gamma$.
+Since the input equations are $f=0$, this means deriving the equation
+$G=0$. In particular, deriving $1$ gives a contradiction.
+
+Following the NS proof system of Beame, Impagliazzo, Kraj\'i\v cek,
+Pitassi and Pudl\'ak~\cite{NSFoundations}, an NS derivation of $G$ is
+an identity
+\[
+                  G=\sum_{f\in\Gamma}a_f f.
+\]
+Its degree is the largest total degree of a nonzero product $a_f f$.
+Over a field this is $\deg a_f+\deg f$ for each such product. Zero
+summands impose no restriction and may be omitted; the empty sum is a
+certificate of $G=0$ of degree zero. We use $\deg0=0$ throughout.
+
+In the system introduced by Clegg, Edmonds and
+Impagliazzo~\cite{PCFoundations}, an ordinary-PC derivation is a finite
+sequence $P_1,\ldots,P_M$ whose
+last line is $G$. Each line is an input axiom, a linear combination
+$\alpha P_i+\beta P_j$ of earlier lines, or a variable multiple $x_vP_i$
+of an earlier line. The zero polynomial is also allowed as the empty
+linear combination. The proof degree is the largest total degree of any
+line, computed after collecting coefficients. Allowing a linear
+combination of any finite number of earlier lines gives the same
+degree: it can be expanded into successive two-line combinations. Thus a cancellation may
+lower the degree of a derived polynomial and permit a later
+multiplication within the same degree budget. A Boolean simplification
+is not a further rule.
+
+Write $h_S(\Gamma\vdash G)\in\NN\cup\{\infty\}$ for the least such
+degree, assigning $\infty$ when there is no derivation. Every finite
+value is at least $\deg G$. For refutations we retain the notation
+$d_S(\Gamma)=h_S(\Gamma\vdash1)$. Expanding an NS certificate into
+monomial multiples, deriving each product by successive variable
+multiplication, and adding gives
+\begin{equation}\label{eq:pcns}
+ h_{\PC}(\Gamma\vdash G)\le h_{\NS}(\Gamma\vdash G),
+ \qquad d_{\PC}(\Gamma)\le d_{\NS}(\Gamma).
+\end{equation}
+The inequality concerns actual derivations of the specified target;
+the target is not added to the input axioms.
+
+\paragraph{A short consequence proof.}
+Over $\mathbb F_2$, take $f_1=xy+x$, $f_2=xy+1$ and $f_3=xz$.
+The following proof derives the nonconstant target $G=z$ in degree two:
+\[
+ f_1+f_2=x+1,\qquad z(x+1)=xz+z,\qquad (xz+z)+f_3=z.
+\]
+We are keeping every line within the degree budget two. The quadratic
+terms cancel to give the degree-one line $x+1$; multiplying that line
+by $z$ is therefore a permitted step within this budget. Expanding
+these same steps into the NS identity $z=zf_1+zf_2+f_3$ gives product
+degree three. The input system itself is consistent: $x=y=1$, $z=0$
+satisfies it. Thus consequences need not arise from refutations.
+
+\subsection{Uniform axioms and uniform targets}
+The running first-order example asks for an injective function whose
+image omits a distinguished point. If $x_{ij}$ encodes the graph atom
+$g(i)=j$, totality and functionality contribute
+\[
+                 f_{i,n}=\sum_{j<n}x_{ij}-1,
+                 \qquad x_{ij}x_{ij'}\quad(j\ne j').
+\]
+The same rules are used at every size. A permutation sends $x_{ij}$ to
+$x_{\sigma(i),\sigma(j)}$ and sends $f_{i,n}$ to $f_{\sigma(i),n}$.
+Every permutation fixing $i$ therefore fixes $f_{i,n}$, although the
+sum contains variables involving all labels. This distinguishes the
+\emph{support of an axiom index} from the union of labels in its terms.
+The complete inconsistent system is given in \eqref{eq:G-witness}.
+
+We call a support assignment \emph{equivariant} when relabelling an
+object also relabels its support. For linear maps the same word means
+commutation with relabelling: $f(\sigma v)=\sigma f(v)$. Uniformity
+below specifies both this symmetry and one coefficient rule used at
+every rank.
+
+\begin{definition}[Uniform template]\label{def:template}
+A bounded basis system consists of labelled objects, with an action of
+permutations of $\NN$, and a finite support for each object, whose size
+has a fixed bound independent of rank. Support is
+equivariant, and a permutation fixing an object's support pointwise
+fixes that object. At rank $n$ the basis consists exactly of the objects
+supported in $[n]=\{0,\ldots,n-1\}$, and is finite.
+
+A uniform polynomial template $T$ has a variable basis $\mathcal V$ of
+support at most $k\ge1$, an axiom-index basis $\mathcal A$ of support at
+most $s$, and coefficients $c(a,\mu)\in K$ indexed by an axiom index and
+a monomial in the labelled variables. The coefficients are invariant
+under simultaneous relabelling, independent of rank, and vanish when
+$\deg\mu>D$ for some fixed $D$. The rank-$n$ instance is
+\[
+ \Gamma_n=\{f_{a,n}:a\in\mathcal A_n\},\qquad
+ f_{a,n}=\sum_{\mu\text{ supported in }[n]}c(a,\mu)\mu.
+\]
+Choose $n_0\ge\max\{1,kD+s\}$. The parameters $k,s,D,n_0$ belong to
+the fixed template.
+\end{definition}
+
+Support zero is allowed for variable and index bases. A zero-arity
+variable type is a single scalar variable fixed by every permutation;
+a finite number of such types can be included. The parameter $k\ge1$
+is only an upper bound on variable support, so it does not exclude these
+types. This also explains the permanent-parameter encoding in the
+introduction without enlarging the template hypotheses.
+
+Fixed finite types of tuples, with specified equality patterns, give
+familiar basis systems. A degree-$d$ monomial uses at most $kd$ labels,
+even if the polynomial containing it mentions every label in the
+universe. Products of bases add support bounds; restriction to an
+invariant subset does not increase them. A monomial--axiom pair has
+support at most
+\begin{equation}\label{eq:safe-budget}
+                         r=kd+s.
+\end{equation}
+Overlaps can reduce this bound. For the injection system one may take
+$k=2$ and $s=3$: row totality has index support one, while an
+injectivity collision $x_{ij}x_{hj}$ has support at most three. The
+multiplication domain at degree $d$ has basis pairs $(x_v,\mu)$ with
+$\deg\mu\le d-1$, of support at most $k+k(d-1)=kd$.
+
+\begin{definition}[Uniform target family]\label{def:uniform-target}
+For a fixed axiom template, a uniform indexed target family consists of
+a bounded basis $\mathcal B$ of support at most $t$ and coefficients
+$\gamma(b,\mu)\in K$, invariant under simultaneous relabelling of
+$b$ and $\mu$, independent of rank, and zero when $\deg\mu>D_G$.
+It requests the targets
+\[
+ G_{b,n}=\sum_{\mu\text{ supported in }[n]}\gamma(b,\mu)\mu,
+                         \qquad b\in\mathcal B_n.
+\]
+The degree of the request is the worst of the individual least degrees:
+\begin{equation}\label{eq:target-profile}
+ h_S(n)=\max_{b\in\mathcal B_n}h_S(\Gamma_n\vdash G_{b,n}),
+                         \qquad S\in\{\NS,\PC\}.
+\end{equation}
+The empty maximum is zero; a single underivable target makes the
+maximum $\infty$. Thus $h_S(n)\le d$ means that \emph{every} requested
+target has a degree-$d$ derivation, with no restriction on the total
+number of proof lines used.
+\end{definition}
+
+There are three useful forms of this definition. A \emph{fully invariant}
+target $G_n$ is the case of one target index with empty support, so
+$\sigma G_n=G_n$ for every permutation of $[n]$. For example, with
+variables $x_i$, the polynomial $\sum_{i<n}x_i$ is fully invariant:
+each monomial uses one label, although the full sum mentions all labels.
+An \emph{indexed} family can instead request $G_{i,n}=x_i$ for each
+$i<n$. Its index has support one; its members are permuted rather than
+individually fixed.
+
+One may restrict $\mathcal B$ to one fixed global orbit of indices.
+At every rank $n\ge t$ that orbit has a representative; all its
+representatives at that rank are related by a permutation of $[n]$ and
+have the same least degree. Hence one representative per rank gives the
+same profile. Indeed, restrict a global relabelling to the finite support of the index; its image is also in $[n]$. Extend this finite injection to a permutation of $[n]$, which has the same action on the supported index. There are only finitely many global orbits, since each
+meets the finite set $\mathcal B_t$. The aggregate request
+\eqref{eq:target-profile} takes their maximum. An arbitrary selection
+that switches between different orbits with $n$ is a different problem
+and is not covered by the theorem.
+
+Rank-independent coefficient rules are essential for both axioms and
+targets. Symmetry of each individual instance is insufficient: choosing
+$\{1=0\}$ at sizes in an arbitrary set and the empty system elsewhere
+produces an arbitrary degree-zero predicate, but is not a fixed
+template. Likewise, the target cannot be chosen by an arbitrary
+size-dependent rule.
+
+Beyond $n_0$, every axiom-index orbit has a fixed polynomial degree.
+A monomial witnessing its formal degree uses at most $kD$ labels;
+a relabelling fixing the index places these labels inside $[n]$ once
+$n\ge kD+s$. The same argument for targets gives the common stable
+starting rank
+\begin{equation}\label{eq:stable-rank}
+                        n_*=\max\{n_0,1,kD_G+t\}.
+\end{equation}
+Thus each target orbit has a fixed degree there, and their maximum is
+a degree floor for both profiles. The all-target degree-zero predicate
+is constant in this range: a nonconstant requested target fails it,
+whereas constant targets are consequences exactly when they are zero
+or the inputs span a nonzero constant. For general indexed requests the
+transport argument uses the larger support budget $2kd+s+t$; the
+extra factor of two detects a possible nonzero quotient, as explained
+in Section~\ref{sec:transfer}.
+
+\subsection{The normalised first-order input class}
+Any fixed first-order sentence in a finite uninterpreted vocabulary can
+be converted, by Skolemisation, flattening of terms and clausification,
+to a normalised expansion with the same existence of models at each
+nonempty finite size. Witnesses are retained as function symbols rather
+than translated as unrestricted sums. The resulting roots correspond
+to models of this expansion; several expansions may have the same
+reduct to the original vocabulary. This is the translation approach of
+\cite[Section~1.2]{Riis}\cite[Section~1.2]{RiisLong} and
+\cite{RiisSitharamTautologies}; see the explicit translation theorem in
+\cite[Section~II, Theorem~1]{RiisSitharamTranslationPreprint}.
+We fix one such normalisation.
+
+A normalised sentence is a finite collection of universally quantified clauses over relation symbols and function symbols. Its atoms are $R(x_{i_1},\ldots,x_{i_a})$, flattened graph atoms $x_j=f(x_{i_1},\ldots,x_{i_a})$, and equalities $x_i=x_j$. Constants are functions of arity zero. Symbols are uninterpreted; in particular there is no built-in order or arithmetic. Well-formedness requires the declared arities and variable references to match.
+
+At size $n$ introduce relation variables $r^R_{\bar i}$ and graph variables $x^f_{\bar i,j}$. Include
+\begin{align}
+ z^2-z&=0 &&\text{for every variable},\label{eq:boolean}\\
+ \sum_{j<n}x^f_{\bar i,j}-1&=0,\qquad
+ x^f_{\bar i,j}x^f_{\bar i,j'}=0 &&(j\ne j'),\label{eq:function}\\
+ \prod_{L\in C}(1-\operatorname{val}(L))&=0 &&\text{for every grounded clause }C.\label{eq:clause}
+\end{align}
+An equality atom has value $\delta_{ij}$; negation replaces a value by its complement. The collisions in \eqref{eq:function} are indispensable in characteristic $p$: a sum of Boolean values equal to $1$ need not contain exactly one $1$ without them.
+
+\begin{proposition}[Compiler and semantics]\label{prop:compiler}
+The displayed translation is an actual uniform template. Its parameters can be computed from the normalised syntax. For every $n\ge1$, its common roots over $K$ correspond to models of the sentence on $[n]$.
+\end{proposition}
+\begin{proof}
+Use the atom tuples for variable indices and clause-grounding tuples for clause indices; totality and collision indices are also fixed tuples. Expansion of \eqref{eq:clause} has coefficients depending only on equalities among these labels. Repeated coordinates and coefficient cancellations are included in this expansion. Safe bounds, writing $a_R,a_f$ for the maximum relation and function arities, are
+\[
+ k=a_R+a_f+1,\quad s=k+1+\max_C\operatorname{nvars}(C),\quad
+ D=2+\max_C|C|,\quad n_0=kD+s+1.
+\]
+Here $\operatorname{nvars}(C)$ is one more than the largest variable index
+occurring in $C$, and is $1$ when none occurs (the compiler reserves an unused variable slot). At a root every variable is $0$ or $1$. Totality and collisions choose exactly one output of each function. Clause products vanish precisely when a literal is true. Conversely, a model supplies these $0/1$ values and satisfies every equation.
+\end{proof}
+
+We use this explicit normalised input class for undecidability. There is no assertion that different choices of normalisation or Skolemisation preserve exact degree. Keeping the chosen encoding visible is especially important for the examples.
+
+\subsection{Boolean semantics and finite completeness}\label{sec:booleanrole}
+Boolean axioms give truth-value semantics to the first-order encoding;
+the general template theorem does not require them. Over any field,
+$x^2-x=0$ forces $x\in\{0,1\}$. In characteristic $p$, however, a sum
+of $p+1$ ones is also one. Thus the collisions in \eqref{eq:function}
+are needed for uniqueness, separately from the totality sum.
+
+For completeness, suppose a finite system contains all Boolean axioms
+$b_i=x_i^2-x_i$, has $v$ variables and input degree at most $D\ge2$,
+and has no Boolean solution. For each $a\in\{0,1\}^v$, choose an input
+$f_{j(a)}$ with $f_{j(a)}(a)\ne0$ and put
+\[
+ \delta_a=\prod_{i:a_i=1}x_i\prod_{i:a_i=0}(1-x_i).
+\]
+The identities $\sum_a\delta_a=1$ and
+$f\delta_a\equiv f(a)\delta_a\pmod{(b_1,\ldots,b_v)}$ give
+\begin{equation}\label{eq:booleancomplete}
+ 1=\sum_a\frac{\delta_a}{f_{j(a)}(a)}f_{j(a)}+\sum_i h_i b_i.
+\end{equation}
+The Boolean corrections can be constructed by the reductions
+$x_i^e-x_i=b_i(1+x_i+\cdots+x_i^{e-2})$ for $e\ge2$.
+They never raise total degree; hence every product in this NS identity
+has degree at most $v+D$. Expanding it gives a PC refutation at the
+same bound. This is the usual Boolean completeness argument
+\cite{NSFoundations}; it establishes finite degree, not a useful lower
+bound or a short certificate.
+
+Our derivations take place in the ordinary polynomial ring.
+Multilinearisation must be justified by Boolean-axiom multiples with
+their degrees charged. For example, multiplying a squarefree monomial
+of degree $d$ by a variable already in it first gives degree $d+1$;
+a degree-$d$ proof cannot treat that multiplication as free. The PC
+closure below therefore multiplies only lines of degree at most $d-1$.
+
+Without Booleanity, absence of roots in the coefficient field is
+insufficient for refutation: $x^2+1$ has no root in $\mathbb F_3$ but
+has one in an extension field. Its refutation degree is $\infty$.
+The template theorem still applies, since it classifies algebraic
+derivability using ordinary monomial spaces and stable coefficient
+maps. Adding or removing Boolean axioms can change that degree profile.
+
+\subsection{The space of all bounded-degree consequences}\label{sec:pc-space}
+Fix a rank-$n$ instance, write $V=\mathcal V_n$ for its variable-index
+set, and choose a degree budget $d\ge1$. Let $P_{\le d}$ be the
+vector space with the monomials of degree at most $d$ as basis. Zero
+axioms may be omitted. For NS define
+\begin{equation}\label{eq:nsspan}
+ I_d=\Span_K\{\mu f:f\in\Gamma,\ \mu\text{ a monomial},\quad
+                       \deg\mu+\deg f\le d\}\subseteq P_{\le d}.
+\end{equation}
+NS uses one span of permitted monomial--axiom products. PC requires an
+additional closure:
+\begin{equation}\label{eq:pcclosure}
+ \begin{gathered}
+ V_0=\Span_K\{f\in\Gamma:\deg f\le d\},\\
+ V_{j+1}=V_j+\sum_{v\in V}x_v(V_j\cap P_{\le d-1}).
+ \end{gathered}
+\end{equation}
+For $d=0$ omit the multiplication term, so $V_\infty=V_0$.
+
+\begin{proposition}[Exact consequence-space characterisation]\label{prop:pc-closure}
+For every polynomial $G$ and every degree budget $d\ge0$,
+\[
+ \begin{aligned}
+ h_{\NS}(\Gamma\vdash G)\le d&\quad\Longleftrightarrow\quad G\in I_d,\\
+ h_{\PC}(\Gamma\vdash G)\le d&\quad\Longleftrightarrow\quad
+                       G\in V_\infty:=\bigcup_jV_j.
+ \end{aligned}
+\]
+The PC chain stabilises after finitely many stages and
+$I_d\subseteq V_\infty\subseteq P_{\le d}$. In particular, the least
+refutation degrees test membership of $1$ in these spaces.
+\end{proposition}
+\begin{proof}
+For NS, expand each multiplier into monomials. Every resulting product
+$\mu f$ satisfies the degree bound and belongs to the spanning set in
+\eqref{eq:nsspan}. Conversely, group a finite linear combination of
+these products by axiom. Its multiplier $a_f$ has degree at most
+$d-\deg f$, giving the required identity with right-hand side $G$.
+The empty combination gives $G=0$. Each permitted product $\mu f$ is
+also a PC consequence: multiply $f$ successively by the variable
+factors of $\mu$, with every intermediate degree at most $d$, and add.
+
+For PC, induct on a proof line. A usable axiom lies in $V_0$. A linear
+combination of vectors in $V_a$ and $V_b$ lies in $V_{\max(a,b)}$.
+If a nonzero line $f$ is multiplied by a variable and the result has
+degree at most $d$, then $\deg f\le d-1$. If $f\in V_j$, its multiple
+therefore lies in $V_{j+1}$. The zero line causes no difficulty.
+
+Conversely, every vector of $V_0$ is derived by linear combinations of
+usable axioms. A vector of $V_{j+1}$ is a finite sum of a vector of
+$V_j$ and terms $x_vf_v$, with $f_v\in V_j\cap P_{\le d-1}$.
+Concatenate finite derivations of the $f_v$, append the permitted
+multiplication steps, and add until the last line is the requested
+vector. All partial linear combinations remain in $P_{\le d}$.
+
+The ascending chain lies in the finite-dimensional space $P_{\le d}$.
+Every strict inclusion increases dimension, and equality of two
+successive stages makes all subsequent stages equal. Hence the chain
+stabilises. This argument places no length bound on candidate proofs;
+it shows that all their consequences are captured by a finite closure.
+\end{proof}
+
+The cancellation in our earlier example occurs in
+$V_0\cap P_{\le1}$: $f_1+f_2=x+1$ becomes eligible for multiplication
+although neither of its two inputs was linear. A transport argument
+for ordinary PC must preserve the intersection in \eqref{eq:pcclosure},
+including such vectors, rather than just transport a list of low-degree
+input axioms.
+
+Extending scalars from $K$ to a field $E$ keeps the coordinate equations
+and allows coefficients in $E$. If $U\subseteq K^M$ has a $K$-basis
+$u_1,\ldots,u_a$, its extension is
+$U_E=\Span_E\{u_1,\ldots,u_a\}\subseteq E^M$, also denoted
+$E\otimes_K U$. This is the finite-dimensional scalar-extension
+operation used in the next lemma; see \cite{LangAlgebra} for its
+standard linear-algebra background.
+
+\begin{lemma}[Field extension]\label{lem:field}
+For a finite system $\Gamma$ and target $G$ over $K$, extending the
+coefficient field changes neither least NS nor least ordinary-PC
+degree of $\Gamma\vdash G$.
+\end{lemma}
+\begin{proof}
+At fixed degree, NS derivability is membership of $G$ in a finite span;
+Gaussian elimination gives the same answer after extending scalars.
+For PC, scalar extension commutes with finite-dimensional sums,
+intersections and images, hence with every stage of
+\eqref{eq:pcclosure}. Membership of the original vector $G$ in the
+stable space is therefore preserved and reflected.
+\end{proof}
+
+\subsection{Explicit coefficient lists and proof size}\label{sec:dense-size}
+Write $v(n)=|\mathcal V_n|$ for the number of polynomial variables,
+distinguishing it from the universe size $n$ and the periodicity onset
+$N(d)$ used later. Variables, axiom indices and target indices all have
+polynomial counts in $n$: each bounded-support object is a relabelling
+of one of finitely many objects at its support bound.
+
+\begin{definition}[Size with explicit coefficient lists]\label{def:dense-size}
+In an ambient ring with $v$ variables, a nonzero polynomial of total
+degree $d$ is stored as the full coefficient table of all monomials of
+total degree at most $d$, including zero coefficients. Its length is
+\[
+                       B_v(d)=\binom{v+d}{d}.
+\]
+The zero polynomial has a one-entry representation. A PC proof of $G$
+has size equal to the sum of these lengths over its lines, including
+the final line $G$. An NS identity $G=\sum_fa_ff$ has size equal to
+the sum over its nonzero multipliers; the input polynomials and target
+are supplied separately. The empty certificate for $G=0$ has size zero.
+
+Let $S^{\mathrm{coeff}}_S(\Gamma\vdash G)$ be the minimum certificate
+size in system $S$, with value $\infty$ if the target is underivable.
+For a uniform indexed request put
+\[
+ S^{\mathrm{coeff}}_S(n)=\max_{b\in\mathcal B_n}
+                   S^{\mathrm{coeff}}_S(\Gamma_n\vdash G_{b,n}),
+\]
+with empty maximum zero. For the single target $1$, this is the usual
+minimum refutation size.
+\end{definition}
+
+A bundle of proofs for every requested target has total size between
+this maximum and $|\mathcal B_n|$ times the maximum, when the request
+is nonempty. Since $|\mathcal B_n|$ is polynomial in $n$, the two
+conventions give the same polynomial and exponential size cases.
+Size counts coefficient entries over $K$. For a fixed finite field,
+coefficients have bounded bit length; variable, axiom and line indices
+add only polynomial overhead to the bounds below. The uniformly
+bounded-degree inputs and targets themselves have polynomial-size
+tables. Every table uses \emph{all ambient variables}, even those
+absent from its nonzero terms. Filling in missing powers in
+$x_1^d+5$ alone would require only $d+1$ entries, a different measure.
+
+\begin{lemma}[Degree and coefficient-list size]\label{lem:dense-size}
+For $v$ variables and input degree at most $D$, if $G$ has a degree-$d$
+NS derivation, it has an NS certificate of size at most $B_v(d)^2$.
+If it has a degree-$d$ ordinary-PC derivation, it has a PC proof of
+size $O(B_v(d)^3)$. Conversely,
+writing $h_S=h_S(\Gamma\vdash G)$, finite least degrees give
+\[
+ S^{\mathrm{coeff}}_{\PC}(\Gamma\vdash G)\ge B_v(h_{\PC}),\qquad
+ S^{\mathrm{coeff}}_{\NS}(\Gamma\vdash G)
+                \ge B_v(\max\{0,h_{\NS}-D\})\quad(G\ne0).
+\]
+Also $B_v(d)\ge2^{\min\{v,d\}}$. For an indexed request the same upper
+bounds hold when $h_S(n)\le d$. For a nonempty request, the lower
+bounds apply to a target attaining the finite maximum, with the NS
+zero-target exception just stated.
+\end{lemma}
+\begin{proof}
+Put $M=\dim P_{\le d}=B_v(d)$. For NS, membership of $G$ in the span
+$I_d$ has a witness using at most $M$ monomial--axiom products.
+Grouping by axiom gives at most $M$ nonzero multipliers, each with at
+most $M$ coefficient entries.
+
+For PC, retain a basis of the usable input axioms. Maintain a basis of
+the span $W$ of the retained derivable polynomials. Unless $W$ is
+closed under permitted multiplication, choose
+$f\in W\cap P_{\le d-1}$ with $x_if\notin W$. Derive $f$ as a linear
+combination of at most $M$ retained polynomials, using $O(M)$ two-line
+steps, then append $x_if$ to
+the basis. At most $M$ extensions occur. Once $W$ is closed, it contains
+every degree-$d$ consequence, including $G$. Append a linear
+combination giving $G$ as the last line. This constructs $O(M^2)$
+lines, each with at most $M$ entries; all intermediate linear
+combinations stay in $P_{\le d}$. If $G=0$, the one-line proof $0$
+suffices.
+
+Every PC proof has a line of degree at least its least possible proof
+degree. If $G\ne0$, every NS certificate has a nonzero product of
+degree at least $h_{\NS}$, whose multiplier consequently has degree at
+least $h_{\NS}-D$. Finally, the table contains every squarefree
+monomial in any $\min\{v,d\}$ variables, proving the exponential
+estimate. For a finite indexed request, a finite maximum is attained
+unless the request is empty, in which case its size is zero.
+\end{proof}
+
+This coefficient convention makes the size consequence elementary.
+It is a different resource from sparse monomial size: zero entries may
+dominate the table. We make no sparse-size lower-bound claim here.

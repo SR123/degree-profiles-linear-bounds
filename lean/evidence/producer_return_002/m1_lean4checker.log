@@ -1,0 +1,8 @@
+lean4checker (NON-FRESH: replays every declaration of the named module into the environment of its imports)
+run: Mon Oct  5 18:16:53 UTC 2026
+binary: <RECORDED_PRODUCER_HOME>/lean/lean4checker/.lake/build/bin/lean4checker (Lean Lean (version 4.26.0, x86_64-unknown-linux-gnu, commit d8204c9fd894f91bbb2cdfec5912ec8196fd8562, Release))
+== lake env lean4checker UCIndexedTarget
+exit status: 0
+== lake env lean4checker UCIndexedTransfer
+exit status: 0
+finished: Mon Oct  5 18:17:11 UTC 2026

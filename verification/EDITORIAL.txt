@@ -1,0 +1,58 @@
+PAPER EDITORIAL REFRESH — 4 November 2026
+
+Current paper: 77 pages, rebuilt from the author's specified November source.
+The earlier 74-page source/PDF/package is preserved outside this candidate.
+No October paper or tutorial has been substituted.
+
+Changes
+- Abstract: earlier LICS 2008/2009 exhaustive/exclusive classification first;
+  new optimal linear bounds and uniform polynomial targets second. T4 is
+  described by infinitely many recurring finite degrees, finite liminf and
+  arbitrarily late finite linear peaks. The coefficient-list qualification,
+  undecidability and concise central Lean coverage remain.
+- Introduction: concrete global sums, binary variables and the distinction
+  between a generating polynomial, its whole-polynomial orbit and permanently
+  named parameters. Zero-arity types already fit the support definition.
+- Logic: arbitrary fixed first-order syntax via a chosen normalised/Skolemised
+  expansion; roots correspond to models of that expansion, with existence
+  equivalent to an original model of the same nonempty size. Totality sums
+  require Booleanity and functionality collisions. Built-in order/arithmetic
+  are distinguished from uninterpreted symbols and axiomatic structure.
+- Standard degree-bound language replaces 'scale' where it refers to degree.
+  The full-resolution comparison uses 2^{Omega(n^epsilon)} and retains unary
+  relativisation. The redundant qualification is removed; fresh labels and q
+  are explained directly. The 1997 proof qualification remains in history,
+  without repetition in the acknowledgements.
+- A version-specific translation reference is added: Riis–Sitharam,
+  BRICS RS-98-19 (1998), Section II, Theorem 1, alongside the journal paper.
+  LICS Section 1.2 p.273 and TR09-014 Section 1.2 pp.3–4 are cited precisely.
+
+Checks and scope
+Native/editor and terminal compilers succeed. All 131 protected mathematical
+blocks and all existing labels/theorem/equation numbers remain identical.
+The remarks' degree terminology is clarified without changing their bodies.
+All 146 labels, 169 reference uses and 29 bibliography entries resolve.
+Affected opening, definition, conclusion and bibliography pages are rendered
+and visually checked; the full PDF passes character-bound screening. An
+extracted clean source archive rebuilds to identical text/character layout.
+This is an editorial/source/layout review, not a new complete mathematical
+audit. No Lean source is changed, compiled or replayed. The topological
+corollary retains its written-proof status and original 2009 attribution.
+
+Tutorial/reader implications
+The reviewed 193-page tutorial is unchanged. N(d), Q(d), the support budgets,
+all theorem numbers and all section numbers remain unchanged. Permanent
+parameters use the existing zero-support types, rather than a new template
+hypothesis. Total-size bounds use the fixed shift n=m+ell; residue classes
+and starting ranks shift accordingly. No degree-preservation assertion is
+made for arbitrary changes of Skolemisation or normalisation.
+New examples and explanatory language need no theorem-number migration.
+Paper Section 11.1 is now pp.53–54 (previously pp.51–52); Section 16 begins
+on p.73 and proof-source/verification scope is on p.74. Introductory examples
+are on pp.2–3 and the logic explanation on pp.3–4. A reader using page-based
+paper links should regenerate them from this PDF, rather than an older PDF.
+The earlier October interactive site has not been silently overwritten.
+
+Nothing has been uploaded, published, released or assigned a DOI. The local
+review ZIP is refreshed and its file manifest is regenerated. Licences and
+all earlier verification limitations remain unchanged. Author review remains.

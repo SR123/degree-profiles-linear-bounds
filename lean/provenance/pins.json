@@ -1,0 +1,70 @@
+{
+  "lean_toolchain": "leanprover/lean4:v4.26.0",
+  "recorded_lean_commit": "d8204c9fd894f91bbb2cdfec5912ec8196fd8562",
+  "configuration_sha256": {
+    "lakefile.toml": "cb071f35e20eef4313435a4b007499278417452b8f2e5e8b06deef9f5484d4b5",
+    "lake-manifest.json": "64265d9bded32852056e403629bee80f4b4ef2bed7141dfa14c7b65e1d5a6a42",
+    "lean-toolchain": "e8173aad377a6d70041e5f7a5d8895ed587628f5cab243c53a18c40a1b7b6bf8"
+  },
+  "dependencies": [
+    {
+      "name": "mathlib",
+      "git": "https://github.com/leanprover-community/mathlib4",
+      "revision": "2df2f0150c275ad53cb3c90f7c98ec15a56a1a67",
+      "input_revision": "v4.26.0"
+    },
+    {
+      "name": "plausible",
+      "git": "https://github.com/leanprover-community/plausible",
+      "revision": "160af9e8e7d4ae448f3c92edcc5b6a8522453f11",
+      "input_revision": "main"
+    },
+    {
+      "name": "LeanSearchClient",
+      "git": "https://github.com/leanprover-community/LeanSearchClient",
+      "revision": "3591c3f664ac3719c4c86e4483e21e228707bfa2",
+      "input_revision": "main"
+    },
+    {
+      "name": "importGraph",
+      "git": "https://github.com/leanprover-community/import-graph",
+      "revision": "e9f31324f15ead11048b1443e62c5deaddd055d2",
+      "input_revision": "main"
+    },
+    {
+      "name": "proofwidgets",
+      "git": "https://github.com/leanprover-community/ProofWidgets4",
+      "revision": "b4fb2aa5290ebf61bc5f80a5375ba642f0a49192",
+      "input_revision": "v0.0.83"
+    },
+    {
+      "name": "aesop",
+      "git": "https://github.com/leanprover-community/aesop",
+      "revision": "2f6d238744c4cb07fdc91240feaf5d4221a27931",
+      "input_revision": "master"
+    },
+    {
+      "name": "Qq",
+      "git": "https://github.com/leanprover-community/quote4",
+      "revision": "9312503909aa8e8bb392530145cc1677a6298574",
+      "input_revision": "master"
+    },
+    {
+      "name": "batteries",
+      "git": "https://github.com/leanprover-community/batteries",
+      "revision": "24241822ef9d3e7f6a3bcc53ad136e12663db8f3",
+      "input_revision": "main"
+    },
+    {
+      "name": "Cli",
+      "git": "https://github.com/leanprover/lean4-cli",
+      "revision": "933fce7e893f65969714c60cdb4bd8376786044e",
+      "input_revision": "v4.26.0"
+    }
+  ],
+  "optional_lean4checker": {
+    "recorded_revision_prefix": "6744eac6",
+    "source": "Claude release-audit report, reproduction table row 4",
+    "full_revision_and_binary_not_in_return": "No exact full SHA or checker binary is supplied by this return; do not imply the prefix is a full pin."
+  }
+}

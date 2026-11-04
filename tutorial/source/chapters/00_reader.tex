@@ -1,0 +1,397 @@
+\chapter*{How to read this book}
+\addcontentsline{toc}{chapter}{How to read this book}
+This book develops the mathematics behind \emph{Degree profiles of
+uniform polynomial consequences}. It begins with actual algebraic proof
+lines and ends with a self-contained account of the linear degree gap.
+The intended reader is comfortable with polynomials, coefficient
+vectors, linear combinations and spans. We recall kernels and quotient
+spaces and introduce tensor products through explicit calculations.
+Nullstellensatz proofs, Polynomial Calculus and the required label
+actions are introduced here. No prior knowledge of modular
+representation theory, homological algebra or of the earlier
+complexity-gap paper is assumed. Understanding the conclusion is easier
+than checking the complete proof: the common-witness construction in
+Chapters~\ref{tx:ch:linear-layers}--\ref{tx:ch:prime} requires sustained
+work with the displayed maps.
+
+The central problem is
+\[
+                    \Gamma_n\vdash G_n,
+\]
+where both the axioms and the polynomial expression to be derived come
+from fixed rules as the universe size $n$ changes. A target with a
+bounded-support index can be included as well. Deriving $1$ is the
+important refutation special case, but it is not the only case.
+Here $\Gamma_n$ is the set of input polynomials, each interpreted as
+an equation equal to zero; $G_n$ is the target polynomial, whose equation
+we want to derive. The symbol $\vdash$ means that an algebraic proof
+exists. The two proof systems and their degree conventions are defined
+in Chapter~\ref{tx:ch:consequences}.
+
+\section*{The question which organises the whole proof}
+Suppose a uniform system at size $n$ has a proof with degree at most
+$d$. Can that degree budget also work at $n+q$, for a suitable
+prime-power block $q$? For an invariant uniform target $G_n$, the
+picture is
+\[
+ \Gamma_n\vdash_{\le d}G_n
+ \quad\Longrightarrow\quad
+ \Gamma_{n+q}\vdash_{\le d}G_{n+q}
+ \quad\Longrightarrow\quad
+ \Gamma_{n+2q}\vdash_{\le d}G_{n+2q}\quad\Longrightarrow\cdots.
+\]
+Here the proof system is fixed as either NS or ordinary PC. The
+axioms and target follow their prescribed uniform rules at each size;
+the larger proof may have a different list of lines. The resource
+preserved by lifting is the degree of the whole proof.
+In this picture, \emph{invariant} means that every permutation of the
+universe labels fixes the target polynomial. A target with distinguished
+indices has a different invariance condition, defined in
+Chapter~\ref{tx:ch:uniformity}.
+
+This is the main question of the book. First we describe exactly
+what has to be transported. Then we construct progressively stronger
+lifts, measuring how large $n$ must be in relation to $d$. Finally
+we reverse that numerical condition to obtain degree lower bounds.
+General indexed targets use the same membership principle, with an
+additional argument to detect their images; their individual vectors
+need not be literal images under the invariant-target lift.
+
+\section*{The linear-algebra picture behind lifting}
+At a fixed degree budget $d$, ordinary PC is a calculation in a finite
+vector space. Start from usable axioms, close under linear combinations,
+and multiply a vector by a variable whenever that vector has degree at
+most $d-1$. This gives a subspace $C_d(n)$. NS uses a different subspace
+$I_d(n)$, spanned by the permitted monomial--axiom products. The target
+question is membership in one of these spaces.
+
+The difficult theorem relates the membership calculations at $n$ and
+$n+q$, where $q=p^a$ is a suitably large power of the characteristic.
+One exact operation deletes the extra block of labels. A related linear
+operator lifts smaller consequences into the larger universe. The
+construction has to preserve actual maps, intersections and images;
+a count of dimensions would not suffice.
+
+For a first reading of this transition, begin with the worked
+multiplication calculation in Section~\ref{tx:sec:multiplication-registers}.
+Then follow the four operations making one closure stage in
+Section~\ref{tx:sec:grammar}. Section~\ref{tx:sec:target-reflection}
+explains why preserving this calculation still leaves a separate
+target question. Chapter~\ref{tx:chap:deletion} introduces the objects
+in Theorem~\ref{tx:thm:deletion} one by one and gives a guide to each
+clause. At that point the theorem is a precise statement of what
+the later construction will prove, not a fact to accept without proof.
+
+There are two different operations which should never be confused.
+Multiplication by a variable takes degree-$d-1$ vectors to degree-$d$
+vectors \emph{within one universe}. The lifting operator takes
+polynomials from the smaller universe to the larger one \emph{without
+increasing degree}. It is linear, but is not generally a homomorphism
+of polynomial rings.
+
+\section*{Why one proof gives a constant bound on a progression}
+Fix one degree $d$ and one eligible starting size $n$. Lifting gives
+proofs with that same budget at $n+q,n+2q,\ldots$. The absolute budget
+stays $d$. Once that starting proof has been selected, $d$ is a
+\emph{constant} for the whole progression, even if it was originally
+described as, say, a small multiple of $\log n$. At the later ranks
+we keep its numerical value; we do not recompute the logarithm.
+Its ratio to universe size tends to zero:
+\[
+                         \frac{d}{n+\ell q}\longrightarrow0.
+\]
+The constant bound initially belongs to one arithmetic progression.
+It is not yet a constant bound over all universe sizes. Two-way transfer
+at every lower threshold shows exactly which finite minimum degree
+recurs on that progression. The four types describe how those
+progressions fit together.
+
+The lower-bound argument reverses this observation. If a finite degree
+cannot recur, it must have occurred before transfer became available.
+The theorem makes that availability threshold linear in $d$. Solving
+this inequality for $d$ gives the linear lower bound. In the fluctuating
+case, a separate bound on the length of the period locates finite linear
+peaks. These are different uses of the same transfer theorem.
+
+\section*{The stages are improvements in how far we can lift}
+The earlier refutation classification gives logarithmic NS and
+double-logarithmic PC lower bounds~\cite{Riis,RiisLong}. The underlying
+transfer estimates summarised in the LICS paper have exponential and
+double-exponential starting ranks as functions of the fixed degree.
+These are historical refutation estimates, obtained there from
+substantial earlier work; they are not elementary lemmas reconstructed
+in this book.
+
+The constructions developed here make the starting rank much smaller:
+\begin{center}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{.43\linewidth}>{\raggedright\arraybackslash}p{.25\linewidth}>{\raggedright\arraybackslash}p{.22\linewidth}@{}}
+\toprule
+Lifting stage & Starting rank for degree $d$ & Lower-bound scale\\
+\midrule
+Earlier NS refutation result & at most $2^{cd}$ & $\log n$\\
+Earlier PC refutation result & at most $2^{2^{cd}}$ & $\log\log n$\\
+Characteristic-two construction with fresh labels & $O(d^2)$ & $\sqrt n$\\
+One retained pool, every positive characteristic & $O(d)$ & $n$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The constants depend on the fixed family and field. A small degree
+means small enough to meet the relevant starting-rank inequality.
+Chapter~\ref{tx:chap:lift} gives an elementary counting explanation
+for the prime-power steps. Chapter~\ref{tx:ch:quadratic} supplies the
+first fully worked lifting construction. The central
+advance in Chapters~\ref{tx:ch:linear-layers}--\ref{tx:ch:prime} is to
+replace its quadratic label cost by a linear one, and to make that
+construction work also in odd characteristic. The T4 conclusion uses
+an additional linear bound on the period and gives finite linear peaks.
+
+This development connects proof complexity with modular representation
+theory and algebraic combinatorics. Those communities already study
+representations built from bounded numbers of labels and periodic
+behaviour as the universe grows~\cite{CEF,Harman,HKPSYZ,BDM}.
+Section~\ref{tx:sec:stability-context} identifies the close antecedents.
+The task here is to prove transport for the actual polynomial proof
+rules and targets, with all the required finite constructions supplied
+in the book.
+
+\section*{A layered route through the construction}
+The first part replaces proof syntax by consequence spaces, then works
+through a Boolean first-order example over a fixed finite field: a
+strict order in which every element chooses a smaller predecessor.
+Chapter~\ref{tx:ch:running-order} proves the elementary growing-degree
+obstruction and shows exactly how comparison and lifting strengthen it
+to a linear bound. The predecessor may be many-to-one; the example
+uses no matching or injection constraint. The second
+part states the precise transfer contract and derives the four profiles
+from it; it also identifies the desired lifting map. The third part
+constructs the common algebraic projector which fulfils that contract,
+first in characteristic two and then in every positive characteristic.
+The fourth part puts the target and consequence maps into the same
+argument and proves the independent NS--PC comparison. The final part
+works through examples, dual witnesses, matching obstructions and the
+logical undecidability consequence.
+
+Within a technical chapter the order is always the same: say which
+property is needed, explain why it is enough, prove the structural
+lemma, and then inspect the calculation that realises it. The full
+normalisation, zero-marginal, rook and odd-characteristic arguments
+remain in the main chapters. Exercises have worked solutions at the
+end, but the proofs of the main results do not depend on doing them.
+
+A first reading can follow the contracts, examples and checkpoints.
+A second reading can fill in each finite algebraic construction in turn.
+This is a way of learning the complete proof, not permission to regard
+its hard inputs as unproved assumptions.
+
+When returning to a technical section, keep track of the space on
+which an operator acts and which parameters are fixed. Powers of a
+linear operator mean repeated composition. A polynomial degree, a
+tuple length and a support budget measure different things, even
+when the argument relates them by an inequality. Local reminders at
+the main changes of construction, together with the notation guide
+in the final chapter, identify these roles.
+
+The most direct first route through the opening is to read the basic
+template definition in Chapter~\ref{tx:ch:uniformity}, then the target
+request and support budget in
+Sections~\ref{tx:sec:target-request}--\ref{tx:sec:target-budgets}.
+The orbit-sum and compression discussion can be read later. In
+Chapter~\ref{tx:ch:closure}, follow the closure recurrence and its maps;
+the coefficient-list size interpretation is a separate application.
+Then follow the running order example in
+Chapter~\ref{tx:ch:running-order}. Its final steps specify the two
+general inputs still to be constructed: uniform comparison and
+degree-preserving lifting.
+Chapter~\ref{tx:chap:contract} then names the three obligations which
+organise the rest of the proof: identify the data, preserve the
+calculation, and reflect target vanishing. The chapters below refer
+back to these obligations as each construction is supplied.
+
+\section*{Specialist tools and a route through the proof}
+The proof uses several specialist languages. Its representation-theoretic
+part concerns permutation modules, group algebras, annihilator ideals
+and nilpotent chains. Its transport language consists of tensor products,
+quotients, naturality and exactness. Its finite constructions use common
+partial inverses, ordered projectors, marginals, sections and rook
+coordinates. Dual functionals and matching designs supply obstructions;
+definability and effective reductions explain the logical consequences.
+The background tools are developed at their first use and recalled
+when their role changes. The following map identifies the main
+transitions between mathematical subjects. It also helps a reader
+returning to the proof locate the relevant definitions.
+
+\begin{longtable}{@{}p{.23\linewidth}p{.47\linewidth}p{.22\linewidth}@{}}
+\toprule
+Tool & Concrete use in this book & First development\\
+\midrule
+Ideals and degree cutoffs & Polynomial combinations, with the
+allowed products constrained by degree & Chapters~\ref{tx:ch:consequences}--\ref{tx:ch:closure}\\
+Orbits and stabilisers & Grouping coefficient patterns under relabelling
+& Chapter~\ref{tx:ch:uniformity}\\
+Scalar extension & Solving the same coordinate problem with auxiliary
+field coefficients & Chapter~\ref{tx:ch:closure}\\
+Tensor products & Coordinates for paired inputs, with a diagonal
+label action & Chapter~\ref{tx:chap:contract}\\
+Naturality and exactness & Commuting maps and preserving the actual
+kernel, image and quotient calculations & Chapter~\ref{tx:chap:contract}\\
+Nilpotent chains & Reading which directions a block operator kills
+or leaves in its quotient & Chapter~\ref{tx:chap:deletion}\\
+Frobenius and sections & Prime-power counting and a chosen lift of
+each retained vector & Chapter~\ref{tx:chap:lift}\\
+Common partial inverses & One group-algebra expression certifying
+the required projector on several spaces & Chapters~\ref{tx:chap:lift}--\ref{tx:ch:square-zero}\\
+Marginals and layer sections & Compatible coordinate sums and
+corrections using one retained label pool & Chapter~\ref{tx:ch:linear-layers}\\
+Rook coordinates & Encoding overlap patterns and solving a
+triangular coefficient system & Chapter~\ref{tx:ch:rooks}\\
+Dual functionals and pairings & Coefficient tests separating targets
+from consequence spaces & Chapters~\ref{tx:ch:running-order}--\ref{tx:chap:contract}\\
+Matching designs & Bounded-degree coefficient tests and their
+extension rules & Chapter~\ref{tx:app:matching}\\
+Definability and reductions & The model-theoretic interpretation and
+the transfer of an undecidable computation problem & Chapters~\ref{tx:sec:model-theory}--\ref{tx:sec:undecidability}\\
+\bottomrule
+\end{longtable}
+
+\paragraph{Background reading.}
+For ordinary algebra, Lang~\cite{LangAlgebra} has chapters on
+modules, algebraic extensions, a single endomorphism, bilinear forms
+and tensor products. Alperin~\cite{AlperinLocal} introduces the modular
+representation theory of finite groups. The exactness and reflection
+vocabulary is described in the Stacks Project~\cite{StacksExact}; here
+we develop it through kernels and images of the displayed linear maps.
+Cutland~\cite{Cutland}, especially the chapters on computable functions,
+universal programs, undecidability and reducibility, gives background
+for the counter-program reductions. The references in
+Sections~\ref{tx:sec:stability-context} and~\ref{tx:sec:model-theory}
+locate the representation-stability and Euler-structure connections.
+These are reading routes for the terminology. The common witness,
+its natural map compatibility, the rook correction and the ordinary-PC
+extension invariant are established explicitly in this book.
+
+The opening route above is for learning the problem: it reaches the
+running example and the transport contract quickly. The book's chapter
+order is for learning the construction: it explains the destination
+before constructing the engine, including the simpler quadratic stage.
+The following dependency order is for checking that every input of the
+linear theorem has been discharged; it returns to classification only
+after transfer is proved. These purposes account for their different
+orders. Each item
+states a concrete conclusion to check, rather than asking the reader to
+accept a general stability slogan.
+\begin{enumerate}
+\item \textbf{Replace proofs by linear algebra.}
+In Chapters~\ref{tx:ch:consequences}--\ref{tx:ch:closure}, check that
+$I_d$ and $C_d$ describe \emph{exactly} the legal degree-$d$ proofs.
+In particular, PC intersects with $P_{\le d-1}$ after cancellation.
+Check stable coefficients and the separate degree-zero convention.
+\item \textbf{Identify the certificate for exactness.}
+In Chapter~\ref{tx:ch:square-zero}, verify that one common identity
+$zwz=z$ gives the projector $(1-zw)(1-wz)$ and exact deletion on
+the entire common annihilator class. The two-point failure of exactness
+explains why the moved-basis calculation alone is insufficient.
+\item \textbf{Construct that common certificate in characteristic two.}
+In Chapter~\ref{tx:ch:linear-layers}, check the partition of unity,
+the signed layer sections and the correction interface
+(Lemma~\ref{tx:lem:layer-interface}). In Chapter~\ref{tx:ch:rooks},
+check strengthened forcing and triangular realisation. These prove that
+one correction repairs length $b$ while annihilating every shorter
+length, on the same pool of retained labels.
+\item \textbf{Check the changes for an arbitrary prime.}
+Chapter~\ref{tx:ch:prime} replaces $z$ by its top power
+$u=z^{p-1}$ in the witness identity. Check purity on tuple generators,
+the ordered projector factors, the $p$-level sections and the actual
+transpose relabelling. Purity is not assumed for arbitrary nilpotent
+representations.
+\item \textbf{Return to the prescribed polynomials.}
+In Chapter~\ref{tx:chap:assemble-transfer}, check the axiom and
+multiplication maps entry by entry, then the full target map $J$.
+For indexed targets, check the nonzero-subquotient pairing
+(Lemma~\ref{tx:lem:detect}); exactness alone does not reflect vanishing.
+The pairing doubles the original monomial support $kd$.
+\item \textbf{Read off the lower bounds.}
+Now check Chapter~\ref{tx:ch:profiles}. The linear onset controls
+nonrecurring values in T2 and on T3 hard residues. The period bound
+has the additional job of locating \emph{finite} T4 peaks. This step
+is an argument about integer sequences after transfer has been proved.
+\item \textbf{Check the separate comparison theorem.}
+Chapter~\ref{tx:sec:comparison} uses a strict-chain bound and an NS
+plateau to contain the whole PC closure. It proves same-type agreement;
+it is not the source of the linear PC lower bound.
+\end{enumerate}
+
+Chapter~\ref{tx:ch:quadratic} is a complete alternative construction in
+characteristic two, useful for seeing why spending fresh labels gives
+only a square-root bound. The linear route does not depend on that
+construction or its normalisation lemma. Chapters~\ref{tx:chap:deletion}
+and~\ref{tx:chap:lift} state and explain the operation before its
+coefficients are constructed; their promised input is discharged by
+Chapters~\ref{tx:ch:square-zero}--\ref{tx:ch:prime}.
+The later example, matching and undecidability chapters have their own
+additional arguments.
+
+The core formal results have independently checked Lean source builds,
+theorem statements, axioms and dependencies, as recorded with the paper.
+That evidence does not certify every new pedagogical formulation in this
+book. A human check can follow the finite calculations above without
+treating either the formalisation or an external representation-stability
+theorem as a substitute for a missing step.
+
+\section*{Notation which keeps the roles separate}
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+Symbol & Meaning\\
+\midrule
+$p$ & Fixed prime characteristic of the coefficient field\\
+$n$ & Retained, smaller universe size\\
+$q=p^a$ & Size of the added/deleted block; $a$ is an exponent\\
+$N=n+q$ & Larger universe size\\
+$d$ & Degree budget for the whole proof\\
+$D_G$ & Fixed upper bound on the target polynomial degree\\
+$k,s,t$ & Supports of a variable, axiom index, target index\\
+$r=R(d)$ & One support budget once $d$ has been fixed\\
+$N(d)$ & Onset beyond which a degree-$d$ threshold transfers\\
+$Q(d)$ & A suitable prime-power period for that threshold\\
+$I_d(n),C_d(n)$ & NS and ordinary-PC consequence subspaces\\
+$\mathsf L$ & Degree-preserving lift from $n$ to $N$\\
+$\Del$ & Exact deletion operation from larger modules to smaller ones\\
+\bottomrule
+\end{tabular}
+\end{center}
+In particular, the support budget $r$ is \emph{not} the exponent $a$
+in $p^a$, and the variable support $k$ is neither of them. The number
+of polynomial variables can be of order $n^k$ and is not itself $n$.
+
+\section*{Reading alongside the current paper}
+This edition follows the paper revised on 4 November 2026. The paper
+is the concise statement of the research; this book supplies the slower
+route through its arguments. In particular $N(d)$ now denotes the
+same periodicity onset in both texts. Ordinary $N=n+q$ still denotes
+a larger universe size. The older refutation-only tutorials are
+historical guides, rather than additional prerequisites.
+
+\begin{center}\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{.35\textwidth}>{\raggedright\arraybackslash}p{.59\textwidth}@{}}
+\toprule
+Question while reading the paper & Where to turn here\\
+\midrule
+What is uniform, and what does degree count? & Chapters 1--3; distinguish a full polynomial from its bounded support of distinguished labels.\\[3pt]
+How does transfer imply the four cases? & Chapter~\ref{tx:ch:profiles}; compare \emph{thresholds}, then recurring exact values.\\[3pt]
+Why does deletion preserve the proof? & Chapter~\ref{tx:chap:contract}; transport maps and intersections, not just dimensions.\\[3pt]
+Where is the linear improvement? & Chapters~\ref{tx:ch:quadratic}--\ref{tx:ch:prime}; compare fresh labels with reuse of one common pool.\\[3pt]
+Why is the prescribed target preserved? & Chapter~\ref{tx:chap:assemble-transfer}; the quotient obstruction must survive deletion.\\[3pt]
+How does topology separate T1--T4? & Section~\ref{tx:sec:topological-spectrum}; the residue tree, compactness, and the binary worked example.\\[3pt]
+What is formalised? & The accompanying Lean packet's scope and endpoint tables; the new topological reformulation has a written proof.\\
+\bottomrule
+\end{tabular}\end{center}
+
+A short first pass is Chapters 1 and 3, the contract in
+Chapter~\ref{tx:chap:contract}, Chapter~\ref{tx:ch:profiles}, and
+Section~\ref{tx:sec:topological-spectrum}. Then return to the common
+witness and rook constructions. Their purpose is to justify the
+contract with a \emph{linear} label budget; the classification proof
+itself is considerably simpler.
+
+\tableofcontents
+\mainmatter

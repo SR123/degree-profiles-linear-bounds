@@ -1,0 +1,14 @@
+lean4checker (non-fresh: replays every declaration of the named module into the environment of its imports)
+run: Mon Oct  5 13:51:03 UTC 2026
+binary: <RECORDED_PRODUCER_HOME>/lean/lean4checker/.lake/build/bin/lean4checker (Lean 4.26.0)
+== lake env lean4checker UCTarget
+exit status: 0
+== lake env lean4checker UCTransfer
+exit status: 0
+== lake env lean4checker UCClassification
+exit status: 0
+== lake env lean4checker UCExample
+exit status: 0
+== lake env lean4checker UCAudit
+exit status: 0
+finished: Mon Oct  5 13:51:25 UTC 2026

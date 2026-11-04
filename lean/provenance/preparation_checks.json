@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-13",
+  "static_packet_identity": "passed",
+  "unchanged_Lean_sources": 199,
+  "configuration_identity": "Return_002 files exact; two-stanza scratch extension checked",
+  "targeted_returned_axiom_reports": 164,
+  "targeted_returned_dependency_reports": 102,
+  "endpoint_rows_with_source_line_and_exact_type_evidence": 33,
+  "python_syntax": "4 Python scripts parsed successfully",
+  "shell_syntax": "all three shell scripts passed sh -n",
+  "scripts_executable": true,
+  "scratch_workspace_generation": "passed",
+  "scratch_source_mutation_detected": true,
+  "missing_dependency_guards": "all three execution scripts stopped before any Lake invocation",
+  "new_Lean_build": false,
+  "new_checker_replay": false,
+  "new_network_access_or_installation": false,
+  "reader_source_identity": {
+    "Sept27": 186,
+    "Return_001": 5,
+    "Return_002": 6,
+    "Independent_005": 2,
+    "all_match": true
+  },
+  "authored_release_document_and_manifest_private_absolute_path_check": "passed",
+  "public_evidence_path_redaction": "84 derivative records; 14 records with path changes, including rebuilt audit ZIP",
+  "source_and_configurations_verbatim": 202,
+  "unchanged_original_archive_records_checked": 287,
+  "all_declared_redactions_only": true,
+  "type_axiom_exit_and_proof_text_preserved": true,
+  "unsanitised_originals_kept_outside_public_packet": true,
+  "checker_replay_requires_manual_full_revision": true,
+  "verbatim_independent_correction_review": {
+    "original_and_public_sha256": "8a67425e96334e105b812d43347dfda4fa6044a072078c7462cdc6f24cad203e",
+    "new_Lean_execution": false
+  }
+}

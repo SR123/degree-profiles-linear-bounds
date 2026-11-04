@@ -1,0 +1,52 @@
+[
+  [
+    "From proof lines to a finite linear closure",
+    [
+      "01_consequences",
+      "02_uniformity",
+      "03_closure",
+      "04_running_order"
+    ]
+  ],
+  [
+    "The lifting principle and the four profiles",
+    [
+      "04_contract",
+      "05_profiles",
+      "06_deletion",
+      "07_lift"
+    ]
+  ],
+  [
+    "Constructing a lift: from square-root to linear bounds",
+    [
+      "08_square_zero",
+      "09_quadratic",
+      "10_linear_layers",
+      "11_rooks",
+      "12_prime"
+    ]
+  ],
+  [
+    "Completing lifting and comparing NS with PC",
+    [
+      "13_transfer",
+      "14_comparison"
+    ]
+  ],
+  [
+    "Examples, witnesses and logical consequences",
+    [
+      "15_examples",
+      "16_matching",
+      "17_models",
+      "18_undecidability"
+    ]
+  ],
+  [
+    "Model answers and a reference map",
+    [
+      "19_solutions"
+    ]
+  ]
+]

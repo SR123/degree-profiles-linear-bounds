@@ -1,0 +1,46 @@
+\documentclass[11pt,a4paper,oneside,openany]{book}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=28mm]{geometry}
+\usepackage{booktabs,array,longtable,enumitem,xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+\hypersetup{pdftitle={Understanding the linear degree gap},pdfauthor={Soren Riis (mathematical direction, supervision and editing)},pdfsubject={AI-generated tutorial textbook on uniform polynomial consequences and the lifting principle},pdfkeywords={proof complexity, uniform consequences, degree profiles, linear lower bounds, AI-generated textbook}}
+\usepackage{fancyhdr}
+\pagestyle{fancy}\fancyhf{}\fancyhead[L]{\small Uniform consequences and the lifting principle}\fancyhead[R]{\small\thepage}
+\renewcommand{\headrulewidth}{0.3pt}\setlength{\headheight}{14pt}
+\setlength{\emergencystretch}{2em}
+\setlist{nosep,leftmargin=*,topsep=5pt}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\NS}{\mathrm{NS}}\newcommand{\PC}{\mathrm{PC}}
+\newcommand{\NN}{\mathbb N}\newcommand{\N}{\mathbb N}\newcommand{\Z}{\mathbb Z}\newcommand{\Q}{\mathbb Q}\newcommand{\Fp}{\mathbb F_p}
+\DeclareMathOperator{\supp}{supp}\DeclareMathOperator{\im}{im}\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\rec}{Rec}\DeclareMathOperator{\Soc}{Soc}\DeclareMathOperator{\Top}{Top}\DeclareMathOperator{\LIS}{LIS}
+\newcommand{\join}{\mathbin{\vee_*}}
+\newcommand{\Ftwo}{\mathbb F_2}
+\newcommand{\D}{\mathcal D}\newcommand{\Del}{\mathcal D}\newcommand{\Lift}{\mathsf L}
+\DeclareMathOperator{\Inj}{Inj}
+\widowpenalty=10000\clubpenalty=10000
+\newtheorem{exercise}[theorem]{Exercise}
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+\newenvironment{checkpoint}{\begin{quote}\small\textbf{Checkpoint.}\ }{\end{quote}}
+\numberwithin{equation}{chapter}
+\usepackage{amscd}
+\title{Understanding the linear degree gap\\[8pt]
+\Large Uniform polynomial consequences and the lifting principle\\[10pt]
+\large An AI-generated tutorial textbook\\[4pt]
+\normalsize Making machine-generated proofs readable}
+\author{\normalsize Mathematical direction, supervision and editing by\\[4pt]
+\large S\o ren Riis}
+\date{Review edition aligned with the paper of 4 November 2026}
+\begin{document}
+\frontmatter
+\hypersetup{pageanchor=false}
+\maketitle
+\hypersetup{pageanchor=true}

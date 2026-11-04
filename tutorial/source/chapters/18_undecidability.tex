@@ -1,0 +1,389 @@
+\chapter{No algorithm can distinguish the types}\label{tx:sec:undecidability}
+Already in the special case of the fixed target $G_n=1$, the
+classification cannot be turned into an algorithm
+which determines the case from a sentence. This remains true under the
+promise that every finite instance is inconsistent. Throughout this section,
+the input is a well-formed normalised sentence and the request is a
+refutation of its translated axioms, with the translation of
+Chapter~\ref{tx:sec:systems}; the characteristic $p$ is fixed.
+For a sentence $\psi$, write $d_S(\psi,n)$ for the least degree of
+deriving $1$ from its size-$n$ translation. This is its refutation
+profile. Its type is the alternative in Theorem~\ref{tx:thm:classification}:
+eventually bounded (T1), no recurring finite level (T2), not eventually bounded with
+a finite nonempty set of recurring levels (T3), or infinitely many
+recurring finite levels (T4).
+
+\section{Knowing the alternatives need not identify the alternative}
+The classification gives four exhaustive structural patterns. It does
+not give an algorithm deciding which pattern belongs to a presented
+uniform family. The reduction below makes this difference sharp even
+for the constant target one, where every finite instance is inconsistent.
+
+Think of a program whose halting is unknown. A uniform computation-prefix
+sentence has models of every finite size if the program never halts.
+If it does halt, a fixed finite prefix supplies a bounded-degree
+contradiction at all large sizes. We use this switch inside a controlled
+join of two example families. The join has one type in the nonhalting
+case and the other type in the halting case. An algorithm distinguishing
+those types would therefore decide halting.
+
+Three algebraic points need proof, and each is supplied below. The
+halting prefix yields an actual bounded-degree NS certificate, not just
+a semantic contradiction. Adjoining a satisfiable block preserves the
+other branch's degree. The guarded disjunction keeps both branches
+visible with at most an additive degree-one overhead. These are the
+connections between the computational reduction and our exact proof
+systems.
+
+An algorithm receives a finite string encoding a sentence: its symbols,
+clauses and function arities can all be read effectively. \emph{Partial
+computable} allows the algorithm to run forever on some inputs.
+The theorem demands termination and a correct answer only on the
+\emph{promised} inputs, namely sentences with no finite nonempty model
+and type in $A\cup B$. It does not demand a procedure for recognising
+that promise. The reduction will produce promised inputs in both
+the halting and the nonhalting case, so a separator could not evade
+them by failing to halt.
+
+\begin{theorem}\label{tx:thm:undecidability}
+Let $A,B$ be disjoint nonempty subsets of $\{\mathrm T_1,\mathrm T_2,
+\mathrm T_3,\mathrm T_4\}$. There is no partial computable algorithm which,
+on every normalised sentence having no finite nonempty model and having
+type in $A\cup B$, halts and correctly distinguishes membership in $A$
+from membership in $B$. This holds for NS and for ordinary PC, over every
+field of characteristic $p$.
+\end{theorem}
+
+In particular, each of the six pairs is undecidable, and so is membership
+in any nonempty proper union of types. The last conclusion is the scope
+of the historical every-union theorem. The pairwise statement requires the
+additional construction below; it does not follow merely by listing all
+the undecidable union problems.
+
+\section{A sentence that records a computation prefix}
+A \emph{reduction} transforms each finite program description into a
+finite sentence description by a fixed effective procedure. It must
+not first decide whether the program halts. Calling the transformation
+\emph{primitive recursive} states a stronger effectiveness property:
+it is built using composition and recursion whose iteration counts
+are given as natural-number arguments. The later unbounded search is performed by the
+program, not by the procedure producing its sentence.
+
+A counter program has finitely many natural-number registers and instructions
+for incrementing a register, branching on zero and decrementing, and halting.
+All registers initially contain zero. The number of registers is finite
+but need not be two. Write $c_M$ for one more than the largest register index
+occurring in $M$, so $c_M\ge1$.
+
+From a program $M$, form a sentence $\theta_M$ with a strict linear order,
+least and greatest elements $o,e$, a successor function $S$, counter-value
+functions $C_r$, and state predicates $Q_\ell$. Require $S(e)=e$ and require
+$S(t)$ to be the immediate successor of $t$ when $t\ne e$. At $o$, all
+counters equal $o$ and the state is the initial one. Exactly one state holds
+at each element, and halting states are forbidden.
+
+At $t\ne e$, the state determines the transition to $S(t)$. Increment
+replaces $C_r(t)$ by $S(C_r(t))$, with the guard $C_r(t)\ne e$.
+Decrement branches according as $C_r(t)=o$; on the positive branch, the new
+value $v$ satisfies $v<C_r(t)$ and $S(v)=C_r(t)$. Other counters are
+unchanged. These are finite universal clauses with flattened function
+graphs, and $M\mapsto\theta_M$ is primitive recursive.
+
+\begin{lemma}[Computation switch]\label{tx:lem:switch}
+If $M$ never halts, $\theta_M$ has a model of every size $n\ge1$.
+If the run of $M$ first reaches a halting state at time $T$, the translated system has an NS refutation of
+degree bounded by a constant $C_M$ at every size $n\ge T+1$.
+\end{lemma}
+\begin{proof}
+In the first case, use $[n]=\{0,\ldots,n-1\}$ in its natural order and
+record the first $n$ configurations. Every counter value at time $j$ is at
+most $j$, so no guarded increment overflows before the last element.
+This includes $n=1$.
+
+For the second case put $a_j=S^j(o)$. If the structure has $T+1$ distinct
+elements, then $a_j\ne e$ for $j<T$: otherwise immediacy of successor and
+linearity of the order leave only $a_0,\ldots,a_j$. Induction along this
+finite prefix forces the actual state at $a_j$ and forces
+$C_r(a_j)=a_{c_r(j)}$, where $c_r(j)$ is the numerical counter value.
+At $a_T$ this gives a forbidden halting state. The argument needs neither
+well-ordering nor an induction axiom in the structure.
+
+This local contradiction gives a degree bound by the finite-term
+certificate in Lemma~\ref{tx:lem:finite-certificate}. More explicitly, with $c_M$
+counters one may take
+\[
+ m=T+2+2c_M(T+1),\qquad
+ C_M=m+\sum_R(m+T+1)^{\operatorname{arity}(R)}
+                  +\max_{C\text{ a clause}}|C|.
+\]
+The term nodes are $o,e,a_1,\ldots,a_T,C_r(a_j),S(C_r(a_j))$;
+$T+1$ distinct additional labels supply the size condition. The constant
+depends on the program and its halting time, never on $n$.
+\end{proof}
+
+For completeness, the reduction needs effective universality, not a
+decision procedure for the halting time. Every primitive recursive function
+can be compiled into finite counter code: composition uses fresh registers,
+and primitive recursion uses a counted loop, preserving the input registers.
+Let $H(k,c)$ equal one when the program with code $c$, on its fixed
+encoded input, halts within $k$ simulated steps, and zero otherwise.
+Bounded simulation computes $H$ by a fixed number of primitive-recursive
+transition updates, so this predicate is primitive recursive. A counter program that successively tests
+$H(0,c),H(1,c),\ldots$ therefore halts exactly when the coded program does.
+Loading $c$ into this fixed search program is primitive recursive. This
+reduces the usual undecidable halting problem to the programs just used.
+Only effective compilation and the standard undecidability of halting are used; the number of counters is unrestricted but finite.
+
+\section{Finite local contradictions and their certificates}
+\label{tx:app:finite-certificate}
+The halting switch uses a fixed finite computation prefix even though
+function totality is expressed by sums with $n$ summands. The following
+elementary certificate construction separates these two sizes.
+
+An acyclic evaluation list is an ordered list of term evaluations
+whose arguments have already been named. This is a dependency condition
+on the list, not a prohibition on a function taking the same value twice;
+constants can be treated as evaluations with no arguments. The proof
+sums over every labelling of that finite list. A \emph{falsity indicator}
+for a Boolean literal is $1-x$ for a positive literal and $x$ for a
+negative literal. The translated clause is the product of its literal
+falsity indicators: it vanishes exactly when at least one literal is
+true. These products are the actual input polynomials used below.
+
+\begin{lemma}[Finite-term certificate]\label{tx:lem:finite-certificate}
+Let $n\ge1$ and let a finite acyclic list of $m$ function evaluations be given, with every
+argument supplied by an earlier node. Fix $b$ distinct labels. Suppose that
+every assignment of labels to the nodes, and every Boolean assignment to
+the relation atoms on the named and fixed labels, either has inconsistent
+function values or falsifies a clause instance whose variables lie among the named and fixed
+labels and all of whose function evaluations occur in the list. If clauses have length at most $L$, the
+graph-and-sum translation has an NS refutation of degree at most
+\[
+                 m+\sum_R(m+b)^{\operatorname{arity}(R)}+L.
+\]
+The hypothesis and conclusion concern sizes for which the $b$ distinct
+labels exist.
+\end{lemma}
+\begin{proof}
+For a labelling $\alpha$ of the nodes, let $q_\alpha$ be the product of the
+$m$ graph variables asserting those function evaluations. Expanding the
+totality sum for each node, in the order of the acyclic list, gives
+\[
+                         \sum_\alpha q_\alpha-1
+\]
+in the degree-$m$ NS span. This is a telescoping identity: at step $j$, the
+product for the first $j-1$ evaluations multiplies the totality equation
+for evaluation $j$. Summing over the possible earlier values gives the
+next partial sum. Repeated graph variables cause no problem.
+
+If $\alpha$ gives different values to the same function on the same input,
+$q_\alpha$ contains a functionality collision and already belongs to the
+span within degree $m$. Otherwise, list the distinct relation variables
+on the at most $m+b$ named labels. Write this actual set as
+$Y_\alpha=\{y_1,\ldots,y_{a_\alpha}\}$, where
+$a_\alpha\leq a_{\mathrm{rel}}=\sum_R(m+b)^{\operatorname{arity}(R)}$.
+Expand over these distinct variables:
+\[
+             1=\prod_{i=1}^{a_\alpha}(y_i+(1-y_i))
+              =\sum_\beta u_\beta.
+\]
+Each $u_\beta$ is the Boolean assignment monomial for one partial relational
+structure. By hypothesis that structure falsifies an available clause.
+Its clause polynomial is a product of at most $L$ falsity indicators.
+Write $P=q_\alpha u_\beta$ and the clause polynomial as
+$F_1\cdots F_\ell$, where each $F_j$ is the falsity indicator of a
+literal false in the chosen partial structure. For each literal,
+$P(1-F_j)$ has an explicit expression in the structural NS span:
+\begin{itemize}
+\item For a positive relation literal, $F_j=1-x$ and $u_\beta=(1-x)u'$.
+Thus $P(1-F_j)=q_\alpha u'x(1-x)=-q_\alpha u'(x^2-x)$.
+For a negative relation literal, $F_j=x$ and $u_\beta=xu'$; the same
+identity with $x(1-x)$ applies.
+\item For a negative graph literal false in the partial structure,
+its graph variable $x$ is one of the chosen evaluations, so
+$q_\alpha=xq'$. Its falsity indicator is $F_j=x$ and
+$P(1-F_j)=-q'u_\beta(x^2-x)$.
+\item For a positive graph literal false there, the chosen evaluation
+has a different output variable $x'$ on the same function input.
+Here $q_\alpha=x'q'$, $F_j=1-x$, and
+$P(1-F_j)=q'u_\beta x'x$, an explicit functionality-axiom multiple.
+\item A false equality or disequality has the constant falsity
+indicator $F_j=1$, so $P(1-F_j)=0$.
+\end{itemize}
+These are all cases of the normalised literals. Each identity has
+product degree at most $m+a_{\mathrm{rel}}+1$.
+The exact telescoping identity
+\[
+ P(1-F_1\cdots F_\ell)
+   =\sum_{j=1}^{\ell}P(1-F_j)\prod_{i<j}F_i
+\]
+therefore puts its left side in the NS span within degree
+$m+a_{\mathrm{rel}}+\ell$. Since $PF_1\cdots F_\ell$ is a
+multiple of the falsified clause axiom, $P$ is in that same span.
+Sum first over $\beta$, then over $\alpha$, and use the totality identity
+to obtain one.
+\end{proof}
+
+
+A \emph{partial structure} for $\theta_M$ has a domain of labels, all relations defined on it, and
+function values defined only on some arguments. It is \emph{locally consistent} if every clause
+instance whose variables take values in the domain, and whose function atoms are all defined,
+has a true literal.
+
+\begin{lemma}[Local switch]\label{tx:lem:local-switch}
+Let the run of $M$ first reach a halting state at time $T$, and let $M$ have $c_M$ counters.
+Suppose a locally consistent partial structure defines $o$, $e$, $a_{j+1}=S(a_j)$ for $j<T$
+\textup{(}with $a_0=o$\textup{)}, $C_r(a_j)$ and $S(C_r(a_j))$ for $j\le T$, $r<c_M$, and that all these
+elements lie in its domain. Then its domain has at most $T$ distinct elements.
+\end{lemma}
+\begin{proof}
+Suppose it contains $T+1$ distinct elements. If $a_j=e$ for some $j<T$, take $j$ least. Every
+domain element $x$ satisfies $x=a_0$ or $a_0<x$ (least element), and, if $a_i<x$ with $i<j$, then
+$x=a_{i+1}$ or $a_{i+1}<x$ (no element strictly between $a_i$ and $S(a_i)$, and linearity). As
+$a_j=e$ is greatest, the domain is $\{a_0,\ldots,a_j\}$, too small. So $a_j\ne e$ for $j<T$, and
+the order clauses make $a_0<a_1<\cdots<a_T$. For the counter induction, the initial clauses give the initial
+state and $C_r(a_0)=a_0$ for every counter. A counter value at time $j$
+is at most $j$, so the notation $a_v$ uses only this named prefix.
+Suppose its states and counters agree through time $j<T$.
+An increment of value $v$ gives $S(a_v)=a_{v+1}$; because $v\le j<T$,
+this successor is among the defined evaluations and its guard is valid.
+The zero branch of a decrement is selected exactly when $v=0$.
+On a positive decrement, the transition specifies a value $y<a_v$
+with $S(y)=a_v$. The immediate-predecessor property forces
+$y=a_{v-1}$: if $y<a_{v-1}$ then $a_{v-1}$ lies strictly between
+$y$ and $S(y)$, and if $a_{v-1}<y<a_v$ then $y$ lies strictly
+between $a_{v-1}$ and $S(a_{v-1})$. Both alternatives contradict
+immediacy. Unchanged counters retain their named values. State
+uniqueness and the chosen transition identify the next state.
+Every clause used has its variables in the domain and its function
+atoms in the specified finite evaluation list. This proves the
+induction through time $T$. At $j=T$ the state is halting, which a clause forbids.
+\end{proof}
+
+\begin{corollary}\label{tx:cor:switch-degree}
+In that case, for every $n\ge T+1$ the translation of $\theta_M$ at size $n$ has an NS refutation
+of degree at most
+\[
+ C_M=m+\sum_R(m+T+1)^{\operatorname{arity}(R)}+\max_{C}|C|,\qquad m=T+2+2c_M(T+1).
+\]
+\end{corollary}
+\begin{proof}
+Apply Lemma~\ref{tx:lem:finite-certificate} to the $m$ evaluations $o$, $e$, $a_1,\ldots,a_T$,
+$C_r(a_j)$, $S(C_r(a_j))$ ($j\le T$, $r<c_M$), each argument supplied by an earlier node, with
+$b=T+1$ fixed labels. A consistent labelling and a Boolean assignment give a partial structure of
+the kind in Lemma~\ref{tx:lem:local-switch}, whose domain contains the $T+1$ fixed labels; so it is not
+locally consistent, which is the hypothesis of Lemma~\ref{tx:lem:finite-certificate}.
+\end{proof}
+
+Here $c_M$ is one more than the largest counter index occurring in $M$ (so $c_M\ge1$), and $T$ must be
+the first halting time. Sizes $n\le T$ are genuine exceptions: $\theta_M$ can have models there.
+
+\section{A disjunction with controlled degree}
+The notation $d_*(\alpha,n)$ below always refers to the original
+graph-and-sum translation of $\alpha$, with target $1$; the symbol $*$
+stands for either NS or ordinary PC.
+A signature is the collection of relation and function symbols.
+Disjoint signatures are obtained by renaming the symbols of one branch,
+so the two polynomial variable families are independent even though
+they use the same universe. \emph{Structural equations} below mean the
+Boolean, function-totality and function-functionality equations of the
+compiler. The clause equations impose the sentence's further demands.
+This distinction lets the inactive branch retain a structural root
+while its clause equations are guarded away.
+
+Conjunction is easy to control when one block is satisfiable. In disjoint
+signatures, if $\beta$ has a root at size $n$, then
+\begin{equation}\label{tx:eq:satisfiable-block}
+ d_*(\alpha\wedge\beta,n)=d_*(\alpha,n),
+ \qquad *=\NS,\PC.
+\end{equation}
+One inequality follows by using the refutation of $\alpha$; the other
+follows by substituting the root of $\beta$ into every proof line.
+
+We also need a disjunction which does not accidentally simplify either
+branch. Introduce a fresh unary relation $Z$. Keep both branches' Boolean,
+totality and functionality equations. Replace every clause polynomial $f$
+of $\alpha$ by $z_t f$, and every clause polynomial $g$ of $\beta$ by
+$(1-z_t)g$, for a fresh universally quantified label $t$. Denote this
+normalised sentence by $\alpha\join\beta$.
+Thus setting every $z_t$ to one exposes the $\alpha$ clauses, while
+setting them to zero exposes the $\beta$ clauses. Keeping the structural
+equations makes either specialisation an actual copy of the selected
+branch's polynomial system.
+
+The guard $z_t$ is itself a Boolean relation variable. Multiplying a
+clause by it makes the clause active when $z_t=1$; multiplying by
+$1-z_t$ selects the other value. The lower-bound specialisations set
+\emph{all} guards to the same value. For the upper bound one label
+$t_0$ suffices, since the universally instantiated inputs include the
+clauses guarded by that label. The hypothesis $n\ge1$ guarantees that
+such a label exists.
+
+\begin{lemma}[Controlled join]\label{tx:lem:join}
+For $n\ge1$, with $\infty$ allowed, each of NS and PC satisfies
+\[
+ \max\{d_*(\alpha,n),d_*(\beta,n)\}
+ \le d_*(\alpha\join\beta,n)
+ \le\max\{d_*(\alpha,n),d_*(\beta,n)\}+1.
+\]
+\end{lemma}
+\begin{proof}
+Set all selectors to one, and give the inactive block a structural root:
+all its functions take one fixed value and all its relations are false.
+Its clauses are guarded away, while its structural equations vanish.
+The resulting proof refutes $\alpha$ without increasing degree. Selectors
+zero give the other lower inequality.
+
+For the upper bound fix a label $t_0$. Simulate each branch refutation
+with its fixed guard $c=z_{t_0}$ or $c=1-z_{t_0}$, representing a branch
+line $f$ by $cf$. A guarded clause is already an axiom. A structural
+input $h$ is retained unguarded, so PC can form $z_{t_0}h$ and,
+for the other guard, $h-z_{t_0}h$. Thereafter a linear combination of
+branch lines is simulated by the same combination of their guarded
+lines, and a step $f\mapsto x_vf$ is simulated by the legal variable
+multiplication $cf\mapsto x_v(cf)$. This uses no unguarded intermediate
+branch line and remains valid after cancellations. Every line has
+degree at most one above the branch budget. The two simulations end
+in $z_{t_0}$ and $1-z_{t_0}$, whose sum is one. For NS the same
+construction multiplies the two certificates by their guards.
+\end{proof}
+
+\section{The reduction}
+Let $\psi_1,\psi_2,\psi_3,\psi_4$ be the four sentences of
+Section~\ref{tx:sec:examples}. Each has no finite nonempty model. For these particular
+witnesses, the dominant type under the maximum operation is ordered by
+\[
+                 \mathrm T_1\prec\mathrm T_4\prec\mathrm T_3\prec\mathrm T_2.
+\]
+This is a property of the chosen witnesses, not an ordering assertion about
+arbitrary profiles. A bounded profile has no effect on the type of a maximum;
+the all-size linear lower bound for $\psi_2$ makes it dominant; and the
+maximum of $\psi_4$ and $\psi_3$ is bounded off the multiples of $p$ and
+linear on them. An additive error of at most one preserves these conclusions.
+More generally, adjoining an eventually bounded profile and allowing this
+error preserves each of the four intrinsic types: recurrence transfers
+through finite intervals of degrees, and unboundedness transfers directly.
+
+Choose indices $a,b$ with $\mathrm T_a\prec\mathrm T_b$ in this order
+and define, using disjoint signatures,
+\[
+             \Phi_M=\psi_a\join(\psi_b\wedge\theta_M).
+\]
+If $M$ does not halt, \eqref{tx:eq:satisfiable-block} makes the second branch
+have exactly the profile of $\psi_b$. The join has type $\mathrm T_b$. If $M$ halts,
+the second branch is eventually bounded by Lemma~\ref{tx:lem:switch}, and the
+join has type $\mathrm T_a$. Every $\Phi_M$ is within the all-finite-inconsistent
+promise, whether or not $M$ halts. The map is primitive recursive and
+uses no information about that alternative. A separator of types $\mathrm T_a,\mathrm T_b$
+would decide halting. Choosing $a$ and $b$ on opposite sides of any
+disjoint nonempty $A,B$ proves Theorem~\ref{tx:thm:undecidability}.
+
+\section{Where the textbook argument ends}
+The general consequence theorem has reduced the target question to a
+support-bounded closure calculation, fulfilled its transfer contract by
+one common projector, and read off the four profiles from fixed-degree
+recurrence. The refutation examples and this reduction show that the
+four alternatives are substantial and cannot be algorithmically
+separated in general. The exercise solutions which follow return to
+small calculations and help check that each logical distinction in this
+route has been retained.

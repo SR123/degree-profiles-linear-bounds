@@ -1,0 +1,583 @@
+\chapter{What it means for a family to be uniform}\label{tx:ch:uniformity}\label{tx:sec:systems}
+The number of variables in our examples grows, but the rule describing
+them does not. At universe size $n$ there may be a variable $x_{ij}$ for
+every pair of labels $i,j<n$, an equation for every row, and a target
+for every distinguished label. The classification theorem requires a
+precise version of this fixed-rule condition. Symmetry at each size,
+by itself, does not imply the four complexity profiles: the equations
+could be chosen differently at each size, according to an arbitrary
+rule. We need symmetry together with one coefficient rule which remains
+the same as the universe grows.
+
+For the main proof, this chapter has three jobs: specify the labelled
+variables, fix the coefficient rule for the axioms, and do the same for
+the requested targets. The intervening orbit-sum and compression results
+explain the geometry of supported expressions, but the linear lower
+bound does not use compression. On a first reading, one may pass from
+Definition~\ref{tx:def:template} and its examples directly to
+Sections~\ref{tx:sec:target-request}--\ref{tx:sec:target-budgets}, then
+return to the structural results later.
+
+\section{Labels, support, and relabelling}
+We also call the universe size $n$ the \emph{rank} of the labelled
+family. It counts available labels. The dimension of a polynomial
+space at that rank is a separate number, usually much larger.
+
+Write $[n]=\{0,\ldots,n-1\}$. Think of its members as names rather
+than numerical values. A variable $x_{ij}$ is indexed by the ordered
+pair $(i,j)$, and relabelling by a permutation $\pi$ sends it to
+$x_{\pi(i),\pi(j)}$. The labels needed to specify that index are
+$\{i,j\}$; this is the support of the pair, and therefore of the
+variable indexed by it. When $i=j$, its support has size one, not two.
+Permutations fixing those labels leave that variable unchanged. We
+start with individual indices because monomials and whole polynomial
+expressions can have different kinds of support, as the row-sum example
+below will show.
+
+\begin{definition}[Bounded basis system]\label{tx:def:basis}
+A bounded basis system is a collection of objects labelled from one
+infinite pool $\NN$, with an action of label permutations. There is
+one fixed integer $b$, independent of $n$ and of the object, and each
+object $v$ is assigned a set $\supp(v)\subseteq\NN$ with
+$|\supp(v)|\le b$. Supports are equivariant:
+$\supp(\pi v)=\pi(\supp(v))$. Every permutation fixing
+$\supp(v)$ pointwise fixes $v$. At rank $n$, we keep precisely the
+objects whose supports lie in $[n]$; we require that this set be finite.
+We call $b$ a support bound for the system.
+\end{definition}
+
+Examples include ordered pairs, tuples with specified equality patterns,
+and finitely many tagged sorts of such tuples. There may also be objects
+with empty support: a distinguished variable $y$ fixed by every label
+permutation is an example. A support bound is a bound on the labels
+needed by one object, not on the number of objects present at rank $n$.
+The important requirement is the \emph{same bound at every rank}.
+Finiteness at one rank would not provide that: a bound of $n$ would
+grow with the universe and would not be a bounded-support system in
+this sense.
+
+A variable basis $\mathcal V$ gives the ring
+$K[x_v:v\in\mathcal V_n]$. We write $P_{n,\le D}$ for its vector
+space of polynomials of total degree at most $D$. If each variable has support at most $k$,
+a monomial of degree at most $d$ involves at most $kd$ labels: it has
+at most $d$ variable factors, each involving at most $k$ labels. Powers
+and overlapping supports may make the true number smaller.
+
+\begin{example}[The row sum mentions every label]\label{tx:eg:row-support}
+With variables $x_{ij}$, consider
+\[
+                         f_{i,n}=\sum_{j<n}x_{ij}-1.
+\]
+Its index is $i$, of support one. Every permutation of $[n]$ fixing $i$ fixes the
+whole polynomial, because it merely permutes the summands. Nevertheless
+the union of labels mentioned in the polynomial is generally all of
+$[n]$. Each monomial uses at most two labels, and the index uses one;
+neither assertion says that the whole polynomial uses only one or two
+labels. This distinction permits totality sums in the theory.
+\end{example}
+
+\section{Stable coefficient rules}
+\begin{definition}[Uniform axiom template]\label{tx:def:template}
+A uniform template consists of a variable basis $\mathcal V$ with
+support bound $k\ge1$, an axiom-index basis $\mathcal A$ with support
+bound $s$, and coefficients $c(a,\mu)\in K$. Here $a$ is an axiom
+index and $\mu$ is a monomial in the labelled variables. The rule is
+independent of rank and invariant under simultaneous relabelling:
+\[
+                 c(\pi a,\pi\mu)=c(a,\mu).
+\]
+For a fixed $D$, it vanishes whenever $\deg\mu>D$. At rank $n$ the
+inputs are
+\begin{equation}\label{tx:eq:template-instance}
+ \Gamma_n=\{f_{a,n}:a\in\mathcal A_n\},\qquad
+ f_{a,n}=\sum_{\mu\text{ supported in }[n]}c(a,\mu)\mu.
+\end{equation}
+Fix $n_0\ge\max\{1,kD+s\}$ as part of the template data.
+\end{definition}
+
+Because there are finitely many variables at each rank and the degree
+is bounded, each displayed sum is finite. The same coefficients are
+used when the universe grows; there are simply more monomials available.
+For the row sum, the coefficient of $x_{ij}$ is one when its row index
+is $i$, the constant coefficient is minus one, and other coefficients
+are zero. None of these rules asks how large $n$ is.
+
+For a group acting on indices, the \emph{orbit} of $a$ is the set
+of all its relabellings $\pi a$. Its \emph{stabiliser} consists of the
+permutations which fix $a$. These familiar group-action notions have
+a specific use here: indices in the same orbit describe the same
+coefficient pattern with different label names. Fixing a support
+\emph{pointwise} means fixing each of its labels, not merely preserving
+the set of labels as a whole. Later, $H_S$ denotes the subgroup fixing
+the distinguished set $S$ pointwise.
+
+The stable range allows us to recognise the degree of an axiom from
+its index orbit. A monomial witnessing the largest nonzero coefficient
+uses at most $kD$ labels. Together with the axiom index it uses at most
+$kD+s$. A permutation fixing the index can move all the additional
+labels into $[n]$ when $n\ge kD+s$. Hence, beyond $n_0$, each index
+orbit has one fixed polynomial degree. This matters when deciding which
+multiplier--axiom products are legal at a proposed proof degree.
+
+\begin{example}[Symmetric but not uniform]\label{tx:eg:not-uniform}
+Choose an arbitrary set $A$ of positive integers. At rank $n\in A$
+let the inputs be $\{1\}$, and at other ranks let there be no inputs.
+Each instance is invariant under every label permutation. Yet the
+refutation degree is zero on $A$ and infinite elsewhere. Arbitrary
+choices of $A$ cannot satisfy the periodic conclusions of this book.
+They are excluded because the axiom rule changes with rank.
+\end{example}
+
+\section{Supported expressions are orbit-sum expressions}\label{tx:sec:supported-expressions}
+The row sum suggests a converse question. Suppose we are given a
+polynomial and know that every permutation outside a short list of
+labels fixes it. Can we describe the polynomial by a uniform rule?
+At one rank the answer is yes. To represent a whole family by one
+rule, we also need compatibility as rank changes.
+
+Here is the support notion for a whole expression. At rank $n$, a set
+$S\subseteq[n]$ \emph{supports a polynomial $F$} if every permutation
+of $[n]$ fixing $S$ pointwise fixes $F$. The permutation may move every
+other label. This is different from collecting every label mentioned
+in its monomials. For example, $\sum_{j<n}x_j$ has empty support as an
+expression, although its monomials collectively mention all labels.
+The row sum $f_{i,n}$ is supported by $\{i\}$ in this sense.
+
+\begin{proposition}[Orbit-sum description]\label{tx:prop:orbit-sum}
+Let $F$ have degree at most $D$, and let $H_S$ be the permutations of
+$[n]$ fixing $S$ pointwise. The polynomial $F$ is supported by $S$
+exactly when it has a unique expression
+\[
+             F=\sum_O a_O\,\Omega_{O,n},\qquad
+             \Omega_{O,n}=\sum_{\mu\in O}\mu,
+\]
+where $O$ runs over the $H_S$-orbits of degree-at-most-$D$ monomials.
+\end{proposition}
+\begin{proof}
+Relabelling permutes the monomial basis. Thus $hF=F$ for all $h\in H_S$
+exactly when monomials in the same orbit have the same coefficient.
+Collect these equal coefficients to obtain the displayed sum.
+Different orbits have disjoint monomial sets, so the orbit sums are
+linearly independent and their coefficients are unique.
+\end{proof}
+
+This is a grouping of distinct monomials, not an average over a group.
+In particular, it is valid in characteristic $p$ even when the order
+of the stabiliser is divisible by $p$.
+
+\begin{example}[All supported linear expressions in one-variable indices]\label{tx:eg:supported-linear}
+For variables $x_j$ and a distinguished label $i$, every linear
+polynomial fixed by the permutations fixing $i$ has the form
+\[
+                    a x_i+b\sum_{j\ne i}x_j+c.
+\]
+For $n\ge2$ there are three monomial orbits: the constant monomial, $x_i$, and all
+other variables. At $n=1$ the last orbit is absent, so its coefficient
+cannot yet be recovered from the polynomial. At $n\ge2$ all three
+orbits are present. Keeping $a,b,c$ fixed gives a uniform expression
+at every larger rank.
+\end{example}
+
+\subsection{From one supported expression to one uniform template}
+Return to a variable basis of support at most $k$. Each monomial of
+degree at most $D$ uses at most $r=kD$ labels. Let $s=|S|$ and choose
+an ordering $a_0$ of $S$. Relative to those $s$ distinguished labels,
+every global monomial orbit can be represented using at most $s+r$
+labels in total. Hence all its orbit types are visible at any rank
+$n\ge s+r$ containing $S$.
+
+\begin{proposition}[Uniform extension of one supported polynomial]\label{tx:prop:supported-extension}
+Suppose $n\ge s+kD$ and $F\in P_{n,\le D}$ is supported by an
+$s$-element set $S$. Using ordered distinct $s$-tuples as indices, there
+is a unique rank-independent, simultaneously relabelling-invariant
+coefficient rule of degree at most $D$ whose polynomial at index
+$a_0$ and rank $n$ is $F$. It gives a uniform axiom or target orbit
+with index-support bound $s$ and no increase in polynomial degree.
+\end{proposition}
+\begin{proof}
+Consider a pair $(a,\mu)$ consisting of an ordered distinct $s$-tuple
+and a monomial of degree at most $D$. First relabel $a$ to $a_0$.
+The remaining monomial labels can then be moved into $[n]$ by a
+permutation fixing $S$, because there are at most $kD$ of them and
+$n-s\ge kD$. Thus every global orbit of pairs has a representative
+$(a_0,\mu_0)$ at the chosen rank.
+
+Assign to that orbit the coefficient of $\mu_0$ in $F$. This value
+does not depend on the representative. Indeed, a global relabelling
+between two such representatives fixes $a_0$. Its restriction to the
+labels used by the tuple and monomial is a finite injection within
+$[n]$, which extends to a permutation of $[n]$ fixing $S$. It therefore
+relates the two monomials by $H_S$, and their coefficients agree by
+Proposition~\ref{tx:prop:orbit-sum}.
+
+The assigned value defines $c(a,\mu)$ on all pairs, with zero
+coefficients above degree $D$. Being constant on simultaneous pair
+orbits makes it relabelling invariant. Summing its coefficients over
+rank-$m$ monomials gives the required polynomial for every index
+available at rank $m$. At the original rank and index, every coefficient
+agrees with $F$. All pair orbits already occurred there, so the
+coefficient rule is unique.
+\end{proof}
+
+Thus one supported polynomial at a sufficiently large rank determines
+its uniform continuation. This does not say that a separately chosen
+polynomial at every rank necessarily follows that continuation.
+
+\subsection{The additional condition for a whole family}
+For $m\le n$, let $\rho_{n,m}$ retain the coefficients of monomials
+supported in $[m]$ and discard the other monomials. This is the
+coefficient restriction map, rather than a transport rule for proof
+steps. A stable uniform family satisfies
+\begin{equation}\label{tx:eq:coefficient-coherence}
+        \rho_{n,m}(F_{a,n})=F_{a,m}
+        \quad\text{whenever the index }a\text{ is supported in }[m].
+\end{equation}
+
+\begin{proposition}[Characterisation of a stable coefficient rule]\label{tx:prop:coherent-family}
+Fix bounded variable and index bases and a degree bound $D$. A family
+$F_{a,n}\in P_{n,\le D}$, defined for every $n\ge1$ and every index
+$a$ available at that rank, comes from one uniform coefficient rule if
+and only if it is equivariant under permutations at each rank and
+satisfies \eqref{tx:eq:coefficient-coherence}.
+\end{proposition}
+\begin{proof}
+A uniform rule gives equivariance by simultaneous relabelling of
+indices and monomials. Restriction preserves exactly its coefficients
+on the retained monomials, proving coherence.
+
+Conversely, for a global pair $(a,\mu)$ choose a rank containing all
+its labels and define its coefficient to be the coefficient of $\mu$
+in $F_{a,n}$. Coherence makes this independent of the chosen rank.
+To compare it with the coefficient of $(\pi a,\pi\mu)$, choose a
+larger rank containing the labels of both pairs. The action of $\pi$
+on the finite support of the pair extends to a permutation of that
+rank. Equivariance there gives equality of the two coefficients.
+The resulting rule has all the required properties, and reproduces
+the family coefficient by coefficient.
+\end{proof}
+
+For example, $F_n=a_n\sum_{i<n}x_i$ is invariant at every rank for
+\emph{any} sequence of scalars $a_n$. If the scalars change, the
+coefficient of a retained variable changes, and coherence fails.
+Small support and bounded degree control the form of an expression;
+coherence controls its behaviour across different universe sizes.
+
+\section{Smaller-support generators: what can be compressed?}\label{tx:sec:support-compression}
+The bound $kD$ applies to one monomial. It need not bound the number
+of distinguished labels needed to specify a polynomial. A further,
+different possibility is to replace a polynomial's entire permutation
+orbit by generators with smaller support. First we state a sufficient
+condition for replacing axioms without changing proof degrees.
+
+\begin{proposition}[Degree-preserving axiom replacement]\label{tx:prop:filtered-replacement}
+Suppose two axiom sets $\Gamma$ and $\Gamma'$ in the same polynomial
+ring satisfy, for every integer $e\ge0$,
+\[
+ \Span_K\{f\in\Gamma:\deg f\le e\}
+       =\Span_K\{g\in\Gamma':\deg g\le e\}.
+\]
+Then every target has the same least NS degree and the same least PC
+degree from the two sets, including degree zero and infinity.
+\end{proposition}
+\begin{proof}
+An input $f\in\Gamma$ of degree $e$ is a constant-coefficient linear
+combination of inputs from $\Gamma'$ of degree at most $e$. In an NS
+certificate replace $f$ by that combination. Every new multiplier--input
+product has degree no larger than the product it replaces, since its
+new input degree is at most $e$. This transforms any certificate
+without increasing its degree. In a PC derivation, derive each old
+input by these linear combinations of new inputs, within its old
+degree, and then reuse the original inference steps. This also
+preserves the degree budget. Interchanging the two sets gives the
+converse transformations and proves equality of their least degrees.
+\end{proof}
+
+The increasing spaces
+$A_e=\Span_K\{f\in\Gamma:\deg f\le e\}$ form a \emph{filtration}:
+$A_0\subseteq A_1\subseteq\cdots$, organised by the usable input degree.
+The replacement criterion compares this entire filtration.
+The unrestricted span forgets which inputs were usable at each cutoff.
+
+An arbitrary change of basis for the full axiom span need not meet this
+condition. In Example~\ref{tx:eg:cancellation}, replacing $f_2$ by
+$f_1+f_2=x+1$ leaves the axiom span unchanged, but now
+$z=z(x+1)+f_3$ is an NS certificate of degree two. From the original
+axioms the least NS degree is three, as Exercise~\ref{tx:ex:small-gap}
+shows. Equality of the unrestricted span alone therefore does not
+justify a claim about exact proof degrees. The proposition supplies
+a sufficient condition by comparing the inputs usable at \emph{each}
+degree.
+
+The next example satisfies the criterion and supplies a successful
+support compression.
+
+\begin{proposition}[Compression of a linear subset sum]\label{tx:prop:linear-compression}
+Let $\varnothing\ne S\subsetneq[n]$, put $s=|S|$, and consider
+$F_S=\sum_{i\in S}x_i$. Its smallest support as an expression has size
+$\min\{s,n-s\}$. Nevertheless its $S_n$-orbit span has generators
+supported on at most two labels. More precisely, with $s$ interpreted
+as a scalar in $K$,
+\[
+ \Span_K\{\pi F_S:\pi\in S_n\}=
+ \begin{cases}
+     \Span_K\{x_i:i<n\},&s\ne0\text{ in }K,\\
+     \Span_K\{x_i-x_j:i,j<n\},&s=0\text{ in }K.
+ \end{cases}
+\]
+\end{proposition}
+\begin{proof}
+The coefficient of $x_i$ is one on $S$ and zero off $S$. If labels
+outside a proposed support include one label of each kind, swapping
+those two labels changes the polynomial. Thus a support must contain
+all of $S$ or all of its complement, and either choice is sufficient.
+This proves the minimum-support formula.
+
+Take $i\in S$ and $j\notin S$. Then
+\[
+                       F_S-(ij)F_S=x_i-x_j.
+\]
+Relabelling shows that the orbit span contains every difference.
+Those differences span the subspace
+$A=\{\sum_i a_ix_i:\sum_i a_i=0\}$: fix a label $j$ and write a
+vector of $A$ as $\sum_{i\ne j}a_i(x_i-x_j)$.
+Each orbit vector has coefficient sum $s$. If $s=0$ in $K$, the
+orbit span is contained in $A$ and is therefore exactly $A$. If
+$s\ne0$, it also contains $F_S\notin A$; since $A$ has codimension
+one, it is the whole linear polynomial space.
+\end{proof}
+
+For example, $\sum_{i\in S}x_i$ can need many labels to specify even
+though each monomial uses only one. The proposition replaces its orbit
+span, not the polynomial itself, by one- or two-label generators.
+All replacements are linear combinations of the original orbit
+polynomials and conversely. Thus making this replacement in an axiom
+set changes neither the NS nor the PC consequence spaces at any
+positive degree budget: the starting linear spans agree, and all
+replacement equations have degree one.
+
+The two-label bound can really be necessary. Suppose the characteristic
+$p$ divides both $n$ and $s$, with $n\ge3$. A vector of $A$ supported
+by at most one label $i$ has the form
+$a x_i+b\sum_{j\ne i}x_j$. Its coefficient sum is
+$a+(n-1)b=a-b$, so $a=b$. Such vectors are scalar multiples of the
+fully invariant sum $\sum_jx_j$. They span only one dimension, whereas
+$A$ has dimension $n-1$. Consequently one-label generators cannot
+replace the whole orbit span in this case.
+
+\begin{example}[Four-label axioms replaced by two-label axioms]\label{tx:eg:four-to-two}
+In characteristic two, let $\Gamma_n$ consist of all sums
+$\sum_{i\in S}x_i$ over four-element subsets $S\subseteq[n]$.
+For every $n\ge5$, their span is exactly the span of the differences
+$x_i-x_j$. Thus we can replace all the four-label equations by the
+two-label equations $x_i-x_j=0$, preserving every NS and PC consequence
+degree. Both descriptions have fixed coefficient rules across ranks.
+The starting-rank condition matters: at $n=4$ there is only one
+four-element subset, so its single sum does not span all differences.
+
+At $n=12$, an individual four-label sum has smallest support four,
+whereas its orbit span has two-label generators. Since the characteristic
+divides both 12 and 4, the preceding argument shows that one-label
+generators would not suffice. This gives a concrete reason to distinguish
+the polynomial's own support from the support of generators for its
+orbit span.
+\end{example}
+
+The general compression question has been resolved in separate
+companion work~\cite{CompressionCompanion}; its proof is not developed
+in this book. In the stable-template setting over a field, put $r=kD$.
+There is one coherent replacement template with the same variables
+and degree bound, and with axiom-index support at most $2r$, such that
+for every
+\[
+                  n\ge\max\{n_0,\max(s,r)+2r\}
+\]
+the old and new axiom spans agree at \emph{every input-degree cutoff}.
+The replacement criterion above then preserves every target's least
+NS degree and its least ordinary-PC degree separately, including zero
+and infinity. This is an optional normal form, not an assertion about
+arbitrary submodules without a bound on the starting supports, and not
+an executable compression algorithm. No equivalence at the exceptional
+small ranks is claimed.
+
+The monomial bound $kD$ alone does not establish that compression;
+the companion proof supplies an additional structural argument.
+The lifting and classification proofs below retain the given index
+support $s$ in their budget $2kd+s+t$; they do not assume that it has
+already been compressed to $kD$ or $2kD$.
+
+\section{Targets also need a fixed rule}\label{tx:sec:target-request}
+\begin{definition}[Uniform target request]\label{tx:def:target}
+A uniform target family for a fixed axiom template has a target-index
+basis $\mathcal B$ with support bound $t$, a fixed degree bound $D_G$,
+and coefficients $\gamma(b,\mu)\in K$. They are independent of rank,
+invariant under simultaneous relabelling of $b$ and $\mu$, and zero
+above degree $D_G$. The rank-$n$ target indexed by $b\in\mathcal B_n$ is
+\[
+                  G_{b,n}=\sum_{\mu\text{ supported in }[n]}
+                                     \gamma(b,\mu)\mu.
+\]
+For $S=\NS$ or $\PC$, define the all-target profile
+\begin{equation}\label{tx:eq:target-profile}
+ h_S(n)=\max_{b\in\mathcal B_n}h_S(\Gamma_n\vdash G_{b,n}).
+\end{equation}
+The empty maximum is zero. If any requested target is underivable,
+the maximum is infinity.
+\end{definition}
+
+The statement $h_S(n)\le d$ means that \emph{every} requested target
+has some derivation within degree $d$. Those derivations need not share
+lines, and their total length is not bounded. This is a maximum of
+individual minimum degrees, not the degree of the sum of the targets.
+Nor are the targets inserted into the axiom system.
+
+There are three scopes which we will keep distinct.
+\begin{enumerate}
+\item A fully invariant target has a single index of empty support.
+Its polynomial $G_n$ is fixed by every permutation of $[n]$. For
+example, $G_n=\sum_{i<n}x_i$ is invariant and has degree one, although
+it mentions all labels.
+\item A fixed target orbit can contain many indices at a rank. For
+$G_{i,n}=x_i$, the indices $i$ form one orbit. Any one representative
+has the same least degree as every other representative, since
+relabelling transports proofs.
+\item An all-target request may contain several orbits. Its profile
+is the maximum of their individual profiles.
+\end{enumerate}
+
+Every global index orbit has a representative at rank $n\ge t$.
+Indeed, move its support into $[t]$. There are only finitely many global
+orbits because $\mathcal B_t$ is finite. Within one orbit, two rank-$n$
+indices can be related by a permutation of $[n]$: first use the given
+relabelling on their supports and then extend that finite bijection.
+Thus choosing a representative which varies with $n$ is harmless
+\emph{provided it stays in one fixed orbit}. Switching between different
+orbits according to an arbitrary rule is not a uniform request.
+
+\section{Stable target degrees and the label budgets}\label{tx:sec:target-budgets}
+The same support argument used for axioms applies to targets, now with
+at most $kD_G+t$ labels. We therefore use
+\begin{equation}\label{tx:eq:stable-rank}
+                          n_*=\max\{n_0,1,kD_G+t\}.
+\end{equation}
+Beyond this rank, every target orbit has a fixed degree. Their largest
+degree is a floor for both all-target profiles. A proof budget below
+that floor fails; we do not replace the target by its lower-degree
+part in order to make it fit.
+
+For an axiom multiplier, the combined support of a monomial of degree
+at most $d$ and an axiom index is at most $kd+s$. For multiplication
+inside a PC proof, a variable and a monomial of degree at most $d-1$
+use at most $k+k(d-1)=kd$ labels. These elementary counts explain why
+proof degree enters the transfer theorem linearly.
+
+General indexed targets require a further detection argument. The
+resulting safe budget is
+\begin{equation}\label{tx:eq:support-budget}
+                R(d)=2kd+s+t=\kappa d+\sigma,
+                    \qquad\kappa=2k,\quad\sigma=s+t.
+\end{equation}
+For one fully invariant target the sharper budget is $R(d)=kd+s$.
+The factor of two in the general case is not an extra degree cost in a
+proof. It is a support cost in the finite-dimensional argument which
+shows that target membership is reflected, as well as preserved, when
+labels are deleted.
+
+\section{Where first-order systems enter}
+A universal clause is a disjunction of literals required to hold for
+every assignment of its logical variables to universe labels. A
+\emph{literal} is an atom or its negation. A \emph{grounding} replaces
+all those logical variables by particular labels; one clause pattern
+therefore produces many polynomial equations at rank $n$.
+For example, grounding $R(u)\vee\neg R(v)$ at $u=i,v=j$ gives the
+clause whose polynomial translation appears below.
+
+The normalised syntax is fixed before proof degrees are measured.
+\emph{Flattened} function-graph atoms name an output explicitly,
+as in $f(i)=j$, instead of putting nested function terms inside an
+atom. They can therefore be indexed by bounded tuples of labels.
+Equality between two grounded labels is evaluated as equality of
+those labels; it is not an extra unknown relation.
+
+A fixed first-order sentence can supply a uniform template. Relation
+atoms receive Boolean variables. A function $f$ is represented by its
+graph variables $x^f_{\bar i,j}$, with equations
+\[
+ \sum_{j<n}x^f_{\bar i,j}-1=0,\qquad
+ x^f_{\bar i,j}x^f_{\bar i,j'}=0\quad(j\ne j').
+\]
+Boolean equations make each value zero or one; collision equations give
+at most one output; the sum gives at least one. The collisions cannot
+be dropped in characteristic $p$, where $p+1$ ones also sum to one.
+A clause is translated as a product of its literal-falsity indicators.
+For example $R(i)\vee\neg R(j)$ gives $(1-r_i)r_j=0$.
+
+Fixed arities and a fixed finite list of clause patterns give bounded
+variable and axiom-index supports, and expansion gives a stable
+coefficient rule. Functions of arity zero represent constants. There
+is no built-in numerical order on the labels: an order, if used in a
+sentence, is a relation symbol with its own axioms. Later examples keep
+this graph-and-sum encoding visible, since an arbitrary change of
+encoding need not preserve minimum degree.
+
+\begin{proposition}[Normalised first-order compiler]\label{tx:prop:compiler}
+A fixed finite list of universal clauses in flattened relation, function
+graph, and equality atoms gives a uniform template by the displayed
+translation. At every $n\ge1$, its roots over $K$ correspond exactly
+to models on $[n]$ of that normalised sentence.
+\end{proposition}
+\begin{proof}
+Use atom tuples as variable indices, and grounding tuples as clause
+indices. Totality and collision indices are fixed tuples as well.
+Expansion of a clause product depends only on the fixed syntax and on
+equalities among the grounding labels; it therefore gives stable,
+simultaneously invariant coefficients, including repetitions and
+cancellations. If $a_R,a_f$ are the maximum relation and function
+arities, safe parameters are
+\[
+ k=a_R+a_f+1,\qquad s=k+1+\max_C\operatorname{nvars}(C),\qquad
+ D=2+\max_C|C|,\qquad n_0=kD+s+1.
+\]
+Here $\operatorname{nvars}(C)$ is one more than the largest variable
+index occurring in $C$, and is one if none occurs; an unused variable
+slot is harmless. Maxima over empty symbol or clause lists may be taken
+as zero where appropriate.
+
+At a root, every relation and graph variable is zero or one. Totality
+and collisions select exactly one output for each function input, and
+a clause product vanishes precisely when one of its literals is true.
+Equality atoms use their actual label-equality values. This constructs
+a model. Conversely a model supplies the corresponding Boolean values
+and satisfies all translated equations.
+\end{proof}
+
+Normalisation is part of the input convention. This proposition does
+not say that different normalisations, or arbitrary introductions of
+witness functions, preserve exact proof degree. The later examples use
+specific normalised sentences so that their equations are unambiguous.
+
+\section{Exercises}
+\begin{exercise}\label{tx:ex:support-count}
+For variables $x_{ij}$, find the label supports and total degrees of
+$x_{ij}^3$ and $x_{ij}x_{jk}$ when $i,j,k$ are distinct. Compare the
+actual supports with the general bound $2d$. Explain why the row sum
+in Example~\ref{tx:eg:row-support} has an index of support one.
+\end{exercise}
+\noindent{\small\hyperref[tx:ans:support-count]{Model answer (p.~\pageref*{tx:ans:support-count}).}}\par\medskip
+
+\begin{exercise}\label{tx:ex:orbit-switch}
+Take no axioms, a single variable $x$ of empty support, and two target
+indices of empty support requesting $0$ and $x$. Determine the two
+fixed-orbit profiles and the all-target profile. What happens if one
+chooses the first target at sizes in an arbitrary set and the second
+elsewhere?
+\end{exercise}
+\noindent{\small\hyperref[tx:ans:orbit-switch]{Model answer (p.~\pageref*{tx:ans:orbit-switch}).}}\par\medskip
+
+\begin{exercise}\label{tx:ex:stable-floor}
+Take variables $x_i$, no axioms, and targets $x_i-x_j$ indexed by
+ordered distinct pairs. Use $k=1,s=0,t=2,D_G=1,n_0=1$ to compute $n_*$.
+At which positive ranks does this request actually contain a target?
+Why is the stated stable rank allowed to be larger than necessary?
+\end{exercise}
+\noindent{\small\hyperref[tx:ans:stable-floor]{Model answer (p.~\pageref*{tx:ans:stable-floor}).}}\par\medskip
+

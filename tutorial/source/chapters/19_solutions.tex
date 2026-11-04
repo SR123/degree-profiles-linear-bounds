@@ -1,0 +1,985 @@
+\chapter{Model answers and a notation guide}\label{tx:ch:solutions}
+This chapter gives a model answer to every numbered exercise in the book.
+Each question is repeated, followed by the calculation or proof needed
+to justify the conclusion. Upper bounds and lower bounds are checked
+separately when an exact minimum degree is requested.
+
+The index links to all seventeen answers; the exercise number links
+back to its original question. There is also a direct model-answer
+link beside every original exercise. The notation guide follows the
+answers. These are written pedagogical arguments, not additional
+Lean-verified theorem endpoints.
+
+\section*{Index of model answers}
+\addcontentsline{toc}{section}{Index of model answers}
+\begin{longtable}{@{}lp{0.62\textwidth}r@{}}
+\toprule
+Exercise & Topic & Answer page\\
+\midrule
+
+\ref{tx:ex:zero-constant} & \hyperref[tx:ans:zero-constant]{Empty input and the constant axiom} & \pageref{tx:ans:zero-constant}\\
+
+\ref{tx:ex:small-gap} & \hyperref[tx:ans:small-gap]{A degree-two PC proof and a degree-three NS identity} & \pageref{tx:ans:small-gap}\\
+
+\ref{tx:ex:Boolean-rule} & \hyperref[tx:ans:Boolean-rule]{Why Boolean reduction is not a degree-two PC step} & \pageref{tx:ans:Boolean-rule}\\
+
+\ref{tx:ex:support-count} & \hyperref[tx:ans:support-count]{Monomial support and row-index support} & \pageref{tx:ans:support-count}\\
+
+\ref{tx:ex:orbit-switch} & \hyperref[tx:ans:orbit-switch]{Fixed requests and arbitrary orbit switching} & \pageref{tx:ans:orbit-switch}\\
+
+\ref{tx:ex:stable-floor} & \hyperref[tx:ans:stable-floor]{The safe target-stability rank} & \pageref{tx:ans:stable-floor}\\
+
+\ref{tx:ex:closure-zero} & \hyperref[tx:ans:closure-zero]{Exactly which constants are derivable at degree zero} & \pageref{tx:ans:closure-zero}\\
+
+\ref{tx:ex:closure-witness} & \hyperref[tx:ans:closure-witness]{A semantic consequence outside every PC closure} & \pageref{tx:ans:closure-witness}\\
+
+\ref{tx:ex:dense-count} & \hyperref[tx:ans:dense-count]{Full coefficient lists and the squarefree count} & \pageref{tx:ans:dense-count}\\
+
+\ref{tx:ex:period-arithmetic} & \hyperref[tx:ans:period-arithmetic]{The strict prime-power period and inverse onset} & \pageref{tx:ans:period-arithmetic}\\
+
+\ref{tx:ex:forward-only} & \hyperref[tx:ans:forward-only]{Forward persistence does not preserve exact minima} & \pageref{tx:ans:forward-only}\\
+
+\ref{tx:ex:valuation-profile} & \hyperref[tx:ans:valuation-profile]{Recurring levels, liminf and finite linear peaks} & \pageref{tx:ans:valuation-profile}\\
+
+\ref{tx:ex:zero-T3} & \hyperref[tx:ans:zero-T3]{Where stability at degree zero is essential} & \pageref{tx:ans:zero-T3}\\
+
+\ref{tx:ex:sum-versus-individual} & \hyperref[tx:ans:sum-versus-individual]{The invariant sum and the individual targets} & \pageref{tx:ans:sum-versus-individual}\\
+
+\ref{tx:ex:fresh-small} & \hyperref[tx:ans:fresh-small]{The exact fresh-target degrees over any field} & \pageref{tx:ans:fresh-small}\\
+
+\ref{tx:ex:fresh-window} & \hyperref[tx:ans:fresh-window]{Eligible lower windows and the exceptional size} & \pageref{tx:ans:fresh-window}\\
+
+\ref{tx:ex:fresh-soundness} & \hyperref[tx:ans:fresh-soundness]{Extension-field soundness and the extra Boolean term} & \pageref{tx:ans:fresh-soundness}\\
+
+\bottomrule
+\end{longtable}
+\clearpage
+
+\section{Proof rules and minimum degrees}
+
+\begin{samepage}
+
+\subsection*{Model answer to Exercise~\ref{tx:ex:zero-constant}}\label{tx:ans:zero-constant}
+
+\begin{quote}\small\textbf{Question.} Find the least NS and PC degrees of the targets $0$, $1$, and $x$ from
+$\Gamma=\varnothing$ and from $\Gamma=\{1\}$. Explain the role of the
+last-line degree floor.
+\end{quote}
+
+\paragraph{Model answer.}
+The answer is the same in NS and ordinary PC:
+\[
+ \begin{array}{c|ccc}
+ \Gamma & h_S(\Gamma\vdash0)&h_S(\Gamma\vdash1)&h_S(\Gamma\vdash x)\\
+ \hline
+ \varnothing&0&\infty&\infty\\
+ \{1\}&0&0&1
+ \end{array}
+ \qquad(S\in\{\NS,\PC\}).
+\]
+\end{samepage}
+
+From empty input, an NS identity has no nonzero summands. In PC the
+only initial line available is zero; linear combinations and variable
+multiplication keep it zero. Thus neither system can produce \(1\)
+or \(x\). Zero has the empty NS certificate and a one-line PC proof,
+both of degree zero.
+
+From \(\{1\}\), the input itself proves \(1\) in degree zero.
+For \(x\), NS uses the identity \(x=x\cdot1\); PC lists \(1\) and
+then multiplies by \(x\). These proofs have degree one. The last-line
+degree floor gives \(h_{\PC}\ge\deg x=1\), and
+\(h_{\NS}\ge h_{\PC}\) gives the same lower bound for NS.
+Thus the displayed upper bounds are exact. In particular, inconsistency
+of the inputs does not make a nonconstant target a degree-zero consequence.
+
+
+\noindent{\small\hyperref[tx:ex:zero-constant]{Return to Exercise~\ref*{tx:ex:zero-constant}.}}\par
+
+
+\begin{samepage}
+
+\subsection*{Model answer to Exercise~\ref{tx:ex:small-gap}}\label{tx:ans:small-gap}
+
+\begin{quote}\small\textbf{Question.} For Example~\ref{tx:eg:cancellation}, prove
+$h_{\PC}(\Gamma\vdash z)=2$ and
+$h_{\NS}(\Gamma\vdash z)=3$. For the NS lower bound, list the monomials
+which can occur in a degree-two certificate.
+\end{quote}
+
+\paragraph{Model answer.}
+Work over \(\mathbb F_2\), with
+\[
+ f_1=xy+x,\qquad f_2=xy+1,\qquad f_3=xz.
+\]
+A complete PC derivation is
+\[
+ \begin{array}{c|l|l}
+ \text{line}&\text{polynomial}&\text{justification}\\ \hline
+ 1&xy+x&f_1\\
+ 2&xy+1&f_2\\
+ 3&xz&f_3\\
+ 4&x+1&1+2\\
+ 5&xz+z&z\text{ times line }4\\
+ 6&z&5+3
+ \end{array}
+\]
+Here the notation \(1+2\) means addition of the polynomials on those
+two numbered lines. Every line has degree at most two. Multiplication
+on line 5 is legal within that budget because line 4 has actual
+degree one after cancellation.
+\end{samepage}
+
+No nonzero input is usable at degree at most one: all three inputs
+have degree two. Starting from zero alone produces only zero.
+Therefore \(h_{\PC}(\Gamma\vdash z)=2\).
+
+For NS, expand the identity
+\[
+ z=zf_1+zf_2+f_3
+   =(xyz+xz)+(xyz+z)+xz.
+\]
+Its product degree is three. In a degree-two certificate, each nonzero
+multiplier must be constant, since each input has degree two and
+nonzero product degrees add over a field. Such a certificate has form
+\[
+ af_1+bf_2+cf_3=(a+b)xy+ax+b+cxz.
+\]
+The only monomials which can occur are \(xy,x,1,xz\). The coefficient
+of the monomial \(z\) is always zero, so this expression cannot equal
+the target. Hence \(h_{\NS}(\Gamma\vdash z)=3\).
+
+
+\noindent{\small\hyperref[tx:ex:small-gap]{Return to Exercise~\ref*{tx:ex:small-gap}.}}\par
+
+
+\begin{samepage}
+
+\subsection*{Model answer to Exercise~\ref{tx:ex:Boolean-rule}}\label{tx:ans:Boolean-rule}
+
+\begin{quote}\small\textbf{Question.} A proposed degree-two PC calculation multiplies the derived line $xy$
+by $x$ and replaces $x^2y$ by $xy$, using a Boolean equation. Explain
+why this is not an ordinary degree-two step, even if $x^2-x$ is an input.
+\end{quote}
+
+\paragraph{Model answer.}
+Ordinary PC works with actual polynomials before reduction. The
+proposed multiplication produces
+\[
+                         x\cdot xy=x^2y,
+\]
+which has degree three. That intermediate line already violates the
+degree-two budget.
+\end{samepage}
+
+The Boolean input would permit the correction
+\[
+                 y(x^2-x)=x^2y-xy,
+\]
+but multiplying that input by \(y\) also produces a degree-three line.
+Subtracting the correction would eventually give \(xy\), but the
+degree of the proof counts both degree-three intermediate lines.
+
+In the quotient by the Boolean equation the classes of \(x^2y\)
+and \(xy\) agree. Ordinary PC has no rule which performs multiplication
+and quotient reduction together as one degree-two inference.
+This identifies the error in the proposed step; it does not exclude
+some different legal degree-two derivation in a system with additional axioms.
+
+
+\noindent{\small\hyperref[tx:ex:Boolean-rule]{Return to Exercise~\ref*{tx:ex:Boolean-rule}.}}\par
+
+
+\section{Uniformity and support}
+
+\begin{samepage}
+
+\subsection*{Model answer to Exercise~\ref{tx:ex:support-count}}\label{tx:ans:support-count}
+
+\begin{quote}\small\textbf{Question.} For variables $x_{ij}$, find the label supports and total degrees of
+$x_{ij}^3$ and $x_{ij}x_{jk}$ when $i,j,k$ are distinct. Compare the
+actual supports with the general bound $2d$. Explain why the row sum
+in Example~\ref{tx:eg:row-support} has an index of support one.
+\end{quote}
+
+\paragraph{Model answer.}
+Each pair-indexed variable uses at most two labels.
+With \(i,j,k\) distinct, the requested counts are
+\[
+ \begin{array}{c|c|c|c}
+ \text{monomial}&\text{degree }d&\text{label support}&2d\\ \hline
+ x_{ij}^3&3&\{i,j\}\text{ (size }2)&6\\
+ x_{ij}x_{jk}&2&\{i,j,k\}\text{ (size }3)&4
+ \end{array}
+\]
+A power repeats the same variable and introduces no extra labels.
+In the second monomial, the two variable supports overlap at \(j\).
+These are the reasons the general union bound \(2d\) is not an equality.
+\end{samepage}
+
+For the row axiom \(f_{i,n}=\sum_{j<n}x_{ij}-1\), the axiom
+index is \(i\), with support \(\{i\}\). If a permutation \(\pi\)
+fixes \(i\), then
+\[
+ \pi f_{i,n}=\sum_{j<n}x_{i,\pi(j)}-1=f_{i,n},
+\]
+because \(\pi\) merely reorders the summands. The whole row sum can
+mention every label while still having a one-label axiom index.
+Its individual monomials and its axiom index are different basis objects.
+
+
+\noindent{\small\hyperref[tx:ex:support-count]{Return to Exercise~\ref*{tx:ex:support-count}.}}\par
+
+
+\begin{samepage}
+
+\subsection*{Model answer to Exercise~\ref{tx:ex:orbit-switch}}\label{tx:ans:orbit-switch}
+
+\begin{quote}\small\textbf{Question.} Take no axioms, a single variable $x$ of empty support, and two target
+indices of empty support requesting $0$ and $x$. Determine the two
+fixed-orbit profiles and the all-target profile. What happens if one
+chooses the first target at sizes in an arbitrary set and the second
+elsewhere?
+\end{quote}
+
+\paragraph{Model answer.}
+Let \(h_0\) be the profile for the fixed target \(0\), \(h_x\) that
+for the fixed target \(x\), and \(h_{\mathrm{all}}\) the profile for
+the two-target request. At every rank,
+\[
+            h_0(n)=0,\qquad h_x(n)=\infty,\qquad
+            h_{\mathrm{all}}(n)=\max\{0,\infty\}=\infty.
+\]
+These statements hold separately for NS and PC. The zero certificate
+or zero line proves \(0\), whereas empty input cannot derive any
+nonzero polynomial.
+\end{samepage}
+
+If the selected target is \(0\) at ranks in \(A\) and \(x\) elsewhere,
+the selected profile becomes
+\[
+ h_A(n)=
+ \begin{cases}0,&n\in A,\\ \infty,&n\notin A.\end{cases}
+\]
+Thus its degree-zero threshold can encode an arbitrary set of ranks.
+The two available target sorts have stable coefficient rules, but
+this rank-dependent selection is neither one fixed global orbit nor
+the fixed all-target request. It therefore falls outside the theorem's
+request convention. In particular, arbitrary orbit switching cannot
+be used to infer another case of the four-profile classification.
+
+
+\noindent{\small\hyperref[tx:ex:orbit-switch]{Return to Exercise~\ref*{tx:ex:orbit-switch}.}}\par
+
+
+\begin{samepage}
+
+\subsection*{Model answer to Exercise~\ref{tx:ex:stable-floor}}\label{tx:ans:stable-floor}
+
+\begin{quote}\small\textbf{Question.} Take variables $x_i$, no axioms, and targets $x_i-x_j$ indexed by
+ordered distinct pairs. Use $k=1,s=0,t=2,D_G=1,n_0=1$ to compute $n_*$.
+At which positive ranks does this request actually contain a target?
+Why is the stated stable rank allowed to be larger than necessary?
+\end{quote}
+
+\paragraph{Model answer.}
+The prescribed parameters give
+\[
+          n_*=\max\{n_0,1,kD_G+t\}
+              =\max\{1,1,1+2\}=3.
+\]
+At rank \(1\) there is no ordered pair of distinct labels, so the
+request is empty and its degree is zero in both systems.
+At every rank \(n\ge2\), such pairs exist and every target
+\(x_i-x_j\) is a nonzero degree-one polynomial, including in
+characteristic two. There are no axioms from which to derive it.
+Consequently
+\[
+       h_S(1)=0,\qquad h_S(n)=\infty\quad(n\ge2).
+\]
+\end{samepage}
+
+The actual nonempty request and its degree floor stabilise at rank
+two. The theorem's rank three is a sufficient uniform bound obtained
+by adding a monomial-support bound and an index-support bound.
+Here those supports overlap, so the general bound is conservative.
+A safe theorem onset need not be the smallest onset for each example.
+
+
+\noindent{\small\hyperref[tx:ex:stable-floor]{Return to Exercise~\ref*{tx:ex:stable-floor}.}}\par
+
+
+\section{The closure and its coordinates}
+
+\begin{samepage}
+
+\subsection*{Model answer to Exercise~\ref{tx:ex:closure-zero}}\label{tx:ans:closure-zero}
+
+\begin{quote}\small\textbf{Question.} Describe $I_0$ and $C_0$ for an arbitrary system. Prove directly that a
+nonzero constant target has a degree-zero proof exactly when an input
+is a nonzero constant.
+\end{quote}
+
+\paragraph{Model answer.}
+Let \(K\cdot1\) denote the one-dimensional space of constants.
+Then
+\[
+ I_0=C_0=
+ \begin{cases}
+   \{0\},&\Gamma\text{ contains no nonzero constant},\\
+   K\cdot1,&\Gamma\text{ contains a nonzero constant}.
+ \end{cases}
+\]
+At degree zero, no nonconstant input can be listed in PC. In NS,
+a nonzero product has degree zero only when both its multiplier
+and its input are constants. Zero inputs contribute nothing.
+Thus both systems start with the span of the constant inputs.
+\end{samepage}
+
+PC multiplication of a nonzero constant by a variable raises its
+degree to one, so it contributes no new degree-zero vector. Multiplying
+zero still gives zero. Hence the starting span is the whole closure
+at degree zero, and it equals the NS span.
+
+If \(c\in\Gamma\) is a nonzero constant and the target is a constant
+\(a\ne0\), the identity \(a=(a/c)c\) is an NS certificate of degree
+zero and also a legal PC scalar combination. Conversely, a nonzero
+degree-zero consequence requires a nonzero constant in that initial
+span, so at least one such input must be present.
+
+
+\noindent{\small\hyperref[tx:ex:closure-zero]{Return to Exercise~\ref*{tx:ex:closure-zero}.}}\par
+
+
+\begin{samepage}
+
+\subsection*{Model answer to Exercise~\ref{tx:ex:closure-witness}}\label{tx:ans:closure-witness}
+
+\begin{quote}\small\textbf{Question.} With input $\Gamma=\{x^2\}$, show that every vector in every closure
+$C_d$ has zero coefficient of $x$. Deduce that $x$ is underivable,
+although it vanishes at every field-valued solution of $\Gamma$.
+\end{quote}
+
+\paragraph{Model answer.}
+Every input belongs to the ideal \((x^2)\). Linear combinations and
+variable multiplication preserve that ideal, so an induction on PC
+lines shows that every derived polynomial is divisible by \(x^2\).
+Its coefficient of the monomial \(x\) is therefore zero.
+\end{samepage}
+
+In the one-variable ambient ring \(K[x]\), the closure can be written
+explicitly:
+\[
+ C_d=
+ \begin{cases}
+ \{0\},&d<2,\\
+ \Span_K\{x^2,x^3,\ldots,x^d\},&d\ge2.
+ \end{cases}
+\]
+The forward inclusion follows from divisibility and the degree
+cutoff. The reverse inclusion follows by repeatedly multiplying the
+input \(x^2\) by \(x\) and then taking linear combinations.
+If the ambient ring has additional variables, the divisibility
+argument still applies, with more multiples of \(x^2\) in the closure.
+
+The target \(x\) belongs to none of these spaces; its least PC
+degree is infinity. It has no NS identity either, since \(x\notin(x^2)\).
+On the other hand, a field has no nonzero element whose square is
+zero. Every field-valued solution of \(x^2=0\) consequently satisfies
+\(x=0\). Vanishing at all roots and algebraic derivability are distinct.
+
+
+\noindent{\small\hyperref[tx:ex:closure-witness]{Return to Exercise~\ref*{tx:ex:closure-witness}.}}\par
+
+
+\begin{samepage}
+
+\subsection*{Model answer to Exercise~\ref{tx:ex:dense-count}}\label{tx:ans:dense-count}
+
+\begin{quote}\small\textbf{Question.} List the monomials counted by $B_2(2)$, and compare the full coefficient
+list of $x^2$ with its sparse representation. For $v\ge d$, identify
+explicitly the $2^d$ entries used in the final lower bound of
+Lemma~\ref{tx:lem:dense-size}.
+\end{quote}
+
+\paragraph{Model answer.}
+With the variable order \(x,y\), one ordering of the degree-at-most-two
+monomials is
+\[
+                       1,\ x,\ y,\ x^2,\ xy,\ y^2.
+\]
+Thus \(B_2(2)=\binom{2+2}{2}=6\). In that ordering the full coefficient
+list of \(x^2\) is \((0,0,0,1,0,0)\). A sparse representation instead
+records only the coefficient \(1\) and the exponent pair \((2,0)\).
+These representations charge for different data.
+\end{samepage}
+
+For \(v\ge d\), choose distinct variables \(x_1,\ldots,x_d\).
+Every subset \(S\subseteq\{1,\ldots,d\}\) gives a squarefree monomial
+\[
+                            \prod_{i\in S}x_i.
+\]
+Its degree is \(|S|\le d\), so it has an entry in the full coefficient
+list. Distinct subsets have different exponent vectors and give
+distinct monomials. There are \(2^d\) subsets, including the empty
+subset, whose monomial is \(1\). This proves \(B_v(d)\ge2^d\);
+the argument also includes \(d=0\), where there is one entry.
+
+
+\noindent{\small\hyperref[tx:ex:dense-count]{Return to Exercise~\ref*{tx:ex:dense-count}.}}\par
+
+
+\section{Periodicity, recurrence, and peaks}
+
+\begin{samepage}
+
+\subsection*{Model answer to Exercise~\ref{tx:ex:period-arithmetic}}\label{tx:ans:period-arithmetic}
+
+\begin{quote}\small\textbf{Question.} Let $p=2$, $\kappa=4$, $\sigma=4$, and $n_*=7$. Compute $N(0),Q(0)$,
+$N(3),Q(3)$ and $\beta(62)$. Check $N(\beta(62))\le62$ and explain
+why the strict inequality defining $Q$ matters.
+\end{quote}
+
+\paragraph{Model answer.}
+Here \(R(d)=4d+4\). Degree zero uses its separate definition:
+\[
+                            N(0)=7,\qquad Q(0)=1.
+\]
+It is not obtained by substituting zero into the positive-degree
+period formula.
+\end{samepage}
+
+At degree three,
+\[
+ \begin{aligned}
+ R(3)&=4\cdot3+4=16,\\
+ N(3)&=\max\{7,2\cdot16+1\}=33,\\
+ Q(3)&=\min\{2^a:2^a>16\}=32.
+ \end{aligned}
+\]
+Although \(16\) is a power of two, it equals the support budget and
+does not satisfy the strict inequality. Taking it as \(Q(3)\)
+would use an unproved transfer step.
+
+For the inverse onset, the numerator is positive, so
+\[
+ \begin{aligned}
+ \beta(62)
+   &=\left\lfloor\frac{(62-2\cdot4-1)_+}{2\cdot4}\right\rfloor
+     =\left\lfloor\frac{53}{8}\right\rfloor=6,\\
+ N(\beta(62))
+   &=N(6)=\max\{7,2(4\cdot6+4)+1\}=57\le62.
+ \end{aligned}
+\]
+For comparison, \(N(7)=65>62\). The value \(\beta(62)=6\)
+locates the largest integer threshold guaranteed by this displayed
+onset formula. It makes no claim that a sharper theorem could not
+give a larger admissible threshold.
+
+
+\noindent{\small\hyperref[tx:ex:period-arithmetic]{Return to Exercise~\ref*{tx:ex:period-arithmetic}.}}\par
+
+
+\begin{samepage}
+
+\subsection*{Model answer to Exercise~\ref{tx:ex:forward-only}}\label{tx:ans:forward-only}
+
+\begin{quote}\small\textbf{Question.} For $g(1)=2$ and $g(n)=1$ for $n\ge2$, verify forward persistence of
+every threshold under $n\mapsto n+1$. Identify a reverse threshold
+implication that fails. Explain why exact recurrence of the starting
+value cannot be deduced from forward persistence alone.
+\end{quote}
+
+\paragraph{Model answer.}
+For nonnegative integer thresholds \(d\), all cases are
+\[
+ \begin{array}{c|c}
+ d&\{n\ge1:g(n)\le d\}\\ \hline
+ 0&\varnothing\\
+ 1&\{2,3,4,\ldots\}\\
+ d\ge2&\{1,2,3,\ldots\}.
+ \end{array}
+\]
+Each set is closed under \(n\mapsto n+1\), proving forward
+persistence of every threshold. A predicate can become true at the
+next rank while still having this property.
+\end{samepage}
+
+At threshold one the reverse implication fails:
+\[
+                 g(2)=1\le1,\qquad g(1)=2>1.
+\]
+The starting exact value \(2\) occurs only once, whereas value \(1\)
+occurs at every later rank. Forward persistence preserves the upper
+bound \(g(n)\le2\) but does not exclude a drop to a smaller minimum.
+To preserve the exact value two, one would also need reverse
+comparison at threshold one. This is why the recurrence argument
+uses two-way transfer at lower thresholds as well as at the chosen budget.
+
+
+\noindent{\small\hyperref[tx:ex:forward-only]{Return to Exercise~\ref*{tx:ex:forward-only}.}}\par
+
+
+\begin{samepage}
+
+\subsection*{Model answer to Exercise~\ref{tx:ex:valuation-profile}}\label{tx:ans:valuation-profile}
+
+\begin{quote}\small\textbf{Question.} For $h(n)=p^{v_p(n)}$, determine every recurring value, its liminf,
+and a sequence of finite linear peaks. Explain why no eventual linear
+lower bound holds at all sizes.
+\end{quote}
+
+\paragraph{Model answer.}
+Every value of \(h(n)=p^{v_p(n)}\) is a power \(p^a\), with \(a\ge0\).
+For each fixed \(a\), the ranks
+\[
+                     n_j=p^a(1+pj),\qquad j=0,1,2,\ldots
+\]
+have valuation \(a\), since \(p\nmid1+pj\). They tend to infinity
+and all satisfy \(h(n_j)=p^a\). Thus the recurring finite values
+are exactly
+\[
+                         E(h)=\{1,p,p^2,p^3,\ldots\}.
+\]
+\end{samepage}
+
+Every value is at least one. At the unbounded sequence of ranks
+\(n=1+pj\) the value is one, giving
+\[
+                            \liminf_{n\to\infty}h(n)=1.
+\]
+For finite linear peaks take \(n_a=p^a\). Then
+\[
+                          h(n_a)=p^a=n_a\longrightarrow\infty.
+\]
+Each peak is finite and lies exactly on the line \(h=n\).
+
+There is no eventual all-size lower bound \(h(n)\ge cn\) with \(c>0\).
+Given \(c\) and any proposed starting rank, choose \(n=1+pj\) above
+that rank and above \(1/c\). Then \(h(n)=1<cn\).
+This exercise concerns the displayed abstract sequence. It does not
+assert that the normalised weak-bijection system has these exact
+degrees or that its rectangle lower bound applies at \(n=p^a\).
+
+
+\noindent{\small\hyperref[tx:ex:valuation-profile]{Return to Exercise~\ref*{tx:ex:valuation-profile}.}}\par
+
+
+\begin{samepage}
+
+\subsection*{Model answer to Exercise~\ref{tx:ex:zero-T3}}\label{tx:ans:zero-T3}
+
+\begin{quote}\small\textbf{Question.} Show that T3 cannot have $E(h)=\{0\}$. State exactly where stability of
+the degree-zero predicate is used.
+\end{quote}
+
+\paragraph{Model answer.}
+If \(E(h)=\{0\}\), zero recurs at arbitrarily large ranks, in
+particular at some \(n\ge n_*\). The degree-zero threshold is
+constant beyond \(n_*\). Since it is true at that rank, it must
+be true at every rank \(m\ge n_*\):
+\[
+                              h(m)\le0.
+\]
+All degrees are nonnegative, so \(h(m)=0\) throughout that range.
+The profile is eventually bounded and is T1, contrary to the
+unboundedness required in T3.
+\end{samepage}
+
+The essential use of zero-degree stability is the implication
+that truth at one eligible rank gives truth at every eligible rank.
+Mere periodicity with a larger period would not suffice. For example,
+the arbitrary sequence which is zero at even ranks and equals \(n\)
+at odd ranks is unbounded and has only zero as an infinitely recurring
+finite value. Its zero predicate is not eventually constant, so it
+is excluded by the theorem's zero-degree input.
+
+Equivalently, the actual zero-degree period is \(Q(0)=1\).
+There is no nonempty proper easy-residue set modulo one from which
+to build a T3 split with only the easy value zero.
+
+
+\noindent{\small\hyperref[tx:ex:zero-T3]{Return to Exercise~\ref*{tx:ex:zero-T3}.}}\par
+
+
+\section{Consequences and concrete examples}
+
+\begin{samepage}
+
+\subsection*{Model answer to Exercise~\ref{tx:ex:sum-versus-individual}}\label{tx:ans:sum-versus-individual}
+
+\begin{quote}\small\textbf{Question.} For the consistent family of Proposition~\ref{tx:prop:consistent-T3},
+compute the two profiles at sizes $1,2,3,4,5,6$ in characteristic three.
+Compare the invariant sum request with the indexed request for every
+individual variable. Which statements have finite proof degrees?
+\end{quote}
+
+\paragraph{Model answer.}
+In characteristic three, set
+\[
+ \Gamma_n=\{x_i-1:i<n\},\qquad G_n=\sum_{i<n}x_i.
+\]
+Write \(h_{\mathrm{sum}}\) for the invariant target profile and
+\(h_{\mathrm{ind}}\) for the request for every target \(x_i\).
+The table applies to both NS and ordinary PC:
+\[
+ \begin{array}{c|cccccc}
+ n&1&2&3&4&5&6\\ \hline
+ h_{\mathrm{sum}}(n)&\infty&\infty&1&\infty&\infty&1\\
+ h_{\mathrm{ind}}(n)&\infty&\infty&\infty&\infty&\infty&\infty
+ \end{array}
+\]
+\end{samepage}
+
+Summing the inputs gives \(G_n-n\). At \(n=3,6\), the scalar \(n\)
+is zero in the field, so
+\[
+                            G_n=\sum_{i<n}(x_i-1).
+\]
+This is an NS certificate of degree one and gives a PC proof of
+the same degree. The target is a nonzero linear polynomial, so its
+degree floor proves that the minimum is exactly one.
+
+For the other four ranks, the assignment \(x_i=1\) satisfies all
+inputs but has \(G_n=n\ne0\) in the field. Soundness excludes any
+derivation. The same assignment has \(x_i=1\ne0\) for every
+individual target at every positive rank, excluding the indexed
+request in all six cases.
+The finite proofs in this table are precisely those for the sum at
+ranks three and six. A sum being derivable does not make its summands derivable.
+
+
+\noindent{\small\hyperref[tx:ex:sum-versus-individual]{Return to Exercise~\ref*{tx:ex:sum-versus-individual}.}}\par
+
+
+\begin{samepage}
+
+\subsection*{Model answer to Exercise~\ref{tx:ex:fresh-small}}\label{tx:ans:fresh-small}
+
+\begin{quote}\small\textbf{Question.} For $\Gamma=\{x,1-x\}$ over an arbitrary field, write a degree-one PC
+proof of the fresh target $y$ and prove that its least NS degree is two.
+Do not insert an axiom involving $y$.
+\end{quote}
+
+\paragraph{Model answer.}
+A legal PC proof over any field is
+\[
+ \begin{array}{c|l|l}
+ 1&x&\text{input}\\
+ 2&1-x&\text{input}\\
+ 3&1&1+2\\
+ 4&y&y\text{ times line }3.
+ \end{array}
+\]
+All lines have degree at most one. The target degree is one, so
+\(h_{\PC}(\Gamma^\uparrow\vdash y)=1\).
+\end{samepage}
+
+For NS,
+\[
+                            y=yx+y(1-x).
+\]
+Both nonzero products have degree two, giving an upper bound two.
+In a degree-one certificate, each multiplier of the degree-one
+inputs must be constant. Any such sum is
+\[
+                       ax+b(1-x)=(a-b)x+b
+                       \qquad(a,b\in K),
+\]
+which has no \(y\)-term. It cannot equal \(y\).
+Thus \(h_{\NS}(\Gamma^\uparrow\vdash y)=2\).
+
+PC first derives the constant \(1\), then multiplies only that last
+line. In NS the extra \(y\) is carried in the multipliers of the
+original inputs, increasing each product degree. No input involving
+\(y\), including \(y^2-y\), has been introduced.
+
+
+\noindent{\small\hyperref[tx:ex:fresh-small]{Return to Exercise~\ref*{tx:ex:fresh-small}.}}\par
+
+
+\begin{samepage}
+
+\subsection*{Model answer to Exercise~\ref{tx:ex:fresh-window}}\label{tx:ans:fresh-window}
+
+\begin{quote}\small\textbf{Question.} In characteristic three, apply the fresh-$y$ bounds to the normalised
+weak-bijection family at $n=6$ and $n=36$. What can the stated bounds
+say at $n=9$? Distinguish the lower-bound size condition from the
+all-size upper certificate.
+\end{quote}
+
+\paragraph{Model answer.}
+Use \(q=3^{v_3(n)}\). The numerical data are
+\[
+ \begin{array}{c|c|c|c|c}
+ n&q&n\ge2q?&h_{\PC}\text{ bounds}&h_{\NS}\text{ bounds}\\ \hline
+ 6&3&\text{yes}&3\le h_{\PC}\le7&4\le h_{\NS}\le8\\
+ 36&9&\text{yes}&9\le h_{\PC}\le13&10\le h_{\NS}\le14\\
+ 9&9&\text{no}&h_{\PC}\le13&h_{\NS}\le14
+ \end{array}
+\]
+Indeed \(6=3\cdot2\) and \(36=3^2\cdot4\), so their valuations
+are one and two, respectively. Both satisfy the rectangle size
+condition. The original refutation bounds and the fresh-target
+identities give
+\[
+ \begin{aligned}
+ q\le d_{\PC}(\widehat B_n)\le q+4
+   &\ \Longrightarrow\ q\le h_{\PC}\le q+4,\\
+ q\le d_{\NS}(\widehat B_n)\le q+4
+   &\ \Longrightarrow\ q+1\le h_{\NS}\le q+5.
+ \end{aligned}
+\]
+Here \(q\ge1\), so the PC maximum with one changes nothing.
+\end{samepage}
+
+At \(n=9\), the valuation is still two, but \(9<2q=18\).
+The quoted rectangle lower window supplies neither \(h_{\PC}\ge9\)
+nor \(h_{\NS}\ge10\). The all-size NS upper certificate, followed
+by the fresh-target construction, still supplies the displayed
+upper bounds. The target floor gives \(h_{\PC},h_{\NS}\ge1\),
+and \(h_{\PC}\le h_{\NS}\) remains valid at every size.
+The displayed windows are bounds, not assertions of exact minimum degrees.
+
+
+\noindent{\small\hyperref[tx:ex:fresh-window]{Return to Exercise~\ref*{tx:ex:fresh-window}.}}\par
+
+
+\begin{samepage}
+
+\subsection*{Model answer to Exercise~\ref{tx:ex:fresh-soundness}}\label{tx:ans:fresh-soundness}
+
+\begin{quote}\small\textbf{Question.} Suppose $\Gamma$ has a root over some extension field of $K$. Explain
+why the fresh target $y$ is underivable from $\Gamma^\uparrow$.
+If one instead adds $y^2-y$ as an axiom, identify the extra term which
+appears when extracting the coefficient of $y^1$ from an NS identity.
+Why does the original coefficient-extraction proof no longer apply
+unchanged?
+\end{quote}
+
+\paragraph{Model answer.}
+Let \(a\) be a root of the old inputs over \(E\supseteq K\).
+Extend it to the fresh variable by assigning \(y=1\).
+Every old axiom is independent of \(y\), so still evaluates to zero,
+whereas the target evaluates to one.
+\end{samepage}
+
+An NS identity for \(y\), even with coefficients in \(E\), would
+evaluate to the impossible equality \(1=0\). In PC, each input,
+linear combination and variable multiple evaluates to zero by
+induction, so a last line evaluating to one is impossible.
+Thus \(y\) is underivable over \(K\) and over \(E\).
+
+If \(y^2-y\) is instead added as an axiom, a proposed NS identity has
+the form
+\[
+                 y=\sum_f a_f(x,y)f(x)+b(x,y)(y^2-y).
+\]
+For each old input,
+\([y^1](a_f f)=([y^1]a_f)f\). For the new summand,
+\[
+ [y^1]\bigl(b(x,y)y^2\bigr)=0,\qquad
+ [y^1]\bigl(-b(x,y)y\bigr)=-b(x,0).
+\]
+Taking the coefficient of \(y\) therefore gives
+\[
+                       1=\sum_f([y^1]a_f)f-b(x,0).
+\]
+The extra term \(-b(x,0)\) need not be a multiple of an old input.
+Hence this is not the old refutation certificate obtained when no
+\(y\)-axiom was present. The original one-degree-saving extraction
+argument cannot be reused unchanged.
+
+The soundness obstruction above does survive addition of the Boolean
+axiom: the extended root with \(y=1\) satisfies \(y^2-y=0\) as well.
+The obstruction and the exact-degree certificate argument have
+different hypotheses. This calculation does not assert a new
+degree identity for inconsistent inputs after adding that axiom.
+
+
+\noindent{\small\hyperref[tx:ex:fresh-soundness]{Return to Exercise~\ref*{tx:ex:fresh-soundness}.}}\par
+
+
+\section{Notation guide}
+The entries below give the local meaning of frequently reused symbols
+and a few terms needed in the later chapters. A degree budget bounds
+actual proof lines or NS products, while a support budget bounds labels
+in one basis object. Neither is the universe size. Terms such as design
+and witness refer to linear tests; they need not describe a solution of
+the equations.
+
+\begin{description}[style=nextline,leftmargin=1em,labelindent=0pt,labelwidth=0pt]
+\item[$\Gamma_n$] The input polynomials at universe size $n$, all
+interpreted as equations equal to zero.
+\item[$G_{b,n}$] The requested target polynomial with target index $b$.
+The target is not an additional axiom.
+\item[$h_S(n)$] The maximum of the least degrees for the requested
+targets; infinity means at least one target is underivable. An empty
+request has profile zero.
+\item[$d_S(\Gamma_n)$] The special minimum degree for deriving $1$.
+For a translated sentence $\psi$, this is also written $d_S(\psi,n)$.
+\item[$k,s,t$] Bounds on supports of one variable, one axiom index,
+and one target index. They do not bound the labels in a whole sum.
+\item[$d,D,D_G$] A proposed proof-degree bound, a fixed input-degree
+bound in the template, and a fixed target-degree bound, respectively.
+In the T3 argument, the locally specified $D=\max E(h)$ instead denotes
+the largest recurring degree; in the matching chapter, $D$ is a proof budget.
+\item[$P_{n,\le d},P_b(N)$] The ordinary polynomial space of degree at
+most $d$, and the tuple space $K[\Inj([b],[N])]$, respectively.
+The integer $b$ counts tuple positions, while $d$ bounds polynomial degree.
+\item[$I_d,C_d$] The NS span of axiom products of degree at most $d$,
+and the stable ordinary-PC consequence closure in $P_{n,\le d}$.
+\item[$W,W_N,W_d(n)$] $W$ is a locally specified ambient space or,
+in an exact sequence, its quotient term. $W_N$ denotes a degree-cutoff
+polynomial ambient, whereas $W_d(n)$ in the model-theory chapter is
+the chosen NS or PC consequence subspace. In commutator calculations,
+$W=[D,z]$ is instead an invertible operator. The displayed type fixes
+which meaning is intended.
+\item[$C$] A chosen complement or chain-start space in the layer
+construction; also a fresh label set in the quadratic construction
+and a column set on a rook board. In the injection certificate,
+$C=\sum_j c_j$ is a polynomial. These local meanings are distinct
+from the PC closure $C_d$ and the annihilator class $\mathcal C_r$.
+\item[$r=R(d),\kappa,\sigma$] The support budget $R(d)=\kappa d+\sigma$.
+For indexed targets $(\kappa,\sigma)=(2k,s+t)$; for invariant targets
+they are $(k,s)$.
+In the rectangular matching system $B_{r,m}$, $r$ instead counts
+rows; the rook-forcing proof specifies its row set $R$ separately.
+\item[$n,N=n+q$] A retained universe size and the larger size before
+a block of labels is deleted.
+\item[$z,u,w,e$] The block translation operator, its top power
+$u=z^{p-1}$, a common group-algebra witness with $uwu=u$, and the
+resulting projector. The witness identity holds on tuple spaces of
+length at most $r$. Products and powers of these operators mean
+composition; $z^p=0$ means that $p$ successive applications give zero.
+In Lemma~\ref{tx:lem:detect}, $u$ instead names an integer support
+bound. In $n=p^au$ it is the factor not divisible by $p$.
+The scalar grade $e\in\mathbb F_p$ in the layer splitting is also
+distinct from the projector $e$.
+\item[$\Del,\Lift$] Deletion is the quotient
+$\ker z/(\ker z\cap\im z)$. The lift $\Lift=e\iota$ first includes
+a smaller-rank polynomial and then applies the common projector.
+\item[$V',\mathcal Z_b,T_b$] In $V=P_b(N)$, marginal maps $\partial_i$
+sum over one tuple position. The incoming space is
+$V'=\sum_i\im\partial_i^{\mathsf T}$, the zero-marginal space is
+$\mathcal Z_b=\bigcap_i\ker\partial_i=(V')^\perp$, and the top quotient
+is $T_b=V/V'$.
+\item[$J_r(N),\mathcal C_r(N)$] The common group-algebra annihilator of
+all tuple spaces of length at most $r$, and the modules killed by that
+ideal. The latter class is also called $\mathcal M_r$; it is distinct
+from the PC consequence space $C_d$.
+\item[$J_N$] The actual target map $[b]\mapsto G_{b,N}$, distinct from
+the annihilator ideal $J_r(N)$.
+\item[$p,q,Q(d)$] The prime characteristic, an admissible block size
+$p^a>R(d)$, and, for $d\ge1$, the chosen least such power for the
+periodicity bound. The separate zero-degree convention is $Q(0)=1$.
+The actual period may be smaller than $Q(d)$.
+\item[$n_0,n_*,N(d)$] The axiom stability threshold, the stable rank
+including the target-degree floor, and the periodicity onset.
+For $d\ge1$, $N(d)=\max\{n_*,2R(d)+1\}$; separately, $N(0)=n_*$.
+\item[$E(h)$] The finite degrees recurring at arbitrarily large ranks.
+\item[$A_d(h),\mathcal E_d(h),\mathcal H_p(h)$] The eventually easy
+residues, their clopen union in $\mathbb Z_p$, and the closed complement
+of all such easy regions. These are not the matching-design space
+$E_d(N,M)$ or the finite-degree set $E(h)$.
+\item[Subquotient; annihilator] A quotient $S'/S$ of an invariant
+subspace by a smaller invariant subspace. A linear functional
+annihilates $S$ when it vanishes on $S$; $S^\perp$ expresses this
+condition using the dot product. The group-algebra annihilator $J_r(N)$
+instead consists of operators killing the specified tuple spaces.
+\item[Plateau] An equality of consecutive intersections
+$I_{d+j}(n)\cap P_{n,\le d}=I_{d+j+1}(n)\cap P_{n,\le d}$.
+It supplies closure under the legal degree-$d$ PC multiplications;
+it does not say that a truncated consequence space is an ideal.
+\item[{$[y^1]a, v_p(n)$}] The coefficient of $y$ in a polynomial $a$,
+and the exponent of $p$ in the positive integer $n$, respectively.
+A fresh $y$ is an independent indeterminate absent from the old axioms.
+\item[$B_{r,m},E_d(N,M),\Lambda_\psi$] The rectangular bijection
+system, its degree-$d$ space of matching designs, and the associated
+linear functional on ordinary polynomials. Here $E_d$ is unrelated
+to the recurring-degree set $E(h)$.
+\item[Filtration; extension] Nested degree windows. A design extension
+supplies the next window's values while preserving all values in the
+previous window.
+\item[Definable; $\chi$] Described by a formula in the permitted
+structure and language; $\chi$ is the Euler counting characteristic
+of its definable sets, not the prime characteristic of the field.
+\item[Promise; reduction] The hypotheses on inputs for which an
+algorithm must halt correctly; an effective transformation of finite
+input descriptions which transfers a decision problem to another.
+\end{description}
+
+
+\section{Connections worth following in the literature}
+\label{tx:sec:literature-route}
+The following connections have different roles. Some are historical
+antecedents, some supply a useful language, and some suggest analogies.
+They are not interchangeable external proofs of the present theorem.
+
+\paragraph{Proof complexity and the earlier four-way classification.}
+The NS and PC systems originate in the work of Beame, Impagliazzo,
+Kraj\'i\v cek, Pitassi and Pudl\'ak~\cite{NSFoundations}, and of Clegg,
+Edmonds and Impagliazzo~\cite{PCFoundations}. Riis's LICS 2008 paper
+and 2009 report~\cite{Riis,RiisLong} provide the four-way refutation
+classification. The present linear quantitative estimates and uniform
+consequence treatment should be read against those earlier results.
+The tree-resolution gap~\cite{RiisTree} is a related classification
+phenomenon, not a theorem about polynomial degree. Its infinite-model
+criterion should not be silently transferred to NS or PC.
+
+\paragraph{Representation stability: similar objects, stronger transport needs.}
+The characteristic-zero uniform permutation-module work of Riis and
+Sitharam~\cite{RiisSitharamModules}, the FI-module framework of Church,
+Ellenberg and Farb~\cite{CEF}, and Harman's modular periodicity
+\cite{Harman} place fixed-support families in a broader setting.
+Chapter~\ref{tx:sec:stability-context} explains the actual comparisons,
+including why the uniform sum $\sum_{i<n}x_i$ does not behave as an
+FI-submodule under naive inclusion. Hone and coauthors~\cite{HKPSYZ}
+provide an explicit categorical-functor perspective. Compatibility with
+natural operations already appears in Harman's results. What must be
+checked here is preservation and reflection of the specific polynomial
+closure and target maps, with the stated numerical range.
+
+\paragraph{Homological algebra: exactness is a substantive step.}
+The characteristic-two quotient $\ker z/\im z$ resembles homology.
+The short nilpotent chains in Chapter~\ref{tx:ch:prime} explain why
+that formula must change for general $p$. The exact-functor vocabulary
+in the Stacks Project~\cite{StacksExact} is helpful: a kernel, image or
+quotient is information about a map, not just the dimension of an
+object. Our deletion is proved exact on the specified class of
+representations; arbitrary homology is not exact. Nor does an exact
+operation automatically detect every nonzero target obstruction.
+The separate survival argument is indispensable.
+
+\paragraph{Combinatorial linear algebra: rook coordinates.}
+Bowman, Doty and Martin~\cite{BDM} study integral Schur--Weyl duality
+for partition algebras. Their setting gives background for encoding
+equivariant maps through finite equality patterns and permutation
+actions. Our zero-marginal correction is developed explicitly in the
+rook chapter, with a signed calculation and a triangular elimination.
+The reference is mathematical context; it does not replace the
+required correction identity or its coefficient-by-coefficient check.
+
+\paragraph{Duality and designs: a witness need not be a point.}
+Buss's designs~\cite{BussDesign} make the linear-dual approach to NS
+lower bounds concrete. Here the target class in a quotient is separated
+by a linear functional. For PC, that functional must annihilate the
+\emph{whole} consequence closure, not just axiom multiples. The example
+$x^2=0$ with target $x$ in Chapter~\ref{tx:sec:model-theory} distinguishes
+ordinary ideal membership from vanishing on solutions. This is the
+commutative-algebra distinction between an ideal and its radical;
+see Lang~\cite{LangAlgebra} for the general algebraic background.
+
+\paragraph{Topology and logic: two distinct meanings of compactness.}
+The residue-tree construction in Section~\ref{tx:sec:topological-spectrum}
+is the inverse-limit description
+$\mathbb Z_p=\varprojlim_L\mathbb Z/p^L\mathbb Z$.
+Gouv\^ea~\cite{Gouvea} is an accessible introduction to the surrounding
+$p$-adic mathematics. Compactness here glues local \emph{degree bounds}
+on congruence neighbourhoods. It does not assert a solution of the
+original equations, nor require a nonstandard model or a Boolean
+encoding. Kraj\'i\v cek's Euler structures~\cite{KrajEuler} and the
+Grothendieck-ring viewpoint of Kraj\'i\v cek--Scanlon~\cite{KrajScanlon}
+are a separate semantic route: they replace finite counting by a
+characteristic on definable sets, with essential fibre and precision
+hypotheses. No general converse to that criterion is asserted here.

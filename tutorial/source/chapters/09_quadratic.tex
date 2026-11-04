@@ -1,0 +1,364 @@
+\chapter{Lifting in characteristic two: a quadratic label budget}\label{tx:sec:quadratic-route}
+\label{tx:ch:quadratic}
+\section*{The property we need}
+We remain in characteristic two. The block has $q=2^a$ labels,
+and $z=\sum_i c_i(\sigma_i-I)$ is its square-zero translation
+operator. A common witness is a group-algebra element $w$ satisfying
+$zwz=z$ on every injective-tuple space $P_b$ with $b\le r$.
+The block stays fixed throughout the following induction; the
+retained labels are the resource we count.
+
+We now construct the witness used in the previous chapter. The first
+construction is intentionally generous with labels: at tuple length
+$b$, it allocates $b$ labels which have not been used before. It
+therefore proves exact deletion with a quadratic retained-label
+budget. This gives a complete route to a square-root degree lower
+bound and isolates exactly where that route loses a factor of $r$.
+
+Keep the progression picture in view. Given a degree-$d$ proof at
+one size eligible for this construction, we obtain a degree-$d$ proof
+at every later size separated by the same block $q$. Thus $d$ is constant along
+that progression. The quadratic cost below governs which starting
+proofs are eligible; its inverse is the square-root lower-bound scale.
+
+The induction maintains one group-algebra element, not a list of
+independently chosen inverses. At the start of stage $b$, this element
+satisfies $zwz=z$ on every shorter tuple module. We must repair length
+$b$ while preserving all those previous identities. Three steps do
+that: normalise the old element, localise its residual to tuples
+without the fresh labels, and simulate a position-compatible inverse
+by permutations involving those fresh labels.
+
+Keep the order of those steps. A correct partial inverse of $z$ on one
+vector space does not automatically give a partial inverse for the old residual, and an
+operator which works after projecting back to old labels need not
+work on all larger tuples. Normalisation settles the first issue;
+localisation settles the second.
+
+\section{Fresh-label construction}\label{tx:sec:quadratic}
+We now prove that a support-$r$ witness exists in characteristic two when
+\[n\ge T(r):=1+2+\cdots+r=\frac{r(r+1)}2,\qquad r<q.\]
+This proof is independent of the rook theorem used later. Its ingredients are finite algebra, a position-compatible auxiliary inverse, and an explicit way to simulate that inverse using fresh labels.
+
+The phrase ``generic coefficients'' below refers to the independent
+block coefficients from Chapter~\ref{tx:ch:square-zero}. We choose
+them in a finite field so that the subsequent ring calculation takes
+place in a finite set. If $\Omega$ is the current finite label set,
+$F[S_\Omega]$ has only $|F|^{|S_\Omega|}$ elements: each permutation
+has one coefficient in $F$. The finite field is a construction device,
+not a restriction on the field of the original polynomial request.
+
+Choose the generic coefficients in a finite field $F$ of characteristic two, large enough to contain $a$ independent elements. We may work inside the algebraic closure of the original field; the degree question descends by the field-extension argument. The finiteness of $F$ will be used only to normalise an element of a finite group algebra.
+
+\subsection{Normalisation of the residual}
+Suppose $w_0$ works on shorter tuples but not yet on length $b$. Put $y=z-zw_0z$. An auxiliary linear map $h$ may satisfy $zhz=z$ on the larger tuple space. It is tempting to conclude $yhy=y$. In general the expansion contains an extra term $zw_0zw_0z$, and this need not collapse. Before correcting the error we arrange the additional identity $w_0zw_0=w_0$ in the actual group algebra. This normalisation was a genuine mathematical step in the earlier construction.
+
+Here \emph{normalisation} is an algebraic replacement: it modifies
+a ring element to satisfy the
+additional algebraic identity needed for the residual calculation.
+A unital ring has addition, associative multiplication and an identity
+$1$; its multiplication need not commute. A ring representation applies
+its elements as operators, respecting addition, composition and the
+identity. Thus an identity proved in the ring holds in all its
+representations at once. In the lemma, $v$ is a ring element and
+the letters $i,\ell,h$ in the proof are integers recording powers;
+this local $h$ is not the auxiliary linear operator used elsewhere.
+
+\begin{lemma}[Normalisation in a finite ring]\label{tx:lem:normal}
+Let $v,z$ belong to a finite unital ring. There is an element
+$v^\natural$ in the same ring with
+$v^\natural z v^\natural=v^\natural$, such that every ring
+representation in which $zvz=z$ also satisfies
+$zv^\natural z=z$.
+\end{lemma}
+\begin{proof}
+Put $x=vz$. Finiteness gives $x^{i+\ell}=x^i$ for some $i\ge0$
+and $\ell>0$. Multiplication by powers of $x$ gives
+$x^{j+\ell}=x^j$ whenever $j\ge i$. Choose $h\ge i$ such that
+$h+1$ is divisible by $\ell$. Then $2h+1-h=h+1$ is a multiple
+of $\ell$, so $x^{2h+1}=x^h$. Define $v^\natural=x^hv$.
+Associativity, without commutation of factors, gives
+\[
+ v^\natural z v^\natural
+      =x^h(vz)x^hv=x^{2h+1}v=x^hv=v^\natural.
+\]
+In a representation with $zvz=z$, induction gives
+$z(vz)^j=z$ for every $j\ge0$. Hence
+\[
+                     zv^\natural z=z(vz)^{h+1}=z.
+\]
+The exponent was selected inside the original finite ring. The
+normalisation therefore preserves the witness relation simultaneously
+in every representation where it was already true.
+\end{proof}
+In the construction below we denote the normalised old witness by $b_0$. It is one ring element shared by every shorter tuple representation.
+The lemma preserves $zvz=z$ wherever it was already valid. It does
+not assert that a formerly unsuccessful tuple length has been repaired.
+The new identity $b_0zb_0=b_0$, obtained in the ring itself, is what
+makes the following sandwich of the residual work.
+
+\begin{lemma}[Normalised residual]\label{tx:lem:residual}
+If $b_0zb_0=b_0$ and $zhz=z$, then, for $y=z-zb_0z$,
+\[yhy=y.\]
+\end{lemma}
+\begin{proof}
+Expand without commuting any factors:
+\begin{align*}
+yhy&=zhz-zhzb_0z-zb_0zhz+zb_0zhzb_0z\\
+&=z-2zb_0z+zb_0zb_0z\\
+&=z-zb_0z=y.
+\end{align*}
+The last equality uses the normalisation. This identity works in any ring; characteristic two is not needed for this particular calculation.
+\end{proof}
+
+\subsection{A residual calculation over \texorpdfstring{$\mathbb F_4$}{F4}}
+The notation $E_{ij}$ denotes a matrix unit: it sends basis vector
+$e_j$ to $e_i$ and sends the other basis vectors to zero. Thus
+$E_{12}(s,t)=(t,0)$ and $E_{21}(s,t)=(0,s)$ on a two-dimensional
+coordinate space. Applying $E_{12},E_{21},E_{12}$ successively
+returns $E_{12}(s,t)$, which makes the partial-inverse identity
+in the calculation below transparent.
+
+The normalisation is not optional algebraic tidying. Let
+$\omega^2+\omega+1=0$, let $z=E_{12}$ on $\mathbb F_4^2$, and
+let $h=E_{21}$. Then $zhz=z$. If we take the unnormalised old
+operator $w_0=\omega E_{21}$, its residual is
+\[
+                   y=z-zw_0z=(1-\omega)z=\omega^2z.
+\]
+But $yhy=\omega^4z=\omega z\ne\omega^2z=y$. Thus a partial inverse
+for $z$ does not automatically serve as an inverse for $y$. The
+finite-ring lemma repairs exactly the missing identity used in the
+expansion of $yhy$.
+
+This example is a two-dimensional operator calculation explaining
+one algebraic step. It is not being used as a label-permutation
+construction or as an asymptotic counterexample. The group-algebra
+construction obtains its normalisation in the finite ring
+$F[S_\Omega]$ itself, which is why the corrected identity holds in
+all the required modules at once.
+
+\subsection{An auxiliary inverse compatible with tuple positions}
+Let $\Omega$ be the current label set, consisting of the block $B$ and the retained labels already allocated. On $Q=P_b(\Omega)$, partition the tuples according to the $A$-orbit of their \emph{underlying label set}. A set meeting $B$ has proper stabiliser because it has size $b<q$. Choose the functional $\ell$ and coordinate $\pi$ as in Section~\ref{tx:sec:block2}, now on these sets. Let $D$ read $\pi$ from the underlying set, and use the same $W$ and nonzero $\alpha$ as before. The choices and the scalar $\alpha$ are made separately on each orbit; the resulting operators are combined on their direct sum. On each moved orbit,
+\[Dz-zD=W,\quad Wz=zW,\quad W^2=\alpha^2I,\quad z^2=0.\]
+Multiplying the commutator by $z$ shows $zDz=zW$. Thus
+\[h=\alpha^{-2}WD\quad\text{satisfies}\quad zhz=z.\]
+On tuples wholly outside $B$, put $h=0$, since $z=0$ there. Because $D$ depends on the underlying set and translations act on labels, $h$ commutes with every permutation of tuple positions. We have not claimed that $h$ is a group-algebra element. It is just an explicitly constructed linear operator.
+Here and in this section, ``inverse'' is shorthand for the partial
+identity $zhz=z$, not for $zh=hz=I$.
+
+\subsection{Fresh labels simulate any position-compatible operator}
+Write $C=\{\kappa_1,\ldots,\kappa_b\}$ for the fresh labels.
+The old tuple space sits inside the larger one by including its basis
+vectors; projection back discards the basis vectors using a fresh label.
+The composite of that inclusion and projection on the old space is
+the identity. We want only the old-to-old part of a larger permutation
+combination, which is the meaning of the compressed operator below.
+
+Adjoin $b$ new labels $\kappa_1,\ldots,\kappa_b$ to $\Omega$. Let $i:P_b(\Omega)\to P_b(\Omega\cup C)$ include the old tuples and let $p$ discard every tuple using a fresh label. We prove that any operator $h$ commuting with position permutations has the form
+\begin{equation}\label{tx:eq:compression}h=pci\end{equation}
+for some $c\in F[S_{\Omega\cup C}]$.
+The order of operations in $pci$ is: include the old input, apply
+$c$, then project the result to old outputs. The symbol $p$ here
+names this projection, not the prime characteristic. The formula
+does not say that $c$ preserves the old space or agrees with $h$
+on every larger tuple; it identifies its old-to-old matrix corner.
+
+Fix a $b$-element set $U=\{u_1,\ldots,u_b\}\subseteq\Omega$, with one chosen ordering. Form
+\[E_U=\prod_{j=1}^b\bigl(1-(u_j\ \kappa_j)\bigr).\]
+The transpositions are disjoint. On an old tuple missing some $u_j$, the corresponding factor kills the tuple, and the other factors cannot introduce $u_j$. On a tuple using all the $u_j$, the identity term leaves the tuple old, while every nonidentity term introduces a fresh label. Therefore $pE_Ui$ is precisely the projector onto the orderings of $U$.
+
+The $b!$ orderings of $U$ form a \emph{free orbit} for position
+permutations: exactly one reordering carries a chosen ordering to
+any other. Consequently a position-compatible map is determined
+on that orbit by its value at one ordering. All other values are
+obtained by the same position reordering of the output. This is
+why one can prescribe the map without averaging or dividing by $b!$.
+
+For an ordered output tuple $v$, choose a permutation $g\in S_\Omega$ taking $(u_1,\ldots,u_b)$ to $v$. Extend $g$ by fixing fresh labels. Then $pgE_Ui$ takes that input ordering to $v$, takes its position permutations to the corresponding permutations of $v$, and kills all other underlying sets. The orderings of each $U$ form a free orbit for $S_b$. Consequently an operator commuting with $S_b$ is completely determined by its value on one ordering for each $U$. Expanding those values as linear combinations of output tuples and using the operators $pgE_Ui$ proves \eqref{tx:eq:compression}. There is no division by $b!$.
+
+\begin{example}[Two registers]
+For $U=\{u_1,u_2\}$,
+\[E_U=1-(u_1\kappa_1)-(u_2\kappa_2)+(u_1\kappa_1)(u_2\kappa_2).
+\]
+On $(u_1,u_2)$, projection $p$ kills the last three terms. On $(u_1,v)$ with $v\ne u_2$, the identity contribution is cancelled by the second swap factor, which fixes that tuple. The detector recognises the set $U$, while leaving the two possible orderings available for a position-compatible output rule.
+\end{example}
+
+\subsection{Why compression is enough only after localisation}
+Equation~\eqref{tx:eq:compression} asserts $h=pci$ on the old tuple
+space. It does not assert that $c$ acts like $h$ on every tuple in
+the larger universe. Terms of $c$ may introduce fresh labels. This
+would normally be a serious problem: a proof must preserve all basis
+objects, not just an arbitrarily selected corner of a matrix.
+
+The residual has a special support in the larger tuple space. It is
+zero on every summand with a fresh label, because such a summand uses
+fewer than $b$ old labels and the old witness is already valid at
+those shorter lengths. Therefore the two residual factors in
+$ycy$ project to the old corner before and after the middle operator.
+The identity $h=pci$ is exactly the information the sandwich needs.
+The next calculation verifies this point as an equality of maps,
+rather than assuming that compression itself is a global realisation.
+
+In matrix terms, order the basis with old tuples first and tuples
+using fresh labels second. Under the induction hypothesis the
+calculation below gives
+\[
+                       y=\begin{pmatrix}y_Q&0\\0&0\end{pmatrix}.
+\]
+In $ycy$ the rightmost $y$ removes fresh input directions, and the
+leftmost $y$ removes fresh output directions. Only the old-to-old
+corner $pci=h$ of the middle operator matters. The zeros here come
+from validity of the old witness at shorter lengths, not from a
+claim that an arbitrary permutation combination has this block form.
+
+\subsection{The induction, including localisation of the error}
+For support zero take $w_0=0$: $z$ is zero on constants. Suppose a witness exists on the block and $T(b-1)$ retained labels, collectively $\Omega$. Normalise it in the finite ring $F[S_\Omega]$ to $b_0$. It still works on all tuple lengths below $b$ and satisfies $b_0zb_0=b_0$ in the ring itself. Set $y=z-zb_0z$.
+
+Adjoin $b$ fresh labels. Decompose $P_b(\Omega\cup C)$ according to the positions occupied by fresh labels and their actual values. The group $S_\Omega$ fixes each fresh label, so every summand with at least one fresh label is a copy of $P_j(\Omega)$ for $j<b$. On it $y=0$ by the old witness relation. The summand with no fresh labels is $Q=P_b(\Omega)$. Thus, as actual maps,
+\[y=i y_Q p.\]
+This localisation is what allows a compressed inverse to suffice. Construct the auxiliary $h$ on $Q$ above. Lemma~\ref{tx:lem:residual} gives $y_Qhy_Q=y_Q$. Choose $c$ with $pci=h$. Then
+\[ycy=i y_Q(pci)y_Qp=i y_Qp=y.\]
+Define the new group-algebra element
+\[w_b=b_0+(1-b_0z)c(1-zb_0).\]
+Since $z(1-b_0z)=(1-zb_0)z=y$,
+\[zw_bz=zb_0z+ycy=zb_0z+y=z\]
+on length $b$. On every shorter tuple space the same fresh-label decomposition makes $y=0$, so the relation remains valid there too. The new cost is exactly $b$ retained labels, giving
+\[T(b)=T(b-1)+b.\]
+If still more retained labels are present, extend the constructed permutations by fixing them. Decomposing according to those outside labels reduces every tuple of length at most $b$ to a shorter tuple on the constructed labels. Thus the same witness works for all $n\ge T(b)$.
+
+\begin{theorem}[Quadratic retained-label budget]
+For every $r<q=2^a$ and $n\ge r(r+1)/2$, there is a common witness $w$ with $zwz=z$ on all tuple modules of length at most $r$. Therefore deletion is exact on the support-$r$ class. It transports the
+entire degree-$d$ PC consequence space with $r=kd+s$, beyond the fixed
+template threshold. For prescribed indexed targets use the budget
+$r=2kd+s+t$ to include the target map and the doubled-support detector.
+\end{theorem}
+Every construction needed for this theorem has now been supplied. In particular, the proof is not an inference from witnesses found for small tuple lengths.
+
+
+\begin{remark}[The square-root scale]
+For either prescribed-target budget, the construction gives an onset
+$O(d^2)$ for degree-$d$ transfer.
+Inverting that onset gives an $\Omega(\sqrt n)$ lower bound when no
+finite degree recurs, and on the hard residues of the periodic case.
+The loss is precisely the cumulative allocation $T(r)=r(r+1)/2$.
+The following construction replaces this sum by the maximum $2r-1$,
+using one retained pool at every layer.
+\end{remark}
+
+\section{The first three induction stages}
+At length zero there is one basis vector, the empty tuple. Every
+permutation fixes it, so $z=0$ and $w_0=0$ is a valid witness. No
+retained label is needed.
+
+At length one, the auxiliary operator recognises the moved label
+orbits. One fresh retained label realises its compressed inverse.
+The witness can therefore be built on the block plus one retained
+label. For a block of two labels, the previous chapter exhibited
+this witness explicitly as a transposition between one block label
+and the retained label.
+
+At length two, normalise that same witness first. Allocate two
+additional retained labels $\kappa_1,\kappa_2$. A tuple containing
+either fresh label has at most one old entry; the residual is zero
+on it. Only the tuples with both entries old require repair. The
+detector
+\[
+                 (1-(u_1\ \kappa_1))(1-(u_2\ \kappa_2))
+\]
+selects an old two-element set. Combining its translates realises
+any position-compatible inverse on the old corner. The total number
+of retained labels is now $1+2=3$.
+
+At length three, the same argument spends three further labels.
+Tuples with one, two or three of those fresh labels reduce to old
+tuple lengths two, one or zero, respectively. All three pieces
+already have zero residual. The only unsolved piece consists of
+old three-tuples, and a detector with three disjoint swaps compresses
+its auxiliary inverse. The retained total is $1+2+3=6$.
+
+The block size must exceed the largest tuple length being treated.
+For example, one may choose a block of size four when explaining
+stages one through three. A two-label block illustrates stage one,
+but cannot be reused as a valid block for stage three. Retained
+labels and block labels have different jobs in this count.
+
+\begin{center}
+\begin{tabular}{@{}c|rrrr@{}}
+Tuple length $r$ &1&2&3&4\\
+Fresh-label total $T(r)$ &1&3&6&10\\
+Linear total proved later $2r-1$ &1&3&5&7
+\end{tabular}
+\end{center}
+The first strict improvement is at length three. The linear method
+will not allocate the third batch separately: it will exploit the
+residual's zero marginals and reuse a common retained pool.
+
+\section{From quadratic label cost to square-root degree hardness}
+Return now from tuple spaces to one fixed polynomial request and one
+proof system, NS or PC. Its profile $h(n)$ is the least degree for
+one fixed target orbit, or the maximum of the least degrees for an
+all-target request. It is infinity if any requested target is
+underivable; an empty request has value zero. A finite value recurs if that exact value is
+attained at infinitely many universe sizes. The block construction
+will force recurrence whenever such a value occurs beyond its
+eligible starting rank.
+
+Let $r(d)=\alpha d+\beta$, where
+$(\alpha,\beta)=(k,s)$ for an invariant target or
+$(\alpha,\beta)=(2k,s+t)$ for an indexed request. The fixed starting
+rank $n_*$ includes degree stabilisation of the targets. A convenient
+safe onset for this preliminary construction is
+\[
+ N_{\rm quad}(d)=
+  \max\{n_*,\,2r(d)+1,\,T(r(d))\}\qquad(d\ge1).
+\]
+The extra linear term is harmless and makes this onset comparable
+with the eventual linear statement. Exactness of the quadratic
+construction, together with the target-map and detection arguments,
+gives degree-threshold periodicity beyond this onset. Take the least
+power of two $Q(d)>r(d)$; then $Q(d)\le2r(d)$.
+
+Here $\alpha,\beta$ are integer coefficients of the support budget,
+unrelated to the nonzero field scalar $\alpha$ in the orbit
+calculation. The onset estimates concern positive degree budgets.
+Degree zero uses its previously established fixed predicate beyond
+$n_*$; it therefore cannot be a nonrecurring value on a hard tail.
+The hard-value inversion below concerns positive finite values,
+and the unbounded recurring values chosen for peaks are positive too.
+
+Suppose a profile has no recurring finite degree. If $h(n)=e<\infty$
+and $n\ge N_{\rm quad}(e)$, threshold periodicity at all budgets
+through $e$ repeats that exact value on an infinite arithmetic
+progression. This is a contradiction. Thus every finite value must
+satisfy $n<N_{\rm quad}(e)$. Since
+$N_{\rm quad}(e)\le A(e+1)^2$ for a constant $A$ depending only
+on the fixed request, it follows that
+\[
+                          h(n)>\sqrt{n/A}-1
+\]
+whenever $n$ is beyond the fixed initial range. The assertion also
+holds when $h(n)=\infty$. The same argument works on hard residues
+in a fixed periodic easy/hard split: a value attained beyond its
+onset would recur and would therefore be one of the bounded easy
+values.
+
+For a fluctuating profile, choose recurring values $e$ tending to
+infinity. A representative of its recurring residue can be selected
+in
+\[
+       N_{\rm quad}(e)\le n<N_{\rm quad}(e)+Q(e).
+\]
+Both the onset and the period are bounded by a constant times
+$(e+1)^2$, so these representatives are finite square-root-scale
+peaks, $e\ge c\sqrt n-O(1)$, for a fixed $c>0$. They are not an
+all-size lower bound; low recurring values remain at arbitrarily
+large sizes.
+
+Nothing in this argument makes the degree of an individual proof
+shrink. At fixed $d$ we compare derivability at two universe sizes.
+The lower bound follows by comparing that \emph{fixed budget} with
+its allowed universe-size onset. The preliminary route just proved
+is in characteristic two. The later prime-characteristic chapter
+will give the full linear result directly over every fixed positive
+characteristic.

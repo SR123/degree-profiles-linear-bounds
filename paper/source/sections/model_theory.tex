@@ -1,0 +1,240 @@
+\section{Topological classification and semantic context}
+\label{sec:model-theory}
+The four degree types have a purely topological description valid for
+all the uniform requests of Theorem~\ref{thm:classification}. It uses
+only the eventual prime-power periodicity of bounded-degree
+sublevel sets. No Boolean encoding or model-existence assumption is
+needed. We then recall the distinction between algebraic witnesses
+and actual solutions, and the established Euler-characteristic criterion.
+
+\subsection{The \texorpdfstring{$p$}{p}-adic hardness spectrum}
+\label{sec:topological-spectrum}
+The underlying structure is already implicit in the residue-class
+analysis of my 2009 report~\cite[Section~4, pp.~18--19]{RiisLong}:
+once a degree threshold is fixed, sufficiently large sizes are classified
+by residues modulo a power of $p$. We express that earlier structure
+in $p$-adic language and apply it here to uniform consequences as well
+as refutations.
+
+Fix any one of the aggregate or fixed-orbit profiles $h$ in
+Theorem~\ref{thm:periodicity}, over a field of characteristic $p$.
+A $p$-adic integer is a compatible choice of residues modulo all powers
+of $p$. The space $\mathbb Z_p$ is compact, and its basic residue
+neighbourhoods $a+p^L\mathbb Z_p$ are both open and closed
+(\emph{clopen}). Using the onsets $N(d)$ and periods $Q(d)$ from
+\eqref{eq:NQ}, let $A_d(h)\subseteq\{0,\ldots,Q(d)-1\}$ consist of
+the residues $a$ for which
+\[
+ h(n)\le d\quad\text{whenever }n\ge N(d),\qquad
+                         n\equiv a\pmod{Q(d)}.
+\]
+Put
+\[
+ \mathcal E_d(h)=\bigcup_{a\in A_d(h)}
+                         \bigl(a+Q(d)\mathbb Z_p\bigr).
+\]
+Thus $\mathcal E_d(h)$ records the eventually degree-$d$-easy residue
+classes. Each is clopen, and $\mathcal E_d(h)\subseteq\mathcal E_e(h)$
+for $d\le e$: refine to the common period and use the periodicity on a
+sufficiently late tail. Set
+\begin{equation}\label{eq:hardness-spectrum}
+ \mathcal H_p(h)=\mathbb Z_p\setminus
+                    \bigcup_{d\in\mathbb N}\mathcal E_d(h).
+\end{equation}
+We call this closed set the \emph{hardness spectrum}. It does not depend
+on the choice of valid onsets or prime-power periods. Equivalently,
+$x\notin\mathcal H_p(h)$ exactly when some residue neighbourhood of
+$x$ has a uniform finite degree bound at all sufficiently large integer
+sizes in that neighbourhood. Common residue refinements show the
+agreement of this description with \eqref{eq:hardness-spectrum}.
+
+\begin{samepage}
+\begin{corollary}[The four topological shapes]
+\label{cor:topological-spectrum}
+For every uniform request considered in this paper, the NS and PC
+profiles have the following classification:
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+Type & Hardness spectrum $\mathcal H_p(h)$\\
+\midrule
+$\mathrm T_1$ & Empty\\
+$\mathrm T_2$ & All of $\mathbb Z_p$\\
+$\mathrm T_3$ & Nonempty, proper and clopen\\
+$\mathrm T_4$ & Closed but not open\\
+\bottomrule
+\end{tabular}
+\end{center}
+Moreover, for the same request the two systems have the same hardness
+spectrum, although their exact degrees and threshold sets can differ.
+\end{corollary}
+\end{samepage}
+\begin{proof}
+Write $E_d=\mathcal E_d(h)$ and $H=\mathcal H_p(h)$. If $H$ is empty,
+compactness and the increasing open cover $(E_d)_d$ give
+$E_D=\mathbb Z_p$ for some $D$. This is eventual boundedness, or T1;
+the converse is immediate. Also $H=\mathbb Z_p$ exactly when every
+$E_d$ is empty. This says that no finite degree recurs, or T2.
+
+In T3, let $D$ be the largest recurring finite degree.
+Theorem~\ref{thm:classification} gives a fixed nonempty proper union
+of easy residue classes. It is $E_D$, and no $E_d$ meets a hard class:
+otherwise arbitrarily late integers in a common residue refinement
+would have both bounded and linearly growing degree. Hence
+$\bigcup_dE_d=E_D$, so $H$ is nonempty, proper and clopen.
+
+Conversely, suppose $H$ is nonempty, proper and clopen. Its compact
+complement is covered by the increasing $E_d$, hence equals some $E_D$.
+If a finite degree $e$ recurs, periodicity gives a residue neighbourhood
+on which that exact value occurs on a tail. This neighbourhood lies
+in $E_e\subseteq E_D$; comparing late integer representatives gives
+$e\le D$. There is a recurring finite degree because the complement
+of $H$ is nonempty, but $H\ne\varnothing$ excludes T1. This is T3.
+Since $H$ is always closed and the four degree types are exhaustive,
+the remaining shape, closed but not open, is exactly T4.
+
+Finally, the comparison theorem gives
+$h_{\PC}\le h_{\NS}\le F(h_{\PC})$, with $F$ independent of size.
+Thus a residue neighbourhood is eventually bounded in one system if
+and only if it is eventually bounded in the other. The equivalent
+description above proves equality of their hardness spectra.
+\end{proof}
+
+In T3 a single finite congruence resolution separates the easy and
+hard regions. In T4 the closed spectrum has a nonempty boundary:
+every neighbourhood of a boundary point meets the easy region, but
+no such neighbourhood has one uniform finite degree bound.
+The spectrum records the qualitative organisation of the profile;
+the linear lower bounds and finite linear peaks still come from the
+quantitative transfer theorem. It is defined from the polynomial
+request and its degree profile, not from the ordinary model class
+of a first-order sentence alone.
+
+\subsection{Dual witnesses for failure to derive a target}
+A linear functional is a scalar-valued linear map on coefficient
+vectors. If it vanishes on every permitted consequence but not on
+the target, applying it to a proposed derivation gives a contradiction.
+The converse is finite-dimensional separation by a quotient basis;
+it does not require the functional to be evaluation at a solution.
+
+For either system write $W_d(n)$ for its degree-$d$ consequence space:
+$W_d(n)=C_d(n)$ for PC and $W_d(n)=I_d(n)$ for NS. Let
+$\delta=D_G$ be the fixed upper bound on target degree. We view
+$W_d(n)$ inside $P_{\le\max\{d,\delta\}}(n)$, so the ambient space
+also contains every requested target even when its degree exceeds $d$.
+
+\begin{definition}[A degree-bounded target witness]
+\label{def:consistency-witness}
+For a requested target $G_{b,n}$, a degree-$d$ witness is a $K$-linear
+functional
+\[
+ \lambda:P_{\le\max\{d,D_G\}}(n)\longrightarrow K,\qquad
+ \lambda(G_{b,n})=1,\qquad\lambda(W_d(n))=0.
+\]
+For an all-target request, a witness consists of an index $b$ and such
+a functional. For a single fixed orbit, one may use any available
+representative. With target $1$, this reduces to the usual normalisation
+$\lambda(1)=1$ for a bounded-degree non-refutability witness.
+\end{definition}
+
+\begin{proposition}[Dual form of nonderivability]
+\label{prop:dual-witness}
+A degree-$d$ target witness exists exactly when the target has no
+derivation of degree at most $d$ in the chosen system. For an all-target
+request it exists exactly when $h(n)>d$.
+\end{proposition}
+\begin{proof}
+If $G_{b,n}\in W_d(n)$, a functional annihilating $W_d(n)$ cannot
+take value one on it. Conversely its class in the finite-dimensional
+quotient $P_{\le\max\{d,D_G\}}(n)/W_d(n)$ is nonzero whenever
+it is not in $W_d(n)$. Extend that class to a basis, assign it value
+one and assign the other basis vectors zero. Composing with the
+quotient map gives the required functional. If the target degree is
+greater than $d$, it automatically lies outside $W_d(n)$; the enlarged
+ambient space also covers this degree-floor obstruction. Failure of
+all-target derivability is failure for at least one target.
+\end{proof}
+
+A $K$-valued solution $a$ of $\Gamma_n$ which violates $G_{b,n}=0$ gives a
+witness by $\lambda(f)=f(a)/G_{b,n}(a)$. For target one this is ordinary
+evaluation, with its multiplicative property. A general witness need
+not be multiplicative, positive or normalised on one. It records a
+linear separation from all permitted bounded-degree consequences,
+not necessarily a truth assignment to the original variables.
+
+\begin{example}[Semantic entailment need not be derivation]
+The equation $x^2=0$ over a field forces $x=0$ at every solution.
+Nevertheless, neither NS nor PC derives $x$ from this axiom: every
+consequence belongs to the ideal $(x^2)$. For $d\ge2$, the functional
+on $P_{\le d}$ taking value one on $x$ and zero on all other monomials
+annihilates the degree-$d$ consequence space. This is a target witness
+although no actual solution violates $x=0$. The example explains why
+our minimum degree is a syntactic ideal-membership resource.
+\end{example}
+
+\begin{example}[Linear consistency without truth-value evaluation]
+Over $\mathbb F_3$, take $x^2-x=0$, target one and degree budget two.
+The PC consequence space is $K(x^2-x)$: no nonzero vector in that span
+has degree at most one, so no multiplication is usable. The functional
+\[
+ \lambda(1)=1,\qquad\lambda(x)=\lambda(x^2)=2
+\]
+is a witness but is not evaluation: $\lambda(x^2)=2$ whereas
+$\lambda(x)^2=1$. Boolean equations impose the intended truth-value
+semantics on actual solutions, without making every linear witness an
+actual evaluation.
+\end{example}
+
+For target $1$, the NS witness is the design method for lower bounds
+surveyed and generalised by Buss~\cite{BussDesign}: a normalised
+linear functional annihilates every permitted axiom multiple.
+Annihilating only axiom multiples gives an NS witness. For PC the
+functional must annihilate the full closure, including polynomials
+obtained by cancellation followed by new multiplication. This is the
+dual form of the distinction between $I_d$ and $C_d$.
+
+\subsection{What Kraj\'i\v cek's Euler criterion supplies}
+A strong Euler characteristic assigns a value $\chi(A)$ to each
+permitted parameter-definable set, possibly infinite. It gives a point
+value one, is additive on disjoint unions, is multiplicative on products,
+and is invariant under definable bijections. For a definable map
+$f:A\to B$ whose fibres all have characteristic $r$, it also satisfies
+$\chi(A)=r\chi(B)$. This last fibre rule is essential.
+
+Such a rule replaces finite counting in a definable solution of a
+uniform polynomial system. In Kraj\'i\v cek's criterion, the values lie
+in $\mathbb Z/p^\nu\mathbb Z$, where the required precision $\nu$
+depends on the degree budget and the indexing bounds. Reduction modulo
+$p$ interprets a sum of a definable $\mathbb F_p$-valued function by
+\[
+ \sum_{x\in A}^{\chi}a(x)
+       =\sum_{b\in\mathbb F_p}b\,\overline\chi(a^{-1}(b)).
+\]
+With the definability and index-sort hypotheses of
+\cite[Theorem~6.1]{KrajEuler}, including the characteristic on the
+required index sorts $M^*$, a solution violating the target $g=0$
+excludes derivations within that fixed degree budget at sufficiently
+large sizes in the residue class specified by $\chi(M)\bmod p^\nu$.
+The refutation case is $g=1$.
+
+The mechanism is that bounded-degree calculations involve only bounded
+configurations of indices. The counting rules transport the relevant
+finite identities to the definable setting. A hypothetical derivation
+would make the target vanish there, contradicting the chosen solution.
+A characteristic with sufficient precision for each degree therefore
+provides a semantic obstruction to bounded-degree proofs. As the degree
+increases, the required precision may increase too.
+
+Definable bijections, disjoint-union relations and products can be
+organised in the Grothendieck ring of definable sets
+\cite{KrajScanlon}. The strong fibre rule is additional structure.
+Neither an arbitrary infinite model nor a merely mod-$p$ counting rule
+supplies the full hypotheses of Kraj\'i\v cek's criterion. It is a
+sufficient criterion; no converse is used or asserted here.
+
+Richer first-order counting theories can also describe bounded-degree
+algebraic reasoning under additional hypotheses~\cite{PTT}. Such
+model-theoretic representations are not needed for
+Corollary~\ref{cor:topological-spectrum}; in particular, its scope is
+not restricted to a fixed Boolean compiler. A general converse to the
+Euler criterion remains a separate question.

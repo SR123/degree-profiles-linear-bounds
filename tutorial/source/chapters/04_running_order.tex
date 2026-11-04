@@ -1,0 +1,577 @@
+\chapter{A running example: an order with no first element}
+\label{tx:ch:running-order}
+We now apply the consequence-space viewpoint to one concrete family.
+The equations describe a finite total order in which every element has
+a selected predecessor. A finite order has a first element, so each
+instance is inconsistent. The question is how much polynomial degree
+is needed to expose that contradiction.
+
+For the running example fix a finite field $K$ of characteristic $p$.
+The chain and restriction arguments below work over every field; the
+final linear bound also holds over any fixed field of positive characteristic.
+
+The proof has three stages. First, a restriction to an elementary
+induction chain shows that NS degree tends to infinity. Second, the
+uniform NS--PC comparison proved in Chapter~\ref{tx:sec:comparison}
+shows that PC degree also tends to infinity. Third, the degree-preserving
+lifting theorem, constructed in the intervening chapters and assembled
+in Chapter~\ref{tx:chap:assemble-transfer}, upgrades this qualitative
+information to a linear lower bound. The chain obstruction and the
+restriction are proved here in full. The two general results are stated
+at their point of use, so the reader can see exactly what their later
+proofs must deliver.
+
+\section{The equations and their finite proofs}
+For this chapter write $[n]=\{1,\ldots,n\}$; this is just a
+renaming of the book's universe. There are two sorts of variables:
+\[
+ L_{ij}\quad\text{means that }i\text{ precedes }j,\qquad
+ F_{ij}\quad\text{means that the selected predecessor of }i\text{ is }j.
+\]
+Let $\mathcal O_n$ consist of the following polynomials, all interpreted
+as equations equal to zero:
+\begin{subequations}\label{tx:eq:running-order-axioms}
+\begin{align}
+ L_{ij}^2-L_{ij},\quad F_{ij}^2-F_{ij}
+       &\qquad(i,j\in[n]),\label{tx:eq:order-Boolean}\\
+ L_{ii}&\qquad(i\in[n]),\label{tx:eq:order-irreflexive}\\
+ L_{ij}L_{ji},\quad(1-L_{ij})(1-L_{ji})
+       &\qquad(i\ne j),\label{tx:eq:order-total}\\
+ L_{ij}L_{jk}(1-L_{ik})
+       &\qquad(i,j,k\in[n]),\label{tx:eq:order-transitive}\\
+ \sum_{j=1}^nF_{ij}-1
+       &\qquad(i\in[n]),\label{tx:eq:order-function-total}\\
+ F_{ij}F_{ik}&\qquad(j\ne k),\label{tx:eq:order-function-collision}\\
+ F_{ij}(1-L_{ji})&\qquad(i,j\in[n]).\label{tx:eq:order-predecessor}
+\end{align}
+\end{subequations}
+Here a selected predecessor means any strictly earlier element; it
+need not be the immediately preceding element. Different elements may
+choose the same predecessor.
+
+The first four lines describe a strict total order. The next two select
+exactly one predecessor in each row. The last requires that this
+predecessor really come earlier. This is the graph-and-sum encoding of
+the first-order assertion that $L$ is a strict total order and
+$L(F(i),i)$ holds for every $i$.
+
+The functionality collisions matter in positive characteristic.
+Boolean values and a sum equal to one alone could permit $p+1$ selected
+entries. The collisions allow at most one, and the sum then forces one.
+
+\begin{proposition}[Finite inconsistency and finite proof degree]
+\label{tx:prop:order-finite}
+For every $n\ge1$ and every field $K$, the system $\mathcal O_n$ has
+an NS refutation and an ordinary-PC refutation. Their minimum degrees
+are finite and positive.
+\end{proposition}
+\begin{proof}
+At a root, all variables are zero or one. The order equations give a
+strict total order on the labels. Starting from any label, move to an
+earlier one while possible. Transitivity and irreflexivity forbid a
+repeated label, so finiteness forces this process to stop at a first
+element $i$.
+The function equations select a label $j$ with $F_{ij}=1$.
+Equation~\eqref{tx:eq:order-predecessor} then gives $L_{ji}=1$,
+contradicting the choice of $i$. The same argument applies over every
+extension field.
+
+Boolean refutation completeness
+(Proposition~\ref{tx:prop:boolean-completeness}) constructs a finite
+NS certificate, and its simulation gives a finite PC proof. No input
+is a nonzero constant, so the degree-zero consequence space is zero.
+Neither refutation can have degree zero.
+\end{proof}
+
+At $n=1$ the contradiction is already visible in six ordinary-PC lines:
+\begin{center}
+\begin{tabular}{@{}cllc@{}}
+\toprule
+Line & Polynomial & Reason & Degree\\
+\midrule
+1 & $L_{11}$ & input & 1\\
+2 & $F_{11}-1$ & input & 1\\
+3 & $F_{11}(1-L_{11})$ & input & 2\\
+4 & $F_{11}L_{11}$ & multiply line 1 by $F_{11}$ & 2\\
+5 & $F_{11}$ & add lines 3 and 4 & 1\\
+6 & $1$ & subtract line 2 from line 5 & 0\\
+\bottomrule
+\end{tabular}
+\end{center}
+For larger $n$ there is no designated first label. The order variables
+must determine it, while every row insists on a predecessor.
+
+\subsection{Why this is one uniform family}
+Relabelling sends $L_{ij}$ and $F_{ij}$ to the variables with the
+relabelled ordered pair. Every input has an index using at most three
+labels, and all coefficients follow one fixed rule. For example, the
+row with index $i$ has coefficient one on every $F_{ij}$ and constant
+coefficient minus one, regardless of $n$.
+
+Safe template parameters are
+\begin{equation}\label{tx:eq:order-parameters}
+                  k=2,\qquad s=3,\qquad D=3,\qquad n_0=9.
+\end{equation}
+There are $2n^2$ variables, but one variable uses at most two labels.
+The target $1$ is fully invariant and has degree zero. At proof degree
+$d$ the invariant-target support budget is therefore
+\begin{equation}\label{tx:eq:order-support-budget}
+                              r=kd+s=2d+3.
+\end{equation}
+This budget bounds the bases and maps of the consequence calculation;
+it does not require each proof line to mention only $2d+3$ labels.
+
+\section{A smaller chain problem with two different proof degrees}
+Here the input comes with a \emph{fixed successor chain}: the numerical
+chain $1,2,\ldots,n$, its successor relation and its two endpoints
+are fixed in advance. They are part of the input rule, rather than
+relations to be determined by a satisfying assignment. For variables
+$x_1,\ldots,x_n$, define the induction system
+\begin{equation}\label{tx:eq:order-induction}
+ \mathrm{IND}_n=\{1-x_1,\ x_i(1-x_{i+1})\ (1\le i<n),\ x_n,
+                                      \ x_i^2-x_i\ (1\le i\le n)\}.
+\end{equation}
+Its meaning is sequential: the first variable is one, a one forces the
+next variable to be one, and the last variable is zero.
+
+There is an ordinary-PC refutation of degree at most two. Starting
+from a derived line $P=1-x_i$, first multiply it by the single variable
+$x_{i+1}$. Then form
+\[
+       P-x_{i+1}P+x_i(1-x_{i+1})=1-x_{i+1}
+\]
+by two linear combinations. Every intermediate line has degree at
+most two. Iterate and add the final input $x_n$ to obtain $1$.
+For $n=1$, the two endpoint inputs already sum to one.
+
+NS behaves differently: its minimum degree is $\Theta(\log n)$.
+We prove both a logarithmic lower bound and a logarithmic upper bound
+in the next section. Thus the fixed chain gives a constant versus
+logarithmic degree separation. The linear NS and PC bounds belong
+to the original uniform order family $\mathcal O_n$, whose order is
+an unknown relation. The distinction is possible because this chain family is
+\emph{not} a uniform template of the kind defined in Chapter~\ref{tx:ch:uniformity}.
+It singles out numerical adjacency and the last label. An arbitrary
+label permutation does not preserve its input rule. Thus the uniform
+NS--PC comparison cannot be applied to $\mathrm{IND}_n$ itself.
+
+The induction system is a useful restriction of the uniform order
+family. We next prove its obstruction using a finite graph of
+monomials. The classical NS degree behaviour of induction is discussed
+by Buss and Pitassi~\cite{BussPitassiInduction}; the needed lower bound
+is proved below rather than used as an external theorem.
+
+\section{A finite graph that witnesses the NS obstruction}
+Fix an integer degree budget $b\ge0$. A multilinear monomial
+$x^S=\prod_{i\in S}x_i$ is indexed by a subset $S\subseteq[n]$.
+Make a graph whose vertices are the sets with $|S|\le b$. Its edges
+allow the following changes:
+\begin{enumerate}
+\item Insert or delete label $1$.
+\item Insert or delete label $i>1$ when label $i-1$ is present.
+\end{enumerate}
+The number of occupied labels must remain at most $b$. Call an occupied
+label a pebble. The moves are reversible: the predecessor is still
+present after the move, so the reverse move is legal.
+
+\subsection{The clearance invariant}
+We need a bound on how far a sequence starting with no pebbles can go.
+The following auxiliary test supplies it. Write a configuration as
+$a_1<\cdots<a_k$, put $a_0=0$, and call pebble $a_j$ \emph{eligible}
+for removal when
+\begin{equation}\label{tx:eq:order-clearance-test}
+                        a_j-a_{j-1}\le2^{b-k}.
+\end{equation}
+A configuration is \emph{clearable} if successive eligible removals
+can empty it, recalculating the threshold after each removal.
+These auxiliary removals need not be legal graph moves. They give an
+invariant for the actual graph moves, whose predecessor gaps are one.
+In this clearance argument, $k$ counts the currently occupied pebbles;
+it is independent of the variable-support parameter $k=2$ for
+$\mathcal O_n$.
+
+\begin{lemma}[Any eligible removal can come first]
+\label{tx:lem:order-clearance-exchange}
+Removing any eligible pebble from a clearable configuration leaves a
+clearable configuration.
+\end{lemma}
+\begin{proof}
+Induct on the number $k$ of pebbles. The assertion for $k\le1$ is
+immediate. Put $h=2^{b-k}$, choose an eligible pebble $a$, and let $c$
+be the first removal in one clearing order. If $a=c$, use the remainder
+of that order.
+
+Otherwise both are initially eligible. Removing either doubles the
+threshold to $2h$. The other's gap stays the same unless the two
+pebbles are adjacent in the configuration; in that case its gap can
+become the sum of two gaps at most $h$, hence is at most $2h$. Thus either order
+can remove both. The configuration with $c$ removed is clearable;
+by induction it can remove $a$ next and then clear the remaining
+configuration. Starting instead by removing $a$, remove $c$ next and
+use that same remainder. This gives a clearing order after removing $a$.
+\end{proof}
+
+\begin{lemma}[The reachable frontier]
+\label{tx:lem:order-pebble-frontier}
+Every configuration reachable from the empty set using at most $b$
+pebbles is clearable. In every nonempty clearable configuration of
+$k$ pebbles,
+\begin{equation}\label{tx:eq:order-pebble-frontier}
+                     a_k\le2^b-2^{b-k}\le2^b-1.
+\end{equation}
+\end{lemma}
+\begin{proof}
+The empty configuration is clearable. For a legal deletion, the
+deleted pebble has gap one, so is eligible; the exchange lemma preserves
+clearability. For a legal insertion, the new pebble has gap one and
+can be removed immediately by the auxiliary test. This returns to the
+previous clearable configuration, proving that the new one is also
+clearable. This proves the invariant along every graph path.
+
+For the bound, induct on $k$, assigning maximum zero to the empty
+configuration. A clearing order first removes an eligible pebble with
+gap at most $h=2^{b-k}$. The remaining configuration is clearable and
+has $k-1$ pebbles, so its maximum is at most $2^b-2h$. If the deleted
+pebble was not the largest, this bounds the original maximum as well.
+If it was the largest, restoring it adds at most its gap $h$ to that
+maximum. Either way, $a_k\le2^b-h$. Since $k\le b$, one has $h\ge1$,
+giving the final inequality.
+\end{proof}
+
+For example, two pebbles can reach label three:
+\[
+ \varnothing,\ \{1\},\ \{1,2\},\ \{2\},\ \{2,3\}.
+\]
+They cannot reach label four. The clearance test explains the limitation
+without bounding the number of moves: with two occupied labels the
+threshold is one, and after an eligible removal it becomes two.
+
+\subsection{From graph components to a linear functional}
+A \emph{linear functional} assigns a scalar to each coefficient vector
+and respects addition and scalar multiplication. Specifying its value
+on every monomial specifies it on every polynomial by linearity.
+To exclude an NS identity for $1$, it suffices to find such a functional
+which is zero on every permitted multiplier--input product but nonzero
+on $1$. Applying it to the identity would give a contradiction.
+This is a dual certificate for nonmembership in a span.
+
+The graph supplies its weights. A difference of two adjacent monomial
+coordinates receives value zero if the weights are constant along
+edges, hence on connected components. We give the empty component
+weight one and the other components weight zero. The proof below
+checks that this assignment also handles powers and endpoint inputs.
+
+\begin{proposition}[An elementary logarithmic NS obstruction]
+\label{tx:prop:order-induction-lower}
+If $n\ge2^b$, the system $\mathrm{IND}_n$ has no total-product
+degree-$b$ NS refutation, over any field.
+\end{proposition}
+\begin{proof}
+Let $\mathcal E$ be the component of the empty vertex in the graph.
+By Lemma~\ref{tx:lem:order-pebble-frontier}, no vertex of $\mathcal E$
+contains $n$. For a monomial $\mu$ of degree at most $b$, let $S(\mu)$
+be the labels with positive exponent and define
+\[
+ \Lambda(\mu)=
+ \begin{cases}1,&S(\mu)\in\mathcal E,\\0,&S(\mu)\notin\mathcal E.
+ \end{cases}
+\]
+Extend $\Lambda$ linearly to $P_{\le b}$. In particular $\Lambda(1)=1$.
+We check that it vanishes on every permitted monomial--input product.
+
+The two monomials of $\mu(1-x_1)$ reduce to the same subset or to
+vertices joined by a label-one edge. Their $\Lambda$ values are equal,
+so their difference has value zero. For
+$\mu x_i(1-x_{i+1})$, the subsets are
+$S(\mu)\cup\{i\}$ and $S(\mu)\cup\{i,i+1\}$. They are identical
+or adjacent, because $i$ is present. They both have size at most $b$
+by the product-degree restriction, so this difference also has value
+zero. The product $\mu x_n$ corresponds to a vertex containing $n$,
+hence has value zero. Finally $\mu(x_i^2-x_i)$ has the same set of
+positive exponents in both monomials, so again has value zero.
+
+Every allowed NS identity is a linear combination of these products.
+Applying $\Lambda$ to a supposed identity for $1$ would give $0=1$.
+This contradiction proves the proposition.
+\end{proof}
+
+The functional used for the lower bound is a test on coefficient vectors, not a truth
+assignment. Replacing a positive exponent by one in its definition
+does not grant a free Boolean-reduction rule to a PC proof.
+Indeed, the functional need not respect multiplication of derived
+low-degree lines; the degree-two PC refutation above demonstrates
+precisely why an NS witness need not be an ordinary-PC witness.
+
+For a small calculation, take $b=2$ and $n\ge4$. The empty component
+contains $\{2\}$ and $\{2,3\}$ but not $\{3\}$: the singleton's gap
+three fails its clearance threshold two. Consequently
+\[
+ \Lambda(1-x_2)=0,\qquad
+ \Lambda\bigl(x_3(1-x_2)\bigr)=0-1=-1\ne0.
+\]
+The line $1-x_2$ has a degree-two PC derivation. Its permitted
+multiplication by $x_3$ is exactly an operation this NS functional does
+not preserve.
+
+\subsection{Why the chain also has logarithmic NS certificates}
+The chain obstruction cannot be strengthened to a linear bound.
+There is a short divide-and-conquer construction that makes this
+clear without appealing to an external upper-bound theorem.
+
+\begin{proposition}[A logarithmic NS upper bound for the fixed chain]
+\label{tx:prop:order-induction-upper}
+For $n\ge2$, the system $\mathrm{IND}_n$ has a total-product NS
+refutation of degree at most $2+\lceil\log_2(n-1)\rceil$, over every field.
+\end{proposition}
+\begin{proof}
+For $a<b$ write $T_{ab}=x_a(1-x_b)$. When $b=a+1$, this is
+an input. For any $a<c<b$, the polynomial identity
+\[
+ T_{ab}=(1-x_b)T_{ac}+x_aT_{cb}
+\]
+combines two shorter intervals. Choose $c$ so that their lengths
+differ by at most one, and recursively expand both terms until only
+the original adjacent-transition inputs remain. Each recursive level
+multiplies their certificates by a polynomial of degree one. An
+interval of length $b-a$ needs at most
+$\lceil\log_2(b-a)\rceil$ levels, so every resulting multiplier--input
+product has degree at most $2+\lceil\log_2(b-a)\rceil$.
+This is an NS identity in the original inputs, obtained by expanding
+all intermediate transitions.
+
+Finally use the endpoint identity
+\[
+                1=(1-x_1)+T_{1n}+x_1x_n.
+\]
+The first term is an input, the last is a degree-two multiple of the
+input $x_n$, and the middle has the certificate just constructed.
+The displayed degree bound follows. For $n=1$, the endpoint inputs
+already sum to one with total-product degree one.
+\end{proof}
+
+Together with Proposition~\ref{tx:prop:order-induction-lower}, this
+proves the claimed $\Theta(\log n)$ NS degree. The fixed successor chain
+allows PC to carry a single degree-one conclusion down the chain;
+an NS certificate records the original inputs, and balanced
+composition keeps its growing degree logarithmic.
+
+\section{Restricting the uniform order problem to the chain}
+In this argument, a \emph{substitution} assigns a polynomial to each
+variable and extends by addition and multiplication to the whole
+polynomial ring. It is a ring homomorphism:
+$\sigma(af+bg)=a\sigma(f)+b\sigma(g)$ and
+$\sigma(fg)=\sigma(f)\sigma(g)$, where $a,b\in K$.
+Thus it sends an identity $1=\sum a_ff$ to
+$1=\sum\sigma(a_f)\sigma(f)$.
+To obtain a certificate from the chain inputs, we must additionally
+express each substituted input $\sigma(f)$ using those inputs.
+The degree accounting below controls both steps. Substitution here
+is a fixed-size reduction between two systems, whereas the later
+lifting operator is a linear map between universe sizes.
+
+We now relate $\mathcal O_n$ to $\mathrm{IND}_n$, for $n\ge2$.
+The substitution need not respect relabelling: it will be used only
+to transform an NS identity at one fixed size. Set
+\begin{equation}\label{tx:eq:order-cycle-restriction}
+ \sigma(F_{ij})=
+ \begin{cases}
+ 1,&i>1\text{ and }j=i-1,\text{ or }i=1\text{ and }j=n,\\
+ 0,&\text{otherwise},
+ \end{cases}
+\end{equation}
+and put
+\begin{equation}\label{tx:eq:order-relation-restriction}
+ \sigma(L_{ij})=
+ \begin{cases}
+ 0,&i=j,\\
+ 1-x_i(1-x_j),&i<j,\\
+ (1-x_i)x_j,&i>j.
+ \end{cases}
+\end{equation}
+Every substituted variable has degree at most two. On a Boolean
+assignment, the relation in \eqref{tx:eq:order-relation-restriction}
+orders labels first by their Boolean value, with zero before one,
+and then by their numerical label. It is therefore always a strict
+total order.
+
+The selected predecessors run around one fixed cycle. For $i>1$,
+the nonzero guard becomes exactly
+\[
+            1-\sigma(L_{i-1,i})=x_{i-1}(1-x_i).
+\]
+The wraparound guard is
+\begin{equation}\label{tx:eq:order-wrap-guard}
+       1-\sigma(L_{n,1})=(1-x_1)+x_1x_n.
+\end{equation}
+This has a degree-two NS identity from the two endpoint inputs of
+$\mathrm{IND}_n$. All unselected guards become zero, and the function
+Boolean, totality and collision equations become zero identically.
+
+\begin{lemma}[Boolean reduction retains a product-degree bound]
+\label{tx:lem:order-Boolean-reduction}
+If a polynomial $P$ of degree at most $m$ vanishes on every Boolean
+assignment, it is a sum of multiples of $x_i^2-x_i$ with each nonzero
+product of degree at most $m$.
+\end{lemma}
+\begin{proof}
+Reduce powers one monomial at a time using
+\[
+ x_i^a-x_i=(x_i^2-x_i)(1+x_i+\cdots+x_i^{a-2})\qquad(a\ge2).
+\]
+Multiplying this identity by the other factors of that monomial
+does not exceed its original degree. Continue until every monomial
+is multilinear, recording the Boolean-axiom products. The final
+multilinear remainder still vanishes on the Boolean cube, so is zero
+by the induction proved in Chapter~\ref{tx:ch:consequences}.
+\end{proof}
+
+Apply this lemma to the substituted order equations, which vanish on
+every Boolean assignment. A Boolean or two-label order axiom has
+degree two before substitution and degree at most four afterwards.
+A transitivity axiom has degree three and becomes a polynomial of
+degree at most six. Irreflexivity becomes zero. Thus each source
+axiom $f$ of actual degree $e$ has a substituted NS identity from
+$\mathrm{IND}_n$ with product degree at most $2e$; the guards have
+the stronger bound two, as just computed.
+
+\begin{lemma}[Degree accounting for the restriction]
+\label{tx:lem:order-NS-restriction}
+A degree-$d$ NS refutation of $\mathcal O_n$ gives a degree-at-most-$2d$
+NS refutation of $\mathrm{IND}_n$.
+\end{lemma}
+\begin{proof}
+Write the original identity as $1=\sum_f a_ff$, omitting zero
+products. If $e=\deg f$, then $\deg a_f\le d-e$. Hence
+$\deg\sigma(a_f)\le2(d-e)$. Replace $\sigma(f)$ by the identity
+just established, whose individual products have degree at most $2e$.
+After multiplication by $\sigma(a_f)$, every new product has degree
+at most $2(d-e)+2e=2d$. Summing gives the required NS refutation.
+\end{proof}
+
+\begin{corollary}[The qualitative NS seed]
+\label{tx:cor:order-NS-seed}
+For every $n\ge2$ and every field,
+\begin{equation}\label{tx:eq:order-log-seed}
+                        d_{\NS}(\mathcal O_n)>
+                                      \tfrac12\log_2 n.
+\end{equation}
+In particular, the NS minimum degrees tend to infinity.
+\end{corollary}
+\begin{proof}
+If a degree-$d$ refutation existed with $n\ge2^{2d}$,
+Lemma~\ref{tx:lem:order-NS-restriction} would produce a chain refutation
+forbidden by Proposition~\ref{tx:prop:order-induction-lower} at budget
+$b=2d$. Therefore $n<2^{2d}$ for the finite minimum degree $d$,
+which is the displayed inequality.
+\end{proof}
+
+\section{Why PC degree also tends to infinity}
+We now use the fixed positive characteristic. The uniform comparison
+theorem, Theorem~\ref{tx:thm:comparison}, supplies the
+following input for the original order family: for each fixed PC
+budget $d$ there is a finite NS budget $E(d)$, independent of $n$,
+such that
+\begin{equation}\label{tx:eq:order-comparison-input}
+ d_{\PC}(\mathcal O_n)\le d
+               \quad\Longrightarrow\quad
+ d_{\NS}(\mathcal O_n)\le E(d).
+\end{equation}
+The function may grow quickly; only independence from $n$ is needed.
+
+For a fixed $d$, inequality~\eqref{tx:eq:order-log-seed} eventually
+exceeds $E(d)$. Consequently a degree-$d$ PC refutation is impossible
+at every sufficiently large size. Since this holds for each fixed
+$d$, the PC minimum degree tends to infinity too. No finite degree
+can recur infinitely often in either proof system.
+
+This uses comparison on $\mathcal O_n$, where the uniform hypothesis
+holds. Applying it to the restricted chain would be invalid: that
+nonuniform family has the degree-two PC proofs already displayed.
+The comparison transfers \emph{qualitative unboundedness}; the linear
+PC bound will come from lifting with its original PC degree unchanged.
+
+\section{The same lifting mechanism gives the linear bound}
+For this family, the invariant-target case of
+Theorem~\ref{tx:thm:transfer} gives a particularly simple statement.
+For either $S=\NS$ or $S=\PC$, if
+\begin{equation}\label{tx:eq:order-lift-range}
+ q=p^a>2d+3,\qquad n\ge\max\{9,4d+5\},
+\end{equation}
+then a degree-$d$ refutation at $n$ gives one at $n+q$. These numbers
+come from $r=2d+3$ and the retained-label requirement $n\ge2r-1$.
+We use the actual range of the transfer theorem; the profile chapter
+also defines a slightly more conservative onset for general bookkeeping.
+
+\begin{theorem}[A finite linear lower bound for the order family]
+\label{tx:thm:order-linear}
+Over every fixed field of prime characteristic, the NS and ordinary-PC
+refutation degrees of $\mathcal O_n$ are finite at every positive
+size, tend to infinity, and satisfy
+\begin{equation}\label{tx:eq:order-linear-bound}
+ d_{\PC}(\mathcal O_n)>\frac{n-5}{4},\qquad
+ d_{\NS}(\mathcal O_n)>\frac{n-5}{4}\qquad(n\ge9).
+\end{equation}
+Both profiles are of type T2 in Chapter~\ref{tx:ch:profiles}.
+\end{theorem}
+\begin{proof}
+Finiteness and positivity were proved in
+Proposition~\ref{tx:prop:order-finite}. The preceding two sections show
+that both minimum degrees tend to infinity.
+
+Suppose a degree-$d$ refutation existed at a size satisfying
+\eqref{tx:eq:order-lift-range}. Keep this $d$ fixed and choose one
+admissible prime power $q$. Iterated forward lifting gives refutations
+of degree at most $d$ at
+\[
+                            n,n+q,n+2q,\ldots.
+\]
+Every step remains eligible: the retained rank grows, while $d,r,q$
+stay fixed. This contradicts the fact that the minimum degree tends
+to infinity. The contradiction works separately for NS and PC.
+
+Now take any $n\ge9$ and let $d$ be its finite minimum degree in the
+chosen system. If $n\ge4d+5$, the preceding contradiction applies.
+Therefore $n<4d+5$, which rearranges to
+$d>(n-5)/4$. Absence of any recurring finite degree is exactly the
+T2 case of the later classification.
+\end{proof}
+
+The conclusion concerns unavoidable proof degree at every sufficiently
+large size. It uses an infinite progression, not a drop in the degree:
+the lifted proofs would all have the same budget $d$. A proof of
+arbitrary length cannot evade the bound, because lifting transports
+the complete degree-$d$ consequence space.
+
+\section{What the later common projector must do for this example}
+The application has now isolated the jobs of the algebraic construction.
+The common projector will be a linear projection obtained from one
+shared combination of label permutations. Write $\Lift$ for the
+resulting linear map from smaller-rank polynomials to larger-rank ones.
+The variable basis has two-label support; monomials of degree at most
+$d$ use at most $2d$ labels. The usable-axiom source and the NS
+multiplier--axiom source are covered by $r=2d+3$. Every closure stage
+stays inside these fixed ambient spaces.
+
+Consider the row input $\sum_{j\le n}F_{ij}-1$. Plain inclusion into
+a larger universe leaves out its added summands. Setting all variables
+involving deleted labels to zero instead turns a deleted row into
+$-1$. The common projector must repair the actual axiom coefficient
+map. Its axiom-lifting formula gives a linear combination of genuine
+larger-instance inputs, rather than assuming that the same retained
+polynomial remains an axiom.
+
+For PC it must also preserve $V_j\cap P_{\le d-1}$ after cancellation,
+and the joint tensor multiplication map. This ensures that every
+lifted vector in the larger closure has a legal ordinary-PC derivation.
+The target here is $1$, so the identity $\Lift(1)=1$ turns consequence
+lifting into refutation lifting. The retained-label cost $2r-1=4d+5$
+is what can be inverted to obtain the linear bound.
+
+The separate comparison theorem uses a uniformly bounded chain of
+invariant subspaces and an NS plateau to contain the whole PC closure.
+In this example it rules out bounded PC degree before lifting supplies
+the numerical lower bound. The restriction to the induction chain,
+the clearance invariant, comparison, and the common projector each
+have one task. Together they turn a sequential finite-order
+contradiction into the same linear-degree mechanism used throughout
+the book.

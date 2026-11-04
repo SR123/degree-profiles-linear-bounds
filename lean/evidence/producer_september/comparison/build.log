@@ -1,0 +1,339 @@
+fresh build started: Sat Sep 26 22:22:39 UTC 2026
+toolchain: leanprover/lean4:v4.26.0
+Lean (version 4.26.0, x86_64-unknown-linux-gnu, commit d8204c9fd894f91bbb2cdfec5912ec8196fd8562, Release)
+✔ [1872/1878] Built DegreeProfilesReview.BasisSystems (3.6s)
+✔ [1874/1878] Built DegreeProfilesReview.StablePartitions (3.2s)
+✔ [1875/1882] Built DegreeProfilesReview.MonoidalCompat (1.4s)
+✔ [1876/1902] Built DegreeProfilesReview.SerreDescent (2.6s)
+✔ [1893/1902] Built DegreeProfilesReview.PCTransport (4.7s)
+✔ [1895/1902] Built DegreeProfilesReview.PolynomialCalculus (2.3s)
+✔ [1896/1902] Built DegreeProfilesReview.ImageClosure (2.2s)
+✔ [1897/1902] Built DegreeProfilesReview.PCClosure (4.9s)
+✔ [1898/1902] Built DegreeProfilesReview.DeletionInterface (7.1s)
+✔ [1899/1943] Built DegreeProfilesReview.ClosedSubcategory (2.7s)
+✔ [1940/1943] Built DegreeProfilesReview.SymRep (4.9s)
+✔ [1941/1969] Built DegreeProfilesReview.Nullstellensatz (5.1s)
+✔ [1964/1970] Built DegreeProfilesReview.ConcreteM4 (3.4s)
+✔ [1968/1988] Built DegreeProfilesReview.DegreeProfiles (3.4s)
+✔ [1981/2049] Built DegreeProfilesReview.LinearBounds (4.5s)
+✔ [3308/3318] Built DegreeProfilesReview.FieldDescent (7.6s)
+✔ [3309/3321] Built ReflexiveAdjustment (4.2s)
+✔ [3310/3324] Built DegreeProfilesReview.Templates (3.8s)
+✔ [3312/3324] Built DegreeProfilesReview.TemplateExample (3.3s)
+✔ [3313/3326] Built ResidualSplitting (4.3s)
+✔ [3314/3326] Built DegreeProfilesReview.PermFromTuples (4.9s)
+✔ [3316/3330] Built CanonicalClass (5.0s)
+✔ [3317/3330] Built DegreeProfilesReview.DeletionLinear (12s)
+✔ [3319/3330] Built RestrictionRelations (5.7s)
+✔ [3320/3331] Built DegreeProfilesReview.ShiftedLinear (14s)
+✔ [3322/3331] Built C017Localize (11s)
+✔ [3323/3331] Built DegreeProfilesReview.DeletionTensor (33s)
+✔ [3325/3331] Built DegreeProfilesReview.ShiftedFree (12s)
+✔ [3326/3331] Built C017Compression (19s)
+✔ [3327/3331] Built DegreeProfilesReview.DeletionFunctor (17s)
+✔ [3328/3342] Built DegreeProfilesReview.ShiftedElemAb (7.5s)
+✔ [3329/3342] Built DegreeProfilesReview.PCTensorForm (5.4s)
+✔ [3331/3342] Built DegreeProfilesReview.ConcreteDatum (12s)
+✔ [3332/3342] Built DegreeProfilesReview.TemplateMatrices (7.3s)
+✔ [3333/3342] Built DegreeProfilesReview.ShiftedTensor (42s)
+✔ [3334/3343] Built DegreeProfilesReview.TemplateCompat (6.6s)
+✔ [3335/3343] Built DegreeProfilesReview.TemplatePeriodicity (3.2s)
+✔ [3337/3343] Built DegreeProfilesReview.WeakInterface (6.3s)
+✔ [3338/3366] Built DegreeProfilesReview.ShiftedFunctor (15s)
+✔ [3361/3370] Built MinimalTransfer (3.1s)
+✔ [3365/3375] Built TemplateExactTransfer (3.6s)
+✔ [3366/3376] Built InnerInverseProjection (2.9s)
+✔ [3367/3376] Built DegreeProfilesReview.ConcreteM5 (13s)
+✔ [3368/3376] Built HomologyProjection (3.6s)
+✔ [3369/3376] Built DegreeProfilesReview.BlockGroupExample (3.2s)
+✔ [3370/3376] Built ShiftedProjection (3.9s)
+✔ [3371/3384] Built ProjectorExactness (2.2s)
+✔ [3375/3386] Built BitPairMatrix (3.1s)
+✔ [3376/3386] Built DegreeProfilesReview.ShiftedM5 (14s)
+✔ [3377/3389] Built SparseRectangular (1.9s)
+✔ [3378/3389] Built ShiftedPreservation (3.7s)
+✔ [3379/3389] Built C017Auxiliary (13s)
+✔ [3380/3394] Built ShiftedAdditive (2.7s)
+✔ [3382/3396] Built PolynomialInnerInverse (3.8s)
+✔ [3383/3396] Built TopTupleTest (3.0s)
+✔ [3384/3396] Built ImageCompression (2.3s)
+✔ [3385/3402] Built EmbeddingCompression (2.2s)
+✔ [3386/3402] Built RankThreeInverseData (83s)
+✔ [3387/3402] Built RankThreeMatrixInverse (5.8s)
+✔ [3388/3404] Built RankThreeRowData (2.0s)
+✔ [3389/3404] Built RankThreeNonvacuity (2.9s)
+✔ [3390/3404] Built RankTwoCertificate (56s)
+✔ [3391/3404] Built RawTripleEncoding (2.4s)
+✔ [3393/3404] Built RankTwoIdentity (3.9s)
+✔ [3394/3408] Built RawTripleAction (6.5s)
+✔ [3396/3408] Built RankTwoParameters (2.9s)
+✔ [3398/3411] Built RankTwoActionRelation (10s)
+✔ [3400/3411] Built RankThreeRowCertificate (33s)
+✔ [3403/3415] Built RankThreeCoordinateIdentities (2.8s)
+✔ [3406/3421] Built RankThreePrototypeAction (4.8s)
+✔ [3410/3423] Built RankTwoRelabel (10s)
+✔ [3416/3428] Built FiniteGroupAlgebra (5.5s)
+✔ [3418/3428] Built TopPowerProjection (6.1s)
+✔ [3419/3428] Built RankThreeActualRelation (21s)
+✔ [3421/3437] Built PAuxiliary (13s)
+✔ [3422/3437] Built TopPowerExactness (13s)
+✔ [3423/3441] Built DegreeProfilesReview.TypeTransfer (3.1s)
+⚠ [3424/3441] Built DCPRook (11s)
+warning: DCPRook.lean:90:12: unused variable `p`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: DCPRook.lean:102:8: unused variable `q`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: DCPRook.lean:190:64: unused variable `h`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: DCPRook.lean:224:12: unused variable `q`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: DCPRook.lean:229:12: unused variable `q`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: DCPRook.lean:380:6: unused variable `w`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [3425/3441] Built BLemmaL (3.0s)
+✔ [3426/3441] Built ForceInterface (2.0s)
+✔ [3427/3444] Built BRealise (2.5s)
+✔ [3428/3444] Built RankThreeTransport (35s)
+✔ [3429/3444] Built BLemmaD (9.3s)
+✔ [3430/3446] Built BCor6 (7.6s)
+✔ [3431/3446] Built ClaudeWitnessTransfer (8.2s)
+✔ [3432/3449] Built BLabel (2.6s)
+✔ [3433/3449] Built BProp4 (9.1s)
+✔ [3434/3453] Built PTransfer (16s)
+⚠ [3435/3455] Built BBridge (7.5s)
+warning: BBridge.lean:132:26: `Equiv.Perm.inv_apply_self` has been deprecated: Use `Equiv.symm_apply_apply` instead
+
+Note: The updated constant has a different type:
+  ∀ {α : Sort u} {β : Sort v} (e : α ≃ β) (x : α), e.symm (e x) = x
+instead of
+  ∀ {α : Type u_4} (f : Equiv.Perm α) (x : α), f⁻¹ (f x) = x
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.inv_apply_self` to `Equiv.symm_apply_apply x`).
+warning: BBridge.lean:136:26: `Equiv.Perm.apply_inv_self` has been deprecated: Use `Equiv.apply_symm_apply` instead
+
+Note: The updated constant has a different type:
+  ∀ {α : Sort u} {β : Sort v} (e : α ≃ β) (x : β), e (e.symm x) = x
+instead of
+  ∀ {α : Type u_4} (f : Equiv.Perm α) (x : α), f (f⁻¹ x) = x
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.apply_inv_self` to `Equiv.apply_symm_apply x`).
+✔ [3436/3457] Built C017Induction (24s)
+✔ [3437/3457] Built BTranspose (3.1s)
+✔ [3438/3459] Built C017Final (15s)
+✔ [3439/3462] Built DCPBridge (3.9s)
+✔ [3440/3462] Built PInduction (19s)
+⚠ [3441/3462] Built DCPCanon (3.4s)
+warning: DCPCanon.lean:43:6: unused variable `p`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: DCPCanon.lean:43:8: unused variable `q`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [3443/3471] Built DCPHalf2 (5.6s)
+✔ [3444/3471] Built C017Rates (14s)
+✔ [3445/3471] Built RForceBase (4.4s)
+✔ [3446/3471] Built C017TypeAgreement (8.5s)
+✔ [3447/3471] Built RForceGP (7.9s)
+✔ [3448/3471] Built RForce (1.0s)
+✔ [3449/3471] Built PFinal (11s)
+✔ [3450/3471] Built LinearInterface (4.8s)
+✔ [3451/3471] Built BThm7 (12s)
+✔ [3452/3471] Built CompDetect (29s)
+✔ [3453/3471] Built BLayer (13s)
+✔ [3454/3471] Built DCPInterface (9.7s)
+✔ [3455/3471] Built CompChain (10s)
+✔ [3456/3471] Built CompPoly (10s)
+✔ [3457/3471] Built CompFinal (5.2s)
+✔ [3459/3471] Built BThm5 (27s)
+✔ [3460/3471] Built BTransC (20s)
+✔ [3461/3471] Built BProp6Red (10s)
+✔ [3462/3471] Built BProp6 (12s)
+✔ [3463/3471] Built BFinal (3.8s)
+✔ [3464/3471] Built DCPFinal (3.5s)
+✔ [3465/3471] Built DCPFinal2 (3.3s)
+✔ [3466/3471] Built FinalLinear (3.5s)
+✔ [3467/3471] Built LinearFinal (3.3s)
+✔ [3468/3471] Built CompLinear (3.1s)
+ℹ [3470/3471] Built CompAudit (23s)
+info: CompAudit.lean:9:0: ClaudeComparison.comparison : ∀ (p : ℕ) [Fact (Nat.Prime p)] {R : Type} [inst : Field R] [CharP R p]
+  (T : DegreeProfilesReview.Uniform.Template R),
+  ∃ F,
+    Monotone F ∧
+      ∀ (n t : ℕ), DegreeProfilesReview.PC.Refutes (T.inst n) t → DegreeProfilesReview.NS.NSRefutes (T.inst n) (F t)
+info: CompAudit.lean:10:0: ClaudeComparison.chainBound : ∀ (p : ℕ) [Fact (Nat.Prime p)] {R : Type} [inst : Field R] [CharP R p]
+  (T : DegreeProfilesReview.Uniform.Template R), ClaudeC017.ChainBound R T.Var
+info: CompAudit.lean:11:0: ClaudeComparison.upperComparison : ∀ (p : ℕ) [Fact (Nat.Prime p)] {R : Type} [inst : Field R] [CharP R p]
+  (T : DegreeProfilesReview.Uniform.Template R),
+  ∃ F, Monotone F ∧ DegreeProfilesReview.Profiles.UpperComparison F T.pcProfile T.nsProfile
+info: CompAudit.lean:12:0: ClaudeComparison.types_agree : ∀ (p : ℕ) [Fact (Nat.Prime p)] {R : Type} [inst : Field R] [CharP R p]
+  (T : DegreeProfilesReview.Uniform.Template R),
+  have N := ClaudeWitnessTransfer.wOnset T.k T.s T.n0 ClaudeC017.triW;
+  (DegreeProfilesReview.Profiles.IsT1 T.pcProfile ↔ DegreeProfilesReview.Profiles.IsT1 T.nsProfile) ∧
+    (DegreeProfilesReview.Profiles.IsT2 T.pcProfile N ↔ DegreeProfilesReview.Profiles.IsT2 T.nsProfile N) ∧
+      (DegreeProfilesReview.Profiles.IsT3 T.pcProfile N ↔ DegreeProfilesReview.Profiles.IsT3 T.nsProfile N) ∧
+        (DegreeProfilesReview.Profiles.IsT4 T.pcProfile N ↔ DegreeProfilesReview.Profiles.IsT4 T.nsProfile N)
+info: CompAudit.lean:13:0: ClaudeComparison.common_type : ∀ (p : ℕ) [Fact (Nat.Prime p)] {R : Type} [inst : Field R] [CharP R p]
+  (T : DegreeProfilesReview.Uniform.Template R),
+  have N := ClaudeWitnessTransfer.wOnset T.k T.s T.n0 ClaudeC017.triW;
+  DegreeProfilesReview.Profiles.IsT1 T.pcProfile ∧ DegreeProfilesReview.Profiles.IsT1 T.nsProfile ∨
+    DegreeProfilesReview.Profiles.IsT2 T.pcProfile N ∧ DegreeProfilesReview.Profiles.IsT2 T.nsProfile N ∨
+      DegreeProfilesReview.Profiles.IsT3 T.pcProfile N ∧ DegreeProfilesReview.Profiles.IsT3 T.nsProfile N ∨
+        DegreeProfilesReview.Profiles.IsT4 T.pcProfile N ∧ DegreeProfilesReview.Profiles.IsT4 T.nsProfile N
+info: CompAudit.lean:15:0: ClaudeComparison.types_agree_linear : ∀ (p : ℕ) [Fact (Nat.Prime p)] {R : Type} [inst : Field R] [CharP R p]
+  (T : DegreeProfilesReview.Uniform.Template R),
+  have N := DegreeProfilesReview.Profiles.onset T.k T.s T.n0;
+  (DegreeProfilesReview.Profiles.IsT1 T.pcProfile ↔ DegreeProfilesReview.Profiles.IsT1 T.nsProfile) ∧
+    (DegreeProfilesReview.Profiles.IsT2 T.pcProfile N ↔ DegreeProfilesReview.Profiles.IsT2 T.nsProfile N) ∧
+      (DegreeProfilesReview.Profiles.IsT3 T.pcProfile N ↔ DegreeProfilesReview.Profiles.IsT3 T.nsProfile N) ∧
+        (DegreeProfilesReview.Profiles.IsT4 T.pcProfile N ↔ DegreeProfilesReview.Profiles.IsT4 T.nsProfile N)
+info: CompAudit.lean:16:0: ClaudeComparison.common_type_linear : ∀ (p : ℕ) [Fact (Nat.Prime p)] {R : Type} [inst : Field R] [CharP R p]
+  (T : DegreeProfilesReview.Uniform.Template R),
+  have N := DegreeProfilesReview.Profiles.onset T.k T.s T.n0;
+  DegreeProfilesReview.Profiles.IsT1 T.pcProfile ∧ DegreeProfilesReview.Profiles.IsT1 T.nsProfile ∨
+    DegreeProfilesReview.Profiles.IsT2 T.pcProfile N ∧ DegreeProfilesReview.Profiles.IsT2 T.nsProfile N ∨
+      DegreeProfilesReview.Profiles.IsT3 T.pcProfile N ∧ DegreeProfilesReview.Profiles.IsT3 T.nsProfile N ∨
+        DegreeProfilesReview.Profiles.IsT4 T.pcProfile N ∧ DegreeProfilesReview.Profiles.IsT4 T.nsProfile N
+info: CompAudit.lean:18:0: @ClaudeComparison.detect : ∀ {p : ℕ} [inst : Fact (Nat.Prime p)] {K : Type} [inst_1 : Field K] [inst_2 : CharP K p]
+  {a n : ℕ} {c : Fin a → K} {s : ℕ} {w : MonoidAlgebra K ↥(DegreeProfilesReview.SymRep.Sfin (n + p ^ a))},
+  DegreeProfilesReview.Shifted.Generic p c →
+    s < p ^ a →
+      ClaudeCP.IsTopWitness p s a n c w →
+        ∀ {𝒰 : DegreeProfilesReview.Uniform.BasisSystem} {r : ℕ},
+          𝒰.Bounded r →
+            r + r ≤ s →
+              ∀ {S S' : Submodule K (𝒰.Rk (n + p ^ a) →₀ K)},
+                ClaudeComparison.IsInv (DegreeProfilesReview.SymRep.permRep K 𝒰 (n + p ^ a)).ρ S →
+                  ClaudeComparison.IsInv (DegreeProfilesReview.SymRep.permRep K 𝒰 (n + p ^ a)).ρ S' →
+                    (∀ x ∈ S', (ClaudeCP.topProj c w (DegreeProfilesReview.SymRep.permRep K 𝒰 (n + p ^ a))) x ∈ S) →
+                      S' ≤ S
+info: CompAudit.lean:19:0: @ClaudeComparison.delImg_strict : ∀ {p : ℕ} [inst : Fact (Nat.Prime p)] {K : Type} [inst_1 : Field K]
+  [inst_2 : CharP K p] {a n : ℕ} {c : Fin a → K} {𝒰 : DegreeProfilesReview.Uniform.BasisSystem} {r : ℕ}
+  (hc : DegreeProfilesReview.Shifted.Generic p c) (hrq : r < p ^ a) (hU : 𝒰.Bounded r) {s : ℕ},
+  s < p ^ a →
+    ∀ {w : MonoidAlgebra K ↥(DegreeProfilesReview.SymRep.Sfin (n + p ^ a))},
+      ClaudeCP.IsTopWitness p s a n c w →
+        r + r ≤ s →
+          ∀ {S S' : Submodule K (𝒰.Rk (n + p ^ a) →₀ K)}
+            (hS : ClaudeComparison.IsInv (DegreeProfilesReview.SymRep.permRep K 𝒰 (n + p ^ a)).ρ S)
+            (hS' : ClaudeComparison.IsInv (DegreeProfilesReview.SymRep.permRep K 𝒰 (n + p ^ a)).ρ S'),
+            S < S' → ClaudeComparison.delImg hc hrq hU S hS < ClaudeComparison.delImg hc hrq hU S' hS'
+info: CompAudit.lean:20:0: @ClaudeComparison.chain_step : ∀ {p : ℕ} [inst : Fact (Nat.Prime p)] {K : Type} [inst_1 : Field K] [inst_2 : CharP K p]
+  {a n : ℕ} {c : Fin a → K} {𝒰 : DegreeProfilesReview.Uniform.BasisSystem} {r : ℕ},
+  DegreeProfilesReview.Shifted.Generic p c →
+    r < p ^ a →
+      𝒰.Bounded r →
+        ∀ {s : ℕ},
+          s < p ^ a →
+            ∀ {w : MonoidAlgebra K ↥(DegreeProfilesReview.SymRep.Sfin (n + p ^ a))},
+              ClaudeCP.IsTopWitness p s a n c w →
+                r + r ≤ s →
+                  ∀ {L : ℕ} (W : Fin L → Submodule K (𝒰.Rk (n + p ^ a) →₀ K)),
+                    (∀ (i : Fin L),
+                        ClaudeComparison.IsInv (DegreeProfilesReview.SymRep.permRep K 𝒰 (n + p ^ a)).ρ (W i)) →
+                      StrictMono W →
+                        ∃ W',
+                          (∀ (i : Fin L), ClaudeComparison.IsInv (DegreeProfilesReview.SymRep.permRep K 𝒰 n).ρ (W' i)) ∧
+                            StrictMono W'
+info: CompAudit.lean:21:0: ClaudeComparison.chainBoundPerm : ∀ (p : ℕ) [Fact (Nat.Prime p)] (K : Type) [inst : Field K] [IsAlgClosed K] [CharP K p]
+  (𝒰 : DegreeProfilesReview.Uniform.BasisSystem) {r : ℕ},
+  𝒰.Bounded r →
+    ∃ L,
+      ∀ (N : ℕ) (W : Fin (L + 2) → Submodule K (𝒰.Rk N →₀ K)),
+        (∀ (i : Fin (L + 2)), ClaudeComparison.IsInv (DegreeProfilesReview.SymRep.permRep K 𝒰 N).ρ (W i)) →
+          ¬StrictMono W
+info: CompAudit.lean:22:0: @ClaudeComparison.extS_strict : ∀ {R K : Type} [inst : Field R] [inst_1 : Field K] [inst_2 : Algebra R K] {X : Type}
+  {W W' : Submodule R (X →₀ R)}, W < W' → ClaudeComparison.extS W < ClaudeComparison.extS W'
+info: CompAudit.lean:23:0: @ClaudeComparison.cf_rename : ∀ {R : Type} [inst : Field R] {𝒰 : DegreeProfilesReview.Uniform.BasisSystem} {t n : ℕ}
+  (g : ↥(DegreeProfilesReview.SymRep.Sfin n)) (f : MvPolynomial (𝒰.Rk n) R),
+  (ClaudeComparison.cf 𝒰 t n) ((MvPolynomial.rename fun v => g • v) f) =
+    ((Representation.ofMulAction R (↥(DegreeProfilesReview.SymRep.Sfin n)) ((𝒰.mon t).Rk n)) g)
+      ((ClaudeComparison.cf 𝒰 t n) f)
+info: CompAudit.lean:24:0: @ClaudeComparison.cf_injOn : ∀ {R : Type} [inst : Field R] {𝒰 : DegreeProfilesReview.Uniform.BasisSystem} {t n : ℕ}
+  {f : MvPolynomial (𝒰.Rk n) R},
+  f ∈ MvPolynomial.restrictTotalDegree (𝒰.Rk n) R t → (ClaudeComparison.cf 𝒰 t n) f = 0 → f = 0
+info: CompAudit.lean:25:0: ClaudeComparison.chainBound_of_bounded : ∀ (p : ℕ) [Fact (Nat.Prime p)] {R : Type} [inst : Field R] [CharP R p]
+  (𝒰 : DegreeProfilesReview.Uniform.BasisSystem) {k : ℕ}, 𝒰.Bounded k → ClaudeC017.ChainBound R 𝒰
+info: CompAudit.lean:27:0: def ClaudeC017.ChainBound : (R : Type) → [Field R] → DegreeProfilesReview.Uniform.BasisSystem → Prop :=
+fun R [Field R] 𝒰 =>
+  ∀ (t : ℕ),
+    ∃ L,
+      ∀ (n : ℕ) (W : Fin (L + 2) → Submodule R (MvPolynomial (𝒰.Rk n) R)),
+        (∀ (i : Fin (L + 2)), W i ≤ MvPolynomial.restrictTotalDegree (𝒰.Rk n) R t) →
+          (∀ (i : Fin (L + 2)) (g : ↥(DegreeProfilesReview.SymRep.Sfin n)),
+              ∀ f ∈ W i, (MvPolynomial.rename fun v => g • v) f ∈ W i) →
+            ¬StrictMono W
+info: CompAudit.lean:28:0: def DegreeProfilesReview.PC.Refutes.{u_1, u_2} : {σ : Type u_1} →
+  {K : Type u_2} → [inst : Field K] → Set (MvPolynomial σ K) → ℕ → Prop :=
+fun {σ} {K} [Field K] Γ d => DegreeProfilesReview.PC.Derives Γ d 1
+info: CompAudit.lean:29:0: def DegreeProfilesReview.PC.Derives.{u_1, u_2} : {σ : Type u_1} →
+  {K : Type u_2} → [inst : Field K] → Set (MvPolynomial σ K) → ℕ → MvPolynomial σ K → Prop :=
+fun {σ} {K} [Field K] Γ d f => ∃ l, DegreeProfilesReview.PC.IsProof Γ l ∧ DegreeProfilesReview.PC.DegBounded d l ∧ f ∈ l
+info: CompAudit.lean:30:0: def DegreeProfilesReview.NS.NSRefutes.{u_1, u_2} : {σ : Type u_1} →
+  {K : Type u_2} → [inst : Field K] → Set (MvPolynomial σ K) → ℕ → Prop :=
+fun {σ} {K} [Field K] Γ d => ∃ s a, (∀ f ∈ s, f ∈ Γ) ∧ (∀ f ∈ s, (a f * f).totalDegree ≤ d) ∧ ∑ f ∈ s, a f * f = 1
+info: CompAudit.lean:31:0: def DegreeProfilesReview.Profiles.UpperComparison : (ℕ → ℕ) → (ℕ → ℕ∞) → (ℕ → ℕ∞) → Prop :=
+fun F g h => ∀ (n x : ℕ), g n = ↑x → h n ≤ ↑(F x)
+info: CompAudit.lean:32:0: def ClaudeComparison.IsInv : {K G : Type} →
+  [inst : Field K] →
+    [inst_1 : Group G] →
+      {V : Type} → [inst_2 : AddCommGroup V] → [inst_3 : Module K V] → Representation K G V → Submodule K V → Prop :=
+fun {K G} [Field K] [Group G] {V} [AddCommGroup V] [Module K V] ρ S => ∀ (g : G), S ≤ Submodule.comap (ρ g) S
+info: CompAudit.lean:33:0: def ClaudeComparison.delImg : {p : ℕ} →
+  [inst : Fact (Nat.Prime p)] →
+    {K : Type} →
+      [inst_1 : Field K] →
+        [inst_2 : CharP K p] →
+          {a n : ℕ} →
+            {c : Fin a → K} →
+              {𝒰 : DegreeProfilesReview.Uniform.BasisSystem} →
+                {r : ℕ} →
+                  DegreeProfilesReview.Shifted.Generic p c →
+                    r < p ^ a →
+                      𝒰.Bounded r →
+                        (S : Submodule K (𝒰.Rk (n + p ^ a) →₀ K)) →
+                          ClaudeComparison.IsInv (DegreeProfilesReview.SymRep.permRep K 𝒰 (n + p ^ a)).ρ S →
+                            Submodule K (𝒰.Rk n →₀ K) :=
+fun {p} [Fact (Nat.Prime p)] {K} [Field K] [CharP K p] {a n} {c} {𝒰} {r} hc hrq hU S hS =>
+  LinearMap.range
+    (ModuleCat.Hom.hom
+      (CategoryTheory.CategoryStruct.comp
+          ((DegreeProfilesReview.ShiftedM5.Ψhat p a n c).map
+            ((DegreeProfilesReview.SymRep.permRep K 𝒰 (n + p ^ a)).subtype S hS))
+          (DegreeProfilesReview.ShiftedM5.δ' hc hrq hU).hom).hom)
+info: CompAudit.lean:34:0: def ClaudeComparison.extS : {R K : Type} →
+  [inst : Field R] → [inst_1 : Field K] → [Algebra R K] → {X : Type} → Submodule R (X →₀ R) → Submodule K (X →₀ K) :=
+fun {R K} [Field R] [Field K] [Algebra R K] {X} W => Submodule.span K (ClaudeComparison.ext '' ↑W)
+info: CompAudit.lean:35:0: def ClaudeComparison.cf : {R : Type} →
+  [inst : Field R] →
+    (𝒰 : DegreeProfilesReview.Uniform.BasisSystem) → (t n : ℕ) → MvPolynomial (𝒰.Rk n) R →ₗ[R] (𝒰.mon t).Rk n →₀ R :=
+fun {R} [Field R] 𝒰 t n =>
+  { toFun := fun f => Finsupp.equivFunOnFinite.symm fun m => MvPolynomial.coeff (↑m) f, map_add' := ⋯, map_smul' := ⋯ }
+info: CompAudit.lean:37:0: 'ClaudeComparison.comparison' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: CompAudit.lean:38:0: 'ClaudeComparison.chainBound' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: CompAudit.lean:39:0: 'ClaudeComparison.upperComparison' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: CompAudit.lean:40:0: 'ClaudeComparison.types_agree' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: CompAudit.lean:41:0: 'ClaudeComparison.common_type' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: CompAudit.lean:42:0: 'ClaudeComparison.types_agree_linear' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: CompAudit.lean:43:0: 'ClaudeComparison.common_type_linear' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: CompAudit.lean:44:0: 'ClaudeComparison.detect' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: CompAudit.lean:45:0: 'ClaudeComparison.topProj_unit_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: CompAudit.lean:46:0: 'ClaudeComparison.pairHom' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: CompAudit.lean:47:0: 'ClaudeComparison.exists_perp_of_notMem' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: CompAudit.lean:48:0: 'ClaudeComparison.delImg_strict' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: CompAudit.lean:49:0: 'ClaudeComparison.chain_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: CompAudit.lean:50:0: 'ClaudeComparison.chainBoundPerm' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: CompAudit.lean:51:0: 'ClaudeComparison.extS_strict' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: CompAudit.lean:52:0: 'ClaudeComparison.extS_isInv' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: CompAudit.lean:53:0: 'ClaudeComparison.cf_rename' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: CompAudit.lean:54:0: 'ClaudeComparison.cf_injOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: CompAudit.lean:55:0: 'ClaudeComparison.chainBound_of_bounded' depends on axioms: [propext, Classical.choice, Quot.sound]
+Build completed successfully (3471 jobs).
+EXIT 0
+finished: Sat Sep 26 22:33:10 UTC 2026

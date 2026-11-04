@@ -1,0 +1,229 @@
+\section{The refutation special case: four first-order examples}
+\label{sec:examples}
+
+We now take the constant target $G_n=1$. This is the refutation special
+case of the uniform-consequence theorem; the sharper invariant-target
+budget applies. The four cases all occur among fixed first-order sentences with no finite
+nonempty models. We give examples over a field of fixed prime characteristic
+$p$. Each sentence is translated by the graph-and-sum convention: relation
+and function-graph variables are Boolean, and every function has a totality
+sum and pairwise functionality equations. The parameter $n\geq1$ is the
+universe size. For the matrix notation in this section, we relabel the
+universe as $\{1,\ldots,n\}$; this changes no equation or degree.
+
+\paragraph{T1: a local contradiction.}
+The sentence $\forall x\,(R(x)\wedge\neg R(x))$ contributes $r_i$ and
+$1-r_i$. Their sum refutes the system in degree one, independently of $n$.
+The contradiction is already visible at one element.
+
+\paragraph{T2: an injection that misses a point.}
+Let $\eta$ say that a unary function $g$ is injective and that a constant
+$c$ is outside its image. Write $x_{ij}$ for $g(i)=j$ and $c_j$ for $c=j$.
+In addition to the Boolean equations, its system $\Gamma_n^\eta$ consists of
+\begin{equation}\label{eq:G-witness}
+\begin{gathered}
+ \sum_jx_{ij}-1=0,\qquad
+ x_{ij}x_{ik}=0\ (j\ne k),\qquad
+ x_{ij}x_{hj}=0\ (i\ne h),\\
+ \sum_jc_j-1=0,\qquad
+ c_jc_k=0\ (j\ne k),\qquad x_{ij}c_j=0.
+\end{gathered}
+\end{equation}
+A solution would inject $n$ elements into the $n-1$ elements other than $c$,
+so every instance is unsatisfiable. For either proof system, every
+degree-$d$ refutation satisfies
+\[
+ n<3pd\qquad(n\geq3).
+\]
+Here is how the internal matching bound gives this estimate. Choose the
+largest $p$-power $q\leq n/3$ and put $r=n-q$. Set $c_n=1$, all other
+$c_j=0$, and restrict the image of $g$ to $[r]$. After transposition, every
+remaining axiom is an axiom of the bijection system $B_{r,n}$.
+Here $B_{r,m}$ is the Boolean $r$-by-$m$ matrix system with every row and
+column sum equal to one and both row and column collisions equal to zero.
+If $d<q$, then $2d\leq r$ and $q\mid n-r$, contradicting the rectangle
+obstruction of Lemma~\ref{lem:rectangle-obstruction}. The substitutions do
+not increase ordinary-PC or NS degree. Thus $d\geq q$, while maximality of
+$q$ gives $n<3pq\leq3pd$. This proves T2 without an external pigeonhole
+lower-bound theorem.
+
+\paragraph{A matching linear upper bound.}
+For the injection system, put
+\[
+ R_i=\sum_jx_{ij},\qquad C=\sum_jc_j,\qquad P=\prod_{i=1}^nR_i.
+\]
+Every monomial $c_j\prod_i x_{i,\lambda(i)}$ in the expansion of $CP$
+is divisible by an input equation from \eqref{eq:G-witness}. If
+$\lambda$ is not injective, it contains a column collision. If
+$\lambda$ is injective, it is a permutation of the finite universe;
+for the row $i$ with $\lambda(i)=j$, the monomial contains the omission
+factor $c_jx_{ij}$. Thus $CP$ lies in the raw NS span at degree at most
+$n+1$. The telescoping identity
+\[
+ CP-1=(C-1)+C\sum_{i=1}^n(R_i-1)\prod_{h<i}R_h
+\]
+expresses $CP-1$ using the constant and row totality equations, with
+every product of degree at most $n+1$. Subtraction gives a refutation,
+so for every $n\ge1$,
+\[
+ d_{\PC}(\Gamma_n^\eta)\le d_{\NS}(\Gamma_n^\eta)\le n+1.
+\]
+This argument works over any field and uses no Boolean simplification.
+Together with the preceding lower bound, it shows that both degrees are
+$\Theta(n)$ for each fixed characteristic. The general linear gap is
+therefore sharp even among all-size inconsistent first-order families.
+
+\paragraph{T3: hardness on one residue class.}
+Let $\chi_p$ assert
+\[
+ \forall x\qquad f^p(x)=x\quad\hbox{and}\quad f(x)\ne x.
+\]
+Its finite models are disjoint unions of directed $p$-cycles. In particular,
+it has a $0/1$ graph assignment exactly when $p\mid n$. An explicit
+normalisation uses the function equations for $f$, the equations $f_{ii}=0$,
+and
+\begin{equation}\label{eq:cycle-path}
+ f_{i_0i_1}f_{i_1i_2}\cdots f_{i_{p-1}i_p}=0
+ \qquad(i_p\ne i_0).
+\end{equation}
+If $p\nmid n$, summing all length-$p$ walks gives an NS refutation of degree
+at most $p$. Indeed, totality derives the sum of their monomials minus $n$
+within degree $p$. Nonclosed walks vanish by \eqref{eq:cycle-path}.
+A closed walk with a repeated vertex either contains a functionality
+collision or follows a shorter deterministic cycle; since $p$ is prime,
+the latter is a forbidden fixed point. Each remaining cycle contributes its
+monomial $p$ times, according to its starting vertex, and hence contributes
+zero. The resulting nonzero scalar $n$ yields the refutation.
+
+Now take $\psi_3=\eta\wedge\chi_p$ in disjoint nonlogical symbols.
+For $p\mid n$, substitute a $p$-cycle assignment into the second block.
+This preserves proof degree and shows that the conjunction has exactly the
+degree of $\eta$, separately for NS and PC. For $p\nmid n$, the second
+block refutes in degree at most $p$. Consequently this all-size
+unsatisfiable family is bounded off the multiples of $p$ and has linear
+degree on the multiples: it has type T3. No exact degree is needed on the
+bounded residue classes.
+
+\paragraph{T4: the valuation of the universe size controls the difficulty.}
+For a positive integer $n$, its $p$-adic valuation $v_p(n)$ is the
+largest $a$ such that $p^a$ divides $n$. Thus $n=p^a u$ with
+$p\nmid u$. We use this integer statistic, not a valuation on the
+coefficient field; the corresponding block size is $p^a$.
+The weak-bijection example from the earlier classification~\cite[Section~5]{Riis}
+is more revealing; its algebraic complexity is closely related to the
+bijective pigeonhole principle studied by Beame and Riis~\cite{BeameRiis}.
+Let unary functions $f,g$
+be injective with disjoint images, and require their images together to
+cover the universe. Use a unary witness $h$ for coverage:
+\[
+ \forall z\qquad f(h(z))=z\ \vee\ g(h(z))=z.
+\]
+Let $a_{ij},b_{ij},w_{ji}$ represent $f(i)=j$, $g(i)=j$, and $h(j)=i$.
+The combined $2n$-by-$n$ matrix $(a;b)$ has row sums equal to one and both
+row and column collisions equal to zero. The witness block consists of
+\begin{equation}\label{eq:bhat-witness}
+ \sum_iw_{ji}-1=0,\qquad
+ w_{ji}w_{ji'}=0\ (i\ne i'),\qquad
+ w_{ji}(1-a_{ij})(1-b_{ij})=0,
+\end{equation}
+together with the Boolean equations. Call this complete system
+$\widehat B_n$. Its witnesses are retained: it is not identified with the
+simpler matrix system $B_{n,2n}$.
+
+Put $q=p^{v_p(n)}$. The proved bounds give
+\begin{equation}\label{eq:bhat-window}
+ q\leq d_{\mathrm{PC}}(\widehat B_n)
+ \leq d_{\mathrm{NS}}(\widehat B_n)\leq q+4
+ \qquad\hbox{whenever } n\geq2q.
+\end{equation}
+The upper bound holds at every positive size, without the displayed size
+condition. We give both degree-preserving reduction and certificate
+explicitly.
+
+For the lower bound transpose the combined matrix and substitute
+$w_{ji}=a_{ij}+b_{ij}$ into every witness variable. Its totality becomes
+the corresponding totality of $B_{n,2n}$. The identities
+\begin{align*}
+(a+b)^2-(a+b)&=(a^2-a)+(b^2-b)+2ab,\\
+(a+b)(1-a)(1-b)&=-(1-b)(a^2-a)-(1-a)(b^2-b)
+\end{align*}
+put the substituted Boolean and coverage equations in the raw NS spans
+at degrees two and three respectively. A substituted witness collision
+expands into four column collisions of the raw combined matrix.
+Thus every substituted input has a derivation within its own degree.
+Substitution is affine: a multiplication by an old variable becomes a
+sum of permitted multiplications by new variables, with the preceding
+line still of degree at most $d-1$. A degree-$d$ ordinary-PC refutation
+would therefore refute $B_{n,2n}$ within the same degree. The rectangle
+obstruction excludes this when $2d\le n$ and $d<q$, yielding the lower
+bound in \eqref{eq:bhat-window}.
+
+For the upper bound fix a column $j$ and abbreviate
+\[
+ u_i=a_{ij}+b_{ij},\qquad T=\sum_i u_i,\qquad
+ Z=\sum_i w_{ji}u_i.
+\]
+The coverage axiom and disjointness collision give the exact identity
+\[
+ Z-1=(\sum_iw_{ji}-1)
+ -\sum_iw_{ji}(1-a_{ij})(1-b_{ij})
+ +\sum_iw_{ji}a_{ij}b_{ij}.
+\]
+Consequently $Z-1$ lies in the degree-three NS span. If $x$ is one entry
+of this column, then
+\[
+ Tx-x=(x^2-x)+\sum_{y\ne x}yx
+\]
+lies in the degree-two span, by Booleanity and column collisions.
+Adding this for $a_{ij}$ and $b_{ij}$ gives $Tu_i-u_i$ in that span.
+Finally
+\[
+ T-1=\sum_iw_{ji}(Tu_i-u_i)-(T-1)(Z-1)
+\]
+puts the missing column totality in the degree-four span. This retains
+the coverage witnesses throughout the derivation.
+
+For completeness, consider any matrix with row sums $R_i$ and column
+sums $C_j$, with their differences from one in the NS span at degree
+$e$, and with both collision families in degree two. For a fixed
+$k$-element row set $S$, telescoping the product of its row sums gives
+$\prod_{i\in S}R_i-1$ in degree at most $e+k$. Summing over $S$ gives
+\[
+ \sum_{|S|=k}\prod_{i\in S}R_i-\binom{\#\mathrm{rows}}k
+\]
+in that same span. Expand the products as partial functions from $k$
+rows to columns. A noninjective partial function contains a column
+collision, so its monomial is already in the degree-$k$ span.
+The remaining monomials are exactly those of $k$-edge matchings.
+The column calculation gives the same matching sum, since inversion
+pairs partial injections with identical monomials. Subtracting derives
+\[
+ \binom{\#\mathrm{rows}}k-\binom{\#\mathrm{columns}}k
+\]
+within degree $e+k$. Applied to the $2n$-by-$n$ matrix with $e=4$, this
+is the desired counting certificate.
+
+Write $n=qu$ with $q=p^{v_p(n)}$ and $p\nmid u$. In characteristic
+$p$, $(1+t)^n=(1+t^q)^u$. The coefficient of $t^q$ is therefore $u$;
+for $(1+t)^{2n}$ it is $2u$. Thus
+$\binom{2n}q-\binom nq=u\ne0$ in $K$. Rescaling the counting
+certificate gives an NS refutation of degree at most $q+4$.
+
+For each fixed $a$, the sizes $n=p^a(p(k+1)+1)$, $k\geq0$, have
+$v_p(n)=a$ and satisfy \eqref{eq:bhat-window}. Hence some finite degree in
+$[p^a,p^a+4]$ recurs infinitely often. These windows are unbounded as $a$
+varies, proving T4 for both proof systems. On the other hand, $p\nmid n$
+implies degree at most five. There are explicit simultaneous linear peaks:
+at $n_a=(p+1)p^a$,
+\[
+ \frac{n_a}{p+1}\leq d_{\mathrm{PC}}(\widehat B_{n_a})
+ \leq d_{\mathrm{NS}}(\widehat B_{n_a})
+ \leq\frac{n_a}{p+1}+4.
+\]
+For example, in characteristic two every odd $n$ has degree at most
+five, whereas at $n=3\cdot2^a$ both degrees lie between $2^a$ and
+$2^a+4$. The peaks are linear in their universe size even though the
+profile returns to bounded values infinitely often.
+Thus linear peaks coexist with infinitely many easy sizes. This is the
+reason the T4 conclusion concerns peaks rather than an eventual linear
+lower bound at every size.

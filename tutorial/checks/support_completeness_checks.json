@@ -1,0 +1,38 @@
+{
+  "status": "pass",
+  "compression_cases": [
+    {
+      "n": 5,
+      "s": 4,
+      "p": 2,
+      "orbit_span_dimension": 4
+    },
+    {
+      "n": 8,
+      "s": 4,
+      "p": 2,
+      "orbit_span_dimension": 7
+    },
+    {
+      "n": 12,
+      "s": 4,
+      "p": 2,
+      "orbit_span_dimension": 11
+    },
+    {
+      "n": 6,
+      "s": 3,
+      "p": 3,
+      "orbit_span_dimension": 5
+    },
+    {
+      "n": 6,
+      "s": 2,
+      "p": 3,
+      "orbit_span_dimension": 6
+    }
+  ],
+  "n4_exception_dimension": 1,
+  "boolean_certificate": "Exact integer identity for two-variable inconsistent Boolean system with xy, (1-x)(1-y), x-y and Boolean axioms",
+  "scope": "Finite examples only; the new general lemmas rely on their written proofs; no Lean certification claimed."
+}

@@ -1,0 +1,17 @@
+{
+  "exit_code": 0,
+  "seconds": 163.8,
+  "workspace": "<RECORDED_INDEPENDENT_SCRATCH>/lean",
+  "targets": [
+    "UCIndexedClassification",
+    "UCFreshVariable",
+    "UCReturn002Audit"
+  ],
+  "present_oleans": {
+    "UCIndexedClassification": true,
+    "UCFreshVariable": true,
+    "UCReturn002Audit": true
+  },
+  "producer_project_oleans_reused": false,
+  "complete": true
+}

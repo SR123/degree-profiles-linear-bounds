@@ -1,0 +1,30 @@
+info: UCReturn002Audit.lean:106:0: 'UniformConsequence.Fresh.bhat_fresh_peaks' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UCReturn002Audit.lean:107:0: 'UniformConsequence.Fresh.fresh_types' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UCReturn002Audit.lean:108:0: 'UniformConsequence.Fresh.bhat_fresh_T4' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UCReturn002Audit.lean:114:0: UniformConsequence.Indexed.indexed_target_endpoint uses UniformConsequence.Indexed.indexed_transfer: true   (closure size 39454)
+info: UCReturn002Audit.lean:115:0: UniformConsequence.Indexed.indexed_target_endpoint uses ClaudeComparison.detect: true   (closure size 39454)
+info: UCReturn002Audit.lean:116:0: UniformConsequence.Indexed.indexed_target_endpoint uses UniformConsequence.uniform_inclusion: true   (closure size 39454)
+info: UCReturn002Audit.lean:117:0: UniformConsequence.Indexed.indexed_target_endpoint uses ClaudeComparison.chainBound: true   (closure size 39454)
+info: UCReturn002Audit.lean:118:0: UniformConsequence.Indexed.indexed_target_endpoint uses ClaudeC017.Vinf_le_of_stable: true   (closure size 39454)
+info: UCReturn002Audit.lean:119:0: UniformConsequence.Indexed.indexed_target_endpoint uses LinearFinal.topWitnessHypothesis_linear: true   (closure size 39454)
+info: UCReturn002Audit.lean:121:0: UniformConsequence.Indexed.ITarget.linearBounds_pc uses UniformConsequence.Indexed.indexed_transfer: true   (closure size 36154)
+info: UCReturn002Audit.lean:122:0: UniformConsequence.Indexed.ITarget.linearBounds_pc uses UniformConsequence.uniform_inclusion: false   (closure size 36154)
+info: UCReturn002Audit.lean:124:0: UniformConsequence.Indexed.indexed_target_endpoint uses ExactnessHandoff.const_mem_iff_of_simple: false   (closure size 39454)
+info: UCReturn002Audit.lean:125:0: UniformConsequence.Indexed.indexed_target_endpoint uses sorryAx: false   (closure size 39454)
+info: UCReturn002Audit.lean:126:0: UniformConsequence.Indexed.orbit_endpoint uses sorryAx: false   (closure size 39408)
+info: UCReturn002Audit.lean:127:0: UniformConsequence.Indexed.indexed_target_endpoint uses DegreeProfilesReview.Uniform.DeletionHypothesis: false   (closure size 39454)
+info: UCReturn002Audit.lean:128:0: UniformConsequence.Indexed.indexed_target_endpoint uses DegreeProfilesReview.Uniform.DeletionHypothesisW: false   (closure size 39454)
+info: UCReturn002Audit.lean:130:0: UniformConsequence.Fresh.tpcDegree_y uses ClaudeComparison.detect: false   (closure size 8249)
+info: UCReturn002Audit.lean:131:0: UniformConsequence.Fresh.tnsDegree_y uses ClaudeComparison.detect: false   (closure size 10418)
+info: UCReturn002Audit.lean:132:0: UniformConsequence.Fresh.tpcDegree_y uses sorryAx: false   (closure size 8249)
+info: UCReturn002Audit.lean:133:0: UniformConsequence.Fresh.tnsDegree_y uses sorryAx: false   (closure size 10418)
+info: UCReturn002Audit.lean:135:0: UniformConsequence.Fresh.bhat_fresh_window uses PaperAudit.bhat_window: true   (closure size 20261)
+info: UCReturn002Audit.lean:136:0: UniformConsequence.Fresh.bhat_fresh_window uses ClaudeUndec.bhat_upper: true   (closure size 20261)
+info: UCReturn002Audit.lean:137:0: UniformConsequence.Fresh.bhat_fresh_window uses ClaudeUndec.bhat_pc_lower: true   (closure size 20261)
+info: UCReturn002Audit.lean:138:0: UniformConsequence.Fresh.bhat_fresh_window uses sorryAx: false   (closure size 20261)
+info: UCReturn002Audit.lean:139:0: UniformConsequence.Fresh.bhat_fresh_peaks uses sorryAx: false   (closure size 20265)
+info: UCReturn002Audit.lean:140:0: UniformConsequence.Fresh.bhat_fresh_T4 uses ClaudeUndec.bhat_pc_type: true   (closure size 41881)
+info: UCReturn002Audit.lean:141:0: UniformConsequence.Fresh.bhat_fresh_T4 uses sorryAx: false   (closure size 41881)
+info: UCReturn002Audit.lean:142:0: UniformConsequence.Fresh.fresh_types uses sorryAx: false   (closure size 36499)
+Build completed successfully (3557 jobs).
+EXIT 0

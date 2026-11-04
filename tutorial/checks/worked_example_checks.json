@@ -1,0 +1,13 @@
+{
+  "status": "pass",
+  "checks": [
+    "F2 one-label common witness, projector and explicit lift",
+    "F2 four-row/six-column degree-one design (not a satisfying model)",
+    "consistent characteristic-3 target residue split",
+    "consistent exact PC degree-2 / NS degree-3 illustration",
+    "counterexample to unqualified invariant-target lift at an unstable rank",
+    "strict prime-power arithmetic and fresh-target window eligibility",
+    "F3 top-witness and ordered full-chain projector"
+  ],
+  "scope": "Finite illustration checks only; no new Lean verification or proof of general asymptotic results."
+}

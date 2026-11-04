@@ -1,0 +1,10 @@
+26:warning: DCPRook.lean:90:12: unused variable `p`
+29:warning: DCPRook.lean:102:8: unused variable `q`
+32:warning: DCPRook.lean:190:64: unused variable `h`
+35:warning: DCPRook.lean:224:12: unused variable `q`
+38:warning: DCPRook.lean:229:12: unused variable `q`
+41:warning: DCPRook.lean:380:6: unused variable `w`
+55:warning: BBridge.lean:132:26: `Equiv.Perm.inv_apply_self` has been deprecated: Use `Equiv.symm_apply_apply` instead
+63:warning: BBridge.lean:136:26: `Equiv.Perm.apply_inv_self` has been deprecated: Use `Equiv.apply_symm_apply` instead
+74:warning: DCPCanon.lean:43:6: unused variable `p`
+77:warning: DCPCanon.lean:43:8: unused variable `q`

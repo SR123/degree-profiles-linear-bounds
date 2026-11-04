@@ -1,0 +1,312 @@
+\chapter{Lifting the actual axioms, proof rules and targets}
+\label{tx:chap:assemble-transfer}
+All the finite-algebra obligations have now been supplied. We return
+to the original question $\Gamma_n\vdash G_{b,n}$: can every requested
+target be derived from the given axioms within degree $d$? We verify each part of the contract
+in Chapter~\ref{tx:chap:contract}. The point of doing the assembly slowly
+is to make clear that a prescribed target, rather than an arbitrary
+lifted vector, is transported.
+
+\section{The theorem we can now state without hidden assumptions}
+Let $\Gamma_n$ be a fixed uniform axiom template and let $G_{b,n}$ be
+a fixed uniform target family. Put
+\[
+ R(d)=2kd+s+t,\qquad n_*=\max\{n_0,1,kD_G+t\}.
+\]
+Here $k,s,t$ bound the label supports of a variable, an axiom index and
+a target index; $D_G$ bounds target degree. The rank $n_0$ is the axiom
+stability threshold. These are fixed data; only $d$ is a proposed proof degree.
+
+\begin{theorem}[Actual target transfer]\label{tx:thm:transfer}
+Over any field of fixed prime characteristic $p$, suppose
+\[
+ q=p^a>R(d),\qquad n\ge\max\{n_*,2R(d)-1\},\qquad N=n+q.
+\]
+For either NS or ordinary PC, every prescribed rank-$N$ target has a
+derivation of degree at most $d$ if and only if every prescribed rank-$n$
+target does. The assertion holds for every $d\ge0$, with the separate
+zero-degree interpretation given below. It also holds for any
+representative of one fixed global target orbit at each eligible rank.
+For a fully invariant target use the sharper budget $kd+s$ and start
+$\max\{n_0,1,kD_G\}$.
+\end{theorem}
+
+The theorem concerns original-field polynomials and actual derivations.
+It does not require invariant certificates, does not assume that the
+axioms are inconsistent, and does not add the target to them. If a
+stabilised target degree exceeds $d$, the threshold predicate is simply
+false. The empty target request is true at every degree.
+
+\section{Transporting the entire consequence space}
+Fix a positive degree budget $d$ and write $W_N=P_{N,\le d}$
+for the ordinary polynomial space of degree at most $d$. Recall
+\[
+ I_d(N)=\Span_K\{\mu f_{a,N}:\deg\mu+\deg f_{a,N}\le d\},
+ \qquad C_d(N)=V_\infty(N).
+\]
+The first space records NS identities of total-product degree at most
+$d$, with $\mu$ ranging over monomials; the second is the closure of the usable axioms under the legal
+ordinary-PC rules (Proposition~\ref{tx:prop:closure}). Boolean equations,
+when present, remain inputs in this polynomial space.
+We first transport the spaces $I_d(N)$ and $C_d(N)$, without choosing
+any target. This separates the proof-system calculation from the
+question of whether a particular uniform expression belongs to it.
+The operation $\Del(M)=\ker z_M/(\ker z_M\cap\im z_M)$ deletes the
+block through the label action; the common projector represents its
+classes, and $\Lift=e\iota$ lifts smaller-rank vectors. Exactness means
+that kernels, images and quotients are preserved by this operation.
+
+Concretely, a deletion class is represented by a vector $v$ with
+$z_Mv=0$. Two such vectors represent the same class if their difference
+lies in $\ker z_M\cap\im z_M$. The projector provides representatives
+which can be compared with smaller-rank vectors. We use the actual
+inclusions and maps between these classes, not just equal dimensions
+of the resulting spaces (Chapter~\ref{tx:chap:deletion}).
+
+For NS the certificate map has source basis the pairs $(\mu,a)$ with
+\[
+ \deg\mu+\deg f_{a,N}\le d,
+ \qquad (\mu,a)\longmapsto\mu f_{a,N}\in W_N.
+\]
+Its source has support at most $kd+s$, and $W_N$ has support at most
+$kd$. The matrix entry at a target monomial $\nu$ is zero unless
+$\mu\mid\nu$, and otherwise is $c(a,\nu/\mu)$. These are the actual
+rank-independent invariant entries of the certificate map. The
+stability threshold $n_0$ makes each axiom degree independent of rank.
+Exactness and matrix naturality therefore identify the embedded image
+$\Del(I_d(N))$ with $I_d(n)$.
+
+For PC let $X_N=K[\mathcal V_N]$ and $L_N=P_{N,\le d-1}$.
+The tensor product records a variable and a lower-degree line together:
+a pure tensor $x_v\otimes f$ is sent to their polynomial product,
+and sums of pure tensors record sums of such products. The degree
+restriction is imposed on $f$ before multiplication. This is the
+variable-labelled register of Chapter~\ref{tx:chap:contract}.
+The multiplication map
+\[
+       m_N:X_N\otimes L_N\longrightarrow W_N,\qquad
+                 x_v\otimes f\longmapsto x_vf
+\]
+has stable entries. Its source is supported on at most
+$k+k(d-1)=kd$ labels. The usable axioms give the image $V_0(N)$
+of their coefficient map. The recurrence is
+\[
+ V_{j+1}(N)=V_j(N)+\im\bigl(m_N|_{X_N\otimes(V_j(N)\cap L_N)}\bigr).
+\]
+Every stage is a submodule of $W_N$, and every multiplication domain
+is a submodule of the fixed support-bounded space $X_N\otimes L_N$.
+Suppose stage $j$ has been identified at both ranks. Put
+$U_N=V_j(N)\cap L_N$ and $U_n=V_j(n)\cap L_n$.
+The intersection is the kernel of $(v,l)\mapsto v-l$ on
+$V_j(N)\oplus L_N$, so exactness identifies $\Del(U_N)$ with
+$U_n$, including their inclusions $i_N:U_N\hookrightarrow L_N$
+and $i_n:U_n\hookrightarrow L_n$.
+
+Write $m'_N=m_N\circ(1\otimes i_N)$ and
+$m'_n=m_n\circ(1\otimes i_n)$ for the restricted multiplication
+maps. The required compatibility is the commutative square
+\begin{equation}\label{tx:eq:restricted-multiplication}
+\begin{CD}
+ \Del(X_N\otimes U_N) @>{\Del(m'_N)}>> \Del(W_N)\\
+ @V{\simeq}VV @V{\simeq}VV\\
+ X_n\otimes U_n @>{m'_n}>> W_n.
+\end{CD}
+\end{equation}
+The left identification is \eqref{tx:eq:tensordelete}, natural in
+the second factor: it sends $\Del(1\otimes i_N)$ to
+$1\otimes i_n$. The ambient multiplication map $m_N$ is sent to
+$m_n$ by stable matrix naturality. Composing these two statements
+proves the square for the restriction. Exactness now transports its
+image and the sum with $V_j$, giving stage $j+1$. The initial stage
+is the actual usable-axiom image, so induction identifies the embedded
+$\Del(V_j(N))$ with $V_j(n)$ for every $j$.
+
+Both ascending chains stabilise because their ambient spaces are finite
+dimensional. Choose a stage beyond both stabilisation points. We obtain
+\begin{equation}\label{tx:eq:consequence-transport}
+ \Del(I_d(N))=I_d(n),\qquad \Del(C_d(N))=C_d(n),
+\end{equation}
+where equality means equality after the natural identification
+$\Del(W_N)\simeq W_n$. This transports every cancellation in a PC
+proof, including a low-degree result subsequently multiplied by a
+variable. No bound on proof length and no symmetry of individual proof
+lines was used.
+
+\section{Why deletion also reflects target membership}
+Preserving an image is not by itself enough: an exact operation can
+annihilate a nonzero quotient. The next lemma supplies the reflection
+needed for a general target source.
+
+The notation $S'/S$ means vectors in $S'$ considered equal when their
+difference lies in $S$; it is a \emph{subquotient} of the ambient space.
+In the lemma, $\mathcal C_{2u}(N)$ is the common-annihilator class of
+Chapter~\ref{tx:chap:deletion}, not a PC consequence space.
+Here $u$ is an integer support bound, unrelated to the top-power
+operator $u=z^{p-1}$ used in the witness construction.
+The doubled budget has a concrete purpose: a basis pair in
+$P\otimes P$ can use the union of two support-$u$ label sets.
+The annihilator class is not being assumed closed under arbitrary
+tensor products.
+
+\begin{lemma}[Nonzero subquotients survive]\label{tx:lem:detect}
+Let $P=K[\mathcal U_N]$ have support at most $u$. Suppose deletion is
+exact on $\mathcal C_{2u}(N)$, its block size exceeds $2u$, and the
+natural identifications \eqref{tx:eq:permdelete}--\eqref{tx:eq:tensordelete}
+hold. If $S\subsetneq S'\subseteq P$ are invariant subspaces, then
+$\Del(S'/S)\ne0$.
+\end{lemma}
+\begin{proof}
+The permutation basis gives a nondegenerate dot product on $P$,
+equivariant under $S_N$. It induces a pairing
+\[
+                         S^\perp\otimes(S'/S)\longrightarrow K.
+\]
+This pairing is surjective: for $v\in S'\setminus S$, a linear
+functional vanishing on $S$ can take value one at $v$; the dot product
+represents that functional by an element of $S^\perp$.
+Let $Y=S'/S$. Tensoring over a field is exact, so the displayed
+source lies in $P\otimes Y$, itself a subquotient of $P\otimes P$.
+The last permutation module has support at most $2u$, justifying
+every use of exactness. If $\Del(Y)=0$, permutation-first-factor tensor
+compatibility gives $\Del(P\otimes Y)=0$. Deleting the inclusion
+$S^\perp\otimes Y\hookrightarrow P\otimes Y$ gives an injection
+\[
+                  \Del(S^\perp\otimes Y)\hookrightarrow0,
+\]
+so the pairing source also deletes to zero. Exactness applied to the
+surjective pairing then gives $0\twoheadrightarrow\Del(K)\simeq K$,
+which is impossible because $K\ne0$.
+
+We use this surjective pairing, not a trace or an averaged inner
+product. In characteristic $p$, composing a pairing with coevaluation
+can yield a vanishing dimension scalar and would not prove the lemma.
+\end{proof}
+
+In the detector proof, $S^\perp$ consists of vectors whose dot product
+with every vector of $S$ is zero. Thus pairing $h\in S^\perp$ with
+$v+S\in S'/S$ is well-defined: replacing $v$ by $v+s$ changes the
+value by $\langle h,s\rangle=0$. The tensor product is the linear
+source of this bilinear pairing. Surjectivity says that some such
+pair has value one, rather than that a dimension scalar is nonzero.
+
+\begin{lemma}[An invariant target needs no doubled budget]\label{tx:lem:constant}
+Let $j:K\to W$ and $H\subseteq W$ be equivariant and belong to the
+exactness class. Then $j(1)\in H$ if and only if its deleted image
+belongs to $\Del(H)\subseteq\Del(W)$.
+\end{lemma}
+\begin{proof}
+Membership is the vanishing of $K\xrightarrow{j}W\to W/H$.
+Its image is either zero or isomorphic to the simple trivial module
+$K$. Exactness preserves this image, and $\Del(K)\simeq K\ne0$.
+Thus the composite vanishes exactly when its deleted composite does.
+The vector $j(1)$ may be any invariant target, not just the constant
+polynomial one.
+\end{proof}
+
+\section{The actual uniform target map}\label{tx:sec:target-transfer}
+For indexed targets, let $\mathcal B$ be the fixed index basis and
+let $\gamma(b,\mu)$ be its stable coefficient rule. Write $\delta$ for the largest stabilised target degree, taking
+$\delta=0$ for an empty request. At a rank where
+all target degrees are at most $d$, define
+\[
+ J_N:K[\mathcal B_N]\longrightarrow W_N,\qquad
+                [b]\longmapsto G_{b,N}.
+\]
+Here $J_N$ is a linear target map. It is distinct from the group-algebra
+annihilator ideal $J_r(N)$ used to construct the common projector.
+Its entry in row $\mu$, column $b$ is precisely $\gamma(b,\mu)$.
+Equivariance and rank independence are the hypotheses of the natural
+matrix identification in Theorem~\ref{tx:thm:deletion}. Consequently
+$\Del(J_N)$ is the actual smaller target map $J_n$.
+This statement concerns the prescribed full polynomials $G_{b,n}$;
+we do not replace a target by its degree-$d$ truncation.
+
+Let $H_N$ be either $I_d(N)$ or $C_d(N)$. Every target belongs to
+$H_N$ exactly when $\im J_N\subseteq H_N$. Put
+\[
+          S_N=H_N+\im J_N,\qquad Y_N=S_N/H_N.
+\]
+The condition is $Y_N=0$. Exactness, target-map naturality and
+\eqref{tx:eq:consequence-transport} identify its deletion with
+\[
+          Y_n=(H_n+\im J_n)/H_n.
+\]
+The polynomial permutation basis of $W_N$ has support at most $kd$.
+Lemma~\ref{tx:lem:detect}, applied with the original monomial support bound,
+reflects vanishing of $Y_N$ once the budget covers $2kd$.
+The affine budget
+\[
+                            R(d)=2kd+s+t
+\]
+also covers the certificate source ($kd+s$), the target source ($t$)
+and every multiplication domain. It therefore proves membership in
+both directions. The target source need not be simple; reflection
+comes from a subquotient of the ambient polynomial target space.
+Doubling $R(d)$ once again would be unnecessary: the pairing uses
+$W_N\otimes W_N$, whose support is $2kd$.
+
+\begin{proof}[Proof of Theorem~\ref{tx:thm:transfer}]
+First extend scalars to an algebraic closure, as permitted by
+Lemma~\ref{tx:lem:field}. The degree of every indexed target stabilises
+beyond $n_*=\max\{n_0,1,kD_G+t\}$. If $d$ is smaller than the
+largest stable target degree, the all-target predicate is false at both
+ranks. Otherwise the full map $J$ just described applies.
+Take $N=n+q$, $q=p^a>R(d)$ and retained rank
+$n\ge\max\{n_*,2R(d)-1\}$. Exact deletion transports $H_N$, $J_N$
+and their sum and quotient. The detection lemma yields
+\[
+ \bigl(\forall b\in\mathcal B_N,\ G_{b,N}\in H_N\bigr)
+ \quad\Longleftrightarrow\quad
+ \bigl(\forall b\in\mathcal B_n,\ G_{b,n}\in H_n\bigr).
+\]
+Field descent holds for each actual target separately, so the equivalence
+holds over the original field. Repeated steps connect any eligible
+ranks in a common residue class and prove the stated periodicity.
+For one fixed global target orbit, replace $\mathcal B$ by that orbit;
+at eligible ranks, equivariance makes every representative equivalent.
+
+At degree zero the stabilised targets are either all zero, or are
+scalars with at least one nonzero value. In the latter case every target
+is derivable in degree zero exactly when the original axioms include a
+nonzero constant. If a target has positive stable degree, degree-zero
+all-target membership fails. These are fixed predicates beyond $n_*$
+and give the separate zero-level assertion.
+
+For a fully invariant target use $j_N:K\to W_N$, $j_N(1)=G_N$,
+in place of $J_N$. Lemma~\ref{tx:lem:constant} reflects membership without
+the tensor pairing. The budget reduces to $kd+s$, with stable onset
+$\max\{n_0,1,kD_G\}$. Taking $G_N=1$ gives the sharper refutation
+special case. No target has been added to the axiom system.
+\end{proof}
+
+
+\section{From one deletion step to a residue class}
+Write $h_S(n)$ for the maximum least degree of the requested targets
+in system $S$. Recall the safe onset $N(d)$ and chosen $p$-power period
+$Q(d)$ from \eqref{tx:eq:NQ}; their separate zero-degree values are
+$N(0)=n_*$ and $Q(0)=1$.
+Fix $d$ and an eligible power $q$. If two sizes at or above the chosen
+onset have the same residue modulo $q$, repeatedly subtract $q$ from
+the larger until reaching the smaller. Every retained size in those
+steps remains eligible. Applying Theorem~\ref{tx:thm:transfer} in both
+directions proves threshold periodicity.
+
+To preserve an exact minimum degree rather than just the assertion
+$h(n)\le d$, repeat the argument at every lower threshold. The periods
+are powers of the same prime and divide the chosen degree-$d$ period;
+zero degree has a stable separate predicate. The vector of all those
+threshold answers determines the truncated value
+$\min\{h(n),d+1\}$. This completes the input used in
+Theorem~\ref{tx:thm:profiles} for the four profiles.
+
+\section{The complete lower-bound argument in a paragraph}
+Fix a minimum finite degree $d$ occurring at a size beyond its own onset.
+The two-way threshold theorem makes that exact degree recur along a
+prime-power progression. Therefore a degree which is not allowed to recur
+must occur before its onset. Since the onset is $O(d)$, those isolated
+occurrences must have degree $\Omega(n)$. On T3 hard residues the same
+contradiction excludes every recurring easy level. On T4 we instead use
+unbounded recurring levels and the short period to bring a representative
+down to size $O(d)$, producing finite linear peaks. No iteration ever
+reduces the absolute degree: it is the availability of recurrence and
+its onset which produce the gap.

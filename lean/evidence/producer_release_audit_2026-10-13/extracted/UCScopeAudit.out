@@ -1,0 +1,52 @@
+UniformConsequence.Scope.T2_extended : ∀ (p : ℕ) [Fact (Nat.Prime p)] {R : Type} [inst : Field R] [CharP R p]
+  {T : DegreeProfilesReview.Uniform.Template R} (G : UniformConsequence.Target T) {h : ℕ → ℕ∞},
+  h = G.pcProfile ∨ h = G.nsProfile →
+    DegreeProfilesReview.Profiles.IsT2 h (DegreeProfilesReview.Profiles.onset T.k T.s G.nstar) →
+      ∀ {n : ℕ}, G.nstar ≤ n → ↑((n - 2 * T.s - 1) / (2 * T.k)) < h n
+UniformConsequence.Scope.T3_full : ∀ (p : ℕ) [Fact (Nat.Prime p)] {R : Type} [inst : Field R] [CharP R p]
+  {T : DegreeProfilesReview.Uniform.Template R} (G : UniformConsequence.Target T) {h : ℕ → ℕ∞},
+  h = G.pcProfile ∨ h = G.nsProfile →
+    DegreeProfilesReview.Profiles.IsT3 h (DegreeProfilesReview.Profiles.onset T.k T.s G.nstar) →
+      ∃ D ∈ DegreeProfilesReview.Profiles.E h (DegreeProfilesReview.Profiles.onset T.k T.s G.nstar),
+        (∀ d ∈ DegreeProfilesReview.Profiles.E h (DegreeProfilesReview.Profiles.onset T.k T.s G.nstar), d ≤ D) ∧
+          ∃ U,
+            (∀ c ∈ U, c < DegreeProfilesReview.Profiles.period p T.k T.s D) ∧
+              U.Nonempty ∧
+                (∃ c < DegreeProfilesReview.Profiles.period p T.k T.s D, c ∉ U) ∧
+                  (∀ c ∈ U,
+                      ∃ v ≤ D,
+                        ∀ (n : ℕ),
+                          DegreeProfilesReview.Profiles.onset T.k T.s G.nstar D ≤ n →
+                            n % DegreeProfilesReview.Profiles.period p T.k T.s D = c → h n = ↑v) ∧
+                    ∀ (n : ℕ),
+                      DegreeProfilesReview.Profiles.onset T.k T.s G.nstar D ≤ n →
+                        n % DegreeProfilesReview.Profiles.period p T.k T.s D ∉ U →
+                          ↑((n - 2 * T.s - 1) / (2 * T.k)) < h n
+UniformConsequence.Scope.target_transfer_additive : ∀ (p : ℕ) [Fact (Nat.Prime p)] {R : Type} [inst : Field R]
+  [CharP R p] {T : DegreeProfilesReview.Uniform.Template R} (G : UniformConsequence.Target T) {d a n : ℕ},
+  T.n0 ≤ n →
+    G.nG ≤ n →
+      2 * (T.k * d + T.s) - 1 ≤ n →
+        T.k * d + T.s < p ^ a →
+          (DegreeProfilesReview.PC.Derives (T.inst (n + p ^ a)) d (G.poly (n + p ^ a)) ↔
+              DegreeProfilesReview.PC.Derives (T.inst n) d (G.poly n)) ∧
+            (UniformConsequence.NSDerivesAdd (T.inst (n + p ^ a)) d (G.poly (n + p ^ a)) ↔
+              UniformConsequence.NSDerivesAdd (T.inst n) d (G.poly n))
+UniformConsequence.Scope.uniform_comparison_additive : ∀ (p : ℕ) [Fact (Nat.Prime p)] {R : Type} [inst : Field R]
+  [CharP R p] {T : DegreeProfilesReview.Uniform.Template R},
+  ∃ F,
+    Monotone F ∧
+      (∀ (t : ℕ), t ≤ F t) ∧
+        ∀ (n t : ℕ) (g : MvPolynomial (T.Var.Rk n) R),
+          DegreeProfilesReview.PC.Derives (T.inst n) t g → UniformConsequence.NSDerivesAdd (T.inst n) (F t) g
+'UniformConsequence.Scope.T2_extended' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformConsequence.Scope.T3_full' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformConsequence.Scope.target_transfer_additive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformConsequence.Scope.uniform_comparison_additive' depends on axioms: [propext, Classical.choice, Quot.sound]
+UniformConsequence.Scope.T3_full uses LinearFinal.exactness_linear: true   (closure size 35680)
+UniformConsequence.Scope.T3_full uses sorryAx: false   (closure size 35680)
+UniformConsequence.Scope.target_transfer_additive uses SelfContainedCycle004.canonicalM5w: true   (closure size 35589)
+UniformConsequence.Scope.target_transfer_additive uses sorryAx: false   (closure size 35589)
+UniformConsequence.Scope.uniform_comparison_additive uses ClaudeComparison.chainBound: true   (closure size 34892)
+UniformConsequence.Scope.uniform_comparison_additive uses ClaudeC017.Vinf_le_of_stable: true   (closure size 34892)
+UniformConsequence.Scope.uniform_comparison_additive uses sorryAx: false   (closure size 34892)

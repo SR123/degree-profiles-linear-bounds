@@ -1,0 +1,315 @@
+{
+  "independent_build_complete": true,
+  "new_modules": [
+    "UCIndexedClassification",
+    "UCFreshVariable",
+    "UCReturn002Audit"
+  ],
+  "build_seconds": 163.8,
+  "axiom_outputs": 22,
+  "axioms_standard_only": true,
+  "axioms": [
+    [
+      "UniformConsequence.Indexed.indexed_transfer",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "UniformConsequence.Indexed.orbit_rep_transfer",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "UniformConsequence.Indexed.indexed_target_endpoint",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "UniformConsequence.Indexed.orbit_endpoint",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "UniformConsequence.Indexed.ITarget.orbit_pcProfile_eq_rep",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "UniformConsequence.Indexed.ITarget.orbit_nsProfile_eq_rep",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "UniformConsequence.Indexed.ITarget.pcProfile_eq_iSup_orbit",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "UniformConsequence.Indexed.ITarget.linearBounds_pc",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "UniformConsequence.Indexed.ITarget.linearBounds_ns",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "UniformConsequence.Indexed.ITarget.T2_bound",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "UniformConsequence.Indexed.ITarget.T3_full",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "UniformConsequence.Indexed.ITarget.liminf_classification",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "UniformConsequence.Indexed.ITarget.types_agree",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "UniformConsequence.Indexed.ITarget.common_peaks",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "UniformConsequence.Fresh.tpcDegree_y",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "UniformConsequence.Fresh.tnsDegree_y",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "UniformConsequence.Fresh.freshVar_inst",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "UniformConsequence.Fresh.fresh_profiles",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "UniformConsequence.Fresh.bhat_fresh_window",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "UniformConsequence.Fresh.bhat_fresh_peaks",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "UniformConsequence.Fresh.fresh_types",
+      "propext, Classical.choice, Quot.sound"
+    ],
+    [
+      "UniformConsequence.Fresh.bhat_fresh_T4",
+      "propext, Classical.choice, Quot.sound"
+    ]
+  ],
+  "dependency_checks": 25,
+  "dependencies": [
+    [
+      "UniformConsequence.Indexed.indexed_target_endpoint",
+      "UniformConsequence.Indexed.indexed_transfer",
+      "true"
+    ],
+    [
+      "UniformConsequence.Indexed.indexed_target_endpoint",
+      "ClaudeComparison.detect",
+      "true"
+    ],
+    [
+      "UniformConsequence.Indexed.indexed_target_endpoint",
+      "UniformConsequence.uniform_inclusion",
+      "true"
+    ],
+    [
+      "UniformConsequence.Indexed.indexed_target_endpoint",
+      "ClaudeComparison.chainBound",
+      "true"
+    ],
+    [
+      "UniformConsequence.Indexed.indexed_target_endpoint",
+      "ClaudeC017.Vinf_le_of_stable",
+      "true"
+    ],
+    [
+      "UniformConsequence.Indexed.indexed_target_endpoint",
+      "LinearFinal.topWitnessHypothesis_linear",
+      "true"
+    ],
+    [
+      "UniformConsequence.Indexed.ITarget.linearBounds_pc",
+      "UniformConsequence.Indexed.indexed_transfer",
+      "true"
+    ],
+    [
+      "UniformConsequence.Indexed.ITarget.linearBounds_pc",
+      "UniformConsequence.uniform_inclusion",
+      "false"
+    ],
+    [
+      "UniformConsequence.Indexed.indexed_target_endpoint",
+      "ExactnessHandoff.const_mem_iff_of_simple",
+      "false"
+    ],
+    [
+      "UniformConsequence.Indexed.indexed_target_endpoint",
+      "sorryAx",
+      "false"
+    ],
+    [
+      "UniformConsequence.Indexed.orbit_endpoint",
+      "sorryAx",
+      "false"
+    ],
+    [
+      "UniformConsequence.Indexed.indexed_target_endpoint",
+      "DegreeProfilesReview.Uniform.DeletionHypothesis",
+      "false"
+    ],
+    [
+      "UniformConsequence.Indexed.indexed_target_endpoint",
+      "DegreeProfilesReview.Uniform.DeletionHypothesisW",
+      "false"
+    ],
+    [
+      "UniformConsequence.Fresh.tpcDegree_y",
+      "ClaudeComparison.detect",
+      "false"
+    ],
+    [
+      "UniformConsequence.Fresh.tnsDegree_y",
+      "ClaudeComparison.detect",
+      "false"
+    ],
+    [
+      "UniformConsequence.Fresh.tpcDegree_y",
+      "sorryAx",
+      "false"
+    ],
+    [
+      "UniformConsequence.Fresh.tnsDegree_y",
+      "sorryAx",
+      "false"
+    ],
+    [
+      "UniformConsequence.Fresh.bhat_fresh_window",
+      "PaperAudit.bhat_window",
+      "true"
+    ],
+    [
+      "UniformConsequence.Fresh.bhat_fresh_window",
+      "ClaudeUndec.bhat_upper",
+      "true"
+    ],
+    [
+      "UniformConsequence.Fresh.bhat_fresh_window",
+      "ClaudeUndec.bhat_pc_lower",
+      "true"
+    ],
+    [
+      "UniformConsequence.Fresh.bhat_fresh_window",
+      "sorryAx",
+      "false"
+    ],
+    [
+      "UniformConsequence.Fresh.bhat_fresh_peaks",
+      "sorryAx",
+      "false"
+    ],
+    [
+      "UniformConsequence.Fresh.bhat_fresh_T4",
+      "ClaudeUndec.bhat_pc_type",
+      "true"
+    ],
+    [
+      "UniformConsequence.Fresh.bhat_fresh_T4",
+      "sorryAx",
+      "false"
+    ],
+    [
+      "UniformConsequence.Fresh.fresh_types",
+      "sorryAx",
+      "false"
+    ]
+  ],
+  "all_dependency_expectations_passed": true,
+  "full_endpoint_types_inspected": true,
+  "project_original_files_identical_except_isolated_lakefile": 188,
+  "snapshot_files": 23,
+  "all_six_returned_modules_identical_to_built_sources": true,
+  "M1_proof_sources_unchanged_from_independent_cycle_006": true,
+  "return_001_sources_identical": true,
+  "pinned_dependencies": {
+    "mathlib": {
+      "commit": "2df2f0150c275ad53cb3c90f7c98ec15a56a1a67",
+      "tracked_sources_clean": true
+    },
+    "plausible": {
+      "commit": "160af9e8e7d4ae448f3c92edcc5b6a8522453f11",
+      "tracked_sources_clean": true
+    },
+    "LeanSearchClient": {
+      "commit": "3591c3f664ac3719c4c86e4483e21e228707bfa2",
+      "tracked_sources_clean": true
+    },
+    "importGraph": {
+      "commit": "e9f31324f15ead11048b1443e62c5deaddd055d2",
+      "tracked_sources_clean": true
+    },
+    "proofwidgets": {
+      "commit": "b4fb2aa5290ebf61bc5f80a5375ba642f0a49192",
+      "tracked_sources_clean": true
+    },
+    "aesop": {
+      "commit": "2f6d238744c4cb07fdc91240feaf5d4221a27931",
+      "tracked_sources_clean": true
+    },
+    "Qq": {
+      "commit": "9312503909aa8e8bb392530145cc1677a6298574",
+      "tracked_sources_clean": true
+    },
+    "batteries": {
+      "commit": "24241822ef9d3e7f6a3bcc53ad136e12663db8f3",
+      "tracked_sources_clean": true
+    },
+    "Cli": {
+      "commit": "933fce7e893f65969714c60cdb4bd8376786044e",
+      "tracked_sources_clean": true
+    }
+  },
+  "archive_preservation": {
+    "checked": 235,
+    "mismatches": [],
+    "passed": true
+  },
+  "return_001_preservation": {
+    "checked": 15,
+    "mismatches": [],
+    "passed": true
+  },
+  "parent_return_002_snapshot_preservation": {
+    "checked": 22,
+    "mismatches": [],
+    "passed": true
+  },
+  "independent_M1_snapshot_preservation": {
+    "checked": 12,
+    "mismatches": [],
+    "passed": true
+  },
+  "protected_inputs": {
+    "checked": 6,
+    "mismatches": [],
+    "passed": true
+  },
+  "producer_project_oleans_reused": false,
+  "full_fresh_import_closure_replay_claimed": false,
+  "producer_fresh_replay_not_audited_here": true,
+  "indexed_profiles_and_fresh_identities_independently_verified": true,
+  "scope": {
+    "indexed_characteristic": "positive prime p, arbitrary coefficient field",
+    "indexed_budget": "2*k*d+s+t",
+    "onset": "N(0)=nI; N(d)=max(nI,4*k*d+2*(s+t)+1) for d>0",
+    "indexed_predicates": "All targets; or any representative inside one fixed global orbit",
+    "four_types": "Exhaustive/exclusive; T2 eventual; T3 hard residues; T4 finite peaks and finite liminf",
+    "comparison": "PC <= NS <= F(PC), monotone F independent of rank; same type, no exact degree equality",
+    "fresh_identities": "Any field, arbitrary axiom set, all ranks, including zero and infinity",
+    "finite_hard_witness": "Fresh y over preserved bhat; n=(p+1)*p^a; finite PC/NS linear growth, T4",
+    "sharp_maximum_budget_certified": false,
+    "satisfiable_hard_axiom_witness_claimed": false
+  }
+}

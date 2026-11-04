@@ -1,0 +1,318 @@
+\chapter{Polynomial consequences and proof degree}\label{tx:ch:consequences}
+A polynomial equation can be used in two different ways. One can evaluate
+it at a proposed solution, or one can combine it algebraically with other
+equations. This book studies the second activity. Given equations
+$f=0$ for $f$ in a set $\Gamma$, how complicated is a derivation of a
+specified equation $G=0$? Our measure of complexity is the largest total
+degree needed in the derivation.
+
+The distinction between an equation and its left-hand polynomial is
+worth keeping in view. We usually write $f$ instead of $f=0$, and write
+$\Gamma\vdash G$ for deriving $G=0$. Thus a derivation of the polynomial
+$1$ is a contradiction, since it asserts $1=0$. A derivation of $x+y$
+need not be a contradiction: it may simply express a consequence shared
+by all solutions of the original equations.
+
+\section{The ambient polynomial ring}
+Let $K$ be a field and let $V$ be a finite set of variable names. We work
+in the ordinary polynomial ring $K[x_v:v\in V]$. A monomial is a product
+$\prod_vx_v^{a_v}$ with nonnegative integer exponents. Its total degree
+is $\sum_va_v$. The total degree of a nonzero polynomial is the largest
+degree of a monomial with nonzero coefficient, after equal monomials
+have been collected. We use the convention $\deg0=0$.
+
+For example, over $\mathbb F_2$ the polynomial
+\[
+                   (xy+x)+(xy+1)=x+1
+\]
+has degree one. The two degree-two terms have cancelled. In a polynomial
+ring over a field, nonzero products satisfy
+$\deg(fg)=\deg f+\deg g$. We will use this fact when we define the
+degree of NS certificates and PC derivations in the next two sections.
+
+A system $\Gamma$ consists of polynomials regarded as equations equal
+to zero. It may include Boolean equations $x_v^2-x_v$, but their presence
+does not change the ambient ring. In particular, $x_v^2$ is still a
+polynomial of degree two. Replacing it by $x_v$ requires a justified
+algebraic step using $x_v^2-x_v$.
+
+\section{Nullstellensatz certificates}
+The algebraic proof system was introduced by Beame, Impagliazzo,
+Kraj\'i\v cek, Pitassi and Pudl\'ak~\cite{NSFoundations}. We use its
+polynomial-identity form, with degree measured on the complete products.
+\begin{definition}[NS consequence]\label{tx:def:NS}
+An NS derivation of $G$ from $\Gamma$ is a finite polynomial identity
+\begin{equation}\label{tx:eq:NS}
+                         G=\sum_{f\in F}a_ff,
+                   \qquad F\subseteq\Gamma\text{ finite}.
+\end{equation}
+Its degree is the largest degree of a nonzero product $a_ff$.
+Thus it has degree at most $d$ if
+$\deg a_f+\deg f\le d$ for every nonzero summand. Zero summands can be
+removed. The empty identity is a degree-zero derivation of $G=0$.
+\end{definition}
+
+The letters NS refer to Nullstellensatz, but the definition is simply
+an identity which can be checked by multiplication and addition. There
+is no appeal to an existence theorem hidden in a certificate. The
+multiplier $a_f$ records how the input equation $f=0$ is used.
+
+\begin{example}[A first certificate]\label{tx:eg:first-NS}
+From $f_1=x+y$ and $f_2=y-z$, over any field, we derive $G=x+z$ by
+\[
+                       x+z=f_1-f_2.
+\]
+Both products have degree one. From $f_1=x$ and $f_2=1-x$ we instead
+obtain $1=f_1+f_2$. The first identity expresses a consequence; the
+second is a refutation.
+\end{example}
+
+The relevant degree is the degree of each product before the products
+are added. A large-degree contribution cannot be ignored merely because
+it cancels against another summand in the final identity. Otherwise
+every refutation would appear to have degree zero, since its final
+polynomial is the constant $1$.
+
+\section{Ordinary Polynomial Calculus}
+Polynomial Calculus was introduced by Clegg, Edmonds and
+Impagliazzo~\cite{PCFoundations}. The rules below fix the ordinary
+polynomial convention used throughout this book.
+\begin{definition}[Ordinary-PC consequence]\label{tx:def:PC}
+A PC derivation of $G$ is a finite sequence $P_1,\ldots,P_M$ ending in
+$G$. A line may be an input polynomial from $\Gamma$, a linear
+combination $\alpha P_i+\beta P_j$ of earlier lines, or a variable
+multiple $x_vP_i$ of an earlier line. Coefficients $\alpha,\beta$ belong
+to $K$. The zero polynomial is allowed as the empty linear combination.
+The degree of the derivation is $\max_i\deg P_i$, with each line
+collected as an actual polynomial.
+\end{definition}
+
+The word \emph{ordinary} stresses that there is no automatic Boolean
+reduction and no rule which multiplies by an arbitrary polynomial in a
+single step. A monomial multiple can be obtained by repeated variable
+multiplication, but every intermediate line counts towards the degree.
+The number of lines is unrestricted.
+
+\begin{example}[A cancellation which enables the next step]\label{tx:eg:cancellation}
+Over $\mathbb F_2$, consider the inputs
+\[
+                   f_1=xy+x,\qquad f_2=xy+1,\qquad f_3=xz.
+\]
+We want a PC derivation of $z$ in which every line has degree at most
+two. This is a restriction on the whole proof, including its inputs and
+intermediate lines. After listing these inputs, PC may continue with
+\begin{align*}
+ f_1+f_2&=x+1,\\
+ z(x+1)&=xz+z,\\
+ (xz+z)+f_3&=z.
+\end{align*}
+Every line stays within the chosen degree-two budget. Multiplication
+by $z$ is always a PC rule, but here we must also check that its result
+fits that budget. The preceding line $x+1$ has degree one, so
+$z(x+1)=xz+z$ has degree two and is an admissible line in this
+degree-two derivation. Multiplying one of the original quadratic inputs
+by $z$ would instead produce a degree-three line. Expanding the same calculation into
+one NS identity gives
+\[
+                          z=zf_1+zf_2+f_3,
+\]
+whose first two products have degree three. This is a concrete reason to
+keep track of cancellations inside a PC proof.
+
+The axioms are consistent: $x=y=1$ and $z=0$ is a solution. We have
+proved the nonconstant consequence $z=0$, not a contradiction.
+Exercise~\ref{tx:ex:small-gap} checks that the two minimum degrees in
+this example really are different.
+\end{example}
+
+More generally, suppose we require every line to have degree at most
+$d$, and the proof has derived a nonzero polynomial $P$. A variable
+multiple stays within this degree budget only if $\deg P\le d-1$. This follows from
+$\deg(x_vP)=\deg P+1$. Even if $P$ is represented as a linear combination
+of large-degree earlier lines, it is its actual degree \emph{after
+cancellation} that controls this next step. This observation is the
+source of the intersection operation in our later linear-algebra model.
+
+\section{Least degrees, zero, and infinity}
+\begin{definition}[Least target degree]\label{tx:def:least-degree}
+For $S\in\{\NS,\PC\}$, let $h_S(\Gamma\vdash G)$ be the least degree
+of an $S$ derivation of $G$, or $\infty$ if there is no derivation.
+We order $\NN\cup\{\infty\}$ by placing $\infty$ above every integer.
+For refutations write
+\[
+                      d_S(\Gamma)=h_S(\Gamma\vdash1).
+\]
+\end{definition}
+
+Thus $h_{\PC}(\Gamma\vdash G)=2$ says both that a PC derivation with
+every line of degree at most two exists and that no derivation confined
+to degree at most one exists. The symbol $S$ selects the proof system;
+$h_S$ then records the smallest degree achievable in that system.
+
+These conventions separate three situations. The zero target has degree
+zero, even from empty input. A nonzero constant target is equivalent to
+the target $1$, by rescaling with a field element. A nonconstant target
+has a positive degree floor, but its minimum proof degree can be much
+larger or infinite.
+
+\begin{proposition}[Degree floor and simulation]\label{tx:prop:basic-comparison}
+For every target $G$,
+\begin{equation}\label{tx:eq:basic-comparison}
+ \deg G\le h_{\PC}(\Gamma\vdash G)
+          \le h_{\NS}(\Gamma\vdash G).
+\end{equation}
+If a finite proof exists, the first inequality is an ordinary integer
+inequality. With an infinite value it is read in the extended order.
+\end{proposition}
+\begin{proof}
+The last PC line is $G$, so its degree is at least $\deg G$. For NS,
+a sum of products of degree at most $d$ is also of degree at most $d$.
+To simulate an NS certificate, expand each multiplier into monomials.
+Derive a permitted product $\mu f$ by listing $f$ and multiplying by
+one variable factor of $\mu$ at a time. None of these intermediate
+products exceeds $\deg\mu+\deg f$. Rescale and add all products to
+obtain $G$. Every step remains within the original NS degree bound.
+\end{proof}
+
+The algebraic object which organises unrestricted derivability is an
+\emph{ideal}. An ideal in a polynomial ring is a subspace closed under
+multiplication by every polynomial. The ideal generated by $\Gamma$,
+written $\langle\Gamma\rangle$, consists of all finite sums
+$\sum_f a_ff$ with $f\in\Gamma$ and polynomial coefficients $a_f$.
+It is the smallest ideal containing the inputs. Thus unrestricted NS
+derivability is precisely membership in $\langle\Gamma\rangle$.
+At a fixed degree, the restriction on each product is an additional
+condition; an arbitrary ideal representation need not respect it.
+
+There is a converse without a degree bound. Annotate each PC input $f$
+with its expression as a single input multiple. Linear combination of
+two lines combines their annotations, and multiplication by $x_v$
+multiplies every coefficient in the annotation by $x_v$. At the last
+line this produces an NS identity. It may have a higher product degree
+than the largest actual PC line, because cancellations have been
+expanded rather than reused. Consequently NS and PC derive precisely
+the same polynomials when degree is unrestricted: the ideal generated
+by $\Gamma$. The difficult comparison later in the book concerns their
+\emph{bounded-degree} behaviour uniformly in the universe size.
+
+\section{Algebraic consequence and solutions}
+Every derivation is sound under evaluation. If a tuple $a$ satisfies
+$f(a)=0$ for every input, an NS identity gives $G(a)=0$. The PC rules
+preserve this assertion line by line. The same is true when $a$ lies
+in an extension field of $K$.
+
+The converse need not hold for the proof systems defined here. From
+$x^2=0$, every field-valued solution has $x=0$, but $x$ is not a
+polynomial multiple of $x^2$. It therefore has no NS or PC derivation.
+So there are two different questions: does $G$ vanish at every solution,
+and does an NS or PC derivation of $G$ exist? We call the first
+\emph{semantic implication} and the second \emph{algebraic derivability}.
+For the proof systems defined here, algebraic derivability is ideal
+membership. The example shows that semantic implication alone does not
+guarantee it.
+
+For Boolean systems we can prove a converse for refutation. Here a
+\emph{Boolean assignment} assigns each variable either zero or one, and
+an \emph{inconsistent Boolean system} means that no such assignment
+satisfies all its equations. We now prove completeness: an inconsistent
+Boolean system with the Boolean axioms explicitly present has an
+algebraic refutation. The argument constructs the certificate directly.
+
+\begin{proposition}[Completeness for Boolean refutation]\label{tx:prop:boolean-completeness}
+Let $\Gamma$ be a finite set of polynomials in finitely many variables,
+over any field $K$, containing $x_v^2-x_v$ for every variable $x_v$.
+If no Boolean assignment satisfies $\Gamma$, there is an NS identity
+deriving $1$ from $\Gamma$, and hence a PC refutation.
+\end{proposition}
+\begin{proof}
+The Boolean axiom gives $x_v(x_v-1)=0$ at every solution. Since a field
+has no zero divisors, each coordinate is zero or one; this remains true
+over an extension field. For each Boolean assignment $a$, put
+\[
+           \delta_a=\prod_{a_v=1}x_v\prod_{a_v=0}(1-x_v).
+\]
+This is its indicator polynomial: $\delta_a(a)=1$, while
+$\delta_a(b)=0$ for every other Boolean assignment $b$. Expanding
+$\prod_v(x_v+(1-x_v))$ gives $\sum_a\delta_a=1$.
+
+There are only $2^{|V|}$ Boolean assignments. Because none satisfies the
+system, for each $a$ choose one input $f_a$ with $f_a(a)\ne0$. Its
+nonzero value has an inverse in $K$. Form the explicit polynomial
+\[
+                  H=1-\sum_a\frac{\delta_a}{f_a(a)}f_a.
+\]
+At any Boolean assignment $b$, all summands except the one indexed by
+$b$ vanish, and that summand has value one. Thus $H(b)=0$.
+
+We claim that a polynomial vanishing on every Boolean assignment is
+an explicit sum of multiples of the Boolean axioms. To see this,
+repeatedly reduce powers using the identity
+\[
+ x_v^e-x_v=(x_v^2-x_v)(1+x_v+\cdots+x_v^{e-2})\qquad(e\ge2).
+\]
+Each replacement records a polynomial multiple of $x_v^2-x_v$.
+After finitely many replacements every exponent is at most one, so
+\[
+                  H=R+\sum_v b_v(x)(x_v^2-x_v),
+\]
+where $R$ is multilinear. The replacements do not change values on
+Boolean assignments, so $R$ also vanishes at all of them. A multilinear
+polynomial is determined by these values. For a direct induction, write
+$R=A+x_v B$: evaluating at $x_v=0$ gives that $A$ vanishes on the
+smaller Boolean cube, and evaluating at $x_v=1$ then gives the same for
+$B$. Starting with constant polynomials, induction proves $R=0$.
+Therefore rearranging the definition of $H$ gives the actual identity
+\[
+       1=\sum_a\frac{\delta_a}{f_a(a)}f_a
+                            +\sum_v b_v(x)(x_v^2-x_v).
+\]
+Every polynomial on the right which is used as an input belongs to
+$\Gamma$. This is an NS refutation. The simulation proved earlier
+converts it into a PC refutation.
+\end{proof}
+
+Completeness here means that absence of a satisfying assignment
+guarantees existence of a refutation. The construction uses an
+exhaustive list of assignments and power reductions, so it gives an
+ordinary proof with finitely many terms or lines. It does not promise
+that the proof is short or has low degree. The degree lower bounds
+later in the book concern how much degree may be unavoidable despite
+this existence result.
+
+\section{The next question: can a proof survive a change of universe?}
+The definitions so far concern one fixed polynomial system. In the
+next chapter the axioms and targets will come from fixed rules indexed
+by the universe size $n$. We shall then ask whether a degree-$d$ proof
+at one size can be lifted to a larger size with the same degree budget.
+The earlier proof may use many lines; our aim is to preserve the
+degree bound without imposing a bound on their number.
+
+If this can be repeated at $n,n+q,n+2q,\ldots$, the one chosen proof
+degree becomes a constant bound on that progression. If the family
+is known to have no such bounded progression, an eligible starting
+proof cannot exist. Measuring which degrees are eligible is how the
+lifting construction will become a lower-bound argument.
+
+\section{Exercises}
+\begin{exercise}\label{tx:ex:zero-constant}
+Find the least NS and PC degrees of the targets $0$, $1$, and $x$ from
+$\Gamma=\varnothing$ and from $\Gamma=\{1\}$. Explain the role of the
+last-line degree floor.
+\end{exercise}
+\noindent{\small\hyperref[tx:ans:zero-constant]{Model answer (p.~\pageref*{tx:ans:zero-constant}).}}\par\medskip
+
+\begin{exercise}\label{tx:ex:small-gap}
+For Example~\ref{tx:eg:cancellation}, prove
+$h_{\PC}(\Gamma\vdash z)=2$ and
+$h_{\NS}(\Gamma\vdash z)=3$. For the NS lower bound, list the monomials
+which can occur in a degree-two certificate.
+\end{exercise}
+\noindent{\small\hyperref[tx:ans:small-gap]{Model answer (p.~\pageref*{tx:ans:small-gap}).}}\par\medskip
+
+\begin{exercise}\label{tx:ex:Boolean-rule}
+A proposed degree-two PC calculation multiplies the derived line $xy$
+by $x$ and replaces $x^2y$ by $xy$, using a Boolean equation. Explain
+why this is not an ordinary degree-two step, even if $x^2-x$ is an input.
+\end{exercise}
+\noindent{\small\hyperref[tx:ans:Boolean-rule]{Model answer (p.~\pageref*{tx:ans:Boolean-rule}).}}\par\medskip
+

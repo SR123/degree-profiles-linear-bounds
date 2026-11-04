@@ -1,0 +1,225 @@
+\section{Exact deletion in every positive characteristic}\label{sec:odd}
+The characteristic-two construction used $z^2=0$ and
+$z^{\mathsf T}=z$. We retain its signed combinatorial sections and
+permutation realisation, but replace these operator properties by
+$p$-level chains, a top-power projector and conjugacy with the
+transpose. The goal remains exact deletion on $\mathcal C_r(n+q)$
+using the same retained pool of size at least $2r-1$ for $r\ge1$.
+
+\subsection{The block operator in prime characteristic}
+Let now $\operatorname{char}K=p$ for any prime. Take a regular block $A=\Fp^a$ of size $q=p^a>r$, choose $c_1,\ldots,c_a$ independent over $\Fp$ in a suitable extension field, and put
+\[z=\sum_i c_i(\sigma_i-1).
+\]
+The generators commute and have order $p$, so the binomial formula in characteristic $p$ gives
+\[z^p=\sum_i c_i^p(\sigma_i^p-1)=0.
+\]
+As in Section~\ref{sec:block2}, $K$ denotes the working extension
+field during the construction; degree statements descend to the
+original field by Lemma~\ref{lem:field}.
+For $p>2$ we cannot replace this by $z^2=0$. For example, for a three-cycle $\sigma$ in characteristic three,
+\[z=\sigma-I,\qquad z^2=\sigma^2+\sigma+I\ne0
+\]
+on its three-point permutation space.
+
+\subsubsection{The deletion quotient}
+Nilpotence means that a positive power of the operator is zero.
+Here $z^p=0$ permits chain lengths from one to $p$; it does not
+exclude intermediate lengths. The quotient must therefore be read
+before any fixed/full-chain decomposition is established.
+
+Since $\im z$ need not be contained in $\ker z$, the characteristic-two expression $\ker z/\im z$ is no longer defined. Use
+\begin{equation}\label{eq:Dp}
+\D(M)=\ker z/(\ker z\cap\im z).
+\end{equation}
+A nilpotent chain has basis $v_0,\ldots,v_{j-1}$ with $zv_0=0$ and $zv_i=v_{i-1}$ for $i\ge1$. Its kernel is $Kv_0$. If $j=1$, its image is zero and the chain survives in \eqref{eq:Dp}. If $j\ge2$, $v_0$ is in the image and the chain disappears. Thus deletion keeps the one-dimensional chains and discards every longer chain.
+
+One might instead try $\ker z/\im z^{p-1}$. It is a defined quotient, but it is the wrong one: a chain of length two in characteristic three would survive because $z^2=0$ there, even though it should be discarded by \eqref{eq:Dp}. Keeping the quotient precise is important.
+
+\subsection{The commutator argument in characteristic \texorpdfstring{$p$}{p}}\label{sec:commutatorp}
+On a moved orbit $A/H$, choose a nonzero linear functional $\ell:A\to\Fp$ vanishing on the proper stabiliser $H$, and use the coordinate $\pi(vx_0)=\ell(v)$ from Section~\ref{sec:block2}. Let $D$ multiply a basis vector by its coordinate $\pi$, put $e_i=\ell(\varepsilon_i)$ and $\alpha=\sum_i c_ie_i\ne0$. With $S_i$ the coordinate-translation operators, defined orbit by orbit, we obtain
+\[Dz-zD=W=\sum_i c_ie_iS_i,\quad Wz=zW,\quad W^p=\alpha^pI.
+\]
+The commutator $[D,z]=Dz-zD$ measures the difference between the
+two orders of application. The displayed power identity gives the
+explicit inverse $W^{-1}=\alpha^{-p}W^{p-1}$; it is $W$, rather
+than the nilpotent $z$, that is inverted.
+Consequently the auxiliary operator $B=W^{-1}D$ satisfies
+\begin{equation}\label{eq:commutator}[B,z]=Bz-zB=I.\end{equation}
+This proof works also on a moved permutation basis tensored with an arbitrary representation: $D$ reads only the basis coordinate, while the $S_i$ act diagonally and still have order $p$.
+
+If $zm=0$, commuting $z$ past powers of $B$ yields
+\[zB^jm=-jB^{j-1}m,
+\qquad z^jB^jm=(-1)^jj!\,m.
+\]
+The first identity follows by induction from $zB=Bz-I$; applying it repeatedly gives the second. At $j=p-1$ the scalar $(p-1)!$ is nonzero in characteristic $p$, because every factor $1,\ldots,p-1$ is nonzero. Therefore
+\begin{equation}\label{eq:freep}\ker z=\im z^{p-1}
+\end{equation}
+on the moved summand. The reverse inclusion uses $z^p=0$.
+
+This is the full replacement for the square-zero freeness calculation. It does not divide by $p$, by $|A|$, or by a symmetric-group order. It divides only by a nonzero orbit coefficient and by $(p-1)!$.
+
+Here freeness concerns the action of $z$: a full chain is one copy of
+$K[T]/(T^p)$ with $T$ acting as $z$, and full chains form a free
+module over that ring. It is not freeness for the full symmetric group.
+
+On a bounded-support permutation basis the retained summand has $z=0$ and the moved summand satisfies \eqref{eq:freep}. Therefore the identifications with the retained basis and the tensor identifications from Section~\ref{sec:block-algebra} still hold, with quotient \eqref{eq:Dp}. Stable matrices are transported by exactly the same retained-component argument.
+
+\subsection{The top-power witness}\label{sec:topwitness}
+Set $u=z^{p-1}$. The common certificate becomes
+\begin{equation}\label{eq:topwitness}uwu-u\in J_r(N),\qquad\text{or }uwu=u\text{ on every }P_b(N),\ b\le r.
+\end{equation}
+This says that $w$ takes the bottom of a full length-$p$ chain back to a preimage at its top. It is enough to build a projector for the actual quotient, but more steps are needed than in characteristic two.
+
+First note the property of the tuple modules supplied by the moved/fixed decomposition:
+\begin{equation}\label{eq:purity}\ker z\cap\im z\subseteq\im z^{p-1}.
+\end{equation}
+The image has no retained component, and a moved kernel vector is in the top-power image by \eqref{eq:freep}. We will use \eqref{eq:purity} on the original tuple modules, then transfer polynomial identities through their common annihilator. We do not assume it for every arbitrary nilpotent operator.
+
+Condition~\eqref{eq:purity} is the purity condition needed here: a
+kernel vector already in $\im z$ must have a preimage under the top
+power. A nontrivial chain shorter than $p$ violates it at its bottom.
+Fixed lines and full length-$p$ chains satisfy it.
+
+\begin{example}[Why the distinction matters]
+In characteristic three, a lone length-two chain has $u=z^2=0$. The relation $uwu=u$ is then vacuous for any $w$, but $\ker z\cap\im z$ is nonzero and $\im u=0$. Such a chain does not satisfy \eqref{eq:purity}. The argument must establish its projector identities on the actual tuple modules first; the top-power relation alone on an arbitrary vector space is insufficient.
+\end{example}
+
+\subsubsection{A projector which removes one chain level at a time}
+Write $m=p-1$, an exponent rather than a support parameter. Suppose $z^{m+1}=0$, $z^mwz^m=z^m$ and \eqref{eq:purity} holds. Define
+\begin{equation}\label{eq:projectorp}
+S_0=I,\qquad S_{k+1}=(I-z^kwz^{m-k})S_k\quad(0\le k<m),
+\qquad e=(I-z^mw)S_m.
+\end{equation}
+Operator products act from right to left. We verify every required property.
+
+\paragraph{Eliminating high levels.}
+Here the local integer $d$ is a chain height, not a proof-degree budget.
+If $z^{d+1}R=0$, then for $d\ge1$ the vector $y=z^dRv$ is in $\ker z\cap\im z$, hence in $\im z^m$. The witness gives $z^mwy=y$. Thus
+\[z^d(I-z^{m-d}wz^d)Rv=y-z^mwy=0.
+\]
+Starting with $z^{m+1}S_0=0$, the successive factors of \eqref{eq:projectorp} give
+\[z^{m+1-k}S_k=0,
+\]
+and finally $zS_m=0$. It follows that $ze=0$.
+
+\paragraph{Action on a kernel vector.}
+If $zv=0$, every factor in $S_m$ fixes $v$, because its rightmost power of $z$ has exponent at least one. Therefore
+\begin{equation}\label{eq:ekernel}ev=v-z^mwv\quad(zv=0).
+\end{equation}
+
+\paragraph{Killing the image.}
+The first factor $I-wz^m$ fixes $\im z$, since $z^{m+1}=0$. All later factors preserve $\im z$ because their correction terms have a left factor $z^k$ with $k\ge1$. Hence $S_mzv\in\ker z\cap\im z\subseteq\im z^m$. The final factor $I-z^mw$ kills this vector by the witness relation. Thus $ez=0$.
+
+\paragraph{Idempotence.}
+The witness gives
+\[z^mwe=(z^mw-z^mwz^mw)S_m=0.
+\]
+Since $ev\in\ker z$, formula \eqref{eq:ekernel} now gives $e^2v=ev$. We have proved $ze=ez=0$ and $e^2=e$.
+
+\subsubsection{Passing from tuples to every relevant space}
+Objects of $\mathcal C_r(N)$ are modules over $K[S_N]/J_r(N)$.
+An identity holding on every tuple test space of length at most $r$ is an identity
+of this quotient algebra. Equivariant maps intertwine its operators;
+this does not make the projector central. Its image is used as a
+vector-space model of deletion, while the quotient retains the residual
+label action.
+
+Construct $e$ as the same expression in the group algebra. Once these identities hold on all tuple modules up to length $r$, the elements $ze$, $ez$ and $e^2-e$ belong to $J_r(N)$. They therefore act as zero on every object of $\mathcal C_r(N)$, whether or not we have a separate chain decomposition for that object. Formula \eqref{eq:ekernel} follows there directly from the displayed product formula.
+
+Thus $[v]\mapsto ev$ identifies \eqref{eq:Dp} with $eM$: $e$ kills $\im z$, its image is in $\ker z$, and $v-ev=z^{p-1}wv\in\im z$ for $v\in\ker z$. The exactness proof using a common projector is now identical to Section~\ref{sec:block-algebra}. All maps commute with the common group-algebra expression.
+
+\begin{example}[A full chain in characteristic three]
+Let $zv_2=v_1$, $zv_1=v_0$, $zv_0=0$, and let $wv_0=v_2$, with $w$ zero on the other chain vectors. Then $z^2wz^2=z^2$. The projector is
+\[e=(I-z^2w)(I-zwz)(I-wz^2).
+\]
+The rightmost factor removes $v_2$, the middle factor removes $v_1$, and the leftmost removes $v_0$. If a separate fixed vector $t$ is added and $wt=0$, every factor fixes $t$. Thus the projector removes exactly the full chain and retains the fixed direction. For $p=2$ the same formula has only the two factors $(I-zw)(I-wz)$ from Section~\ref{sec:block-algebra}.
+\end{example}
+
+\subsection{The linear construction in odd characteristic}\label{sec:oddlinear}
+We now adapt the construction of Section~\ref{sec:linear-construction}.
+The partition proof in Section~\ref{sec:partition}, cone and signed
+lifts in Section~\ref{sec:cone}, and rook realisation in
+Section~\ref{sec:rook-realization} use $1$ and $-1$ without a
+characteristic-two cancellation. These combinatorial proofs remain
+valid over any field and supply the same label count $2b-1$.
+The splitting and duality arguments require the replacements below.
+
+At the current tuple length $b$, recall $V=P_b(N)$,
+$V'=\sum_i\im\partial_i^{\mathsf T}$,
+$\mathcal Z_b=\bigcap_i\ker\partial_i$ and $T_b=V/V'$.
+The layer $G_t$ records exactly $t$ block positions in the filtration
+$\mathcal Z^{\le t}$. The tuple bases and marginal maps have the
+same definitions; their block action has a different chain structure.
+
+\subsubsection{The block layers have \texorpdfstring{$p$}{p} levels instead of two}
+Let $E$ be the space on the current block patterns with $t$ positions, where $1\le t\le b<q$, and give each pattern a grade $d\in\Fp$ using the orbit coordinate of its image set. Here $d$ is a field-valued grade, not polynomial degree, and $D$ is the diagonal operator reading that grade. Let $E_d$ be the corresponding subspace. We claim
+\[E=E_0\oplus zE_0\oplus\cdots\oplus z^{p-1}E_0.
+\]
+For fixed $d$, suppose $\sum_{j=0}^{p-1}z^jv_j=0$ with $v_j\in E_d$. The commutator identity and $Wz=zW$ imply
+\[(D-dI)z^jv_j=jWz^{j-1}v_j.
+\]
+Apply $D-dI$ to the relation and cancel the invertible $W$. Repeat this operation $p-1$ times. It gives $(p-1)!v_{p-1}=0$, hence $v_{p-1}=0$. Descending induction gives every $v_j=0$. Thus $p\dim E_d\le\dim E$ for every $d\in\Fp$. Since the $p$ spaces $E_d$ partition the basis, their dimensions sum to $\dim E$, forcing equality in each inequality. The direct sum for $E_0$ is therefore all of $E$.
+
+The grade depends only on the image set, so $E_0$ is position-stable and graded by the position domain. Tensoring with the retained zero-marginal factors gives
+\[G_t=\bigoplus_{j=0}^{p-1}z^jQ_t
+\]
+with $Q_t$ position-stable and $z^{p-1}$ injective on $Q_t$ by the preceding directness argument. A position-equivariant section $\sigma$ becomes a section commuting with $z$ by
+\[\tau\left(\sum_{j=0}^{p-1}z^jq_j\right)=\sum_{j=0}^{p-1}z^j\sigma(q_j).
+\]
+The last term causes no problem because $z^p=0$. Splitting the filtration gives
+\begin{equation}\label{eq:socsplitp}
+\mathcal Z_b(n+q)=\mathcal Z_b(n)\oplus\bigoplus_{j=0}^{p-1}z^jC
+\end{equation}
+for a position-stable $C$, again under $n\ge2b-1$ and $b<q$.
+
+\subsubsection{Top and zero-marginal spaces}
+The perfect pairing $T_b\times\mathcal Z_b\to K$ exchanges an
+operator on the quotient with its transpose on the zero-marginal
+space. Duality reverses composition order. Thus the odd-characteristic
+argument must use the actual transpose, not assume the
+characteristic-two equality $z^{\mathsf T}=z$.
+
+With $u=z^{p-1}$, send $uc$ back to $c$ and kill the other levels in \eqref{eq:socsplitp}. This defines a position-equivariant $w_C$ with $uw_Cu=u$. Also
+\[uV\cap \mathcal Z_b\subseteq u\mathcal Z_b.
+\]
+Indeed a vector in this intersection is killed by $z$, so its decomposition in \eqref{eq:socsplitp} is a retained vector plus an element of $uC$. Its membership in $uV$ excludes the retained part, just as before.
+
+For odd $p$, $z$ need not be symmetric. Its transpose is
+\[z^{\mathsf T}=\sum_i c_i(\sigma_i^{-1}-1).
+\]
+This is the ordinary bilinear matrix transpose; it does not conjugate
+the coefficients $c_i$.
+Let $\iota$ fix the retained labels and send a block label $v\in A$ to $-v$. Then $\iota\sigma_i\iota^{-1}=\sigma_i^{-1}$, so $z^{\mathsf T}=\iota z\iota^{-1}$. This is an actual relabelling, and preserves the tuple-layer constructions. The just-proved statements apply equally to $u^{\mathsf T}$. Orthogonal complements give
+\[uV\cap V'\subseteq uV',
+\]
+and duality between $T_b$ and $\mathcal Z_b$ gives a position-equivariant $w_T$ with $uw_Tu=u$. This replaces the characteristic-two shortcut $z^{\mathsf T}=z$.
+The relabelling $\iota$ is the block inversion, distinct from the
+inclusion of a zero-marginal space into its tuple ambient.
+
+\subsubsection{The same correction, with the correct power}
+Suppose $w_0$ works on shorter tuples for the top-power relation. Its error is
+\[\varepsilon=uw_0u-u.
+\]
+It maps into $\mathcal Z_b$ and kills $V'$. The four properties just proved give, step by step as in Section~\ref{sec:layerstep},
+\[uw_C\varepsilon=\varepsilon,\qquad\varepsilon w_Tu=\varepsilon.
+\]
+The correction $\varphi=-w_C\varepsilon w_T$ therefore satisfies $u\varphi u=-\varepsilon$. The characteristic-independent rook theorem realises it by $j\in J_{b-1}(N)$. Adding $j$ repairs the witness at length $b$ without changing any shorter length.
+
+Inducting on $b$ proves \eqref{eq:topwitness} on the same label pool whenever $n\ge2r-1$. The longer projector gives exactness, the moved-orbit calculation gives natural basis and tensor deletion, and the original PC closure transport gives the same period statement.
+
+
+\begin{proof}[Completion of the proof of Theorem~\ref{thm:deletion}]
+Begin at tuple length zero with $w_0=0$, since $z$ acts as zero on
+constants. At length $b$, the preceding correction and
+Theorem~\ref{thm:realization} replace $w_{b-1}$ by $w_b$ satisfying
+$z^{p-1}w_bz^{p-1}=z^{p-1}$ on every length at most $b$. The same
+retained labels are used at every step. The largest requirement is
+$\max_{1\le b\le r}(2b-1)=2r-1$; length zero needs no label.
+The projector identities then imply exactness on $\mathcal C_r(N)$.
+The orbit commutator calculation supplies the natural retained-basis
+and tensor identifications, including the actual stable coefficient
+maps. These arguments prove every assertion of Theorem~\ref{thm:deletion}.
+\end{proof}
+The block construction is performed over its working extension field.
+Lemma~\ref{lem:field} descends the transported polynomial consequence
+spaces to the original field without changing the degree budget.

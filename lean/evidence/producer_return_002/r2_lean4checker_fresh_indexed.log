@@ -1,0 +1,5 @@
+lean4checker --fresh UCIndexedClassification (FRESH: replays the entire import closure, Mathlib included, into an empty environment)
+start: Mon Oct  5 18:37:09 UTC 2026
+exit status: 0
+elapsed seconds: 2999
+finished: Mon Oct  5 19:27:08 UTC 2026

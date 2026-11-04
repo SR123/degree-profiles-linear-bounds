@@ -1,0 +1,602 @@
+\chapter{Matching designs and the concrete lower bounds}
+\label{tx:app:matching}
+
+The examples use a lower bound for a concrete rectangular system.  Its
+proof illustrates why a functional excluding a Nullstellensatz certificate
+does not by itself exclude a Polynomial Calculus derivation.  To handle
+degree falls we construct a whole space of functionals, together with an
+extension operator between successive degrees.
+The use of designs as linear obstructions to Nullstellensatz proofs
+has a direct antecedent in Buss~\cite{BussDesign}. The argument here
+also proves the extension property needed to handle ordinary-PC lines.
+Here the target is $1$. The capital $D$ below is the proposed proof-degree
+budget, rather than the input-degree bound of a general template.
+The integers $N,M$ describe row and column counts in the auxiliary boards.
+
+\section{Why this separate example proof is informative}
+The general linear theorem used an exact operation on whole consequence
+spaces. The concrete rectangular family gives a second way to see why
+ordinary-PC degree falls must be handled honestly. Here we will use
+linear functionals instead of a group-algebra projector.
+
+A single functional annihilating the permitted axiom products excludes
+an NS certificate. It need not remain valid when a cancelled low-degree
+polynomial is multiplied in PC. The remedy is not to announce that NS
+and PC are the same. We construct a whole space of designs and prove
+that every lower-degree design extends. The PC invariant will quantify
+over \emph{all} designs. This universal quantifier is what survives a
+multiplication after cancellation.
+
+The proof has four steps: choose a terminating signed reduction of
+matchings, prove independence of its integral coordinates in a square,
+compress complete histories to obtain a binomial identity in rectangles,
+and use that identity to extend designs. The last step applies the
+functionals to every legal PC line. We give the complete construction
+in this chapter, rather than referring to a pigeonhole lower-bound paper.
+
+For positive integers $r\leq m$, let $B_{r,m}$ consist of the equations
+\[
+ \sum_{j=1}^{m}x_{ij}-1=0\quad(i\in[r]),\qquad
+ \sum_{i=1}^{r}x_{ij}-1=0\quad(j\in[m]),
+\]
+the Boolean equations $x_{ij}^{2}-x_{ij}=0$, and the row and column
+collision equations
+\[
+ x_{ij}x_{i\ell}=0\quad(j\ne\ell),\qquad
+ x_{ij}x_{hj}=0\quad(i\ne h).
+\]
+Here $[r]=\{1,\ldots,r\}$.  A Boolean solution would describe a bijection
+between the two sides, so a proper rectangle has no solution.  Nevertheless,
+in positive characteristic the two linear totality sums can agree because
+$m-r$ vanishes in the field.  The following statement identifies a range
+in which this obstruction persists through ordinary PC.
+
+\begin{lemma}[Rectangle obstruction]\label{tx:lem:rectangle-obstruction}
+Let $K$ be a field of prime characteristic $p$, and let $a,D$ be
+nonnegative integers.  If
+\[
+ 1\leq r\leq m,\qquad 2D\leq r,\qquad D<p^a,
+ \qquad p^a\mid m-r,
+\]
+then $B_{r,m}$ has no ordinary-PC refutation of degree at most $D$.
+Consequently it has no Nullstellensatz refutation of total-product degree
+at most $D$.
+\end{lemma}
+
+We give the full construction over the integers before passing to $K$.
+An \emph{edge set} is a subset of $[N]\times[M]$.  It is a matching if
+no two distinct edges share a row or a column.  Write $\operatorname{rows}P$
+and $\operatorname{cols}P$ for its two projections.  A degree-$d$ design
+may take values in a coefficient ring: it is a function $\psi$ on edge
+sets, zero on nonmatchings, for which
+\begin{equation}\label{tx:eq:matching-design}
+ \sum_{j=1}^{M}\psi(P\cup\{(i,j)\})=\psi(P),\qquad
+ \sum_{i=1}^{N}\psi(P\cup\{(i,j)\})=\psi(P)
+ \quad(|P|<d).
+\end{equation}
+The indices $i\in[N]$ and $j\in[M]$ are arbitrary. For $K$-valued
+designs, denote the resulting vector space by $E_d(N,M)$. The signed
+coordinate reductions below are constructed integrally and then
+interpreted in $K$.  Normalisation, $\psi(\varnothing)=1$, is a separate
+condition.  We will construct a normalised member of $E_D(r,m)$ and prove
+that, for $D\ge1$, \emph{every} member of $E_{D-1}(r,m)$ extends to $E_D(r,m)$ while
+preserving its values through degree $D-1$.
+
+To interpret the table, associate an edge set $P$ with the squarefree
+monomial $x_P=\prod_{e\in P}x_e$. Its proposed value is $\psi(P)$.
+For an actual matching assignment this value would be its containment
+indicator; a design instead imposes only the stated linear consistency
+conditions in the tested degree window. A normalised design can be read
+as a \emph{pseudoexpectation} in the following algebraic sense: a linear
+assignment of values to monomials satisfying those tests and giving the
+constant monomial value one, without a probability distribution or a
+positivity assumption. Its extension to ordinary monomials is spelled
+out in the last section. Unnormalised designs are also needed for the
+extension argument.
+
+\section{A degree-one design which is not a solution}
+Over $\mathbb F_2$, consider four rows and six columns. Give the six
+columns respectively the selected row labels $1,1,1,2,3,4$, and let
+$\psi(\{(i,j)\})$ be one on those six selected edges and zero elsewhere.
+Let $\psi(\varnothing)=1$. Every column sum is one. The four row
+sums are $3,1,1,1$, all one in the field. Thus these values satisfy the
+degree-one totality conditions, although the selected edges do not form
+an actual bijection: three columns use the same row.
+
+This is an honest linear witness, not a Boolean model. Degree one has
+not yet tested the quadratic collision axioms. Higher-degree designs
+must also assign compatible values to matching edge sets. The extension
+construction below supplies these values exactly in the range of the
+rectangle obstruction, without division by a factorial.
+
+\begin{checkpoint}
+An actual solution evaluates every polynomial multiplicatively. A design
+is a consistent linear response only to the tested degree window. It
+can exist for an inconsistent rectangle and still rule out every proof
+within that window.
+\end{checkpoint}
+
+\section{A terminating signed reduction}
+The reduction will replace one matching by a formal integer linear
+combination of others. The word \emph{signed} allows negative
+coefficients; it does not count matchings with positive weights.
+The required identity is that every design gives the same value before
+and after a replacement. Keeping integer coefficients first lets us
+use the same identities after reducing modulo any characteristic.
+
+
+A chain in a matching is a subset whose row coordinates and column
+coordinates both increase.  Let $h(P)$ be the maximum chain length, and
+write $P_{\leq b}$ for the edges in rows at most $b$.  A matching $P$ is
+\emph{terminal} if, for every positive integer $b$,
+\[
+ h(P_{\leq b})\leq b-|\operatorname{rows}(P_{\leq b})|,
+\]
+and the corresponding inequality holds for column prefixes.  The right
+side counts unused labels in the prefix.  This definition depends only
+on the labelled matching, not on the ambient rectangle.  Prefixes beyond
+its last occupied row or column cannot introduce a new failure: their
+left side stays fixed and their right side increases.
+
+For a nonterminal matching, use the least failed row prefix if one exists;
+otherwise use the least failed column prefix.  In the selected prefix
+choose a longest chain, breaking ties by the lexicographically greatest
+list of its edges, with the edges themselves in row-first lexicographic
+order.  In a column step use this rule after transposition.  Thus all
+choices are deterministic.
+
+Consider a row step with failed prefix $b$ and chosen chain $A$.  Put
+\[
+ P_0=P\setminus A,\qquad S=\operatorname{cols}A,\qquad
+ B=\{i\leq b:i\notin\operatorname{rows}P\},
+\]
+\[
+ U=\operatorname{rows}A\ \cup\
+       \{b<i\leq N:i\notin\operatorname{rows}P\}.
+\]
+The sets $B$ and $U$ are disjoint and partition all rows unused by $P_0$.
+Moreover, $|B|<|A|$, because the selected prefix fails.  A longest chain
+in the first failed prefix ends in row $b$.  Indeed, if it ended earlier,
+the same chain would belong to the preceding prefix, whereas the number
+of unused labels cannot decrease when one adds the next row.  That
+preceding prefix would already fail.
+
+For sets of columns $S$ and rows $V$, a full injection from $S$ into $V$
+means a matching $J$ with $\operatorname{cols}J=S$ and
+$\operatorname{rows}J\subseteq V$.  A partial injection has only
+$\operatorname{cols}J\subseteq S$.  Replace $P$ by
+\[
+ \sum_{\substack{J\text{ partial injection}\\S\to B}}
+       (-1)^{|J|}[P_0\cup J]
+ \ -\!
+ \sum_{\substack{J\text{ full injection}\\S\to U\\J\ne A}}
+       [P_0\cup J],
+\]
+omitting colliding terms.  Square brackets here denote formal basis
+elements, not polynomial equivalence classes.  The transposed rule defines
+a column step.
+
+To verify the identity for a degree-$d$ design with $|P|\leq d$, repeatedly
+apply its column equation to the columns of $S$.  At each application
+the partial matching has fewer than $|P|$ edges, so the degree restriction
+is satisfied.  An occupied row contributes zero by collision vanishing.
+For a still unassigned column the sum over available rows in $U$ is
+therefore the previous value minus the sum over rows in $B$.  Expanding
+these successive differences gives
+\[
+ \sum_{J:S\to U}\psi(P_0\cup J)
+  =\sum_{A'\subseteq S}(-1)^{|A'|}
+       \sum_{J:A'\to B}\psi(P_0\cup J).
+\]
+Every surviving term is an injection, because collisions have value zero.
+The right side contains each partial injection exactly once, indexed by
+its column set.  Isolating the term $J=A$ on the left proves the stated
+reduction.  The column step follows by interchanging rows and columns in
+the design equations.  No assertion that the deterministic reduction
+itself commutes with transposition is needed.
+
+We next prove termination, including the equal-degree case.  For the
+fixed grid $G=[N]\times[M]$, set $H=N+M$, $c=NM+1$, and define
+\[
+ w(i,j)=c^{H-i-j},\qquad W(P)=\sum_{(i,j)\in P}w(i,j),\qquad
+ \rho(P)=|P|(W(G)+1)+W(P).
+\]
+Every lower term has fewer edges, since an injection into $B$ has at most
+$|B|<|A|$ edges.  Thus its $\rho$ is smaller irrespective of its weight.
+For a full injection $J\ne A$ into $U$, let $e$ be the first edge of $A$
+not belonging to $J$, in increasing row order.  Every earlier chain edge
+still belongs to $J$.  If $x\in J\setminus A$ had row smaller than that
+of $e$, its row would be an earlier chain row already occupied by its
+retained edge; this contradicts the matching condition.  A row from the
+other part of $U$ is greater than $b$ and hence cannot be smaller.
+Likewise, a column of $x$ smaller than the column of $e$ belongs to an
+earlier retained chain edge, again giving a collision.  Consequently
+\[
+ e_1\leq x_1,\qquad e_2\leq x_2,\qquad e_1+e_2<x_1+x_2.
+\]
+At least one inequality is strict because $x\ne e$.  Each newly added
+edge has weight at most $w(e)/c$, and there are at most $NM<c$ such
+edges.  Their total weight is strictly smaller than $w(e)$.  Cancelling
+the common edges of $A$ and $J$ shows $W(P_0\cup J)<W(P)$.
+The identical argument applies to a column step, since $i+j$ is
+unchanged by transposition.  Every child therefore has strictly smaller
+nonnegative integer rank $\rho$.  The tree is finitely branching, and
+every path has length at most its initial rank.  Hence the complete
+signed reduction tree is finite.
+
+For terminal $T$, let $C_{N,M}(P,T)\in\mathbb Z$ be the sum, over paths
+from $P$ to $T$, of the products of their step signs; set it to zero for
+colliding $P$.  The empty path gives
+\[
+ C_{N,M}(S,T)=\delta_{S,T}\quad(S\text{ terminal}),\qquad
+ C_{N,M}(P,T)=0\quad(|T|>|P|).
+\]
+Induction on $\rho(P)$ using the reduction identity gives, for every
+degree-$d$ design,
+\begin{equation}\label{tx:eq:terminal-expansion}
+ \psi(P)=\sum_{\substack{T\text{ terminal}\\|T|\leq d}}
+              C_{N,M}(P,T)\psi(T)\qquad(|P|\leq d).
+\end{equation}
+Thus the terminal values determine every design in the relevant range.
+It remains to show that these coordinates themselves satisfy the required
+totality equations and can be restricted from a square to a rectangle.
+
+For a small illustration of the preceding reduction, in a $2$-by-$2$
+square the matching $\{(1,2)\}$ fails the first row prefix. Its chosen
+chain is that one edge, $B$ is empty, and $U=\{1,2\}$. The rule gives
+\[
+ [\{(1,2)\}]\longmapsto[\varnothing]-[\{(2,2)\}].
+\]
+Here $\{(2,2)\}$ is terminal. For a design of degree at least one,
+the corresponding identity is simply the column sum $\psi(\{(1,2)\})+\psi(\{(2,2)\})=\psi(\varnothing)$.
+Thus a terminal coordinate can be negative; it is not a probability.
+
+\section{Integral independence in a square}
+An indicator here is a function on actual permutations of the square:
+it takes value one when the permutation contains the given matching,
+and zero otherwise. The argument is \emph{integral} because it uses
+integer coefficients throughout. Here it proves independence after
+passing to any coefficient ring in the theorem, as well as over
+the integers. The signed moments below isolate a coefficient
+with multiplier $1$ or $-1$, both invertible in every ring. This is the
+reason for proving a unit diagonal rather than a nonzero factorial.
+
+
+Let $T\subseteq[N]\times[N]$ be terminal.  For an edge $e\in T$, let
+its height be the maximum chain length in the southwest downset
+$\{f\in T:f_1\leq e_1,\ f_2\leq e_2\}$.  A longest such chain ends
+at $e$: otherwise $e$ can be appended, because distinct edges of a
+matching have distinct row and column coordinates.  If $e$ is southwest
+of $f$ with both coordinates strictly smaller, appending $f$ raises the
+height.  It follows that every equal-height level $T_t$ is decreasing:
+as its row coordinate increases, its column coordinate decreases.
+The levels partition $T$.
+
+Let $h=h(T)$.  The terminal inequality at prefix $N$ implies that there
+are at least $h$ unused rows and $h$ unused columns.  Let $a_t$ and $b_t$
+be the $t$th smallest unused row and column, respectively, for
+$1\leq t\leq h$.  These anchors precede every coordinate in $T_t$.
+For example, if $e\in T_t$, a chain of length $t$ ending at $e$ belongs
+to its row prefix.  Terminality requires at least $t$ unused rows in
+that prefix; row $e_1$ is occupied, so the $t$th unused row is strictly
+less than $e_1$.  The column argument is identical.  Form the paired blocks
+\[
+ A_t=\operatorname{rows}T_t\cup\{a_t\},\qquad
+ B_t=\operatorname{cols}T_t\cup\{b_t\}.
+\]
+They are disjoint on each side, their paired sizes agree, and their
+minima are $a_t,b_t$.  Their complements also have equal sizes.  Fix the
+increasing bijection on the complements, and an increasing base bijection
+$A_t\to B_t$ in each block.  Vary each base bijection by a permutation
+$\sigma_t$ of $A_t$.  The union of all these bijections is an actual
+permutation $\pi_\sigma$ of $[N]$.
+
+For any edge set $P$, define the integer signed moment
+\[
+ M_T(P)=\sum_{\sigma}
+     \left(\prod_{t=1}^{h}\operatorname{sgn}\sigma_t\right)
+     \boldsymbol{1}_{P\subseteq\pi_\sigma}.
+\]
+If a block has two rows absent from $\operatorname{rows}P$, interchange
+their images.  This is a fixed-point-free involution on the choices,
+changes the sign, and preserves the containment condition.  Its terms
+cancel over $\mathbb Z$.  In particular, $M_T(P)=0$ when $|P|<|T|$:
+otherwise every block would use at least $|A_t|-1=|T_t|$ rows, forcing
+$|P|\geq\sum_t|T_t|=|T|$.
+
+The diagonal is a unit.  In each block the edges of $T_t$ prescribe the
+bijection on every row except $a_t$; its remaining value is necessarily
+$b_t$.  Thus exactly one choice $\sigma$ contains $T$, and
+\[
+ M_T(T)\in\{1,-1\}.
+\]
+This is a single signed contribution; no factorial or positive integer
+multiplicity must be inverted.
+
+For equal-degree triangularity, suppose $|P|=|T|$ and $M_T(P)\ne0$.
+There is a choice containing $P$, so $P$ is a matching.  Cancellation
+shows that at most one row in each block is unused.  Counting over the
+disjoint blocks forces exactly $|T_t|$ edges in block $A_t\times B_t$,
+one unused row in every block, and no edge in the complement.  Write
+$P_t$ for this block matching.
+
+Among all matchings of size $|T_t|$ in $A_t\times B_t$, the decreasing
+matching $T_t$ has uniquely least weight $W$.  Here is a direct proof.
+Choose a weight minimiser $Q$ from this finite set.  If it uses the
+minimum row $a_t$, move that edge to the unique unused row.  This is a
+legal matching, has the same cardinality, and strictly smaller weight,
+because its row coordinate has increased.  Thus $a_t$ is unused.
+The same argument shows that the minimum column $b_t$ is unused.
+If $Q$ contains an increasing pair $(i,j),(i',j')$ with
+$i<i'$ and $j<j'$, replace it by the crossed pair
+$(i,j'),(i',j)$.  Both added edges have coordinate sum strictly larger
+than that of $(i,j)$, and their combined weight is smaller than its
+weight, since $c=N^2+1>2$ when such a pair exists.  The unchanged context
+is disjoint from the crossed pair.  This again contradicts minimality.
+Therefore $Q$ is decreasing, uses precisely $A_t\setminus\{a_t\}$
+and $B_t\setminus\{b_t\}$, and must equal $T_t$: on two fixed ordered
+sets there is exactly one order-reversing bijection.  Any distinct
+matching with the same minimum weight would also be a minimiser and
+would give the same conclusion.  Hence
+\[
+ W(P_t)\geq W(T_t),\quad\text{with equality only if }P_t=T_t.
+\]
+Summing over the disjoint blocks proves that
+\[
+ |P|=|T|,\quad P\ne T,\quad M_T(P)\ne0
+ \quad\Longrightarrow\quad W(P)>W(T).
+\]
+Together with the lower-degree cancellation, this says that $M_T(P)=0$
+for every $P\ne T$ with $\rho(P)\leq\rho(T)$.
+
+Now suppose a finite linear combination of terminal matching indicators
+vanishes at every permutation of $[N]$, with coefficients in any
+commutative ring $R$.  Among its nonzero coefficients choose a terminal
+$T$ of greatest rank $\rho$.  Apply the integer signed moment $M_T$ to
+this relation, then map the integers to $R$.  All other nonzero terms
+vanish by triangularity; the result is the coefficient of $T$ multiplied
+by $1$ or $-1$.  This contradicts its being nonzero.  The terminal
+indicators are therefore independent over every commutative ring,
+including fields of characteristic two and rings with zero divisors.
+
+Each square permutation satisfies the design equations in every degree.
+Equation~\eqref{tx:eq:terminal-expansion}, applied to its containment
+indicator, expresses every matching indicator in terminal coordinates.
+For a fixed row $i$, the permutation identity
+\[
+ \sum_{j=1}^{N}\boldsymbol{1}_{P\cup\{(i,j)\}\subseteq\pi}
+       =\boldsymbol{1}_{P\subseteq\pi}
+\]
+holds because $\pi$ has exactly one edge in that row.  Expand all terms
+in terminal coordinates and use the integral independence just proved.
+For each terminal $T$ this yields
+\[
+ \sum_{j=1}^{N}C_{N,N}(P\cup\{(i,j)\},T)=C_{N,N}(P,T).
+\]
+The column identity follows in the same way from the unique edge in a
+column.  Colliding sets have zero coordinates and zero permutation
+indicators, so they are included.  Thus every square coordinate is an
+unnormalised design, in every degree, over the integers.
+
+\section{Whole-history compression and the marked binomial identity}
+The last matching of a path need not remember every row visited by
+that path. We must group paths using their \emph{entire} histories.
+Once the total signed weight is the same for every chosen $k$-element set
+of appended rows, summing over those sets produces $\binom{L}{k}$.
+The mark ensures that $k$ is positive, even if its initial edge is
+later deleted. This will remove the unwanted appended-row contribution
+when the binomial coefficients vanish in $K$.
+
+
+Fix $P,T\subseteq[r]\times[m]$, with $P$ a matching and $T$ terminal, and a column
+$j\notin\operatorname{cols}P$.  Append $L$ rows, and consider all pairs
+consisting of a marked initial row $i\in\{r+1,\ldots,r+L\}$ and a signed
+reduction path from $P\cup\{(i,j)\}$ to $T$.  The weight of a pair is the
+product of its path signs.  Its \emph{history support} is the set of
+appended rows appearing anywhere on the path, including the initial
+state and edges that are subsequently deleted.
+
+If $|P|+1\leq D$ and $2D\leq r$, every such support is nonempty and has
+size at most $|P|+1$.  To prove the latter assertion, give one token to
+each initial edge.  In a row rewrite, transport a token by its column
+to the unique child edge in that column, or delete it if that column
+is absent.  The child uses only columns of the parent, so this describes
+every child edge exactly once.  In a column rewrite transport by row,
+with the analogous deletion rule.  No deleted token reappears, and no
+two surviving tokens represent the same edge.
+
+For any matching $Q$ of at most $D$ edges, failure at row prefix $b$
+implies
+\[
+ b< h(Q_{\leq b})+
+       |\operatorname{rows}(Q_{\leq b})|\leq 2|Q|\leq2D\leq r.
+\]
+Thus every chosen row chain lies in old rows.  An edge already in an
+appended row is part of the unchanged context of a row rewrite and is
+retained verbatim.  A column rewrite preserves its token's row or
+deletes the token.  It follows that a token can encounter at most one
+appended row throughout its lifetime.  There are $|P|+1$ initial tokens,
+so the full history has at most that many appended rows.  The initial
+mark belongs to it even when its token later disappears.
+
+We next verify that histories of the same size carry the same total
+integer weight.  Let $S$ be a prescribed $k$-element subset of the $L$
+appended rows, and let $f$ be the increasing injection fixing $[r]$ and
+sending $r+1,\ldots,r+k$ to the elements of $S$ in order.  For $t\geq1$, set $f(r+k+t)=r+L+t$.
+This extends $f$ increasingly and makes the inverse image of the large
+row interval $[r+L]$ exactly $[r+k]$.  Rename the row coordinate of every
+edge by $f$ and retain its column and step sign.
+
+First, this renaming preserves the deterministic selector.  Every failed
+row prefix lies below $r$, as just proved; those prefixes and their
+unused-row counts are unchanged.  Their chains are unchanged as labelled
+edge sets.  For a column prefix, the number of occupied columns and all
+chain lengths are preserved by the increasing row renaming.  The first
+failed column prefix is therefore unchanged.  The lexicographic tie
+choice is also preserved: a strictly increasing map preserves the
+lexicographic order of sorted edge lists, including the transposed lists
+used in a column step.  Orientation, first failure and chosen chain all
+agree under renaming, and terminality is preserved.
+
+Second, renaming gives a bijection on the branches whose child edges
+remain in $[r]\cup S$.  In a row step, the inverse images of the sets
+$B$ and $U$ are exactly the corresponding sets in the compressed
+rectangle: order comparisons with the old endpoint and occupied-row
+membership are preserved.  An image-supported replacement therefore
+has a unique inverse injection.  Its column set, cardinality, exclusion
+of the original chain, collision status and sign are all preserved.
+For a column step the permissible column sets are unchanged; the same
+argument, using row membership, applies.  A child cannot encode two
+different replacement injections, since its replacement edges are
+recovered by removing the fixed context: their columns are disjoint
+from the context columns in a row step, and their rows are disjoint
+in a column step.  The lower and upper branch families are disjoint
+because their cardinalities differ.  Thus no multiplicity is lost.
+There may be other branches using rows outside $S$, but these belong to
+different history supports and are not part of this correspondence.
+
+Applying the branch bijection successively gives a two-way, sign-preserving
+bijection between marked paths with history exactly
+$\{r+1,\ldots,r+k\}$ in the compressed rectangle and marked paths with
+history exactly $S$ in the large rectangle.  Its inverse simply renames
+every state and the initial mark back.  The endpoint $T$ is fixed because
+it uses only old rows.  All intermediate states have at most $D$ edges,
+so the selector argument applies at every step.
+
+Define $c_k(P,T,j)$ to be the total weight of the marked paths in the
+rectangle $[r+k]\times[m]$ whose full history is all $k$ appended rows.
+Partitioning the marked paths by their history support, and then by its
+cardinality, proves the integer identity
+\begin{equation}\label{tx:eq:marked-coordinate}
+ \sum_{i=r+1}^{r+L}
+       C_{r+L,m}(P\cup\{(i,j)\},T)
+    =\sum_{k=1}^{D}\binom{L}{k}c_k(P,T,j).
+\end{equation}
+The coefficients are independent of $L$.  Its constant term is absent
+because each path retains its initial mark in the \emph{history}, not
+necessarily in its final state.  This distinction is essential.
+
+\section{Rectangular designs and their extensions}
+
+We now pass from integer reduction coordinates to the fixed field $K$.
+The two goals are a design with $\psi(\varnothing)=1$ and an extension
+of every degree-$(D-1)$ design; the first will detect $1$, and the second
+will make the obstruction survive ordinary-PC multiplication.
+Assume now the hypotheses of Lemma~\ref{tx:lem:rectangle-obstruction}, with
+$D\geq1$, and put $q=p^a$ and $L=m-r$.  For $1\leq k\leq D<q$ the
+integer $\binom{L}{k}$ is zero in $K$.  Indeed, $q\mid L$ and in
+characteristic $p$,
+\[
+ (1+z)^L=(1+z^q)^{L/q};
+\]
+the right side has no coefficient in these degrees.  Take the square
+of size $m$ and an old terminal matching $T\subseteq[r]\times[m]$.
+The function
+\[
+ \theta_T(P)=C_{m,m}(P,T)\quad\text{in }K,
+       \qquad P\subseteq[r]\times[m],
+\]
+is a degree-$D$ rectangular design.  Its row equations are the square
+row equations, with the same column set.  Its column equations follow
+from the square column equation after deleting the appended-row sum,
+which vanishes by~\eqref{tx:eq:marked-coordinate} for $|P|<D$ and an
+unused column.  If the column is occupied, every appended insertion
+collides, so the omitted sum is already zero.  If $P$ collides, every
+insertion still collides and both sides are zero.  This covers all
+design equations.
+
+On old terminal inputs, the square reduction is still terminal and
+\[
+ \theta_T(S)=\delta_{S,T}.
+\]
+In particular, $\theta_{\varnothing}$ is normalised.  For an arbitrary
+$\psi\in E_{D-1}(r,m)$ define explicitly
+\[
+ \widetilde\psi(P)=
+    \sum_{\substack{T\text{ terminal in }[r]\times[m]\\|T|\leq D-1}}
+                     \psi(T)\theta_T(P).
+\]
+This is a member of $E_D(r,m)$ and agrees with $\psi$ on all terminal
+inputs of size at most $D-1$.  Apply~\eqref{tx:eq:terminal-expansion} in the
+old rectangle to both designs, after restricting the new design to
+degree $D-1$.  They agree on every edge set of size at most $D-1$.
+Thus the extension exists for every unnormalised design, with no
+choice of an unspecified lift.
+
+\section{Why extension is precisely the multiplication rule}
+The polynomial spaces $P_{\le0}\subseteq P_{\le1}\subseteq\cdots$
+form a \emph{filtration}: nested spaces indexed by the degree allowed.
+The corresponding design problem asks for compatible values on each
+window. Extending a design means keeping every tested value on edge
+sets of size at most $D-1$ and supplying the extra degree-$D$ values.
+It is stronger than constructing one normalised design at degree $D$;
+the multiplication argument needs an extension for whichever
+lower-degree table a given edge produces.
+
+Fix an edge $e$. To test a new line $x_e f$ of degree at most $D$,
+start with any degree-$D$ design $\psi$. Force the edge into the design
+by defining $s_e\psi(P)=\psi(P\cup\{e\})$. This is a degree-$(D-1)$
+design. Extend it back to degree $D$. The extension evaluates every
+monomial of $f$ exactly as the original design evaluates that monomial
+multiplied by $x_e$, because $f$ has degree at most $D-1$.
+
+The induction hypothesis says that \emph{every} degree-$D$ design kills
+earlier lines. It therefore kills $f$ under this chosen extension,
+which proves that the original $\psi$ kills $x_e f$. This is the exact
+point at which a space of designs succeeds where one isolated witness
+would be insufficient.
+
+\section{The invariant through ordinary-PC degree falls}
+
+For a design $\psi$ define a linear functional on the original polynomial
+ring by
+\[
+ \Lambda_\psi\!\left(\sum_\alpha b_\alpha x^\alpha\right)
+      =\sum_\alpha b_\alpha\psi(\operatorname{supp}\alpha),
+\]
+where $\operatorname{supp}\alpha$ is the set of edges with positive
+exponent.  This formula is a functional on ordinary polynomials; it
+does not replace a PC proof by a proof in a Boolean quotient.
+Every degree-$D$ design annihilates each axiom usable in a degree-$D$
+proof.  Totalities use~\eqref{tx:eq:matching-design} at $P=\varnothing$;
+collisions use vanishing on nonmatchings; and the Boolean equations
+use the equality of the supports of $x_e^2$ and $x_e$.
+
+For an edge $e$, put $(s_e\psi)(P)=\psi(P\cup\{e\})$.
+If $\psi\in E_D(r,m)$, then $s_e\psi\in E_{D-1}(r,m)$.
+Collision vanishing is immediate.  In either totality equation at
+$|P|<D-1$, apply the degree-$D$ equation to $P\cup\{e\}$, whose
+cardinality is at most $D-1$.  The insertion operations commute,
+including repeated insertion of the same edge.  Also, directly from
+the monomial formula,
+\[
+ \Lambda_\psi(x_ef)=\Lambda_{s_e\psi}(f).
+\]
+
+Induct through a degree-$D$ ordinary-PC derivation, asserting that every
+line is annihilated by \emph{every} member of $E_D(r,m)$.  Input axioms
+were handled above, and linear combinations preserve the assertion
+even when their highest-degree terms cancel.  Consider multiplication
+of an earlier line $f$ by $x_e$.  If $f=0$ there is nothing to prove.
+Otherwise ordinary polynomial degree gives
+$\deg(x_ef)=\deg f+1$, so $\deg f\leq D-1$.
+For a given $\psi\in E_D(r,m)$, extend $s_e\psi$ to a design
+$\nu\in E_D(r,m)$ using the preceding construction.  The earlier line
+is annihilated by $\nu$ by the inductive assertion.  Since the two
+designs agree on all edge sets of size at most $D-1$, and every monomial
+of $f$ has support of that size or smaller,
+\[
+ \Lambda_\psi(x_ef)=\Lambda_{s_e\psi}(f)=\Lambda_\nu(f)=0.
+\]
+This proves the invariant for multiplication as well.  Finally the
+normalised design $\theta_{\varnothing}$ sends the constant $1$ to $1$,
+so that constant cannot be the last line of the derivation.
+
+For $D=0$, all displayed axioms have positive degree because both sides
+of the rectangle are nonempty.  No nonzero constant axiom is available,
+and multiplication of a nonzero polynomial cannot produce a degree-zero
+line.  Linear combinations of the available zero lines remain zero.
+Thus a degree-zero refutation is impossible directly.  This completes
+the ordinary-PC proof in every case.  The NS conclusion follows from
+the degree-preserving simulation of a total-product NS certificate by
+ordinary PC.

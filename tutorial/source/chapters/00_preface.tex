@@ -1,0 +1,146 @@
+\chapter*{Preface: mathematics, machines and exposition}
+\addcontentsline{toc}{chapter}{Preface: mathematics, machines and exposition}
+\label{tx:preface:provenance}
+\begingroup\fontsize{10.5}{12.6}\selectfont
+AI is changing how mathematics can be explored, checked and explained.
+This project suggests a corresponding way to present mathematical research:
+an interactive paper, with further explanations attached to its arguments,
+and a tutorial textbook which develops the ideas at a human pace.
+The two formats serve different purposes. The paper states the results
+and their proofs concisely; the textbook supplies the definitions,
+examples and intermediate reasoning needed to understand the whole route.
+
+Machine-generated proofs can be hard to follow. They may combine ideas
+from several research communities without explaining why a construction
+was chosen or how its pieces fit together. The initial proofs generated
+by Astra and Claude also omitted several key references to prior human
+work. Their mathematical knowledge reflects a body of human research,
+although the outputs do not establish which particular sources were
+used in training or how they influenced the constructions. A formally
+checked argument therefore also needs a readable account of the
+mathematics and its antecedents. This book provides that account for
+the linear degree gap.
+
+This is an \emph{AI-generated tutorial textbook}, developed under my
+mathematical direction, supervision and editing. Astra supplied much of
+the drafting and restructuring. Astra and Claude also contributed
+substantially to the proof search and formalisation. I selected the
+programme, supplied my earlier work and mathematical input, challenged
+arguments, read successive chapters and requested clearer explanations
+and worked examples. This continuing exchange shaped both the proof
+development and its presentation.
+
+The published mathematical starting point is my LICS~2008
+paper~\cite{Riis}; the 53-page 2009 report supplies a longer account
+\cite{RiisLong}. The conference paper established a four-way
+classification, or \emph{quadrichotomy}, of uniform algebraic
+refutation complexity: $\mathrm T_1,\ldots,\mathrm T_4$, with
+periodicity, NS--PC type agreement and undecidability for every
+nontrivial union of types, including the no-finite-model promise.
+The logarithmic and double-logarithmic scales used
+Kraj\'i\v cek's Theorem~3.5~\cite{Krajicek}, based on Ajtai's
+symmetric-system work~\cite{Ajtai}.
+My joint journal papers with Meera Sitharam develop uniform
+translations~\cite{RiisSitharamTautologies} and uniformly generated
+permutation submodules over fields of characteristic
+zero~\cite{RiisSitharamModules}. A separate 1997 announcement proposed
+a nonconstant-to-linear degree gap. Its inducing-down argument has
+an unresolved gap, as I recorded in the 2009 report
+\cite[p.~50, footnote~3; p.~53, reference~33]{RiisLong}; this concerns
+the proof and does not refute the asserted theorem. My later
+unpublished notes pursued stronger bounds and suggested lifting
+separating vectors between ranks, with important steps incomplete.
+The aim here was to obtain complete proofs of linear degree bounds in
+the universe size, in every fixed positive characteristic, and to treat
+uniform polynomial consequences as well as refutations.
+
+The central proof search included, in my recollection, roughly two to
+three days of concentrated work with Astra and Claude, alongside my
+interactions. Checking, repairs, extensions and exposition continued
+afterwards. When the construction reached an $\Omega(\sqrt n)$ bound in
+characteristic two, I pressed for an $\Omega(n)$ bound and an argument
+covering all positive characteristics. The difficult work was to build
+one lifting mechanism compatible with all the required operations.
+
+\newpage
+The development and subsequent comparison with the literature brought
+together proof complexity, model theory, modular representation theory
+and algebraic combinatorics. Some of these connections were unfamiliar
+to me; the assistants helped bring them into the discussion.
+Kraj\'i\v cek's earlier work already treated uniform polynomial targets,
+Euler structures and bounded-degree NS--PC comparison, including the
+NS-span plateau argument~\cite{KrajEuler}\cite[Theorem~5.5]{Krajicek}. The wider context
+includes Church--Ellenberg--Farb's FI framework for representations as
+the number of labels grows, Harman's modular periodicity in a linear
+range, and Hone and coauthors' explicit periodic functors through
+semisimplification~\cite{CEF,Harman,HKPSYZ}. Harman's equivalences
+already respect induction, restriction, tensor products and
+duality~\cite[Propositions~2.7 and~2.12]{Harman}. The construction
+here proves the required closure preservation and target detection
+on the actual polynomial maps with its own quantitative bounds.
+Integral centraliser and
+rook combinatorics provide another connection~\cite{BDM}: realising
+compatible linear maps as combinations of label permutations. These
+communities study stability as the number of labels grows and the
+construction of maps between representations.
+Chapter~\ref{tx:chap:contract} explains these antecedents; the finite
+constructions required for our polynomial proof rules are proved here.
+
+The principal construction developed in this project is in
+Chapters~\ref{tx:ch:linear-layers}--\ref{tx:ch:prime}: compatible
+corrections reuse one retained pool of labels, and the odd-characteristic
+argument completes the same linear budget.
+Chapter~\ref{tx:chap:assemble-transfer} transports the actual axiom,
+multiplication and indexed-target maps.
+Chapter~\ref{tx:sec:comparison} independently supplies the comparison's
+uniform chain bound. The four qualitative types are inherited from my
+earlier work; the present quantitative bounds are linear in
+$\mathrm T_2$, linear on the hard residues in $\mathrm T_3$, and give
+finite linear peaks in $\mathrm T_4$.
+Chapter~\ref{tx:sec:undecidability} gives explicit reductions separating
+any two types under the no-finite-model promise already stated in
+LICS~2008, refining its every-union formulation. This treatment was
+developed interactively by me and Astra from my earlier undecidability
+arguments. The NS proof system is due to Beame, Impagliazzo,
+Kraj\'i\v cek, Pitassi and Pudl\'ak~\cite{NSFoundations}; PC is due
+to Clegg, Edmonds and Impagliazzo~\cite{PCFoundations}.
+The induction-chain separation used in
+Chapter~\ref{tx:ch:running-order} is due to Buss and
+Pitassi~\cite{BussPitassiInduction}; the design method is developed
+in Buss~\cite{BussDesign}, and the modular bijection antecedent is
+Beame--Riis~\cite{BeameRiis}. The compression discussion belongs to
+separate companion work.
+
+I developed this tutorial interactively by reading drafts, identifying
+steps I could not follow, proposing abstractions and requesting examples
+that would carry the reader through the general argument. Alongside
+supplying my earlier manuscripts and guiding the proof search, an
+important part of my contribution was to identify relevant prior human
+work, check the connections against the literature, and ensure that
+these contributions received proper credit. My intention is to make
+the textbook available on GitHub alongside the interactive
+version of the paper, and potentially use it for lectures and
+presentations. The contribution to exposition is this coordinated
+combination: a scientific paper with expandable explanations and a
+longer, progressively developed tutorial.
+
+I stated and proved the following undecidability theorem: for every
+nonempty proper subset $A\subsetneq\{1,2,3,4\}$, it is undecidable
+whether a uniform family arising from a first-order sentence belongs
+to one of the types $\mathrm T_i$ with $i\in A$.
+This theorem appears in my LICS~2008 paper, with further details in
+the 2009 report~\cite{Riis,RiisLong}.
+The no-finite-model promise is explicitly part of its published
+statement~\cite[Theorem~1]{Riis}. Its Lemma~8 gives a
+$\mathrm T_1$-versus-prescribed-type switch; the controlled-join
+construction in Chapter~\ref{tx:sec:undecidability} supplies the
+remaining pairwise reductions. This comparison concerns that
+published formulation and inspected construction.
+The core degree, comparison and undecidability results now have Lean
+formalisations and independent source, statement and axiom audits.
+Newly added teaching examples and the topological reformulation are
+written deductions; they are not additional Lean theorem endpoints. The book explains
+the mathematics and its provenance, while making explicit how its text
+was generated and how I directed and revised it.
+
+\par\endgroup

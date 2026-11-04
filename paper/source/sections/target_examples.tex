@@ -1,0 +1,145 @@
+\section{Nonconstant targets with finite linear peaks}\label{sec:target-examples}
+The degree of a target need not reflect the degree needed to derive it.
+A polynomial of degree one may require arbitrarily high proof degree.
+We first give an exact construction, then apply it to a uniform family
+whose hard values are finite.
+
+A simple invariant target illustrates the distinction between finite
+hardness and failure of derivability. For $G_n=\sum_{i<n}x_i$, the input
+$\{1\}$ gives degree exactly one in both systems for $n\ge1$. With no
+inputs the same target is underivable and has degree $\infty$. Both
+fit the uniform definition, but neither supplies a finite hard example.
+The next construction does.
+
+Two elementary maps on the enlarged ring will be used. Substitution
+$y=1$ is a ring homomorphism. Coefficient extraction $[y^1]$ is instead
+a linear map: it takes $\sum_j a_j(x)y^j$ to $a_1(x)$.
+It lowers the total degree by one on a nonzero extracted term and
+commutes with multiplication by a polynomial independent of $y$.
+This distinction accounts for the different exact NS and PC degrees.
+
+\begin{proposition}[Adjoining a fresh target]\label{prop:fresh-target}
+Let $K$ be any field, let $\Gamma\subseteq K[x_v:v\in V]$ be any axiom
+set, and adjoin a fresh variable $y$. Each certificate uses only
+finitely many axioms. Let $\Gamma^\uparrow$ be the same axioms viewed
+in $K[x_v:v\in V,y]$, with no additional axiom involving $y$. Then
+\begin{equation}\label{eq:fresh-identities}
+ \begin{aligned}
+ h_{\PC}(\Gamma^\uparrow\vdash y)
+       &=\max\{1,d_{\PC}(\Gamma)\},\\
+ h_{\NS}(\Gamma^\uparrow\vdash y)
+       &=d_{\NS}(\Gamma)+1.
+ \end{aligned}
+\end{equation}
+These equalities include degree zero and infinity, with
+$\infty+1=\infty$.
+\end{proposition}
+\begin{proof}
+For PC, embed a refutation of $\Gamma$ in the larger ring and multiply
+its last line $1$ by $y$. If the refutation had degree $d$, the resulting
+proof of $y$ has degree $\max\{1,d\}$: only the new last line is added,
+and its degree is one.
+
+Conversely, substitute $y=1$ in every line of a PC proof of $y$.
+The old axioms are unchanged and linear combinations commute with the
+substitution. Multiplication by an old variable remains a multiplication
+step; multiplication by $y$ becomes a repeated line, which the linear
+combination rule admits. No degree increases, and the last line becomes
+$1$. Every proof of $y$ also has degree at least one. These two lower
+bounds prove the first equality, including the case when no refutation
+exists.
+
+For NS, multiplying the coefficients of an identity
+$1=\sum_fa_ff$ by $y$ gives an identity for $y$ with degree one larger.
+For the reverse inequality, suppose
+\[
+                    y=\sum_f a_f(x,y)f(x)
+\]
+has total-product degree at most $e$. Take the coefficient of $y^1$.
+Since every $f$ is independent of $y$, this gives the exact identity
+\[
+                    1=\sum_f [y^1]a_f(x,y)\,f(x).
+\]
+Every nonzero product on the right has degree at most $e-1$: it is the
+coefficient of $y^1$ in a product of total degree at most $e$. Zero
+products may be discarded. Hence $d_{\NS}(\Gamma)\le e-1$.
+In particular a finite proof of $y$ exists exactly when a finite
+refutation exists. If the original refutation degree is zero, both
+new degrees are one, as asserted.
+\end{proof}
+
+\begin{example}[Why the two exact identities differ]
+Take $\Gamma=\{x,1-x\}$. Both refutation degrees are one. PC derives
+$1=x+(1-x)$ and then multiplies that last constant by $y$; every line
+still has degree at most one. An NS identity for the fresh target is
+\[
+                             y=yx+y(1-x).
+\]
+Its products have degree two. No degree-one NS identity can produce
+$y$, since its multipliers of these degree-one axioms would have to
+be constants. Thus the new PC degree is one and the NS degree is two.
+PC can finish the refutation before multiplying its last line; an NS
+identity carries the extra variable in its coefficient polynomials.
+\end{example}
+
+The absence of a $y$-axiom is part of the construction; in particular,
+we do not add $y^2-y=0$. For a uniform template, give the new variable
+empty support and keep all old axiom indices and coefficients. Set
+all coefficients of axiom monomials involving $y$ to zero. The result
+is again a uniform template with the same bounds $k,s,D,n_0$, and
+$G_n=y$ is a fully invariant target of degree one at every rank.
+Thus \eqref{eq:fresh-identities} holds rank by rank.
+
+This operation preserves each of the four types, separately for NS
+and PC. The NS recurring finite degrees are shifted by one. For PC,
+the map $d\mapsto\max\{1,d\}$ merges only degrees zero and one;
+all larger finite degrees and infinity are unchanged. Eventual
+boundedness, absence or unboundedness of recurring finite levels, and
+the mixed periodic case are consequently preserved.
+
+\begin{corollary}[A finite hard nonconstant consequence family]\label{cor:fresh-peaks}
+Let $K$ have prime characteristic $p$, and let $\widehat B_n$ be the
+normalised weak-bijection system defined in
+\eqref{eq:bhat-witness}, with all of its function and coverage witnesses
+retained. Adjoin a fresh variable $y$ as above, and request the target
+$G_n=y$. Both target-degree profiles are of type T4.
+
+More precisely, write $n=p^a u$, where $p\nmid u$, and put $q=p^a$.
+Whenever $n\ge2q$,
+\[
+ \begin{gathered}
+ q\le h_{\PC}(n)\le q+4,\qquad
+ q+1\le h_{\NS}(n)\le q+5,\\
+                         h_{\PC}(n)\le h_{\NS}(n).
+ \end{gathered}
+\]
+In particular, at every size $n_a=(p+1)p^a$,
+\begin{equation}\label{eq:fresh-peaks}
+ \frac{n_a}{p+1}\le h_{\PC}(n_a)\le h_{\NS}(n_a)
+                              \le\frac{n_a}{p+1}+5<\infty.
+\end{equation}
+\end{corollary}
+\begin{proof}
+The refutation bounds \eqref{eq:bhat-window}, proved in the next
+section, give
+$q\le d_{\PC}(\widehat B_n)\le d_{\NS}(\widehat B_n)\le q+4$.
+Apply \eqref{eq:fresh-identities}; since $q\ge1$, the maximum in the
+PC identity changes nothing here. At $n_a=(p+1)p^a$ we have
+$v_p(n_a)=a$ and $n_a\ge2p^a$, yielding \eqref{eq:fresh-peaks}.
+
+For each fixed $a$, infinitely many sizes
+$n=p^a(p(j+1)+1)$ have the same valuation and satisfy the displayed
+bounds. Some finite degree in each of the bounded windows must
+therefore recur infinitely often. The windows tend to infinity with
+$a$, proving T4 in each system. On the other hand, the old upper
+bound gives $h_{\PC}(n)\le5$ and $h_{\NS}(n)\le6$ whenever
+$p\nmid n$. The linear peaks thus coexist with infinitely many easy
+sizes, rather than giving an eventual linear lower bound at all sizes.
+\end{proof}
+
+This example has finite hard proofs of a nonconstant target, but its
+axioms are inconsistent: the difficulty is inherited from refuting
+$\widehat B_n$. It does not establish a family of satisfiable axioms
+with the same hard consequence profile. The small consistent example
+in Section~\ref{sec:systems} illustrates ordinary-PC consequences in
+a different setting; no growing lower bound is asserted for it.

@@ -1,0 +1,25 @@
+{
+  "exit_code": 0,
+  "seconds": 38.4,
+  "workspace": "<RECORDED_INDEPENDENT_SCRATCH>/lean",
+  "targets": [
+    "UCTarget",
+    "UCTransfer",
+    "UCClassification",
+    "UCExample",
+    "UCAudit",
+    "UCTargetScope",
+    "UCScopeAudit"
+  ],
+  "present_oleans": {
+    "UCTarget": true,
+    "UCTransfer": true,
+    "UCClassification": true,
+    "UCExample": true,
+    "UCAudit": true,
+    "UCTargetScope": true,
+    "UCScopeAudit": true
+  },
+  "producer_project_oleans_reused": false,
+  "complete": true
+}

@@ -1,0 +1,531 @@
+def UniformConsequence.Indexed.ITarget.pcProfile : {R : Type} →
+  [inst : Field R] → {T : DegreeProfilesReview.Uniform.Template R} → ITarget T → ℕ → ℕ∞ :=
+fun {R} [inst : Field R] {T} G n => ⨆ b, tpcDegree (T.inst n) (G.poly n b)
+def UniformConsequence.Indexed.ITarget.nsProfile : {R : Type} →
+  [inst : Field R] → {T : DegreeProfilesReview.Uniform.Template R} → ITarget T → ℕ → ℕ∞ :=
+fun {R} [inst : Field R] {T} G n => ⨆ b, tnsDegree (T.inst n) (G.poly n b)
+def UniformConsequence.Indexed.ITarget.nI : {R : Type} →
+  [inst : Field R] → {T : DegreeProfilesReview.Uniform.Template R} → ITarget T → ℕ :=
+fun {R} [Field R] {T} G => max T.n0 G.aux.n0
+structure DegreeProfilesReview.Uniform.LinearBoundsFor (p k s n0 : ℕ) (h : ℕ → ℕ∞) : Prop
+number of parameters: 5
+fields:
+  DegreeProfilesReview.Uniform.LinearBoundsFor.periodic : DegreeProfilesReview.Profiles.PeriodicProfile h
+      (DegreeProfilesReview.Profiles.onset k s n0) (DegreeProfilesReview.Profiles.period p k s)
+  DegreeProfilesReview.Uniform.LinearBoundsFor.four_types : DegreeProfilesReview.Profiles.IsT1 h ∧
+        ¬DegreeProfilesReview.Profiles.IsT2 h (DegreeProfilesReview.Profiles.onset k s n0) ∧
+          ¬DegreeProfilesReview.Profiles.IsT3 h (DegreeProfilesReview.Profiles.onset k s n0) ∧
+            ¬DegreeProfilesReview.Profiles.IsT4 h (DegreeProfilesReview.Profiles.onset k s n0) ∨
+      ¬DegreeProfilesReview.Profiles.IsT1 h ∧
+          DegreeProfilesReview.Profiles.IsT2 h (DegreeProfilesReview.Profiles.onset k s n0) ∧
+            ¬DegreeProfilesReview.Profiles.IsT3 h (DegreeProfilesReview.Profiles.onset k s n0) ∧
+              ¬DegreeProfilesReview.Profiles.IsT4 h (DegreeProfilesReview.Profiles.onset k s n0) ∨
+        ¬DegreeProfilesReview.Profiles.IsT1 h ∧
+            ¬DegreeProfilesReview.Profiles.IsT2 h (DegreeProfilesReview.Profiles.onset k s n0) ∧
+              DegreeProfilesReview.Profiles.IsT3 h (DegreeProfilesReview.Profiles.onset k s n0) ∧
+                ¬DegreeProfilesReview.Profiles.IsT4 h (DegreeProfilesReview.Profiles.onset k s n0) ∨
+          ¬DegreeProfilesReview.Profiles.IsT1 h ∧
+            ¬DegreeProfilesReview.Profiles.IsT2 h (DegreeProfilesReview.Profiles.onset k s n0) ∧
+              ¬DegreeProfilesReview.Profiles.IsT3 h (DegreeProfilesReview.Profiles.onset k s n0) ∧
+                DegreeProfilesReview.Profiles.IsT4 h (DegreeProfilesReview.Profiles.onset k s n0)
+  DegreeProfilesReview.Uniform.LinearBoundsFor.T2_bound : DegreeProfilesReview.Profiles.IsT2 h
+        (DegreeProfilesReview.Profiles.onset k s n0) →
+      ∀ (n : ℕ), n0 ≤ n → ∀ (x : ℕ), h n = ↑x → (↑n - 2 * ↑s - 1) / (2 * ↑k) < ↑x
+  DegreeProfilesReview.Uniform.LinearBoundsFor.T3_bound : DegreeProfilesReview.Profiles.IsT3 h
+        (DegreeProfilesReview.Profiles.onset k s n0) →
+      ∃ D U,
+        U.Nonempty ∧
+          (∃ c < DegreeProfilesReview.Profiles.period p k s D, c ∉ U) ∧
+            ∀ (n : ℕ),
+              DegreeProfilesReview.Profiles.onset k s n0 D ≤ n →
+                2 * k + 2 * s + 1 ≤ n →
+                  n % DegreeProfilesReview.Profiles.period p k s D ∉ U → ↑((n - 2 * s - 1) / (2 * k)) < h n
+  DegreeProfilesReview.Uniform.LinearBoundsFor.T4_bound : DegreeProfilesReview.Profiles.IsT4 h
+        (DegreeProfilesReview.Profiles.onset k s n0) →
+      ∀ (B : ℕ),
+        ∃ n d,
+          B ≤ n ∧
+            B ≤ d ∧
+              d ∈ DegreeProfilesReview.Profiles.E h (DegreeProfilesReview.Profiles.onset k s n0) ∧
+                h n = ↑d ∧ n ≤ (p + 2) * (k * d + s) ∧ ↑n / ((↑p + 2) * ↑k) - ↑s / ↑k ≤ ↑d
+constructor:
+  DegreeProfilesReview.Uniform.LinearBoundsFor.mk {p k s n0 : ℕ} {h : ℕ → ℕ∞}
+    (periodic :
+      DegreeProfilesReview.Profiles.PeriodicProfile h (DegreeProfilesReview.Profiles.onset k s n0)
+        (DegreeProfilesReview.Profiles.period p k s))
+    (four_types :
+      DegreeProfilesReview.Profiles.IsT1 h ∧
+          ¬DegreeProfilesReview.Profiles.IsT2 h (DegreeProfilesReview.Profiles.onset k s n0) ∧
+            ¬DegreeProfilesReview.Profiles.IsT3 h (DegreeProfilesReview.Profiles.onset k s n0) ∧
+              ¬DegreeProfilesReview.Profiles.IsT4 h (DegreeProfilesReview.Profiles.onset k s n0) ∨
+        ¬DegreeProfilesReview.Profiles.IsT1 h ∧
+            DegreeProfilesReview.Profiles.IsT2 h (DegreeProfilesReview.Profiles.onset k s n0) ∧
+              ¬DegreeProfilesReview.Profiles.IsT3 h (DegreeProfilesReview.Profiles.onset k s n0) ∧
+                ¬DegreeProfilesReview.Profiles.IsT4 h (DegreeProfilesReview.Profiles.onset k s n0) ∨
+          ¬DegreeProfilesReview.Profiles.IsT1 h ∧
+              ¬DegreeProfilesReview.Profiles.IsT2 h (DegreeProfilesReview.Profiles.onset k s n0) ∧
+                DegreeProfilesReview.Profiles.IsT3 h (DegreeProfilesReview.Profiles.onset k s n0) ∧
+                  ¬DegreeProfilesReview.Profiles.IsT4 h (DegreeProfilesReview.Profiles.onset k s n0) ∨
+            ¬DegreeProfilesReview.Profiles.IsT1 h ∧
+              ¬DegreeProfilesReview.Profiles.IsT2 h (DegreeProfilesReview.Profiles.onset k s n0) ∧
+                ¬DegreeProfilesReview.Profiles.IsT3 h (DegreeProfilesReview.Profiles.onset k s n0) ∧
+                  DegreeProfilesReview.Profiles.IsT4 h (DegreeProfilesReview.Profiles.onset k s n0))
+    (T2_bound :
+      DegreeProfilesReview.Profiles.IsT2 h (DegreeProfilesReview.Profiles.onset k s n0) →
+        ∀ (n : ℕ), n0 ≤ n → ∀ (x : ℕ), h n = ↑x → (↑n - 2 * ↑s - 1) / (2 * ↑k) < ↑x)
+    (T3_bound :
+      DegreeProfilesReview.Profiles.IsT3 h (DegreeProfilesReview.Profiles.onset k s n0) →
+        ∃ D U,
+          U.Nonempty ∧
+            (∃ c < DegreeProfilesReview.Profiles.period p k s D, c ∉ U) ∧
+              ∀ (n : ℕ),
+                DegreeProfilesReview.Profiles.onset k s n0 D ≤ n →
+                  2 * k + 2 * s + 1 ≤ n →
+                    n % DegreeProfilesReview.Profiles.period p k s D ∉ U → ↑((n - 2 * s - 1) / (2 * k)) < h n)
+    (T4_bound :
+      DegreeProfilesReview.Profiles.IsT4 h (DegreeProfilesReview.Profiles.onset k s n0) →
+        ∀ (B : ℕ),
+          ∃ n d,
+            B ≤ n ∧
+              B ≤ d ∧
+                d ∈ DegreeProfilesReview.Profiles.E h (DegreeProfilesReview.Profiles.onset k s n0) ∧
+                  h n = ↑d ∧ n ≤ (p + 2) * (k * d + s) ∧ ↑n / ((↑p + 2) * ↑k) - ↑s / ↑k ≤ ↑d) :
+    DegreeProfilesReview.Uniform.LinearBoundsFor p k s n0 h
+structure DegreeProfilesReview.Profiles.PeriodicProfile (h : ℕ → ℕ∞) (N Q : ℕ → ℕ) : Prop
+number of parameters: 3
+fields:
+  DegreeProfilesReview.Profiles.PeriodicProfile.N_mono : Monotone N
+  DegreeProfilesReview.Profiles.PeriodicProfile.N_ge : ∀ (d : ℕ), d + 1 ≤ N d
+  DegreeProfilesReview.Profiles.PeriodicProfile.Q_pos : ∀ (d : ℕ), 0 < Q d
+  DegreeProfilesReview.Profiles.PeriodicProfile.periodic : ∀ (d t : ℕ),
+      t ≤ d → ∀ (n m : ℕ), N d ≤ n → N d ≤ m → n % Q d = m % Q d → (h n ≤ ↑t ↔ h m ≤ ↑t)
+constructor:
+  DegreeProfilesReview.Profiles.PeriodicProfile.mk {h : ℕ → ℕ∞} {N Q : ℕ → ℕ} (N_mono : Monotone N)
+    (N_ge : ∀ (d : ℕ), d + 1 ≤ N d) (Q_pos : ∀ (d : ℕ), 0 < Q d)
+    (periodic : ∀ (d t : ℕ), t ≤ d → ∀ (n m : ℕ), N d ≤ n → N d ≤ m → n % Q d = m % Q d → (h n ≤ ↑t ↔ h m ≤ ↑t)) :
+    DegreeProfilesReview.Profiles.PeriodicProfile h N Q
+def DegreeProfilesReview.Profiles.UpperComparison : (ℕ → ℕ) → (ℕ → ℕ∞) → (ℕ → ℕ∞) → Prop :=
+fun F g h => ∀ (n x : ℕ), g n = ↑x → h n ≤ ↑(F x)
+def DegreeProfilesReview.Profiles.E : (ℕ → ℕ∞) → (ℕ → ℕ) → Set ℕ :=
+fun h N => {d | ∃ n, N d ≤ n ∧ h n = ↑d}
+def DegreeProfilesReview.Profiles.IsT1 : (ℕ → ℕ∞) → Prop :=
+fun h => DegreeProfilesReview.Profiles.EventuallyBounded h
+def DegreeProfilesReview.Profiles.IsT2 : (ℕ → ℕ∞) → (ℕ → ℕ) → Prop :=
+fun h N => DegreeProfilesReview.Profiles.E h N = ∅
+def DegreeProfilesReview.Profiles.IsT3 : (ℕ → ℕ∞) → (ℕ → ℕ) → Prop :=
+fun h N =>
+  (DegreeProfilesReview.Profiles.E h N).Finite ∧
+    (DegreeProfilesReview.Profiles.E h N).Nonempty ∧ ¬DegreeProfilesReview.Profiles.EventuallyBounded h
+def DegreeProfilesReview.Profiles.IsT4 : (ℕ → ℕ∞) → (ℕ → ℕ) → Prop :=
+fun h N => (DegreeProfilesReview.Profiles.E h N).Infinite
+def UniformConsequence.tpcDegree.{u_1, u_2} : {σ : Type u_1} →
+  {K : Type u_2} → [inst : Field K] → Set (MvPolynomial σ K) → MvPolynomial σ K → ℕ∞ :=
+fun {σ} {K} [Field K] Γ g => if h : ∃ d, DegreeProfilesReview.PC.Derives Γ d g then ↑(Nat.find h) else ⊤
+def UniformConsequence.tnsDegree.{u_1, u_2} : {σ : Type u_1} →
+  {K : Type u_2} → [inst : Field K] → Set (MvPolynomial σ K) → MvPolynomial σ K → ℕ∞ :=
+fun {σ} {K} [Field K] Γ g => if h : ∃ d, NSDerives Γ d g then ↑(Nat.find h) else ⊤
+def DegreeProfilesReview.PC.pcDegree.{u_1, u_2} : {σ : Type u_1} →
+  {K : Type u_2} → [inst : Field K] → Set (MvPolynomial σ K) → ℕ∞ :=
+fun {σ} {K} [Field K] Γ => if h : ∃ d, DegreeProfilesReview.PC.Refutes Γ d then ↑(Nat.find h) else ⊤
+def DegreeProfilesReview.NS.nsDegree.{u_1, u_2} : {σ : Type u_1} →
+  {K : Type u_2} → [inst : Field K] → Set (MvPolynomial σ K) → ℕ∞ :=
+fun {σ} {K} [Field K] Γ => if h : ∃ d, DegreeProfilesReview.NS.NSRefutes Γ d then ↑(Nat.find h) else ⊤
+def UniformConsequence.Fresh.lift : {K : Type} →
+  [inst : Field K] → {σ : Type} → Set (MvPolynomial σ K) → Set (MvPolynomial (Option σ) K) :=
+fun {K} [Field K] {σ} Γ => ⇑(MvPolynomial.rename some) '' Γ
+def UniformConsequence.Fresh.ysubst : {K : Type} →
+  [inst : Field K] → {σ : Type} → MvPolynomial (Option σ) K →ₐ[K] MvPolynomial σ K :=
+fun {K} [Field K] {σ} => MvPolynomial.aeval fun o => o.elim 1 MvPolynomial.X
+def UniformConsequence.Fresh.optionSys : DegreeProfilesReview.Uniform.BasisSystem →
+  DegreeProfilesReview.Uniform.BasisSystem :=
+fun 𝒰 =>
+  { Obj := Option 𝒰.Obj, act := { smul := fun g o => Option.map (fun u => g • u) o, mul_smul := ⋯, one_smul := ⋯ },
+    supp := fun o => o.elim ∅ 𝒰.supp, supp_smul := ⋯, fixed := ⋯, Rk := fun t => Option (𝒰.Rk t), fin := ⋯,
+    up := fun t => Option.map (𝒰.up t), up_inj := ⋯, range_up := ⋯ }
+def UniformConsequence.Fresh.freshVar : {K : Type} →
+  [inst : Field K] → DegreeProfilesReview.Uniform.Template K → DegreeProfilesReview.Uniform.Template K :=
+fun {K} [Field K] T =>
+  { Var := optionSys T.Var, Ax := T.Ax, k := T.k, s := T.s, D := T.D, n0 := T.n0, hk := ⋯, hn0 := ⋯, hn0' := ⋯,
+    var_bounded := ⋯, ax_bounded := ⋯, coeff := fun i m => if yExp m = 0 then T.coeff i m.some else 0, coeff_inv := ⋯,
+    coeff_deg := ⋯ }
+def UniformConsequence.Fresh.freshTarget : {K : Type} →
+  [inst : Field K] → (T : DegreeProfilesReview.Uniform.Template K) → Target (freshVar T) :=
+fun {K} [Field K] T => { DG := 1, γ := fun m => if m = Finsupp.single none 1 then 1 else 0, γ_inv := ⋯, γ_deg := ⋯ }
+def UniformConsequence.Fresh.yExp : {α : Type} → (Option α →₀ ℕ) → ℕ :=
+fun {α} m => m none
+def ClaudeUndec.bhat : ClaudeUndec.Sentence :=
+(([], [1, 1, 1]),
+  [[ClaudeUndec.neg (ClaudeUndec.Atom.graph 0 [0] 2), ClaudeUndec.neg (ClaudeUndec.Atom.graph 0 [1] 2),
+      ClaudeUndec.pos (ClaudeUndec.Atom.eq 0 1)],
+    [ClaudeUndec.neg (ClaudeUndec.Atom.graph 1 [0] 2), ClaudeUndec.neg (ClaudeUndec.Atom.graph 1 [1] 2),
+      ClaudeUndec.pos (ClaudeUndec.Atom.eq 0 1)],
+    [ClaudeUndec.neg (ClaudeUndec.Atom.graph 0 [0] 2), ClaudeUndec.neg (ClaudeUndec.Atom.graph 1 [1] 2)],
+    [ClaudeUndec.neg (ClaudeUndec.Atom.graph 2 [0] 1), ClaudeUndec.pos (ClaudeUndec.Atom.graph 0 [1] 0),
+      ClaudeUndec.pos (ClaudeUndec.Atom.graph 1 [1] 0)]])
+indexed_transfer : ∀ (p : ℕ) [Fact (Nat.Prime p)] {R : Type} [inst : Field R] [CharP R p]
+  {T : DegreeProfilesReview.Uniform.Template R} (G : ITarget T) {d a n : ℕ},
+  T.n0 ≤ n →
+    G.aux.n0 ≤ n →
+      2 * G.supp d - 1 ≤ n →
+        G.supp d < p ^ a → (G.AllPC (n + p ^ a) d ↔ G.AllPC n d) ∧ (G.AllNS (n + p ^ a) d ↔ G.AllNS n d)
+indexed_transfer_derivations : ∀ (p : ℕ) [Fact (Nat.Prime p)] {R : Type} [inst : Field R] [CharP R p]
+  {T : DegreeProfilesReview.Uniform.Template R} (G : ITarget T) {d a n : ℕ},
+  T.n0 ≤ n →
+    G.aux.n0 ≤ n →
+      2 * G.supp d - 1 ≤ n →
+        G.supp d < p ^ a →
+          ((∀ (b : G.B.Rk (n + p ^ a)), DegreeProfilesReview.PC.Derives (T.inst (n + p ^ a)) d (G.poly (n + p ^ a) b)) ↔
+              ∀ (b : G.B.Rk n), DegreeProfilesReview.PC.Derives (T.inst n) d (G.poly n b)) ∧
+            ((∀ (b : G.B.Rk (n + p ^ a)), NSDerives (T.inst (n + p ^ a)) d (G.poly (n + p ^ a) b)) ↔
+              ∀ (b : G.B.Rk n), NSDerives (T.inst n) d (G.poly n b))
+orbit_rep_transfer : ∀ (p : ℕ) [Fact (Nat.Prime p)] {R : Type} [inst : Field R] [CharP R p]
+  {T : DegreeProfilesReview.Uniform.Template R} (G : ITarget T) (o : G.B.Obj) {d a n : ℕ},
+  T.n0 ≤ n →
+    G.aux.n0 ≤ n →
+      2 * G.supp d - 1 ≤ n →
+        G.supp d < p ^ a →
+          ∀ {bN : G.B.Rk (n + p ^ a)},
+            G.InOrbit o bN →
+              ∀ {bn : G.B.Rk n},
+                G.InOrbit o bn →
+                  (G.poly (n + p ^ a) bN ∈ DegreeProfilesReview.PC.Vinf (T.inst (n + p ^ a)) d ↔
+                      G.poly n bn ∈ DegreeProfilesReview.PC.Vinf (T.inst n) d) ∧
+                    (G.poly (n + p ^ a) bN ∈ DegreeProfilesReview.NS.NSspan (T.inst (n + p ^ a)) d ↔
+                      G.poly n bn ∈ DegreeProfilesReview.NS.NSspan (T.inst n) d)
+indexed_target_endpoint : ∀ (p : ℕ) [Fact (Nat.Prime p)] {R : Type} [inst : Field R] [CharP R p]
+  {T : DegreeProfilesReview.Uniform.Template R} (G : ITarget T),
+  (∀ (d a n : ℕ),
+      T.n0 ≤ n →
+        G.aux.n0 ≤ n →
+          2 * G.supp d - 1 ≤ n →
+            G.supp d < p ^ a →
+              ((∀ (b : G.B.Rk (n + p ^ a)),
+                    DegreeProfilesReview.PC.Derives (T.inst (n + p ^ a)) d (G.poly (n + p ^ a) b)) ↔
+                  ∀ (b : G.B.Rk n), DegreeProfilesReview.PC.Derives (T.inst n) d (G.poly n b)) ∧
+                ((∀ (b : G.B.Rk (n + p ^ a)), NSDerives (T.inst (n + p ^ a)) d (G.poly (n + p ^ a) b)) ↔
+                  ∀ (b : G.B.Rk n), NSDerives (T.inst n) d (G.poly n b))) ∧
+    DegreeProfilesReview.Uniform.LinearBoundsFor p (2 * T.k) (T.s + G.t) G.nI G.pcProfile ∧
+      DegreeProfilesReview.Uniform.LinearBoundsFor p (2 * T.k) (T.s + G.t) G.nI G.nsProfile ∧
+        (∀ (n : ℕ), G.aux.n0 ≤ n → ↑G.maxDeg ≤ G.pcProfile n ∧ ↑G.maxDeg ≤ G.nsProfile n) ∧
+          (∀ (n : ℕ), G.pcProfile n ≤ G.nsProfile n) ∧
+            (∃ F, Monotone F ∧ DegreeProfilesReview.Profiles.UpperComparison F G.pcProfile G.nsProfile) ∧
+              ((DegreeProfilesReview.Profiles.IsT1 G.pcProfile ↔ DegreeProfilesReview.Profiles.IsT1 G.nsProfile) ∧
+                  (DegreeProfilesReview.Profiles.IsT2 G.pcProfile
+                        (DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) G.nI) ↔
+                      DegreeProfilesReview.Profiles.IsT2 G.nsProfile
+                        (DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) G.nI)) ∧
+                    (DegreeProfilesReview.Profiles.IsT3 G.pcProfile
+                          (DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) G.nI) ↔
+                        DegreeProfilesReview.Profiles.IsT3 G.nsProfile
+                          (DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) G.nI)) ∧
+                      (DegreeProfilesReview.Profiles.IsT4 G.pcProfile
+                          (DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) G.nI) ↔
+                        DegreeProfilesReview.Profiles.IsT4 G.nsProfile
+                          (DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) G.nI))) ∧
+                (∀ h ∈ {G.pcProfile, G.nsProfile},
+                    (DegreeProfilesReview.Profiles.IsT1 h ∨
+                          DegreeProfilesReview.Profiles.IsT3 h
+                              (DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) G.nI) ∨
+                            DegreeProfilesReview.Profiles.IsT4 h
+                              (DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) G.nI) →
+                        ∃
+                          e ∈
+                            DegreeProfilesReview.Profiles.E h
+                              (DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) G.nI),
+                          (∀
+                              x ∈
+                                DegreeProfilesReview.Profiles.E h
+                                  (DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) G.nI),
+                              e ≤ x) ∧
+                            Filter.liminf h Filter.atTop = ↑e) ∧
+                      (DegreeProfilesReview.Profiles.IsT2 h
+                          (DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) G.nI) →
+                        Filter.liminf h Filter.atTop = ⊤)) ∧
+                  (∀ h ∈ {G.pcProfile, G.nsProfile},
+                      DegreeProfilesReview.Profiles.IsT2 h
+                          (DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) G.nI) →
+                        ∀ (n : ℕ), G.nI ≤ n → ↑((n - 2 * (T.s + G.t) - 1) / (2 * (2 * T.k))) < h n) ∧
+                    ∀ h ∈ {G.pcProfile, G.nsProfile},
+                      DegreeProfilesReview.Profiles.IsT3 h
+                          (DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) G.nI) →
+                        ∃
+                          D ∈
+                            DegreeProfilesReview.Profiles.E h
+                              (DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) G.nI),
+                          (∀
+                              d ∈
+                                DegreeProfilesReview.Profiles.E h
+                                  (DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) G.nI),
+                              d ≤ D) ∧
+                            ∃ U,
+                              (∀ c ∈ U, c < DegreeProfilesReview.Profiles.period p (2 * T.k) (T.s + G.t) D) ∧
+                                U.Nonempty ∧
+                                  (∃ c < DegreeProfilesReview.Profiles.period p (2 * T.k) (T.s + G.t) D, c ∉ U) ∧
+                                    (∀ c ∈ U,
+                                        ∃ v ≤ D,
+                                          ∀ (n : ℕ),
+                                            DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) G.nI D ≤ n →
+                                              n % DegreeProfilesReview.Profiles.period p (2 * T.k) (T.s + G.t) D = c →
+                                                h n = ↑v) ∧
+                                      ∀ (n : ℕ),
+                                        DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) G.nI D ≤ n →
+                                          n % DegreeProfilesReview.Profiles.period p (2 * T.k) (T.s + G.t) D ∉ U →
+                                            ↑((n - 2 * (T.s + G.t) - 1) / (2 * (2 * T.k))) < h n
+orbit_endpoint : ∀ (p : ℕ) [Fact (Nat.Prime p)] {R : Type} [inst : Field R] [CharP R p]
+  {T : DegreeProfilesReview.Uniform.Template R} (G : ITarget T) (o : G.B.Obj),
+  (∀ (n : ℕ), G.t ≤ n → ∃ b0, G.InOrbit o b0) ∧
+    (∀ (n : ℕ) (b0 : G.B.Rk n),
+        G.InOrbit o b0 →
+          (G.orbit o).pcProfile n = tpcDegree (T.inst n) (G.poly n b0) ∧
+            (G.orbit o).nsProfile n = tnsDegree (T.inst n) (G.poly n b0)) ∧
+      DegreeProfilesReview.Uniform.LinearBoundsFor p (2 * T.k) (T.s + G.t) (G.orbit o).nI (G.orbit o).pcProfile ∧
+        DegreeProfilesReview.Uniform.LinearBoundsFor p (2 * T.k) (T.s + G.t) (G.orbit o).nI (G.orbit o).nsProfile ∧
+          (DegreeProfilesReview.Profiles.IsT1 (G.orbit o).pcProfile ↔
+              DegreeProfilesReview.Profiles.IsT1 (G.orbit o).nsProfile) ∧
+            (DegreeProfilesReview.Profiles.IsT2 (G.orbit o).pcProfile
+                  (DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) (G.orbit o).nI) ↔
+                DegreeProfilesReview.Profiles.IsT2 (G.orbit o).nsProfile
+                  (DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) (G.orbit o).nI)) ∧
+              (DegreeProfilesReview.Profiles.IsT3 (G.orbit o).pcProfile
+                    (DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) (G.orbit o).nI) ↔
+                  DegreeProfilesReview.Profiles.IsT3 (G.orbit o).nsProfile
+                    (DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) (G.orbit o).nI)) ∧
+                (DegreeProfilesReview.Profiles.IsT4 (G.orbit o).pcProfile
+                    (DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) (G.orbit o).nI) ↔
+                  DegreeProfilesReview.Profiles.IsT4 (G.orbit o).nsProfile
+                    (DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) (G.orbit o).nI))
+@ITarget.pcProfile_le_iff : ∀ {R : Type} [inst : Field R] {T : DegreeProfilesReview.Uniform.Template R} (G : ITarget T)
+  (n d : ℕ), G.pcProfile n ≤ ↑d ↔ G.AllPC n d
+@ITarget.nsProfile_le_iff : ∀ {R : Type} [inst : Field R] {T : DegreeProfilesReview.Uniform.Template R} (G : ITarget T)
+  (n d : ℕ), G.nsProfile n ≤ ↑d ↔ G.AllNS n d
+@ITarget.orbit_pcProfile_eq_rep : ∀ {R : Type} [inst : Field R] {T : DegreeProfilesReview.Uniform.Template R}
+  (G : ITarget T) (o : G.B.Obj) {n : ℕ} {b0 : G.B.Rk n},
+  G.InOrbit o b0 → (G.orbit o).pcProfile n = tpcDegree (T.inst n) (G.poly n b0)
+@ITarget.orbit_nsProfile_eq_rep : ∀ {R : Type} [inst : Field R] {T : DegreeProfilesReview.Uniform.Template R}
+  (G : ITarget T) (o : G.B.Obj) {n : ℕ} {b0 : G.B.Rk n},
+  G.InOrbit o b0 → (G.orbit o).nsProfile n = tnsDegree (T.inst n) (G.poly n b0)
+@ITarget.pcProfile_eq_iSup_orbit : ∀ {R : Type} [inst : Field R] {T : DegreeProfilesReview.Uniform.Template R}
+  (G : ITarget T) (n : ℕ), G.pcProfile n = ⨆ o, (G.orbit o).pcProfile n
+@ITarget.nsProfile_eq_iSup_orbit : ∀ {R : Type} [inst : Field R] {T : DegreeProfilesReview.Uniform.Template R}
+  (G : ITarget T) (n : ℕ), G.nsProfile n = ⨆ o, (G.orbit o).nsProfile n
+@ITarget.profile_step : ∀ {R : Type} [inst : Field R] {T : DegreeProfilesReview.Uniform.Template R} (G : ITarget T)
+  (p : ℕ) [Fact (Nat.Prime p)] [CharP R p] {d a n : ℕ},
+  G.nI ≤ n →
+    2 * G.supp d - 1 ≤ n →
+      G.supp d < p ^ a →
+        (G.pcProfile (n + p ^ a) ≤ ↑d ↔ G.pcProfile n ≤ ↑d) ∧ (G.nsProfile (n + p ^ a) ≤ ↑d ↔ G.nsProfile n ≤ ↑d)
+@ITarget.periodic_pc : ∀ {R : Type} [inst : Field R] {T : DegreeProfilesReview.Uniform.Template R} (G : ITarget T)
+  (p : ℕ) [Fact (Nat.Prime p)] [CharP R p],
+  DegreeProfilesReview.Profiles.PeriodicProfile G.pcProfile
+    (DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) G.nI)
+    (DegreeProfilesReview.Profiles.period p (2 * T.k) (T.s + G.t))
+@ITarget.periodic_ns : ∀ {R : Type} [inst : Field R] {T : DegreeProfilesReview.Uniform.Template R} (G : ITarget T)
+  (p : ℕ) [Fact (Nat.Prime p)] [CharP R p],
+  DegreeProfilesReview.Profiles.PeriodicProfile G.nsProfile
+    (DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) G.nI)
+    (DegreeProfilesReview.Profiles.period p (2 * T.k) (T.s + G.t))
+@ITarget.linearBounds_pc : ∀ {R : Type} [inst : Field R] {T : DegreeProfilesReview.Uniform.Template R} (G : ITarget T)
+  (p : ℕ) [Fact (Nat.Prime p)] [CharP R p],
+  DegreeProfilesReview.Uniform.LinearBoundsFor p (2 * T.k) (T.s + G.t) G.nI G.pcProfile
+@ITarget.linearBounds_ns : ∀ {R : Type} [inst : Field R] {T : DegreeProfilesReview.Uniform.Template R} (G : ITarget T)
+  (p : ℕ) [Fact (Nat.Prime p)] [CharP R p],
+  DegreeProfilesReview.Uniform.LinearBoundsFor p (2 * T.k) (T.s + G.t) G.nI G.nsProfile
+@ITarget.T2_bound : ∀ {R : Type} [inst : Field R] {T : DegreeProfilesReview.Uniform.Template R} (G : ITarget T) (p : ℕ)
+  [Fact (Nat.Prime p)] [CharP R p] {h : ℕ → ℕ∞},
+  h = G.pcProfile ∨ h = G.nsProfile →
+    DegreeProfilesReview.Profiles.IsT2 h (DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) G.nI) →
+      ∀ {n : ℕ}, G.nI ≤ n → ↑((n - 2 * (T.s + G.t) - 1) / (2 * (2 * T.k))) < h n
+@ITarget.T3_full : ∀ {R : Type} [inst : Field R] {T : DegreeProfilesReview.Uniform.Template R} (G : ITarget T) (p : ℕ)
+  [Fact (Nat.Prime p)] [CharP R p] {h : ℕ → ℕ∞},
+  h = G.pcProfile ∨ h = G.nsProfile →
+    DegreeProfilesReview.Profiles.IsT3 h (DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) G.nI) →
+      ∃ D ∈ DegreeProfilesReview.Profiles.E h (DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) G.nI),
+        (∀ d ∈ DegreeProfilesReview.Profiles.E h (DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) G.nI),
+            d ≤ D) ∧
+          ∃ U,
+            (∀ c ∈ U, c < DegreeProfilesReview.Profiles.period p (2 * T.k) (T.s + G.t) D) ∧
+              U.Nonempty ∧
+                (∃ c < DegreeProfilesReview.Profiles.period p (2 * T.k) (T.s + G.t) D, c ∉ U) ∧
+                  (∀ c ∈ U,
+                      ∃ v ≤ D,
+                        ∀ (n : ℕ),
+                          DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) G.nI D ≤ n →
+                            n % DegreeProfilesReview.Profiles.period p (2 * T.k) (T.s + G.t) D = c → h n = ↑v) ∧
+                    ∀ (n : ℕ),
+                      DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) G.nI D ≤ n →
+                        n % DegreeProfilesReview.Profiles.period p (2 * T.k) (T.s + G.t) D ∉ U →
+                          ↑((n - 2 * (T.s + G.t) - 1) / (2 * (2 * T.k))) < h n
+@ITarget.liminf_classification : ∀ {R : Type} [inst : Field R] {T : DegreeProfilesReview.Uniform.Template R}
+  (G : ITarget T) (p : ℕ) [Fact (Nat.Prime p)] [CharP R p] {h : ℕ → ℕ∞},
+  h = G.pcProfile ∨ h = G.nsProfile →
+    (DegreeProfilesReview.Profiles.IsT1 h ∨
+          DegreeProfilesReview.Profiles.IsT3 h (DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) G.nI) ∨
+            DegreeProfilesReview.Profiles.IsT4 h (DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) G.nI) →
+        ∃ e ∈ DegreeProfilesReview.Profiles.E h (DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) G.nI),
+          (∀ x ∈ DegreeProfilesReview.Profiles.E h (DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) G.nI),
+              e ≤ x) ∧
+            Filter.liminf h Filter.atTop = ↑e) ∧
+      (DegreeProfilesReview.Profiles.IsT2 h (DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) G.nI) →
+        Filter.liminf h Filter.atTop = ⊤)
+@ITarget.upperComparison : ∀ {R : Type} [inst : Field R] {T : DegreeProfilesReview.Uniform.Template R} (G : ITarget T)
+  (p : ℕ) [Fact (Nat.Prime p)] [CharP R p],
+  ∃ F, Monotone F ∧ (∀ (u : ℕ), u ≤ F u) ∧ DegreeProfilesReview.Profiles.UpperComparison F G.pcProfile G.nsProfile
+@ITarget.types_agree : ∀ {R : Type} [inst : Field R] {T : DegreeProfilesReview.Uniform.Template R} (G : ITarget T)
+  (p : ℕ) [Fact (Nat.Prime p)] [CharP R p],
+  (DegreeProfilesReview.Profiles.IsT1 G.pcProfile ↔ DegreeProfilesReview.Profiles.IsT1 G.nsProfile) ∧
+    (DegreeProfilesReview.Profiles.IsT2 G.pcProfile (DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) G.nI) ↔
+        DegreeProfilesReview.Profiles.IsT2 G.nsProfile
+          (DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) G.nI)) ∧
+      (DegreeProfilesReview.Profiles.IsT3 G.pcProfile (DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) G.nI) ↔
+          DegreeProfilesReview.Profiles.IsT3 G.nsProfile
+            (DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) G.nI)) ∧
+        (DegreeProfilesReview.Profiles.IsT4 G.pcProfile
+            (DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) G.nI) ↔
+          DegreeProfilesReview.Profiles.IsT4 G.nsProfile
+            (DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) G.nI))
+@ITarget.common_peaks : ∀ {R : Type} [inst : Field R] {T : DegreeProfilesReview.Uniform.Template R} (G : ITarget T)
+  (p : ℕ) [Fact (Nat.Prime p)] [CharP R p],
+  DegreeProfilesReview.Profiles.IsT4 G.pcProfile (DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) G.nI) →
+    ∃ F,
+      Monotone F ∧
+        ∀ (B : ℕ),
+          ∃ n d,
+            B ≤ n ∧
+              B ≤ d ∧
+                d ∈
+                    DegreeProfilesReview.Profiles.E G.pcProfile
+                      (DegreeProfilesReview.Profiles.onset (2 * T.k) (T.s + G.t) G.nI) ∧
+                  G.pcProfile n = ↑d ∧
+                    ↑d ≤ G.nsProfile n ∧
+                      G.nsProfile n ≤ ↑(F d) ∧
+                        n ≤ (p + 2) * (2 * T.k * d + (T.s + G.t)) ∧
+                          ↑n / ((↑p + 2) * ↑(2 * T.k)) - ↑(T.s + G.t) / ↑(2 * T.k) ≤ ↑d
+@ITarget.maxDeg_le_pcProfile : ∀ {R : Type} [inst : Field R] {T : DegreeProfilesReview.Uniform.Template R}
+  (G : ITarget T) {n : ℕ}, G.aux.n0 ≤ n → ↑G.maxDeg ≤ G.pcProfile n
+@tpcDegree_y : ∀ {K : Type} [inst : Field K] {σ : Type} (Γ : Set (MvPolynomial σ K)),
+  tpcDegree (lift Γ) (MvPolynomial.X none) = max 1 (DegreeProfilesReview.PC.pcDegree Γ)
+@tnsDegree_y : ∀ {K : Type} [inst : Field K] {σ : Type} (Γ : Set (MvPolynomial σ K)),
+  tnsDegree (lift Γ) (MvPolynomial.X none) = DegreeProfilesReview.NS.nsDegree Γ + 1
+@derives_ysubst : ∀ {K : Type} [inst : Field K] {σ : Type} {Γ : Set (MvPolynomial σ K)} {d : ℕ}
+  {f : MvPolynomial (Option σ) K},
+  DegreeProfilesReview.PC.Derives (lift Γ) d f → DegreeProfilesReview.PC.Derives Γ d (ysubst f)
+@derives_y_of_refutes : ∀ {K : Type} [inst : Field K] {σ : Type} {Γ : Set (MvPolynomial σ K)} {d : ℕ},
+  DegreeProfilesReview.PC.Refutes Γ d → 1 ≤ d → DegreeProfilesReview.PC.Derives (lift Γ) d (MvPolynomial.X none)
+@y_mem_of_one_mem : ∀ {K : Type} [inst : Field K] {σ : Type} {Γ : Set (MvPolynomial σ K)} {e : ℕ},
+  1 ∈ DegreeProfilesReview.NS.NSspan Γ e → MvPolynomial.X none ∈ DegreeProfilesReview.NS.NSspan (lift Γ) (e + 1)
+@extract_mem : ∀ {K : Type} [inst : Field K] {σ : Type} {Γ : Set (MvPolynomial σ K)} {e : ℕ}
+  {g : MvPolynomial (Option σ) K},
+  g ∈ DegreeProfilesReview.NS.NSspan (lift Γ) e →
+    ((MvPolynomial.optionEquivLeft K σ) g).coeff 1 ∈ DegreeProfilesReview.NS.NSspan Γ (e - 1)
+@freshVar_inst : ∀ {K : Type} [inst : Field K] (T : DegreeProfilesReview.Uniform.Template K) (n : ℕ),
+  (freshVar T).inst n = lift (T.inst n)
+@freshVar_poly : ∀ {K : Type} [inst : Field K] (T : DegreeProfilesReview.Uniform.Template K) (n : ℕ) (i : T.Ax.Rk n),
+  (freshVar T).poly n i = (MvPolynomial.rename some) (T.poly n i)
+@freshTarget_poly : ∀ {K : Type} [inst : Field K] (T : DegreeProfilesReview.Uniform.Template K) (n : ℕ),
+  (freshTarget T).poly n = MvPolynomial.X none
+@fresh_profiles : ∀ {K : Type} [inst : Field K] (T : DegreeProfilesReview.Uniform.Template K) (n : ℕ),
+  (freshTarget T).pcProfile n = max 1 (T.pcProfile n) ∧ (freshTarget T).nsProfile n = T.nsProfile n + 1
+fresh_target_degree : ∀ (K : Type) [inst : Field K] (T : DegreeProfilesReview.Uniform.Template K) (n : ℕ),
+  ((freshTarget T).poly n).totalDegree = 1
+bhat_fresh_window : ∀ (p : ℕ) [Fact (Nat.Prime p)] (K : Type) [inst : Field K] [CharP K p] {n a u : ℕ},
+  ¬p ∣ u →
+    n = p ^ a * u →
+      2 * p ^ a ≤ n →
+        ↑(p ^ a) ≤ (freshTarget (ClaudeUndec.template ClaudeUndec.bhat K)).pcProfile n ∧
+          (freshTarget (ClaudeUndec.template ClaudeUndec.bhat K)).pcProfile n ≤ ↑(p ^ a + 4) ∧
+            (freshTarget (ClaudeUndec.template ClaudeUndec.bhat K)).pcProfile n ≤
+                (freshTarget (ClaudeUndec.template ClaudeUndec.bhat K)).nsProfile n ∧
+              ↑(p ^ a + 1) ≤ (freshTarget (ClaudeUndec.template ClaudeUndec.bhat K)).nsProfile n ∧
+                (freshTarget (ClaudeUndec.template ClaudeUndec.bhat K)).nsProfile n ≤ ↑(p ^ a + 5)
+bhat_fresh_peaks : ∀ (p : ℕ) [Fact (Nat.Prime p)] (K : Type) [inst : Field K] [CharP K p] (a : ℕ),
+  ↑((p + 1) * p ^ a / (p + 1)) ≤ (freshTarget (ClaudeUndec.template ClaudeUndec.bhat K)).pcProfile ((p + 1) * p ^ a) ∧
+    (freshTarget (ClaudeUndec.template ClaudeUndec.bhat K)).pcProfile ((p + 1) * p ^ a) ≤
+        (freshTarget (ClaudeUndec.template ClaudeUndec.bhat K)).nsProfile ((p + 1) * p ^ a) ∧
+      (freshTarget (ClaudeUndec.template ClaudeUndec.bhat K)).nsProfile ((p + 1) * p ^ a) ≤
+        ↑((p + 1) * p ^ a / (p + 1) + 5)
+fresh_types : ∀ (p : ℕ) [Fact (Nat.Prime p)] {R : Type} [inst : Field R] [CharP R p]
+  (T : DegreeProfilesReview.Uniform.Template R),
+  ((DegreeProfilesReview.Profiles.IsT1 T.pcProfile ↔ DegreeProfilesReview.Profiles.IsT1 (freshTarget T).pcProfile) ∧
+      (DegreeProfilesReview.Profiles.IsT2 T.pcProfile (DegreeProfilesReview.Profiles.onset T.k T.s T.n0) ↔
+          DegreeProfilesReview.Profiles.IsT2 (freshTarget T).pcProfile
+            (DegreeProfilesReview.Profiles.onset T.k T.s (freshTarget T).nstar)) ∧
+        (DegreeProfilesReview.Profiles.IsT3 T.pcProfile (DegreeProfilesReview.Profiles.onset T.k T.s T.n0) ↔
+            DegreeProfilesReview.Profiles.IsT3 (freshTarget T).pcProfile
+              (DegreeProfilesReview.Profiles.onset T.k T.s (freshTarget T).nstar)) ∧
+          (DegreeProfilesReview.Profiles.IsT4 T.pcProfile (DegreeProfilesReview.Profiles.onset T.k T.s T.n0) ↔
+            DegreeProfilesReview.Profiles.IsT4 (freshTarget T).pcProfile
+              (DegreeProfilesReview.Profiles.onset T.k T.s (freshTarget T).nstar))) ∧
+    (DegreeProfilesReview.Profiles.IsT1 T.nsProfile ↔ DegreeProfilesReview.Profiles.IsT1 (freshTarget T).nsProfile) ∧
+      (DegreeProfilesReview.Profiles.IsT2 T.nsProfile (DegreeProfilesReview.Profiles.onset T.k T.s T.n0) ↔
+          DegreeProfilesReview.Profiles.IsT2 (freshTarget T).nsProfile
+            (DegreeProfilesReview.Profiles.onset T.k T.s (freshTarget T).nstar)) ∧
+        (DegreeProfilesReview.Profiles.IsT3 T.nsProfile (DegreeProfilesReview.Profiles.onset T.k T.s T.n0) ↔
+            DegreeProfilesReview.Profiles.IsT3 (freshTarget T).nsProfile
+              (DegreeProfilesReview.Profiles.onset T.k T.s (freshTarget T).nstar)) ∧
+          (DegreeProfilesReview.Profiles.IsT4 T.nsProfile (DegreeProfilesReview.Profiles.onset T.k T.s T.n0) ↔
+            DegreeProfilesReview.Profiles.IsT4 (freshTarget T).nsProfile
+              (DegreeProfilesReview.Profiles.onset T.k T.s (freshTarget T).nstar))
+bhat_fresh_T4 : ∀ (p : ℕ) [Fact (Nat.Prime p)] (K : Type) [inst : Field K] [CharP K p],
+  DegreeProfilesReview.Profiles.IsT4 (freshTarget (ClaudeUndec.template ClaudeUndec.bhat K)).pcProfile
+      (DegreeProfilesReview.Profiles.onset (ClaudeUndec.template ClaudeUndec.bhat K).k
+        (ClaudeUndec.template ClaudeUndec.bhat K).s (freshTarget (ClaudeUndec.template ClaudeUndec.bhat K)).nstar) ∧
+    DegreeProfilesReview.Profiles.IsT4 (freshTarget (ClaudeUndec.template ClaudeUndec.bhat K)).nsProfile
+      (DegreeProfilesReview.Profiles.onset (ClaudeUndec.template ClaudeUndec.bhat K).k
+        (ClaudeUndec.template ClaudeUndec.bhat K).s (freshTarget (ClaudeUndec.template ClaudeUndec.bhat K)).nstar)
+def UniformConsequence.Fresh.Recur : (ℕ → ℕ∞) → ℕ → Prop :=
+fun h d => ∀ (M : ℕ), ∃ n, M ≤ n ∧ h n = ↑d
+PaperAudit.bhat_window : ∀ (p : ℕ) [hp : Fact (Nat.Prime p)] (K : Type) [inst : Field K] [CharP K p] {n a u : ℕ},
+  ¬p ∣ u →
+    n = p ^ a * u →
+      2 * p ^ a ≤ n →
+        ↑(p ^ a) ≤ (ClaudeUndec.template ClaudeUndec.bhat K).pcProfile n ∧
+          (ClaudeUndec.template ClaudeUndec.bhat K).pcProfile n ≤
+              (ClaudeUndec.template ClaudeUndec.bhat K).nsProfile n ∧
+            (ClaudeUndec.template ClaudeUndec.bhat K).nsProfile n ≤ ↑(p ^ a + 4)
+'UniformConsequence.Indexed.indexed_transfer' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformConsequence.Indexed.orbit_rep_transfer' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformConsequence.Indexed.indexed_target_endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformConsequence.Indexed.orbit_endpoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformConsequence.Indexed.ITarget.orbit_pcProfile_eq_rep' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformConsequence.Indexed.ITarget.orbit_nsProfile_eq_rep' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformConsequence.Indexed.ITarget.pcProfile_eq_iSup_orbit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformConsequence.Indexed.ITarget.linearBounds_pc' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformConsequence.Indexed.ITarget.linearBounds_ns' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformConsequence.Indexed.ITarget.T2_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformConsequence.Indexed.ITarget.T3_full' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformConsequence.Indexed.ITarget.liminf_classification' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformConsequence.Indexed.ITarget.types_agree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformConsequence.Indexed.ITarget.common_peaks' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformConsequence.Fresh.tpcDegree_y' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformConsequence.Fresh.tnsDegree_y' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformConsequence.Fresh.freshVar_inst' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformConsequence.Fresh.fresh_profiles' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformConsequence.Fresh.bhat_fresh_window' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformConsequence.Fresh.bhat_fresh_peaks' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformConsequence.Fresh.fresh_types' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UniformConsequence.Fresh.bhat_fresh_T4' depends on axioms: [propext, Classical.choice, Quot.sound]
+UniformConsequence.Indexed.indexed_target_endpoint uses UniformConsequence.Indexed.indexed_transfer: true   (closure size 39454)
+UniformConsequence.Indexed.indexed_target_endpoint uses ClaudeComparison.detect: true   (closure size 39454)
+UniformConsequence.Indexed.indexed_target_endpoint uses UniformConsequence.uniform_inclusion: true   (closure size 39454)
+UniformConsequence.Indexed.indexed_target_endpoint uses ClaudeComparison.chainBound: true   (closure size 39454)
+UniformConsequence.Indexed.indexed_target_endpoint uses ClaudeC017.Vinf_le_of_stable: true   (closure size 39454)
+UniformConsequence.Indexed.indexed_target_endpoint uses LinearFinal.topWitnessHypothesis_linear: true   (closure size 39454)
+UniformConsequence.Indexed.ITarget.linearBounds_pc uses UniformConsequence.Indexed.indexed_transfer: true   (closure size 36154)
+UniformConsequence.Indexed.ITarget.linearBounds_pc uses UniformConsequence.uniform_inclusion: false   (closure size 36154)
+UniformConsequence.Indexed.indexed_target_endpoint uses ExactnessHandoff.const_mem_iff_of_simple: false   (closure size 39454)
+UniformConsequence.Indexed.indexed_target_endpoint uses sorryAx: false   (closure size 39454)
+UniformConsequence.Indexed.orbit_endpoint uses sorryAx: false   (closure size 39408)
+UniformConsequence.Indexed.indexed_target_endpoint uses DegreeProfilesReview.Uniform.DeletionHypothesis: false   (closure size 39454)
+UniformConsequence.Indexed.indexed_target_endpoint uses DegreeProfilesReview.Uniform.DeletionHypothesisW: false   (closure size 39454)
+UniformConsequence.Fresh.tpcDegree_y uses ClaudeComparison.detect: false   (closure size 8249)
+UniformConsequence.Fresh.tnsDegree_y uses ClaudeComparison.detect: false   (closure size 10418)
+UniformConsequence.Fresh.tpcDegree_y uses sorryAx: false   (closure size 8249)
+UniformConsequence.Fresh.tnsDegree_y uses sorryAx: false   (closure size 10418)
+UniformConsequence.Fresh.bhat_fresh_window uses PaperAudit.bhat_window: true   (closure size 20261)
+UniformConsequence.Fresh.bhat_fresh_window uses ClaudeUndec.bhat_upper: true   (closure size 20261)
+UniformConsequence.Fresh.bhat_fresh_window uses ClaudeUndec.bhat_pc_lower: true   (closure size 20261)
+UniformConsequence.Fresh.bhat_fresh_window uses sorryAx: false   (closure size 20261)
+UniformConsequence.Fresh.bhat_fresh_peaks uses sorryAx: false   (closure size 20265)
+UniformConsequence.Fresh.bhat_fresh_T4 uses ClaudeUndec.bhat_pc_type: true   (closure size 41881)
+UniformConsequence.Fresh.bhat_fresh_T4 uses sorryAx: false   (closure size 41881)
+UniformConsequence.Fresh.fresh_types uses sorryAx: false   (closure size 36499)

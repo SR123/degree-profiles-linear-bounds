@@ -1,0 +1,60 @@
+lean4checker (non-fresh: replays every declaration of the named module into the environment of its imports) on the 28 new modules
+run: Sun Sep 27 03:30:26 UTC 2026
+binary: <RECORDED_PRODUCER_HOME>/lean/lean4checker/.lake/build/bin/lean4checker (built for Lean 4.26.0); cwd: <RECORDED_PRODUCER_HOME>/undec/fresh/lean (after the fresh build)
+== lake env lean4checker UFOSyntax
+exit status: 0
+== lake env lean4checker UFOCompile
+exit status: 0
+== lake env lean4checker UFORoots
+exit status: 0
+== lake env lean4checker UNSTools
+exit status: 0
+== lake env lean4checker UConj
+exit status: 0
+== lake env lean4checker UHerbrand
+exit status: 0
+== lake env lean4checker UWitCommon
+exit status: 0
+== lake env lean4checker UCounter
+exit status: 0
+== lake env lean4checker UWitEta
+exit status: 0
+== lake env lean4checker UWitCycles
+exit status: 0
+== lake env lean4checker UCounting
+exit status: 0
+== lake env lean4checker UWitB
+exit status: 0
+== lake env lean4checker USwitch
+exit status: 0
+== lake env lean4checker UHalt
+exit status: 0
+== lake env lean4checker UTypes
+exit status: 0
+== lake env lean4checker UMachine
+exit status: 0
+== lake env lean4checker UCompile
+exit status: 0
+== lake env lean4checker UUniversal
+exit status: 0
+== lake env lean4checker UComputable
+exit status: 0
+== lake env lean4checker UUndecidable
+exit status: 0
+== lake env lean4checker UJoin
+exit status: 0
+== lake env lean4checker UJoinDeg
+exit status: 0
+== lake env lean4checker UJoinComputable
+exit status: 0
+== lake env lean4checker UProfiles
+exit status: 0
+== lake env lean4checker UPairs
+exit status: 0
+== lake env lean4checker UPCDirect
+exit status: 0
+== lake env lean4checker UDeps
+exit status: 0
+== lake env lean4checker UAudit
+exit status: 0
+finished: Sun Sep 27 03:32:06 UTC 2026

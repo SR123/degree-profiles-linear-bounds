@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "truncated_periodicity_comparisons": 1547520,
+  "primes": [
+    2,
+    3,
+    5
+  ],
+  "budgets": "0..64",
+  "toy_profiles": 4,
+  "binary_easy_region_tests": 32768,
+  "logarithmic_toy_breaks_linear_period_contract": {
+    "d": 4,
+    "n": 16,
+    "m": 24,
+    "period": 8
+  },
+  "scope": "Finite illustrations only. Compactness/classification proved in text; no new Lean endpoint."
+}

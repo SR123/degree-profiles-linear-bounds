@@ -1,0 +1,421 @@
+\chapter{From fixed-degree transfer to four global profiles}\label{tx:ch:profiles}
+We now extract the global conclusions from the transfer theorem. This
+chapter does not yet construct the label-deletion operator; the later
+algebraic chapters do that. Its purpose is to show exactly what the
+transfer statement buys us, which direction of transfer is used, and
+where the linear lower bounds enter.
+
+Fix a field of prime characteristic $p$, a uniform axiom template, and
+a uniform target request. Let $h(n)$ be either its NS or ordinary-PC
+profile. It may be an all-target profile or the profile of one fixed
+target orbit. Recall the fixed bounds: $k$, $s$ and $t$ bound the
+variable-label, axiom-index and target-index supports, respectively;
+$D_G$ bounds target degree, and $n_0$ is the template's starting rank.
+For general indexed targets put
+\[
+ \kappa=2k,\qquad \sigma=s+t,\qquad R(d)=\kappa d+\sigma,
+ \qquad n_*=\max\{n_0,1,kD_G+t\}.
+\]
+For a single invariant target one can instead use
+$\kappa=k$, $\sigma=s$, and $n_*=\max\{n_0,1,kD_G\}$. These are
+fixed constants of the problem, while $d$ is a proposed proof degree.
+
+\section{What lifting does, and what it does not do}
+The transfer contract of Theorem~\ref{tx:thm:transfer} compares ranks
+which differ by a $p$-power block $q>R(d)$. Once the retained rank is
+large enough relative to $R(d)$ and the stable starting rank, it gives
+\[
+                         h(n)\le d\quad\Longleftrightarrow\quad
+                         h(n+q)\le d.
+\]
+The degree $d$ is the same on both sides. We do not divide the degree
+by the new universe size, lower it by one, or change the target to
+its low-degree part. The operation transports the consequence space
+and the prescribed target-membership test.
+
+Suppose a forward lifting argument alone starts from a degree-$d$
+proof at $n$. Iterating with the same admissible $q$ gives proofs of
+degree at most $d$ at
+\[
+                            n,n+q,n+2q,\ldots.
+\]
+Their absolute degree bound remains $d$. The ratio $d/(n+\ell q)$
+tends to zero, but that is not a statement that their absolute degrees
+fall. Nor does this progression cover all sufficiently large ranks.
+One cannot conclude that the entire profile is eventually bounded.
+
+Forward lifting also need not preserve the exact minimum degree.
+For a simple sequence, let $g(1)=2$ and $g(n)=1$ for $n\ge2$.
+Every threshold predicate $g(n)\le d$ persists under the step $n\mapsto
+n+1$, but the initial exact value two never reappears. Forward
+persistence of a finite bound does force \emph{some} finite value to
+recur, by the pigeonhole principle. The stronger conclusion that a
+particular value repeats, and the exact periodic statements below,
+come from two-way transfer at all the relevant thresholds.
+
+\section{A period and a starting rank for each threshold}
+A \emph{threshold predicate} answers a yes-or-no question at each
+size: does the request have degree at most $d$? Its eventual
+periodicity means that this answer repeats after the starting rank.
+The period and the starting rank may both depend on $d$.
+There need not be one period which works for the unbounded profile
+as a whole.
+Truncating $h$ at $d+1$ retains the exact values $0,\ldots,d$ and
+records every larger value, including infinity, by the single symbol
+$d+1$. This allows several threshold comparisons to be combined.
+
+Use $N(d)$ for the periodicity onset, as in the paper. The argument
+$(d)$ distinguishes this threshold from a larger universe size
+$N=n+q$. Define
+\begin{equation}\label{tx:eq:NQ}
+ \begin{gathered}
+ N(0)=n_*,\qquad Q(0)=1,\\
+ N(d)=\max\{n_*,2(\kappa d+\sigma)+1\},\qquad
+ Q(d)=\min\{p^a:p^a>\kappa d+\sigma\}\quad(d\ge1).
+ \end{gathered}
+\end{equation}
+The conservative onset makes the retained-rank condition of the
+transfer theorem automatic. The degree-zero predicate is handled
+separately: beyond $n_*$ the constant-target and constant-axiom data
+are stable, so that predicate is constant. In particular its period
+is one, even if $\sigma$ is positive.
+
+\begin{proposition}[Threshold and truncated periodicity]\label{tx:thm:periodicity}
+For $n,m\ge N(d)$ with $n\equiv m\pmod{Q(d)}$, one has
+\begin{equation}\label{tx:eq:truncated-periodicity}
+                     \min\{h(n),d+1\}=\min\{h(m),d+1\}.
+\end{equation}
+The convention is $\min\{\infty,d+1\}=d+1$. For $d\ge1$,
+\begin{equation}\label{tx:eq:period-bound}
+                              Q(d)\le pR(d).
+\end{equation}
+\end{proposition}
+\begin{proof}
+Repeated one-block transfer gives equivalence of the threshold
+$h\le d$ at ranks in the same residue class, since every intermediate
+rank remains beyond the onset. The smaller thresholds $e\le d$
+can also be compared there: $N(e)\le N(d)$, and $Q(e)$ divides $Q(d)$
+because both are powers of $p$ and the budgets are nondecreasing.
+The zero threshold is constant in this range.
+
+If $h(n)=e\le d$, threshold $e$ holds at $m$, while threshold $e-1$
+fails there when $e>0$. Hence $h(m)=e$; for $e=0$ the first condition
+alone suffices. If $h(n)>d$, threshold $d$ fails at both ranks. This
+proves the truncated equality.
+
+Write $Q(d)=p^a$. Since $R(d)\ge1$, the preceding power exists and
+minimality gives $p^{a-1}\le R(d)$. Multiplication by $p$ proves
+\eqref{tx:eq:period-bound}.
+\end{proof}
+
+\begin{example}[A numerical budget]\label{tx:eg:numerical-period}
+Take $p=2$, $\kappa=4$, $\sigma=3$, and $n_*=7$. For degree $d=3$,
+\[
+                       R(3)=15,\qquad Q(3)=16,\qquad N(3)=31.
+\]
+Thus the degree-at-most-three predicate agrees at $31,47,63,\ldots$.
+If the exact minimum at 31 is three, the minimum is exactly three at
+every size of that progression: the comparison of the lower thresholds
+rules out a drop. This conclusion says nothing about a different
+residue class modulo sixteen.
+
+The inequality in the definition of $Q$ is strict. If a budget equals
+$16$ in characteristic two, the next permitted power is $32$, not $16$.
+\end{example}
+
+\section{Which finite degrees come back infinitely often?}
+\begin{definition}[Recurring finite degrees]\label{tx:def:recurring}
+Let
+\[
+ E(h)=\{d\in\NN:\text{there exists }n\ge N(d)\text{ with }h(n)=d\}.
+\]
+\end{definition}
+
+\begin{lemma}[An occurrence beyond its onset recurs]\label{tx:lem:recurrence}
+The set $E(h)$ consists exactly of the finite values assumed at
+arbitrarily large ranks. If $h(n)=d$ and $n\ge N(d)$, then
+\[
+                          h(n+\ell Q(d))=d\qquad(\ell\ge0).
+\]
+A nonrecurring finite value can occur only before its own onset.
+\end{lemma}
+\begin{proof}
+Apply truncated periodicity at threshold $d$ to the displayed
+progression. A truncated value equal to $d$ represents the exact value
+$d$, not a value above the cutoff. Conversely, any value appearing at
+arbitrarily large ranks appears beyond the fixed integer $N(d)$.
+\end{proof}
+
+The lemma is the central restriction on possible profiles. An arbitrary
+integer sequence might take the value 100 for the last time at an
+astronomically large rank. Here, if 100 will not recur, its final
+appearance must precede the prescribed linear onset $N(100)$.
+Inverting that restriction gives a linear degree lower bound.
+
+\section{Inverting the onset}
+Define the nonnegative integer
+\begin{equation}\label{tx:eq:inverse-onset}
+ \beta(n)=\left\lfloor\frac{(n-2\sigma-1)_+}{2\kappa}\right\rfloor,
+                         \qquad x_+=\max\{x,0\}.
+\end{equation}
+For every $n\ge n_*$, one has $N(\beta(n))\le n$. If $\beta(n)=0$,
+this is the special definition $N(0)=n_*$. Otherwise the floor inequality
+gives $2\kappa\beta(n)\le n-2\sigma-1$, so the positive-degree formula
+for $A$ applies. This separate zero case avoids subtracting natural
+numbers as if negative values were allowed.
+
+Consequently,
+\begin{equation}\label{tx:eq:low-value-recurs}
+ n\ge n_*,\quad h(n)\le\beta(n)
+                   \quad\Longrightarrow\quad h(n)\in E(h).
+\end{equation}
+Indeed, the actual value $e=h(n)$ is finite and
+$N(e)\le N(\beta(n))\le n$, so the recurrence lemma applies.
+
+\section{The four alternatives}
+We use limits in the extended order $\NN\cup\{\infty\}$.
+The two tail bounds are
+\[
+ \begin{aligned}
+ \liminf_{n\to\infty}h(n)&=\sup_{m\ge1}\inf_{n\ge m}h(n),\\
+ \limsup_{n\to\infty}h(n)&=\inf_{m\ge1}\sup_{n\ge m}h(n).
+ \end{aligned}
+\]
+The liminf measures the best degree level still visible arbitrarily
+far out; the limsup measures the largest levels that keep returning.
+For an integer-valued profile with a recurring finite minimum $e$,
+the liminf is $e$ once the finitely many smaller values have stopped
+occurring. A finite liminf therefore does not mean convergence.
+In T4 below, bounded subsequences coexist with arbitrarily large
+finite peaks.
+
+\begin{theorem}[Four degree profiles]\label{tx:thm:profiles}\label{tx:thm:classification}
+For each fixed uniform request, and separately for NS and ordinary PC,
+exactly one of the following holds.
+\begin{enumerate}[label=\textup{T\arabic*.}]
+\item The profile is bounded by a finite constant at every sufficiently
+large rank.
+\item There is no recurring finite value. For every $n\ge n_*$,
+\begin{equation}\label{tx:eq:linear-bound}
+                                  h(n)>\beta(n).
+\end{equation}
+Infinity is allowed in this inequality; finite values satisfy a linear
+lower bound.
+\item The set $E(h)$ is finite and nonempty, but the profile is not
+eventually bounded. Put $D=\max E(h)$. A nonempty proper set
+$U\subseteq\{0,\ldots,Q(D)-1\}$ has the following properties from
+rank $N(D)$ onward. On every class $c\in U$, the profile has one
+constant finite value $v_c\le D$. Off $U$, inequality
+\eqref{tx:eq:linear-bound} holds.
+\item The set $E(h)$ is infinite. For every prescribed bound $B$, there
+are integers $n,d\ge B$, with $d\in E(h)$ and $h(n)=d<\infty$, such that
+\begin{equation}\label{tx:eq:finite-peaks}
+ n\le(p+2)(\kappa d+\sigma),\qquad
+ h(n)\ge\frac{n}{(p+2)\kappa}-\frac{\sigma}{\kappa}.
+\end{equation}
+Moreover $\liminf_{n\to\infty}h(n)=\min E(h)<\infty$.
+\end{enumerate}
+In T1 and T3 the liminf also equals the least recurring finite value;
+in T2 it is infinity. Initial ranks below the specified onsets remain
+unconstrained.
+\end{theorem}
+\begin{proof}
+If $E(h)$ is empty, \eqref{tx:eq:low-value-recurs} excludes
+$h(n)\le\beta(n)$ and proves T2. Since $\beta(n)$ grows linearly,
+this is an $\Omega(n)$ lower bound wherever the minimum degree is
+finite. It is stronger to state the inequality in the extended order:
+an underivable target is not an exceptional counterexample.
+
+Suppose next that $E(h)$ is finite and nonempty, with maximum $D$.
+Truncated periodicity at $D$ divides the residue classes modulo $Q(D)$
+into two kinds. On one kind the profile has a fixed finite value at
+most $D$; on the other it is always greater than $D$. Let $U$ be the
+classes of the first kind. A recurring degree appears beyond $N(D)$,
+so $U$ is nonempty. If $U$ is the entire residue set, the profile is
+eventually bounded and belongs to T1. Otherwise, at a size off $U$,
+an inequality $h(n)\le\beta(n)$ would force a recurring value, hence
+a value at most $D$, a contradiction. This proves T3. The easy values
+$v_c$ need not be equal on different classes.
+
+If $E(h)$ is infinite, choose recurring values $d$ arbitrarily large,
+in particular so large that $N(d)=2R(d)+1$. An occurrence of $d$
+beyond that onset determines a residue class modulo $Q(d)$. There is
+a representative $n$ in the interval
+\[
+                           N(d)\le n<N(d)+Q(d).
+\]
+Two-way truncated periodicity ensures $h(n)=d$, even if the original
+occurrence was much later. Integrality and \eqref{tx:eq:period-bound}
+now give
+\[
+              n\le N(d)+Q(d)-1\le 2R(d)+pR(d)=(p+2)R(d).
+\]
+Rearrange for $d$ to obtain the second inequality in
+\eqref{tx:eq:finite-peaks}. Taking $d$ larger also makes $n\ge N(d)$
+larger, so both may exceed the prescribed bound $B$.
+
+To finish the exhaustion, eventual boundedness forces $E(h)$ to be
+finite and nonempty: only finitely many degrees can occur eventually,
+and at least one occurs infinitely often. Thus a profile either is
+eventually bounded, or falls into exactly one of the other three cases
+according as $E(h)$ is empty, finite nonempty, or infinite.
+
+If $e=\min E(h)$ exists, every value below $e$ occurs only finitely
+often. There are finitely many such values, so eventually $h(n)\ge e$.
+The value $e$ keeps recurring, proving the liminf assertion. When
+$E(h)$ is empty, the same argument applies below each finite bound,
+and $h(n)$ tends to infinity in the extended order.
+\end{proof}
+
+Notice the two different numerical inputs. The linear onset $N(d)$
+bounds the last occurrence of a nonrecurring small degree; this yields
+the T2 and hard-residue T3 bounds. The upper bound on $Q(d)$ additionally
+puts a recurring large degree at a rank proportional to that degree;
+this yields the \emph{finite} T4 peaks. Infinitely many infinite values
+would not by themselves prove the latter assertion.
+
+If the proof only gave $N(d)=O(d^2)$, inverting the onset would give a
+square-root lower bound. If it gave no useful upper bound on $Q(d)$,
+a recurring value might first appear very far along its progression,
+and the finite linear peak argument would not follow. These observations
+explain why the later construction spends effort on a linear retained
+label budget rather than merely proving some eventual periodicity.
+
+\section{Reading the four cases correctly}
+In the examples below, $v_p(n)$ is the largest integer $a\ge0$ such
+that $p^a$ divides the positive integer $n$. Thus $p^{v_p(n)}$ is the
+largest power of $p$ dividing $n$.
+
+The following sequences illustrate the shapes. They are abstract
+profiles, not claims that these formulas are exact degrees of particular
+encodings. For fixed prime $p$ and $n\ge1$ consider
+\[
+ \begin{array}{c|c|c}
+ \text{shape}&h(n)&E(h)\\\hline
+ \mathrm T_1&1&\{1\}\\
+ \mathrm T_2&n&\varnothing\\
+ \mathrm T_3&1\text{ if }p\nmid n,\quad n\text{ if }p\mid n&\{1\}\\
+ \mathrm T_4&p^{v_p(n)}&\{1,p,p^2,\ldots\}.
+ \end{array}
+\]
+They satisfy the abstract threshold contract with, for example,
+$\kappa=1$, $\sigma=0$, and $n_*=1$. For the last row, the condition
+$p^{v_p(n)}\le d$ says that $n$ is not divisible by the least $p$-power
+strictly larger than $d$. This makes its threshold periodicity explicit.
+
+T1 does not mean eventually constant; bounded periodic variation is
+allowed. T2 can include infinite values, including the constant-infinity
+profile. T3 is linear only on its hard residues. T4 has a finite liminf,
+but that number is not an eventual value: infinitely many other finite
+levels recur as well. None of these descriptions removes finite initial
+exceptions. A sharp statement about every small rank must be proved
+separately.
+
+\begin{proposition}[T4 admits no fixed easy/hard periodic partition]\label{tx:prop:no-periodic-split}
+In T4 there do not exist a period $q_0$, a set $U$ of its residues, a
+finite bound $B$, and $c>0$ such that, at every sufficiently large rank,
+$h(n)\le B$ on $U$ and $h(n)\ge cn$ off $U$.
+\end{proposition}
+\begin{proof}
+Choose a recurring finite value $e>B$. At sufficiently late occurrences
+of $e$, the rank cannot be on an easy class. But once $n>e/c$, it cannot
+be on a hard class either. This contradicts recurrence.
+\end{proof}
+
+For a fully invariant target the same deductions use the smaller
+parameters $\kappa=k$, $\sigma=s$. For the target $1$, $D_G=0$ and
+$n_*=n_0$, giving the refutation corollary. The later comparison theorem
+shows that NS and PC assign the same type to each fixed request. It
+does not assert equal exact minimum degrees or equal recurring sets.
+
+\section{The size consequences under full coefficient lists}
+Recall that a full coefficient list for degree $e$ in $v$ variables
+has $B_v(e)=\binom{v+e}{e}$ entries, including zeros. In this section
+$D$ again denotes the fixed axiom-degree bound, rather than the largest
+recurring degree used in the T3 statement.
+For an indexed request define $S_S(n)$ as the maximum of the minimum
+coefficient-list sizes of the individual target proofs. Use zero for
+an empty request and infinity if any target is underivable. A bundle
+of proofs for all targets differs from this maximum by a factor between
+one and $|\mathcal B_n|$ when the request is nonempty. That factor is
+polynomial in $n$ and does not change the cases below.
+
+\begin{corollary}[Polynomial bounds and exponential lower bounds]\label{tx:cor:dense-types}
+For full coefficient lists, the four degree types have these consequences.
+\begin{enumerate}[label=\textup{T\arabic*.}]
+\item The minimum sizes are polynomial in $n$ eventually.
+\item They are at least $2^{cn}$ eventually, for some $c>0$, with
+infinity interpreted in the extended order.
+\item They have a polynomial upper bound on the easy residue classes
+and an exponential lower bound on the hard ones, beyond fixed onsets.
+\item They have a polynomial upper bound at infinitely many sizes and
+finite exponential peaks at arbitrarily large sizes. In addition, for
+every $e>0$ there is $b$ such that $n^e<S_S(n)\le n^b$ at infinitely
+many sizes.
+\end{enumerate}
+There is no eventual fixed periodic partition into one uniformly
+polynomial part and one exponentially hard part in T4. These are
+exponential lower bounds, not universal matching upper bounds, and they
+concern full coefficient lists rather than sparse monomial size.
+\end{corollary}
+\begin{proof}
+Bounded supports give polynomially many variables and indices. If some
+variable has support size $j>0$, its relabellings have every $j$-element
+support, giving at least $\binom nj\ge n$ variables for all sufficiently
+large $n$. A fixed degree therefore gives a polynomial coefficient-list
+upper bound by Lemma~\ref{tx:lem:dense-size}. A finite linear degree
+lower bound gives an exponential size lower bound, since both systems
+have size at least $B_{v(n)}(d-D)$ for a target attaining a minimum
+degree $d>D$, where $D$ bounds input degree. Such a target is nonzero.
+The zero-target empty certificate causes no exception. Underivability
+gives infinite size directly.
+
+For the extra T4 assertion choose a recurring degree $d$ with
+$\ell=d-D>e$. At its sufficiently late occurrences,
+\[
+                 S_S(n)\ge B_{v(n)}(\ell)
+                         \ge n^\ell/\ell!>n^e,
+\]
+while the fixed degree $d$ gives $S_S(n)\le n^b$ for some $b$.
+These intermediate polynomial subsequences cannot fit a proposed
+partition with one fixed polynomial exponent and an exponential lower
+bound on the other part.
+
+If every variable has empty support, there are only finitely many
+variables and relabelling fixes them. Each axiom or target index orbit
+gives a fixed polynomial, and all finitely many orbits appear
+simultaneously beyond a fixed rank. The systems and requests then
+stabilise. Their degree is a finite constant, or infinity, producing
+T1 or the infinite-size case of T2. This handles the degenerate case
+without assuming a growing number of variables.
+\end{proof}
+
+\section{Exercises}
+\begin{exercise}\label{tx:ex:period-arithmetic}
+Let $p=2$, $\kappa=4$, $\sigma=4$, and $n_*=7$. Compute $N(0),Q(0)$,
+$N(3),Q(3)$ and $\beta(62)$. Check $N(\beta(62))\le62$ and explain
+why the strict inequality defining $Q$ matters.
+\end{exercise}
+\noindent{\small\hyperref[tx:ans:period-arithmetic]{Model answer (p.~\pageref*{tx:ans:period-arithmetic}).}}\par\medskip
+
+\begin{exercise}\label{tx:ex:forward-only}
+For $g(1)=2$ and $g(n)=1$ for $n\ge2$, verify forward persistence of
+every threshold under $n\mapsto n+1$. Identify a reverse threshold
+implication that fails. Explain why exact recurrence of the starting
+value cannot be deduced from forward persistence alone.
+\end{exercise}
+\noindent{\small\hyperref[tx:ans:forward-only]{Model answer (p.~\pageref*{tx:ans:forward-only}).}}\par\medskip
+
+\begin{exercise}\label{tx:ex:valuation-profile}
+For $h(n)=p^{v_p(n)}$, determine every recurring value, its liminf,
+and a sequence of finite linear peaks. Explain why no eventual linear
+lower bound holds at all sizes.
+\end{exercise}
+\noindent{\small\hyperref[tx:ans:valuation-profile]{Model answer (p.~\pageref*{tx:ans:valuation-profile}).}}\par\medskip
+
+\begin{exercise}\label{tx:ex:zero-T3}
+Show that T3 cannot have $E(h)=\{0\}$. State exactly where stability of
+the degree-zero predicate is used.
+\end{exercise}
+\noindent{\small\hyperref[tx:ans:zero-T3]{Model answer (p.~\pageref*{tx:ans:zero-T3}).}}\par\medskip
+

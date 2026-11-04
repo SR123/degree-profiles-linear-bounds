@@ -1,0 +1,75 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=28mm]{geometry}
+\usepackage{booktabs,array,longtable,enumitem,xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+\hypersetup{pdftitle={Degree profiles of uniform polynomial consequences},pdfauthor={Soren Riis},pdfsubject={Linear degree lower bounds for uniform Nullstellensatz and Polynomial Calculus consequences},pdfkeywords={proof complexity, uniform consequences, degree profiles, linear lower bounds}}
+\usepackage{fancyhdr}
+\pagestyle{fancy}\fancyhf{}\fancyhead[L]{\small Uniform polynomial consequences}\fancyhead[R]{\small\thepage}
+\renewcommand{\headrulewidth}{0.3pt}\setlength{\headheight}{14pt}
+\setlength{\emergencystretch}{2em}
+\setlist{nosep,leftmargin=*,topsep=5pt}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\NS}{\mathrm{NS}}\newcommand{\PC}{\mathrm{PC}}
+\newcommand{\NN}{\mathbb N}\newcommand{\N}{\mathbb N}\newcommand{\Z}{\mathbb Z}\newcommand{\Q}{\mathbb Q}\newcommand{\Fp}{\mathbb F_p}
+\DeclareMathOperator{\supp}{supp}\DeclareMathOperator{\im}{im}\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\rec}{Rec}\DeclareMathOperator{\Soc}{Soc}\DeclareMathOperator{\Top}{Top}\DeclareMathOperator{\LIS}{LIS}
+\newcommand{\join}{\mathbin{\vee_*}}
+\newcommand{\Ftwo}{\mathbb F_2}
+\newcommand{\D}{\mathcal D}\newcommand{\Del}{\mathcal D}\newcommand{\Lift}{\mathsf L}
+\DeclareMathOperator{\Inj}{Inj}
+\widowpenalty=10000\clubpenalty=10000
+\title{Degree profiles of uniform polynomial consequences\\[3pt]
+\large Linear lower bounds for Nullstellensatz and Polynomial Calculus}
+\author{S\o ren Riis}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+Riis's LICS~2008 paper and expanded 2009 preprint established a four-way
+algebraic proof-complexity classification for uniform polynomial
+refutations in positive characteristic~\cite{Riis,RiisLong}. Its four
+cases are mutually exclusive and exhaustive: $\mathrm T_1$ has eventually
+bounded degree; $\mathrm T_2$ has no recurring finite degree;
+$\mathrm T_3$ has finitely many recurring finite degrees without eventual
+boundedness, with constant degrees on some residue classes and growing
+degree on the others; and $\mathrm T_4$ has infinitely many recurring
+finite degrees. The aim was to obtain polynomial-versus-exponential
+complexity distinctions within this classification. The earlier degree
+lower bounds were $\Omega(\log n)$ for Nullstellensatz and
+$\Omega(\log\log n)$ for Polynomial Calculus; a conjectured improvement
+was $\Omega(n^\varepsilon)$ for some fixed $\varepsilon>0$, at least for
+Nullstellensatz and possibly for Polynomial Calculus.
+
+This paper proves optimal linear degree lower bounds $\Omega(n)$ for
+both systems and extends the theorem to uniform polynomial targets over
+any field of fixed positive characteristic. The constant target $1$
+gives the refutation case; the theorem applies more generally to uniform
+polynomial targets. The lower bounds hold at all sufficiently large
+sizes in $\mathrm T_2$, on the hard residue classes in $\mathrm T_3$,
+and at arbitrarily large sizes with finite degree in $\mathrm T_4$.
+The last case also has a finite liminf: one finite degree recurs
+arbitrarily late, while recurring finite degrees are unbounded.
+For finite derivations represented by full, explicit coefficient lists,
+including zeros, this gives polynomial upper bounds in $\mathrm T_1$,
+exponential lower bounds in $\mathrm T_2$, the corresponding periodic
+mixture in $\mathrm T_3$, and polynomial subsequences with finite
+exponential peaks in $\mathrm T_4$.
+Degree-preserving lifting with linear onset and period bounds proves the
+quantitative result; a separate uniform comparison gives NS and PC the
+same type. A common $p$-adic hardness spectrum organises the eventual
+bounded-degree residue classes and describes the four cases
+topologically. Distinguishing any two types
+is undecidable already for refutations. The central linear-bound,
+classification, comparison and undecidability theorems are formalised
+in Lean.
+\end{abstract}
+\medskip

@@ -1,0 +1,192 @@
+{
+  "independent_build_complete": true,
+  "returned_modules_compiled": [
+    "UCTarget",
+    "UCTransfer",
+    "UCClassification",
+    "UCExample",
+    "UCAudit"
+  ],
+  "new_adapter_modules_compiled": [
+    "UCTargetScope",
+    "UCScopeAudit"
+  ],
+  "axiom_outputs": 30,
+  "axioms_standard_only": true,
+  "dependency_checks": 23,
+  "dependencies": [
+    [
+      "UniformConsequence.target_transfer",
+      "LinearFinal.exactness_linear",
+      "true"
+    ],
+    [
+      "UniformConsequence.target_transfer",
+      "RForce.forceExists",
+      "true"
+    ],
+    [
+      "UniformConsequence.target_transfer",
+      "SelfContainedCycle004.canonicalM5w",
+      "true"
+    ],
+    [
+      "UniformConsequence.target_transfer",
+      "DegreeProfilesReview.Deletion.M5w.\u03b4_mat",
+      "true"
+    ],
+    [
+      "UniformConsequence.target_transfer",
+      "ExactnessHandoff.const_mem_iff_of_simple",
+      "true"
+    ],
+    [
+      "UniformConsequence.target_transfer",
+      "ExactnessHandoff.image_membership_iff_of_simple",
+      "true"
+    ],
+    [
+      "UniformConsequence.target_transfer",
+      "DegreeProfilesReview.FieldDescent.pc_derives_map_iff",
+      "true"
+    ],
+    [
+      "UniformConsequence.invariant_target_endpoint",
+      "ClaudeComparison.chainBound",
+      "true"
+    ],
+    [
+      "UniformConsequence.invariant_target_endpoint",
+      "ClaudeC017.Vinf_le_of_stable",
+      "true"
+    ],
+    [
+      "UniformConsequence.invariant_target_endpoint",
+      "sorryAx",
+      "false"
+    ],
+    [
+      "UniformConsequence.target_transfer",
+      "sorryAx",
+      "false"
+    ],
+    [
+      "UniformConsequence.Example.example_types",
+      "sorryAx",
+      "false"
+    ],
+    [
+      "UniformConsequence.invariant_target_endpoint",
+      "DegreeProfilesReview.Uniform.DeletionHypothesis",
+      "false"
+    ],
+    [
+      "UniformConsequence.invariant_target_endpoint",
+      "DegreeProfilesReview.Uniform.DeletionHypothesisW",
+      "false"
+    ],
+    [
+      "UniformConsequence.invariant_target_endpoint",
+      "ForceInterface.ForceExists",
+      "true"
+    ],
+    [
+      "UniformConsequence.Target.target_pc_step_exact",
+      "DegreeProfilesReview.Uniform.Template.constM",
+      "true"
+    ],
+    [
+      "UniformConsequence.Scope.T3_full",
+      "LinearFinal.exactness_linear",
+      "true"
+    ],
+    [
+      "UniformConsequence.Scope.T3_full",
+      "sorryAx",
+      "false"
+    ],
+    [
+      "UniformConsequence.Scope.target_transfer_additive",
+      "SelfContainedCycle004.canonicalM5w",
+      "true"
+    ],
+    [
+      "UniformConsequence.Scope.target_transfer_additive",
+      "sorryAx",
+      "false"
+    ],
+    [
+      "UniformConsequence.Scope.uniform_comparison_additive",
+      "ClaudeComparison.chainBound",
+      "true"
+    ],
+    [
+      "UniformConsequence.Scope.uniform_comparison_additive",
+      "ClaudeC017.Vinf_le_of_stable",
+      "true"
+    ],
+    [
+      "UniformConsequence.Scope.uniform_comparison_additive",
+      "sorryAx",
+      "false"
+    ]
+  ],
+  "project_original_files_identical_except_isolated_lakefile": 188,
+  "returned_lean_files_identical": true,
+  "pinned_dependencies": {
+    "mathlib": {
+      "commit": "2df2f0150c275ad53cb3c90f7c98ec15a56a1a67",
+      "tracked_sources_clean": true
+    },
+    "plausible": {
+      "commit": "160af9e8e7d4ae448f3c92edcc5b6a8522453f11",
+      "tracked_sources_clean": true
+    },
+    "LeanSearchClient": {
+      "commit": "3591c3f664ac3719c4c86e4483e21e228707bfa2",
+      "tracked_sources_clean": true
+    },
+    "importGraph": {
+      "commit": "e9f31324f15ead11048b1443e62c5deaddd055d2",
+      "tracked_sources_clean": true
+    },
+    "proofwidgets": {
+      "commit": "b4fb2aa5290ebf61bc5f80a5375ba642f0a49192",
+      "tracked_sources_clean": true
+    },
+    "aesop": {
+      "commit": "2f6d238744c4cb07fdc91240feaf5d4221a27931",
+      "tracked_sources_clean": true
+    },
+    "Qq": {
+      "commit": "9312503909aa8e8bb392530145cc1677a6298574",
+      "tracked_sources_clean": true
+    },
+    "batteries": {
+      "commit": "24241822ef9d3e7f6a3bcc53ad136e12663db8f3",
+      "tracked_sources_clean": true
+    },
+    "Cli": {
+      "commit": "933fce7e893f65969714c60cdb4bd8376786044e",
+      "tracked_sources_clean": true
+    }
+  },
+  "archive_preservation": {
+    "checked": 235,
+    "mismatches": [],
+    "passed": true
+  },
+  "return_preservation": {
+    "checked": 15,
+    "mismatches": [],
+    "passed": true
+  },
+  "setup_preservation": {
+    "checked": 6,
+    "mismatches": [],
+    "passed": true
+  },
+  "producer_project_oleans_reused": false,
+  "full_fresh_import_closure_replay_claimed": false,
+  "new_indexed_or_fresh_variable_endpoint_claimed": false
+}

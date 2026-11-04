@@ -1,0 +1,619 @@
+fresh build started: Sun Sep 27 02:54:52 UTC 2026
+directory: <RECORDED_PRODUCER_HOME>/undec/fresh/lean (fresh copy of the sources; no .lake/build at start;
+  .lake/packages -> prebuilt Mathlib v4.26.0 checkout, rev 2df2f0150c275ad53cb3c90f7c98ec15a56a1a67)
+toolchain: leanprover/lean4:v4.26.0
+Lean (version 4.26.0, x86_64-unknown-linux-gnu, commit d8204c9fd894f91bbb2cdfec5912ec8196fd8562, Release)
+command: lake build UAudit
+✔ [1061/1082] Built UFOSyntax (6.3s)
+✔ [1412/1432] Built DegreeProfilesReview.BasisSystems (8.4s)
+✔ [1598/1608] Built DegreeProfilesReview.DegreeProfiles (5.6s)
+✔ [1614/1626] Built DegreeProfilesReview.PolynomialCalculus (10s)
+✔ [1615/1626] Built DegreeProfilesReview.LinearBounds (16s)
+✔ [1648/1698] Built DegreeProfilesReview.PCClosure (14s)
+✔ [1957/1972] Built DegreeProfilesReview.StablePartitions (3.0s)
+✔ [1959/1972] Built DegreeProfilesReview.PCTransport (18s)
+✔ [1960/1976] Built DegreeProfilesReview.Nullstellensatz (23s)
+✔ [1962/1976] Built DegreeProfilesReview.MonoidalCompat (12s)
+✔ [1963/1977] Built UNSTools (14s)
+✔ [1965/1979] Built DegreeProfilesReview.SerreDescent (13s)
+✔ [1968/1979] Built DegreeProfilesReview.FieldDescent (22s)
+✔ [1969/1980] Built DegreeProfilesReview.ImageClosure (14s)
+✔ [1970/1980] Built DegreeProfilesReview.DeletionInterface (16s)
+✔ [1971/1982] Built DegreeProfilesReview.ClosedSubcategory (13s)
+✔ [1973/1982] Built DegreeProfilesReview.Templates (21s)
+✔ [1975/1985] Built DegreeProfilesReview.TemplateExample (22s)
+✔ [1977/1995] Built DegreeProfilesReview.SymRep (23s)
+✔ [1987/1998] Built DegreeProfilesReview.ConcreteM4 (23s)
+✔ [1988/1998] Built UFOCompile (24s)
+✔ [1991/1998] Built UFORoots (23s)
+✔ [1993/2000] Built DegreeProfilesReview.PermFromTuples (24s)
+✔ [1994/2000] Built CanonicalClass (22s)
+✔ [1997/2005] Built UConj (27s)
+✔ [1999/2006] Built RestrictionRelations (29s)
+✔ [3320/3331] Built UHerbrand (27s)
+✔ [3322/3331] Built DegreeProfilesReview.DeletionLinear (65s)
+✔ [3323/3331] Built ReflexiveAdjustment (134s)
+✔ [3324/3333] Built DegreeProfilesReview.DeletionTensor (108s)
+✔ [3325/3333] Built DegreeProfilesReview.ShiftedLinear (55s)
+✔ [3327/3337] Built DegreeProfilesReview.ShiftedTensor (93s)
+✔ [3328/3337] Built ResidualSplitting (161s)
+✔ [3329/3337] Built DegreeProfilesReview.ShiftedFree (71s)
+✔ [3331/3338] Built DegreeProfilesReview.ShiftedFunctor (88s)
+✔ [3334/3338] Built C017Localize (180s)
+✔ [3335/3338] Built DegreeProfilesReview.DeletionFunctor (121s)
+✔ [3336/3349] Built DegreeProfilesReview.ShiftedElemAb (49s)
+✔ [3337/3349] Built DegreeProfilesReview.PCTensorForm (86s)
+✔ [3339/3357] Built C017Compression (208s)
+✔ [3365/3383] Built DegreeProfilesReview.ConcreteDatum (88s)
+✔ [3367/3383] Built InnerInverseProjection (15s)
+✔ [3368/3383] Built MinimalTransfer (46s)
+✔ [3369/3383] Built DegreeProfilesReview.TemplateMatrices (55s)
+✔ [3370/3383] Built HomologyProjection (23s)
+✔ [3371/3383] Built DegreeProfilesReview.TemplateCompat (51s)
+✔ [3372/3383] Built ShiftedProjection (53s)
+✔ [3373/3392] Built ProjectorExactness (17s)
+✔ [3376/3395] Built DegreeProfilesReview.TemplatePeriodicity (28s)
+✔ [3377/3395] Built BitPairMatrix (20s)
+✔ [3378/3395] Built SparseRectangular (17s)
+✔ [3379/3395] Built DegreeProfilesReview.WeakInterface (27s)
+✔ [3380/3400] Built TemplateExactTransfer (167s)
+✔ [3381/3402] Built RankThreeInverseData (186s)
+✔ [3383/3402] Built TopTupleTest (4.6s)
+✔ [3384/3402] Built RankThreeMatrixInverse (3.5s)
+✔ [3385/3402] Built RankThreeRowData (2.8s)
+✔ [3386/3402] Built DegreeProfilesReview.ConcreteM5 (28s)
+✔ [3387/3402] Built PolynomialInnerInverse (4.1s)
+✔ [3388/3402] Built RankThreeNonvacuity (2.5s)
+✔ [3389/3402] Built RawTripleEncoding (2.5s)
+✔ [3390/3402] Built DegreeProfilesReview.BlockGroupExample (2.9s)
+✔ [3391/3408] Built ImageCompression (2.3s)
+✔ [3392/3408] Built RawTripleAction (5.9s)
+✔ [3393/3408] Built DegreeProfilesReview.ShiftedM5 (14s)
+✔ [3394/3408] Built RankThreeRowCertificate (30s)
+✔ [3395/3408] Built EmbeddingCompression (3.5s)
+✔ [3396/3408] Built ShiftedPreservation (5.6s)
+✔ [3397/3408] Built C017Auxiliary (19s)
+✔ [3398/3408] Built RankThreeCoordinateIdentities (2.1s)
+✔ [3399/3410] Built ShiftedAdditive (2.9s)
+✔ [3400/3410] Built RankThreePrototypeAction (3.7s)
+✔ [3402/3429] Built RankThreeActualRelation (18s)
+✔ [3416/3431] Built RankTwoCertificate (55s)
+✔ [3418/3434] Built RankTwoIdentity (3.6s)
+✔ [3420/3434] Built FiniteGroupAlgebra (4.2s)
+✔ [3421/3436] Built RankTwoParameters (2.8s)
+✔ [3424/3443] Built TopPowerProjection (6.3s)
+✔ [3425/3443] Built RankTwoActionRelation (10s)
+✔ [3426/3443] Built PAuxiliary (15s)
+✔ [3427/3443] Built DegreeProfilesReview.TypeTransfer (2.5s)
+✔ [3428/3447] Built TopPowerExactness (11s)
+✔ [3429/3447] Built RankTwoRelabel (10s)
+⚠ [3430/3447] Built DCPRook (13s)
+warning: DCPRook.lean:90:12: unused variable `p`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: DCPRook.lean:102:8: unused variable `q`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: DCPRook.lean:190:64: unused variable `h`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: DCPRook.lean:224:12: unused variable `q`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: DCPRook.lean:229:12: unused variable `q`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: DCPRook.lean:380:6: unused variable `w`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [3431/3447] Built BLemmaL (5.4s)
+✔ [3432/3447] Built ForceInterface (2.1s)
+✔ [3433/3450] Built BRealise (2.3s)
+✔ [3434/3450] Built BLemmaD (8.0s)
+✔ [3435/3450] Built BCor6 (6.8s)
+✔ [3436/3455] Built RankThreeTransport (37s)
+✔ [3437/3455] Built BProp4 (8.1s)
+✔ [3438/3455] Built BLabel (2.1s)
+✔ [3439/3461] Built ClaudeWitnessTransfer (7.5s)
+⚠ [3440/3461] Built BBridge (8.7s)
+warning: BBridge.lean:132:26: `Equiv.Perm.inv_apply_self` has been deprecated: Use `Equiv.symm_apply_apply` instead
+
+Note: The updated constant has a different type:
+  ∀ {α : Sort u} {β : Sort v} (e : α ≃ β) (x : α), e.symm (e x) = x
+instead of
+  ∀ {α : Type u_4} (f : Equiv.Perm α) (x : α), f⁻¹ (f x) = x
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.inv_apply_self` to `Equiv.symm_apply_apply x`).
+warning: BBridge.lean:136:26: `Equiv.Perm.apply_inv_self` has been deprecated: Use `Equiv.apply_symm_apply` instead
+
+Note: The updated constant has a different type:
+  ∀ {α : Sort u} {β : Sort v} (e : α ≃ β) (x : β), e (e.symm x) = x
+instead of
+  ∀ {α : Type u_4} (f : Equiv.Perm α) (x : α), f (f⁻¹ x) = x
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.apply_inv_self` to `Equiv.apply_symm_apply x`).
+✔ [3441/3461] Built PTransfer (15s)
+✔ [3442/3465] Built BTranspose (3.5s)
+✔ [3443/3468] Built DCPBridge (4.3s)
+⚠ [3444/3468] Built DCPCanon (2.6s)
+warning: DCPCanon.lean:43:6: unused variable `p`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: DCPCanon.lean:43:8: unused variable `q`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [3445/3474] Built C017Induction (23s)
+✔ [3446/3474] Built DCPHalf2 (4.7s)
+✔ [3447/3475] Built C017Final (15s)
+✔ [3448/3475] Built RForceBase (4.1s)
+✔ [3449/3475] Built PInduction (20s)
+✔ [3450/3475] Built UCounter (6.2s)
+✔ [3451/3475] Built C017Rates (14s)
+✔ [3452/3475] Built RForceGP (7.1s)
+✔ [3453/3477] Built RForce (2.9s)
+✔ [3454/3504] Built C017TypeAgreement (8.1s)
+✔ [3455/3506] Built SignedBranches (4.0s)
+✔ [3456/3507] Built TokenPaths (4.2s)
+✔ [3458/3510] Built UCounting (6.7s)
+✔ [3459/3510] Built PrefixChains (4.0s)
+✔ [3461/3513] Built PFinal (14s)
+✔ [3462/3513] Built ChainChoice (5.0s)
+✔ [3463/3513] Built LinearInterface (5.6s)
+✔ [3464/3513] Built BThm7 (12s)
+✔ [3465/3513] Built USwitch (8.0s)
+✔ [3466/3513] Built BranchDecrease (6.3s)
+✔ [3467/3513] Built BLayer (13s)
+✔ [3468/3514] Built CompDetect (32s)
+✔ [3469/3514] Built ActualTokens (5.4s)
+✔ [3470/3514] Built UHalt (13s)
+✔ [3471/3516] Built DCPInterface (11s)
+✔ [3472/3516] Built CompChain (12s)
+✔ [3473/3516] Built UMachine (5.3s)
+✔ [3474/3516] Built SignedNormalizer (5.9s)
+✔ [3476/3516] Built BThm5 (29s)
+✔ [3477/3516] Built PathCompression (6.5s)
+✔ [3478/3517] Built CompPoly (8.0s)
+✔ [3479/3524] Built UCompile (5.5s)
+✔ [3480/3524] Built SupportEmbedding (6.6s)
+✔ [3481/3524] Built CompFinal (4.7s)
+✔ [3484/3525] Built MarkedBinomial (6.7s)
+✔ [3486/3525] Built CharacteristicTransfer (5.7s)
+✔ [3488/3527] Built BTransC (32s)
+✔ [3490/3528] Built PermutationEvaluation (6.7s)
+✔ [3491/3528] Built UUniversal (4.3s)
+✔ [3492/3533] Built TerminalReduction (5.2s)
+✔ [3493/3533] Built BProp6Red (14s)
+✔ [3495/3539] Built UComputable (3.1s)
+✔ [3496/3539] Built LevelAnchors (8.2s)
+✔ [3497/3539] Built UDeps (1.5s)
+✔ [3498/3539] Built BlockPermutations (8.9s)
+✔ [3499/3539] Built BProp6 (19s)
+✔ [3500/3539] Built ExactBlockMoments (4.7s)
+✔ [3501/3539] Built BFinal (4.3s)
+✔ [3502/3539] Built DCPFinal (4.7s)
+✔ [3503/3539] Built DCPFinal2 (3.8s)
+✔ [3504/3539] Built FinalLinear (3.7s)
+✔ [3505/3539] Built LinearFinal (3.3s)
+✔ [3506/3539] Built CompLinear (3.1s)
+✔ [3507/3539] Built DiagonalMoment (20s)
+✔ [3508/3539] Built UWitCommon (6.2s)
+✔ [3509/3539] Built BlockMinimum (6.8s)
+✔ [3510/3539] Built UProfiles (6.4s)
+✔ [3511/3539] Built UJoin (11s)
+✔ [3512/3539] Built IntegralIndependence (6.0s)
+✔ [3513/3539] Built UJoinComputable (4.1s)
+✔ [3514/3539] Built RectangularDesign (4.3s)
+✔ [3515/3539] Built PolynomialDesign (8.4s)
+✔ [3516/3539] Built DesignShift (6.0s)
+✔ [3517/3539] Built DesignRewrite (3.9s)
+✔ [3518/3539] Built SignedExpansion (4.6s)
+✔ [3519/3539] Built LeafPaths (3.9s)
+✔ [3520/3539] Built MarkedLeaf (4.1s)
+✔ [3521/3539] Built RectangularPC (3.5s)
+✔ [3522/3539] Built AffinePeaks (4.3s)
+✔ [3523/3539] Built PigeonholeRestriction (6.0s)
+✔ [3524/3539] Built PigeonholePadding (3.9s)
+✔ [3525/3539] Built UWitEta (6.7s)
+✔ [3526/3539] Built AffineTransport (4.6s)
+✔ [3527/3539] Built FilteredPC (4.3s)
+✔ [3528/3539] Built UWitCycles (9.9s)
+✔ [3529/3539] Built TriangularMatching (10s)
+✔ [3530/3539] Built GuardUpper (5.9s)
+✔ [3531/3539] Built ComponentCompletion (6.9s)
+✔ [3532/3539] Built UJoinDeg (10s)
+✔ [3533/3539] Built UWitB (20s)
+✔ [3534/3539] Built UTypes (4.0s)
+✔ [3535/3539] Built UUndecidable (3.4s)
+✔ [3536/3539] Built UPairs (5.1s)
+✔ [3537/3539] Built UPCDirect (6.5s)
+ℹ [3538/3539] Built UAudit (83s)
+info: UAudit.lean:13:0: @[reducible] def ClaudeUndec.Sentence : Type :=
+(List ℕ × List ℕ) × List Clause
+info: UAudit.lean:14:0: def ClaudeUndec.IsModel : {α : Type} → Sentence → Str α → Prop :=
+fun {α} φ M => ∀ c ∈ φ.clauses, ∀ (σ : ℕ → α), clauseHolds φ M σ c
+info: UAudit.lean:15:0: def ClaudeUndec.HasModelOfSize : Sentence → ℕ → Prop :=
+fun φ n => ∃ M, IsModel φ M
+info: UAudit.lean:16:0: def ClaudeUndec.WF : Sentence → Prop :=
+fun φ => ∀ c ∈ φ.clauses, ∀ l ∈ c, AtomWF φ l.2
+info: UAudit.lean:17:0: def ClaudeUndec.Promised : Sentence → Prop :=
+fun φ => WF φ ∧ ∀ (n : ℕ), 0 < n → ¬HasModelOfSize φ n
+info: UAudit.lean:18:0: def ClaudeUndec.TypeSep : (Sentence → ℕ → Prop) → Set ℕ → Set ℕ → Prop :=
+fun T A B =>
+  ∃ D,
+    Partrec D ∧
+      (∀ (φ : Sentence), Promised φ → ∀ τ ∈ A, T φ τ → true ∈ D φ) ∧
+        ∀ (φ : Sentence), Promised φ → ∀ τ ∈ B, T φ τ → false ∈ D φ
+info: UAudit.lean:19:0: def Computable.{u_1, u_2} : {α : Type u_1} → {σ : Type u_2} → [Primcodable α] → [Primcodable σ] → (α → σ) → Prop :=
+fun {α} {σ} [Primcodable α] [Primcodable σ] f => Partrec ↑f
+info: UAudit.lean:20:0: def Partrec.{u_1, u_2} : {α : Type u_1} → {σ : Type u_2} → [Primcodable α] → [Primcodable σ] → (α →. σ) → Prop :=
+fun {α} {σ} [Primcodable α] [Primcodable σ] f =>
+  Nat.Partrec fun n => (↑(Encodable.decode n)).bind fun a => Part.map Encodable.encode (f a)
+info: UAudit.lean:21:0: def ComputablePred.{u_1} : {α : Type u_1} → [Primcodable α] → (α → Prop) → Prop :=
+fun {α} [Primcodable α] p => ∃ x, Computable fun a => decide (p a)
+info: UAudit.lean:22:0: def ClaudeUndec.NSType : {K : Type} → [inst : Field K] → DegreeProfilesReview.Uniform.Template K → ℕ → Prop :=
+fun {K} [Field K] T x =>
+  match x with
+  | 1 => DegreeProfilesReview.Profiles.IsT1 T.nsProfile
+  | 2 => DegreeProfilesReview.Profiles.IsT2 T.nsProfile (DegreeProfilesReview.Profiles.onset T.k T.s T.n0)
+  | 3 => DegreeProfilesReview.Profiles.IsT3 T.nsProfile (DegreeProfilesReview.Profiles.onset T.k T.s T.n0)
+  | 4 => DegreeProfilesReview.Profiles.IsT4 T.nsProfile (DegreeProfilesReview.Profiles.onset T.k T.s T.n0)
+  | x => False
+info: UAudit.lean:23:0: def ClaudeUndec.PCType : {K : Type} → [inst : Field K] → DegreeProfilesReview.Uniform.Template K → ℕ → Prop :=
+fun {K} [Field K] T x =>
+  match x with
+  | 1 => DegreeProfilesReview.Profiles.IsT1 T.pcProfile
+  | 2 => DegreeProfilesReview.Profiles.IsT2 T.pcProfile (DegreeProfilesReview.Profiles.onset T.k T.s T.n0)
+  | 3 => DegreeProfilesReview.Profiles.IsT3 T.pcProfile (DegreeProfilesReview.Profiles.onset T.k T.s T.n0)
+  | 4 => DegreeProfilesReview.Profiles.IsT4 T.pcProfile (DegreeProfilesReview.Profiles.onset T.k T.s T.n0)
+  | x => False
+info: UAudit.lean:24:0: def ClaudeUndec.IType : (ℕ → ℕ∞) → ℕ → Prop :=
+fun h x =>
+  match x with
+  | 1 => DegreeProfilesReview.Profiles.EventuallyBounded h
+  | 2 => Rec h = ∅
+  | 3 => (Rec h).Finite ∧ (Rec h).Nonempty ∧ ¬DegreeProfilesReview.Profiles.EventuallyBounded h
+  | 4 => (Rec h).Infinite
+  | x => False
+info: UAudit.lean:25:0: def ClaudeUndec.Rec : (ℕ → ℕ∞) → Set ℕ :=
+fun h => {d | ∀ (M : ℕ), ∃ n, M ≤ n ∧ h n = ↑d}
+info: UAudit.lean:26:0: def DegreeProfilesReview.Profiles.IsT1 : (ℕ → ℕ∞) → Prop :=
+fun h => DegreeProfilesReview.Profiles.EventuallyBounded h
+info: UAudit.lean:27:0: def DegreeProfilesReview.Profiles.IsT2 : (ℕ → ℕ∞) → (ℕ → ℕ) → Prop :=
+fun h N => DegreeProfilesReview.Profiles.E h N = ∅
+info: UAudit.lean:28:0: def DegreeProfilesReview.Profiles.IsT3 : (ℕ → ℕ∞) → (ℕ → ℕ) → Prop :=
+fun h N =>
+  (DegreeProfilesReview.Profiles.E h N).Finite ∧
+    (DegreeProfilesReview.Profiles.E h N).Nonempty ∧ ¬DegreeProfilesReview.Profiles.EventuallyBounded h
+info: UAudit.lean:29:0: def DegreeProfilesReview.Profiles.IsT4 : (ℕ → ℕ∞) → (ℕ → ℕ) → Prop :=
+fun h N => (DegreeProfilesReview.Profiles.E h N).Infinite
+info: UAudit.lean:30:0: def DegreeProfilesReview.Profiles.E : (ℕ → ℕ∞) → (ℕ → ℕ) → Set ℕ :=
+fun h N => {d | ∃ n, N d ≤ n ∧ h n = ↑d}
+info: UAudit.lean:31:0: def DegreeProfilesReview.NS.NSRefutes.{u_1, u_2} : {σ : Type u_1} →
+  {K : Type u_2} → [inst : Field K] → Set (MvPolynomial σ K) → ℕ → Prop :=
+fun {σ} {K} [Field K] Γ d => ∃ s a, (∀ f ∈ s, f ∈ Γ) ∧ (∀ f ∈ s, (a f * f).totalDegree ≤ d) ∧ ∑ f ∈ s, a f * f = 1
+info: UAudit.lean:32:0: def DegreeProfilesReview.NS.nsDegree.{u_1, u_2} : {σ : Type u_1} →
+  {K : Type u_2} → [inst : Field K] → Set (MvPolynomial σ K) → ℕ∞ :=
+fun {σ} {K} [Field K] Γ => if h : ∃ d, DegreeProfilesReview.NS.NSRefutes Γ d then ↑(Nat.find h) else ⊤
+info: UAudit.lean:33:0: inductive DegreeProfilesReview.PC.IsProof.{u_1, u_2} : {σ : Type u_1} →
+  {K : Type u_2} → [inst : Field K] → Set (MvPolynomial σ K) → List (MvPolynomial σ K) → Prop
+number of parameters: 4
+constructors:
+DegreeProfilesReview.PC.IsProof.nil : ∀ {σ : Type u_1} {K : Type u_2} [inst : Field K] {Γ : Set (MvPolynomial σ K)},
+  DegreeProfilesReview.PC.IsProof Γ []
+DegreeProfilesReview.PC.IsProof.ax : ∀ {σ : Type u_1} {K : Type u_2} [inst : Field K] {Γ : Set (MvPolynomial σ K)}
+  {l : List (MvPolynomial σ K)} {f : MvPolynomial σ K},
+  DegreeProfilesReview.PC.IsProof Γ l → f ∈ Γ → DegreeProfilesReview.PC.IsProof Γ (f :: l)
+DegreeProfilesReview.PC.IsProof.lin : ∀ {σ : Type u_1} {K : Type u_2} [inst : Field K] {Γ : Set (MvPolynomial σ K)}
+  {l : List (MvPolynomial σ K)} {f : MvPolynomial σ K},
+  DegreeProfilesReview.PC.IsProof Γ l → f ∈ Submodule.span K {g | g ∈ l} → DegreeProfilesReview.PC.IsProof Γ (f :: l)
+DegreeProfilesReview.PC.IsProof.mulX : ∀ {σ : Type u_1} {K : Type u_2} [inst : Field K] {Γ : Set (MvPolynomial σ K)}
+  {l : List (MvPolynomial σ K)} {g : MvPolynomial σ K} (i : σ),
+  DegreeProfilesReview.PC.IsProof Γ l → g ∈ l → DegreeProfilesReview.PC.IsProof Γ (MvPolynomial.X i * g :: l)
+info: UAudit.lean:34:0: def DegreeProfilesReview.PC.Refutes.{u_1, u_2} : {σ : Type u_1} →
+  {K : Type u_2} → [inst : Field K] → Set (MvPolynomial σ K) → ℕ → Prop :=
+fun {σ} {K} [Field K] Γ d => DegreeProfilesReview.PC.Derives Γ d 1
+info: UAudit.lean:35:0: def DegreeProfilesReview.PC.pcDegree.{u_1, u_2} : {σ : Type u_1} →
+  {K : Type u_2} → [inst : Field K] → Set (MvPolynomial σ K) → ℕ∞ :=
+fun {σ} {K} [Field K] Γ => if h : ∃ d, DegreeProfilesReview.PC.Refutes Γ d then ↑(Nat.find h) else ⊤
+info: UAudit.lean:36:0: def ClaudeUndec.join : Sentence → Sentence → Sentence :=
+fun A B =>
+  ((A.rels ++ B.rels ++ [1], A.funs ++ B.funs),
+    List.map (guardN (A.rels.length + B.rels.length)) A.clauses ++
+      List.map (guardP (A.rels.length + B.rels.length)) (List.map (Clause.shift A.rels.length A.funs.length) B.clauses))
+info: UAudit.lean:37:0: def ClaudeUndec.guardN : ℕ → Clause → Clause :=
+fun z c => (false, Atom.rel z [nvars c]) :: c
+info: UAudit.lean:38:0: def ClaudeUndec.guardP : ℕ → Clause → Clause :=
+fun z c => (true, Atom.rel z [nvars c]) :: c
+info: UAudit.lean:39:0: def ClaudeUndec.conj : Sentence → Sentence → Sentence :=
+fun φ ψ =>
+  ((φ.rels ++ ψ.rels, φ.funs ++ ψ.funs), φ.clauses ++ List.map (Clause.shift φ.rels.length φ.funs.length) ψ.clauses)
+info: UAudit.lean:40:0: def ClaudeUndec.wit : ℕ → ℕ → Sentence :=
+fun p x =>
+  match x with
+  | 1 => psi1
+  | 2 => eta
+  | 3 => psi3 p
+  | 4 => bhat
+  | x => psi1
+info: UAudit.lean:41:0: def ClaudeUndec.wrank : ℕ → ℕ :=
+fun x =>
+  match x with
+  | 1 => 0
+  | 4 => 1
+  | 3 => 2
+  | 2 => 3
+  | x => 4
+info: UAudit.lean:42:0: def ClaudeUndec.red : ℕ → ℕ → Nat.Partrec.Code → Sentence :=
+fun p τ c => conj (wit p τ) (theta (univProg (Encodable.encode c)))
+info: UAudit.lean:43:0: def ClaudeUndec.red2 : ℕ → ℕ → ℕ → Nat.Partrec.Code → Sentence :=
+fun p a b c => join (wit p a) (conj (wit p b) (theta (univProg (Encodable.encode c))))
+info: UAudit.lean:44:0: def ClaudeUndec.univProg : ℕ → Prog :=
+fun m => univPre ++ loadPart (hLen + 4) m
+info: UAudit.lean:45:0: def ClaudeUndec.theta : Prog → Sentence :=
+fun P =>
+  ((thRels P, thFuns P),
+    baseClauses P ++
+      List.flatMap
+        (fun ℓ =>
+          match P[ℓ]? with
+          | some i => transClauses P ℓ i
+          | none => [])
+        (List.range (List.length P)))
+info: UAudit.lean:49:0: undecidable_union_NS : ∀ (p : ℕ) [hp : Fact (Nat.Prime p)] (K : Type) [inst : Field K] [CharP K p],
+  ∀ A ⊆ {1, 2, 3, 4},
+    A.Nonempty →
+      (∃ τ ∈ {1, 2, 3, 4}, τ ∉ A) →
+        ¬∃ D, Partrec D ∧ ∀ (φ : Sentence), Promised φ → ∃ b ∈ D φ, b = true ↔ ∃ τ ∈ A, NSType (template φ K) τ
+info: UAudit.lean:50:0: undecidable_union_PC : ∀ (p : ℕ) [hp : Fact (Nat.Prime p)] (K : Type) [inst : Field K] [CharP K p],
+  ∀ A ⊆ {1, 2, 3, 4},
+    A.Nonempty →
+      (∃ τ ∈ {1, 2, 3, 4}, τ ∉ A) →
+        ¬∃ D, Partrec D ∧ ∀ (φ : Sentence), Promised φ → ∃ b ∈ D φ, b = true ↔ ∃ τ ∈ A, PCType (template φ K) τ
+info: UAudit.lean:51:0: undecidable_union_PC_direct : ∀ (p : ℕ) [hp : Fact (Nat.Prime p)] (K : Type) [inst : Field K] [CharP K p],
+  ∀ A ⊆ {1, 2, 3, 4},
+    A.Nonempty →
+      (∃ τ ∈ {1, 2, 3, 4}, τ ∉ A) →
+        ¬∃ D, Partrec D ∧ ∀ (φ : Sentence), Promised φ → ∃ b ∈ D φ, b = true ↔ ∃ τ ∈ A, PCType (template φ K) τ
+info: UAudit.lean:52:0: @decides_of_promise : ∀ {α : Type} [inst : Primcodable α] {D : Sentence →. Bool},
+  Partrec D →
+    ∀ {Q : Sentence → Prop},
+      (∀ (φ : Sentence), Promised φ → ∃ b ∈ D φ, b = true ↔ Q φ) →
+        ∀ (f : α → Sentence), Computable f → (∀ (c : α), Promised (f c)) → ComputablePred fun c => Q (f c)
+info: UAudit.lean:53:0: 'ClaudeUndec.undecidable_union_NS' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:54:0: 'ClaudeUndec.undecidable_union_PC' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:55:0: 'ClaudeUndec.undecidable_union_PC_direct' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:56:0: 'ClaudeUndec.decides_of_promise' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:60:0: undecidable_pair_NS : ∀ (p : ℕ) [hp : Fact (Nat.Prime p)] (K : Type) [inst : Field K] [CharP K p] (a b : ℕ),
+  a ∈ {1, 2, 3, 4} → b ∈ {1, 2, 3, 4} → a ≠ b → ¬TypeSep (fun φ τ => NSType (template φ K) τ) {a} {b}
+info: UAudit.lean:61:0: undecidable_pair_PC : ∀ (p : ℕ) [hp : Fact (Nat.Prime p)] (K : Type) [inst : Field K] [CharP K p] (a b : ℕ),
+  a ∈ {1, 2, 3, 4} → b ∈ {1, 2, 3, 4} → a ≠ b → ¬TypeSep (fun φ τ => PCType (template φ K) τ) {a} {b}
+info: UAudit.lean:62:0: undecidable_disjoint_NS : ∀ (p : ℕ) [hp : Fact (Nat.Prime p)] (K : Type) [inst : Field K] [CharP K p] (A B : Set ℕ),
+  A ⊆ {1, 2, 3, 4} →
+    B ⊆ {1, 2, 3, 4} → A.Nonempty → B.Nonempty → Disjoint A B → ¬TypeSep (fun φ τ => NSType (template φ K) τ) A B
+info: UAudit.lean:63:0: undecidable_disjoint_PC : ∀ (p : ℕ) [hp : Fact (Nat.Prime p)] (K : Type) [inst : Field K] [CharP K p] (A B : Set ℕ),
+  A ⊆ {1, 2, 3, 4} →
+    B ⊆ {1, 2, 3, 4} → A.Nonempty → B.Nonempty → Disjoint A B → ¬TypeSep (fun φ τ => PCType (template φ K) τ) A B
+info: UAudit.lean:64:0: undecidable_pair_PC_direct : ∀ (p : ℕ) [hp : Fact (Nat.Prime p)] (K : Type) [inst : Field K] [CharP K p] (a b : ℕ),
+  a ∈ {1, 2, 3, 4} → b ∈ {1, 2, 3, 4} → a ≠ b → ¬TypeSep (fun φ τ => PCType (template φ K) τ) {a} {b}
+info: UAudit.lean:65:0: undecidable_disjoint_PC_direct : ∀ (p : ℕ) [hp : Fact (Nat.Prime p)] (K : Type) [inst : Field K] [CharP K p]
+  (A B : Set ℕ),
+  A ⊆ {1, 2, 3, 4} →
+    B ⊆ {1, 2, 3, 4} → A.Nonempty → B.Nonempty → Disjoint A B → ¬TypeSep (fun φ τ => PCType (template φ K) τ) A B
+info: UAudit.lean:66:0: pairs_iff_disjoint : ∀ (T : Sentence → ℕ → Prop) (S : Set ℕ),
+  (∀ a ∈ S, ∀ b ∈ S, a ≠ b → ¬TypeSep T {a} {b}) ↔
+    ∀ (A B : Set ℕ), A ⊆ S → B ⊆ S → A.Nonempty → B.Nonempty → Disjoint A B → ¬TypeSep T A B
+info: UAudit.lean:67:0: typeSep_symm : ∀ (T : Sentence → ℕ → Prop) (A B : Set ℕ), TypeSep T A B ↔ TypeSep T B A
+info: UAudit.lean:68:0: typeSep_of_computable : ∀ (T : Sentence → ℕ → Prop) (A B : Set ℕ) (D : Sentence → Bool),
+  Computable D →
+    (∀ (φ : Sentence), Promised φ → ∀ τ ∈ A, T φ τ → D φ = true) →
+      (∀ (φ : Sentence), Promised φ → ∀ τ ∈ B, T φ τ → D φ = false) → TypeSep T A B
+info: UAudit.lean:69:0: @sep_decides : ∀ {α : Type} [inst : Primcodable α] {T : Sentence → ℕ → Prop} {A B : Set ℕ} {D : Sentence →. Bool},
+  Partrec D →
+    (∀ (φ : Sentence), Promised φ → ∀ τ ∈ A, T φ τ → true ∈ D φ) →
+      (∀ (φ : Sentence), Promised φ → ∀ τ ∈ B, T φ τ → false ∈ D φ) →
+        ∀ (f : α → Sentence),
+          Computable f →
+            (∀ (c : α), Promised (f c)) →
+              ∀ (P : α → Prop),
+                (∀ (c : α), P c → ∃ τ ∈ A, T (f c) τ) → (∀ (c : α), ¬P c → ∃ τ ∈ B, T (f c) τ) → ComputablePred P
+info: UAudit.lean:70:0: union_of_sep : ∀ (T : Sentence → ℕ → Prop) (S : Set ℕ),
+  (∀ (φ : Sentence), Promised φ → ∀ (τ τ' : ℕ), T φ τ → T φ τ' → τ = τ') →
+    ∀ (A : Set ℕ),
+      ¬TypeSep T A (S \ A) → ¬∃ D, Partrec D ∧ ∀ (φ : Sentence), Promised φ → ∃ b ∈ D φ, b = true ↔ ∃ τ ∈ A, T φ τ
+info: UAudit.lean:71:0: undecidable_union_NS_via_pairs : ∀ (p : ℕ) [hp : Fact (Nat.Prime p)] (K : Type) [inst : Field K] [CharP K p],
+  ∀ A ⊆ {1, 2, 3, 4},
+    A.Nonempty →
+      (∃ τ ∈ {1, 2, 3, 4}, τ ∉ A) →
+        ¬∃ D, Partrec D ∧ ∀ (φ : Sentence), Promised φ → ∃ b ∈ D φ, b = true ↔ ∃ τ ∈ A, NSType (template φ K) τ
+info: UAudit.lean:72:0: 'ClaudeUndec.undecidable_pair_NS' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:73:0: 'ClaudeUndec.undecidable_pair_PC' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:74:0: 'ClaudeUndec.undecidable_disjoint_NS' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:75:0: 'ClaudeUndec.undecidable_disjoint_PC' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:76:0: 'ClaudeUndec.undecidable_pair_PC_direct' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:77:0: 'ClaudeUndec.undecidable_disjoint_PC_direct' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:78:0: 'ClaudeUndec.pairs_iff_disjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:79:0: 'ClaudeUndec.typeSep_symm' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:80:0: 'ClaudeUndec.typeSep_of_computable' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:81:0: 'ClaudeUndec.sep_decides' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:82:0: 'ClaudeUndec.undecidable_union_NS_via_pairs' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:86:0: nsDegree_join_ge : ∀ (A B : Sentence) (K : Type) [inst : Field K] (n : ℕ),
+  WF A →
+    WF B →
+      0 < n →
+        max (DegreeProfilesReview.NS.nsDegree ((template A K).inst n))
+            (DegreeProfilesReview.NS.nsDegree ((template B K).inst n)) ≤
+          DegreeProfilesReview.NS.nsDegree ((template (join A B) K).inst n)
+info: UAudit.lean:87:0: nsDegree_join_le : ∀ (A B : Sentence) (K : Type) [inst : Field K] (n : ℕ),
+  WF A →
+    WF B →
+      0 < n →
+        DegreeProfilesReview.NS.nsDegree ((template (join A B) K).inst n) ≤
+          max (DegreeProfilesReview.NS.nsDegree ((template A K).inst n))
+              (DegreeProfilesReview.NS.nsDegree ((template B K).inst n)) +
+            1
+info: UAudit.lean:88:0: pcDegree_join_ge : ∀ (A B : Sentence) (K : Type) [inst : Field K] (n : ℕ),
+  WF A →
+    WF B →
+      0 < n →
+        max (DegreeProfilesReview.PC.pcDegree ((template A K).inst n))
+            (DegreeProfilesReview.PC.pcDegree ((template B K).inst n)) ≤
+          DegreeProfilesReview.PC.pcDegree ((template (join A B) K).inst n)
+info: UAudit.lean:89:0: pcDegree_join_le : ∀ (A B : Sentence) (K : Type) [inst : Field K] (n : ℕ),
+  WF A →
+    WF B →
+      0 < n →
+        DegreeProfilesReview.PC.pcDegree ((template (join A B) K).inst n) ≤
+          max (DegreeProfilesReview.PC.pcDegree ((template A K).inst n))
+              (DegreeProfilesReview.PC.pcDegree ((template B K).inst n)) +
+            1
+info: UAudit.lean:90:0: join_no_model : ∀ (A B : Sentence) (n : ℕ),
+  WF A → WF B → 0 < n → HasModelOfSize (join A B) n → HasModelOfSize A n ∨ HasModelOfSize B n
+info: UAudit.lean:91:0: join_WF : ∀ (A B : Sentence), WF A → WF B → WF (join A B)
+info: UAudit.lean:92:0: join_primrec : ∀ (A : Sentence), Primrec (join A)
+info: UAudit.lean:93:0: templateParams_primrec : Primrec fun φ => (maxVArity φ, axSupp φ, degD φ, maxVArity φ * degD φ + axSupp φ + 1)
+info: UAudit.lean:94:0: join_cases : ∀ (A B : Sentence) (K : Type) [inst : Field K] (n : ℕ),
+  WF A →
+    WF B →
+      ∀ {g : MvPolynomial ((VarSys (join A B)).Rk n) K},
+        g ∈ (template (join A B) K).inst n →
+          (∃ f, IsStruct A K n f ∧ g = (MvPolynomial.rename (ιA A B n)) f) ∨
+            (∃ f, IsStruct B K n f ∧ g = (MvPolynomial.rename (ιB A B n)) f) ∨
+              (∃ t, g = MvPolynomial.X (zv A B n t) ^ 2 - MvPolynomial.X (zv A B n t)) ∨
+                (∃ f ∈ (template A K).inst n,
+                    ∃ t, g = MvPolynomial.X (zv A B n t) * (MvPolynomial.rename (ιA A B n)) f) ∨
+                  ∃ f ∈ (template B K).inst n,
+                    ∃ t, g = (1 - MvPolynomial.X (zv A B n t)) * (MvPolynomial.rename (ιB A B n)) f
+info: UAudit.lean:95:0: 'ClaudeUndec.nsDegree_join_ge' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:96:0: 'ClaudeUndec.nsDegree_join_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:97:0: 'ClaudeUndec.pcDegree_join_ge' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:98:0: 'ClaudeUndec.pcDegree_join_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:99:0: 'ClaudeUndec.join_no_model' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:100:0: 'ClaudeUndec.join_WF' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:101:0: 'ClaudeUndec.join_primrec' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:102:0: 'ClaudeUndec.templateParams_primrec' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:103:0: 'ClaudeUndec.join_cases' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:107:0: @iType_sandwich : ∀ {h g h' : ℕ → ℕ∞},
+  DegreeProfilesReview.Profiles.EventuallyBounded g →
+    (∀ (n : ℕ), 1 ≤ n → max (h n) (g n) ≤ h' n) →
+      (∀ (n : ℕ), 1 ≤ n → h' n ≤ max (h n) (g n) + 1) → ∀ (τ : ℕ), IType h' τ ↔ IType h τ
+info: UAudit.lean:108:0: @iType2_mono : ∀ {h h' : ℕ → ℕ∞}, IType h 2 → (∀ (n : ℕ), 1 ≤ n → h n ≤ h' n) → IType h' 2
+info: UAudit.lean:109:0: @iType3_of : ∀ {h hη : ℕ → ℕ∞} {p : ℕ},
+  2 ≤ p →
+    ∀ (C : ℕ), IType hη 2 → (∀ (n : ℕ), 1 ≤ n → ¬p ∣ n → h n ≤ ↑C) → (∀ (n : ℕ), 1 ≤ n → p ∣ n → hη n ≤ h n) → IType h 3
+info: UAudit.lean:110:0: red2_halt : ∀ (p : ℕ) [hp : Fact (Nat.Prime p)] (K : Type) [inst : Field K] [CharP K p] (a b : ℕ),
+  a ∈ {1, 2, 3, 4} → ∀ (c : Nat.Partrec.Code), (c.eval 0).Dom → NSType (template (red2 p a b c) K) a
+info: UAudit.lean:111:0: red2_nonhalt : ∀ (p : ℕ) [hp : Fact (Nat.Prime p)] (K : Type) [inst : Field K] [CharP K p] (a b : ℕ),
+  a ∈ {1, 2, 3, 4} →
+    b ∈ {1, 2, 3, 4} →
+      wrank a < wrank b → ∀ (c : Nat.Partrec.Code), ¬(c.eval 0).Dom → NSType (template (red2 p a b c) K) b
+info: UAudit.lean:112:0: red2_primrec : ∀ (p a b : ℕ), Primrec (red2 p a b)
+info: UAudit.lean:113:0: red2_promised : ∀ (p a b : ℕ) (c : Nat.Partrec.Code), Promised (red2 p a b c)
+info: UAudit.lean:114:0: wit_type : ∀ (p : ℕ) [hp : Fact (Nat.Prime p)] (K : Type) [inst : Field K] [CharP K p],
+  ∀ τ ∈ {1, 2, 3, 4}, NSType (template (wit p τ) K) τ
+info: UAudit.lean:115:0: @nsType_unique : ∀ {K : Type} [inst : Field K] (p : ℕ) [Fact (Nat.Prime p)] [CharP K p]
+  (T : DegreeProfilesReview.Uniform.Template K) {τ τ' : ℕ}, NSType T τ → NSType T τ' → τ = τ'
+info: UAudit.lean:116:0: @nsType_exists : ∀ {K : Type} [inst : Field K] (p : ℕ) [Fact (Nat.Prime p)] [CharP K p]
+  (T : DegreeProfilesReview.Uniform.Template K), ∃ τ ∈ {1, 2, 3, 4}, NSType T τ
+info: UAudit.lean:117:0: @pcType_iff_nsType : ∀ {K : Type} [inst : Field K] (p : ℕ) [Fact (Nat.Prime p)] [CharP K p]
+  (T : DegreeProfilesReview.Uniform.Template K) (τ : ℕ), PCType T τ ↔ NSType T τ
+info: UAudit.lean:118:0: pcDegree_conj_eq_left : ∀ (φ ψ : Sentence) (n : ℕ) (K : Type) [inst : Field K],
+  WF φ →
+    WF ψ →
+      ∀ (y : (VarSys ψ).Rk n → K),
+        (∀ g ∈ (template ψ K).inst n, (MvPolynomial.eval y) g = 0) →
+          DegreeProfilesReview.PC.pcDegree ((template (conj φ ψ) K).inst n) =
+            DegreeProfilesReview.PC.pcDegree ((template φ K).inst n)
+info: UAudit.lean:119:0: wit_pc_type : ∀ (p : ℕ) [hp : Fact (Nat.Prime p)] (K : Type) [inst : Field K] [CharP K p],
+  ∀ τ ∈ {1, 2, 3, 4}, PCType (template (wit p τ) K) τ
+info: UAudit.lean:120:0: red2_pc_halt : ∀ (K : Type) [inst : Field K] (p : ℕ) [hp : Fact (Nat.Prime p)] [CharP K p] (a b : ℕ),
+  a ∈ {1, 2, 3, 4} → ∀ (c : Nat.Partrec.Code), (c.eval 0).Dom → PCType (template (red2 p a b c) K) a
+info: UAudit.lean:121:0: red2_pc_nonhalt : ∀ (K : Type) [inst : Field K] (p : ℕ) [hp : Fact (Nat.Prime p)] [CharP K p] (a b : ℕ),
+  a ∈ {1, 2, 3, 4} →
+    b ∈ {1, 2, 3, 4} →
+      wrank a < wrank b → ∀ (c : Nat.Partrec.Code), ¬(c.eval 0).Dom → PCType (template (red2 p a b c) K) b
+info: UAudit.lean:122:0: bhat_refutes_B : ∀ (K : Type) [inst : Field K] {n d : ℕ},
+  0 < n →
+    DegreeProfilesReview.PC.Refutes ((template bhat K).inst n) d →
+      DegreeProfilesReview.PC.Refutes {f | SelfContainedCycle054.IsBAxiom n (2 * n) f} d
+info: UAudit.lean:123:0: eta_pc_lower : ∀ (p : ℕ) [hp : Fact (Nat.Prime p)] (K : Type) [inst : Field K] [CharP K p] {n d : ℕ},
+  3 ≤ n → DegreeProfilesReview.PC.Refutes ((template eta K).inst n) d → n < 3 * p * d
+info: UAudit.lean:124:0: 'ClaudeUndec.iType_sandwich' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:125:0: 'ClaudeUndec.iType2_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:126:0: 'ClaudeUndec.iType3_of' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:127:0: 'ClaudeUndec.red2_halt' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:128:0: 'ClaudeUndec.red2_nonhalt' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:129:0: 'ClaudeUndec.red2_primrec' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:130:0: 'ClaudeUndec.red2_promised' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:131:0: 'ClaudeUndec.wit_type' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:132:0: 'ClaudeUndec.pcType_iff_nsType' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:133:0: 'ClaudeUndec.pcDegree_conj_eq_left' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:134:0: 'ClaudeUndec.wit_pc_type' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:135:0: 'ClaudeUndec.red2_pc_halt' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:136:0: 'ClaudeUndec.red2_pc_nonhalt' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:137:0: 'ClaudeUndec.bhat_refutes_B' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:138:0: 'ClaudeUndec.eta_pc_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:144:0: ClaudeUndec.undecidable_pair_NS uses ClaudeComparison.upperComparison: false   (closure size 43823)
+info: UAudit.lean:145:0: ClaudeUndec.undecidable_union_NS uses ClaudeComparison.upperComparison: false   (closure size 43557)
+info: UAudit.lean:146:0: ClaudeUndec.undecidable_pair_PC_direct uses ClaudeComparison.upperComparison: false   (closure size 43837)
+info: UAudit.lean:147:0: ClaudeUndec.undecidable_union_PC_direct uses ClaudeComparison.upperComparison: false   (closure size 43578)
+info: UAudit.lean:148:0: ClaudeUndec.undecidable_pair_PC uses ClaudeComparison.upperComparison: true   (closure size 44176)
+info: UAudit.lean:149:0: ClaudeUndec.undecidable_pair_NS uses LinearFinal.linear_classification: true   (closure size 43823)
+info: UAudit.lean:150:0: ClaudeUndec.undecidable_pair_PC_direct uses LinearFinal.linear_classification: true   (closure size 43837)
+info: UAudit.lean:151:0: ClaudeUndec.undecidable_pair_NS uses ComputablePred.halting_problem: true   (closure size 43823)
+info: UAudit.lean:152:0: ClaudeUndec.undecidable_pair_NS uses SelfContainedCycle072.G_both_linear: true   (closure size 43823)
+info: UAudit.lean:153:0: ClaudeUndec.undecidable_pair_NS uses SelfContainedCycle058.no_PCRefutes_rectangle: true   (closure size 43823)
+info: UAudit.lean:154:0: ClaudeUndec.undecidable_pair_NS uses ClaudeUndec.theta_nsRefutes: true   (closure size 43823)
+info: UAudit.lean:155:0: ClaudeUndec.undecidable_pair_NS uses ClaudeUndec.switch_i: true   (closure size 43823)
+info: UAudit.lean:156:0: ClaudeUndec.undecidable_pair_NS uses ClaudeUndec.primrec_compiles: true   (closure size 43823)
+info: UAudit.lean:160:0: switch_i : ∀ (P : Prog), ¬P.Halts → ∀ {n : ℕ}, 0 < n → HasModelOfSize (theta P) n
+info: UAudit.lean:161:0: no_large_model : ∀ (P : Prog) {T : ℕ},
+  P.IsHaltSt (P.cfg T).1 →
+    (∀ j < T, ¬P.IsHaltSt (P.cfg j).1) →
+      ∀ {U : Type} (M : Str U), IsModel (theta P) M → ∀ (d : Fin (T + 1) → U), Function.Injective d → False
+info: UAudit.lean:162:0: no_model_of_size : ∀ (P : Prog) {T : ℕ},
+  P.IsHaltSt (P.cfg T).1 → (∀ j < T, ¬P.IsHaltSt (P.cfg j).1) → ∀ {n : ℕ}, T + 1 ≤ n → ¬HasModelOfSize (theta P) n
+info: UAudit.lean:163:0: theta_nsRefutes : ∀ (P : Prog) (K : Type) [inst : Field K] {T : ℕ},
+  P.IsHaltSt (P.cfg T).1 →
+    (∀ j < T, ¬P.IsHaltSt (P.cfg j).1) →
+      ∀ {n : ℕ}, T + 1 ≤ n → DegreeProfilesReview.NS.NSRefutes ((template (theta P) K).inst n) (haltBound P T)
+info: UAudit.lean:164:0: theta_eventually_bounded : ∀ (P : Prog) (K : Type) [inst : Field K],
+  P.Halts → ∃ C N, ∀ (n : ℕ), N ≤ n → DegreeProfilesReview.NS.nsDegree ((template (theta P) K).inst n) ≤ ↑C
+info: UAudit.lean:165:0: @primrec_compiles : ∀ {n : ℕ} {f : List.Vector ℕ n → ℕ},
+  Nat.Primrec' f →
+    ∀ (ins : Fin n → ℕ) (o b : ℕ), (∀ (i : Fin n), ins i < b) → o < b → ∃ code len, Computes f ins o b code len
+info: UAudit.lean:166:0: univProg_halts_iff : ∀ (m : ℕ), (univProg m).Halts ↔ ∃ k, hfun k m = 0
+info: UAudit.lean:167:0: eval_dom_iff_halts : ∀ (c : Nat.Partrec.Code), (c.eval 0).Dom ↔ (univProg (Encodable.encode c)).Halts
+info: UAudit.lean:168:0: theta_primrec : Primrec theta
+info: UAudit.lean:169:0: univProg_primrec : Primrec univProg
+info: UAudit.lean:170:0: conj_primrec : ∀ (ψ : Sentence), Primrec (conj ψ)
+info: UAudit.lean:171:0: red_primrec : ∀ (p τ : ℕ), Primrec (red p τ)
+info: UAudit.lean:172:0: red_promised : ∀ (p τ : ℕ) (c : Nat.Partrec.Code), Promised (red p τ c)
+info: UAudit.lean:173:0: conj_type_halt : ∀ (K : Type) [inst : Field K] (ψ : Sentence) (P : Prog),
+  P.Halts → NSType (template (conj ψ (theta P)) K) 1
+info: UAudit.lean:174:0: conj_type_nonhalt : ∀ (p : ℕ) [hp : Fact (Nat.Prime p)] (K : Type) [inst : Field K] [CharP K p] (ψ : Sentence),
+  WF ψ → ∀ (P : Prog), ¬P.Halts → ∀ (τ : ℕ), NSType (template (conj ψ (theta P)) K) τ ↔ NSType (template ψ K) τ
+info: UAudit.lean:175:0: nsDegree_conj_eq_left : ∀ (φ ψ : Sentence) (n : ℕ) (K : Type) [inst : Field K],
+  WF φ →
+    WF ψ →
+      ∀ (y : (VarSys ψ).Rk n → K),
+        (∀ g ∈ (template ψ K).inst n, (MvPolynomial.eval y) g = 0) →
+          DegreeProfilesReview.NS.nsDegree ((template (conj φ ψ) K).inst n) =
+            DegreeProfilesReview.NS.nsDegree ((template φ K).inst n)
+info: UAudit.lean:176:0: hasRoot_iff : ∀ (φ : Sentence) (K : Type) [inst : Field K] {n : ℕ},
+  0 < n → ((∃ x, ∀ f ∈ (template φ K).inst n, (MvPolynomial.eval x) f = 0) ↔ HasModelOfSize φ n)
+info: UAudit.lean:177:0: 'ClaudeUndec.switch_i' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:178:0: 'ClaudeUndec.no_large_model' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:179:0: 'ClaudeUndec.theta_nsRefutes' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:180:0: 'ClaudeUndec.theta_eventually_bounded' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:181:0: 'ClaudeUndec.primrec_compiles' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:182:0: 'ClaudeUndec.univProg_halts_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:183:0: 'ClaudeUndec.eval_dom_iff_halts' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:184:0: 'ClaudeUndec.theta_primrec' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:185:0: 'ClaudeUndec.univProg_primrec' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:186:0: 'ClaudeUndec.conj_type_halt' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:187:0: 'ClaudeUndec.conj_type_nonhalt' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:188:0: 'ClaudeUndec.nsDegree_conj_eq_left' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: UAudit.lean:189:0: 'ClaudeUndec.hasRoot_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+Build completed successfully (3539 jobs).
+EXIT 0
+finished: Sun Sep 27 03:28:44 UTC 2026

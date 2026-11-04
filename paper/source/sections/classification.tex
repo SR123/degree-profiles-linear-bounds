@@ -1,0 +1,299 @@
+\section{Quantitative transfer and the four degree profiles}\label{sec:classification}
+Fix a uniform axiom template and a stable uniform target family
+$G_{b,n}$ as in Section~\ref{sec:systems}. The parameters $k,s,t$ bound
+variable, axiom-index and target-index supports, respectively, and $D_G$
+bounds the target degree. Put
+\[
+                 n_* = \max\{n_0,1,kD_G+t\}.
+\]
+For $\mathrm S\in\{\NS,\PC\}$, the aggregate profile $h_{\mathrm S}(n)$
+is the maximum of the least degrees needed to derive the requested
+polynomials $G_{b,n}$, $b\in\mathcal B_n$. Zero targets have degree $0$;
+an underivable target gives value $\infty$, and the maximum of an empty
+request is $0$. We may instead
+restrict $\mathcal B$ to one fixed global orbit. At every $n\ge t$ that
+orbit has a representative, and equivariance makes its profile the least
+degree of any representative. These are two precise choices of a uniform
+request. Choosing different global orbits according to $n$ is not covered.
+
+Use the conservative parameters
+\begin{equation}\label{eq:profile-parameters}
+                      \kappa=2k,\qquad \sigma=s+t.
+\end{equation}
+The general transfer budget is then $\kappa d+\sigma=2kd+s+t$.
+For a fully invariant target, and in particular for refutation, a sharper
+version with $\kappa=k$ and $\sigma=s$ is given below. All the profile
+deductions are stated in the same notation so that both versions have a
+common presentation.
+
+The next theorem is the quantitative lifting statement from which
+the classification follows. It fixes the degree budget and varies the
+universe size. Its two directions are important: an upward lift keeps
+a derivation available on one progression, while the equivalence also
+rules out a new derivation appearing later in that residue class.
+
+\begin{theorem}[Periodicity with linear onset]\label{thm:periodicity}
+Over any field of prime characteristic $p$, let $h$ be either the NS or
+ordinary-PC aggregate profile, or either profile of one fixed target
+orbit. For $d\ge1$ put $R(d)=\kappa d+\sigma$. If
+\[
+ n,n'\ge n_*,\qquad n,n'>2R(d),\qquad
+ n\equiv n'\pmod q,\qquad q=p^a>R(d),
+\]
+then $h(n)\le d$ if and only if $h(n')\le d$. The degree-zero predicate
+is constant for $n\ge n_*$.
+\end{theorem}
+The proof in Section~\ref{sec:target-transfer} transports the actual
+coefficient map of the targets and the actual consequence spaces. It does
+not require invariant proofs, and it does not infer the PC assertion from
+an NS lower bound. The same argument works whether or not the axioms are
+consistent.
+
+Define
+\begin{equation}\label{eq:NQ}
+ \begin{gathered}
+ N(0)=n_*,\qquad Q(0)=1,\\
+ N(d)=\max\{n_*,2(\kappa d+\sigma)+1\},\qquad
+ Q(d)=\min\{p^a:p^a>\kappa d+\sigma\}\quad(d\ge1).
+ \end{gathered}
+\end{equation}
+Here $N(d)$ denotes the onset for a degree threshold; it is not the
+larger rank $N=n+q$ used in the deletion construction. $Q(d)$ is the
+chosen block size and period. Both are bounded linearly in $d$ beyond
+the fixed template threshold.
+The onsets are nondecreasing, and $Q(e)$ divides $Q(d)$ for $e\le d$.
+Applying Theorem~\ref{thm:periodicity} at every threshold up to $d$ gives
+\begin{equation}\label{eq:periodic}
+ n,m\ge N(d),\quad n\equiv m\pmod {Q(d)}
+ \quad\Longrightarrow\quad
+ \min\{h(n),d+1\}=\min\{h(m),d+1\}.
+\end{equation}
+Here $\min\{\infty,d+1\}=d+1$. For $d\ge1$,
+\begin{equation}\label{eq:periodbound}
+                         Q(d)\le p(\kappa d+\sigma).
+\end{equation}
+Indeed, the preceding power of $p$ is at most $\kappa d+\sigma$.
+The fixed initial threshold includes the stabilisation of target degrees.
+A budget below a target's stabilised degree cannot derive that target;
+thus such thresholds are not replaced by tests on a truncated target.
+
+\subsection{The classification theorem}
+Define the set of recurring finite degrees by
+\[
+ E(h)=\{d\in\NN:\text{some }n\ge N(d)\text{ has }h(n)=d\}.
+\]
+Equation~\eqref{eq:periodic} shows that every member $d$ occurs along an
+infinite arithmetic progression:
+\[
+                  h(n+\ell Q(d))=d\qquad(\ell\ge0).
+\]
+The degree remains $d$ throughout this progression: lifting does not lower the absolute degree. Its ratio to the universe size tends to zero. Nor does one such progression make the whole profile bounded; other residue classes may remain hard.
+
+Conversely, a value occurring at arbitrarily large sizes occurs beyond
+$N(d)$. Thus $E(h)=\rec(h)$, independently of the admissible onset.
+The key restriction is that a nonrecurring finite degree $d$ can occur
+only before its own onset $N(d)$.
+
+To include the small ranks in an exact formula, write $x_+=\max\{x,0\}$
+and put
+\[
+             \beta(n)=\left\lfloor
+                       \frac{(n-2\sigma-1)_+}{2\kappa}
+                       \right\rfloor.
+\]
+The positive part agrees with natural-number subtraction and is irrelevant
+once $n\ge2\sigma+1$.
+
+\begin{theorem}[Four-way classification]\label{thm:classification}
+For each profile considered in Theorem~\ref{thm:periodicity}, exactly one
+of the following four alternatives holds.
+\begin{enumerate}[label=\textup{T\arabic*.}]
+\item The profile is bounded by a finite constant for all sufficiently
+large $n$.
+\item $E(h)$ is empty. For every $n\ge n_*$,
+\begin{equation}\label{eq:linear}
+                              h(n)>\beta(n),
+\end{equation}
+including $h(n)=\infty$ in the extended order. In particular the finite
+values have an $\Omega(n)$ lower bound.
+\item $E(h)$ is finite and nonempty, and $h$ is not eventually bounded.
+Put $D=\max E(h)$. There is a nonempty proper set
+$U\subseteq\{0,\ldots,Q(D)-1\}$ such that, for each $c\in U$, one
+finite value $v_c\le D$ satisfies
+\[
+        h(n)=v_c\quad\text{whenever }n\ge N(D),\quad n\bmod Q(D)=c.
+\]
+For $n\ge N(D)$ with $n\bmod Q(D)\notin U$, the lower bound
+\eqref{eq:linear} holds.
+\item $E(h)$ is infinite. For every bound $B$ there are $n,d\ge B$,
+with $d\in E(h)$ and $h(n)=d<\infty$, such that
+\begin{equation}\label{eq:peaks}
+ n\le(p+2)(\kappa d+\sigma),\qquad
+ h(n)\ge\frac{n}{(p+2)\kappa}-\frac{\sigma}{\kappa}.
+\end{equation}
+Also $\liminf_{n\to\infty}h(n)=\min E(h)<\infty$.
+\end{enumerate}
+In T1 and T3 the liminf likewise equals the least recurring finite value;
+in T2 it is $\infty$. All statements leave the fixed finite initial
+range unconstrained. NS and PC assign each fixed uniform request the
+same type, by Theorem~\ref{thm:comparison}.
+\end{theorem}
+\begin{proof}
+For $n\ge n_*$, the inverse threshold satisfies $N(\beta(n))\le n$.
+If $\beta(n)=0$ this follows from $N(0)=n_*$. Otherwise
+$2\kappa\beta(n)\le n-2\sigma-1$, which gives the assertion from
+\eqref{eq:NQ}. Consequently, if $h(n)\le\beta(n)$, its finite value
+belongs to $E(h)$: its own onset is at most $N(\beta(n))$.
+If $E(h)=\varnothing$, this is impossible and proves T2, including the
+small ranks for which $\beta(n)=0$.
+
+Suppose $E(h)$ is finite and nonempty and let $D=\max E(h)$.
+By truncated periodicity, on each class modulo $Q(D)$ the profile has
+one fixed value at most $D$, or is always greater than $D$, once
+$n\ge N(D)$. The classes of the first kind form $U$. Recurrence puts
+some value from $E(h)$ beyond $N(D)$, so $U$ is nonempty. If all classes
+belong to $U$, the profile is eventually bounded. Otherwise, at a size
+off $U$, the inequality $h(n)\le\beta(n)$ would give a recurring value,
+hence a value at most $D$, contrary to the definition of $U$.
+This proves the complete T3 split whenever the profile is not bounded.
+
+If $E(h)$ is infinite, choose its elements $d$ arbitrarily large so that
+$N(d)=2(\kappa d+\sigma)+1$. A recurring class for $d$ has a
+representative in the interval
+\[
+              N(d)\le n<N(d)+Q(d),\qquad h(n)=d.
+\]
+Using integrality and \eqref{eq:periodbound} gives
+$n\le(p+2)(\kappa d+\sigma)$, hence \eqref{eq:peaks}. The chosen $d$
+and $n$ can both exceed any prescribed bound. These are finite degree
+values, rather than occurrences of $\infty$.
+
+Whenever $E(h)$ is nonempty, let $e=\min E(h)$. Each of the finitely
+many values below $e$ occurs only finitely often, so eventually
+$h(n)\ge e$. The value $e$ recurs, proving the liminf formula. If $E(h)$
+is empty, the same argument for every finite bound shows $h(n)\to\infty$.
+Finally, eventual boundedness forces $E(h)$ to be finite and nonempty:
+a recurring value cannot exceed an eventual bound, and at least one of
+the finitely many bounded values occurs infinitely often. This proves
+exhaustiveness and mutual exclusivity of the four cases.
+\end{proof}
+
+The finite liminf in T4 is one number, not an assertion that the profile
+is eventually constant. Its infinitely many recurring levels persist
+arbitrarily far out. The bound on $N(d)$ provides the degree gap; the
+bound on $Q(d)$ places finite representatives of large recurring levels
+at sizes linear in their degrees. Both estimates are needed for the peak
+statement. The easy classes in T3 may have different finite degrees.
+Neither the theorem nor the comparison identifies the NS and PC sets of
+recurring degrees.
+
+\begin{corollary}[Sharper invariant-target and refutation bounds]\label{cor:invariant-budget}
+For one fully $S_n$-invariant target given by a stable coefficient rule,
+Theorems~\ref{thm:periodicity} and~\ref{thm:classification} hold with
+$\kappa=k$, $\sigma=s$ and
+$n_*=\max\{n_0,1,kD_G\}$. For refutation, take the single target $1$;
+then $D_G=0$, $n_*=n_0$, and the transfer budget is $kd+s$.
+\end{corollary}
+\begin{proof}
+The target map has the trivial module $K$ as source. Its image in a
+consequence-space quotient is zero or a copy of $K$, and deletion fixes
+$K$. Lemma~\ref{lem:constant} therefore detects membership without the
+doubled ambient support needed for indexed targets. The actual target
+matrix is still transported. The unchanged axiom and PC-closure budget
+$kd+s$ gives periodicity, and the preceding profile argument applies
+with the smaller parameters.
+\end{proof}
+
+\begin{proposition}[The fluctuating case has no fixed periodic split]\label{prop:no-periodic-split}
+In T4 there is no period $q_0$, set of its residue classes $U$, finite
+bound $B$, and constant $c>0$ such that, at every sufficiently large
+size, $h(n)\le B$ on $U$ and $h(n)\ge cn$ off $U$.
+\end{proposition}
+\begin{proof}
+Choose a recurring finite value $e>B$. Its sufficiently late occurrences
+cannot lie in $U$, and for $n>e/c$ cannot lie off $U$. This contradicts
+recurrence. The argument uses unbounded recurring finite levels, not
+merely an unbounded profile.
+\end{proof}
+
+\subsection{The polynomial--exponential consequence}\label{sec:dense-types}
+With the full explicit coefficient lists of
+Definition~\ref{def:dense-size}, let $S(n)$ be the maximum of the minimum
+sizes of proofs of the requested targets. Use $S(n)=0$ for an empty
+request and $S(n)=\infty$ if any target is underivable. A collection of
+proofs for every target has minimum total size between $S(n)$ and
+$|\mathcal B_n|S(n)$ when the request is nonempty. Since
+$|\mathcal B_n|=n^{O(1)}$, these two size conventions give the same
+conclusions below. For one fixed orbit, any representative has the same
+minimum size by relabelling.
+
+\begin{corollary}[Polynomial--exponential size bounds]\label{cor:dense-types}
+For either NS identities or ordinary-PC derivations of a fixed uniform
+request, the type in Theorem~\ref{thm:classification} has the following
+size consequences.
+\begin{enumerate}[label=\textup{T\arabic*.}]
+\item $S(n)\le n^C$ for all sufficiently large $n$, for some constant $C$.
+\item $S(n)\ge2^{cn}$ for all sufficiently large $n$, for some $c>0$.
+\item On the easy residue classes, $S(n)\le n^C$ for all sufficiently
+large $n$; on their complement, $S(n)\ge2^{cn}$, for fixed $C,c>0$.
+\item $S(n)\le n^C$ at infinitely many sizes for some fixed $C$, and
+$2^{cn}\le S(n)<\infty$ at arbitrarily large sizes for some fixed $c>0$.
+Moreover, for every $e>0$ there is $b$ such that
+$n^e<S(n)\le n^b$ at infinitely many sizes. There is no eventual periodic
+partition with one uniformly polynomial part and one part satisfying an
+exponential lower bound.
+\end{enumerate}
+The exponential statements are lower bounds. They give no universal
+matching exponential upper bound. Infinite sizes are interpreted in the
+extended order; finiteness is asserted explicitly on the T4 peak
+subsequence.
+\end{corollary}
+\begin{proof}
+Write $D_A$ for a fixed upper bound on axiom degree. If the variable
+basis contains an object with support size $j>0$, relabelling supplies
+a distinct object supported on each $j$-subset of $[n]$. Thus
+$v(n)\ge\binom nj\ge n$ for sufficiently large $n$, while
+$v(n)=n^{O(1)}$. The target and axiom index counts are polynomial as well.
+Lemma~\ref{lem:dense-size} gives polynomial-size proofs for every target
+whose derivation degree is bounded by a fixed constant, uniformly over
+the request.
+
+If the aggregate degree is a finite value $d>D_A$, some target attains
+that maximum. Its minimum proof size is at least
+$B_{v(n)}(d-D_A)$ in either system: for NS, a degree-$d$ identity must
+contain a multiplier of degree at least $d-D_A$; for PC, any proof must
+contain a line of degree at least $d$. Such a target is nonzero, so the
+empty NS certificate creates no exception. A linear degree lower bound
+therefore yields $2^{\Omega(n)}$. If a target is underivable, its infinite
+size satisfies the same lower inequality. This proves T1--T3 and the two
+subsequences in T4.
+
+For the additional T4 assertion, choose a recurring degree $d$ with
+$\ell=d-D_A>e$. At its infinitely many sufficiently large occurrences,
+\[
+                   S(n)\ge B_{v(n)}(\ell)
+                        \ge\frac{n^{\ell}}{\ell!}>n^e,
+\]
+while the fixed degree $d$ gives $S(n)\le n^b$ for some $b$.
+A periodic polynomial/exponential partition would be contradicted by
+choosing $e$ above its polynomial exponent: these occurrences are too
+large for its polynomial part and too small for its exponential part.
+
+If every variable support is empty, the entire variable basis is finite
+and every permutation fixes it. Each axiom-index orbit consequently
+gives one rank-independent polynomial; each target-index orbit does too.
+There are finitely many such orbits, and all appear at sufficiently
+large rank. The actual axiom and target polynomial sets therefore
+stabilise. The aggregate degree is then a finite constant, or is
+$\infty$, giving respectively T1 or T2 with infinite size. This covers
+the degenerate case without a growing variable count.
+\end{proof}
+
+The coefficient-list estimate is \emph{at least} exponential in universe
+size. For instance, $v(n)=\Theta(n^2)$ and a line of degree $\Theta(n)$
+require $2^{\Theta(n\log n)}$ coefficient entries. Over a fixed finite
+field, encoding the axiom and target polynomials by full lists has length
+$L(n)=n^{O(1)}$, since their degrees and index supports are fixed.
+If $L(n)=O(n^{c_0})$ for a fixed $c_0>0$, the hard-instance bound gives
+$2^{\Omega(L(n)^{1/c_0})}$. This is a stretched-exponential lower bound in
+input length, with an exponent depending on the template.

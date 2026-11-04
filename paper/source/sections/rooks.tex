@@ -1,0 +1,190 @@
+\section{Realising zero-marginal corrections by permutations}\label{sec:rook-realization}
+\subsection{Rook coordinates and realisation}\label{sec:rooks}
+This section realises a position-equivariant correction with image in $\mathcal Z_b$ and kernel containing $V'$ by one element of $J_{b-1}(N)$. It is independent of the block and works over any commutative ring. The proof translates the map into rook coordinates, proves that selected coordinates force the others, then solves for permutation coefficients by triangular elimination. Ordering the finite board is auxiliary bookkeeping; it adds neither labels nor a built-in order to the uniform input.
+
+The centraliser of the position action is the algebra of linear
+operators commuting with every permutation of tuple positions.
+Label permutations lie in it because the two actions commute.
+The realisation problem here has further conditions: the required
+operator must have image in $\mathcal Z_b$ and kill $V'$.
+The rook calculation will realise operators of this specified shape.
+
+\subsubsection{From a map to a board of non-attacking rooks}
+A matrix entry of a position-equivariant map $\varphi:P_b(N)\to P_b(N)$ is indexed by an output tuple $s$ and input tuple $t$. Permuting their positions together leaves the entry unchanged. Thus it depends only on
+\[\rho=\{(s_i,t_i):i=1,\ldots,b\},
+\]
+a set of $b$ cells with distinct rows and distinct columns on an $N\times N$ board. Call this a $b$-rook. Board rows and columns are \emph{labels}; they are different from the positions of the original tuples.
+
+For instance, output $(3,4)$ and input $(1,2)$ give
+$\{(3,1),(4,2)\}$. Reordering both tuples preserves this rook;
+reordering only one generally changes it. These coordinates retain
+the input--output pairing while forgetting simultaneous position order.
+
+The matrix therefore defines a function $F$ on $b$-rooks. For a $(b-1)$-rook $\sigma$, choose an unused column $y$. A column line through $\sigma$ is the family of rooks $\sigma\cup\{(x,y)\}$ as $x$ ranges over unused rows. Define row lines analogously. The map has image in $\mathcal Z_b$ precisely when its column lines sum to zero. It kills $V'$ precisely when its row lines sum to zero. Write $Z_b$ for this zero-line-sum space of rook functions, distinct from the tuple-vector space $\mathcal Z_b$.
+
+A label permutation $g$ has graph $\{(g(y),y)\}$. Its matrix entry is one exactly when $\rho$ is contained in that graph. Set
+\[\chi_g(\rho)=[\rho\subseteq\operatorname{graph}g],\qquad
+L_b\Bigl(\sum_ga_gg\Bigr)=\sum_ga_g\chi_g
+\]
+on $b$-rooks. For a fixed unused row or column, exactly one extension of a rook $\sigma$ lies in the graph of $g$ if $\sigma$ itself does, and none otherwise. Therefore
+\begin{equation}\label{eq:lines}
+\text{each line sum of }L_b(x)\text{ through }\sigma=L_{b-1}(x)(\sigma).
+\end{equation}
+If $F\in Z_b$ is realised as $L_b(x)$, this identity forces $L_{b-1}(x)=0$, then every smaller $L_j(x)=0$. Thus $x\in J_{b-1}(N)$ automatically. It remains to prove that every $F\in Z_b$ is realisable.
+
+\subsubsection{A first example: matrices with zero row and column sums}
+At $b=1$, $Z_1$ is the space of square matrices with zero row and column sums. If row and column $N$ are designated as last, such a matrix is determined by its upper-left $(N-1)\times(N-1)$ entries and is
+\[\sum_{i,j<N}F_{ij}(E_{ij}-E_{iN}-E_{Nj}+E_{NN}).
+\]
+Each four-entry matrix is a difference of two permutation matrices: choose a permutation taking column $j$ to row $i$ and column $N$ to row $N$, and subtract the permutation with these two outputs swapped. The other entries cancel. This proves realisation at length one over every ring. The general rook argument is a higher-length replacement for this elementary construction.
+
+\subsection{A forcing set of coordinates}\label{sec:forcing}
+Work on any two equally large finite sets of integer labels $R,C$,
+of size $M$, with their inherited orders. Here $M$ is the board size
+and $c$ the rook count; later $M=N$ and $c=b$. Numerical thresholds such as
+$y+1$ denote the cut strictly above the integer label $y$. A permutation here is a bijection $g:C\to R$. An increasing chain is a subset of its graph increasing in both coordinates. Let $\LIS(g)$ be the largest chain length. Among the column sets of longest chains choose the lexicographically first one, $I_g$: at the first differing column, the set containing that column is earlier. Define
+\[\rho_g=\{(g(y),y):y\notin I_g\}.
+\]
+If $\LIS(g)=M-c$, this is a $c$-rook. Let $\Psi_c$ consist of these rooks.
+
+A forcing set means that restriction to it is injective on the
+zero-line-sum functions. Two such functions agreeing there have a
+difference vanishing there, so the theorem below establishes uniqueness.
+Realisation by permutation coefficients is the separate existence step.
+
+\begin{theorem}[Forcing]\label{thm:force}
+A function in $Z_c$ that vanishes on $\Psi_c$ vanishes on every $c$-rook.
+\end{theorem}
+
+
+Permutation strings use one-line notation: $312$ means $g(1)=3$,
+$g(2)=1$, $g(3)=2$.
+\begin{example}[The $3\times3$ board]
+The permutations with longest increasing subsequence of length two are $312,231,213,132$. Their canonical complement rooks are respectively
+\[(3,1),\ (1,3),\ (1,2),\ (2,3).
+\]
+If a zero-line-sum matrix is zero on these four cells, row one first forces $(1,1)$ to be zero. Column one then forces $(2,1)$; row two forces $(2,2)$; column two forces $(3,2)$; and row three forces $(3,3)$. This is the small model of the forcing argument.
+\end{example}
+
+\subsubsection{Strengthened induction statement}
+To remove the bottom row and the first column, we must know which canonical longest chains survive contraction. Bounds on longest chains in upper parts of the board keep track of this. These are bookkeeping conditions for the induction, not new mathematical assumptions on $F$.
+
+Let $L=M-c$. A condition is $(s,\theta,d)$, where $s$ is ``row'' or ``column'', $\theta$ is a label threshold, and $d\ge1$. This local $d$ is a chain deficit, not polynomial degree. A bijection satisfies it if the longest increasing chain using only cells with that coordinate at least $\theta$ has length at most $L-d$. Bounds are interpreted as integer inequalities; a negative upper bound is impossible for a nonnegative chain length.
+
+For a collection $\mathcal E$ of conditions let $\Psi(\mathcal E)$ be the canonical complement rooks of permutations with $\LIS=L$ satisfying every condition. Let $Q(\mathcal E)$ be the set of $c$-rooks for which, for at least one condition, at most $d-1$ \emph{unused} labels of the specified side lie below $\theta$.
+
+The two descriptions are paired deliberately. A bound on chains above a threshold will, through a line-sum identity, force a value at a rook with too few unused labels below it.
+
+\begin{lemma}[Strengthened forcing]\label{lem:GP}
+If $F\in Z_c$ vanishes on $\Psi(\mathcal E)\cup Q(\mathcal E)$, then $F=0$.
+\end{lemma}
+Theorem~\ref{thm:force} is its case of no conditions.
+
+\subsubsection{Three facts about adding a corner cell}
+Let $r_0=\min R$ and $y_0=\min C$. The following statements describe the only possible new increasing chains.
+\begin{enumerate}
+\item Remove row $r_0$ and column $y$, and let $\widetilde g$ be a bijection on the smaller board with longest chain length $L$. Add the cell $(r_0,y)$. Every new chain using it continues with a chain in columns strictly above $y$. If that region had longest chain at most $L-1$, the new permutation has longest chain $L$. Its lexicographically first longest chain is still the old one: the old chain must use some column below $y$, whereas every new chain through the corner uses columns at least $y$. Therefore $\rho_g=\rho_{\widetilde g}\cup\{(r_0,y)\}$. For a column threshold $\theta\le y$, the new regional maximum is
+\[\max\{\LIS(\widetilde g|_{\mathrm{col}\ge\theta}),\ 1+\LIS(\widetilde g|_{\mathrm{col}>y})\}.
+\]
+\item Remove row $x$ and column $y_0$, and add $(x,y_0)$. If the old region of rows strictly above $x$ has longest chain at most $L-2$, every chain using the new corner has length at most $L-1$. Thus all longest chains remain old, the canonical one remains unchanged, and $\rho_g=\rho_{\widetilde g}\cup\{(x,y_0)\}$. The analogous maximum formula holds for row thresholds at most $x$. The stronger deficit two eliminates a tie involving the smallest column.
+\item Remove both minimal labels and add $(r_0,y_0)$. This corner can be placed before every increasing chain of the smaller board. The longest length increases by one, every new longest chain contains the corner, and $I_g=\{y_0\}\cup I_{\widetilde g}$. Thus $\rho_g=\rho_{\widetilde g}$.
+\end{enumerate}
+These facts follow just by splitting chains according to whether they use the added cell. They do not rely on a representation-theoretic result.
+
+\subsubsection{Base cases and degenerate conditions}
+The outer induction decreases the board size $M$; a decreasing corner
+sweep supplies the inner induction. Contracting a fixed cell changes
+$(M,c)$ to $(M-1,c-1)$ and keeps $L=M-c$ fixed. Removing a row and
+column without fixing a cell leaves $c$ fixed and decreases $L$.
+The threshold conditions record these distinct changes.
+
+Prove Lemma~\ref{lem:GP} by induction on $M$. If $c>M$ there are no rooks. If $c=M>0$, each line through an $(M-1)$-rook contains exactly one $M$-rook, so the zero-line-sum equation forces its value to zero.
+
+A condition is degenerate if the entire board has at most $d-1$ labels below its threshold. Then every rook belongs to $Q$, and the conclusion is immediate. Assume no condition is degenerate. Every column threshold is therefore above $y_0$ and every row threshold above $r_0$.
+
+If $c=0$, consider the increasing bijection. It has longest length $M$. For a column condition, at least $d$ columns lie below $\theta$, so the part above $\theta$ has length at most $M-d$; the same holds for rows. Thus its empty complement rook belongs to $\Psi(\mathcal E)$, and the sole value of $F$ is zero. We may now assume $1\le c<M$.
+
+\subsubsection{First sweep: eliminate every rook meeting the bottom row}
+For $y\in C$ in decreasing order, contract the cell $(r_0,y)$ and define
+\[G(\sigma)=F(\sigma\cup\{(r_0,y)\})
+\]
+on $(c-1)$-rooks of the board with that row and column removed. Its line sums are line sums of $F$, so $G\in Z_{c-1}$. The smaller board has size $M-1$ and complement length $(M-1)-(c-1)=L$.
+
+Retain the old conditions and add
+\begin{align*}
+&(\mathrm{column},y+1,1),\\
+&(\mathrm{column},y+1,d+1)
+\quad\text{for each old }(\mathrm{column},\theta,d)\text{ with }\theta\le y.
+\end{align*}
+The first new condition bounds the right region by $L-1$, giving corner fact 1. The second bounds it by $L-(d+1)$ whenever needed. An old column condition with $\theta\le y$ is preserved upon adding the corner because
+\[\max\{L-d,1+L-(d+1)\}=L-d.
+\]
+Old column conditions above $y$ and old row conditions are unaffected by the corner. Thus a canonical rook satisfying the new conditions extends to one in $\Psi(\mathcal E)$, and $G$ vanishes on its new $\Psi$ set.
+
+We must also verify every case of its new $Q$ set. An old condition passes directly to the enlarged rook: the deleted row and column are occupied by the added cell, so the count of unused labels below an old threshold is unchanged.
+
+For a new condition $(\mathrm{column},y+1,e)$, let
+\[U=\{y'\in C:y'<y,\ y'\text{ unused by }\sigma\}.
+\]
+On the contracted board this is exactly the unused set below $y+1$, so $|U|\le e-1$. If $e=1$, there are no such columns. If the condition came from an old $(\mathrm{column},\theta,d)$, then $e=d+1$ and $|U|\le d$. For each $y'\in U$, the enlarged rook $\sigma\cup\{(r_0,y')\}$ has at most $d-1$ unused columns below $\theta$. Indeed, if $y'<\theta$, its occupation removes one member from a subset of $U$; if $y'\ge\theta$, $y'$ itself lies outside that subset, again leaving at most $|U|-1$. Thus every such rook lies in the old $Q$ set.
+
+Now use the row line through $\sigma$ in row $r_0$. Its terms at columns greater than $y$ are zero by the decreasing inner induction. Its terms below $y$ are either absent ($e=1$) or zero by the old $Q$ condition. The only remaining term is $G(\sigma)$, so it is zero. This proves vanishing on the new $Q$ set in all cases. The outer induction on $M$ now gives $G=0$.
+
+Completing the decreasing sweep shows that $F$ vanishes on every rook meeting row $r_0$.
+
+\subsubsection{Second sweep: eliminate every rook meeting the first column}
+Adjoin the condition $(\mathrm{row},r_0+1,1)$ to obtain $\mathcal E^+$. Its new $Q$ rooks are exactly those using row $r_0$: there must be no unused row below $r_0+1$, and that row is the only candidate. They have just been proved zero. Its $\Psi$ set is a subset of the old one. Thus the vanishing assumptions still hold for $\mathcal E^+$.
+
+Sweep $x\in R\setminus\{r_0\}$ in decreasing order. Contract $(x,y_0)$ and keep every old condition in $\mathcal E^+$. For each row condition $(\mathrm{row},\theta,d)$ with $\theta\le x$, add $(\mathrm{row},x+1,d+1)$. In particular the recently added condition produces $(\mathrm{row},x+1,2)$, because $x>r_0$. Therefore the region above $x$ has maximum at most $L-2$, exactly the hypothesis of corner fact 2.
+
+The verification for $\Psi$ is now explicit: row thresholds at most $x$ use the same maximum calculation as in the first sweep; row thresholds above $x$ are unchanged; every column threshold exceeds $y_0$, so excludes the new corner. For $Q$, old conditions pass unchanged. A new condition from deficit $d$ says that there are at most $d$ unused rows below $x$. When any such row $x'$ is occupied instead of $x$, the number unused below its source threshold is at most $d-1$, by the same two cases $x'<\theta$ and $x'\ge\theta$. These terms lie in $Q(\mathcal E^+)$. The column-line equation at $y_0$ then forces the remaining term to zero, since larger rows were handled earlier. The induction on $M$ proves the contracted function zero.
+
+The case $x=r_0$ was already covered by the first sweep. Thus $F$ now vanishes on every rook meeting either row $r_0$ or column $y_0$.
+
+\subsubsection{The remaining smaller board}
+Restrict $F$ to $(R\setminus\{r_0\})\times(C\setminus\{y_0\})$ without changing $c$. A line in this board is an old line minus one term using a removed label; that term is zero, so the restriction has zero line sums.
+
+For every condition in $\mathcal E^+$ with deficit $d\ge2$, keep its side and threshold and replace its deficit by $d-1$. Discard the conditions with deficit one. The smaller complement length is $L-1$.
+
+A permutation on the smaller board satisfying these conditions and having longest length $L-1$ extends by the minimal corner. Corner fact 3 gives longest length $L$ and the same complement rook. Every old threshold excludes that corner. For $d\ge2$ the regional bound is
+\[(L-1)-(d-1)=L-d;
+\]
+for $d=1$ it follows from the whole smaller board having longest length $L-1$. So the restricted function vanishes on the new $\Psi$ set.
+
+If a smaller rook belongs to the new $Q$ set, its unused count below a threshold is at most $d-2$. In the original board the removed minimum label is also unused by this rook and lies below that threshold, increasing the count by exactly one. The resulting count is at most $d-1$, so the rook lies in the old $Q(\mathcal E^+)$. Thus the new $Q$ vanishes too. The induction on $M$ finishes the proof of Lemma~\ref{lem:GP}, and hence of the forcing theorem.
+
+
+\subsection{Triangular realisation and the common correction}\label{sec:realization}
+This is back-substitution in a triangular system with diagonal one:
+each new coefficient is obtained by subtraction, with no division.
+The integral tensor-space centraliser context is discussed in
+\cite{BDM}; the particular realisation required here follows from
+the forcing argument and the recursion below over any commutative ring.
+
+The second ingredient is simpler. If $\rho_g$ lies on the graph of $g'\ne g$, then $g'$ agrees with $g$ outside $I_g$ and permutes the remaining values $g(I_g)$. On $I_g$ the values of $g$ are increasing. At the first column where $g'$ differs, it must use a larger remaining value. Thus $g'$ is lexicographically larger than $g$.
+
+Fix $F\in Z_b(N)$ and let $\mathcal T=\{g:\LIS(g)\ge N-b\}$. Its canonical complement rooks have sizes at most $b$. Define coefficients $a_g$ in decreasing lexicographic order by
+\begin{equation}\label{eq:triangular}
+a_g=\begin{cases}F(\rho_g)&|\rho_g|=b,\\0&|\rho_g|<b\end{cases}
+-\sum_{\substack{g'\in\mathcal T,\ g'\ne g\\\rho_g\subseteq\operatorname{graph}g'}}a_{g'}.
+\end{equation}
+Every coefficient on the right was already defined by the preceding observation. Put $x=\sum_{g\in\mathcal T}a_gg$, and let $H_k=L_k(x)$ for each $k\le b$. The construction makes $H_k$ zero on $\Psi_k$ for $k<b$ and makes $H_b=F$ on $\Psi_b$.
+
+At level zero the only coordinate is the empty rook, and it is prescribed zero when $b>0$. Inductively suppose $H_{k-1}=0$. Equation~\eqref{eq:lines} shows that $H_k$ has zero line sums. For $k<b$, it vanishes on $\Psi_k$, so forcing gives $H_k=0$. At $k=b$, $H_b-F$ has zero line sums and vanishes on $\Psi_b$, so forcing gives $H_b=F$. The case $b=0$ is immediate by a scalar multiple of any permutation.
+
+We have proved that every zero-line-sum rook function is realised by a group-algebra element, and the realising element annihilates all smaller tuple modules. Translating back to matrices proves:
+\begin{theorem}[Realisation of the layer correction]\label{thm:realization}
+For $b\ge1$, every position-equivariant map $\varphi:P_b(N)\to P_b(N)$ with image in $\mathcal Z_b(N)$ and killing $V'$ is the action of an element $j\in J_{b-1}(N)$. No additional labels are required.
+\end{theorem}
+If $b>N$, the tuple space is zero and its only endomorphism is
+realised by $j=0$. The witness construction uses $b\le r<q\le N$.
+
+\begin{example}[Actual permutation coefficients]
+On a $3\times3$ board take
+\[F=\begin{pmatrix}0&1&-1\\1&-1&0\\-1&0&1\end{pmatrix}.
+\]
+The recursion gives coefficients $-1,-1,2,1,-1$ for $312,231,213,132,123$, respectively. Therefore
+\[F=-P_{312}-P_{231}+2P_{213}+P_{132}-P_{123}.
+\]
+Here $P_g$ has its one in row $g(y)$ of column $y$. The coefficients sum to zero, so the action on the empty tuple is zero, as required for $J_0$. Reducing this integer identity modulo two or any odd prime gives the corresponding realisation in that characteristic.
+\end{example}

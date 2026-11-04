@@ -1,0 +1,71 @@
+\section{Conclusion}\label{sec:conclusion}
+The linear bounds arise from a way of comparing bounded-degree algebraic
+calculations across universe sizes. For a fixed uniform request over a
+field of positive characteristic, the construction transports the actual
+axiom, multiplication and target maps. It preserves the linear-space
+operations defining the consequence spaces, including the cancellations
+which make ordinary PC stronger at a given degree. A separate detection
+argument reflects whether the prescribed target belongs to that space.
+Together these steps make the construction apply to uniform consequences,
+with refutation as the target-$1$ special case.
+
+The quantitative gain is a linear onset and a linearly bounded prime-power
+period for each degree threshold. Repeated lifting keeps the numerical
+degree fixed while the universe grows. A nonrecurring degree can therefore
+occur only before its own onset; the period bound also locates recurring
+large degrees at proportionate universe sizes. This gives bounded degree
+in $\mathrm T_1$, linear hardness at finite values in $\mathrm T_2$, linear
+hardness on the hard residues in $\mathrm T_3$, and finite linear peaks
+with a finite liminf in $\mathrm T_4$. Underivable requests retain degree
+$\infty$, and the stated initial exceptions remain part of the results.
+
+The linear degree lower bound is sharp in general. The injection example has matching
+$\Theta(n)$ degrees for both systems, and the weak-bijection example has
+finite $\Theta(n)$ peaks; its degree-one target extension has the same
+peak behaviour. These witnesses establish optimality of the general
+degree lower bound, while the theorem leaves the individual upper bounds to the
+particular uniform request.
+
+The uniform NS--PC comparison shows that these patterns belong to the
+request itself: both systems assign it the same type, even when their
+minimum degrees differ. Their common hardness spectrum gives the same
+four alternatives as topological shapes in $\mathbb Z_p$, for all
+uniform requests. With full explicit coefficient lists, including
+zeros, the degree results give the stated polynomial upper bounds and
+exponential size lower bounds. The first-order refutation subcase connects
+this algebraic classification to logic: explicit reductions separate
+any two types under the no-finite-model promise already stated in
+LICS~2008~\cite[Theorem~1]{Riis}, refining its every-union result.
+Thus the stronger quantitative bounds preserve the four-way
+structure of the earlier classification while extending its algebraic
+scope.
+
+\paragraph{Proof sources and verification.}
+The archive \texttt{degree-profiles-lean-source.zip} supplies the
+curated proof sources, pinned Lean~4.26.0 and mathlib dependency data,
+and the source, statement, axiom and import-closure audit commands
+and their recorded execution provenance. The core degree, comparison,
+classification and undecidability endpoints have Lean proofs; the
+archive identifies their exact types and assumptions. The injection
+upper certificate, the optimality deductions and the size presentation
+are written arguments. The topological corollary in
+Section~\ref{sec:model-theory} is likewise a written deduction from
+periodicity, comparison and compactness of $\mathbb Z_p$; it is not
+an addition to the Lean formalisation. Recorded fresh replay covers the named import
+closures, with separately compiled scope adapters distinguished in the
+evidence; it is not a fresh replay of every package module.
+
+\paragraph{Acknowledgements.}
+I used the AI systems Astra and Claude for sustained proof search,
+formalisation, verification support and development of the exposition,
+under my mathematical direction and editorial supervision. The proof
+search built on my 53-page 2009 manuscript~\cite{RiisLong} and my
+unpublished notes on the problem. I supplied these sources, set the
+research programme, and checked and revised the arguments and their
+presentation. The human work in proof complexity,
+model theory, modular representation theory and algebraic combinatorics
+cited throughout the paper provides important antecedents and connections,
+including~\cite{NSFoundations,PCFoundations,Ajtai,Krajicek,KrajEuler,
+BussDesign,BeameRiis,RiisSitharamTautologies,RiisSitharamModules,
+CEF,Harman,HKPSYZ,BDM}. Responsibility
+for the statements, interpretation, attribution and final text remains mine.

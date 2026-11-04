@@ -1,0 +1,159 @@
+Sat Sep 26 19:54:18 UTC 2026
+✔ [1625/1632] Built BLemmaD (12s)
+⚠ [1626/1632] Built DCPRook (14s)
+warning: DCPRook.lean:90:12: unused variable `p`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: DCPRook.lean:102:8: unused variable `q`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: DCPRook.lean:190:64: unused variable `h`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: DCPRook.lean:224:12: unused variable `q`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: DCPRook.lean:229:12: unused variable `q`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: DCPRook.lean:380:6: unused variable `w`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [1627/1633] Built BCor6 (9.2s)
+✔ [1628/1633] Built BProp4 (9.9s)
+✔ [1629/1633] Built BLemmaL (4.5s)
+✔ [1630/1634] Built BLabel (2.7s)
+✔ [1631/1634] Built ForceInterface (1.9s)
+✔ [1632/1733] Built DegreeProfilesReview.BasisSystems (3.1s)
+✔ [1950/1958] Built BRealise (3.1s)
+✔ [1953/1958] Built DegreeProfilesReview.StablePartitions (3.0s)
+✔ [1955/1962] Built DegreeProfilesReview.MonoidalCompat (1.8s)
+✔ [1957/1965] Built DegreeProfilesReview.PCTransport (5.0s)
+✔ [1960/1966] Built DegreeProfilesReview.SerreDescent (2.7s)
+✔ [1961/1968] Built DegreeProfilesReview.ImageClosure (2.4s)
+✔ [1963/1982] Built DegreeProfilesReview.ClosedSubcategory (3.1s)
+✔ [1976/1982] Built DegreeProfilesReview.DeletionInterface (6.6s)
+✔ [1978/1982] Built DegreeProfilesReview.PolynomialCalculus (2.5s)
+✔ [1979/1982] Built DegreeProfilesReview.SymRep (5.0s)
+✔ [1980/2009] Built DegreeProfilesReview.PCClosure (4.9s)
+✔ [2020/2041] Built DegreeProfilesReview.ConcreteM4 (3.7s)
+✔ [2026/2041] Built DegreeProfilesReview.DegreeProfiles (3.5s)
+✔ [2034/2093] Built DegreeProfilesReview.LinearBounds (4.3s)
+✔ [2554/2646] Built DegreeProfilesReview.Nullstellensatz (5.1s)
+✔ [3316/3333] Built DegreeProfilesReview.FieldDescent (6.7s)
+✔ [3318/3333] Built ReflexiveAdjustment (6.7s)
+✔ [3319/3335] Built DegreeProfilesReview.Templates (3.0s)
+✔ [3320/3335] Built ResidualSplitting (4.8s)
+✔ [3321/3339] Built DegreeProfilesReview.TemplateExample (4.6s)
+✔ [3323/3339] Built DegreeProfilesReview.DeletionLinear (13s)
+✔ [3325/3339] Built DegreeProfilesReview.PermFromTuples (5.1s)
+✔ [3326/3340] Built DegreeProfilesReview.ShiftedLinear (14s)
+✔ [3328/3340] Built CanonicalClass (5.4s)
+⚠ [3329/3340] Built BBridge (9.5s)
+warning: BBridge.lean:132:26: `Equiv.Perm.inv_apply_self` has been deprecated: Use `Equiv.symm_apply_apply` instead
+
+Note: The updated constant has a different type:
+  ∀ {α : Sort u} {β : Sort v} (e : α ≃ β) (x : α), e.symm (e x) = x
+instead of
+  ∀ {α : Type u_4} (f : Equiv.Perm α) (x : α), f⁻¹ (f x) = x
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.inv_apply_self` to `Equiv.symm_apply_apply x`).
+warning: BBridge.lean:136:26: `Equiv.Perm.apply_inv_self` has been deprecated: Use `Equiv.apply_symm_apply` instead
+
+Note: The updated constant has a different type:
+  ∀ {α : Sort u} {β : Sort v} (e : α ≃ β) (x : β), e (e.symm x) = x
+instead of
+  ∀ {α : Type u_4} (f : Equiv.Perm α) (x : α), f (f⁻¹ x) = x
+
+Note: The updated constant is in a different namespace. Dot notation may need to be changed (e.g., from `x.apply_inv_self` to `Equiv.apply_symm_apply x`).
+✔ [3330/3340] Built DegreeProfilesReview.DeletionTensor (34s)
+✔ [3332/3340] Built RestrictionRelations (7.3s)
+✔ [3333/3340] Built DegreeProfilesReview.ShiftedFree (11s)
+✔ [3334/3340] Built DegreeProfilesReview.DeletionFunctor (19s)
+✔ [3335/3340] Built C017Localize (11s)
+✔ [3336/3340] Built DegreeProfilesReview.ShiftedElemAb (7.6s)
+✔ [3337/3349] Built DegreeProfilesReview.ShiftedTensor (41s)
+✔ [3338/3351] Built C017Compression (19s)
+✔ [3339/3385] Built DegreeProfilesReview.ShiftedFunctor (16s)
+✔ [3364/3385] Built DegreeProfilesReview.PCTensorForm (4.1s)
+✔ [3368/3385] Built InnerInverseProjection (2.5s)
+✔ [3369/3385] Built MinimalTransfer (3.7s)
+✔ [3370/3385] Built DegreeProfilesReview.ConcreteDatum (9.7s)
+✔ [3371/3385] Built HomologyProjection (3.9s)
+✔ [3372/3385] Built ShiftedProjection (4.2s)
+✔ [3373/3385] Built DegreeProfilesReview.TemplateMatrices (6.3s)
+✔ [3374/3398] Built ProjectorExactness (2.6s)
+✔ [3378/3398] Built BitPairMatrix (3.1s)
+✔ [3379/3398] Built SparseRectangular (2.0s)
+✔ [3380/3403] Built DegreeProfilesReview.TemplateCompat (6.7s)
+✔ [3381/3405] Built DegreeProfilesReview.TemplatePeriodicity (2.0s)
+✔ [3383/3405] Built TopTupleTest (3.2s)
+✔ [3384/3405] Built DegreeProfilesReview.WeakInterface (4.9s)
+✔ [3385/3405] Built PolynomialInnerInverse (4.5s)
+✔ [3386/3405] Built TemplateExactTransfer (4.1s)
+✔ [3387/3405] Built DegreeProfilesReview.ConcreteM5 (13s)
+✔ [3388/3405] Built ImageCompression (2.4s)
+✔ [3389/3405] Built DegreeProfilesReview.BlockGroupExample (2.8s)
+✔ [3390/3411] Built EmbeddingCompression (2.2s)
+✔ [3391/3411] Built DegreeProfilesReview.ShiftedM5 (16s)
+✔ [3392/3411] Built RankThreeInverseData (75s)
+✔ [3393/3411] Built ShiftedPreservation (5.9s)
+✔ [3394/3411] Built C017Auxiliary (20s)
+✔ [3395/3411] Built RankThreeMatrixInverse (2.3s)
+✔ [3396/3413] Built RankThreeRowData (1.0s)
+✔ [3397/3413] Built ShiftedAdditive (3.0s)
+✔ [3398/3413] Built RankThreeNonvacuity (2.4s)
+✔ [3399/3413] Built RankTwoCertificate (70s)
+✔ [3400/3413] Built RawTripleEncoding (3.3s)
+✔ [3402/3413] Built RankTwoIdentity (3.7s)
+✔ [3403/3417] Built RankThreeRowCertificate (33s)
+✔ [3405/3417] Built RankTwoParameters (4.1s)
+✔ [3406/3417] Built RawTripleAction (14s)
+✔ [3408/3420] Built RankThreeCoordinateIdentities (2.3s)
+✔ [3410/3420] Built RankThreePrototypeAction (4.4s)
+✔ [3413/3421] Built RankTwoActionRelation (10s)
+✔ [3416/3432] Built RankTwoRelabel (8.5s)
+✔ [3426/3437] Built FiniteGroupAlgebra (4.6s)
+✔ [3427/3437] Built RankThreeActualRelation (22s)
+✔ [3429/3437] Built TopPowerProjection (6.5s)
+✔ [3430/3439] Built PAuxiliary (16s)
+✔ [3431/3439] Built TopPowerExactness (10s)
+✔ [3432/3451] Built DegreeProfilesReview.TypeTransfer (2.7s)
+✔ [3433/3453] Built RankThreeTransport (34s)
+✔ [3434/3455] Built BTranspose (3.2s)
+✔ [3435/3458] Built DCPBridge (5.6s)
+✔ [3436/3458] Built ClaudeWitnessTransfer (7.7s)
+⚠ [3437/3458] Built DCPCanon (2.9s)
+warning: DCPCanon.lean:43:6: unused variable `p`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: DCPCanon.lean:43:8: unused variable `q`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [3438/3458] Built DCPHalf2 (5.3s)
+✔ [3440/3463] Built PTransfer (16s)
+✔ [3441/3463] Built RForceBase (4.0s)
+✔ [3442/3463] Built RForceGP (7.3s)
+✔ [3443/3463] Built C017Induction (25s)
+✔ [3444/3463] Built RForce (2.3s)
+✔ [3445/3463] Built C017Final (16s)
+✔ [3446/3463] Built PInduction (22s)
+✔ [3447/3463] Built C017Rates (13s)
+✔ [3448/3463] Built C017TypeAgreement (6.6s)
+✔ [3449/3463] Built PFinal (12s)
+✔ [3450/3463] Built LinearInterface (5.3s)
+✔ [3451/3463] Built BThm7 (11s)
+✔ [3452/3463] Built BLayer (10s)
+✔ [3453/3463] Built DCPInterface (12s)
+✔ [3454/3463] Built BThm5 (27s)
+✔ [3455/3463] Built BTransC (22s)
+✔ [3456/3463] Built BProp6Red (11s)
+✔ [3457/3463] Built BProp6 (12s)
+✔ [3458/3463] Built BFinal (3.8s)
+✔ [3459/3463] Built DCPFinal (3.5s)
+✔ [3460/3463] Built DCPFinal2 (3.6s)
+✔ [3461/3463] Built FinalLinear (3.8s)
+✔ [3462/3463] Built LinearFinal (3.5s)
+Build completed successfully (3463 jobs).
+EXIT 0
+Sat Sep 26 20:04:37 UTC 2026

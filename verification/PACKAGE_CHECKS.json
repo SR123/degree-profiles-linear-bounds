@@ -1,0 +1,22 @@
+{
+  "date": "2026-11-04",
+  "scope": "File consistency and preserved-audit checks only; no fresh Lean compilation or replay.",
+  "checks": [
+    {
+      "command": "python3 -B scripts/verify_package.py",
+      "working_directory": "lean",
+      "exit_code": 0,
+      "output": "PASS: 305 checksums, 199 Lean modules, all local imports resolve, no local cycles.\nNo Lean build or kernel replay was performed by this command.\n"
+    },
+    {
+      "command": "python3 -B scripts/check_audit_outputs.py evidence/producer_release_audit_2026-10-13/extracted",
+      "working_directory": "lean",
+      "exit_code": 0,
+      "output": "PASS: 164 targeted standard-foundation-only axiom reports and 102 expected dependency reports.\nThese checks cover the named audit declarations; they do not certify every manuscript sentence or every package declaration.\n"
+    },
+    {
+      "check": "Paper matches current 77-page editorial PDF; tutorial matches reviewed 193-page PDF; unchanged Lean/tutorial files; README links",
+      "result": "PASS"
+    }
+  ]
+}

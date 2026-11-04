@@ -1,0 +1,377 @@
+# Source/import manifest: every Lean module in lean/ (the import closure of UAudit)
+# sha256  path
+#     origin (identical bytes).  project: = relative to the project root
+#     Nullstellensatz_Polynomial_Calculus_2026; canonical: = relative to its 06_Lean_Review/;
+#     return: = relative to the Claude return root; NEW = written for this return.
+3b9916655af6cb02a43fbbb0b3bc7f31d19f91c38cf90331b4499673f9a5d155  UFOSyntax.lean
+    origin: NEW (this return)
+98dbee867c4af2604d389eed27aed86ada4e3a0859bb67b6ec4f2e40f03aa152  DegreeProfilesReview/BasisSystems.lean
+    origin: canonical:./Cycle_036/lean_stage2/DegreeProfilesReview/BasisSystems.lean; canonical:./Cycle_036/lean_stage3/DegreeProfilesReview/BasisSystems.lean; canonical:./Cycle_036/lean_stage4/DegreeProfilesReview/BasisSystems.lean
+3e3282f88598f98479fd381c98d70009f6e94d172f0eb0816e96159298f68440  DegreeProfilesReview/PolynomialCalculus.lean
+    origin: canonical:./Cycle_036/lean/DegreeProfilesReview/PolynomialCalculus.lean; canonical:./Cycle_036/lean_stage2/DegreeProfilesReview/PolynomialCalculus.lean; canonical:./Cycle_036/lean_stage3/DegreeProfilesReview/PolynomialCalculus.lean
+8bcf6a2641cc93be6c20a0f1a55419291b8fa1e1813cc60ae38c623e16fc6f5f  DegreeProfilesReview/PCClosure.lean
+    origin: canonical:./Cycle_036/lean/DegreeProfilesReview/PCClosure.lean; canonical:./Cycle_036/lean_stage2/DegreeProfilesReview/PCClosure.lean; canonical:./Cycle_036/lean_stage3/DegreeProfilesReview/PCClosure.lean
+a9b77589e3d7fec4469bdf247c4d029afea6717a2d665a402adb1c725c5b6cf1  DegreeProfilesReview/Nullstellensatz.lean
+    origin: canonical:./Cycle_036/lean/DegreeProfilesReview/Nullstellensatz.lean; canonical:./Cycle_036/lean_stage2/DegreeProfilesReview/Nullstellensatz.lean; canonical:./Cycle_036/lean_stage3/DegreeProfilesReview/Nullstellensatz.lean
+228357bd431eab3ea0f00ebf007e1fb7a55c55de852f62878e692358a9512536  DegreeProfilesReview/FieldDescent.lean
+    origin: canonical:./Cycle_036/lean/DegreeProfilesReview/FieldDescent.lean; canonical:./Cycle_036/lean_stage2/DegreeProfilesReview/FieldDescent.lean; canonical:./Cycle_036/lean_stage3/DegreeProfilesReview/FieldDescent.lean
+9e1a2762e58b3e3eb0625109c8177a29a8547dcd9a0cafd346b025cebc591e0b  DegreeProfilesReview/DegreeProfiles.lean
+    origin: canonical:./Cycle_036/lean/DegreeProfilesReview/DegreeProfiles.lean; canonical:./Cycle_036/lean_stage2/DegreeProfilesReview/DegreeProfiles.lean; canonical:./Cycle_036/lean_stage3/DegreeProfilesReview/DegreeProfiles.lean
+c6eff5d5b5fa968c744b365171579429f37ff127a6fc11d405cf96c21eff56df  DegreeProfilesReview/LinearBounds.lean
+    origin: canonical:./Cycle_036/lean/DegreeProfilesReview/LinearBounds.lean; canonical:./Cycle_036/lean_stage2/DegreeProfilesReview/LinearBounds.lean; canonical:./Cycle_036/lean_stage3/DegreeProfilesReview/LinearBounds.lean
+99e77a4ee7f7594b2184fd08657427abeb7629f5eaecce5090729edad766af25  DegreeProfilesReview/Templates.lean
+    origin: canonical:./Cycle_036/lean_stage2/DegreeProfilesReview/Templates.lean; canonical:./Cycle_036/lean_stage3/DegreeProfilesReview/Templates.lean; canonical:./Cycle_036/lean_stage4/DegreeProfilesReview/Templates.lean
+bbcb0fd1ed7839fa97cd2d5d26230e283bb9980fb9e8a014712b6c06d79e2787  DegreeProfilesReview/TemplateExample.lean
+    origin: canonical:./Cycle_036/lean_stage2/DegreeProfilesReview/TemplateExample.lean; canonical:./Cycle_036/lean_stage3/DegreeProfilesReview/TemplateExample.lean; canonical:./Cycle_036/lean_stage4/DegreeProfilesReview/TemplateExample.lean
+8109e6561c519fa3c3075c48f75573367806827ffd4ce1a3841cebbeae378c3c  UFOCompile.lean
+    origin: NEW (this return)
+073c9ee98c8f85ae26afcd9be9cec55df8f34798fa132299c2ed391baf60fe81  UFORoots.lean
+    origin: NEW (this return)
+fd1d889012a03aa43079ed494bf253c8109c0e841f07a7fa2f969e26bb1daa57  UNSTools.lean
+    origin: NEW (this return)
+29b0aeb62ad3ec08e3c74bd2a79c8a6cd0f91080bd980bb53fbf896248fc5115  UConj.lean
+    origin: NEW (this return)
+dba47bad63b524b905e366145815e2667ca5f7df1c9cefd9781418c0946742f4  UHerbrand.lean
+    origin: NEW (this return)
+f1ee7e4b20c04a94b8bb982d5a25eeadfd531d2fdcf2d2c3c34aa38fc019741e  DegreeProfilesReview/StablePartitions.lean
+    origin: canonical:./Cycle_036/lean/DegreeProfilesReview/StablePartitions.lean; canonical:./Cycle_036/lean_stage2/DegreeProfilesReview/StablePartitions.lean; canonical:./Cycle_036/lean_stage3/DegreeProfilesReview/StablePartitions.lean
+2ec1ab28f99291bdb428885b8517b55f9cb8fac8c6196ccfbbf74f4db101504e  DegreeProfilesReview/SerreDescent.lean
+    origin: canonical:./Cycle_036/lean/DegreeProfilesReview/SerreDescent.lean; canonical:./Cycle_036/lean_stage2/DegreeProfilesReview/SerreDescent.lean; canonical:./Cycle_036/lean_stage3/DegreeProfilesReview/SerreDescent.lean
+5ae6d1ae1b3ad80abbdc71feb974d0930c3b15b3607f0efe7a3a06eecfd09e5c  DegreeProfilesReview/PCTransport.lean
+    origin: canonical:./Cycle_036/lean/DegreeProfilesReview/PCTransport.lean; canonical:./Cycle_036/lean_stage2/DegreeProfilesReview/PCTransport.lean; canonical:./Cycle_036/lean_stage3/DegreeProfilesReview/PCTransport.lean
+19376e558628c63bf215710510257212af71887ca2ec36b796e86d90cf128a78  DegreeProfilesReview/MonoidalCompat.lean
+    origin: canonical:./Cycle_036/lean/DegreeProfilesReview/MonoidalCompat.lean; canonical:./Cycle_036/lean_stage2/DegreeProfilesReview/MonoidalCompat.lean; canonical:./Cycle_036/lean_stage3/DegreeProfilesReview/MonoidalCompat.lean
+68b5c05ef06630171af326ae6f3aaef4d275cbe6683946a9572b1008ee8c384e  DegreeProfilesReview/DeletionInterface.lean
+    origin: canonical:./Cycle_036/lean_stage2/DegreeProfilesReview/DeletionInterface.lean; canonical:./Cycle_036/lean_stage3/DegreeProfilesReview/DeletionInterface.lean; canonical:./Cycle_036/lean_stage4/DegreeProfilesReview/DeletionInterface.lean
+0d203e8768da6148fc84149eb8a005f492e071735557d3539c52a41c7e2162a4  DegreeProfilesReview/SymRep.lean
+    origin: canonical:./Cycle_036/lean_stage3/DegreeProfilesReview/SymRep.lean; canonical:./Cycle_036/lean_stage4/DegreeProfilesReview/SymRep.lean; canonical:./Cycle_036/lean_stage5/DegreeProfilesReview/SymRep.lean
+c75fa5af1c85167c53ecd6d67f8b8bbf7c523f56634d83a1ef4f777e90358ded  DegreeProfilesReview/ImageClosure.lean
+    origin: canonical:./Cycle_036/lean/DegreeProfilesReview/ImageClosure.lean; canonical:./Cycle_036/lean_stage2/DegreeProfilesReview/ImageClosure.lean; canonical:./Cycle_036/lean_stage3/DegreeProfilesReview/ImageClosure.lean
+4ed7f11d3607be94f8682a37fa83752d909ba1a9780692191a42197b440ec548  DegreeProfilesReview/ClosedSubcategory.lean
+    origin: canonical:./Cycle_036/lean_stage3/DegreeProfilesReview/ClosedSubcategory.lean; canonical:./Cycle_036/lean_stage4/DegreeProfilesReview/ClosedSubcategory.lean; canonical:./Cycle_036/lean_stage5/DegreeProfilesReview/ClosedSubcategory.lean
+a333a367a425ae140577dde1617e615f8be6154f5849944d9962a8d9db45a959  DegreeProfilesReview/ConcreteM4.lean
+    origin: canonical:./Cycle_036/lean_stage3/DegreeProfilesReview/ConcreteM4.lean; canonical:./Cycle_036/lean_stage4/DegreeProfilesReview/ConcreteM4.lean; canonical:./Cycle_036/lean_stage5/DegreeProfilesReview/ConcreteM4.lean
+108bf4ec2d75fdae4be82fe05bd3857b67a8bcd4cc4a2dd932751ce4f680e6d9  DegreeProfilesReview/PermFromTuples.lean
+    origin: canonical:./Cycle_036/lean_stage3/DegreeProfilesReview/PermFromTuples.lean; canonical:./Cycle_036/lean_stage4/DegreeProfilesReview/PermFromTuples.lean; canonical:./Cycle_036/lean_stage5/DegreeProfilesReview/PermFromTuples.lean
+587e9f2f0fc955d93fa6691b36b34428ed89b292fd06ece72fc6600f0148cbec  CanonicalClass.lean
+    origin: canonical:./Self_Contained_Linear_Bound/Claude_RankTwo_Final_2026-09-21/lean/CanonicalClass.lean; canonical:./Self_Contained_Linear_Bound/Cycle_003/CanonicalClass.lean
+fcfb48f6e8cb70b197b2ae81fd440d2ee2c55a5d24f758c897184e76733608c6  RestrictionRelations.lean
+    origin: canonical:./Self_Contained_Linear_Bound/Cycle_004/RestrictionRelations.lean
+5c3a7741a5fad6d6b3c0b717f329369376de88fa9b29aa642a15c05e3add6d5d  ReflexiveAdjustment.lean
+    origin: canonical:./Self_Contained_Linear_Bound/Cycle_017/ReflexiveAdjustment.lean
+ee04f03ac409e953de246f0a4517f4d6e1e1973b8fa1496f5fbc39768445dffc  ResidualSplitting.lean
+    origin: canonical:./Self_Contained_Linear_Bound/Cycle_017/ResidualSplitting.lean
+b8a1068c5a60b5d924c6283c17599ed72617702d57ac2b185fd3c7984d7d9bc1  C017Localize.lean
+    origin: canonical:./Self_Contained_Linear_Bound/Cycle_087/claude_cycle017_return/lean/C017Localize.lean; return:cycle017_lean_2026-09-25/lean/C017Localize.lean
+6153279692efdbf07fc588e7738111baf0fa76bfa30462a0d667273604a5f3ee  C017Compression.lean
+    origin: canonical:./Self_Contained_Linear_Bound/Cycle_087/claude_cycle017_return/lean/C017Compression.lean; return:cycle017_lean_2026-09-25/lean/C017Compression.lean
+662e4c0a68002d2dfc13009e060bbc623addadc1cddecea12b31fa6071876348  DegreeProfilesReview/DeletionLinear.lean
+    origin: canonical:./Cycle_036/lean_stage3/DegreeProfilesReview/DeletionLinear.lean; canonical:./Cycle_036/lean_stage4/DegreeProfilesReview/DeletionLinear.lean; canonical:./Cycle_036/lean_stage5/DegreeProfilesReview/DeletionLinear.lean
+20159f2b4b6738a671f1dd1bc738feb537e5e7a776d96a05944dbb3bfd133f4d  DegreeProfilesReview/ShiftedLinear.lean
+    origin: canonical:./Cycle_036/lean_stage5/DegreeProfilesReview/ShiftedLinear.lean
+f90a4988314e10e88931576626ca848c87229dbd1286d64203fa0414b4d56df7  DegreeProfilesReview/DeletionTensor.lean
+    origin: canonical:./Cycle_036/lean_stage3/DegreeProfilesReview/DeletionTensor.lean; canonical:./Cycle_036/lean_stage4/DegreeProfilesReview/DeletionTensor.lean; canonical:./Cycle_036/lean_stage5/DegreeProfilesReview/DeletionTensor.lean
+e6bc4bb39206838970d56e480ed658b3f57e5437eae352cae91b2a80396f0eda  DegreeProfilesReview/ShiftedTensor.lean
+    origin: canonical:./Cycle_036/lean_stage5/DegreeProfilesReview/ShiftedTensor.lean
+48e497f4afa6e9255a02f5f7f5ec6fc2573fb31da6d7665b95a2519e8bfb4887  DegreeProfilesReview/ShiftedFunctor.lean
+    origin: canonical:./Cycle_036/lean_stage5/DegreeProfilesReview/ShiftedFunctor.lean
+838c217718a941df021a327fb7f66628fd5331f6c8f191025c18e070318039fe  DegreeProfilesReview/ShiftedFree.lean
+    origin: canonical:./Cycle_036/lean_stage5/DegreeProfilesReview/ShiftedFree.lean
+c23d10a62b8d34faf78da637344e49400ba7aa937b6b71a9e2ffeda51f8b68d3  DegreeProfilesReview/ShiftedElemAb.lean
+    origin: canonical:./Cycle_036/lean_stage5/DegreeProfilesReview/ShiftedElemAb.lean
+a7f289f5c4844a5e672a4f91d722fba6f3d1c791ca410f791808fd737f9430e2  DegreeProfilesReview/DeletionFunctor.lean
+    origin: canonical:./Cycle_036/lean_stage3/DegreeProfilesReview/DeletionFunctor.lean; canonical:./Cycle_036/lean_stage4/DegreeProfilesReview/DeletionFunctor.lean; canonical:./Cycle_036/lean_stage5/DegreeProfilesReview/DeletionFunctor.lean
+d35d73d79dcbe6323a43540a34d53e0266d76d824c9a691d63f815a1b3afd4d4  DegreeProfilesReview/PCTensorForm.lean
+    origin: canonical:./Cycle_036/lean/DegreeProfilesReview/PCTensorForm.lean; canonical:./Cycle_036/lean_stage2/DegreeProfilesReview/PCTensorForm.lean; canonical:./Cycle_036/lean_stage3/DegreeProfilesReview/PCTensorForm.lean
+58328c55d31844b584365057f201ffb0574aef2e2f9617e14cc9e9ab2c5c897f  DegreeProfilesReview/ConcreteDatum.lean
+    origin: canonical:./Cycle_036/lean_stage2/DegreeProfilesReview/ConcreteDatum.lean; canonical:./Cycle_036/lean_stage3/DegreeProfilesReview/ConcreteDatum.lean; canonical:./Cycle_036/lean_stage4/DegreeProfilesReview/ConcreteDatum.lean
+3515b648c46b9164c8da00f6370b030807e2bbca1eee3378fd3c6eca05b92f6d  DegreeProfilesReview/TemplateMatrices.lean
+    origin: canonical:./Cycle_036/lean_stage2/DegreeProfilesReview/TemplateMatrices.lean; canonical:./Cycle_036/lean_stage3/DegreeProfilesReview/TemplateMatrices.lean; canonical:./Cycle_036/lean_stage4/DegreeProfilesReview/TemplateMatrices.lean
+3f95be028c11025326cf57c94c7937ea3580ee1b97ef626e61cdbe99d64f4e2a  DegreeProfilesReview/TemplateCompat.lean
+    origin: canonical:./Cycle_036/lean_stage2/DegreeProfilesReview/TemplateCompat.lean; canonical:./Cycle_036/lean_stage3/DegreeProfilesReview/TemplateCompat.lean; canonical:./Cycle_036/lean_stage4/DegreeProfilesReview/TemplateCompat.lean
+af56fae8b35a42fcfbcd7395ce7c32fb5ecbb647f9867bc0382c4b0df3c96d59  DegreeProfilesReview/TemplatePeriodicity.lean
+    origin: canonical:./Cycle_036/lean_stage2/DegreeProfilesReview/TemplatePeriodicity.lean; canonical:./Cycle_036/lean_stage3/DegreeProfilesReview/TemplatePeriodicity.lean; canonical:./Cycle_036/lean_stage4/DegreeProfilesReview/TemplatePeriodicity.lean
+8661a19d2515af18d99f520fead86850e8d1f78dd64d6c71dc67fabd5802487d  DegreeProfilesReview/WeakInterface.lean
+    origin: canonical:./Cycle_036/lean_stage3/DegreeProfilesReview/WeakInterface.lean; canonical:./Cycle_036/lean_stage4/DegreeProfilesReview/WeakInterface.lean; canonical:./Cycle_036/lean_stage5/DegreeProfilesReview/WeakInterface.lean
+bc5422c5b32ab1bec131eb29dccbff81efb3c7222d0099c81d9e48f8f4d6c5d1  DegreeProfilesReview/ConcreteM5.lean
+    origin: canonical:./Cycle_036/lean_stage3/DegreeProfilesReview/ConcreteM5.lean; canonical:./Cycle_036/lean_stage4/DegreeProfilesReview/ConcreteM5.lean; canonical:./Cycle_036/lean_stage5/DegreeProfilesReview/ConcreteM5.lean
+53913ce31ad170d9d9a501c3ee4e41c4ac30dca4463cc16d2a05c5c136d8ab1f  DegreeProfilesReview/BlockGroupExample.lean
+    origin: canonical:./Cycle_036/lean_stage3/DegreeProfilesReview/BlockGroupExample.lean; canonical:./Cycle_036/lean_stage4/DegreeProfilesReview/BlockGroupExample.lean; canonical:./Cycle_036/lean_stage5/DegreeProfilesReview/BlockGroupExample.lean
+a1db11a895b37ed45b533ff51c005e07aacbce2ae16b71042cfcac204a69f3ac  DegreeProfilesReview/ShiftedM5.lean
+    origin: canonical:./Cycle_036/lean_stage5/DegreeProfilesReview/ShiftedM5.lean
+9c11803967600ab53f133a3fb4b85dec23ec67e874a3bc342c14f19b15d4afe6  C017Auxiliary.lean
+    origin: canonical:./Self_Contained_Linear_Bound/Cycle_087/claude_cycle017_return/lean/C017Auxiliary.lean; return:cycle017_lean_2026-09-25/lean/C017Auxiliary.lean
+8ab26ffba5973733006265b41bfc2bb573590f342c5d3de11bcde45a4276d6e0  MinimalTransfer.lean
+    origin: canonical:./Self_Contained_Linear_Bound/Claude_Exactness_Handoff_2026-09-21/MinimalTransfer.lean
+fc324e89ea2703f79e5c6cf318e4263e6fbab1ff33442db1cb17d6e5f5fe6c7a  TemplateExactTransfer.lean
+    origin: canonical:./Self_Contained_Linear_Bound/Cycle_013/TemplateExactTransfer.lean
+58cba7822565fde635fa8a318abddbdc8d61f51618f24a34433eb13bc3a2fb22  ShiftedPreservation.lean
+    origin: canonical:./Self_Contained_Linear_Bound/Cycle_004/ShiftedPreservation.lean
+f1ebcb605400d21b0356ca18ec19a269e5d0e7acbbc967599931806cf852c227  ShiftedAdditive.lean
+    origin: canonical:./Self_Contained_Linear_Bound/Cycle_013/ShiftedAdditive.lean
+bb959c2518258b1e83bda1d6369212dc29bbd22140d258b5eaeb6fa2f4f31b59  InnerInverseProjection.lean
+    origin: canonical:./Self_Contained_Linear_Bound/Cycle_012/InnerInverseProjection.lean
+92fa29ee9c4c383422dd54c90fdd65190b4166483a0163234520f00f49e865cc  HomologyProjection.lean
+    origin: canonical:./Self_Contained_Linear_Bound/Cycle_012/HomologyProjection.lean
+bea9c59df3f4887ec3c9e808a0ea47f7ad9efa464829e79e4df0805d27e4bc83  ProjectorExactness.lean
+    origin: canonical:./Self_Contained_Linear_Bound/Cycle_013/ProjectorExactness.lean
+bf1dbbbb4e0e402bfa1d35c744fee903fecc5bd5f5e84522eec85bafb999bb85  ShiftedProjection.lean
+    origin: canonical:./Self_Contained_Linear_Bound/Cycle_012/ShiftedProjection.lean
+495e7fb53355d29f835f17fa6e31c7fa1a712c47d0b1113abc1fcbae8a2090dc  BitPairMatrix.lean
+    origin: canonical:./Self_Contained_Linear_Bound/Cycle_009/BitPairMatrix.lean
+7ab07e32bdcae5d057e48a6f20984a6fc2c3d653bca9f474498c80cf958ba798  RankThreeInverseData.lean
+    origin: canonical:./Self_Contained_Linear_Bound/Cycle_009/RankThreeInverseData.lean
+ecb90a163c25116bae56c81fc4d4714d01547ba8b75d3c778d5de4c88cf1b256  RankThreeRowData.lean
+    origin: canonical:./Self_Contained_Linear_Bound/Cycle_010/RankThreeRowData.lean
+c2cb81448074491abc0b8bc26ed0c853c11745d98ea96c78d2635ae34b3382b6  RawTripleEncoding.lean
+    origin: canonical:./Self_Contained_Linear_Bound/Cycle_010/RawTripleEncoding.lean
+36e0e37e94a9d2d5b2fab2b445a87090f1751abf35e786970dabce3eec993b63  RawTripleAction.lean
+    origin: canonical:./Self_Contained_Linear_Bound/Cycle_010/RawTripleAction.lean
+7af9ffb1639caacf49f5625ad903eeac299984ba2a00712384be955098e69c16  SparseRectangular.lean
+    origin: canonical:./Self_Contained_Linear_Bound/Cycle_010/SparseRectangular.lean
+f17717aba4a5ffc8d5f28425c9451694c14472b1c7510ed5f20a56e9f0bd244f  RankThreeRowCertificate.lean
+    origin: canonical:./Self_Contained_Linear_Bound/Cycle_010/RankThreeRowCertificate.lean
+4080447ce558f374e25352b27b5bb1bf8fe94423ca8c31a53cde4278ee18d67e  RankThreeMatrixInverse.lean
+    origin: canonical:./Self_Contained_Linear_Bound/Cycle_009/RankThreeMatrixInverse.lean
+9fcbf3091152fce39f6245bd2dfbd868e734020bad64cd4da3b8a01dd4629cd3  RankThreeCoordinateIdentities.lean
+    origin: canonical:./Self_Contained_Linear_Bound/Cycle_010/RankThreeCoordinateIdentities.lean
+3bea4f8a383171e89b8df599cc3129ed7c5bc554b661512a016ed9ae71593ea4  RankThreePrototypeAction.lean
+    origin: canonical:./Self_Contained_Linear_Bound/Cycle_010/RankThreePrototypeAction.lean
+36939fc9ee52f3ea216b22b145d2554775e71ba4d8cb83f47a324711a9b17c46  PolynomialInnerInverse.lean
+    origin: canonical:./Self_Contained_Linear_Bound/Cycle_008/PolynomialInnerInverse.lean
+44d5f2ec1b6c4a80a9bd1f7b4073a39322a3a06dc64526d07c791477facba8aa  ImageCompression.lean
+    origin: canonical:./Self_Contained_Linear_Bound/Cycle_009/ImageCompression.lean
+76731e612891b3152ad205557db12082b1ea475b3327186e362d7764ee532b34  EmbeddingCompression.lean
+    origin: canonical:./Self_Contained_Linear_Bound/Cycle_010/EmbeddingCompression.lean
+de4ba33719500437827ab834afb543c2e53834cd8619f43ce846b8b158f8625b  TopTupleTest.lean
+    origin: canonical:./Self_Contained_Linear_Bound/Cycle_008/TopTupleTest.lean
+ce09b4eea651fee0afd3b70d558fd67180a11e2f68ba16566d24a34eb2e1b230  RankThreeNonvacuity.lean
+    origin: canonical:./Self_Contained_Linear_Bound/Cycle_009/RankThreeNonvacuity.lean
+b731357dbb4c9fdd888d98dda528101c702a9c7e2693b7285b4b7d9c83d3ec30  RankThreeActualRelation.lean
+    origin: canonical:./Self_Contained_Linear_Bound/Cycle_010/RankThreeActualRelation.lean
+667b23ad70931c0f5f3b3dad0b905cb9ecd63886babc0f6bb94d6a54b6c4b891  RankTwoCertificate.lean
+    origin: canonical:./Self_Contained_Linear_Bound/Cycle_006/RankTwoCertificate.lean
+fdfb30ecc9292942c8155d78c3220f1c6e21309a777e2d6737221e7c7cbea6e3  RankTwoIdentity.lean
+    origin: canonical:./Self_Contained_Linear_Bound/Cycle_006/RankTwoIdentity.lean
+0a1513d82c0589213ea2f23b953120b266b404dbcba4233bdb286234bb13ded6  RankTwoParameters.lean
+    origin: canonical:./Self_Contained_Linear_Bound/Cycle_006/RankTwoParameters.lean
+625775f3b304874b48873e4ee28364335bf593a9cfdef34fc63d3ee8af745f13  RankTwoActionRelation.lean
+    origin: canonical:./Self_Contained_Linear_Bound/Cycle_007/RankTwoActionRelation.lean
+767af507f6abd5b991424b021e613ede396ee68a3d2d6db31ee8c0a73d8c8640  RankTwoRelabel.lean
+    origin: canonical:./Self_Contained_Linear_Bound/Cycle_007/RankTwoRelabel.lean
+d451511cbbec5de28a2e82802624a30e90595e912ee91bc9cbc5edd978c67977  RankThreeTransport.lean
+    origin: canonical:./Self_Contained_Linear_Bound/Cycle_011/RankThreeTransport.lean
+e927976fc1a16a25f143ecc9931ccbd6a4c725309c3cfa431d621eaf105c0940  ClaudeWitnessTransfer.lean
+    origin: canonical:./Self_Contained_Linear_Bound/Cycle_083/claude_return/lean/ClaudeWitnessTransfer.lean; canonical:./Self_Contained_Linear_Bound/Cycle_087/claude_cycle017_return/lean/ClaudeWitnessTransfer.lean; return:cycle017_lean_2026-09-25/lean/ClaudeWitnessTransfer.lean
+d0e264c24271b5abd3e1864c127a2d6c1275959fc2318de8d573c64fb6c10ba8  FiniteGroupAlgebra.lean
+    origin: canonical:./Self_Contained_Linear_Bound/Cycle_017/FiniteGroupAlgebra.lean
+80cd9a728fc5b9c2fb712fac37fff2b2d6c6ce610ff45bee0556f25a4354b595  C017Induction.lean
+    origin: canonical:./Self_Contained_Linear_Bound/Cycle_087/claude_cycle017_return/lean/C017Induction.lean; return:cycle017_lean_2026-09-25/lean/C017Induction.lean
+f252d15b72d014b0a1f0948e171a9e0dbda6bab4a27f1821d11708efd86bb700  TopPowerProjection.lean
+    origin: canonical:./Self_Contained_Linear_Bound/Cycle_084/TopPowerProjection.lean
+3550a45f6004637a7fe555e8b599d182c09fff7b0a5f8fe9a629534259db39c1  TopPowerExactness.lean
+    origin: canonical:./Self_Contained_Linear_Bound/Cycle_084/TopPowerExactness.lean
+92c0ceccd80b062d9b763f0c6f3901ba2f46a0f63382c144ffaf5fe3e6b08a96  PAuxiliary.lean
+    origin: return:allprimes_lean_2026-09-25/lean/PAuxiliary.lean
+40eb7dffddb9948dfb02f6b38e996c214fc8cd60687b41821ca8bb9ee4b0a1ee  PTransfer.lean
+    origin: return:allprimes_lean_2026-09-25/lean/PTransfer.lean
+f9e45f3a1d195c052ef2c9166ec751a57e8a1f2e6860488d20af8daa47407f92  PInduction.lean
+    origin: return:allprimes_lean_2026-09-25/lean/PInduction.lean
+b33157e3941547370b790df74fc8792d9b3d64c3fe9b9a45d0c31e4a00dc0f32  C017Final.lean
+    origin: canonical:./Self_Contained_Linear_Bound/Cycle_087/claude_cycle017_return/lean/C017Final.lean; return:cycle017_lean_2026-09-25/lean/C017Final.lean
+5dfa2905b3ba7a7496f85749b60ada14b9f480f46f7618ac60806b3fc7c0642c  C017Rates.lean
+    origin: return:cycle017_lean_2026-09-25/lean/C017Rates.lean
+05ea76c3b4465fc3bbad433023ef532fcea0f9e067672255daad426b7d1e549d  DegreeProfilesReview/TypeTransfer.lean
+    origin: canonical:./Cycle_036/lean_stage2/DegreeProfilesReview/TypeTransfer.lean; canonical:./Cycle_036/lean_stage3/DegreeProfilesReview/TypeTransfer.lean; canonical:./Cycle_036/lean_stage4/DegreeProfilesReview/TypeTransfer.lean
+4de16818f82789659387f937aaa63c230aadaba37fe519ebfae725b17b7c8ec0  C017TypeAgreement.lean
+    origin: canonical:./Claude_Assessment_2026_09_26/evidence/cycle017_lean_2026-09-25/lean/C017TypeAgreement.lean; canonical:./Claude_Assessment_2026_09_26_Round6/evidence/cycle017_lean_2026-09-25/lean/C017TypeAgreement.lean; return:cycle017_lean_2026-09-25/lean/C017TypeAgreement.lean
+092cf17fd82119eb7c0f211f8dc065de8ef40a9fb1f7abbc9dde18fd4c4f6812  PFinal.lean
+    origin: canonical:./Claude_Assessment_2026_09_26/evidence/allprimes_lean_2026-09-25/lean/PFinal.lean; return:allprimes_lean_2026-09-25/lean/PFinal.lean
+6a2e48e4d8bf4466df1b61aec357c31ec5866ece6f3d6e94bf1f052b7e6a1931  CompDetect.lean
+    origin: return:comparison_lean_2026-09-26/lean/CompDetect.lean
+4144a8039d60aa62eb483c6b6376a4418558272c738d013ee65583d84b7a406a  CompChain.lean
+    origin: return:comparison_lean_2026-09-26/lean/CompChain.lean
+592a708fb3e7465b7c08a023115a191e9913e659698071147fe9322471d81581  CompPoly.lean
+    origin: return:comparison_lean_2026-09-26/lean/CompPoly.lean
+9b1fd2a8ebe5fd652490020ce2932c7fca6e25e3e597b8d444e8341f43536dc5  CompFinal.lean
+    origin: return:comparison_lean_2026-09-26/lean/CompFinal.lean
+c0d1cc824fb4ad53664e7b9155cc4d52cf88d3751f39bb396b483f87cb28ee6f  DCPRook.lean
+    origin: return:linear_lean_2026-09-26/lean/DCPRook.lean
+ac178a726e3fb6ffcf4e9a18910ebbd544ad9609767bf5e78af99decef99eb07  BLemmaL.lean
+    origin: return:linear_lean_2026-09-26/lean/BLemmaL.lean
+1ba32db1f214f4603d6e2c7960cee3b5d7b95972c11ac9bf790e1bc127f30210  ForceInterface.lean
+    origin: canonical:./Claude_Assessment_2026_09_26_Round6/evidence/linear_lean_2026-09-26/lean/ForceInterface.lean; return:linear_lean_2026-09-26/lean/ForceInterface.lean
+8c9a2cf35fe51814e4c96049fbb858645ba9b0b2251a3c6be9ba1d7e64a63583  BRealise.lean
+    origin: return:linear_lean_2026-09-26/lean/BRealise.lean
+a2c418838413375c23ecc87ff61d70d4ff3301a0981b0a5991237a10b2646ed0  BLemmaD.lean
+    origin: return:linear_lean_2026-09-26/lean/BLemmaD.lean
+1e4398c51e39a874dfc6e4e6be8e50416f8e44e8d1cdc56ad2725a7a09c238eb  BProp4.lean
+    origin: return:linear_lean_2026-09-26/lean/BProp4.lean
+2c8c798199fd057dbf41751887723166bfc8659591b7f36cde743775303ff9a1  BCor6.lean
+    origin: return:linear_lean_2026-09-26/lean/BCor6.lean
+62cffb977409af3f5264477dc7255035a8762490e00ff5efc6e95f8a9512cd4b  BLabel.lean
+    origin: return:linear_lean_2026-09-26/lean/BLabel.lean
+46eb326e8954243294a90bf2484d79735128de40b0e6e85ee3032d163e2d7b23  BBridge.lean
+    origin: return:linear_lean_2026-09-26/lean/BBridge.lean
+7fec5d4417d23fb268fde3a5c64cbbe1deed195a959463164fc579511945628c  BThm7.lean
+    origin: return:linear_lean_2026-09-26/lean/BThm7.lean
+5e6182dbe5b7645b02dc9994bf207b7c6c705fcf2b67c8e74e1554abbf52572d  BLayer.lean
+    origin: return:linear_lean_2026-09-26/lean/BLayer.lean
+6c23e6627462ba340fa38e8b16226225e672df4ac0b52af5a6de8d5896c0528a  BThm5.lean
+    origin: return:linear_lean_2026-09-26/lean/BThm5.lean
+6b4fdd96bed156ae73384b59cd53a14ba40ef61a441f896c1d57c2100bc24f99  BTranspose.lean
+    origin: return:linear_lean_2026-09-26/lean/BTranspose.lean
+c340acef4de852b7a3dfb274180e09373337ca2ca56fc1c8e5dcb51b600582a7  BTransC.lean
+    origin: canonical:./Claude_Assessment_2026_09_26/evidence/agents_2026-09-26/round4/agents_2026-09-26_round4/B_exactness/lean/BTransC.lean; return:linear_lean_2026-09-26/lean/BTransC.lean
+cf7e171032d9f9397db229e72ff9559fb5765f46a53937b3b2ec08fb41569799  BProp6Red.lean
+    origin: return:linear_lean_2026-09-26/lean/BProp6Red.lean
+0e4c94aadd4435a1dda95d07b8dcfa7e4b067b0f740eb1f894a1ac4553615d30  BProp6.lean
+    origin: canonical:./Claude_Assessment_2026_09_26/evidence/agents_2026-09-26/round4/agents_2026-09-26_round4/B_exactness/lean/BProp6.lean; return:linear_lean_2026-09-26/lean/BProp6.lean
+664a49190fe0e17ead311b6c952ec2d5cd52682db03cb118899b4c792cac4376  LinearInterface.lean
+    origin: canonical:./Claude_Assessment_2026_09_26/evidence/linear_routes_2026-09-26/lean/LinearInterface.lean; return:linear_lean_2026-09-26/lean/LinearInterface.lean
+57405a72a7401abe5312ad79a07967b592abd2e2edaf818585e85579bb584095  BFinal.lean
+    origin: canonical:./Claude_Assessment_2026_09_26/evidence/agents_2026-09-26/round4/agents_2026-09-26_round4/B_exactness/lean/BFinal.lean; return:linear_lean_2026-09-26/lean/BFinal.lean
+52da8cf57f643903a6875053c3aaa79bb61614ff388ef3abebb498cc276cdd98  DCPBridge.lean
+    origin: return:linear_lean_2026-09-26/lean/DCPBridge.lean
+f55b09e076d2dca5b87cd30e2a06432d7f9707e94f2da56eb845e7b97e3a812e  DCPInterface.lean
+    origin: return:linear_lean_2026-09-26/lean/DCPInterface.lean
+6b28078dab5919f3e25ca46f6adda3971d45d6ff81e5c3f53ded40bcc63fc75f  DCPCanon.lean
+    origin: canonical:./Claude_Assessment_2026_09_26/evidence/agents_2026-09-26/round4/agents_2026-09-26_round4/D_bdm/lean/DCPCanon.lean; return:linear_lean_2026-09-26/lean/DCPCanon.lean
+bf5d0e589fdbe3c11e6dfafac568e1c14fe58f18e577c15cb7847df7abe0ed28  DCPFinal.lean
+    origin: return:linear_lean_2026-09-26/lean/DCPFinal.lean
+c8e32ed008d538bc0847f17001c2c8c649436955f9ccaa8ad2ba7b7e48379952  DCPHalf2.lean
+    origin: return:linear_lean_2026-09-26/lean/DCPHalf2.lean
+6165b93feb460fb81db4157f64acb42121ba8d761bc67d36a2d35104c4a1b53f  DCPFinal2.lean
+    origin: canonical:./Claude_Assessment_2026_09_26/evidence/agents_2026-09-26/round4/agents_2026-09-26_round4/D_bdm/lean/DCPFinal2.lean; return:linear_lean_2026-09-26/lean/DCPFinal2.lean
+1a1c5bbd2b9cd63d889621633f9d67356bb2e21f696b7fe40d13f563dcefe40c  FinalLinear.lean
+    origin: canonical:./Claude_Assessment_2026_09_26_Round6/evidence/linear_lean_2026-09-26/lean/FinalLinear.lean; return:linear_lean_2026-09-26/lean/FinalLinear.lean
+ae023b97cd7848646572e663b28e19c37fa643509608316fd2c3a21fac20b5fa  RForceBase.lean
+    origin: return:linear_lean_2026-09-26/lean/RForceBase.lean
+0a162de940dadd1ee6c75a053bd91c16458f9a710b920f7c6cd74c0ccfa5c9e4  RForceGP.lean
+    origin: canonical:./Claude_Assessment_2026_09_26_Round6/evidence/linear_lean_2026-09-26/lean/RForceGP.lean; return:linear_lean_2026-09-26/lean/RForceGP.lean
+b6be83ac24a5b92ad79409709519d92ec462a520a3bb86321ce7f65ccb288e51  RForce.lean
+    origin: canonical:./Claude_Assessment_2026_09_26_Round6/evidence/linear_lean_2026-09-26/lean/RForce.lean; return:linear_lean_2026-09-26/lean/RForce.lean
+5ca82ea6ecc8f64330f127a12d04e39c536a68f93069aa71fd146763f7bd89dd  LinearFinal.lean
+    origin: canonical:./Claude_Assessment_2026_09_26_Round6/evidence/linear_lean_2026-09-26/lean/LinearFinal.lean; return:linear_lean_2026-09-26/lean/LinearFinal.lean
+7a7685123def7255f30c0469ff2e522e456556664c0fa91d33919337d8a5517b  CompLinear.lean
+    origin: return:comparison_lean_2026-09-26/lean/CompLinear.lean
+0f05b57e09554d9e8cd1db8bee934156dd76e384a5b9eb46bbe6572919c45abc  UWitCommon.lean
+    origin: NEW (this return)
+fe867d3f81b0e75c61942d14b51a74e4ee22481f454a84b8bbc0edcc3444e0b1  UCounter.lean
+    origin: NEW (this return)
+1782e82176f9d20e55002a95bdf94d5f1ff0d1c91c5d1f655598833d6eea1ac7  SignedBranches.lean
+    origin: project:06_Lean_Review/Self_Contained_Linear_Bound/Cycle_035/SignedBranches.lean
+ac314731e62a594474801d320131cffa4a6718db34cbfcc0d451a0de167bc475  TokenPaths.lean
+    origin: project:06_Lean_Review/Self_Contained_Linear_Bound/Cycle_034/TokenPaths.lean
+9b1a09ecb980f52c7fb6c7919b1e8051a4d0f3f6e8b78a56c8eb59e980ce5794  PrefixChains.lean
+    origin: project:06_Lean_Review/Self_Contained_Linear_Bound/Cycle_036/PrefixChains.lean
+0f47b987197801a1de2863cf15441ee80920bbf14444dcd1b7f7db125fcb8bc0  ChainChoice.lean
+    origin: project:06_Lean_Review/Self_Contained_Linear_Bound/Cycle_037/ChainChoice.lean
+7a765df39894456dfeb7ec816b2f28f6aa05921e4b4d825d7c978ac774b1e1df  BranchDecrease.lean
+    origin: project:06_Lean_Review/Self_Contained_Linear_Bound/Cycle_038/BranchDecrease.lean
+ccafa2bfc1ce21176b8ab8a5932f3a2da05bc1a98db71679965c05d43cc98f76  ActualTokens.lean
+    origin: project:06_Lean_Review/Self_Contained_Linear_Bound/Cycle_039/ActualTokens.lean
+0b40872c0dcc33a166ca4965a5f0b544d90fe2e53ab0a95f19e77ac76f03b27c  SignedNormalizer.lean
+    origin: project:06_Lean_Review/Self_Contained_Linear_Bound/Cycle_040/SignedNormalizer.lean
+bf94a9853f34f102be25d27c39ebb8f85053b1731b6ff5238bdab84f4726412e  PathCompression.lean
+    origin: project:06_Lean_Review/Self_Contained_Linear_Bound/Cycle_041/PathCompression.lean
+2179913c2186c6307f615e9408a715a99e40b7cf67b6e61c769052d6d9109223  SupportEmbedding.lean
+    origin: project:06_Lean_Review/Self_Contained_Linear_Bound/Cycle_042/SupportEmbedding.lean
+8252cb400fb6dc3ecbc047189c023bf3485fddb6c26d73aa67a0a468d7b7c5cf  MarkedBinomial.lean
+    origin: project:06_Lean_Review/Self_Contained_Linear_Bound/Cycle_043/MarkedBinomial.lean
+5d064d82f06aae2aaa9c241c7e59818d0f4a24cbd89701f046fec38822a96bfa  CharacteristicTransfer.lean
+    origin: project:06_Lean_Review/Self_Contained_Linear_Bound/Cycle_044/CharacteristicTransfer.lean
+e670213c994d0319108b8cf33c05ff6bc311cd68f01a9f75ec12e0fb9fb625b4  PermutationEvaluation.lean
+    origin: project:06_Lean_Review/Self_Contained_Linear_Bound/Cycle_045/PermutationEvaluation.lean
+532ad84d241aa15fb4ae1cee843525204f2ecf588adb627303321228bcc71c97  TerminalReduction.lean
+    origin: project:06_Lean_Review/Self_Contained_Linear_Bound/Cycle_046/TerminalReduction.lean
+41c87e9f564eef5072be1b334c13303045d93314f3d99dc2f85f4cc51a127656  LevelAnchors.lean
+    origin: project:06_Lean_Review/Self_Contained_Linear_Bound/Cycle_047/LevelAnchors.lean
+3b3fd654d898cf31a7b937b998ae4a90fd0fddc4b5dae56a55d536887ee0969d  BlockPermutations.lean
+    origin: project:06_Lean_Review/Self_Contained_Linear_Bound/Cycle_048/BlockPermutations.lean
+b867c94f74024993c09ab462c4be1b44735916dcf7326ed2341864ad478b6b06  ExactBlockMoments.lean
+    origin: project:06_Lean_Review/Self_Contained_Linear_Bound/Cycle_049/ExactBlockMoments.lean
+5e5786368e2a49281633ccdb5fd84d812d70e086d2678cc92c41b00f41145c8d  DiagonalMoment.lean
+    origin: project:06_Lean_Review/Self_Contained_Linear_Bound/Cycle_050/DiagonalMoment.lean
+726d9e828f72f1e6a53cb813b772ca24d7e69914a8d1ff65c8d662c9eda8df2a  BlockMinimum.lean
+    origin: project:06_Lean_Review/Self_Contained_Linear_Bound/Cycle_051/BlockMinimum.lean
+c300e9e68e4e43ae7590fa53276cb8f07302154037c334c4a1217b6f178bb4f1  IntegralIndependence.lean
+    origin: project:06_Lean_Review/Self_Contained_Linear_Bound/Cycle_052/IntegralIndependence.lean
+fdcc86b8b7718ee15e2c5ddced26c1b6c890632681455fb0a287b52587b371d3  RectangularDesign.lean
+    origin: project:06_Lean_Review/Self_Contained_Linear_Bound/Cycle_053/RectangularDesign.lean
+bc5863589213fc08d9e1a12fafa0b99c284724e0b76b267e404da7ecd772b164  PolynomialDesign.lean
+    origin: project:06_Lean_Review/Self_Contained_Linear_Bound/Cycle_054/PolynomialDesign.lean
+d9b9bc2d8fd747058f6bb0ee0eecfe7f7b4fc1a4aefe600d067958ac97ed4f47  DesignShift.lean
+    origin: project:06_Lean_Review/Self_Contained_Linear_Bound/Cycle_055/DesignShift.lean
+cbb34d1fd343672b202eecd6a3caafcb1845b3a4aeccd243dedbc7ede0383f9b  DesignRewrite.lean
+    origin: project:06_Lean_Review/Self_Contained_Linear_Bound/Cycle_056/DesignRewrite.lean
+2ea924616c03068759d2b4d0a8eb33c974cb6a67ef0f81b4a32481f29b0f2c3b  SignedExpansion.lean
+    origin: project:06_Lean_Review/Self_Contained_Linear_Bound/Cycle_057/SignedExpansion.lean
+ae4665fb56bbb6fc30e2abfd4012f3f7b72ffcb9e0b1c94e8e15e6e56ae3daa1  LeafPaths.lean
+    origin: project:06_Lean_Review/Self_Contained_Linear_Bound/Cycle_058/LeafPaths.lean
+ff0089352f04294d97bebd96054484809a12a0ca363bd1d7c7759e3caf0ef70e  MarkedLeaf.lean
+    origin: project:06_Lean_Review/Self_Contained_Linear_Bound/Cycle_058/MarkedLeaf.lean
+a76f46a12bdd8264415886fc441019e05f69b3d0b0e252a3734c10f009d0238c  RectangularPC.lean
+    origin: project:06_Lean_Review/Self_Contained_Linear_Bound/Cycle_058/RectangularPC.lean
+ea60cac56ace2072edaeea6af336dda5fcf245472f128b0a4472edf1a77a7763  PigeonholeRestriction.lean
+    origin: project:06_Lean_Review/Self_Contained_Linear_Bound/Cycle_072/PigeonholeRestriction.lean
+44f5fd8b316468ac01e00d5fa5b500671f66734e2c78e1ddb4394aca7f7049c7  UWitEta.lean
+    origin: NEW (this return)
+9f7aa6f96abfb6c7030de0f4382ccaeb39e6adf37c89f9b2682ef926c9de8a21  UWitCycles.lean
+    origin: NEW (this return)
+967c819b4c268aa65b92fb4bc224aa0d7fdb8b33107231b583c0e8e9f0054971  UCounting.lean
+    origin: NEW (this return)
+7abcd320dfa2e8c59acd7e39b3f9806c7aad0c5171ce0ee65f7838d0fe29c7b8  AffinePeaks.lean
+    origin: project:06_Lean_Review/Self_Contained_Linear_Bound/Cycle_073/AffinePeaks.lean
+54bdd2e106669f52741013cdb3f0f76803e79c644b526af5558235396b2dbaf3  UWitB.lean
+    origin: NEW (this return)
+c06fd03367441e5e51794d1e4041e046af996a8be3f8bb5bec17c0311bddaf0a  USwitch.lean
+    origin: NEW (this return)
+4e54a23190edd90ea0af2ed3bdef5cf10ec21f00f3071661d5f45ada1469a9d5  UHalt.lean
+    origin: NEW (this return)
+740769da3b70c07dd8fabf740bebeb646caccd58d77a2c3c5ffea56e68e828c7  UTypes.lean
+    origin: NEW (this return)
+5b72225dc74aecf4e6b72209dfc914f4df948c2c45bcb19ed5a4ce48d237713f  UMachine.lean
+    origin: NEW (this return)
+2353ee81d3528cd105f2c5a81f863c72c9293e3fe4f5481db9b0cb1f3f258078  UCompile.lean
+    origin: NEW (this return)
+9ce5f7535b1dbd44602d565369a95398a4b2e7510de0eab587aef08e75468b13  UUniversal.lean
+    origin: NEW (this return)
+05ec00a57c71d75db96c32b6535f4e7f42bc2dab6cd9521feccbc6085b042431  UComputable.lean
+    origin: NEW (this return)
+00dca63510165a3f1777e67e7dfa5665d6d887dcfbd9caf2aa14c4a481373e47  UUndecidable.lean
+    origin: NEW (this return)
+24cc2c471c6b3c5d4a8d85daa385cb745da06de65fe1aa1bb7a16745441d682d  UJoin.lean
+    origin: NEW (this return)
+96791a24b483aa550164660dada5790606f8ed5b7b0e3388000875ad16720ebf  FilteredPC.lean
+    origin: project:06_Lean_Review/Self_Contained_Linear_Bound/Cycle_080/FilteredPC.lean
+e87f614c9c3f0411f32a8db91b537276259d89ee70764a267f9d45cce4c96486  GuardUpper.lean
+    origin: project:06_Lean_Review/Self_Contained_Linear_Bound/Cycle_081/GuardUpper.lean
+41bde7e65add315b61bc891222aa31b222a7adcba7bf29d428100f76645fd354  AffineTransport.lean
+    origin: project:06_Lean_Review/Self_Contained_Linear_Bound/Cycle_074/AffineTransport.lean
+ce0fd18a985890b7b9b6d1b1a322069ccaad22054ee10f16e0afba4b589bad7b  PigeonholePadding.lean
+    origin: project:06_Lean_Review/Self_Contained_Linear_Bound/Cycle_074/PigeonholePadding.lean
+bd648c73ac18a22daac28f61f18e29720898ec75665e73e22a76ed222772f109  TriangularMatching.lean
+    origin: project:06_Lean_Review/Self_Contained_Linear_Bound/Cycle_074/TriangularMatching.lean
+bf955da2b6c3ebb5ffc582e8b5a2a0366266fe644eb5c6a6418f0f1b9291f705  ComponentCompletion.lean
+    origin: project:06_Lean_Review/Self_Contained_Linear_Bound/Cycle_075/ComponentCompletion.lean
+8cbe06962962b1bb4a2423861049215e24bd291eb69a3c548b59408ea9d12173  UJoinDeg.lean
+    origin: NEW (this return)
+f3e6bc87c6dddfcf92dee23c4c30c276dfbe231444e50a17a8af6fdd2f6e52be  UJoinComputable.lean
+    origin: NEW (this return)
+8e6cbfa2aaeaecb44130a1ded92a07c8805c82263a7caf54d3b8911e7315ebf8  UProfiles.lean
+    origin: NEW (this return)
+406cfc6cce7116b1b01536277f82887aa64363776a88c2af233bf2fba019af54  UPairs.lean
+    origin: NEW (this return)
+3ed1f0c890106bf417dbbb6879345485e9059a38b0aba85e860f0c151cbce62e  UPCDirect.lean
+    origin: NEW (this return)
+425a7bcf0987a0e9d11755b6f07d90a0bdb9aab40386d1e433ddec4eefc68369  UDeps.lean
+    origin: NEW (this return)
+f88d95439ad35ad5f917f7d1751e3a019826131913394c82ed19e020e3af6e7b  UAudit.lean
+    origin: NEW (this return)
+55c6286bf02d259586c45bb8bd5777be98ab3f51cc1a4841e8d7134559be39c4  lakefile.toml
+    origin: NEW (lists the libraries of this workspace)
+e8173aad377a6d70041e5f7a5d8895ed587628f5cab243c53a18c40a1b7b6bf8  lean-toolchain
+    origin: copied unchanged from comparison_lean_2026-09-26/lean
+64265d9bded32852056e403629bee80f4b4ef2bed7141dfa14c7b65e1d5a6a42  lake-manifest.json
+    origin: copied unchanged from comparison_lean_2026-09-26/lean

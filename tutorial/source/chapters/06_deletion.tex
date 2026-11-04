@@ -1,0 +1,585 @@
+\chapter{What it means to delete a block of labels}
+\label{tx:chap:deletion}\label{tx:sec:transfer}
+We now describe the operation that the preceding contract requires.
+It acts on spaces with label permutations, not by setting some polynomial
+variables to zero. Its construction will justify the word ``deletion''
+on bases, and then explain why extra work is needed on subspaces.
+
+The construction has three ingredients: spaces on labelled tuples,
+one nilpotent operator built from block translations, and a quotient
+of its kernel. We develop these tools before stating the exactness
+theorem. Its clauses identify the surviving basis, preserve the
+actual coefficient maps, and transport the subspace calculation
+of a proof. The common-operator construction in the later chapters
+establishes these properties.
+
+\section{Why substitution is the wrong operation}
+Consider the totality axiom $\sum_jx_{ij}-1$. If the row label $i$ is
+deleted and all its variables are set to zero, this polynomial becomes
+$-1$. Such a substitution refutes the remaining system immediately.
+It does not produce the intended smaller uniform instance.
+
+Restriction of coefficient matrices to retained rows and columns is
+correct on uniform data, but arbitrary subspaces do not restrict exactly.
+A linear relation supported partly on deleted coordinates may change its
+meaning. The proof therefore uses a quotient operation on modules with
+label action, together with a theorem that this operation preserves the
+required subspace calculations.
+
+\section{Permutation modules and their subspaces}
+Recall the label-action language of Section~\ref{tx:sec:action-primer}.
+The monomial space is a permutation module, and the NS/PC consequence
+spaces are invariant subspaces: relabelling a legal proof gives another
+legal proof from the uniform axioms.
+
+\subsection*{A vector space with named basis vectors}
+For a finite set of labelled objects $\mathcal U_N$, the notation
+$K[\mathcal U_N]$ means the vector space with one basis vector $e_u$
+for each object $u\in\mathcal U_N$. A vector is a coefficient list
+\[
+                         v=\sum_{u\in\mathcal U_N}a_u e_u.
+\]
+The basis objects might be variables, monomials, axiom indices or
+ordered tuples. A label permutation $g\in S_N$ acts by
+$g e_u=e_{g u}$ and extends linearly. In matrix language it permutes
+the basis coordinates. The phrase \emph{permutation module} means
+exactly this vector space together with these permutation matrices.
+
+For instance, the space on single labels has basis
+$e_1,\ldots,e_N$, and the swap $(12)$ sends $e_1$ to $e_2$,
+$e_2$ to $e_1$, and fixes the other basis vectors. More general
+spaces below need not have a basis permuted by labels: an invariant
+subspace or a quotient still carries linear permutation actions.
+Such a space is called a representation, or module. No additional
+algebraic operation on its vectors is intended by that word.
+
+\subsection*{Subspaces, quotients and maps which respect relabelling}
+A subspace $U\subseteq M$ is \emph{invariant} if every label
+permutation maps it to itself. Its quotient $M/U$ consists of classes
+$[v]$ with $v$ and $v'$ representing the same class exactly when
+$v-v'\in U$. Relabelling acts by $g[v]=[gv]$, which is well defined
+because $gU=U$.
+
+As a small example, in the space on three labels the line
+$U=K(e_1+e_2+e_3)$ is invariant. In the quotient the sum
+$e_1+e_2+e_3$ becomes zero, while $[e_1]$ is still nonzero.
+Thus a quotient does not discard a designated subset of coordinates:
+it imposes the specified linear relations. A \emph{subquotient} is
+a quotient of an invariant subspace, such as $U/V$ with
+$V\subseteq U\subseteq M$ invariant. These are precisely the
+objects which arise when we look at targets modulo consequences.
+
+A linear map $f:M\to M'$ is \emph{equivariant} if
+$f(gv)=g f(v)$ for every label permutation $g$. This just says that
+the two ways of relabelling and applying $f$ give the same answer.
+For example, on the space $E_N$ with basis $e_1,\ldots,e_N$,
+the coordinate-sum map
+\[
+ \epsilon:E_N\longrightarrow K,
+                 \qquad\epsilon\Bigl(\sum_i a_i e_i\Bigr)=\sum_i a_i
+\]
+is equivariant when labels act as the identity on the output $K$.
+Forgetting one position of a tuple is another example. The axiom,
+target and multiplication maps in the uniform proof calculation are
+equivariant too; their actual coefficients specify which maps they are.
+
+\subsection*{One expression in permutations, acting on many spaces}
+The group algebra $K[S_N]$ consists of finite sums $\sum_g a_g g$.
+Its multiplication is composition, extended bilinearly. It acts by the
+corresponding linear combination of renamings. If a map
+$f$ respects label permutations, then
+\[
+                           f\bigl((\sum_g a_gg)v\bigr)
+                                      = (\sum_g a_gg)f(v).
+\]
+This elementary identity is the reason a common group-algebra expression
+is so valuable: the same expression automatically commutes with every
+map in the uniform diagram.
+
+For example, $h=2g-\tau$ acts on $M$ as
+$v\mapsto2g v-\tau v$. The same expression acts on $M'$ and
+commutes with $f$ whenever $f$ is equivariant. We do not choose
+unrelated matrices separately on the two spaces. Nor do we claim
+that $h$ commutes with every label permutation: the statement is
+that every equivariant map commutes with the common expression.
+In positive characteristic, the coefficient $2$ in this example is
+interpreted in $K$, so it is zero when the characteristic is two.
+
+\subsection*{Why ordered tuples are the test spaces}
+For $b\ge0$ let
+\[
+                 P_b(N)=K[\Inj([b],[N])]
+\]
+be the space on ordered tuples of distinct labels. Every orbit of a
+support-$b$ index is a quotient of such a space. Choose an ordering of
+its support; an injective tuple specifies where that support is sent.
+Two extensions agreeing on the support act identically on the index.
+Thus ordered tuples provide a finite universal list of spaces on which
+to construct an operator valid for all support-bounded data.
+Here $P_b(N)$ denotes a tuple permutation space; the bounded-degree
+polynomial space is written $P_{N,\le d}$.
+
+Here $[b]=\{1,\ldots,b\}$ names the \emph{positions}; an injection
+assigns distinct universe labels to them. In particular:
+\begin{itemize}
+\item $P_0(N)$ is the one-dimensional space on the empty tuple.
+Every permutation fixes its basis vector.
+\item $P_1(N)$ has basis $e_1,\ldots,e_N$.
+\item $P_2(N)$ has basis $e_{(i,j)}$ for $i\ne j$. It has
+$N(N-1)$ basis vectors, and $g e_{(i,j)}=e_{(g(i),g(j))}$.
+\end{itemize}
+There is also an action permuting tuple \emph{positions}: swapping
+the two positions sends $(i,j)$ to $(j,i)$. It is different from
+swapping two particular universe labels. The two actions commute.
+Throughout the construction, $b$ counts positions and $r$ bounds
+their number; neither is a polynomial degree.
+
+The universality claim in the preceding paragraph is concrete. If an
+object $u$ has support $\{u_1,\ldots,u_b\}$, send
+$e_{(t_1,\ldots,t_b)}$ to $e_{g u}$, where $g$ sends each $u_i$
+to $t_i$. Any two such permutations agree on the support and hence
+give the same object. The map is linear, equivariant and onto the
+space on the orbit of $u$. Therefore any operator which vanishes on
+$P_b(N)$ also vanishes on that orbit space.
+
+\subsection*{The common-annihilator class}
+Let $J_r(N)$ be the ideal of group-algebra elements acting as zero on
+$P_b(N)$ for every $b\le r$. Write $\mathcal C_r(N)$ for the
+finite-dimensional modules annihilated by $J_r(N)$. Every support-$r$
+permutation basis, and every submodule or quotient of it, belongs to this
+class. It is also closed under finite direct sums. We will not assume
+that it is closed under every tensor product: the actual tensor products
+used in the proof are placed inside known support-bounded permutation
+ambients.
+
+In formulas, the definition is
+\[
+ J_r(N)=\{h\in K[S_N]:h v=0\text{ for every }v\in P_b(N)
+                                  \text{ and every }0\le b\le r\}.
+\]
+Calling it an \emph{ideal} records that sums and scalar multiples
+remain in it, as do products on either side by group-algebra
+elements. The latter fact follows because each $P_b(N)$ is preserved
+by all those operators.
+
+Membership of $M$ in $\mathcal C_r(N)$ means that \emph{every}
+operator in this set acts as zero on $M$ too. Equivalently, all the
+operator relations shared by the tuple spaces up to length $r$ hold
+on $M$. This is a condition on the permutation action on a space,
+not a claim that each of its vectors mentions only $r$ labels.
+For example, $\sum_{i=1}^N a_i e_i$ can use every label, while its
+single-label permutation space belongs to $\mathcal C_1(N)$.
+Likewise the degree-$d$ monomial space has basis support at most
+$kd$, although a polynomial in it can involve many different labels
+across its monomials.
+The symbol $J_r(N)$ denotes this set of operators, not the target
+map $J_N$ from the previous chapter.
+
+The closure assertions now have elementary proofs. If an operator
+kills every vector of $M$, it kills every vector of an invariant
+subspace and acts as zero on every quotient class. It also kills
+a finite direct sum of such spaces. Hence the class includes the
+subspaces and subquotients needed by a proof. It need not include
+an arbitrary tensor product: combining two basis objects can add
+their support sizes. We will check the relevant \emph{ambient}
+support each time a tensor product is used.
+
+\section{The regular prime-power block}
+The parameters have different roles. We retain $n$ labels, add
+$q=p^a$ block labels, and obtain $N=n+q$ universe labels in total.
+Here $p$ is the characteristic, $a$ is a block exponent, and $r$
+is the support budget for the spaces in the proof diagram. Choosing
+$q>r$ does not mean choosing $q$ larger than $n$.
+
+Write $N=n+q$ and identify the last $q=p^a$ labels with
+$A=(\mathbb F_p)^a$. Translation by a coordinate vector gives a
+permutation $\sigma_i$ of the block, fixing the retained labels. The
+translations commute and have order $p$. Over a suitable coefficient
+extension choose $c_1,\ldots,c_a$ independent over $\mathbb F_p$ and put
+\[
+                 z=\sum_{i=1}^a c_i(\sigma_i-1).
+\]
+Here $1$ is the identity permutation. On a representation $M$, this
+group-algebra element acts as a linear operator $z_M$. A power of $z$
+means repeated composition: $z^p=0$ will say that $p$ successive
+applications send every vector to zero.
+The characteristic-$p$ binomial formula gives $z^p=0$. The retained
+permutations commute with $z$, so its kernel and the quotient below
+retain an action of $S_n$.
+In operator formulas, $I$ denotes the identity linear map, the action
+of this identity permutation. Independence of the coefficients is
+over the prime field $\mathbb F_p$: a relation
+$\sum_i t_i c_i=0$ with $t_i\in\mathbb F_p$ must have all
+$t_i=0$. It is not independence over the larger working field.
+
+The word \emph{regular} means that the translations move any block
+label to any other in exactly one way. For $p=2,a=2$, write the
+four block labels as $00,10,01,11$. Translation in the first
+coordinate swaps $00$ with $10$ and $01$ with $11$; translation
+in the second swaps $00$ with $01$ and $10$ with $11$. They
+leave all retained labels fixed. In general, the identity
+\[
+ z^p=\sum_i c_i^p(\sigma_i-I)^p
+     =\sum_i c_i^p(\sigma_i^p-I)=0
+\]
+uses the commutation of these translations and the characteristic-$p$
+binomial formula. It is a statement about matrices or composed
+operators, not about a scalar whose power is zero.
+
+The independence of the coefficients prevents a nontrivial translation
+orbit from being accidentally invisible. It can require extending the
+field. Membership of a target with original-field coefficients descends
+by Lemma~\ref{tx:lem:field}; no proof over an arbitrary extension is
+silently substituted for a proof over the original field.
+
+\subsection*{A quotient made from a kernel and an image}
+Define
+\[
+                 \Del(M)=\ker z_M/(\ker z_M\cap\im z_M).
+\]
+For $p=2$ this is $\ker z/\im z$. For odd $p$ that shorter formula
+is not meaningful in general, because $z^2$ need not be zero.
+
+The kernel consists of vectors $v$ with $z_Mv=0$. The image
+consists of vectors $z_Mw$. We first keep the kernel vectors and
+then identify two of them when their difference is also an image
+vector. Thus an element of $\Del(M)$ is a class $[v]$ of a vector
+already in the kernel. An arbitrary basis vector need not define
+such a class.
+
+For a fully explicit case, work in characteristic two, retain one
+label $a$, and swap two block labels $b,c$. Choose
+$z=(bc)-I$ on the space with basis $e_a,e_b,e_c$. Then
+\[
+ ze_a=0,\qquad ze_b=e_b+e_c,\qquad ze_c=e_b+e_c.
+\]
+Consequently
+\[
+ \ker z=K e_a\oplus K(e_b+e_c),\qquad
+ \im z=K(e_b+e_c),\qquad \Del(M)\simeq K e_a.
+\]
+The class of $\alpha e_a+\beta(e_b+e_c)$ is represented by
+$\alpha e_a$. The combination $e_b+e_c$ lies in the kernel,
+so it qualifies as a representative; it also lies in the image,
+so it represents the zero class.
+The vector $e_a$ survives. The individual vector $e_b$ is not in
+the kernel and hence is not a representative for this quotient.
+This distinction is why deletion is not a coordinate restriction
+applied to every vector.
+
+To see what the quotient keeps, take a nilpotent chain with basis
+$v_0,\ldots,v_{\ell-1}$ and
+\[
+                  zv_0=0,\qquad zv_j=v_{j-1}\quad(j>0).
+\]
+This is a nilpotent \emph{Jordan block}: applying $z$ moves each vector
+one position down the chain and eventually sends it to zero.
+The chain basis describes the linear operator $z$. It need not be a
+permutation basis or an invariant decomposition for the full symmetric
+group. This distinction will matter when we later build an operator
+which works on many representations at once.
+
+For $\ell=1$, the kernel is the whole line and the image is zero,
+so the line survives. For $\ell\ge2$, the kernel is $Kv_0$ and
+$v_0=zv_1$ already lies in the image, so the quotient is zero.
+Thus deletion retains length-one chains and discards every longer chain.
+The equation $z^p=0$ permits every length $1\le\ell\le p$.
+The later odd-characteristic construction separately proves that the
+relevant tuple generators have only lengths one and $p$; neither that
+purity statement nor exactness follows from nilpotence alone.
+
+\subsection*{How a linear map induces a map of the quotients}
+Let $f:M\to M'$ commute with label permutations. The common
+group-algebra definition gives $f z_M=z_{M'}f$. If $v\in\ker z_M$,
+then $f(v)\in\ker z_{M'}$. If two kernel vectors differ by
+$z_Mw$, their images differ by $z_{M'}f(w)$, which is again an
+image vector and remains in the kernel. Therefore the rule
+\[
+                  \Del(f):\Del(M)\longrightarrow\Del(M'),
+                              \qquad[v]\longmapsto[f(v)]
+\]
+is well defined. It is the actual induced map, not an independently
+chosen map between spaces of the same dimension. Applying two maps
+in succession before or after taking classes gives the same answer.
+
+In the three-label example, the coordinate-sum map
+$\epsilon:M\to K$ is equivariant. On a kernel vector it gives
+\[
+ \epsilon\bigl(\alpha e_a+\beta(e_b+e_c)\bigr)
+                       =\alpha+\beta+\beta=\alpha.
+\]
+Thus its induced map sends the surviving class $[e_a]$ to $1$
+and the zero class $[e_b+e_c]$ to $0$. On the trivial output
+space $K$ every label permutation is the identity, so $z=0$ and
+$\Del(K)=K$.
+
+Finally, permutations of the retained labels commute with each
+block translation. They preserve the kernel and image and act on
+the quotient by $[v]\mapsto[g v]$. This is why the output carries
+an action of the \emph{smaller} group $S_n$. The deleted block
+does not become a set of new polynomial variables in that output.
+
+\section{Why small supports make a basis object retained}
+The support bound in the next argument belongs to an individual
+\emph{basis object}, not to every vector in its span. A basis variable
+$x_i$ uses label $i$; the monomial $x_i x_j$ uses labels $i,j$;
+a sum of many such monomials may mention most of the universe.
+
+Suppose $\mathcal U$ has support bound $u<q$. If an object is fixed by
+all block translations, its support is a block-translation-invariant set.
+The regular action on the block is transitive. Hence a support meeting
+the block would contain all $q$ block labels, contrary to $u<q$.
+The fixed objects are exactly those supported on retained labels.
+
+This is the first structural use of the inequality $q>r$. It has nothing
+to do with choosing $q$ larger than the universe itself. It must exceed
+the support needed by the degree-$d$ calculation. A one-label change
+usually has $q=1\le r$ and cannot satisfy this argument. This explains
+why the natural shifts are prime powers rather than $n\mapsto n+1$.
+
+The strict inequality is visible in an example. With a four-label
+block and unary variables, the product of all four block variables
+is a basis monomial fixed by every translation. It uses the whole
+block, so it is excluded by a support bound $u<4$. A monomial
+meeting the block in one, two or three labels cannot be fixed by
+all translations.
+The support argument identifies which basis objects are fixed;
+the later orbit calculation must still prove that the moved part
+has zero deletion quotient.
+
+\subsection*{The theorem in plain language}
+Choose a block larger than the supports we need to track, and keep
+enough labels outside it. The theorem asserts that the block
+coefficients can be chosen so that the quotient just defined does
+three things at once. It retains the expected smaller basis; it
+carries the actual uniform coefficient maps to the smaller maps;
+and, on the class $\mathcal C_r$, it preserves the subspace
+operations used by a proof. The last assertion is the substantial
+one: neither the definition of the quotient nor $z^p=0$ proves it.
+
+Here is the precise statement. The phrases ``exact'', ``natural''
+and ``trivial module'' are read clause by clause immediately below.
+
+\begin{theorem}[The exact deletion input]\label{tx:thm:deletion}
+Work first over an algebraically closed field of characteristic $p$.
+For $q=p^a>r$ and retained rank $n\ge\max\{0,2r-1\}$, the block
+coefficients can be chosen so that $\Del$ is exact on $\mathcal C_r(n+q)$.
+It fixes the trivial module. For every support-$u$ permutation basis with
+$u<q$ there are natural identifications
+\begin{align}
+ \Del(K[\mathcal U_{n+q}])&\simeq K[\mathcal U_n],\label{tx:eq:permdelete}\\
+ \Del(K[\mathcal U_{n+q}]\otimes Y)&\simeq
+                  K[\mathcal U_n]\otimes\Del(Y),\label{tx:eq:tensordelete}
+\end{align}
+with a permutation module as the first tensor factor. Stable invariant
+coefficient matrices are carried to their actual retained-rank matrices.
+\end{theorem}
+
+This finite-algebra theorem is proved by the chapters on
+square-zero blocks, linear layer repair, rook realisation and top-power
+projection. No representation-theoretic equivalence is
+invoked as an external assumption.
+
+\subsection*{Reading the clauses}
+\paragraph{The working field.}
+An algebraically closed field has the coefficients needed for the
+independent block directions. This is where the construction is
+carried out, not a change of the original input equations.
+Lemma~\ref{tx:lem:field} brings membership of original-coefficient
+targets back to the original field. The block size $q=p^a$ is a
+number of universe labels, not a prescribed cardinality for that
+field.
+
+\paragraph{The support budget and the range.}
+The integer $r$ bounds the tuple test spaces and the supports of the
+proof-diagram ambients which must undergo exact transport.
+The inequalities are $q>r$ and $n\ge\max\{0,2r-1\}$.
+They concern block labels and retained labels, respectively. For
+$r\ge1$, the latter is the sufficient retained-label budget
+$2r-1$; for $r=0$, it is simply $n\ge0$. The proof will construct
+one compatible witness for all lengths $0,\ldots,r$ on that one
+retained pool. Template stabilisation and target-degree thresholds
+are additional requirements when this finite-algebra input is
+applied to polynomial families.
+
+\paragraph{Exactness on the specified class.}
+Take an equivariant map $f:M\to M'$ between spaces in
+$\mathcal C_r(N)$. Its kernel and image are invariant subspaces.
+Exactness says that their deleted spaces are the actual kernel and
+image of $\Del(f)$, with the induced inclusions. In particular,
+if $U\subseteq V$ are invariant spaces in this class, the induced
+map $\Del(U)\to\Del(V)$ is injective, and
+\[
+                  \Del(V/U)\simeq\Del(V)/\Del(U).
+\]
+This is a claim about maps and their linear relations, not only
+about dimensions. It is restricted to $\mathcal C_r(N)$;
+arbitrary label representations are not being declared exact.
+
+\paragraph{Fixing the trivial module.}
+On the one-dimensional space $K$ with all label permutations acting
+as the identity, every $\sigma_i-I$ acts as zero. Hence $z=0$,
+the kernel is $K$, the image is zero and $\Del(K)=K$.
+The constant line does not disappear. This clause will be needed
+both for invariant targets and for the detection pairing.
+
+\paragraph{The first basis identification.}
+The first displayed isomorphism says that the surviving directions
+in the space on $\mathcal U_{n+q}$ are precisely the basis
+objects supported on retained labels. A retained object $u$ gives
+the class of its basis vector $e_u$, identified with the same
+object in $\mathcal U_n$. Moved basis vectors need not themselves
+be kernel vectors; the assertion is that their entire moved-orbit
+summand contributes zero to the quotient. For a single-label basis,
+this turns the large label space into the space on the $n$
+retained labels.
+
+\paragraph{The tensor identification and its naturality.}
+Here $Y$ is any space with the larger label action. The first
+factor has a permutation basis. Regard a tensor
+$\sum_u e_u\otimes y_u$ as a list of vectors from $Y$, one
+packet for each basis object $u$. A label permutation acts on
+\emph{both} the packet index and its contents:
+$g(e_u\otimes y)=e_{gu}\otimes gy$.
+The theorem keeps retained packet indices and applies deletion
+to their contents. More precisely, for retained $u$ and
+$y\in\ker z_Y$, it matches
+\[
+                         e_u\otimes[y]\quad\text{with}\quad[e_u\otimes y].
+\]
+It also proves that the moved packet summand disappears even
+though translations act on its $Y$ contents. There is no separate
+bounded-support assumption on $Y$ in this basis identification.
+When exactness is used on a tensor source, we separately check
+that source's ambient support budget.
+
+``Natural'' means that applying any equivariant map $Y\to Y'$
+to the packet contents before or after this identification gives
+the same result. This is what lets the rule apply to a consequence
+subspace $Y\subseteq L_d$ with its actual inclusion, rather than
+to a separately chosen basis for $Y$. It is also why the tensor
+clause specifically states which factor has a permutation basis.
+
+\paragraph{The coefficient matrices are the actual maps.}
+If $F_N$ sends a retained input basis vector $e_u$ to
+$\sum_v a_N(v,u)e_v$, equivariance puts this image in the kernel
+of $z$. Its retained coefficients are exactly $a_N(v,u)$ for
+retained $v$. A stable rule gives $a_N(v,u)=a_n(v,u)$ on those
+objects, and the moved kernel component vanishes in the quotient.
+Thus the induced map is the prescribed $F_n$ entry by entry.
+The statement does not allow us to replace it by an unrelated
+matrix with the same rank. It applies in particular to the
+uniform axiom, target and multiplication maps from Chapter~\ref{tx:chap:contract}.
+
+\subsection*{How the later proof makes exactness possible}
+The later chapters construct one group-algebra element $w$ with
+\[
+             z^{p-1}wz^{p-1}=z^{p-1}
+                           \quad\text{on every }P_b(N),\ b\le r.
+\]
+This is a partial-inverse condition: on the image of $z^{p-1}$,
+$w$ supplies a preimage. It does not invert the nilpotent operator
+on the whole space. From $z$ and $w$ the proof constructs another
+common operator $e$, using also the proved chain property of the
+tuple generators. This $e$ is a projector with $e^2=e$, and identifies
+$\Del(M)$ with its image $eM$ as a vector space. The letter $e$
+here names an operator, unlike the basis-vector notation $e_u$.
+
+Every actual equivariant map commutes with this same expression
+in permutations. For example, if $f:V\to W$ is onto and
+$y\in eW$, choose an ordinary preimage $v$ of $y$. Then
+$f(ev)=e f(v)=ey=y$, so the restricted map $eV\to eW$
+is still onto. The kernel and injection checks use the same
+commutation. This is the source of exactness. Its hard part is
+constructing one such expression which works on the entire
+annihilator class; separate projectors on separate spaces would
+not justify these equations. The quotient itself carries the
+retained label action; the projector image is its vector-space
+model.
+
+\subsection*{An admissible numerical instance}
+Take characteristic two, $r=2$, $q=4$, $n=3$, and $N=7$.
+Work in an algebraic closure of $\mathbb F_2$, choose
+$\omega^2+\omega+1=0$, and use coefficients $1,\omega$.
+Retain labels $1,2,3$ and identify labels $4,5,6,7$ with
+$00,10,01,11$, respectively. The two translations and their
+common operator are
+\[
+ \sigma_1=(45)(67),\qquad\sigma_2=(46)(57),\qquad
+ z=(\sigma_1-I)+\omega(\sigma_2-I).
+\]
+The numbers satisfy $q>r$ and $n=2r-1$.
+The tuple test spaces are $P_0(7)$, $P_1(7)$ and $P_2(7)$,
+of dimensions $1,7,42$. The moved-orbit calculation, which uses
+the independence of $1,\omega$ over $\mathbb F_2$, identifies
+their deletion quotients with retained tuple spaces of dimensions
+$1,3,6$. This illustrates the basis calculation for the displayed
+operator.
+
+The all-class exactness assertion is separate. For these same
+parameters, Theorem~\ref{tx:thm:deletion} provides a suitable choice
+of block coefficients for which deletion is exact on
+$\mathcal C_2(7)$. The present numerical illustration does not
+certify that its specific choice $1,\omega$ has that additional
+property or supply a common witness for it. The later construction
+establishes the exactness input with its required coefficient choice.
+
+For comparison with polynomial notation, the ordinary degree-at-most-two
+monomial space in seven unary variables has $36$ basis monomials:
+one constant, seven linear monomials, seven squares and twenty-one
+products of distinct variables. Each monomial uses at most two
+labels. Its deletion is the corresponding space in three unary
+variables, with $10$ monomials. This is a consequence of the basis
+identification, not a computation of any minimum NS or PC degree.
+Squares are separate coordinates because this is the ordinary
+polynomial ambient, not the space of functions on Boolean assignments.
+An application to a proof must additionally cover the actual axiom
+and target maps, multiplication domains and, when needed, the
+doubled-support detector. Those data may require a larger $r$.
+
+The instance illustrates the theorem's parameters and conclusions;
+its concrete operator illustrates basis deletion, and the theorem's
+existential coefficient choice supplies exactness. It does not
+independently construct a common witness or prove general lifting
+by finite experiment.
+
+\section{Why deletion on bases is not enough}
+In characteristic two, let two block labels be swapped. Their permutation
+space has basis $e_1,e_2$ and $z e_1=z e_2=e_1+e_2$. Its kernel equals
+its image, so its deletion is zero. The invariant line
+$T=K(e_1+e_2)$ has $z=0$ and survives. Therefore deletion of
+$T\hookrightarrow Ke_1\oplus Ke_2$ is the zero map on a nonzero space.
+An injection was not preserved.
+
+Here there are no retained labels: $n=0$, $q=2$ and the single-label
+basis has support budget $r=1$. The retained-rank hypothesis would
+require $n\ge1$. The example therefore explains the need for a
+range restriction rather than contradicting Theorem~\ref{tx:thm:deletion}.
+The vector $e_1+e_2$ represents a nonzero quotient class when
+the operation is applied to $T$ alone, but represents the zero
+class after inclusion into the larger two-point space. Inducing
+maps of quotients is always possible; preserving injectivity is
+an additional theorem.
+
+The extra retained labels in Theorem~\ref{tx:thm:deletion} rule out
+this problem in the relevant class by providing a common projector.
+The basis orbit calculation and the exactness construction have distinct
+jobs. Forgetting the second job would leave the proof unable to handle
+intersections and hence ordinary-PC degree falls.
+
+\section{What exactness will buy}
+In the contract of Definition~\ref{tx:def:polynomial-diagram}, matrix
+naturality identifies the actual axiom, multiplication and target maps.
+Exactness preserves the kernels, images, intersections and sums of the
+closure calculation. The doubled-support pairing supplies the remaining
+target-vanishing reflection for general indexed targets.
+The roles should remain distinct. Exactness carries a consequence
+space and its actual inclusion to the smaller rank. The target-map
+compatibility then identifies the deleted request. To reflect
+underivability, we still need to know that a nonzero target class
+in the relevant quotient cannot disappear. That last step is the
+nonzero-subquotient detector, not a consequence of the word
+``exact'' alone.
+
+The next chapter gives the related upward lift and explains how it
+interacts with multiplication without pretending to be a ring map.

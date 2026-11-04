@@ -1,0 +1,38 @@
+LATER EDITORIAL REFRESH — 4 NOVEMBER 2026
+
+The paper is now the 77-page author-requested editorial revision. Its updated
+PDF and organised source replace the initial 74-page pair in this local
+package. The 193-page tutorial and every Lean file are retained unchanged.
+See EDITORIAL.txt for the changes, exact checks and revised page locations.
+The report below records the earlier tutorial review; its statements that the
+paper was unchanged refer to that earlier step, not this later revision.
+
+TUTORIAL REVIEW — 4 NOVEMBER 2026
+
+Result: a local review candidate is assembled. Nothing has been uploaded, released, or assigned a DOI.
+
+MATERIALS
+The 74-page current paper is unchanged. The tutorial is a 193-page revision of the 189-page textbook. The original PDF and source ZIP are preserved outside this upload candidate. Earlier, partly overlapping refutation tutorials have not been bundled as competing current companions.
+
+MAIN CHANGES
+1. The size threshold is N(d), matching the paper; the unrelated quadratic constant A and indexed algebraic quantities are retained. A_d(h) is explicitly a residue set, not a threshold. The two different uses of N (onset N(d), universe size N=n+q) are explained.
+2. New front-matter reading route links difficult questions to the appropriate chapters, including bounded-degree spaces, transport of derivations, the linear improvement, target survival, and verification scope.
+3. Chapter 18 now begins with the hardness spectrum for all uniform requests covered by the theorem, without a Boolean-encoding restriction. The conventions at d=0, prime-power periods, eventual thresholds, and NS/PC comparison agree with the paper.
+4. The four topological shapes are proved: empty (T1), full (T2), nonempty proper clopen (T3), and closed but not open (T4). A residue-tree explanation supplies the needed compactness argument.
+5. The abstract example h(n)=2^v_2(n) shows how every positive finite size can have finite degree while the limiting hard spectrum is {0}. It is explicitly a toy profile, not a claimed realisation by a polynomial family. The logarithmic profile 1+v_2(n) has the same spectrum but demonstrates why topology alone does not prove linear growth. The linear onset and period estimates are essential.
+6. The spectrum is attributed to the residue-class structure already implicit in the 2009 report, Section 4, pages 18–19. No new four-way classification or full Euler-model converse is claimed.
+7. Section 20.7 explains the relationship to representation stability, exactness and reflection, rook operators, designs, and p-adic topology. Analogies are distinguished from imported theorems.
+8. All 28 bibliography entries were checked for identity, publication/version metadata and their stated role, using primary publisher, author, institutional, or repository records where available. The separate compression companion remains explicitly unpublished. The PC-foundation publisher text was not accessible in this review; its bibliographic record was corroborated from the authors' research literature. No new claim depends on inaccessible details of that paper.
+
+CHECKS
+- Successful LaTeX build, 193 pages. No undefined references, duplicate labels, or overfull boxes. One pre-existing underfull table cell remains visually acceptable.
+- Page layouts inspected, including the new topology section, tables, literature discussion, front matter and bibliography.
+- Four existing exact finite-illustration scripts pass: worked examples, clarity examples, running-order examples, and support/completeness examples.
+- Added finite topology examples pass: 1,547,520 truncated-periodicity comparisons and 32,768 binary easy-region comparisons. The logarithmic contrast also checks. These are checks of examples, not a proof of the asymptotic theorem.
+- Existing Lean packet integrity check passes for 305 checksummed files and 199 modules. Recorded audit-output checks pass for 164 targeted axiom reports and 102 dependency reports. These commands inspect preserved files; they do not run Lean.
+- Paper PDF/source and all extracted Lean files are byte-identical to the supplied current versions. Exact hashes are in the package manifest.
+
+SCOPE AND REMAINING REVIEW
+This is a targeted notation, exposition, reference and consistency review, drawing also on the preserved earlier mathematical audits. It is not a fresh line-by-line independent proof audit of all 20 chapters. No formal source was changed and no new Lean theorem was produced. The topological proposition is written mathematics; consult lean/SCOPE.md for all other boundaries of formal coverage.
+
+The author's final read of the paper remains outstanding. The main technical statements and proof architecture have not been changed by the tutorial review. A later paper revision should be checked against this tutorial before publication. The separate unpublished compression manuscript is cited but not bundled; it is optional context rather than a prerequisite for the main theorem.

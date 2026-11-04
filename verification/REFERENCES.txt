@@ -1,0 +1,116 @@
+REFERENCE AND CONNECTION REGISTER — 4 NOVEMBER 2026
+
+All 28 bibliography entries are listed below. Verification distinguishes primary-text/theorem checks, bibliographic checks, and background analogies. A checked bibliographic record is not a claim to have independently re-proved the cited work.
+
+1. [RiisTree] A complexity gap for tree resolution; Computational Complexity 10, 179–209 (2001).
+   Source: https://doi.org/10.1007/s00037-001-8194-y
+   Check and role: Publisher metadata checked. Historical comparison with resolution, not the algebraic transfer proof.
+
+2. [BussPitassiInduction] Good degree bounds on Nullstellensatz refutations of the induction principle; JCSS 57(2), 162–171 (1998).
+   Source: https://mathweb.ucsd.edu/~sbuss/ResearchWeb/modusponens/index.html
+   Check and role: Author/publisher record checked; DOI 10.1006/jcss.1998.1585 added.
+
+3. [DantchevRiis] On relativisation and complexity gap for resolution-based proof systems; CSL 2003, LNCS 2803, 142–154.
+   Source: https://doi.org/10.1007/978-3-540-45220-1_14
+   Check and role: Institutional publication record checked; historical relationship only.
+
+4. [DMS] Parameterized proof complexity; FOCS 2007, 150–160.
+   Source: https://doi.org/10.1109/FOCS.2007.53
+   Check and role: Institutional publication record checked.
+
+5. [DMRank] Rank complexity gap for Lovász–Schrijver and Sherali–Adams proof systems; Computational Complexity 22, 191–213 (2013).
+   Source: https://doi.org/10.1007/s00037-012-0049-1
+   Check and role: Publication is 2013; DOI/online year 2012 is not substituted for the volume year.
+
+6. [QBFGap] The Riis complexity gap for QBF resolution; JSAT 15(1), 9–25 (2024).
+   Source: https://doi.org/10.3233/SAT-231505
+   Check and role: Institutional/publisher metadata checked; historical comparison.
+
+7. [Riis] On the asymptotic Nullstellensatz and Polynomial Calculus proof complexity; LICS 2008, 272–283.
+   Source: https://doi.org/10.1109/LICS.2008.30
+   Check and role: Official publication baseline; author listing and preserved publisher metadata checked. Earlier classification is not attributed to this new paper.
+
+8. [RiisLong] Same title; ECCC TR09-014 (2009).
+   Source: https://eccc.weizmann.ac.il/report/2009/014/
+   Check and role: Original text and repository checked. Section 4, pp.18–19 supports the historical residue-class/spectrum attribution. It is not evidence for the new linear bound.
+
+9. [Krajicek] On the degree of ideal membership proofs from uniform families of polynomials over a finite field; Illinois J. Math.45(1), 41–73 (2001).
+   Source: https://doi.org/10.1215/ijm/1258138254
+   Check and role: Author text and preserved publisher metadata checked. Context for earlier algebraic degree/periodicity arguments; does not itself establish the present arbitrary-field/target theorem.
+
+10. [Harman] Stability and periodicity in the modular representation theory of symmetric groups; arXiv:1509.06414v3 (2016; first 2015).
+   Source: https://arxiv.org/abs/1509.06414v3
+   Check and role: Repository/version and theorem scope checked against local full text and earlier source comparisons. Compatibility with operations is an antecedent, not a new claim of this work.
+
+11. [HKPSYZ] Semisimplifying categorical Heisenberg actions and periodic equivalences; arXiv:2509.07377v2 (2025).
+   Source: https://arxiv.org/abs/2509.07377v2
+   Check and role: Version and authors checked; theorem scope cross-checked against retained primary text/source comparisons. The tutorial gives its own elementary construction.
+
+12. [BDM] Integral Schur–Weyl duality for partition algebras; Algebraic Combinatorics 5(2), 371–399 (2022).
+   Source: https://alco.centre-mersenne.org/item/10.5802/alco.214.pdf
+   Check and role: Primary article checked. Combinatorial centraliser context, not an external proof of the paper’s rook-cancellation/transport argument.
+
+13. [KrajEuler] Uniform families of polynomial equations over a finite field and structures admitting an Euler characteristic of definable sets; PLMS81(2),257–284 (2000).
+   Source: https://doi.org/10.1112/S0024611500012557
+   Check and role: Publisher/author text and earlier source audit checked. A stronger sufficient semantic criterion, not interchangeable with bounded-degree linear designs. No general converse asserted.
+
+14. [KrajScanlon] Combinatorics with definable sets: Euler characteristics and Grothendieck rings; BSL6(3),311–330 (2000).
+   Source: https://doi.org/10.2307/421058
+   Check and role: Primary publication record checked; background on definable-set invariants and fibre laws.
+
+15. [CEF] FI-modules and stability for representations of symmetric groups; Duke Math.J.164(9),1833–1910 (2015).
+   Source: https://arxiv.org/abs/1204.4533
+   Check and role: Primary repository/publication metadata checked. Background viewpoint, not a claim that characteristic-zero representation stability proves positive-characteristic degree periodicity.
+
+16. [CompressionCompanion] Support compression for symmetric polynomial systems: Permutation differences and preservation of proof degree; unpublished companion manuscript (2026).
+   Source: No public URL or DOI claimed.
+   Check and role: Current local manuscript, validation report and completed proof-return status checked. Coherent full-span compression preserves exact NS/PC degrees; does not supply an algorithm for undecidable classification. Not included in this upload package.
+
+17. [StacksExact] Stacks Project: Lemma12.7.2 (010N), Remark35.4.4 (08WK).
+   Source: https://stacks.math.columbia.edu/tag/010N ; https://stacks.math.columbia.edu/tag/08WK
+   Check and role: Live primary texts checked. Vocabulary/analogy of exactness and reflection; no claim that the deletion construction is a faithfully-flat base change.
+
+18. [LangAlgebra] Algebra, revised third edition, GTM211 (2002).
+   Source: https://doi.org/10.1007/978-1-4613-0041-0
+   Check and role: Publisher edition metadata checked; optional background, no unverified theorem-number attribution.
+
+19. [AlperinLocal] Local Representation Theory, Cambridge Studies11 (1986).
+   Source: https://doi.org/10.1017/CBO9780511623592
+   Check and role: Publisher metadata checked; 1986 publication distinguished from later digital date. Modular/Jordan-block background.
+
+20. [Cutland] Computability: An Introduction to Recursive Function Theory (1980).
+   Source: https://doi.org/10.1017/CBO9781139171496
+   Check and role: Publisher metadata checked; original publication year retained rather than later ebook date.
+
+21. [NSFoundations] Lower bounds on Hilbert’s Nullstellensatz and propositional proofs; PLMS73(1),1–26 (1996); preliminary FOCS1994,794–806.
+   Source: https://homes.cs.washington.edu/~beame/papers/nsatz.pdf
+   Check and role: Primary author-hosted published article and conference paper checked. Foundational NS proof-system reference.
+
+22. [PCFoundations] Using the Groebner basis algorithm to find proofs of unsatisfiability; Clegg, Edmonds, Impagliazzo; STOC1996,174–183.
+   Source: https://doi.org/10.1145/237814.237860
+   Check and role: Publisher full text was inaccessible. Identity/pages/DOI corroborated in primary research bibliographies, including https://www.cs.toronto.edu/~toni/Papers/jacm-gp.pdf . Only the standard foundational attribution is used, not a newly imported technical lemma.
+
+23. [RiisSitharamTautologies] Generating hard tautologies using predicate logic and the symmetric group; Logic J.IGPL8(6),787–795 (2000).
+   Source: https://doi.org/10.1093/jigpal/8.6.787
+   Check and role: Publisher metadata and abstract checked; historical symmetry/proof-complexity connection.
+
+24. [RiisSitharamModules] Uniformly generated submodules of permutation modules: Over fields of characteristic 0; JPAA160(2–3),285–318 (2001).
+   Source: https://doi.org/10.1016/S0022-4049(00)00069-4
+   Check and role: Publisher metadata/abstract checked. Characteristic-zero qualification retained.
+
+25. [Ajtai] Symmetric systems of linear equations modulo p; ECCC TR94-015 (1994).
+   Source: https://eccc.weizmann.ac.il/report/1994/015/
+   Check and role: Primary repository checked; stronger ordered/residue setting not silently replaced by a pure-equality semantic criterion.
+
+26. [BussDesign] Lower bounds on Nullstellensatz proofs via designs; DIMACS39,59–71 (1998).
+   Source: https://mathweb.ucsd.edu/~sbuss/ResearchWeb/designs/
+   Check and role: Author research page/publication list checked. Linear dual witnesses motivate the exposition; a functional is not necessarily evaluation at a solution.
+
+27. [BeameRiis] More on the relative strength of counting principles; DIMACS39,13–35 (1998).
+   Source: https://homes.cs.washington.edu/~beame/papers/riis.pdf
+   Check and role: Author-hosted primary text and publication list checked; counting-principle background.
+
+28. [Gouvea] p-adic Numbers: An Introduction, third edition (2020).
+   Source: https://doi.org/10.1007/978-3-030-47295-5
+   Check and role: Publisher metadata/contents checked. Optional background for residue trees and compactness. The argument used in the tutorial is supplied there rather than delegated to an unverified theorem number.
+

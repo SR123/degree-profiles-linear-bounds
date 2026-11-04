@@ -1,0 +1,14 @@
+Source identity check, Return_002 workspace
+run: 2026-10-05T18:49:25+00:00
+preserved lean-source (04_Manuscript/Linear_Bounds_2026-09-27/audit/lean-source), entries under lean/: 189 match; 0 differ []
+Return_001 UCAudit.lean identical
+Return_001 UCClassification.lean identical
+Return_001 UCExample.lean identical
+Return_001 UCTarget.lean identical
+Return_001 UCTransfer.lean identical
+new UCIndexedTarget.lean 146e325090454524edd522e5e2795b15f8ed82ad9b8cd9b3b799a941921d970b
+new UCIndexedTransfer.lean fe16b5942f461de7467b1180db3d7d99cacf3188c5aff7af47dc3921f2e6057a
+new UCIndexedAudit.lean daa58327857302f22e9b0850707bf6332f76910125c4e7988517caa2bdcfe17b
+new UCIndexedClassification.lean db74f18c57b1364ab961951ac7fed70c6eef53348ebcee2cf9859b6f1bda22d3
+new UCFreshVariable.lean bc85c231f748b4781db6bd58901a80686ee032a1991c66c2052aec3dfae82c94
+new UCReturn002Audit.lean b7350fffe948e60722495a2932f933a142b69057bff933c3860b76554b816fff
