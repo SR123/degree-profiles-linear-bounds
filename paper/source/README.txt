@@ -1,38 +1,14 @@
-Author-review editorial revision, 4 November 2026.
+Version 1.0.0 — DOI archive, 5 November 2026.
 
-Compile the standalone main.tex with pdflatex/latexmk. Organised sources
-are in sections/; after editing run python3 build_paper.py, then compile main.tex.
-The exported paper has 78 pages. The abstract credits the LICS 2008/2009
-classification before the current linear bounds and uniform-target extension.
-New introductory examples explain global sums, tuple-indexed variables, orbit
-generators, permanently named parameters, zero-arity types and the first-order
-compiler. Constants chosen by a model are distinguished from fixed parameters.
-The theorem statements and proof bodies are unchanged.
+Compile main.tex with pdflatex/latexmk. After editing the organised sections, run python3 build_paper.py before compiling.
 
-Section 11.1 gives the general p-adic hardness spectrum and four shapes,
-crediting the author's 2009 report, Section 4. This is written mathematics,
-not a new Lean endpoint. The preserved degree-profiles-lean-source.zip
-contains the core formal sources and exact scope/evidence. No fresh Lean
-build or replay was performed for this editorial revision.
-The separate finite_certificate.tex is retained as supplied and is not
-part of build_paper.py's assembly order.
+The 78-page paper cites the combined paper and supporting-material archive in reference [30]: https://doi.org/10.5281/zenodo.23965838
+The abstract points to this reference for the tutorial, Lean formalisation and verification records.
 
-No publication or submission has occurred. Licence choices remain unchanged.
-PDF SHA256: 697ca04c2b07a34f7e26a17d35e858725b1243eb6df75f6b8287ef35f6cc8894
+Licence: CC BY 4.0; upstream dependencies retain their own licences. The DOI preparation changes citation and packaging metadata, not mathematical statements or Lean proofs. No fresh Lean kernel replay was performed.
 
-Section 2.4 fixed-degree qualification, 4 November 2026: the Boolean upper
-bound d_PC <= d_NS <= v+D is retained. Razborov's Omega(v) PC lower bound
-for modified pigeonhole encodings is cited only for comparison, allowing
-logarithmic input degree. The paragraph explicitly says this does not
-establish sharpness in our uniform class, which fixes D independently of n.
-Only the literature paragraph changed in this revision. Theorems and proofs
-are unchanged. The packet matches the current 78-page paper.
+Section 11 gives the general p-adic hardness spectrum. Its topological exposition is written mathematics, not a new Lean endpoint. See lean/SCOPE.md and lean/EVIDENCE.md for formalisation scope.
 
-Proof-source archive links, 4 November 2026: the final verification
-paragraph now cites the supporting-materials bibliography entry [30].
-That entry links to a fixed GitHub repository archive, its archived paper
-PDF, and the Lean sources and verification records, all at commit
-072d949368e3ad7f44fc3b34b80d8f43fa92dcd1. The local ZIP filename was
-removed from the paragraph. The acknowledgements are unchanged.
-The paper remains 78 pages; the PDF hyperlink destinations were checked.
-This task updates local paper artifacts; it does not upload a GitHub revision.
+The unused finite_certificate.tex is retained as supplied and is not part of build_paper.py assembly order.
+
+PDF SHA256: 10ce41444b11132d389a2a77d99d85061caf67e5a2788b51ebf248aaafb20c60
